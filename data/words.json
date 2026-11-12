@@ -1,0 +1,802 @@
+[
+ {
+  "word": "apple",
+  "zh": "蘋果",
+  "emoji": "🍎",
+  "kk": "[ˋæpḷ]",
+  "theme": "food",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/apple.mp3"
+ },
+ {
+  "word": "banana",
+  "zh": "香蕉",
+  "emoji": "🍌",
+  "kk": "[bəˋnænə]",
+  "theme": "food",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/banana.mp3"
+ },
+ {
+  "word": "grape",
+  "zh": "葡萄",
+  "emoji": "🍇",
+  "kk": "[grep]",
+  "theme": "food",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/grape.mp3"
+ },
+ {
+  "word": "lemon",
+  "zh": "檸檬",
+  "emoji": "🍋",
+  "kk": "[ˋlɛmən]",
+  "theme": "food",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/lemon.mp3"
+ },
+ {
+  "word": "cake",
+  "zh": "蛋糕",
+  "emoji": "🍰",
+  "kk": "[kek]",
+  "theme": "food",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/cake.mp3"
+ },
+ {
+  "word": "bread",
+  "zh": "麵包",
+  "emoji": "🍞",
+  "kk": "[brɛd]",
+  "theme": "food",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/bread.mp3"
+ },
+ {
+  "word": "egg",
+  "zh": "蛋",
+  "emoji": "🥚",
+  "kk": "[ɛg]",
+  "theme": "food",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/egg.mp3"
+ },
+ {
+  "word": "milk",
+  "zh": "牛奶",
+  "emoji": "🥛",
+  "kk": "[mɪlk]",
+  "theme": "food",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/milk.mp3"
+ },
+ {
+  "word": "cheese",
+  "zh": "起司",
+  "emoji": "🧀",
+  "kk": "[tʃiz]",
+  "theme": "food",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/cheese.mp3"
+ },
+ {
+  "word": "cat",
+  "zh": "貓",
+  "emoji": "🐱",
+  "kk": "[kæt]",
+  "theme": "animal",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/cat.mp3"
+ },
+ {
+  "word": "dog",
+  "zh": "狗",
+  "emoji": "🐶",
+  "kk": "[dɔg]",
+  "theme": "animal",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/dog.mp3"
+ },
+ {
+  "word": "fish",
+  "zh": "魚",
+  "emoji": "🐟",
+  "kk": "[fɪʃ]",
+  "theme": "animal",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/fish.mp3"
+ },
+ {
+  "word": "bird",
+  "zh": "鳥",
+  "emoji": "🐦",
+  "kk": "[bɝd]",
+  "theme": "animal",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/bird.mp3"
+ },
+ {
+  "word": "rabbit",
+  "zh": "兔子",
+  "emoji": "🐰",
+  "kk": "[ˋræbɪt]",
+  "theme": "animal",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/rabbit.mp3"
+ },
+ {
+  "word": "horse",
+  "zh": "馬",
+  "emoji": "🐴",
+  "kk": "[hɔrs]",
+  "theme": "animal",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/horse.mp3"
+ },
+ {
+  "word": "tiger",
+  "zh": "老虎",
+  "emoji": "🐯",
+  "kk": "[ˋtaɪgɚ]",
+  "theme": "animal",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/tiger.mp3"
+ },
+ {
+  "word": "frog",
+  "zh": "青蛙",
+  "emoji": "🐸",
+  "kk": "[frɑg]",
+  "theme": "animal",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/frog.mp3"
+ },
+ {
+  "word": "elephant",
+  "zh": "大象",
+  "emoji": "🐘",
+  "kk": "[ˋɛləfənt]",
+  "theme": "animal",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/elephant.mp3"
+ },
+ {
+  "word": "sun",
+  "zh": "太陽",
+  "emoji": "☀️",
+  "kk": "[sʌn]",
+  "theme": "nature",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/sun.mp3"
+ },
+ {
+  "word": "moon",
+  "zh": "月亮",
+  "emoji": "🌙",
+  "kk": "[mun]",
+  "theme": "nature",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/moon.mp3"
+ },
+ {
+  "word": "star",
+  "zh": "星星",
+  "emoji": "⭐",
+  "kk": "[stɑr]",
+  "theme": "nature",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/star.mp3"
+ },
+ {
+  "word": "rain",
+  "zh": "雨",
+  "emoji": "🌧️",
+  "kk": "[ren]",
+  "theme": "nature",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/rain.mp3"
+ },
+ {
+  "word": "tree",
+  "zh": "樹",
+  "emoji": "🌳",
+  "kk": "[tri]",
+  "theme": "nature",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/tree.mp3"
+ },
+ {
+  "word": "flower",
+  "zh": "花",
+  "emoji": "🌸",
+  "kk": "[ˋflaʊɚ]",
+  "theme": "nature",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/flower.mp3"
+ },
+ {
+  "word": "volcano",
+  "zh": "火山",
+  "emoji": "🌋",
+  "kk": "[vɑlˋkeno]",
+  "theme": "nature",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/volcano.mp3"
+ },
+ {
+  "word": "mountain",
+  "zh": "山",
+  "emoji": "🏔️",
+  "kk": "[ˋmaʊntṇ]",
+  "theme": "nature",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/mountain.mp3"
+ },
+ {
+  "word": "car",
+  "zh": "汽車",
+  "emoji": "🚗",
+  "kk": "[kɑr]",
+  "theme": "transport",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/car.mp3"
+ },
+ {
+  "word": "bus",
+  "zh": "公車",
+  "emoji": "🚌",
+  "kk": "[bʌs]",
+  "theme": "transport",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/bus.mp3"
+ },
+ {
+  "word": "bike",
+  "zh": "腳踏車",
+  "emoji": "🚲",
+  "kk": "[baɪk]",
+  "theme": "transport",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/bike.mp3"
+ },
+ {
+  "word": "ambulance",
+  "zh": "救護車",
+  "emoji": "🚑",
+  "kk": "[ˋæmbjələns]",
+  "theme": "transport",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/ambulance.mp3"
+ },
+ {
+  "word": "bridge",
+  "zh": "橋",
+  "emoji": "🌉",
+  "kk": "[brɪdʒ]",
+  "theme": "transport",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/bridge.mp3"
+ },
+ {
+  "word": "map",
+  "zh": "地圖",
+  "emoji": "🗺️",
+  "kk": "[mæp]",
+  "theme": "transport",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/map.mp3"
+ },
+ {
+  "word": "suitcase",
+  "zh": "行李箱",
+  "emoji": "🧳",
+  "kk": "[ˋsutˏkes]",
+  "theme": "transport",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/suitcase.mp3"
+ },
+ {
+  "word": "house",
+  "zh": "房子",
+  "emoji": "🏠",
+  "kk": "[haʊs]",
+  "theme": "things",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/house.mp3"
+ },
+ {
+  "word": "book",
+  "zh": "書",
+  "emoji": "📖",
+  "kk": "[bʊk]",
+  "theme": "things",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/book.mp3"
+ },
+ {
+  "word": "clock",
+  "zh": "時鐘",
+  "emoji": "⏰",
+  "kk": "[klɑk]",
+  "theme": "things",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/clock.mp3"
+ },
+ {
+  "word": "key",
+  "zh": "鑰匙",
+  "emoji": "🔑",
+  "kk": "[ki]",
+  "theme": "things",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/key.mp3"
+ },
+ {
+  "word": "shoe",
+  "zh": "鞋子",
+  "emoji": "👟",
+  "kk": "[ʃu]",
+  "theme": "things",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/shoe.mp3"
+ },
+ {
+  "word": "hat",
+  "zh": "帽子",
+  "emoji": "🎩",
+  "kk": "[hæt]",
+  "theme": "things",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/hat.mp3"
+ },
+ {
+  "word": "phone",
+  "zh": "手機",
+  "emoji": "📱",
+  "kk": "[fon]",
+  "theme": "things",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/phone.mp3"
+ },
+ {
+  "word": "ball",
+  "zh": "球",
+  "emoji": "⚽",
+  "kk": "[bɔl]",
+  "theme": "things",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/ball.mp3"
+ },
+ {
+  "word": "umbrella",
+  "zh": "雨傘",
+  "emoji": "☂️",
+  "kk": "[ʌmˋbrɛlə]",
+  "theme": "things",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/umbrella.mp3"
+ },
+ {
+  "word": "chair",
+  "zh": "椅子",
+  "emoji": "🪑",
+  "kk": "[tʃɛr]",
+  "theme": "things",
+  "level": 1,
+  "image": "",
+  "audio": "assets/voice/words/chair.mp3"
+ },
+ {
+  "word": "gift",
+  "zh": "禮物",
+  "emoji": "🎁",
+  "kk": "[gɪft]",
+  "theme": "things",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/gift.mp3"
+ },
+ {
+  "word": "headphones",
+  "zh": "耳機",
+  "emoji": "🎧",
+  "kk": "[ˋhɛdˏfonz]",
+  "theme": "things",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/headphones.mp3"
+ },
+ {
+  "word": "hospital",
+  "zh": "醫院",
+  "emoji": "🏥",
+  "kk": "[ˋhɑspɪtḷ]",
+  "theme": "things",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/hospital.mp3"
+ },
+ {
+  "word": "bank",
+  "zh": "銀行",
+  "emoji": "🏦",
+  "kk": "[bæŋk]",
+  "theme": "things",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/bank.mp3"
+ },
+ {
+  "word": "doctor",
+  "zh": "醫生",
+  "emoji": "🧑‍⚕️",
+  "kk": "[ˋdɑktɚ]",
+  "theme": "things",
+  "level": 2,
+  "image": "",
+  "audio": "assets/voice/words/doctor.mp3"
+ },
+ {
+  "word": "cucumber",
+  "zh": "小黃瓜",
+  "emoji": "🥒",
+  "kk": "[ˋkjukʌmbɚ]",
+  "theme": "food",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/cucumber.mp3"
+ },
+ {
+  "word": "pineapple",
+  "zh": "鳳梨",
+  "emoji": "🍍",
+  "kk": "[ˋpaɪnˏæpḷ]",
+  "theme": "food",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/pineapple.mp3"
+ },
+ {
+  "word": "mushroom",
+  "zh": "蘑菇",
+  "emoji": "🍄",
+  "kk": "[ˋmʌʃrʊm]",
+  "theme": "food",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/mushroom.mp3"
+ },
+ {
+  "word": "dolphin",
+  "zh": "海豚",
+  "emoji": "🐬",
+  "kk": "[ˋdɑlfɪn]",
+  "theme": "animal",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/dolphin.mp3"
+ },
+ {
+  "word": "octopus",
+  "zh": "章魚",
+  "emoji": "🐙",
+  "kk": "[ˋɑktəpəs]",
+  "theme": "animal",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/octopus.mp3"
+ },
+ {
+  "word": "squirrel",
+  "zh": "松鼠",
+  "emoji": "🐿️",
+  "kk": "[ˋskwɝəl]",
+  "theme": "animal",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/squirrel.mp3"
+ },
+ {
+  "word": "rainbow",
+  "zh": "彩虹",
+  "emoji": "🌈",
+  "kk": "[ˋrenˏbo]",
+  "theme": "nature",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/rainbow.mp3"
+ },
+ {
+  "word": "desert",
+  "zh": "沙漠",
+  "emoji": "🏜️",
+  "kk": "[ˋdɛzɚt]",
+  "theme": "nature",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/desert.mp3"
+ },
+ {
+  "word": "thermometer",
+  "zh": "溫度計",
+  "emoji": "🌡️",
+  "kk": "[θɚˋmɑmətɚ]",
+  "theme": "nature",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/thermometer.mp3"
+ },
+ {
+  "word": "passport",
+  "zh": "護照",
+  "emoji": "🛂",
+  "kk": "[ˋpæsˏpɔrt]",
+  "theme": "transport",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/passport.mp3"
+ },
+ {
+  "word": "compass",
+  "zh": "指南針",
+  "emoji": "🧭",
+  "kk": "[ˋkʌmpəs]",
+  "theme": "transport",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/compass.mp3"
+ },
+ {
+  "word": "helicopter",
+  "zh": "直升機",
+  "emoji": "🚁",
+  "kk": "[ˋhɛlɪkɑptɚ]",
+  "theme": "transport",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/helicopter.mp3"
+ },
+ {
+  "word": "receipt",
+  "zh": "收據",
+  "emoji": "🧾",
+  "kk": "[rɪˋsit]",
+  "theme": "things",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/receipt.mp3"
+ },
+ {
+  "word": "envelope",
+  "zh": "信封",
+  "emoji": "✉️",
+  "kk": "[ˋɛnvəˏlop]",
+  "theme": "things",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/envelope.mp3"
+ },
+ {
+  "word": "battery",
+  "zh": "電池",
+  "emoji": "🔋",
+  "kk": "[ˋbætərɪ]",
+  "theme": "things",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/battery.mp3"
+ },
+ {
+  "word": "ladder",
+  "zh": "梯子",
+  "emoji": "🪜",
+  "kk": "[ˋlædɚ]",
+  "theme": "things",
+  "level": 3,
+  "image": "",
+  "audio": "assets/voice/words/ladder.mp3"
+ },
+ {
+  "word": "avocado",
+  "zh": "酪梨",
+  "emoji": "🥑",
+  "kk": "[ˏævəˋkɑdo]",
+  "theme": "food",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/avocado.mp3"
+ },
+ {
+  "word": "broccoli",
+  "zh": "花椰菜",
+  "emoji": "🥦",
+  "kk": "[ˋbrɑkəlɪ]",
+  "theme": "food",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/broccoli.mp3"
+ },
+ {
+  "word": "garlic",
+  "zh": "大蒜",
+  "emoji": "🧄",
+  "kk": "[ˋgɑrlɪk]",
+  "theme": "food",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/garlic.mp3"
+ },
+ {
+  "word": "hedgehog",
+  "zh": "刺蝟",
+  "emoji": "🦔",
+  "kk": "[ˋhɛdʒˏhɑg]",
+  "theme": "animal",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/hedgehog.mp3"
+ },
+ {
+  "word": "flamingo",
+  "zh": "紅鶴",
+  "emoji": "🦩",
+  "kk": "[fləˋmɪŋgo]",
+  "theme": "animal",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/flamingo.mp3"
+ },
+ {
+  "word": "peacock",
+  "zh": "孔雀",
+  "emoji": "🦚",
+  "kk": "[ˋpiˏkɑk]",
+  "theme": "animal",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/peacock.mp3"
+ },
+ {
+  "word": "tornado",
+  "zh": "龍捲風",
+  "emoji": "🌪️",
+  "kk": "[tɔrˋnedo]",
+  "theme": "nature",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/tornado.mp3"
+ },
+ {
+  "word": "comet",
+  "zh": "彗星",
+  "emoji": "☄️",
+  "kk": "[ˋkɑmɪt]",
+  "theme": "nature",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/comet.mp3"
+ },
+ {
+  "word": "satellite",
+  "zh": "人造衛星",
+  "emoji": "🛰️",
+  "kk": "[ˋsætḷˏaɪt]",
+  "theme": "transport",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/satellite.mp3"
+ },
+ {
+  "word": "anchor",
+  "zh": "船錨",
+  "emoji": "⚓",
+  "kk": "[ˋæŋkɚ]",
+  "theme": "transport",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/anchor.mp3"
+ },
+ {
+  "word": "tractor",
+  "zh": "拖拉機",
+  "emoji": "🚜",
+  "kk": "[ˋtræktɚ]",
+  "theme": "transport",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/tractor.mp3"
+ },
+ {
+  "word": "microscope",
+  "zh": "顯微鏡",
+  "emoji": "🔬",
+  "kk": "[ˋmaɪkrəˏskop]",
+  "theme": "things",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/microscope.mp3"
+ },
+ {
+  "word": "telescope",
+  "zh": "望遠鏡",
+  "emoji": "🔭",
+  "kk": "[ˋtɛləˏskop]",
+  "theme": "things",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/telescope.mp3"
+ },
+ {
+  "word": "stethoscope",
+  "zh": "聽診器",
+  "emoji": "🩺",
+  "kk": "[ˋstɛθəˏskop]",
+  "theme": "things",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/stethoscope.mp3"
+ },
+ {
+  "word": "magnet",
+  "zh": "磁鐵",
+  "emoji": "🧲",
+  "kk": "[ˋmægnɪt]",
+  "theme": "things",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/magnet.mp3"
+ },
+ {
+  "word": "hourglass",
+  "zh": "沙漏",
+  "emoji": "⏳",
+  "kk": "[ˋaʊrˏglæs]",
+  "theme": "things",
+  "level": 4,
+  "image": "",
+  "audio": "assets/voice/words/hourglass.mp3"
+ }
+]

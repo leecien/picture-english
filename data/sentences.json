@@ -1,0 +1,632 @@
+[
+ {
+  "en": "The boy kicks the ball.",
+  "zh": "男孩踢球。",
+  "scene": "👦 ⚽",
+  "blank": "kicks",
+  "distractors": [
+   "eats",
+   "reads",
+   "drives"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/the-boy-kicks-the-ball.mp3"
+ },
+ {
+  "en": "The cat sleeps on the bed.",
+  "zh": "貓在床上睡覺。",
+  "scene": "🐱 🛏️",
+  "blank": "sleeps",
+  "distractors": [
+   "swims",
+   "cooks",
+   "sings"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/the-cat-sleeps-on-the-bed.mp3"
+ },
+ {
+  "en": "The dog eats a bone.",
+  "zh": "狗在吃骨頭。",
+  "scene": "🐶 🦴",
+  "blank": "bone",
+  "distractors": [
+   "book",
+   "shoe",
+   "cake"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/the-dog-eats-a-bone.mp3"
+ },
+ {
+  "en": "The girl reads a book.",
+  "zh": "女孩在看書。",
+  "scene": "👧 📖",
+  "blank": "book",
+  "distractors": [
+   "cup",
+   "ball",
+   "car"
+  ],
+  "level": 1,
+  "route": "school",
+  "image": "",
+  "audio": "assets/voice/sentences/the-girl-reads-a-book.mp3"
+ },
+ {
+  "en": "It is raining, so I take an umbrella.",
+  "zh": "下雨了，所以我帶傘。",
+  "scene": "🌧️ ☂️",
+  "blank": "umbrella",
+  "distractors": [
+   "apple",
+   "pencil",
+   "bike"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/it-is-raining-so-i-take-an-umbrella.mp3"
+ },
+ {
+  "en": "The fish swims in the sea.",
+  "zh": "魚在海裡游泳。",
+  "scene": "🐟 🌊",
+  "blank": "swims",
+  "distractors": [
+   "flies",
+   "runs",
+   "sleeps"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/the-fish-swims-in-the-sea.mp3"
+ },
+ {
+  "en": "My dad drives a car.",
+  "zh": "我爸爸開車。",
+  "scene": "👨 🚗",
+  "blank": "drives",
+  "distractors": [
+   "drinks",
+   "writes",
+   "paints"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/my-dad-drives-a-car.mp3"
+ },
+ {
+  "en": "A bird sings in the tree.",
+  "zh": "一隻鳥在樹上唱歌。",
+  "scene": "🐦 🌳",
+  "blank": "tree",
+  "distractors": [
+   "box",
+   "river",
+   "cup"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/a-bird-sings-in-the-tree.mp3"
+ },
+ {
+  "en": "The baby drinks milk.",
+  "zh": "寶寶在喝牛奶。",
+  "scene": "👶 🍼",
+  "blank": "milk",
+  "distractors": [
+   "rice",
+   "sand",
+   "paper"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/the-baby-drinks-milk.mp3"
+ },
+ {
+  "en": "It is sunny at the beach.",
+  "zh": "海邊天氣晴朗。",
+  "scene": "☀️ 🏖️",
+  "blank": "sunny",
+  "distractors": [
+   "snowy",
+   "rainy",
+   "windy"
+  ],
+  "level": 1,
+  "route": "travel",
+  "image": "",
+  "audio": "assets/voice/sentences/it-is-sunny-at-the-beach.mp3"
+ },
+ {
+  "en": "The student walks to school.",
+  "zh": "學生走路去上學。",
+  "scene": "🧒 🏫",
+  "blank": "school",
+  "distractors": [
+   "bank",
+   "zoo",
+   "moon"
+  ],
+  "level": 1,
+  "route": "school",
+  "image": "",
+  "audio": "assets/voice/sentences/the-student-walks-to-school.mp3"
+ },
+ {
+  "en": "Grandma drinks hot tea.",
+  "zh": "奶奶在喝熱茶。",
+  "scene": "👵 🍵",
+  "blank": "hot",
+  "distractors": [
+   "tall",
+   "slow",
+   "sad"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/grandma-drinks-hot-tea.mp3"
+ },
+ {
+  "en": "The rabbit eats a carrot.",
+  "zh": "兔子在吃紅蘿蔔。",
+  "scene": "🐰 🥕",
+  "blank": "carrot",
+  "distractors": [
+   "chair",
+   "phone",
+   "sock"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/the-rabbit-eats-a-carrot.mp3"
+ },
+ {
+  "en": "We build a snowman in winter.",
+  "zh": "我們在冬天堆雪人。",
+  "scene": "⛄ ❄️",
+  "blank": "winter",
+  "distractors": [
+   "summer",
+   "spring",
+   "autumn"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/we-build-a-snowman-in-winter.mp3"
+ },
+ {
+  "en": "Today is my birthday.",
+  "zh": "今天是我的生日。",
+  "scene": "🎂 🎉",
+  "blank": "birthday",
+  "distractors": [
+   "homework",
+   "kitchen",
+   "window"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/today-is-my-birthday.mp3"
+ },
+ {
+  "en": "The cook fries an egg.",
+  "zh": "廚師在煎蛋。",
+  "scene": "🧑‍🍳 🍳",
+  "blank": "egg",
+  "distractors": [
+   "shoe",
+   "tree",
+   "bus"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/the-cook-fries-an-egg.mp3"
+ },
+ {
+  "en": "The monkey eats a banana.",
+  "zh": "猴子在吃香蕉。",
+  "scene": "🐒 🍌",
+  "blank": "monkey",
+  "distractors": [
+   "table",
+   "cloud",
+   "door"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/the-monkey-eats-a-banana.mp3"
+ },
+ {
+  "en": "I see the moon and stars at night.",
+  "zh": "晚上我看到月亮和星星。",
+  "scene": "🌙 ⭐",
+  "blank": "night",
+  "distractors": [
+   "apple",
+   "chair",
+   "shoe"
+  ],
+  "level": 1,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/i-see-the-moon-and-stars-at-night.mp3"
+ },
+ {
+  "en": "We are going to fly to Japan tomorrow.",
+  "zh": "我們明天要搭飛機去日本。",
+  "scene": "🧳 ✈️",
+  "blank": "tomorrow",
+  "distractors": [
+   "yesterday",
+   "ago",
+   "last"
+  ],
+  "level": 2,
+  "route": "travel",
+  "image": "",
+  "audio": "assets/voice/sentences/we-are-going-to-fly-to-japan-tomorrow.mp3"
+ },
+ {
+  "en": "She had a fever, so she went to the hospital.",
+  "zh": "她發燒了，所以去了醫院。",
+  "scene": "🤒 🏥",
+  "blank": "fever",
+  "distractors": [
+   "ticket",
+   "party",
+   "garden"
+  ],
+  "level": 2,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/she-had-a-fever-so-she-went-to-the-hospital.mp3"
+ },
+ {
+  "en": "If it rains, we will stay at home.",
+  "zh": "如果下雨，我們就待在家。",
+  "scene": "🌧️ 🏠",
+  "blank": "will",
+  "distractors": [
+   "was",
+   "did",
+   "are"
+  ],
+  "level": 2,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/if-it-rains-we-will-stay-at-home.mp3"
+ },
+ {
+  "en": "He ran because he was late.",
+  "zh": "他用跑的，因為他快遲到了。",
+  "scene": "🏃 ⏰",
+  "blank": "because",
+  "distractors": [
+   "but",
+   "or",
+   "than"
+  ],
+  "level": 2,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/he-ran-because-he-was-late.mp3"
+ },
+ {
+  "en": "I have studied English for two years.",
+  "zh": "我已經學英文兩年了。",
+  "scene": "📚 🗓️",
+  "blank": "for",
+  "distractors": [
+   "since",
+   "at",
+   "on"
+  ],
+  "level": 2,
+  "route": "school",
+  "image": "",
+  "audio": "assets/voice/sentences/i-have-studied-english-for-two-years.mp3"
+ },
+ {
+  "en": "My family usually eats pizza on Friday.",
+  "zh": "我家通常星期五吃披薩。",
+  "scene": "🍕 👨‍👩‍👧",
+  "blank": "usually",
+  "distractors": [
+   "yesterday",
+   "tomorrow",
+   "ago"
+  ],
+  "level": 2,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/my-family-usually-eats-pizza-on-friday.mp3"
+ },
+ {
+  "en": "The bus was late because of the rain.",
+  "zh": "因為下雨，公車誤點了。",
+  "scene": "🚌 🌧️",
+  "blank": "late",
+  "distractors": [
+   "hungry",
+   "quiet",
+   "thirsty"
+  ],
+  "level": 2,
+  "route": "travel",
+  "image": "",
+  "audio": "assets/voice/sentences/the-bus-was-late-because-of-the-rain.mp3"
+ },
+ {
+  "en": "My phone battery is almost empty.",
+  "zh": "我的手機快沒電了。",
+  "scene": "📱 🔋",
+  "blank": "empty",
+  "distractors": [
+   "loud",
+   "hungry",
+   "tall"
+  ],
+  "level": 2,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/my-phone-battery-is-almost-empty.mp3"
+ },
+ {
+  "en": "I have lived here since 2020.",
+  "zh": "我從 2020 年就住在這裡。",
+  "scene": "🏠 📅",
+  "blank": "since",
+  "distractors": [
+   "for",
+   "during",
+   "ago"
+  ],
+  "level": 3,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/i-have-lived-here-since-2020.mp3"
+ },
+ {
+  "en": "The museum was built in 1900.",
+  "zh": "這間博物館建於 1900 年。",
+  "scene": "🏛️ 🧱",
+  "blank": "built",
+  "distractors": [
+   "build",
+   "building",
+   "builds"
+  ],
+  "level": 3,
+  "route": "travel",
+  "image": "",
+  "audio": "assets/voice/sentences/the-museum-was-built-in-1900.mp3"
+ },
+ {
+  "en": "She is the girl who won the race.",
+  "zh": "她就是贏得比賽的那個女孩。",
+  "scene": "👧 🏅",
+  "blank": "who",
+  "distractors": [
+   "which",
+   "where",
+   "whose"
+  ],
+  "level": 3,
+  "route": "school",
+  "image": "",
+  "audio": "assets/voice/sentences/she-is-the-girl-who-won-the-race.mp3"
+ },
+ {
+  "en": "If I were rich, I would buy a boat.",
+  "zh": "如果我很有錢，我會買一艘船。",
+  "scene": "💰 ⛵",
+  "blank": "were",
+  "distractors": [
+   "is",
+   "am",
+   "be"
+  ],
+  "level": 3,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/if-i-were-rich-i-would-buy-a-boat.mp3"
+ },
+ {
+  "en": "I am looking forward to the trip.",
+  "zh": "我很期待這趟旅行。",
+  "scene": "🧳 😄",
+  "blank": "forward",
+  "distractors": [
+   "ahead",
+   "back",
+   "after"
+  ],
+  "level": 3,
+  "route": "travel",
+  "image": "",
+  "audio": "assets/voice/sentences/i-am-looking-forward-to-the-trip.mp3"
+ },
+ {
+  "en": "The train had already left when we arrived.",
+  "zh": "我們到的時候，火車已經開走了。",
+  "scene": "🚆 🏃",
+  "blank": "already",
+  "distractors": [
+   "yet",
+   "still",
+   "ever"
+  ],
+  "level": 3,
+  "route": "travel",
+  "image": "",
+  "audio": "assets/voice/sentences/the-train-had-already-left-when-we-arrived.mp3"
+ },
+ {
+  "en": "Could you tell me where the station is?",
+  "zh": "你可以告訴我車站在哪裡嗎？",
+  "scene": "🧭 🚉",
+  "blank": "where",
+  "distractors": [
+   "what",
+   "who",
+   "which"
+  ],
+  "level": 3,
+  "route": "travel",
+  "image": "",
+  "audio": "assets/voice/sentences/could-you-tell-me-where-the-station-is.mp3"
+ },
+ {
+  "en": "I am not used to getting up early.",
+  "zh": "我不習慣早起。",
+  "scene": "⏰ 😴",
+  "blank": "used",
+  "distractors": [
+   "use",
+   "using",
+   "uses"
+  ],
+  "level": 3,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/i-am-not-used-to-getting-up-early.mp3"
+ },
+ {
+  "en": "The report must be finished by Friday.",
+  "zh": "報告必須在星期五前完成。",
+  "scene": "📄 🗓️",
+  "blank": "finished",
+  "distractors": [
+   "finish",
+   "finishing",
+   "finishes"
+  ],
+  "level": 4,
+  "route": "business",
+  "image": "",
+  "audio": "assets/voice/sentences/the-report-must-be-finished-by-friday.mp3"
+ },
+ {
+  "en": "He said that he would call me later.",
+  "zh": "他說他晚點會打給我。",
+  "scene": "🗣️ 📞",
+  "blank": "said",
+  "distractors": [
+   "told",
+   "spoke",
+   "talked"
+  ],
+  "level": 4,
+  "route": "business",
+  "image": "",
+  "audio": "assets/voice/sentences/he-said-that-he-would-call-me-later.mp3"
+ },
+ {
+  "en": "Had I known, I would have helped you.",
+  "zh": "要是我早知道，我就會幫你了。",
+  "scene": "🤔 🤝",
+  "blank": "Had",
+  "distractors": [
+   "Have",
+   "Did",
+   "Was"
+  ],
+  "level": 4,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/had-i-known-i-would-have-helped-you.mp3"
+ },
+ {
+  "en": "Despite the rain, the concert continued.",
+  "zh": "儘管下雨，演唱會還是照常進行。",
+  "scene": "🌧️ 🎤",
+  "blank": "Despite",
+  "distractors": [
+   "Although",
+   "Because",
+   "Unless"
+  ],
+  "level": 4,
+  "route": "travel",
+  "image": "",
+  "audio": "assets/voice/sentences/despite-the-rain-the-concert-continued.mp3"
+ },
+ {
+  "en": "The meeting has been postponed until next week.",
+  "zh": "會議已經延到下週。",
+  "scene": "📅 💼",
+  "blank": "postponed",
+  "distractors": [
+   "postpone",
+   "postponing",
+   "postpones"
+  ],
+  "level": 4,
+  "route": "business",
+  "image": "",
+  "audio": "assets/voice/sentences/the-meeting-has-been-postponed-until-next-week.mp3"
+ },
+ {
+  "en": "She has been working here for ten years.",
+  "zh": "她已經在這裡工作十年了。",
+  "scene": "👩‍💼 🏢",
+  "blank": "been",
+  "distractors": [
+   "being",
+   "be",
+   "was"
+  ],
+  "level": 4,
+  "route": "business",
+  "image": "",
+  "audio": "assets/voice/sentences/she-has-been-working-here-for-ten-years.mp3"
+ },
+ {
+  "en": "Not only is it cheap, but it is also fast.",
+  "zh": "它不只便宜，而且很快。",
+  "scene": "💰 ⚡",
+  "blank": "only",
+  "distractors": [
+   "just",
+   "even",
+   "still"
+  ],
+  "level": 4,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/not-only-is-it-cheap-but-it-is-also-fast.mp3"
+ },
+ {
+  "en": "The car needs to be repaired.",
+  "zh": "這輛車需要修理。",
+  "scene": "🚗 🔧",
+  "blank": "repaired",
+  "distractors": [
+   "repair",
+   "repairing",
+   "repairs"
+  ],
+  "level": 4,
+  "route": "daily",
+  "image": "",
+  "audio": "assets/voice/sentences/the-car-needs-to-be-repaired.mp3"
+ }
+]

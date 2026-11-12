@@ -1,0 +1,43 @@
+{
+  "_levels說明": "maxLevel 是這個等級會出到第幾級的題目（1=A1、2=A2、3=B1、4=B2）。toeic 依 ETS 公布的 CEFR 對照最低分（聽讀總分），只是大約方向。",
+  "levelNames": {"1":"A1","2":"A2","3":"B1","4":"B2"},
+  "tiers": [
+    {"xp":0,"name":"起步者","tag":"Pre-A1","maxLevel":1,"toeic":"","desc":"開始把圖像和英文連在一起。"},
+    {"xp":150,"name":"單字入門","tag":"接近 A1","maxLevel":1,"toeic":"","desc":"認得常見的生活單字，大約是全民英檢初級的入門字彙。"},
+    {"xp":400,"name":"基礎穩固","tag":"A1","maxLevel":1,"toeic":"約多益 120 分以上","desc":"能看懂最基本的單字和短句，相當於 CEFR A1 的日常範圍。"},
+    {"xp":800,"name":"進階挑戰","tag":"接近 A2","maxLevel":2,"toeic":"","desc":"已解鎖 A2 題目：時態、連接詞和較長的句子，朝全民英檢初級前進。"},
+    {"xp":1400,"name":"穩定熟練","tag":"A2","maxLevel":2,"toeic":"約多益 225 分以上","desc":"能掌握 A2 程度的句子，接近全民英檢初級的範圍，出國旅遊的基本對話大致能應付。"},
+    {"xp":2200,"name":"跨越門檻","tag":"接近 B1","maxLevel":3,"toeic":"","desc":"已解鎖 B1 題目：完成式、關係子句、假設語氣，朝全民英檢中級前進。"},
+    {"xp":3200,"name":"獨立溝通","tag":"B1","maxLevel":3,"toeic":"約多益 550 分以上","desc":"能處理熟悉話題的句子，相當於全民英檢中級的方向，能寫一般工作 email。"},
+    {"xp":4500,"name":"進階表達","tag":"接近 B2","maxLevel":4,"toeic":"","desc":"已解鎖 B2 題目：被動語態、倒裝句、商務常用句型。"},
+    {"xp":6000,"name":"流暢應用","tag":"B2","maxLevel":4,"toeic":"約多益 785 分以上","desc":"能理解較複雜的句型，相當於全民英檢中高級的方向，可以開始練簡報和談判用語。"},
+    {"xp":8000,"name":"圖像記憶大師","tag":"B2+","maxLevel":4,"toeic":"","desc":"這個遊戲目前的範圍你都熟了，下一步適合挑戰 C1 教材或正式模考。"}
+  ],
+  "cardTiers": [
+    {"min":1,"id":"bronze","name":"銅卡","reviewDays":2},
+    {"min":3,"id":"silver","name":"銀卡","reviewDays":5},
+    {"min":6,"id":"gold","name":"金卡","reviewDays":12}
+  ],
+  "badges": {
+    "first":   {"icon":"🌱","name":"第一次答對"},
+    "streak3": {"icon":"🔥","name":"連對 3 題"},
+    "streak5": {"icon":"⚡","name":"連對 5 題"},
+    "round1":  {"icon":"🏁","name":"完成第一回合"},
+    "perfect": {"icon":"🏆","name":"單回合滿分"},
+    "both":    {"icon":"🔀","name":"兩種模式都玩過"},
+    "w30":     {"icon":"🔤","name":"單字答對 30 題"},
+    "s30":     {"icon":"💬","name":"句子答對 30 題"},
+    "a2":      {"icon":"🔓","name":"解鎖 A2 題目"},
+    "b1":      {"icon":"🚀","name":"解鎖 B1 題目"},
+    "b2":      {"icon":"🌟","name":"解鎖 B2 題目"},
+    "placed":  {"icon":"🧭","name":"完成分級測驗"},
+    "skip":    {"icon":"⏩","name":"跳級成功"},
+    "c100":    {"icon":"💯","name":"累計答對 100 題"},
+    "card10":  {"icon":"🃏","name":"收集 10 張卡"},
+    "card30":  {"icon":"📚","name":"收集 30 張卡"},
+    "gold1":   {"icon":"🥇","name":"第一張金卡"},
+    "revive":  {"icon":"✨","name":"救回褪色卡"},
+    "day3":    {"icon":"📅","name":"連續玩 3 天"},
+    "day7":    {"icon":"🗓️","name":"連續玩 7 天"}
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "elements": {
+    "fire":  {"name":"火","icon":"🔥"},
+    "wood":  {"name":"木","icon":"🌿"},
+    "water": {"name":"水","icon":"💧"},
+    "wind":  {"name":"風","icon":"🌀"},
+    "earth": {"name":"土","icon":"⛰️"}
+  },
+  "themes": {
+    "food":      {"name":"美食市場","element":"fire"},
+    "animal":    {"name":"動物森林","element":"wood"},
+    "nature":    {"name":"天氣與自然","element":"water"},
+    "transport": {"name":"交通與旅行","element":"wind"},
+    "things":    {"name":"生活與城市","element":"earth"}
+  },
+  "routes": {
+    "daily":    {"name":"日常生活"},
+    "travel":   {"name":"旅遊"},
+    "school":   {"name":"校園"},
+    "business": {"name":"商務"}
+  }
+}

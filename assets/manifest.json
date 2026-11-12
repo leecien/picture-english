@@ -1,0 +1,34 @@
+{
+  "_說明": "每個空位填入 file 路徑就會自動使用該素材；file 留空時，遊戲用內建的合成音效或文字代替。",
+  "sfx": {
+    "correct":  {"file":"","use":"答對","spec":"mp3，1 秒內"},
+    "wrong":    {"file":"","use":"答錯","spec":"mp3，1 秒內"},
+    "tap":      {"file":"","use":"點字母、點單字","spec":"mp3，0.2 秒內"},
+    "pair":     {"file":"","use":"配對成功一組","spec":"mp3，0.5 秒內"},
+    "cover":    {"file":"","use":"閃現記憶蓋牌","spec":"mp3，0.5 秒內"},
+    "streak":   {"file":"","use":"連對 3 題以上","spec":"mp3，1 到 2 秒"},
+    "levelup":  {"file":"","use":"程度升級","spec":"mp3，2 到 4 秒"},
+    "newcard":  {"file":"","use":"獲得新卡片","spec":"mp3，1 秒內"},
+    "cardup":   {"file":"","use":"卡片升級為銀卡或金卡","spec":"mp3，2 秒內"},
+    "badge":    {"file":"","use":"獲得成就","spec":"mp3，1 秒內"},
+    "roundend": {"file":"","use":"回合結束","spec":"mp3，2 秒內"},
+    "combo":    {"file":"","use":"元素合體技（下一階段）","spec":"mp3，2 秒內"},
+    "hit":      {"file":"","use":"射擊場打中靶（下一階段）","spec":"mp3，1 秒內"}
+  },
+  "bgm": {
+    "home":     {"file":"","use":"首頁","spec":"mp3，30 到 60 秒循環"},
+    "airport":  {"file":"","use":"旅遊路線：機場","spec":"mp3，30 到 60 秒循環"},
+    "hotel":    {"file":"","use":"旅遊路線：飯店","spec":"mp3，30 到 60 秒循環"},
+    "meeting":  {"file":"","use":"商務路線：會議室","spec":"mp3，30 到 60 秒循環"}
+  },
+  "video": {
+    "intro-travel":   {"file":"","use":"旅遊路線開場短片","spec":"mp4，15 到 30 秒"},
+    "intro-business": {"file":"","use":"商務路線開場短片","spec":"mp4，15 到 30 秒"}
+  },
+  "voice": {
+    "_說明": "單字和句子的配音不在這裡列：直接在 data/words.json 或 data/sentences.json 的 audio 欄位填檔名，例如 assets/voice/words/apple.mp3。沒填時用裝置朗讀。"
+  },
+  "images": {
+    "_說明": "單字和句子的圖片同樣在資料檔的 image 欄位填檔名，例如 assets/images/words/apple.png。沒填時顯示 emoji。"
+  }
+}
