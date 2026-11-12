@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>看圖記英語</title>
+<title>英語小旅人 · Cute RPG</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
@@ -298,6 +298,7 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition:none!important}.timer i{animation-duration:inherit!important}}
 </style>
 <style>html{color-scheme:light}body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<link rel="stylesheet" href="rpg.css">
 </head>
 <body>
 <div class="app">
@@ -306,8 +307,8 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
       <div class="brand"><span class="dot"></span>Picture Memory English</div>
       <button class="mute" id="mute-home" aria-label="音效開關"></button>
     </div>
-    <h1>用<em>圖像</em>記住英文</h1>
-    <p class="lead">先選要練單字還是句子。每回合 10 題，五種玩法輪流出現。答對的單字會變成卡片收進卡冊。</p>
+    <h1>英語小旅人 <span style="font-size:24px">🌱</span></h1>
+    <p class="lead">走進五個小世界，和居民說英文，收藏旅途中的每一份回憶。</p>
     <div class="tabs" role="tablist">
       <button role="tab" id="tab-play" aria-selected="true" data-p="p-play">遊戲</button>
       <button role="tab" id="tab-book" aria-selected="false" data-p="p-book">卡冊</button>
@@ -325,6 +326,7 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
           <div class="pl-btns"><button class="pl-go" id="place-go">開始分級測驗</button><button class="pl-skip" id="place-skip">我是初學者，直接開始</button></div>
         </div>
       </div>
+      <div id="rpg-root"></div>
       <div class="lvl" id="lvl"></div>
       <div class="modes">
         <button class="mode" id="go-word">
@@ -579,7 +581,7 @@ function badgesHTML(){return Object.entries(BADGES).map(([id,b])=>`<div class="b
 function take(kind,filter){
   const arr=kind==='w'?WORDS:SENT, used=kind==='w'?S.usedW:S.usedS, key=kind==='w'?'w':'en';
   const lvOk=x=>S.forceLv?x.lv===S.forceLv:x.lv<=maxLv();
-  const ok=x=>(!filter||filter(x))&&lvOk(x);
+  const ok=x=>(!filter||filter(x))&&lvOk(x)&&RPG.matches(kind,x);
   let pool=arr.filter(x=>!used.has(x[key])&&ok(x));
   if(!pool.length){used.clear();pool=arr.filter(ok)}
   if(!pool.length)pool=arr.filter(x=>lvOk(x));
@@ -604,6 +606,7 @@ function showTab(pid){document.querySelectorAll('.tabs button').forEach(b=>b.set
   if(pid==='p-book')renderBook();if(pid==='p-log')renderLog();if(pid==='p-play')updateHome()}
 
 function start(mode,review){
+  if(!RPG.launching)RPG.active=null;
   S.mode=mode;S.review=!!review;S.forceLv=0;S.pl=null;
   if(mode==='place'){S.forceLv=2;S.pl={levels:[],oks:[]};S.plan=Array.from({length:PLACE_LEN},(_,i)=>TYPES.place[[0,1,0,2][i%4]])}
   else S.plan=makePlan(TYPES[mode]);S.i=0;S.score=0;S.streak=0;S.hist=[];S.gain=0;S.startTier=tierIdx(P.xp);
@@ -817,6 +820,7 @@ function finishPlace(){
   showScreen('result');
 }
 function finish(){
+  RPG.complete();
   SND.play('roundend');
   const days=LS.get('pm-days',[]);const today=dayKey(Date.now());if(!days.includes(today)){days.push(today);LS.set('pm-days',days.slice(-400))}
   const sd=streakDays();if(sd>=3)award('day3');if(sd>=7)award('day7');
@@ -846,6 +850,7 @@ function finish(){
 
 /* ===== Home panels ===== */
 function updateHome(){
+  RPG.render();
   $('lvl').innerHTML=levelHTML(0);$('badges').innerHTML=badgesHTML();
   $('badge-count').textContent=`${P.badges.length} / ${Object.keys(BADGES).length}`;
   [['word','best-word'],['sent','best-sent']].forEach(([m,id])=>{const v=store('pm-best-'+m);$(id).textContent=v?`最佳紀錄 ${v}/10`:''});
@@ -1020,7 +1025,7 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>showTab(b.dat
 $('go-word').onclick=()=>start('word');
 $('go-sent').onclick=()=>start('sent');
 $('go-review').onclick=()=>start('word',true);
-$('back').onclick=()=>{clearTimeout(S.timer);showScreen('home');showTab('p-play')};
+$('back').onclick=()=>{RPG.active=null;clearTimeout(S.timer);showScreen('home');showTab('p-play')};
 $('next').onclick=()=>{if(S.i>=S.plan.length-1){finish();return}S.i++;renderQ()};
 $('again').onclick=()=>S.mode==='place'?start('word'):start(S.mode,S.review&&fadedList().length>0);
 $('swap').onclick=()=>S.mode==='place'?start('sent'):start(S.mode==='word'?'sent':'word');
@@ -1030,7 +1035,8 @@ $('place-skip').onclick=()=>{P.placeDismissed=true;saveP();updateHome()};
 $('home-btn').onclick=()=>{showScreen('home');showTab('p-play')};
 ['mute-home','mute-game'].forEach(id=>$(id).onclick=()=>{SND.toggle();paintMute()});
 $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
-boot();
 </script>
+<script src="rpg.js"></script>
+<script>boot();</script>
 </body>
 </html>
