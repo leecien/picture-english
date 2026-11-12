@@ -2,16 +2,18 @@
 
 ## 目前交付範圍
 
-純靜態網頁，不需要建置。`index.html` 保留原有題庫載入、十種題型、音效、朗讀、卡冊、成就、分級、開車模式與學習紀錄。`rpg.js` 提供五張網格地圖、角色移動、碰撞、NPC 對話、主題任務、探索寶箱與地圖解鎖；`rpg.css` 負責可愛的 2D 地圖與手機介面。
+純靜態網頁，不需要建置。`index.html` 保留原有題庫載入、十種題型、音效、朗讀、卡冊、成就、分級、開車模式與學習紀錄。`world.js` 是俯視角 Canvas 場景引擎（點地面走路、八方向尋路、鏡頭跟隨、角色與怪物動畫、素材替換接口）；`rpg.js` 放五張 24×16 地圖內容、NPC 對話、主題任務、探索寶箱與地圖解鎖；`rpg.css` 負責介面與手機版。
+
+RO 風格改版的分階段計畫、目前完成度與美術清單見 [RO_PLAN.md](RO_PLAN.md)。HP／MP、戰鬥、英文技能與 KK 新手村尚未實作。
 
 五站依序為莓果美食市場、兔兔動物森林、雨滴自然湖畔、微風旅行車站、星光生活小鎮。每站有單字、句子各一個十題任務；答對七題完成，首次完成加 30 XP，兩項都完成後解鎖下一站。每張地圖另有一次性的 15 XP 寶箱。任務重玩仍保留正常答題 XP 與卡片紀錄，但不重複發放首次獎勵。離開未完成任務不會完成或解鎖。
 
-單字依原有 theme 抽題；句子沿用 daily / school / travel / business 路線。若目前程度沒有指定路線的句子，先用 daily，避免向初學者提供過難題目。鍵盤方向鍵 / WASD 移動、E 互動，手機使用方向鈕及互動鈕。
+單字依原有 theme 抽題；句子沿用 daily / school / travel / business 路線。若目前程度沒有指定路線的句子，先用 daily，避免向初學者提供過難題目。點地面或觸控走路，點居民或寶箱會自動走過去；鍵盤方向鍵 / WASD 移動、E 互動。
 
 ## 不可破壞的相容契約
 
 - 不改名、不清除、不遷移原有 `pm-progress`、`pm-cards`、`pm-sents`、`pm-days`、`pm-log`、`pm-sound`、`pm-best-*` 等鍵及其資料形狀。
-- RPG 使用獨立 `pm-rpg-v1` 鍵，包含 version、map、positions、cleared、chests。
+- RPG 使用獨立 `pm-rpg-v1` 鍵，包含 version、map、positions、cleared、chests；場景位置另存在新增的 `world` 欄位（`positions` 保留 PR #1 的九宮格意義，不再寫入）。
 - 共用原有 `start`、`take`、`done`、`record`、`finish`、`addXP`，讓任務答題繼續產生卡片、成就與紀錄。
 - 原有單字、句子、程度和素材 manifest 保留；沒有插圖繼續使用 emoji。
 - 使用新分支和 PR，不直接推送 main。接手前先查看本次 RPG PR，避免同時修改同一個分支。
@@ -37,7 +39,8 @@
 
 ```sh
 npm install --no-save --package-lock=false playwright
-CHROMIUM_PATH=/usr/bin/chromium node tests/rpg.cjs
+node tests/rpg.cjs                      # 使用 Playwright 內建 Chromium
+CHROMIUM_PATH=/usr/bin/chromium node tests/rpg.cjs   # 或指定系統 Chromium
 ```
 
 可用 `TEST_URL` 指定其他本機網址。腳本測試舊存檔保留、手機版寬度、碰撞、任務共用紀錄流程、成就、重複獎勵防止、失敗任務、地圖解鎖、重載存檔、五張地圖及低程度句子題池。任務答對紀錄是透過共用 grading API 注入，未自動逐一操作所有拼字及配對答案；新素材仍需人工試玩確認。截圖輸出到 `/tmp/picture-rpg-desktop.png` 與 `/tmp/picture-rpg-mobile.png`。

@@ -5,7 +5,9 @@ const { chromium } = require("playwright");
 (async () => {
   const browser = await chromium.launch({
     headless: true,
-    executablePath: process.env.CHROMIUM_PATH || "/usr/bin/chromium",
+    ...(process.env.CHROMIUM_PATH
+      ? { executablePath: process.env.CHROMIUM_PATH }
+      : {}),
     args: ["--no-sandbox"],
   });
   const page = await browser.newPage({
@@ -33,6 +35,14 @@ const { chromium } = require("playwright");
     "pm-days": '["2026-11-11"]',
     "pm-log": "[]",
     "pm-sound": "false",
+    // PR #1 grid-era RPG save: its fields must keep their meaning.
+    "pm-rpg-v1": JSON.stringify({
+      version: 1,
+      map: 0,
+      positions: { food: { x: 4, y: 3 } },
+      cleared: [],
+      chests: [],
+    }),
   };
   await page.addInitScript((values) => {
     if (!localStorage.getItem("test-seeded")) {
@@ -41,7 +51,25 @@ const { chromium } = require("playwright");
     }
   }, legacy);
   await page.goto(process.env.TEST_URL || "http://127.0.0.1:8000");
-  await page.waitForSelector(".hero");
+  await page.waitForSelector(".world-canvas");
+  const idle = () =>
+    page.waitForFunction(() => World.hero && !World.hero.moving, null, {
+      timeout: 15000,
+    });
+  const hero = () => page.evaluate(() => World.hero);
+  // Click a tile on the canvas like a player would (it must be on screen).
+  const tapTile = async (x, y) => {
+    await page.locator(".rpg-stage").scrollIntoViewIfNeeded();
+    const p = await page.evaluate(([x, y]) => {
+      const c = World.tileToClient(x, y),
+        r = World.canvas.getBoundingClientRect();
+      return c.x > r.left && c.x < r.right && c.y > r.top && c.y < r.bottom
+        ? c
+        : null;
+    }, [x, y]);
+    assert(p, `tile ${x},${y} visible`);
+    await page.mouse.click(p.x, p.y);
+  };
   assert.equal(await page.locator("[data-map]:disabled").count(), 4);
   for (const [k, v] of Object.entries(legacy))
     assert.equal(
@@ -55,15 +83,44 @@ const { chromium } = require("playwright");
     ),
     "no mobile overflow",
   );
-  await page.keyboard.press("ArrowDown");
-  assert.equal(
-    await page.locator(".hero").evaluate((e) => e.style.gridRow),
-    "6",
-    "wall collision",
+  // Fresh scene start; tapping a bush is refused (collision), tapping grass walks there.
+  assert.deepEqual(await hero(), { x: 16, y: 8, moving: false, dir: "down" });
+  await tapTile(15, 6);
+  await page.waitForTimeout(400);
+  assert.deepEqual(
+    [(await hero()).x, (await hero()).y],
+    [16, 8],
+    "bush collision",
   );
-  for (let i = 0; i < 3; i++) await page.locator('[data-move="0,-1"]').click();
+  await tapTile(14, 10);
+  await idle();
+  assert.deepEqual([(await hero()).x, (await hero()).y], [14, 10], "click to walk");
+  assert.deepEqual(
+    await page.evaluate(() => JSON.parse(localStorage.getItem("pm-rpg-v1")).world.food),
+    { x: 14, y: 10 },
+  );
+  // Keyboard still works.
+  await page.locator(".world-canvas").focus();
+  await page.keyboard.down("ArrowRight");
+  await page.waitForTimeout(150);
+  await page.keyboard.up("ArrowRight");
+  await idle();
+  assert((await hero()).x > 14, "keyboard step");
+  // Monsters roam on the map; tapping one is honest that combat is not built yet.
+  const mobs = await page.evaluate(() =>
+    World.entities.filter((e) => e.kind === "mob").map((e) => [e.tx, e.ty]),
+  );
+  assert.equal(mobs.length, 6, "food map monsters");
+  await page.evaluate(() => {
+    const m = World.entities.find((e) => e.kind === "mob");
+    World.approach(m);
+  });
+  assert.match(await page.locator(".rpg-status").innerText(), /戰鬥系統開發中/);
+  // Interact button auto-walks to the resident, then the dialog opens and the scene pauses.
   await page.locator("#rpg-interact").click();
+  await page.waitForSelector("[data-quest]", { timeout: 15000 });
   assert.equal(await page.locator("[data-quest]").count(), 2);
+  assert(await page.evaluate(() => World.paused));
   await page.locator('[data-quest="word"]').click();
   await page.waitForSelector("#game:not([hidden])");
   assert.equal(await page.evaluate(() => RPG.active.kind), "word");
@@ -129,25 +186,32 @@ const { chromium } = require("playwright");
     };
   });
   assert.deepEqual(checks, { duplicate: true, failed: true });
-  // Walk to chest using touch buttons; claim once and reload.
-  const walk = async (dir, n) => {
-    for (let i = 0; i < n; i++)
-      await page.locator(`[data-move="${dir}"]`).click();
-  };
-  await walk("0,1", 1);
-  await walk("1,0", 3);
-  await page.locator("#rpg-interact").click();
+  // Walk next to the chest, then tap it on the canvas; claim once and reload.
+  await page.evaluate(() => World.walkTo(20, 8));
+  await idle();
+  await tapTile(21, 7);
+  await page.waitForFunction(
+    () => JSON.parse(localStorage.getItem("pm-rpg-v1")).chests.length === 1,
+  );
   let xp = await page.evaluate(() => P.xp);
   await page.locator("#rpg-interact").click();
-  assert.equal(await page.evaluate(() => P.xp), xp);
-  assert.equal(
-    await page.evaluate(
-      () => JSON.parse(localStorage.getItem("pm-rpg-v1")).chests.length,
-    ),
-    1,
+  assert.equal(await page.evaluate(() => P.xp), xp, "chest claimed once");
+  assert(
+    await page.evaluate(() => World.entities.find((e) => e.kind === "chest").open),
   );
+  const before = await hero();
   await page.reload();
-  await page.waitForSelector(".hero");
+  await page.waitForSelector(".world-canvas");
+  assert.deepEqual(
+    [(await hero()).x, (await hero()).y],
+    [before.x, before.y],
+    "position restored",
+  );
+  assert.deepEqual(
+    await page.evaluate(() => JSON.parse(localStorage.getItem("pm-rpg-v1")).positions),
+    { food: { x: 4, y: 3 } },
+    "grid-era positions untouched",
+  );
   assert.equal(await page.locator("[data-map]:disabled").count(), 3);
   await page.locator('[data-map="1"]').click();
   assert.match(await page.locator(".rpg-heading").innerText(), /動物森林/);
@@ -159,6 +223,11 @@ const { chromium } = require("playwright");
   await page.locator("#go-word").click();
   assert.equal(await page.evaluate(() => RPG.active), null);
   await page.locator("#back").click();
+  // Clear home entry to the commute mode.
+  await page.locator("#quick-drive").click();
+  await page.waitForSelector("#drive:not([hidden])");
+  await page.locator("#drive-back").click();
+  await page.waitForSelector("#home:not([hidden])");
   // Check all five maps and sparse beginner sentence routes; no empty question pools.
   await page.evaluate(() => {
     const d = JSON.parse(localStorage.getItem("pm-rpg-v1"));
@@ -170,9 +239,19 @@ const { chromium } = require("playwright");
     saveP();
   });
   await page.reload();
-  await page.waitForSelector(".hero");
+  await page.waitForSelector(".world-canvas");
   for (let map = 0; map < 5; map++) {
     await page.locator(`[data-map="${map}"]`).click();
+    assert(
+      await page.evaluate(
+        (map) =>
+          World.entities.some((e) => e.kind === "npc") &&
+          World.entities.filter((e) => e.kind === "mob").length >= 4 &&
+          RPG.maps[map].layout.every((r) => r.length === 24),
+        map,
+      ),
+      "map " + map + " populated",
+    );
     await page.evaluate((map) => {
       RPG.active = { map, kind: "sent" };
       for (const type of TYPES.sent) {
@@ -196,7 +275,7 @@ const { chromium } = require("playwright");
   });
   assert.deepEqual(errors, []);
   console.log(
-    "PASS: legacy saves, mobile layout, movement, both quest types, cards, achievements, rewards, unlocks, reload, all maps, sparse sentence pools, normal practice, no browser errors",
+    "PASS: legacy saves, mobile layout, click-to-walk, collision, keyboard, roaming monsters, auto-approach NPC, chest tap, both quest types, cards, achievements, rewards, unlocks, reload, all maps, sparse sentence pools, normal practice, no browser errors",
   );
   await browser.close();
 })().catch((e) => {

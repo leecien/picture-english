@@ -326,6 +326,10 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
           <div class="pl-btns"><button class="pl-go" id="place-go">開始分級測驗</button><button class="pl-skip" id="place-skip">我是初學者，直接開始</button></div>
         </div>
       </div>
+      <nav class="quick" aria-label="快速入口">
+        <button id="quick-map"><span aria-hidden="true">🗺️</span><b>冒險地圖</b><small>點地面走路、找居民接任務</small></button>
+        <button id="quick-drive"><span aria-hidden="true">🚗</span><b>開車模式</b><small>不看螢幕，聽中文說英文</small></button>
+      </nav>
       <div id="rpg-root"></div>
       <div class="lvl" id="lvl"></div>
       <div class="modes">
@@ -1004,6 +1008,8 @@ function openDrive(){
   showScreen('drive');
 }
 $('go-drive').onclick=openDrive;
+$('quick-drive').onclick=openDrive;
+$('quick-map').onclick=()=>{const c=$('adventure');if(c){c.scrollIntoView({behavior:'smooth',block:'start'});const v=c.querySelector('canvas');if(v)v.focus({preventScroll:true})}};
 $('drive-start').onclick=startDrive;
 $('drive-stop').onclick=stopDrive;
 $('drive-back').onclick=()=>{stopDrive();showScreen('home');showTab('p-play')};
@@ -1017,7 +1023,7 @@ async function boot(){
     WORDS=w.map(x=>({w:x.word,z:x.zh,e:x.emoji,kk:x.kk,th:x.theme,lv:x.level||1,img:x.image||'',au:x.audio||'',az:x.audioZh||''}));
     SENT=s.map(x=>({en:x.en,zh:x.zh,sc:x.scene,b:x.blank,o:x.distractors,lv:x.level||1,route:x.route,img:x.image||'',au:x.audio||'',az:x.audioZh||''}));
     TIERS=l.tiers;CARD_TIERS=l.cardTiers;BADGES=l.badges;THEMES=t.themes;ELEM=t.elements;LV_NAMES=l.levelNames||{};
-    SND.load(m);
+    SND.load(m);RPG.loadArt(m);
   }catch(e){$('boot').textContent='題目資料沒有載入成功，請重新整理頁面再試一次。';return}
   $('boot').hidden=true;showTab('p-play');
 }
@@ -1036,6 +1042,7 @@ $('home-btn').onclick=()=>{showScreen('home');showTab('p-play')};
 ['mute-home','mute-game'].forEach(id=>$(id).onclick=()=>{SND.toggle();paintMute()});
 $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 </script>
+<script src="world.js"></script>
 <script src="rpg.js"></script>
 <script>boot();</script>
 </body>

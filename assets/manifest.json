@@ -30,5 +30,33 @@
   },
   "images": {
     "_說明": "單字和句子的圖片同樣在資料檔的 image 欄位填檔名，例如 assets/images/words/apple.png。沒填時顯示 emoji。"
+  },
+  "sprites": {
+    "_說明": "填入 file 就會取代程式畫的占位角色；動作名稱加在 key 後面（-walk、-idle）。留空時用占位圖。",
+    "hero-walk": {"file":"","frameW":96,"frameH":96,"use":"主角走路","spec":"每格 96×96，4 欄 × 4 列（列：下、左、右、上）"},
+    "hero-idle": {"file":"","frameW":96,"frameH":96,"use":"主角待機","spec":"每格 96×96，2 欄 × 4 列"},
+    "npc-cat-idle": {"file":"","frameW":96,"frameH":96,"use":"市場主廚貓 Momo 待機","spec":"每格 96×96，2 欄 × 4 列"},
+    "npc-bunny-idle": {"file":"","frameW":96,"frameH":96,"use":"森林嚮導兔 Lily 待機","spec":"每格 96×96，2 欄 × 4 列"},
+    "npc-frog-idle": {"file":"","frameW":96,"frameH":96,"use":"天氣博士蛙 Pip 待機","spec":"每格 96×96，2 欄 × 4 列"},
+    "npc-fox-idle": {"file":"","frameW":96,"frameH":96,"use":"站長狐 Finn 待機","spec":"每格 96×96，2 欄 × 4 列"},
+    "npc-bear-idle": {"file":"","frameW":96,"frameH":96,"use":"鎮長熊 Bear 待機","spec":"每格 96×96，2 欄 × 4 列"},
+    "mob-muffin-idle": {"file":"","frameW":96,"frameH":96,"use":"鬆餅仔 待機","spec":"每格 96×96，2 欄 × 4 列（可只畫一列）"},
+    "mob-muffin-walk": {"file":"","frameW":96,"frameH":96,"use":"鬆餅仔 移動","spec":"每格 96×96，4 欄 × 4 列（可只畫一列）"},
+    "mob-acorn-idle": {"file":"","frameW":96,"frameH":96,"use":"橡實寶 待機","spec":"每格 96×96，2 欄 × 4 列（可只畫一列）"},
+    "mob-acorn-walk": {"file":"","frameW":96,"frameH":96,"use":"橡實寶 移動","spec":"每格 96×96，4 欄 × 4 列（可只畫一列）"},
+    "mob-drop-idle": {"file":"","frameW":96,"frameH":96,"use":"雨滴精 待機","spec":"每格 96×96，2 欄 × 4 列（可只畫一列）"},
+    "mob-drop-walk": {"file":"","frameW":96,"frameH":96,"use":"雨滴精 移動","spec":"每格 96×96，4 欄 × 4 列（可只畫一列）"},
+    "mob-bird-idle": {"file":"","frameW":96,"frameH":96,"use":"紙飛鳥 待機","spec":"每格 96×96，2 欄 × 4 列（可只畫一列）"},
+    "mob-bird-walk": {"file":"","frameW":96,"frameH":96,"use":"紙飛鳥 移動","spec":"每格 96×96，4 欄 × 4 列（可只畫一列）"},
+    "mob-teapot-idle": {"file":"","frameW":96,"frameH":96,"use":"茶壺噗 待機","spec":"每格 96×96，2 欄 × 4 列（可只畫一列）"},
+    "mob-teapot-walk": {"file":"","frameW":96,"frameH":96,"use":"茶壺噗 移動","spec":"每格 96×96，4 欄 × 4 列（可只畫一列）"}
+  },
+  "tiles": {
+    "_說明": "地圖地面圖塊。index 對應圖塊在圖中的位置（由左到右、由上到下從 0 起算）。留空時用程式畫的地面。",
+    "food": {"file":"","frame":64,"index":{"grass":0,"path":2,"water":3},"use":"美食市場地面圖塊","spec":"每格 64×64，順序見 docs/RO_PLAN.md C 節"},
+    "animal": {"file":"","frame":64,"index":{"grass":0,"path":2,"water":3},"use":"動物森林地面圖塊","spec":"每格 64×64，順序見 docs/RO_PLAN.md C 節"},
+    "nature": {"file":"","frame":64,"index":{"grass":0,"path":2,"water":3},"use":"自然湖畔地面圖塊","spec":"每格 64×64，順序見 docs/RO_PLAN.md C 節"},
+    "transport": {"file":"","frame":64,"index":{"grass":0,"path":2,"water":3},"use":"旅行車站地面圖塊","spec":"每格 64×64，順序見 docs/RO_PLAN.md C 節"},
+    "things": {"file":"","frame":64,"index":{"grass":0,"path":2,"water":3},"use":"生活小鎮地面圖塊","spec":"每格 64×64，順序見 docs/RO_PLAN.md C 節"}
   }
 }
