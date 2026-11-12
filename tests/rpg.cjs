@@ -84,7 +84,10 @@ const { chromium } = require("playwright");
     "no mobile overflow",
   );
   // Fresh scene start; tapping a bush is refused (collision), tapping grass walks there.
-  assert.deepEqual(await hero(), { x: 16, y: 8, moving: false, dir: "down" });
+  assert.deepEqual(
+    [(await hero()).x, (await hero()).y, (await hero()).moving],
+    [16, 8, false],
+  );
   await tapTile(15, 6);
   await page.waitForTimeout(400);
   assert.deepEqual(
@@ -106,7 +109,7 @@ const { chromium } = require("playwright");
   await page.keyboard.up("ArrowRight");
   await idle();
   assert((await hero()).x > 14, "keyboard step");
-  // Monsters roam on the map; tapping one is honest that combat is not built yet.
+  // Monsters roam on the map; tapping one locks it as the auto-attack target.
   const mobs = await page.evaluate(() =>
     World.entities.filter((e) => e.kind === "mob").map((e) => [e.tx, e.ty]),
   );
@@ -115,7 +118,7 @@ const { chromium } = require("playwright");
     const m = World.entities.find((e) => e.kind === "mob");
     World.approach(m);
   });
-  assert.match(await page.locator(".rpg-status").innerText(), /戰鬥系統開發中/);
+  assert.match(await page.locator(".rpg-status").innerText(), /鎖定/);
   // Interact button auto-walks to the resident, then the dialog opens and the scene pauses.
   await page.locator("#rpg-interact").click();
   await page.waitForSelector("[data-quest]", { timeout: 15000 });

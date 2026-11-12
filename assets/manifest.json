@@ -49,7 +49,11 @@
     "mob-bird-idle": {"file":"","frameW":96,"frameH":96,"use":"紙飛鳥 待機","spec":"每格 96×96，2 欄 × 4 列（可只畫一列）"},
     "mob-bird-walk": {"file":"","frameW":96,"frameH":96,"use":"紙飛鳥 移動","spec":"每格 96×96，4 欄 × 4 列（可只畫一列）"},
     "mob-teapot-idle": {"file":"","frameW":96,"frameH":96,"use":"茶壺噗 待機","spec":"每格 96×96，2 欄 × 4 列（可只畫一列）"},
-    "mob-teapot-walk": {"file":"","frameW":96,"frameH":96,"use":"茶壺噗 移動","spec":"每格 96×96，4 欄 × 4 列（可只畫一列）"}
+    "mob-teapot-walk": {"file":"","frameW":96,"frameH":96,"use":"茶壺噗 移動","spec":"每格 96×96，4 欄 × 4 列（可只畫一列）"},
+    "pet-walk": {"file":"","frameW":96,"frameH":96,"use":"小狗夥伴 走路","spec":"每格 96×96，4 欄 × 4 列（列：下、左、右、上）"},
+    "pet-idle": {"file":"","frameW":96,"frameH":96,"use":"小狗夥伴 待機","spec":"每格 96×96，2 欄 × 4 列"},
+    "item-berry": {"file":"","use":"小紅莓（回復 HP）掉落圖示","spec":"64×64 單張"},
+    "item-dew": {"file":"","use":"藍露珠（回復 MP）掉落圖示","spec":"64×64 單張"}
   },
   "tiles": {
     "_說明": "地圖地面圖塊。index 對應圖塊在圖中的位置（由左到右、由上到下從 0 起算）。留空時用程式畫的地面。",

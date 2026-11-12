@@ -22,7 +22,9 @@ const World = (() => {
     marker = null,
     ro = null,
     opts = {},
-    clock = 0;
+    clock = 0,
+    fx = [],
+    respawns = [];
   const held = new Set(),
     art = { sprites: {}, tiles: {} },
     reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -184,16 +186,11 @@ const World = (() => {
       );
     const c = find("C");
     if (c) ents.push(actor("chest", c.x, c.y, { block: true, open: !!o.chestOpen }));
-    findAll("m").forEach((p, i) =>
-      ents.push(
-        actor("mob", p.x, p.y, {
-          home: p,
-          wait: 0.5 + i * 0.4,
-          look: def.mob,
-          name: def.mob.name,
-        }),
-      ),
-    );
+    fx = [];
+    respawns = [];
+    findAll("m").forEach((p, i) => ents.push(spawnMob(p, 0.5 + i * 0.4)));
+    if (def.petLook)
+      ents.push(actor("pet", hero.tx, hero.ty, { look: def.petLook, trail: [] }));
     if (!cv) {
       cv = document.createElement("canvas");
       cv.className = "world-canvas";
@@ -213,6 +210,20 @@ const World = (() => {
     resize();
     snapCam();
     run();
+  }
+  function spawnMob(p, wait) {
+    const m = map.mob;
+    return actor("mob", p.x, p.y, {
+      home: p,
+      wait,
+      look: m,
+      name: m.name,
+      hp: m.hp || 30,
+      maxHp: m.hp || 30,
+      state: "wander",
+      cd: 1,
+      hurt: 0,
+    });
   }
   const walkableRaw = (x, y) =>
     Number.isInteger(x) &&
@@ -270,8 +281,8 @@ const World = (() => {
     let best = null,
       bd = 22;
     for (const e of ents) {
-      if (e === hero) continue;
-      const d = Math.hypot(e.px - wx, e.py - 8 - wy);
+      if (e === hero || e.kind === "pet" || e.dead) continue;
+      const d = Math.hypot(e.px - wx, e.py - (e.kind === "drop" ? 0 : 8) - wy);
       if (d < bd) {
         bd = d;
         best = e;
@@ -295,6 +306,9 @@ const World = (() => {
     walkTo(p.x, p.y);
   }
   function walkTo(x, y, then) {
+    if (hero.down) return false;
+    hero.target = null;
+    standUp();
     hero.pending = then || null;
     const f = from(),
       p = path(f.x, f.y, x, y);
@@ -314,8 +328,18 @@ const World = (() => {
   const lead = () => (hero.path.length ? [hero.path[0]] : []);
   const near = (e) => Math.max(Math.abs(e.tx - hero.tx), Math.abs(e.ty - hero.ty)) <= 1;
   function approach(e) {
+    if (hero.down) return;
+    standUp();
     if (e.kind === "mob") {
-      if (opts.onTap) opts.onTap(e);
+      if (e.dead) return;
+      hero.target = e;
+      hero.pending = null;
+      if (opts.onTarget) opts.onTarget(e);
+      return;
+    }
+    hero.target = null;
+    if (e.kind === "drop") {
+      walkTo(e.tx, e.ty);
       return;
     }
     const act = () => opts.onTap && opts.onTap(e);
@@ -391,6 +415,8 @@ const World = (() => {
       else if (walkable(hero.tx, ny)) nx = hero.tx;
     }
     hero.dir = dx ? (dx < 0 ? "left" : "right") : dy < 0 ? "up" : "down";
+    hero.target = null;
+    standUp();
     if (walkable(nx, ny)) {
       marker = null;
       hero.pending = null;
@@ -407,35 +433,42 @@ const World = (() => {
       ents.forEach((e) => (e.moving = false));
       return;
     }
-    if (!hero.path.length && held.size) heldStep();
-    const wasMoving = hero.path.length > 0;
-    step(hero, dt, SPEED);
+    if (!hero.down && !hero.path.length && held.size) heldStep();
+    const pet = ents.find((e) => e.kind === "pet"),
+      wasMoving = hero.path.length > 0,
+      from0 = { x: hero.tx, y: hero.ty };
+    if (step(hero, dt, SPEED) && pet) pet.trail.push(from0);
     if (wasMoving && !hero.path.length) arrive();
-    for (const e of ents) {
+    hero.t += dt;
+    hero.swing = Math.max(0, (hero.swing || 0) - dt);
+    hero.hurt = Math.max(0, (hero.hurt || 0) - dt);
+    if (hero.down) {
+      hero.down -= dt;
+      if (hero.down <= 0) {
+        hero.down = 0;
+        const s0 = find("P");
+        Object.assign(hero, { tx: s0.x, ty: s0.y, px: center(s0.x), py: center(s0.y), path: [], dir: "down" });
+        if (pet) Object.assign(pet, { tx: s0.x, ty: s0.y, px: center(s0.x), py: center(s0.y), path: [], trail: [] });
+        snapCam();
+        if (opts.onRevive) opts.onRevive();
+      }
+    } else heroCombat(dt);
+    pickUp();
+    for (const e of [...ents]) {
+      if (e === hero) continue;
       e.t += dt;
-      if (e.kind !== "mob") continue;
-      if (e.path.length) {
-        step(e, dt, 38);
-        continue;
-      }
-      e.moving = false;
-      e.wait -= dt;
-      if (e.wait > 0) continue;
-      e.wait = 1.2 + Math.random() * 2.4;
-      const ok = (x, y) =>
-        walkable(x, y) && cell(x, y) !== "=" && Math.abs(x - e.home.x) <= 3 && Math.abs(y - e.home.y) <= 3;
-      for (let i = 0; i < 6; i++) {
-        const x = e.tx + rnd3(),
-          y = e.ty + rnd3();
-        if (ok(x, y) && !(x === hero.tx && y === hero.ty)) {
-          const p = path(e.tx, e.ty, x, y, ok);
-          if (p && p.length <= 4) {
-            setPath(e, p);
-            break;
-          }
-        }
-      }
+      if (e.kind === "mob") mobAI(e, dt);
+      else if (e.kind === "pet") petAI(e, dt);
+      else if (e.kind === "drop") e.age += dt;
     }
+    respawns = respawns.filter((r) => {
+      r.t -= dt;
+      if (r.t > 0) return true;
+      ents.push(spawnMob(r.home, 0.5));
+      return false;
+    });
+    fx = fx.filter((f) => (f.t += dt) < f.life);
+    if (opts.onTick) opts.onTick(dt, inCombat());
     const mw = map.w * T,
       mh = map.h * T,
       tx = mw <= vw ? (mw - vw) / 2 : Math.min(Math.max(hero.px - vw / 2, 0), mw - vw),
@@ -445,6 +478,202 @@ const World = (() => {
     cam.y += (ty - cam.y) * k;
   }
   const rnd3 = () => Math.floor(Math.random() * 5) - 2;
+  const cheb = (a, b) => Math.max(Math.abs(a.tx - b.tx), Math.abs(a.ty - b.ty));
+  const inCombat = () => !!hero.target || ents.some((e) => e.kind === "mob" && e.state === "chase");
+  function standUp() {
+    if (!hero.sit) return;
+    hero.sit = false;
+    if (opts.onSit) opts.onSit(false);
+  }
+  /* Route `e` to the open tile next to `goal` that is cheapest to reach. */
+  function routeNextTo(e, goal, pass = walkable) {
+    let best = null;
+    const fx0 = e === hero ? from() : { x: e.tx, y: e.ty };
+    for (let dy = -1; dy <= 1; dy++)
+      for (let dx = -1; dx <= 1; dx++) {
+        const x = goal.tx + dx,
+          y = goal.ty + dy;
+        if ((!dx && !dy) || !pass(x, y)) continue;
+        const p = x === fx0.x && y === fx0.y ? [] : path(fx0.x, fx0.y, x, y, pass);
+        if (p && (!best || p.length < best.length)) best = p;
+      }
+    if (!best) return false;
+    setPath(e, (e === hero ? lead() : []).concat(best));
+    return true;
+  }
+  function floater(text, x, y, color, big) {
+    fx.push({ kind: "num", text: String(text), x, y, color, big, t: 0, life: 0.9 });
+  }
+  function hitFx(x, y, color) {
+    fx.push({ kind: "spark", x, y, color, t: 0, life: 0.3 });
+  }
+  function heroCombat(dt) {
+    const m = hero.target;
+    if (!m) return;
+    if (m.dead || !ents.includes(m)) {
+      hero.target = null;
+      return;
+    }
+    hero.cd = (hero.cd || 0) - dt;
+    if (cheb(hero, m) <= 1) {
+      if (hero.path.length) {
+        // finish the current step only
+        hero.path.length = Math.min(hero.path.length, 1);
+        return;
+      }
+      face(m);
+      if (hero.cd <= 0) {
+        hero.cd = opts.heroAttackDelay || 0.9;
+        hero.swing = 0.25;
+        const r = opts.onHeroHit ? opts.onHeroHit(m) : { dmg: 5 };
+        damageMob(m, r.dmg, r.crit);
+      }
+      return;
+    }
+    hero.repath = (hero.repath || 0) - dt;
+    if (!hero.path.length || hero.repath <= 0) {
+      hero.repath = 0.4;
+      if (!routeNextTo(hero, m)) {
+        hero.target = null;
+        if (opts.onStatus) opts.onStatus("走不到那隻怪物旁邊。");
+      }
+    }
+  }
+  function damageMob(m, dmg, crit) {
+    m.hp = Math.max(0, m.hp - dmg);
+    m.hurt = 0.25;
+    floater(dmg, m.px, m.py - 30, crit ? "#ffd84d" : "#ffffff", crit);
+    hitFx(m.px, m.py - 12, crit ? "#ffd84d" : "#fff6c8");
+    if (m.state !== "return") {
+      m.state = "chase";
+      m.path = [];
+    }
+    if (m.hp <= 0) killMob(m);
+  }
+  function killMob(m) {
+    m.dead = 0.6;
+    m.path = [];
+    m.state = "dead";
+    if (hero.target === m) hero.target = null;
+    const items = opts.onKill ? opts.onKill(m) : [];
+    const spots = [[0, 0], [1, 0], [0, 1], [-1, 0], [0, -1], [1, 1], [-1, 1]];
+    let k = 0;
+    items.forEach((item) => {
+      while (k < spots.length && !walkable(m.tx + spots[k][0], m.ty + spots[k][1])) k++;
+      const [dx, dy] = spots[Math.min(k++, spots.length - 1)];
+      ents.push(actor("drop", m.tx + dx, m.ty + dy, { item, age: 0 }));
+    });
+    respawns.push({ home: m.home, t: opts.respawnDelay || 14 });
+  }
+  function pickUp() {
+    if (hero.down) return;
+    for (const d of ents.filter((e) => e.kind === "drop" && e.age > 0.35 && e.tx === hero.tx && e.ty === hero.ty)) {
+      ents.splice(ents.indexOf(d), 1);
+      if (opts.onPick) opts.onPick(d.item);
+      fx.push({ kind: "num", text: "+", x: d.px, y: d.py - 16, color: "#c8ffcf", t: 0, life: 0.6 });
+    }
+  }
+  function mobAI(e, dt) {
+    e.hurt = Math.max(0, e.hurt - dt);
+    if (e.dead) {
+      e.dead -= dt;
+      if (e.dead <= 0) ents.splice(ents.indexOf(e), 1);
+      return;
+    }
+    const L = e.look,
+      dHome = Math.max(Math.abs(e.tx - e.home.x), Math.abs(e.ty - e.home.y));
+    if (e.state === "wander" && L.aggressive && !hero.down && cheb(e, hero) <= (L.sight || 3)) {
+      e.state = "chase";
+      e.path = [];
+    }
+    if (e.state === "chase" && (hero.down || dHome > (L.leash || 6))) {
+      e.state = "return";
+      e.path = [];
+    }
+    if (e.state === "return") {
+      if (!e.path.length) {
+        if (e.tx === e.home.x && e.ty === e.home.y) {
+          e.state = "wander";
+          e.hp = e.maxHp;
+        } else {
+          const p = path(e.tx, e.ty, e.home.x, e.home.y);
+          if (p) setPath(e, p);
+          else Object.assign(e, { tx: e.home.x, ty: e.home.y, px: center(e.home.x), py: center(e.home.y) });
+        }
+      }
+      step(e, dt, 80);
+      return;
+    }
+    if (e.state === "chase") {
+      e.cd -= dt;
+      if (cheb(e, hero) <= 1 && !e.path.length) {
+        const dx = hero.tx - e.tx,
+          dy = hero.ty - e.ty;
+        e.dir = Math.abs(dx) > Math.abs(dy) ? (dx < 0 ? "left" : "right") : dy < 0 ? "up" : "down";
+        if (e.cd <= 0) {
+          e.cd = L.attackDelay || 1.6;
+          e.lunge = 0.2;
+          const dmg = opts.onMobHit ? opts.onMobHit(e) : 0;
+          if (dmg) {
+            hero.hurt = 0.3;
+            standUp();
+            floater(dmg, hero.px, hero.py - 40, "#ff8a8a");
+            hitFx(hero.px, hero.py - 14, "#ff9d9d");
+          } else floater("Miss", hero.px, hero.py - 40, "#d6e4ff");
+        }
+      } else {
+        e.repath = (e.repath || 0) - dt;
+        if ((!e.path.length || e.repath <= 0) && cheb(e, hero) > 1) {
+          e.repath = 0.5;
+          routeNextTo(e, hero);
+        }
+        if (cheb(e, hero) <= 1 && e.path.length > 1) e.path.length = 1;
+        step(e, dt, 72);
+      }
+      e.lunge = Math.max(0, (e.lunge || 0) - dt);
+      return;
+    }
+    if (e.path.length) {
+      step(e, dt, 38);
+      return;
+    }
+    e.moving = false;
+    e.wait -= dt;
+    if (e.wait > 0) return;
+    e.wait = 1.2 + Math.random() * 2.4;
+    const ok = (x, y) =>
+      walkable(x, y) && cell(x, y) !== "=" && Math.abs(x - e.home.x) <= 3 && Math.abs(y - e.home.y) <= 3;
+    for (let i = 0; i < 6; i++) {
+      const x = e.tx + rnd3(),
+        y = e.ty + rnd3();
+      if (ok(x, y) && !(x === hero.tx && y === hero.ty)) {
+        const p = path(e.tx, e.ty, x, y, ok);
+        if (p && p.length <= 4) {
+          setPath(e, p);
+          break;
+        }
+      }
+    }
+  }
+  /* The companion trails one tile behind, following the tiles the hero actually walked. */
+  function petAI(e, dt) {
+    if (cheb(e, hero) > 7) {
+      Object.assign(e, { tx: hero.tx, ty: hero.ty, px: hero.px, py: hero.py, path: [], trail: [] });
+      return;
+    }
+    if (!e.path.length && cheb(e, hero) > 1) {
+      while (e.trail.length > 1 && cheb({ tx: e.trail[0].x, ty: e.trail[0].y }, hero) > 1 && cheb({ tx: e.trail[1].x, ty: e.trail[1].y }, e) <= 1)
+        e.trail.shift();
+      const next = e.trail.shift();
+      if (next && cheb({ tx: next.x, ty: next.y }, e) <= 1) setPath(e, [next]);
+      else {
+        const p = path(e.tx, e.ty, hero.tx, hero.ty, (x, y) => !SOLID.has(cell(x, y)));
+        if (p && p.length > 1) setPath(e, p.slice(0, -1));
+      }
+    }
+    if (e.trail.length > 12) e.trail.splice(0, e.trail.length - 12);
+    step(e, dt, SPEED * 1.1);
+  }
 
   /* ---------- drawing: static layer ---------- */
   function hash(x, y, s = 0) {
@@ -693,6 +922,16 @@ const World = (() => {
     );
     return true;
   }
+  /* walk sheet while moving, idle sheet while standing; with only a walk sheet, stand on its first frame. */
+  function actorSheet(base, e, row, size) {
+    if (!base) return false;
+    const walk = art.sprites[base + "-walk"],
+      idle = art.sprites[base + "-idle"];
+    if (e.moving && walk) return drawSheet(base + "-walk", e, row, 4, 8, e.px, e.py + 10, size);
+    if (idle) return drawSheet(base + "-idle", e, row, 2, 2, e.px, e.py + 10, size);
+    if (walk) return drawSheet(base + "-walk", { t: 0 }, row, 1, 1, e.px, e.py + 10, size);
+    return false;
+  }
   const g2 = (fn) => {
     ctx.save();
     fn();
@@ -712,14 +951,19 @@ const World = (() => {
       bob = e.moving ? Math.abs(walk) * 2 : reduce ? 0 : Math.sin(e.t * 2.4) * 0.8,
       side = e.dir === "left" ? -1 : e.dir === "right" ? 1 : 0,
       back = e.dir === "up";
-    shadow(x, foot, 10);
-    // legs
+    shadow(x, foot, e.sit ? 12 : 10);
+    // legs (tucked in when sitting)
     ctx.fillStyle = L.boots || "#7a5a44";
     ctx.beginPath();
-    ctx.roundRect(x - 6 + walk * 2 * (side ? 1 : 0.4), foot - 7 - Math.max(0, walk) * 2, 5, 7, 2);
-    ctx.roundRect(x + 1 - walk * 2 * (side ? 1 : 0.4), foot - 7 - Math.max(0, -walk) * 2, 5, 7, 2);
+    if (e.sit) {
+      ctx.roundRect(x - 9, foot - 4, 7, 4, 2);
+      ctx.roundRect(x + 2, foot - 4, 7, 4, 2);
+    } else {
+      ctx.roundRect(x - 6 + walk * 2 * (side ? 1 : 0.4), foot - 7 - Math.max(0, walk) * 2, 5, 7, 2);
+      ctx.roundRect(x + 1 - walk * 2 * (side ? 1 : 0.4), foot - 7 - Math.max(0, -walk) * 2, 5, 7, 2);
+    }
     ctx.fill();
-    const by = foot - 7 - bob;
+    const by = foot - (e.sit ? 2 : 7) - bob;
     // body
     ctx.fillStyle = L.cloth;
     ctx.beginPath();
@@ -749,17 +993,22 @@ const World = (() => {
       ctx.arc(x + 9, by - 5 - sw, 3, 0, 7);
       ctx.fill();
     }
-    if (L.staff && !back) {
+    if (L.staff && (!back || e.swing)) {
+      // Staff swings forward along the facing direction during an attack.
+      const sw = e.swing ? Math.sin((1 - e.swing / 0.25) * Math.PI) : 0,
+        fwd = { down: [0, 1], up: [0, -1], left: [-1, 0], right: [1, 0] }[e.dir],
+        sx = side ? x + side * 6 : x + 10,
+        tipX = sx + (side || 1) * 2 + fwd[0] * sw * 14,
+        tipY = by - 20 + sw * (fwd[1] * 14 + 10);
       ctx.strokeStyle = "#9a6b45";
       ctx.lineWidth = 2;
-      const sx = side ? x + side * 6 : x + 10;
       ctx.beginPath();
       ctx.moveTo(sx, by + 2);
-      ctx.lineTo(sx + (side || 1) * 2, by - 20);
+      ctx.lineTo(tipX, tipY);
       ctx.stroke();
       ctx.fillStyle = L.staff;
       ctx.beginPath();
-      ctx.arc(sx + (side || 1) * 2, by - 22, 3.5, 0, 7);
+      ctx.arc(tipX, tipY - 2, 3.5 + sw, 0, 7);
       ctx.fill();
     }
     // head
@@ -884,7 +1133,14 @@ const World = (() => {
       side = e.dir === "left" ? -1 : e.dir === "right" ? 1 : 0;
     shadow(x, foot, 10 - hop * 0.6);
     ctx.save();
-    ctx.translate(x, y);
+    const shake = e.hurt ? Math.sin(e.hurt * 80) * 2.5 : 0,
+      lf = { down: [0, 1], up: [0, -1], left: [-1, 0], right: [1, 0] }[e.dir],
+      lg = e.lunge ? Math.sin((e.lunge / 0.2) * Math.PI) * 6 : 0;
+    ctx.translate(x + shake + lf[0] * lg, y + lf[1] * lg);
+    if (e.dead) {
+      ctx.globalAlpha = Math.max(0, e.dead / 0.6);
+      ctx.scale(1 + (0.6 - e.dead), 1 - (0.6 - e.dead));
+    } else if (e.hurt) ctx.globalAlpha = 0.55 + 0.45 * Math.abs(Math.cos(e.hurt * 40));
     ctx.scale(sq, 2 - sq);
     const [c1, c2] = L.colors;
     ctx.fillStyle = c1;
@@ -1052,6 +1308,155 @@ const World = (() => {
     ctx.fillText("!", x, y - 2 + b);
   }
 
+  function bar(x, y, w, frac, color) {
+    ctx.fillStyle = "#2b2f2acc";
+    ctx.fillRect(x - w / 2 - 1, y - 1, w + 2, 5);
+    ctx.fillStyle = "#ffffff55";
+    ctx.fillRect(x - w / 2, y, w, 3);
+    ctx.fillStyle = color;
+    ctx.fillRect(x - w / 2, y, Math.max(0, w * frac), 3);
+  }
+  function dropIcon(e) {
+    const x = e.px,
+      b = e.age < 0.35 ? -Math.sin((e.age / 0.35) * Math.PI) * 10 : reduce ? 0 : Math.sin(clock * 3 + e.tx) * 1.2,
+      y = e.py + 4 + b;
+    shadow(x, e.py + 8, 6);
+    const art0 = art.sprites["item-" + e.item];
+    if (art0) {
+      ctx.drawImage(art0.img, x - 10, y - 18, 20, 20);
+      return;
+    }
+    if (e.item === "berry") {
+      ctx.fillStyle = "#e5475f";
+      ctx.beginPath();
+      ctx.arc(x - 3, y - 6, 5, 0, 7);
+      ctx.arc(x + 3, y - 6, 5, 0, 7);
+      ctx.fill();
+      ctx.fillStyle = "#7cc56a";
+      ctx.beginPath();
+      ctx.ellipse(x, y - 12, 4, 2, 0, 0, 7);
+      ctx.fill();
+    } else if (e.item === "dew") {
+      ctx.fillStyle = "#5aa8f0";
+      ctx.beginPath();
+      ctx.moveTo(x, y - 16);
+      ctx.bezierCurveTo(x + 4, y - 10, x + 6, y - 7, x + 6, y - 4);
+      ctx.arc(x, y - 4, 6, 0, Math.PI);
+      ctx.bezierCurveTo(x - 6, y - 7, x - 4, y - 10, x, y - 16);
+      ctx.fill();
+      ctx.fillStyle = "#ffffffa0";
+      ctx.beginPath();
+      ctx.arc(x - 2, y - 6, 1.6, 0, 7);
+      ctx.fill();
+    } else {
+      ctx.fillStyle = "#fff8e1";
+      ctx.strokeStyle = "#c9a45c";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.arc(x, y - 7, 8, 0, 7);
+      ctx.fill();
+      ctx.stroke();
+      ctx.font = "11px " + "'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText((opts.itemIcon && opts.itemIcon(e.item)) || "✦", x, y - 6);
+      ctx.textBaseline = "alphabetic";
+    }
+  }
+  /* Placeholder puppy companion (replaced by pet-walk / pet-idle sheets). */
+  function puppy(e, L) {
+    const x = e.px,
+      foot = e.py + 10,
+      walk = e.moving ? Math.sin(e.t * 14) : 0,
+      bob = e.moving ? Math.abs(walk) * 1.5 : 0,
+      side = e.dir === "left" ? -1 : e.dir === "right" ? 1 : 0,
+      back = e.dir === "up",
+      y = foot - 4 - bob;
+    shadow(x, foot, 9);
+    ctx.fillStyle = L.fur;
+    // legs
+    ctx.fillRect(x - 6, foot - 5 - Math.max(0, walk) * 2, 3, 5);
+    ctx.fillRect(x + 3, foot - 5 - Math.max(0, -walk) * 2, 3, 5);
+    // body
+    ctx.beginPath();
+    ctx.ellipse(x, y - 4, side ? 10 : 8, 6, 0, 0, 7);
+    ctx.fill();
+    // tail wag
+    const wag = Math.sin(e.t * (e.moving ? 18 : 8)) * 0.5;
+    ctx.strokeStyle = L.fur;
+    ctx.lineWidth = 3;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    const tx0 = side ? x - side * 9 : x + (back ? 0 : 6),
+      ty0 = y - 6;
+    ctx.moveTo(tx0, ty0);
+    ctx.lineTo(tx0 - (side || 0.4) * 4 + wag * 4, ty0 - 6);
+    ctx.stroke();
+    ctx.lineCap = "butt";
+    // head
+    const hx = x + side * 7,
+      hy = y - 13;
+    ctx.fillStyle = L.fur;
+    ctx.beginPath();
+    ctx.arc(hx, hy, 7.5, 0, 7);
+    ctx.fill();
+    ctx.fillStyle = L.ear;
+    [-1, 1].forEach((s0) => {
+      ctx.beginPath();
+      ctx.ellipse(hx + s0 * 6, hy - 1, 2.6, 5, s0 * 0.35, 0, 7);
+      ctx.fill();
+    });
+    if (!back) {
+      ctx.fillStyle = L.muzzle || "#fff6e8";
+      ctx.beginPath();
+      ctx.ellipse(hx + side * 3, hy + 3, 4, 3, 0, 0, 7);
+      ctx.fill();
+      ctx.fillStyle = "#3a2e2a";
+      ctx.beginPath();
+      ctx.arc(hx + side * 5, hy + 2, 1.4, 0, 7);
+      if (side) ctx.arc(hx + side * 2, hy - 2, 1.3, 0, 7);
+      else {
+        ctx.arc(hx - 3, hy - 2, 1.3, 0, 7);
+        ctx.arc(hx + 3, hy - 2, 1.3, 0, 7);
+      }
+      ctx.fill();
+    }
+    if (L.scarf) {
+      ctx.fillStyle = L.scarf;
+      ctx.fillRect(hx - 5, hy + 5, 10, 2.5);
+    }
+  }
+  function drawFx() {
+    for (const f of fx) {
+      const k = f.t / f.life;
+      if (f.kind === "spark") {
+        ctx.strokeStyle = f.color;
+        ctx.globalAlpha = 1 - k;
+        ctx.lineWidth = 2;
+        for (let i = 0; i < 6; i++) {
+          const a = (i / 6) * Math.PI * 2,
+            r0 = 3 + k * 6,
+            r1 = 7 + k * 12;
+          ctx.beginPath();
+          ctx.moveTo(f.x + Math.cos(a) * r0, f.y + Math.sin(a) * r0);
+          ctx.lineTo(f.x + Math.cos(a) * r1, f.y + Math.sin(a) * r1);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+      } else {
+        ctx.globalAlpha = k < 0.7 ? 1 : 1 - (k - 0.7) / 0.3;
+        ctx.font = `800 ${f.big ? 17 : 13}px Fredoka, system-ui, sans-serif`;
+        ctx.textAlign = "center";
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "#2b2f2a";
+        const yy = f.y - k * 22;
+        ctx.strokeText(f.text, f.x, yy);
+        ctx.fillStyle = f.color;
+        ctx.fillText(f.text, f.x, yy);
+        ctx.globalAlpha = 1;
+      }
+    }
+  }
   function draw() {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.fillStyle = map.palette.edge || "#5d8a52";
@@ -1073,32 +1478,67 @@ const World = (() => {
         ctx.stroke();
       }
     }
+    const tg = hero.target;
+    if (tg && !tg.dead) {
+      ctx.strokeStyle = "#ff6b6b";
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath();
+      ctx.ellipse(tg.px, tg.py + 9, 13, 5, 0, 0, 7);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
     const labels = [];
     [...ents]
       .sort((a, b) => a.py - b.py)
       .forEach((e) => {
         let top;
         const row = DIRS.indexOf(e.dir);
+        if (e.kind === "drop") return dropIcon(e);
+        if (e.kind === "pet") {
+          if (!actorSheet("pet", e, row, 40)) puppy(e, e.look);
+          return;
+        }
+        if (e.kind === "hero" && e.down) {
+          // Knocked out: lie down and fade, then revive at the map entrance.
+          ctx.save();
+          ctx.globalAlpha = Math.min(1, e.down / 0.6);
+          ctx.translate(e.px, e.py + 6);
+          ctx.rotate(-Math.PI / 2);
+          ctx.translate(-e.px, -(e.py + 6));
+          chibi({ ...e, moving: false, dir: "down", swing: 0 }, e.look);
+          ctx.restore();
+          return;
+        }
+        if (e.kind === "hero" && e.hurt) ctx.globalAlpha = 0.5 + 0.5 * Math.abs(Math.cos(e.hurt * 40));
         if (e.kind === "hero" || e.kind === "npc") {
-          const key = e.kind === "hero" ? "hero" : e.look.sprite;
-          const sheet = key && (e.moving ? art.sprites[key + "-walk"] : art.sprites[key + "-idle"]);
-          if (sheet && drawSheet(key + (e.moving ? "-walk" : "-idle"), e, row, e.moving ? 4 : 2, e.moving ? 8 : 2, e.px, e.py + 10, 48))
-            top = e.py - 34;
+          if (actorSheet(e.kind === "hero" ? "hero" : e.look.sprite, e, row, 48)) top = e.py - 34;
           else top = chibi(e, e.look);
+          ctx.globalAlpha = 1;
+          if (e.kind === "hero" && opts.heroBars) {
+            const b = opts.heroBars();
+            labels.push(() => {
+              bar(e.px, e.py + 16, 30, b.hp / b.maxHp, b.hp / b.maxHp < 0.3 ? "#ff5d5d" : "#5fd16b");
+              bar(e.px, e.py + 21, 30, b.mp / b.maxMp, "#5aa8f0");
+            });
+          }
           if (e.kind === "npc") labels.push(() => {
             label(e.name, e.px, e.py + 24, "#ffffff");
             if (e.mark) questMark(e.px, top - 6);
           });
         } else if (e.kind === "chest") chest(e);
         else if (e.kind === "mob") {
-          const key = e.look.sprite;
-          if (key && drawSheet(key + (e.moving ? "-walk" : "-idle"), e, row, e.moving ? 4 : 2, e.moving ? 8 : 2, e.px, e.py + 10, 44))
-            top = e.py - 30;
+          if (actorSheet(e.look.sprite, e, row, 44)) top = e.py - 30;
           else top = monster(e, e.look);
-          labels.push(() => label(e.name, e.px, e.py + 23, "#ffd9e0", "Lv." + (e.look.lv || 1)));
+          if (!e.dead)
+            labels.push(() => {
+              label(e.name, e.px, e.py + 23, e.state === "chase" ? "#ffb0b0" : "#ffd9e0", "Lv." + (e.look.lv || 1));
+              if (e.hp < e.maxHp) bar(e.px, e.py - 34, 26, e.hp / e.maxHp, "#ff7a7a");
+            });
         }
       });
     labels.forEach((f) => f());
+    drawFx();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
 
@@ -1112,6 +1552,37 @@ const World = (() => {
     key,
     near,
     clearKeys: () => held.clear(),
+    knockout() {
+      hero.down = 1.6;
+      hero.path = [];
+      hero.target = null;
+      hero.pending = null;
+      standUp();
+      ents.forEach((e) => e.kind === "mob" && e.state === "chase" && ((e.state = "return"), (e.path = [])));
+    },
+    sit(on) {
+      if (hero.down) return false;
+      hero.sit = !!on;
+      if (on) {
+        hero.path = [];
+        hero.target = null;
+      }
+      return true;
+    },
+    attackNearest() {
+      const mobs = ents.filter((e) => e.kind === "mob" && !e.dead).sort((a, b) => cheb(a, hero) - cheb(b, hero));
+      if (mobs[0] && cheb(mobs[0], hero) <= 6) {
+        approach(mobs[0]);
+        return mobs[0];
+      }
+      return null;
+    },
+    floater,
+    hasArt: (k) => !!art.sprites[k],
+    heroFloat(text, color) {
+      floater(text, hero.px, hero.py - 40, color);
+    },
+
     setChest(open) {
       ents.forEach((e) => e.kind === "chest" && (e.open = open));
     },
@@ -1134,7 +1605,11 @@ const World = (() => {
   });
   // Getters are defined separately: Object.assign would copy their value once instead of keeping them live.
   Object.defineProperties(api, {
-    hero: { get: () => hero && { x: hero.tx, y: hero.ty, moving: hero.path.length > 0, dir: hero.dir } },
+    hero: {
+      get: () =>
+        hero && { x: hero.tx, y: hero.ty, moving: hero.path.length > 0, dir: hero.dir, sit: !!hero.sit, down: !!hero.down, fighting: !!hero.target },
+    },
+    combat: { get: () => inCombat() },
     entities: { get: () => ents },
     canvas: { get: () => cv },
   });

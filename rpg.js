@@ -10,6 +10,8 @@ const RPG = (() => {
     staff: "#ffd25e",
     sprout: true,
   };
+  // Companion puppy; replaced by pet-walk / pet-idle sheets when they are listed in the manifest.
+  const PET = { fur: "#f3d7a8", ear: "#b07a4a", muzzle: "#fff6e8", scarf: "#e8737f" };
   const maps = [
     {
       id: "food",
@@ -214,6 +216,10 @@ const RPG = (() => {
     data.world && typeof data.world === "object" && !Array.isArray(data.world)
       ? data.world
       : {};
+  data.hero =
+    data.hero && typeof data.hero === "object" && !Array.isArray(data.hero)
+      ? data.hero
+      : {};
   const api = {
     active: null,
     launching: false,
@@ -246,6 +252,30 @@ const RPG = (() => {
     if (el) el.textContent = t;
   };
   const dialogOpen = () => !!($("rpg-dialog") && $("rpg-dialog").childElementCount);
+  Battle.init(data.hero, save, status);
+  function closeDialog() {
+    $("rpg-dialog").innerHTML = "";
+    World.paused = false;
+    World.canvas && World.canvas.focus({ preventScroll: true });
+  }
+  function openBag() {
+    if (dialogOpen()) return;
+    World.paused = true;
+    World.clearKeys();
+    const paintBag = () => {
+      $("rpg-dialog").innerHTML = Battle.bagHTML();
+      $("bag-close").onclick = closeDialog;
+      document.querySelectorAll("[data-use]").forEach(
+        (b) =>
+          (b.onclick = () => {
+            Battle.use(b.dataset.use);
+            paintBag();
+          }),
+      );
+    };
+    paintBag();
+    $("bag-close").focus({ preventScroll: true });
+  }
 
   function render() {
     const root = $("rpg-root");
@@ -253,9 +283,15 @@ const RPG = (() => {
     const m = maps[data.map];
     if (!root.querySelector(".adventure")) {
       mounted = null;
-      root.innerHTML = `<section class="adventure" id="adventure" aria-label="RPG 地圖探索"><div class="rpg-heading"><div><small>ENGLISH · LITTLE ADVENTURES</small><h2 id="rpg-title"></h2></div><span class="rpg-passport" id="rpg-passport"></span></div><nav class="map-tabs" aria-label="旅行地圖" id="rpg-tabs"></nav><div class="rpg-stage" id="rpg-stage"></div><div class="rpg-status" role="status"></div><div class="rpg-controls"><p class="rpg-tip">點地面走路；點居民或寶箱會自動走過去。鍵盤可用方向鍵 / WASD，E 互動。</p><button class="interact" id="rpg-interact">💬 互動 / E</button></div><div id="rpg-dialog"></div><p class="rpg-foot" id="rpg-foot"></p></section>`;
+      root.innerHTML = `<section class="adventure" id="adventure" aria-label="RPG 地圖探索"><div class="rpg-heading"><div><small>ENGLISH · LITTLE ADVENTURES</small><h2 id="rpg-title"></h2></div><span class="rpg-passport" id="rpg-passport"></span></div><nav class="map-tabs" aria-label="旅行地圖" id="rpg-tabs"></nav><div class="rpg-stage" id="rpg-stage">${Battle.hudHTML()}</div><div class="rpg-status" role="status"></div><div class="rpg-controls"><p class="rpg-tip">點地面走路；點怪物會追上去自動攻擊；點居民或寶箱會自動走過去。鍵盤：方向鍵 / WASD 移動、E 互動、F 攻擊、R 休息、1 / 2 補給、B 背包。</p><button class="interact" id="rpg-interact">💬 互動 / E</button></div><div id="rpg-dialog"></div><p class="rpg-foot" id="rpg-foot"></p></section>`;
       $("rpg-interact").onclick = interact;
+      $("hud-attack").onclick = attack;
+      $("hud-berry").onclick = () => Battle.use("berry");
+      $("hud-dew").onclick = () => Battle.use("dew");
+      $("hud-sit").onclick = () => Battle.toggleSit();
+      $("hud-bag").onclick = openBag;
     }
+    Battle.sync();
     $("rpg-title").textContent = `${m.icon} ${m.name}`;
     $("rpg-passport").textContent = `🗝️ ${maps.filter((_, i) => unlocked(i)).length}/5`;
     $("rpg-tabs").innerHTML = maps
@@ -280,10 +316,21 @@ const RPG = (() => {
     );
     if (mounted !== m.id || !World.canvas || !World.canvas.isConnected) {
       mounted = m.id;
-      World.mount($("rpg-stage"), { ...m, heroLook: HERO, npcName: m.person }, {
+      const mob = { ...m.mob, ...Battle.mobFor(data.map) };
+      World.mount($("rpg-stage"), { ...m, mob, heroLook: HERO, petLook: PET, npcName: m.person }, {
         start: data.world[m.id],
         chestOpen: data.chests.includes(m.id),
         onTap: tapped,
+        onTarget: (e) => status(`鎖定 Lv.${e.look.lv} ${e.name}：自動追擊與普攻（不耗 MP）`),
+        onHeroHit: Battle.heroHit,
+        onMobHit: Battle.mobHit,
+        onKill: (e) => Battle.kill(e, m.id),
+        onPick: Battle.pick,
+        onTick: Battle.tick,
+        onRevive: Battle.revive,
+        onSit: () => Battle.paint(),
+        heroBars: Battle.bars,
+        itemIcon: (k) => (Battle.ITEMS[k] || {}).icon,
         onMove: (x, y) => {
           data.world[m.id] = { x, y };
           save();
@@ -297,8 +344,10 @@ const RPG = (() => {
   function tapped(e) {
     if (e.kind === "npc") openNpc();
     else if (e.kind === "chest") openChest();
-    else if (e.kind === "mob")
-      status(`Lv.${e.look.lv} ${e.name}：戰鬥系統開發中（第二階段開放），目前先別打擾牠。`);
+  }
+  function attack() {
+    if (dialogOpen()) return;
+    if (!World.attackNearest()) status("附近沒有怪物。往草地深處走走看。");
   }
   function openChest() {
     const m = maps[data.map];
@@ -331,13 +380,10 @@ const RPG = (() => {
     World.paused = true;
     World.clearKeys();
     $("rpg-dialog").innerHTML =
-      `<div class="npc-dialog" role="dialog" aria-label="${esc(m.person)}"><h3>${m.npc} ${esc(m.person)}</h3><p>${esc(m.line)}</p><p>${esc(m.zh)}</p><button id="npc-say">🔊 聽對話</button><p>每項任務 10 題，答對 7 題即可完成。首次完成獎勵 30 XP。</p>${["word", "sent"].map((k, i) => `<button data-quest="${k}">${data.cleared.includes(m.id + ":" + k) ? "✅" : "📜"} ${i ? "句子交流" : "主題單字"}</button>`).join("")}<button id="npc-close">稍後再聊</button></div>`;
+      `<div class="npc-dialog" role="dialog" aria-label="${esc(m.person)}"><h3>${m.npc} ${esc(m.person)}</h3><p>${esc(m.line)}</p><p>${esc(m.zh)}</p><button id="npc-say">🔊 聽對話</button><p>每項任務 10 題，答對 7 題即可完成。首次完成獎勵 30 XP。</p>${["word", "sent"].map((k, i) => `<button data-quest="${k}">${data.cleared.includes(m.id + ":" + k) ? "✅" : "📜"} ${i ? "句子交流" : "主題單字"}</button>`).join("")}<div class="trade">${Battle.tradeHTML()}</div><button id="npc-close">稍後再聊</button></div>`;
+    openNpcTrades();
     $("npc-say").onclick = () => speak(m.line);
-    $("npc-close").onclick = () => {
-      $("rpg-dialog").innerHTML = "";
-      World.paused = false;
-      World.canvas && World.canvas.focus({ preventScroll: true });
-    };
+    $("npc-close").onclick = closeDialog;
     document.querySelectorAll("[data-quest]").forEach(
       (b) =>
         (b.onclick = () => {
@@ -354,6 +400,17 @@ const RPG = (() => {
     );
     $("rpg-dialog").scrollIntoView({ block: "nearest" });
     $("npc-say").focus({ preventScroll: true });
+  }
+  // Re-bind trade buttons after the trade block is repainted.
+  function openNpcTrades() {
+    document.querySelectorAll("[data-trade]").forEach(
+      (b) =>
+        (b.onclick = () => {
+          Battle.trade(b.dataset.trade);
+          document.querySelector(".npc-dialog .trade").innerHTML = Battle.tradeHTML();
+          openNpcTrades();
+        }),
+    );
   }
   function complete() {
     if (!api.active) return;
@@ -385,10 +442,11 @@ const RPG = (() => {
     !/INPUT|TEXTAREA|SELECT/.test(e.target.tagName);
   document.addEventListener("keydown", (e) => {
     if (!inField(e) || dialogOpen()) return;
-    if (World.key(e, true)) e.preventDefault();
-    else if (e.key.toLowerCase() === "e") {
+    if (World.key(e, true)) return e.preventDefault();
+    const act = { e: interact, f: attack, r: () => Battle.toggleSit(), b: openBag, 1: () => Battle.use("berry"), 2: () => Battle.use("dew") }[e.key.toLowerCase()];
+    if (act) {
       e.preventDefault();
-      interact();
+      act();
     }
   });
   document.addEventListener("keyup", (e) => World.key(e, false));
