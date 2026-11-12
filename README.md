@@ -16,6 +16,7 @@ assets/bgm/             背景音樂
 assets/video/           劇情短片
 assets/voice/words/     單字配音
 assets/voice/sentences/ 句子配音
+assets/voice/zh/        開車模式的中文提示（words、sentences、ui 固定用語）
 assets/images/words/    單字圖片
 ```
 
@@ -30,6 +31,7 @@ assets/images/words/    單字圖片
 - `theme`：`food` 美食市場（火）、`animal` 動物森林（木）、`nature` 天氣與自然（水）、`transport` 交通與旅行（風）、`things` 生活與城市（土）
 - `level`：1 是 A1、2 是 A2、3 是 B1、4 是 B2。玩家升到對應等級才會出現（等級表在 `data/levels.json` 的 `maxLevel`）。分級測驗會從各級抽題，所以每一級最好至少有 12 個單字、6 句句子
 - `image`、`audio`：有素材就填路徑，例如 `assets/images/words/orange.png`；留空就用 emoji 和裝置朗讀
+- `audioZh`：開車模式用的中文提示語音（單字是「柳橙，英文怎麼說？」，句子是中文翻譯），例如 `assets/voice/zh/words/orange.mp3`；留空就用裝置的中文朗讀
 
 ## 新增句子
 

@@ -12,7 +12,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/the-boy-kicks-the-ball.mp3"
+  "audio": "assets/voice/sentences/the-boy-kicks-the-ball.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-boy-kicks-the-ball.mp3"
  },
  {
   "en": "The cat sleeps on the bed.",
@@ -27,7 +28,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/the-cat-sleeps-on-the-bed.mp3"
+  "audio": "assets/voice/sentences/the-cat-sleeps-on-the-bed.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-cat-sleeps-on-the-bed.mp3"
  },
  {
   "en": "The dog eats a bone.",
@@ -42,7 +44,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/the-dog-eats-a-bone.mp3"
+  "audio": "assets/voice/sentences/the-dog-eats-a-bone.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-dog-eats-a-bone.mp3"
  },
  {
   "en": "The girl reads a book.",
@@ -57,7 +60,8 @@
   "level": 1,
   "route": "school",
   "image": "",
-  "audio": "assets/voice/sentences/the-girl-reads-a-book.mp3"
+  "audio": "assets/voice/sentences/the-girl-reads-a-book.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-girl-reads-a-book.mp3"
  },
  {
   "en": "It is raining, so I take an umbrella.",
@@ -72,7 +76,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/it-is-raining-so-i-take-an-umbrella.mp3"
+  "audio": "assets/voice/sentences/it-is-raining-so-i-take-an-umbrella.mp3",
+  "audioZh": "assets/voice/zh/sentences/it-is-raining-so-i-take-an-umbrella.mp3"
  },
  {
   "en": "The fish swims in the sea.",
@@ -87,7 +92,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/the-fish-swims-in-the-sea.mp3"
+  "audio": "assets/voice/sentences/the-fish-swims-in-the-sea.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-fish-swims-in-the-sea.mp3"
  },
  {
   "en": "My dad drives a car.",
@@ -102,7 +108,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/my-dad-drives-a-car.mp3"
+  "audio": "assets/voice/sentences/my-dad-drives-a-car.mp3",
+  "audioZh": "assets/voice/zh/sentences/my-dad-drives-a-car.mp3"
  },
  {
   "en": "A bird sings in the tree.",
@@ -117,7 +124,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/a-bird-sings-in-the-tree.mp3"
+  "audio": "assets/voice/sentences/a-bird-sings-in-the-tree.mp3",
+  "audioZh": "assets/voice/zh/sentences/a-bird-sings-in-the-tree.mp3"
  },
  {
   "en": "The baby drinks milk.",
@@ -132,7 +140,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/the-baby-drinks-milk.mp3"
+  "audio": "assets/voice/sentences/the-baby-drinks-milk.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-baby-drinks-milk.mp3"
  },
  {
   "en": "It is sunny at the beach.",
@@ -147,7 +156,8 @@
   "level": 1,
   "route": "travel",
   "image": "",
-  "audio": "assets/voice/sentences/it-is-sunny-at-the-beach.mp3"
+  "audio": "assets/voice/sentences/it-is-sunny-at-the-beach.mp3",
+  "audioZh": "assets/voice/zh/sentences/it-is-sunny-at-the-beach.mp3"
  },
  {
   "en": "The student walks to school.",
@@ -162,7 +172,8 @@
   "level": 1,
   "route": "school",
   "image": "",
-  "audio": "assets/voice/sentences/the-student-walks-to-school.mp3"
+  "audio": "assets/voice/sentences/the-student-walks-to-school.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-student-walks-to-school.mp3"
  },
  {
   "en": "Grandma drinks hot tea.",
@@ -177,7 +188,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/grandma-drinks-hot-tea.mp3"
+  "audio": "assets/voice/sentences/grandma-drinks-hot-tea.mp3",
+  "audioZh": "assets/voice/zh/sentences/grandma-drinks-hot-tea.mp3"
  },
  {
   "en": "The rabbit eats a carrot.",
@@ -192,7 +204,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/the-rabbit-eats-a-carrot.mp3"
+  "audio": "assets/voice/sentences/the-rabbit-eats-a-carrot.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-rabbit-eats-a-carrot.mp3"
  },
  {
   "en": "We build a snowman in winter.",
@@ -207,7 +220,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/we-build-a-snowman-in-winter.mp3"
+  "audio": "assets/voice/sentences/we-build-a-snowman-in-winter.mp3",
+  "audioZh": "assets/voice/zh/sentences/we-build-a-snowman-in-winter.mp3"
  },
  {
   "en": "Today is my birthday.",
@@ -222,7 +236,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/today-is-my-birthday.mp3"
+  "audio": "assets/voice/sentences/today-is-my-birthday.mp3",
+  "audioZh": "assets/voice/zh/sentences/today-is-my-birthday.mp3"
  },
  {
   "en": "The cook fries an egg.",
@@ -237,7 +252,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/the-cook-fries-an-egg.mp3"
+  "audio": "assets/voice/sentences/the-cook-fries-an-egg.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-cook-fries-an-egg.mp3"
  },
  {
   "en": "The monkey eats a banana.",
@@ -252,7 +268,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/the-monkey-eats-a-banana.mp3"
+  "audio": "assets/voice/sentences/the-monkey-eats-a-banana.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-monkey-eats-a-banana.mp3"
  },
  {
   "en": "I see the moon and stars at night.",
@@ -267,7 +284,8 @@
   "level": 1,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/i-see-the-moon-and-stars-at-night.mp3"
+  "audio": "assets/voice/sentences/i-see-the-moon-and-stars-at-night.mp3",
+  "audioZh": "assets/voice/zh/sentences/i-see-the-moon-and-stars-at-night.mp3"
  },
  {
   "en": "We are going to fly to Japan tomorrow.",
@@ -282,7 +300,8 @@
   "level": 2,
   "route": "travel",
   "image": "",
-  "audio": "assets/voice/sentences/we-are-going-to-fly-to-japan-tomorrow.mp3"
+  "audio": "assets/voice/sentences/we-are-going-to-fly-to-japan-tomorrow.mp3",
+  "audioZh": "assets/voice/zh/sentences/we-are-going-to-fly-to-japan-tomorrow.mp3"
  },
  {
   "en": "She had a fever, so she went to the hospital.",
@@ -297,7 +316,8 @@
   "level": 2,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/she-had-a-fever-so-she-went-to-the-hospital.mp3"
+  "audio": "assets/voice/sentences/she-had-a-fever-so-she-went-to-the-hospital.mp3",
+  "audioZh": "assets/voice/zh/sentences/she-had-a-fever-so-she-went-to-the-hospital.mp3"
  },
  {
   "en": "If it rains, we will stay at home.",
@@ -312,7 +332,8 @@
   "level": 2,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/if-it-rains-we-will-stay-at-home.mp3"
+  "audio": "assets/voice/sentences/if-it-rains-we-will-stay-at-home.mp3",
+  "audioZh": "assets/voice/zh/sentences/if-it-rains-we-will-stay-at-home.mp3"
  },
  {
   "en": "He ran because he was late.",
@@ -327,7 +348,8 @@
   "level": 2,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/he-ran-because-he-was-late.mp3"
+  "audio": "assets/voice/sentences/he-ran-because-he-was-late.mp3",
+  "audioZh": "assets/voice/zh/sentences/he-ran-because-he-was-late.mp3"
  },
  {
   "en": "I have studied English for two years.",
@@ -342,7 +364,8 @@
   "level": 2,
   "route": "school",
   "image": "",
-  "audio": "assets/voice/sentences/i-have-studied-english-for-two-years.mp3"
+  "audio": "assets/voice/sentences/i-have-studied-english-for-two-years.mp3",
+  "audioZh": "assets/voice/zh/sentences/i-have-studied-english-for-two-years.mp3"
  },
  {
   "en": "My family usually eats pizza on Friday.",
@@ -357,7 +380,8 @@
   "level": 2,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/my-family-usually-eats-pizza-on-friday.mp3"
+  "audio": "assets/voice/sentences/my-family-usually-eats-pizza-on-friday.mp3",
+  "audioZh": "assets/voice/zh/sentences/my-family-usually-eats-pizza-on-friday.mp3"
  },
  {
   "en": "The bus was late because of the rain.",
@@ -372,7 +396,8 @@
   "level": 2,
   "route": "travel",
   "image": "",
-  "audio": "assets/voice/sentences/the-bus-was-late-because-of-the-rain.mp3"
+  "audio": "assets/voice/sentences/the-bus-was-late-because-of-the-rain.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-bus-was-late-because-of-the-rain.mp3"
  },
  {
   "en": "My phone battery is almost empty.",
@@ -387,7 +412,8 @@
   "level": 2,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/my-phone-battery-is-almost-empty.mp3"
+  "audio": "assets/voice/sentences/my-phone-battery-is-almost-empty.mp3",
+  "audioZh": "assets/voice/zh/sentences/my-phone-battery-is-almost-empty.mp3"
  },
  {
   "en": "I have lived here since 2020.",
@@ -402,7 +428,8 @@
   "level": 3,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/i-have-lived-here-since-2020.mp3"
+  "audio": "assets/voice/sentences/i-have-lived-here-since-2020.mp3",
+  "audioZh": "assets/voice/zh/sentences/i-have-lived-here-since-2020.mp3"
  },
  {
   "en": "The museum was built in 1900.",
@@ -417,7 +444,8 @@
   "level": 3,
   "route": "travel",
   "image": "",
-  "audio": "assets/voice/sentences/the-museum-was-built-in-1900.mp3"
+  "audio": "assets/voice/sentences/the-museum-was-built-in-1900.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-museum-was-built-in-1900.mp3"
  },
  {
   "en": "She is the girl who won the race.",
@@ -432,7 +460,8 @@
   "level": 3,
   "route": "school",
   "image": "",
-  "audio": "assets/voice/sentences/she-is-the-girl-who-won-the-race.mp3"
+  "audio": "assets/voice/sentences/she-is-the-girl-who-won-the-race.mp3",
+  "audioZh": "assets/voice/zh/sentences/she-is-the-girl-who-won-the-race.mp3"
  },
  {
   "en": "If I were rich, I would buy a boat.",
@@ -447,7 +476,8 @@
   "level": 3,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/if-i-were-rich-i-would-buy-a-boat.mp3"
+  "audio": "assets/voice/sentences/if-i-were-rich-i-would-buy-a-boat.mp3",
+  "audioZh": "assets/voice/zh/sentences/if-i-were-rich-i-would-buy-a-boat.mp3"
  },
  {
   "en": "I am looking forward to the trip.",
@@ -462,7 +492,8 @@
   "level": 3,
   "route": "travel",
   "image": "",
-  "audio": "assets/voice/sentences/i-am-looking-forward-to-the-trip.mp3"
+  "audio": "assets/voice/sentences/i-am-looking-forward-to-the-trip.mp3",
+  "audioZh": "assets/voice/zh/sentences/i-am-looking-forward-to-the-trip.mp3"
  },
  {
   "en": "The train had already left when we arrived.",
@@ -477,7 +508,8 @@
   "level": 3,
   "route": "travel",
   "image": "",
-  "audio": "assets/voice/sentences/the-train-had-already-left-when-we-arrived.mp3"
+  "audio": "assets/voice/sentences/the-train-had-already-left-when-we-arrived.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-train-had-already-left-when-we-arrived.mp3"
  },
  {
   "en": "Could you tell me where the station is?",
@@ -492,7 +524,8 @@
   "level": 3,
   "route": "travel",
   "image": "",
-  "audio": "assets/voice/sentences/could-you-tell-me-where-the-station-is.mp3"
+  "audio": "assets/voice/sentences/could-you-tell-me-where-the-station-is.mp3",
+  "audioZh": "assets/voice/zh/sentences/could-you-tell-me-where-the-station-is.mp3"
  },
  {
   "en": "I am not used to getting up early.",
@@ -507,7 +540,8 @@
   "level": 3,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/i-am-not-used-to-getting-up-early.mp3"
+  "audio": "assets/voice/sentences/i-am-not-used-to-getting-up-early.mp3",
+  "audioZh": "assets/voice/zh/sentences/i-am-not-used-to-getting-up-early.mp3"
  },
  {
   "en": "The report must be finished by Friday.",
@@ -522,7 +556,8 @@
   "level": 4,
   "route": "business",
   "image": "",
-  "audio": "assets/voice/sentences/the-report-must-be-finished-by-friday.mp3"
+  "audio": "assets/voice/sentences/the-report-must-be-finished-by-friday.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-report-must-be-finished-by-friday.mp3"
  },
  {
   "en": "He said that he would call me later.",
@@ -537,7 +572,8 @@
   "level": 4,
   "route": "business",
   "image": "",
-  "audio": "assets/voice/sentences/he-said-that-he-would-call-me-later.mp3"
+  "audio": "assets/voice/sentences/he-said-that-he-would-call-me-later.mp3",
+  "audioZh": "assets/voice/zh/sentences/he-said-that-he-would-call-me-later.mp3"
  },
  {
   "en": "Had I known, I would have helped you.",
@@ -552,7 +588,8 @@
   "level": 4,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/had-i-known-i-would-have-helped-you.mp3"
+  "audio": "assets/voice/sentences/had-i-known-i-would-have-helped-you.mp3",
+  "audioZh": "assets/voice/zh/sentences/had-i-known-i-would-have-helped-you.mp3"
  },
  {
   "en": "Despite the rain, the concert continued.",
@@ -567,7 +604,8 @@
   "level": 4,
   "route": "travel",
   "image": "",
-  "audio": "assets/voice/sentences/despite-the-rain-the-concert-continued.mp3"
+  "audio": "assets/voice/sentences/despite-the-rain-the-concert-continued.mp3",
+  "audioZh": "assets/voice/zh/sentences/despite-the-rain-the-concert-continued.mp3"
  },
  {
   "en": "The meeting has been postponed until next week.",
@@ -582,7 +620,8 @@
   "level": 4,
   "route": "business",
   "image": "",
-  "audio": "assets/voice/sentences/the-meeting-has-been-postponed-until-next-week.mp3"
+  "audio": "assets/voice/sentences/the-meeting-has-been-postponed-until-next-week.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-meeting-has-been-postponed-until-next-week.mp3"
  },
  {
   "en": "She has been working here for ten years.",
@@ -597,7 +636,8 @@
   "level": 4,
   "route": "business",
   "image": "",
-  "audio": "assets/voice/sentences/she-has-been-working-here-for-ten-years.mp3"
+  "audio": "assets/voice/sentences/she-has-been-working-here-for-ten-years.mp3",
+  "audioZh": "assets/voice/zh/sentences/she-has-been-working-here-for-ten-years.mp3"
  },
  {
   "en": "Not only is it cheap, but it is also fast.",
@@ -612,7 +652,8 @@
   "level": 4,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/not-only-is-it-cheap-but-it-is-also-fast.mp3"
+  "audio": "assets/voice/sentences/not-only-is-it-cheap-but-it-is-also-fast.mp3",
+  "audioZh": "assets/voice/zh/sentences/not-only-is-it-cheap-but-it-is-also-fast.mp3"
  },
  {
   "en": "The car needs to be repaired.",
@@ -627,6 +668,7 @@
   "level": 4,
   "route": "daily",
   "image": "",
-  "audio": "assets/voice/sentences/the-car-needs-to-be-repaired.mp3"
+  "audio": "assets/voice/sentences/the-car-needs-to-be-repaired.mp3",
+  "audioZh": "assets/voice/zh/sentences/the-car-needs-to-be-repaired.mp3"
  }
 ]

@@ -7,7 +7,8 @@
   "theme": "food",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/apple.mp3"
+  "audio": "assets/voice/words/apple.mp3",
+  "audioZh": "assets/voice/zh/words/apple.mp3"
  },
  {
   "word": "banana",
@@ -17,7 +18,8 @@
   "theme": "food",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/banana.mp3"
+  "audio": "assets/voice/words/banana.mp3",
+  "audioZh": "assets/voice/zh/words/banana.mp3"
  },
  {
   "word": "grape",
@@ -27,7 +29,8 @@
   "theme": "food",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/grape.mp3"
+  "audio": "assets/voice/words/grape.mp3",
+  "audioZh": "assets/voice/zh/words/grape.mp3"
  },
  {
   "word": "lemon",
@@ -37,7 +40,8 @@
   "theme": "food",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/lemon.mp3"
+  "audio": "assets/voice/words/lemon.mp3",
+  "audioZh": "assets/voice/zh/words/lemon.mp3"
  },
  {
   "word": "cake",
@@ -47,7 +51,8 @@
   "theme": "food",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/cake.mp3"
+  "audio": "assets/voice/words/cake.mp3",
+  "audioZh": "assets/voice/zh/words/cake.mp3"
  },
  {
   "word": "bread",
@@ -57,7 +62,8 @@
   "theme": "food",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/bread.mp3"
+  "audio": "assets/voice/words/bread.mp3",
+  "audioZh": "assets/voice/zh/words/bread.mp3"
  },
  {
   "word": "egg",
@@ -67,7 +73,8 @@
   "theme": "food",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/egg.mp3"
+  "audio": "assets/voice/words/egg.mp3",
+  "audioZh": "assets/voice/zh/words/egg.mp3"
  },
  {
   "word": "milk",
@@ -77,7 +84,8 @@
   "theme": "food",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/milk.mp3"
+  "audio": "assets/voice/words/milk.mp3",
+  "audioZh": "assets/voice/zh/words/milk.mp3"
  },
  {
   "word": "cheese",
@@ -87,7 +95,8 @@
   "theme": "food",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/cheese.mp3"
+  "audio": "assets/voice/words/cheese.mp3",
+  "audioZh": "assets/voice/zh/words/cheese.mp3"
  },
  {
   "word": "cat",
@@ -97,7 +106,8 @@
   "theme": "animal",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/cat.mp3"
+  "audio": "assets/voice/words/cat.mp3",
+  "audioZh": "assets/voice/zh/words/cat.mp3"
  },
  {
   "word": "dog",
@@ -107,7 +117,8 @@
   "theme": "animal",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/dog.mp3"
+  "audio": "assets/voice/words/dog.mp3",
+  "audioZh": "assets/voice/zh/words/dog.mp3"
  },
  {
   "word": "fish",
@@ -117,7 +128,8 @@
   "theme": "animal",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/fish.mp3"
+  "audio": "assets/voice/words/fish.mp3",
+  "audioZh": "assets/voice/zh/words/fish.mp3"
  },
  {
   "word": "bird",
@@ -127,7 +139,8 @@
   "theme": "animal",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/bird.mp3"
+  "audio": "assets/voice/words/bird.mp3",
+  "audioZh": "assets/voice/zh/words/bird.mp3"
  },
  {
   "word": "rabbit",
@@ -137,7 +150,8 @@
   "theme": "animal",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/rabbit.mp3"
+  "audio": "assets/voice/words/rabbit.mp3",
+  "audioZh": "assets/voice/zh/words/rabbit.mp3"
  },
  {
   "word": "horse",
@@ -147,7 +161,8 @@
   "theme": "animal",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/horse.mp3"
+  "audio": "assets/voice/words/horse.mp3",
+  "audioZh": "assets/voice/zh/words/horse.mp3"
  },
  {
   "word": "tiger",
@@ -157,7 +172,8 @@
   "theme": "animal",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/tiger.mp3"
+  "audio": "assets/voice/words/tiger.mp3",
+  "audioZh": "assets/voice/zh/words/tiger.mp3"
  },
  {
   "word": "frog",
@@ -167,7 +183,8 @@
   "theme": "animal",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/frog.mp3"
+  "audio": "assets/voice/words/frog.mp3",
+  "audioZh": "assets/voice/zh/words/frog.mp3"
  },
  {
   "word": "elephant",
@@ -177,7 +194,8 @@
   "theme": "animal",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/elephant.mp3"
+  "audio": "assets/voice/words/elephant.mp3",
+  "audioZh": "assets/voice/zh/words/elephant.mp3"
  },
  {
   "word": "sun",
@@ -187,7 +205,8 @@
   "theme": "nature",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/sun.mp3"
+  "audio": "assets/voice/words/sun.mp3",
+  "audioZh": "assets/voice/zh/words/sun.mp3"
  },
  {
   "word": "moon",
@@ -197,7 +216,8 @@
   "theme": "nature",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/moon.mp3"
+  "audio": "assets/voice/words/moon.mp3",
+  "audioZh": "assets/voice/zh/words/moon.mp3"
  },
  {
   "word": "star",
@@ -207,7 +227,8 @@
   "theme": "nature",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/star.mp3"
+  "audio": "assets/voice/words/star.mp3",
+  "audioZh": "assets/voice/zh/words/star.mp3"
  },
  {
   "word": "rain",
@@ -217,7 +238,8 @@
   "theme": "nature",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/rain.mp3"
+  "audio": "assets/voice/words/rain.mp3",
+  "audioZh": "assets/voice/zh/words/rain.mp3"
  },
  {
   "word": "tree",
@@ -227,7 +249,8 @@
   "theme": "nature",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/tree.mp3"
+  "audio": "assets/voice/words/tree.mp3",
+  "audioZh": "assets/voice/zh/words/tree.mp3"
  },
  {
   "word": "flower",
@@ -237,7 +260,8 @@
   "theme": "nature",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/flower.mp3"
+  "audio": "assets/voice/words/flower.mp3",
+  "audioZh": "assets/voice/zh/words/flower.mp3"
  },
  {
   "word": "volcano",
@@ -247,7 +271,8 @@
   "theme": "nature",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/volcano.mp3"
+  "audio": "assets/voice/words/volcano.mp3",
+  "audioZh": "assets/voice/zh/words/volcano.mp3"
  },
  {
   "word": "mountain",
@@ -257,7 +282,8 @@
   "theme": "nature",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/mountain.mp3"
+  "audio": "assets/voice/words/mountain.mp3",
+  "audioZh": "assets/voice/zh/words/mountain.mp3"
  },
  {
   "word": "car",
@@ -267,7 +293,8 @@
   "theme": "transport",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/car.mp3"
+  "audio": "assets/voice/words/car.mp3",
+  "audioZh": "assets/voice/zh/words/car.mp3"
  },
  {
   "word": "bus",
@@ -277,7 +304,8 @@
   "theme": "transport",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/bus.mp3"
+  "audio": "assets/voice/words/bus.mp3",
+  "audioZh": "assets/voice/zh/words/bus.mp3"
  },
  {
   "word": "bike",
@@ -287,7 +315,8 @@
   "theme": "transport",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/bike.mp3"
+  "audio": "assets/voice/words/bike.mp3",
+  "audioZh": "assets/voice/zh/words/bike.mp3"
  },
  {
   "word": "ambulance",
@@ -297,7 +326,8 @@
   "theme": "transport",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/ambulance.mp3"
+  "audio": "assets/voice/words/ambulance.mp3",
+  "audioZh": "assets/voice/zh/words/ambulance.mp3"
  },
  {
   "word": "bridge",
@@ -307,7 +337,8 @@
   "theme": "transport",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/bridge.mp3"
+  "audio": "assets/voice/words/bridge.mp3",
+  "audioZh": "assets/voice/zh/words/bridge.mp3"
  },
  {
   "word": "map",
@@ -317,7 +348,8 @@
   "theme": "transport",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/map.mp3"
+  "audio": "assets/voice/words/map.mp3",
+  "audioZh": "assets/voice/zh/words/map.mp3"
  },
  {
   "word": "suitcase",
@@ -327,7 +359,8 @@
   "theme": "transport",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/suitcase.mp3"
+  "audio": "assets/voice/words/suitcase.mp3",
+  "audioZh": "assets/voice/zh/words/suitcase.mp3"
  },
  {
   "word": "house",
@@ -337,7 +370,8 @@
   "theme": "things",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/house.mp3"
+  "audio": "assets/voice/words/house.mp3",
+  "audioZh": "assets/voice/zh/words/house.mp3"
  },
  {
   "word": "book",
@@ -347,7 +381,8 @@
   "theme": "things",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/book.mp3"
+  "audio": "assets/voice/words/book.mp3",
+  "audioZh": "assets/voice/zh/words/book.mp3"
  },
  {
   "word": "clock",
@@ -357,7 +392,8 @@
   "theme": "things",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/clock.mp3"
+  "audio": "assets/voice/words/clock.mp3",
+  "audioZh": "assets/voice/zh/words/clock.mp3"
  },
  {
   "word": "key",
@@ -367,7 +403,8 @@
   "theme": "things",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/key.mp3"
+  "audio": "assets/voice/words/key.mp3",
+  "audioZh": "assets/voice/zh/words/key.mp3"
  },
  {
   "word": "shoe",
@@ -377,7 +414,8 @@
   "theme": "things",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/shoe.mp3"
+  "audio": "assets/voice/words/shoe.mp3",
+  "audioZh": "assets/voice/zh/words/shoe.mp3"
  },
  {
   "word": "hat",
@@ -387,7 +425,8 @@
   "theme": "things",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/hat.mp3"
+  "audio": "assets/voice/words/hat.mp3",
+  "audioZh": "assets/voice/zh/words/hat.mp3"
  },
  {
   "word": "phone",
@@ -397,7 +436,8 @@
   "theme": "things",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/phone.mp3"
+  "audio": "assets/voice/words/phone.mp3",
+  "audioZh": "assets/voice/zh/words/phone.mp3"
  },
  {
   "word": "ball",
@@ -407,7 +447,8 @@
   "theme": "things",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/ball.mp3"
+  "audio": "assets/voice/words/ball.mp3",
+  "audioZh": "assets/voice/zh/words/ball.mp3"
  },
  {
   "word": "umbrella",
@@ -417,7 +458,8 @@
   "theme": "things",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/umbrella.mp3"
+  "audio": "assets/voice/words/umbrella.mp3",
+  "audioZh": "assets/voice/zh/words/umbrella.mp3"
  },
  {
   "word": "chair",
@@ -427,7 +469,8 @@
   "theme": "things",
   "level": 1,
   "image": "",
-  "audio": "assets/voice/words/chair.mp3"
+  "audio": "assets/voice/words/chair.mp3",
+  "audioZh": "assets/voice/zh/words/chair.mp3"
  },
  {
   "word": "gift",
@@ -437,7 +480,8 @@
   "theme": "things",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/gift.mp3"
+  "audio": "assets/voice/words/gift.mp3",
+  "audioZh": "assets/voice/zh/words/gift.mp3"
  },
  {
   "word": "headphones",
@@ -447,7 +491,8 @@
   "theme": "things",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/headphones.mp3"
+  "audio": "assets/voice/words/headphones.mp3",
+  "audioZh": "assets/voice/zh/words/headphones.mp3"
  },
  {
   "word": "hospital",
@@ -457,7 +502,8 @@
   "theme": "things",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/hospital.mp3"
+  "audio": "assets/voice/words/hospital.mp3",
+  "audioZh": "assets/voice/zh/words/hospital.mp3"
  },
  {
   "word": "bank",
@@ -467,7 +513,8 @@
   "theme": "things",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/bank.mp3"
+  "audio": "assets/voice/words/bank.mp3",
+  "audioZh": "assets/voice/zh/words/bank.mp3"
  },
  {
   "word": "doctor",
@@ -477,7 +524,8 @@
   "theme": "things",
   "level": 2,
   "image": "",
-  "audio": "assets/voice/words/doctor.mp3"
+  "audio": "assets/voice/words/doctor.mp3",
+  "audioZh": "assets/voice/zh/words/doctor.mp3"
  },
  {
   "word": "cucumber",
@@ -487,7 +535,8 @@
   "theme": "food",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/cucumber.mp3"
+  "audio": "assets/voice/words/cucumber.mp3",
+  "audioZh": "assets/voice/zh/words/cucumber.mp3"
  },
  {
   "word": "pineapple",
@@ -497,7 +546,8 @@
   "theme": "food",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/pineapple.mp3"
+  "audio": "assets/voice/words/pineapple.mp3",
+  "audioZh": "assets/voice/zh/words/pineapple.mp3"
  },
  {
   "word": "mushroom",
@@ -507,7 +557,8 @@
   "theme": "food",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/mushroom.mp3"
+  "audio": "assets/voice/words/mushroom.mp3",
+  "audioZh": "assets/voice/zh/words/mushroom.mp3"
  },
  {
   "word": "dolphin",
@@ -517,7 +568,8 @@
   "theme": "animal",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/dolphin.mp3"
+  "audio": "assets/voice/words/dolphin.mp3",
+  "audioZh": "assets/voice/zh/words/dolphin.mp3"
  },
  {
   "word": "octopus",
@@ -527,7 +579,8 @@
   "theme": "animal",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/octopus.mp3"
+  "audio": "assets/voice/words/octopus.mp3",
+  "audioZh": "assets/voice/zh/words/octopus.mp3"
  },
  {
   "word": "squirrel",
@@ -537,7 +590,8 @@
   "theme": "animal",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/squirrel.mp3"
+  "audio": "assets/voice/words/squirrel.mp3",
+  "audioZh": "assets/voice/zh/words/squirrel.mp3"
  },
  {
   "word": "rainbow",
@@ -547,7 +601,8 @@
   "theme": "nature",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/rainbow.mp3"
+  "audio": "assets/voice/words/rainbow.mp3",
+  "audioZh": "assets/voice/zh/words/rainbow.mp3"
  },
  {
   "word": "desert",
@@ -557,7 +612,8 @@
   "theme": "nature",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/desert.mp3"
+  "audio": "assets/voice/words/desert.mp3",
+  "audioZh": "assets/voice/zh/words/desert.mp3"
  },
  {
   "word": "thermometer",
@@ -567,7 +623,8 @@
   "theme": "nature",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/thermometer.mp3"
+  "audio": "assets/voice/words/thermometer.mp3",
+  "audioZh": "assets/voice/zh/words/thermometer.mp3"
  },
  {
   "word": "passport",
@@ -577,7 +634,8 @@
   "theme": "transport",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/passport.mp3"
+  "audio": "assets/voice/words/passport.mp3",
+  "audioZh": "assets/voice/zh/words/passport.mp3"
  },
  {
   "word": "compass",
@@ -587,7 +645,8 @@
   "theme": "transport",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/compass.mp3"
+  "audio": "assets/voice/words/compass.mp3",
+  "audioZh": "assets/voice/zh/words/compass.mp3"
  },
  {
   "word": "helicopter",
@@ -597,7 +656,8 @@
   "theme": "transport",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/helicopter.mp3"
+  "audio": "assets/voice/words/helicopter.mp3",
+  "audioZh": "assets/voice/zh/words/helicopter.mp3"
  },
  {
   "word": "receipt",
@@ -607,7 +667,8 @@
   "theme": "things",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/receipt.mp3"
+  "audio": "assets/voice/words/receipt.mp3",
+  "audioZh": "assets/voice/zh/words/receipt.mp3"
  },
  {
   "word": "envelope",
@@ -617,7 +678,8 @@
   "theme": "things",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/envelope.mp3"
+  "audio": "assets/voice/words/envelope.mp3",
+  "audioZh": "assets/voice/zh/words/envelope.mp3"
  },
  {
   "word": "battery",
@@ -627,7 +689,8 @@
   "theme": "things",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/battery.mp3"
+  "audio": "assets/voice/words/battery.mp3",
+  "audioZh": "assets/voice/zh/words/battery.mp3"
  },
  {
   "word": "ladder",
@@ -637,7 +700,8 @@
   "theme": "things",
   "level": 3,
   "image": "",
-  "audio": "assets/voice/words/ladder.mp3"
+  "audio": "assets/voice/words/ladder.mp3",
+  "audioZh": "assets/voice/zh/words/ladder.mp3"
  },
  {
   "word": "avocado",
@@ -647,7 +711,8 @@
   "theme": "food",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/avocado.mp3"
+  "audio": "assets/voice/words/avocado.mp3",
+  "audioZh": "assets/voice/zh/words/avocado.mp3"
  },
  {
   "word": "broccoli",
@@ -657,7 +722,8 @@
   "theme": "food",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/broccoli.mp3"
+  "audio": "assets/voice/words/broccoli.mp3",
+  "audioZh": "assets/voice/zh/words/broccoli.mp3"
  },
  {
   "word": "garlic",
@@ -667,7 +733,8 @@
   "theme": "food",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/garlic.mp3"
+  "audio": "assets/voice/words/garlic.mp3",
+  "audioZh": "assets/voice/zh/words/garlic.mp3"
  },
  {
   "word": "hedgehog",
@@ -677,7 +744,8 @@
   "theme": "animal",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/hedgehog.mp3"
+  "audio": "assets/voice/words/hedgehog.mp3",
+  "audioZh": "assets/voice/zh/words/hedgehog.mp3"
  },
  {
   "word": "flamingo",
@@ -687,7 +755,8 @@
   "theme": "animal",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/flamingo.mp3"
+  "audio": "assets/voice/words/flamingo.mp3",
+  "audioZh": "assets/voice/zh/words/flamingo.mp3"
  },
  {
   "word": "peacock",
@@ -697,7 +766,8 @@
   "theme": "animal",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/peacock.mp3"
+  "audio": "assets/voice/words/peacock.mp3",
+  "audioZh": "assets/voice/zh/words/peacock.mp3"
  },
  {
   "word": "tornado",
@@ -707,7 +777,8 @@
   "theme": "nature",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/tornado.mp3"
+  "audio": "assets/voice/words/tornado.mp3",
+  "audioZh": "assets/voice/zh/words/tornado.mp3"
  },
  {
   "word": "comet",
@@ -717,7 +788,8 @@
   "theme": "nature",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/comet.mp3"
+  "audio": "assets/voice/words/comet.mp3",
+  "audioZh": "assets/voice/zh/words/comet.mp3"
  },
  {
   "word": "satellite",
@@ -727,7 +799,8 @@
   "theme": "transport",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/satellite.mp3"
+  "audio": "assets/voice/words/satellite.mp3",
+  "audioZh": "assets/voice/zh/words/satellite.mp3"
  },
  {
   "word": "anchor",
@@ -737,7 +810,8 @@
   "theme": "transport",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/anchor.mp3"
+  "audio": "assets/voice/words/anchor.mp3",
+  "audioZh": "assets/voice/zh/words/anchor.mp3"
  },
  {
   "word": "tractor",
@@ -747,7 +821,8 @@
   "theme": "transport",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/tractor.mp3"
+  "audio": "assets/voice/words/tractor.mp3",
+  "audioZh": "assets/voice/zh/words/tractor.mp3"
  },
  {
   "word": "microscope",
@@ -757,7 +832,8 @@
   "theme": "things",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/microscope.mp3"
+  "audio": "assets/voice/words/microscope.mp3",
+  "audioZh": "assets/voice/zh/words/microscope.mp3"
  },
  {
   "word": "telescope",
@@ -767,7 +843,8 @@
   "theme": "things",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/telescope.mp3"
+  "audio": "assets/voice/words/telescope.mp3",
+  "audioZh": "assets/voice/zh/words/telescope.mp3"
  },
  {
   "word": "stethoscope",
@@ -777,7 +854,8 @@
   "theme": "things",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/stethoscope.mp3"
+  "audio": "assets/voice/words/stethoscope.mp3",
+  "audioZh": "assets/voice/zh/words/stethoscope.mp3"
  },
  {
   "word": "magnet",
@@ -787,7 +865,8 @@
   "theme": "things",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/magnet.mp3"
+  "audio": "assets/voice/words/magnet.mp3",
+  "audioZh": "assets/voice/zh/words/magnet.mp3"
  },
  {
   "word": "hourglass",
@@ -797,6 +876,7 @@
   "theme": "things",
   "level": 4,
   "image": "",
-  "audio": "assets/voice/words/hourglass.mp3"
+  "audio": "assets/voice/words/hourglass.mp3",
+  "audioZh": "assets/voice/zh/words/hourglass.mp3"
  }
 ]
