@@ -414,7 +414,7 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
         <label><input type="radio" name="drive-kind" id="dk-mix" value="mix" checked> 單字和句子混合</label>
         <label><input type="radio" name="drive-kind" id="dk-word" value="word"> 只練單字</label>
         <label><input type="radio" name="drive-kind" id="dk-sent" value="sent"> 只練句子</label>
-        <label><input type="radio" name="drive-kind" id="dk-scene" value="scene"> 情境對話：旅遊、餐廳、購物、職場、生活</label>
+        <label><input type="radio" name="drive-kind" id="dk-scene" value="scene"> 情境對話：旅遊、餐廳、購物、生活、社交、職場、校園、緊急狀況</label>
       </fieldset>
       <div class="drv-scenes" id="drive-scenes" hidden>
         <div class="drv-chips" id="drive-cats" role="group" aria-label="情境分類"></div>
@@ -969,14 +969,27 @@ function listen(ms){return new Promise(res=>{
   try{r.start();driveState('🎤 請說英文','listening')}catch(e){clearTimeout(t);D.rec=null;res(null)}
 })}
 const CONTR={"i'm":"i am","it's":"it is","don't":"do not","can't":"cannot","won't":"will not","i've":"i have","she's":"she is","he's":"he is","we're":"we are","i'd":"i would",
-  "that's":"that is","what's":"what is","where's":"where is","there's":"there is","let's":"let us","i'll":"i will","we'll":"we will","you're":"you are","they're":"they are","isn't":"is not","doesn't":"does not"};
-const norm=s=>String(s).toLowerCase().replace(/[’']/g,"'").split(/\s+/).map(w=>CONTR[w.replace(/[^a-z']/g,'')]||w).join(' ').replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
+  "that's":"that is","what's":"what is","where's":"where is","there's":"there is","let's":"let us","i'll":"i will","we'll":"we will","you're":"you are","they're":"they are","isn't":"is not","doesn't":"does not",
+  "hasn't":"has not","haven't":"have not","didn't":"did not","wasn't":"was not","aren't":"are not","couldn't":"could not","shouldn't":"should not","wouldn't":"would not",
+  "here's":"here is","how's":"how is","who's":"who is","you've":"you have","we've":"we have","they've":"they have","he'll":"he will","she'll":"she will","they'll":"they will","it'll":"it will","you'll":"you will","we'd":"we would","you'd":"you would","ok":"okay"};
+/* Recognizers write numbers as digits ("5 days", "3:00", "2nd"); spell them out so they match the written answer. */
+const NUM1='zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen'.split(' '),
+  NUM10='  twenty thirty forty fifty sixty seventy eighty ninety'.split(' '),ORD={1:'first',2:'second',3:'third',4:'fourth',5:'fifth',6:'sixth',7:'seventh',8:'eighth',9:'ninth',10:'tenth'};
+function numWords(n){if(n<20)return NUM1[n];if(n<100)return NUM10[Math.floor(n/10)]+(n%10?' '+NUM1[n%10]:'');
+  if(n<1000)return NUM1[Math.floor(n/100)]+' hundred'+(n%100?' '+numWords(n%100):'');if(n<10000)return numWords(Math.floor(n/1000))+' thousand'+(n%1000?' '+numWords(n%1000):'');return String(n)}
+const spellNums=s=>s.replace(/\b(\d{1,2}):00\b/g,"$1 o'clock").replace(/\b(\d{1,2})(st|nd|rd|th)\b/gi,(m,d)=>ORD[+d]||m).replace(/(\d),(\d{3})/g,'$1$2').replace(/\b\d{1,4}\b/g,m=>numWords(+m));
+const norm=s=>spellNums(String(s).toLowerCase().replace(/[’']/g,"'")).split(/\s+/).map(w=>CONTR[w.replace(/[^a-z']/g,'')]||w).join(' ').replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
 function lev(a,b){const d=Array.from({length:a.length+1},(_,i)=>[i]);for(let j=1;j<=b.length;j++)d[0][j]=j;
   for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[a.length][b.length]}
 function wordOk(target,alt){const t=norm(target),toks=norm(alt).split(' ');
   return norm(alt)===t||toks.some(w=>w===t||w===t+'s'||w===t+'es'||(t.length>=5&&lev(w,t)<=1))}
-function sentScore(target,alt){const t=norm(target).split(' '),a=norm(alt).split(' ');const pool=a.slice();let hit=0;
-  t.forEach(w=>{const k=pool.indexOf(w);if(k>=0){hit++;pool.splice(k,1)}});return hit/t.length}
+const STOPW=new Set('i you he she it we they me us him them my your his her our their am is are was were be been being the a an to of in on at for and or but this that these those do does did have has had will would can could should may might please there here so not no yes just very some any with by from up out as what where when how which who let'.split(' '));
+function sentScore(target,alt){const t=norm(target).split(' '),a=norm(alt).split(' ');
+  if(t.join('')===a.join(''))return 1;/* spacing differences: "check out" / "checkout" */const pool=a.slice();let hit=0;
+  t.forEach(w=>{const k=pool.indexOf(w);if(k>=0){hit++;pool.splice(k,1)}});
+  // The meaningful words must match too, so "here for business" does not pass for "here for sightseeing".
+  const keys=t.filter(w=>!STOPW.has(w)),kh=keys.filter(w=>a.includes(w)).length;
+  return Math.min(hit/t.length,keys.length?kh/keys.length:1)}
 function driveState(txt,cls){const el=$('drive-state');el.textContent=txt;el.className='drv-state'+(cls?' '+cls:'')}
 function driveStats(){$('drive-stats').textContent=D.listen&&!D.seen?`已練 ${D.n} 題（跟讀模式不計分）`:`答對 ${D.ok} / ${D.seen} 題 · 累計 ${owned().length} 張卡`}
 async function wakeOn(){try{if(navigator.wakeLock&&!D.wake){D.wake=await navigator.wakeLock.request('screen');D.wake.addEventListener('release',()=>{D.wake=null})}}catch(e){}}
@@ -991,17 +1004,27 @@ function logDrive(){
 }
 function newRep(){S.rep={newW:new Map(),revW:new Map(),weakW:new Map(),newS:new Map(),revS:new Map(),weakS:new Map()}}
 /* Scene practice: the other person speaks first (English), then a Chinese cue for what you answer. */
-function sceneCat(){return SCENES.find(c=>c.id===DP.cat)||SCENES[0]}
-function sceneItems(){const c=sceneCat();if(!c)return[];
-  return (DP.scene?c.scenes.filter(x=>x.id===DP.scene):c.scenes).flatMap(x=>x.items.map(i=>({en:i.en,zh:i.zh,q:i.q||'',scn:`${c.name} · ${x.name}`,lv:1,au:'',az:'',sc:'💬'})))}
-function sceneLabel(){const c=sceneCat();if(!c)return'';const x=c.scenes.find(v=>v.id===DP.scene);return x?`${c.name} · ${x.name}`:`${c.name}（全部）`}
+/* DP.cat 'all' mixes every scene. A single scene plays in conversation order; a whole category or 'all' is shuffled. */
+const LV_TAG={1:'入門',2:'進階',3:'挑戰'};
+function sceneCat(){return DP.cat==='all'?null:(SCENES.find(c=>c.id===DP.cat)||SCENES[0])}
+function sceneItems(){const cats=DP.cat==='all'?SCENES:[sceneCat()].filter(Boolean);
+  return cats.flatMap(c=>(DP.cat!=='all'&&DP.scene?c.scenes.filter(x=>x.id===DP.scene):c.scenes)
+    .flatMap(x=>x.items.map(i=>({en:i.en,zh:i.zh,q:i.q||'',scn:`${c.name} · ${x.name}`,lv:x.lv||1,au:'',az:'',sc:'💬'}))))}
+const sceneOrdered=()=>DP.cat!=='all'&&!!DP.scene;
+function sceneLabel(){if(DP.cat==='all')return'隨機情境';const c=sceneCat();if(!c)return'';const x=c.scenes.find(v=>v.id===DP.scene);return x?`${c.name} · ${x.name}`:`${c.name}（全部）`}
 function paintScenes(){
   const box=$('drive-scenes');box.hidden=DP.kind!=='scene';if(box.hidden)return;
   if(!SCENES.length){$('drive-cats').innerHTML='';$('drive-scs').innerHTML='';$('drive-scene-note').textContent='情境題目沒有載入成功，請重新整理頁面再試一次。';return}
-  const c=sceneCat();DP.cat=c.id;if(!c.scenes.some(x=>x.id===DP.scene))DP.scene='';
-  $('drive-cats').innerHTML=SCENES.map(v=>`<button data-cat="${esc(v.id)}" aria-pressed="${v.id===c.id}">${v.icon||''} ${esc(v.name)}</button>`).join('');
-  $('drive-scs').innerHTML=`<button data-scene="" aria-pressed="${!DP.scene}">全部${esc(c.name)}</button>`+c.scenes.map(v=>`<button data-scene="${esc(v.id)}" aria-pressed="${v.id===DP.scene}">${esc(v.name)}</button>`).join('');
-  $('drive-scene-note').textContent=`${sceneLabel()}：共 ${sceneItems().length} 句。對方會先用英文開口，你聽中文提示，再用英文回答。`;
+  const c=sceneCat();
+  if(c){DP.cat=c.id;if(!c.scenes.some(x=>x.id===DP.scene))DP.scene=''}
+  const nScenes=SCENES.reduce((n,v)=>n+v.scenes.length,0);
+  $('drive-cats').innerHTML=`<button data-cat="all" aria-pressed="${!c}">🎲 隨機</button>`+SCENES.map(v=>`<button data-cat="${esc(v.id)}" aria-pressed="${!!c&&v.id===c.id}">${v.icon||''} ${esc(v.name)}</button>`).join('');
+  $('drive-scs').hidden=!c;
+  $('drive-scs').innerHTML=c?`<button data-scene="" aria-pressed="${!DP.scene}">全部${esc(c.name)}</button>`+c.scenes.map(v=>`<button data-scene="${esc(v.id)}" aria-pressed="${v.id===DP.scene}">${esc(v.name)}</button>`).join(''):'';
+  const x=c&&c.scenes.find(v=>v.id===DP.scene);
+  $('drive-scene-note').textContent=!c?`從 ${SCENES.length} 大類、${nScenes} 個場景隨機出題，共 ${sceneItems().length} 句。`
+    :x?`${sceneLabel()}（${LV_TAG[x.lv]||'入門'}）：${x.items.length} 句，依真實對話的順序練習。對方先用英文開口，你聽中文提示，再用英文回答。`
+    :`${sceneLabel()}：${c.scenes.length} 個場景、共 ${sceneItems().length} 句，隨機出題。`;
   $('drive-cats').querySelectorAll('button').forEach(b=>b.onclick=()=>{DP.cat=b.dataset.cat;DP.scene='';saveDP();paintScenes()});
   $('drive-scs').querySelectorAll('button').forEach(b=>b.onclick=()=>{DP.scene=b.dataset.scene;saveDP();paintScenes()});
 }
@@ -1020,7 +1043,7 @@ async function driveLoop(resume){
     let it,kind;
     if(resume&&D.cur){({it,kind}=D.cur);resume=false}
     else{
-      if(D.kind==='scene'){if(!D.queue.length)D.queue=shuffle(sceneItems());it=D.queue.shift();kind='scene';if(!it){stopDrive();return}}
+      if(D.kind==='scene'){if(!D.queue.length)D.queue=sceneOrdered()?sceneItems():shuffle(sceneItems());it=D.queue.shift();kind='scene';if(!it){stopDrive();return}}
       else{const useS=D.kind==='sent'||(D.kind==='mix'&&D.n%3===2);it=take(useS?'s':'w');kind=useS?'s':'w'}
       D.n++;D.cur={it,kind};
     }

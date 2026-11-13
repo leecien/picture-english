@@ -1,249 +1,604 @@
 {
-  "_說明": "開車模式的情境對話。q 是對方先說的英文（可省略），en 是你要說的英文，zh 是中文提示。答對會記進句子紀錄（pm-sents）。新增場景：在分類的 scenes 加一筆，id 用英文小寫。",
+  "_說明": "開車模式的情境對話。q 是對方先說的英文（可省略），en 是你要說的英文，zh 是中文提示；lv 是難度（1 入門、2 進階、3 挑戰）。單一場景依對話順序出題，全部或隨機時打散。答對記進句子紀錄（pm-sents）。英文避免數字與連字號，語音辨識比較好判斷。",
   "categories": [
-    {
-      "id": "travel",
-      "name": "旅遊",
-      "icon": "✈️",
-      "scenes": [
-        {
-          "id": "airport",
-          "name": "機場報到",
-          "items": [
-            {"q": "Can I see your passport, please?", "en": "Here is my passport.", "zh": "這是我的護照。"},
-            {"q": "Do you have any bags to check?", "en": "Yes, I have one suitcase.", "zh": "有，我有一個行李箱。"},
-            {"en": "Can I have a window seat?", "zh": "可以給我靠窗的座位嗎？"},
-            {"en": "Can I have an aisle seat?", "zh": "可以給我靠走道的座位嗎？"},
-            {"q": "Is this bag your carry-on?", "en": "Yes, this is my carry-on bag.", "zh": "對，這是我的隨身行李。"},
-            {"en": "What time does boarding start?", "zh": "幾點開始登機？"},
-            {"en": "Which gate is it?", "zh": "是哪一個登機門？"},
-            {"en": "Is the flight on time?", "zh": "班機準時嗎？"}
-          ]
-        },
-        {
-          "id": "customs",
-          "name": "海關入境",
-          "items": [
-            {"q": "What is the purpose of your visit?", "en": "I am here for sightseeing.", "zh": "我是來觀光的。"},
-            {"q": "What is the purpose of your visit?", "en": "I am here on business.", "zh": "我是來出差的。"},
-            {"q": "How long will you stay?", "en": "I will stay for five days.", "zh": "我會待五天。"},
-            {"q": "Where are you staying?", "en": "I am staying at a hotel downtown.", "zh": "我住在市中心的飯店。"},
-            {"q": "Is this your first visit?", "en": "Yes, this is my first time here.", "zh": "對，這是我第一次來。"},
-            {"q": "Do you have anything to declare?", "en": "No, I have nothing to declare.", "zh": "沒有，我沒有東西要申報。"},
-            {"q": "Can I see your return ticket?", "en": "Sure, here is my return ticket.", "zh": "好的，這是我的回程機票。"},
-            {"q": "Are you traveling alone?", "en": "No, I am traveling with my family.", "zh": "不是，我和家人一起旅行。"}
-          ]
-        },
-        {
-          "id": "hotel",
-          "name": "飯店",
-          "items": [
-            {"q": "Good evening. How can I help you?", "en": "I have a reservation under the name Chen.", "zh": "我有訂房，名字是陳。"},
-            {"q": "How many nights will you stay?", "en": "Three nights, please.", "zh": "住三晚。"},
-            {"en": "What time is check-out?", "zh": "幾點退房？"},
-            {"en": "Is breakfast included?", "zh": "有含早餐嗎？"},
-            {"en": "Can I get some extra towels?", "zh": "可以多給我幾條毛巾嗎？"},
-            {"en": "The air conditioner is not working.", "zh": "冷氣壞了。"},
-            {"en": "Can I leave my luggage here?", "zh": "可以把行李寄放在這裡嗎？"},
-            {"en": "I would like to check out, please.", "zh": "我要退房。"}
-          ]
-        },
-        {
-          "id": "directions",
-          "name": "問路",
-          "items": [
-            {"en": "Excuse me, where is the train station?", "zh": "不好意思，請問火車站在哪裡？"},
-            {"en": "How do I get to the museum?", "zh": "請問博物館怎麼去？"},
-            {"en": "Is it far from here?", "zh": "離這裡遠嗎？"},
-            {"en": "Can I walk there?", "zh": "走路到得了嗎？"},
-            {"q": "It is about ten minutes on foot.", "en": "Thank you for your help.", "zh": "謝謝你的幫忙。"},
-            {"en": "Could you show me on the map?", "zh": "可以在地圖上指給我看嗎？"},
-            {"en": "Where is the nearest subway station?", "zh": "最近的地鐵站在哪裡？"},
-            {"en": "I think I am lost.", "zh": "我好像迷路了。"}
-          ]
-        },
-        {
-          "id": "transport",
-          "name": "搭車",
-          "items": [
-            {"q": "Where to?", "en": "Please take me to this address.", "zh": "請載我到這個地址。"},
-            {"en": "How much is the fare?", "zh": "車資多少錢？"},
-            {"en": "One ticket to the airport, please.", "zh": "一張到機場的票。"},
-            {"en": "Does this train go downtown?", "zh": "這班火車有到市中心嗎？"},
-            {"en": "Where should I change trains?", "zh": "我應該在哪裡轉車？"},
-            {"en": "Please stop here.", "zh": "請在這裡停車。"},
-            {"en": "Can I pay by credit card?", "zh": "可以刷卡嗎？"},
-            {"en": "How long does it take to get there?", "zh": "到那裡要多久？"}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "dining",
-      "name": "餐廳",
-      "icon": "🍽️",
-      "scenes": [
-        {
-          "id": "order",
-          "name": "點餐",
-          "items": [
-            {"q": "How many people?", "en": "A table for two, please.", "zh": "兩位，謝謝。"},
-            {"en": "Can I see the menu, please?", "zh": "可以給我看菜單嗎？"},
-            {"en": "What do you recommend?", "zh": "你推薦什麼？"},
-            {"q": "Are you ready to order?", "en": "Yes, I would like the chicken salad.", "zh": "好了，我要雞肉沙拉。"},
-            {"en": "I am allergic to peanuts.", "zh": "我對花生過敏。"},
-            {"q": "How would you like your steak?", "en": "Medium, please.", "zh": "五分熟，謝謝。"},
-            {"en": "Can I have some water, please?", "zh": "可以給我一些水嗎？"},
-            {"en": "No ice, please.", "zh": "不要加冰塊。"}
-          ]
-        },
-        {
-          "id": "bill",
-          "name": "結帳",
-          "items": [
-            {"en": "Can I have the bill, please?", "zh": "可以給我帳單嗎？"},
-            {"en": "Can we pay separately?", "zh": "我們可以分開付嗎？"},
-            {"q": "Cash or card?", "en": "Card, please.", "zh": "刷卡。"},
-            {"en": "I think there is a mistake on the bill.", "zh": "帳單好像有錯。"},
-            {"en": "Can I get this to go?", "zh": "這個可以打包帶走嗎？"},
-            {"en": "Keep the change.", "zh": "不用找了。"}
-          ]
-        },
-        {
-          "id": "cafe",
-          "name": "咖啡店",
-          "items": [
-            {"q": "What can I get for you?", "en": "A large latte, please.", "zh": "一杯大杯拿鐵。"},
-            {"q": "For here or to go?", "en": "To go, please.", "zh": "外帶。"},
-            {"en": "Can I have it with less sugar?", "zh": "可以少糖嗎？"},
-            {"en": "Do you have oat milk?", "zh": "有燕麥奶嗎？"},
-            {"en": "Can I have a receipt?", "zh": "可以給我收據嗎？"},
-            {"q": "Anything else?", "en": "No, that is all. Thank you.", "zh": "沒有了，謝謝。"}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "shopping",
-      "name": "購物",
-      "icon": "🛍️",
-      "scenes": [
-        {
-          "id": "clothes",
-          "name": "逛街試穿",
-          "items": [
-            {"q": "Can I help you?", "en": "I am just looking, thank you.", "zh": "我只是看看，謝謝。"},
-            {"en": "Can I try this on?", "zh": "我可以試穿這件嗎？"},
-            {"en": "Do you have this in a smaller size?", "zh": "這件有小一點的尺寸嗎？"},
-            {"en": "Do you have it in another color?", "zh": "有別的顏色嗎？"},
-            {"en": "Where is the fitting room?", "zh": "試衣間在哪裡？"},
-            {"en": "How much is this?", "zh": "這個多少錢？"},
-            {"en": "It is a little too big.", "zh": "有點太大了。"},
-            {"en": "I will take it.", "zh": "我要買這個。"}
-          ]
-        },
-        {
-          "id": "checkout",
-          "name": "結帳退換",
-          "items": [
-            {"en": "Is this on sale?", "zh": "這個有打折嗎？"},
-            {"en": "Can I get a discount?", "zh": "可以算便宜一點嗎？"},
-            {"en": "Do you accept credit cards?", "zh": "你們收信用卡嗎？"},
-            {"en": "Can I get a tax refund?", "zh": "可以退稅嗎？"},
-            {"en": "I would like to return this.", "zh": "我想退這個。"},
-            {"en": "Can I exchange it for a different size?", "zh": "可以換別的尺寸嗎？"},
-            {"q": "Do you need a bag?", "en": "No, thank you. I have one.", "zh": "不用，謝謝，我有袋子。"}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "work",
-      "name": "職場",
-      "icon": "💼",
-      "scenes": [
-        {
-          "id": "intro",
-          "name": "自我介紹",
-          "items": [
-            {"en": "Nice to meet you.", "zh": "很高興認識你。"},
-            {"q": "What do you do?", "en": "I am a software engineer.", "zh": "我是軟體工程師。"},
-            {"en": "I work in the marketing department.", "zh": "我在行銷部工作。"},
-            {"en": "I have worked here for three years.", "zh": "我在這裡工作三年了。"},
-            {"en": "Let me introduce my colleague.", "zh": "讓我介紹一下我的同事。"},
-            {"en": "Here is my business card.", "zh": "這是我的名片。"}
-          ]
-        },
-        {
-          "id": "meeting",
-          "name": "開會",
-          "items": [
-            {"en": "Let's get started.", "zh": "我們開始吧。"},
-            {"en": "Could you say that again?", "zh": "可以再說一次嗎？"},
-            {"en": "I agree with you.", "zh": "我同意你的看法。"},
-            {"en": "I have a different idea.", "zh": "我有不同的想法。"},
-            {"en": "Can we move on to the next topic?", "zh": "我們可以進入下一個議題嗎？"},
-            {"en": "Let's schedule another meeting.", "zh": "我們再約一次會議吧。"},
-            {"en": "I will send you the report today.", "zh": "我今天會把報告寄給你。"}
-          ]
-        },
-        {
-          "id": "phone",
-          "name": "電話",
-          "items": [
-            {"en": "May I speak to Mr. Lin?", "zh": "請問林先生在嗎？"},
-            {"q": "He is not here right now.", "en": "Can I leave a message?", "zh": "我可以留言嗎？"},
-            {"en": "I am calling about the meeting tomorrow.", "zh": "我打來是關於明天的會議。"},
-            {"en": "Could you speak more slowly?", "zh": "可以說慢一點嗎？"},
-            {"en": "I will call you back later.", "zh": "我晚點回電給你。"},
-            {"en": "Thank you for your quick reply.", "zh": "謝謝你的快速回覆。"}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "life",
-      "name": "生活",
-      "icon": "🏠",
-      "scenes": [
-        {
-          "id": "doctor",
-          "name": "看醫生",
-          "items": [
-            {"q": "What seems to be the problem?", "en": "I have a headache.", "zh": "我頭痛。"},
-            {"en": "I have a fever.", "zh": "我發燒了。"},
-            {"en": "I have a sore throat.", "zh": "我喉嚨痛。"},
-            {"en": "I feel dizzy.", "zh": "我頭暈。"},
-            {"en": "How often should I take this medicine?", "zh": "這個藥要多久吃一次？"},
-            {"en": "Do I need a prescription?", "zh": "需要處方箋嗎？"},
-            {"en": "Where is the nearest pharmacy?", "zh": "最近的藥局在哪裡？"}
-          ]
-        },
-        {
-          "id": "chat",
-          "name": "聊天交朋友",
-          "items": [
-            {"q": "Where are you from?", "en": "I am from Taiwan.", "zh": "我來自台灣。"},
-            {"en": "What do you do for fun?", "zh": "你平常喜歡做什麼？"},
-            {"en": "I like hiking on weekends.", "zh": "我週末喜歡去爬山。"},
-            {"en": "How was your weekend?", "zh": "你週末過得怎麼樣？"},
-            {"en": "It was nice talking to you.", "zh": "很高興和你聊天。"},
-            {"en": "Can I have your phone number?", "zh": "可以給我你的電話號碼嗎？"}
-          ]
-        },
-        {
-          "id": "emergency",
-          "name": "緊急求助",
-          "items": [
-            {"en": "I lost my wallet.", "zh": "我的錢包不見了。"},
-            {"en": "Please call the police.", "zh": "請幫我報警。"},
-            {"en": "I need a doctor.", "zh": "我需要看醫生。"},
-            {"en": "Someone stole my bag.", "zh": "有人偷了我的包包。"},
-            {"en": "Where is the lost and found?", "zh": "失物招領處在哪裡？"},
-            {"en": "Can you help me, please?", "zh": "可以請你幫我嗎？"}
-          ]
-        }
-      ]
-    }
+    {"id": "travel", "name": "旅遊", "icon": "✈️", "scenes": [
+      {"id": "airport", "name": "機場報到", "lv": 1, "items": [
+        {"q": "Good morning. Where are you flying today?", "en": "I'm flying to Tokyo.", "zh": "我要飛東京。"},
+        {"q": "May I see your passport, please?", "en": "Here is my passport.", "zh": "這是我的護照。"},
+        {"q": "Do you have any bags to check?", "en": "Yes, I have one suitcase.", "zh": "有，我有一個行李箱。"},
+        {"q": "Please put your bag on the scale.", "en": "Is it overweight?", "zh": "有超重嗎？"},
+        {"en": "Can I have a window seat?", "zh": "可以給我靠窗的座位嗎？"},
+        {"en": "Can I have an aisle seat, please?", "zh": "可以給我靠走道的座位嗎？"},
+        {"en": "Could we sit together?", "zh": "我們可以坐在一起嗎？"},
+        {"en": "What time does boarding start?", "zh": "幾點開始登機？"},
+        {"en": "Which gate should I go to?", "zh": "我應該去哪個登機門？"},
+        {"q": "Your flight is delayed by one hour.", "en": "Will I miss my connecting flight?", "zh": "我會趕不上轉機嗎？"}
+      ]},
+      {"id": "security", "name": "安檢與登機", "lv": 1, "items": [
+        {"q": "Please take out your laptop.", "en": "Should I take off my shoes too?", "zh": "鞋子也要脫嗎？"},
+        {"q": "Do you have any liquids in your bag?", "en": "Just a small bottle of lotion.", "zh": "只有一小瓶乳液。"},
+        {"en": "Can I bring this on the plane?", "zh": "這個可以帶上飛機嗎？"},
+        {"q": "Please step through the gate.", "en": "Okay, no problem.", "zh": "好，沒問題。"},
+        {"en": "Is this the line for boarding?", "zh": "這是登機的隊伍嗎？"},
+        {"q": "Boarding pass, please.", "en": "Here you are.", "zh": "給你。"},
+        {"en": "Excuse me, I think you are in my seat.", "zh": "不好意思，你好像坐到我的位子了。"},
+        {"en": "Could you help me put my bag up there?", "zh": "可以幫我把包包放上去嗎？"}
+      ]},
+      {"id": "inflight", "name": "飛機上", "lv": 1, "items": [
+        {"q": "Would you like chicken or beef?", "en": "Chicken, please.", "zh": "雞肉，謝謝。"},
+        {"q": "Anything to drink?", "en": "Orange juice, please.", "zh": "柳橙汁，謝謝。"},
+        {"en": "Could I have a blanket?", "zh": "可以給我一條毯子嗎？"},
+        {"en": "Could I have another glass of water?", "zh": "可以再給我一杯水嗎？"},
+        {"en": "May I recline my seat?", "zh": "我可以把椅背往後倒嗎？"},
+        {"en": "Excuse me, could I get out?", "zh": "不好意思，可以讓我出去一下嗎？"},
+        {"en": "How long is the flight?", "zh": "飛行時間多久？"},
+        {"en": "I feel a little sick.", "zh": "我覺得有點不舒服。"},
+        {"q": "Do you need an arrival card?", "en": "Yes, could I have one, please?", "zh": "要，可以給我一張嗎？"}
+      ]},
+      {"id": "customs", "name": "海關入境", "lv": 1, "items": [
+        {"q": "What is the purpose of your visit?", "en": "I'm here for sightseeing.", "zh": "我是來觀光的。"},
+        {"q": "What is the purpose of your visit?", "en": "I'm here on business.", "zh": "我是來出差的。"},
+        {"q": "How long will you stay?", "en": "I will stay for five days.", "zh": "我會待五天。"},
+        {"q": "Where are you staying?", "en": "I'm staying at a hotel downtown.", "zh": "我住在市中心的飯店。"},
+        {"q": "Is this your first visit?", "en": "Yes, this is my first time here.", "zh": "對，這是我第一次來。"},
+        {"q": "What do you do?", "en": "I'm an office worker.", "zh": "我是上班族。"},
+        {"q": "Are you traveling alone?", "en": "No, I'm traveling with my family.", "zh": "不是，我和家人一起旅行。"},
+        {"q": "Can I see your return ticket?", "en": "Sure, here is my return ticket.", "zh": "好的，這是我的回程機票。"},
+        {"q": "How much cash are you carrying?", "en": "About five hundred dollars.", "zh": "大約五百美元。"},
+        {"q": "Do you have anything to declare?", "en": "No, I have nothing to declare.", "zh": "沒有，我沒有東西要申報。"}
+      ]},
+      {"id": "baggage", "name": "領行李", "lv": 2, "items": [
+        {"en": "Where is the baggage claim?", "zh": "行李提領處在哪裡？"},
+        {"en": "Which belt is for my flight?", "zh": "我的班機在哪個轉盤？"},
+        {"en": "Where can I get a cart?", "zh": "哪裡可以拿推車？"},
+        {"en": "My suitcase hasn't arrived.", "zh": "我的行李箱還沒出來。"},
+        {"en": "I think my bag is lost.", "zh": "我的行李好像遺失了。"},
+        {"q": "Can you describe your bag?", "en": "It's a large black suitcase.", "zh": "是一個大的黑色行李箱。"},
+        {"en": "My suitcase is damaged.", "zh": "我的行李箱壞了。"},
+        {"q": "Where should we send it?", "en": "Please send it to my hotel.", "zh": "請把它送到我的飯店。"}
+      ]},
+      {"id": "money", "name": "換匯提款", "lv": 2, "items": [
+        {"en": "Where can I exchange money?", "zh": "哪裡可以換錢？"},
+        {"en": "What is the exchange rate today?", "zh": "今天的匯率是多少？"},
+        {"en": "I'd like to change three hundred dollars.", "zh": "我想換三百美元。"},
+        {"en": "Is there a service fee?", "zh": "有手續費嗎？"},
+        {"en": "Could I have some small bills?", "zh": "可以給我一些小鈔嗎？"},
+        {"en": "Is there an ATM near here?", "zh": "這附近有提款機嗎？"},
+        {"en": "The machine kept my card.", "zh": "機器把我的卡吞了。"}
+      ]},
+      {"id": "hotel", "name": "飯店入住", "lv": 1, "items": [
+        {"q": "Good evening. How can I help you?", "en": "I'd like to check in, please.", "zh": "我要辦理入住。"},
+        {"q": "Do you have a reservation?", "en": "Yes, under the name Chen.", "zh": "有，名字是陳。"},
+        {"q": "How many nights will you stay?", "en": "Three nights, please.", "zh": "住三晚。"},
+        {"en": "Is breakfast included?", "zh": "有含早餐嗎？"},
+        {"en": "What time is breakfast?", "zh": "早餐幾點開始？"},
+        {"en": "Can I have a room with a view?", "zh": "可以給我有景觀的房間嗎？"},
+        {"en": "Could I check in early?", "zh": "可以提早入住嗎？"},
+        {"en": "Can I leave my luggage here?", "zh": "可以把行李寄放在這裡嗎？"},
+        {"en": "What time is check out?", "zh": "幾點退房？"},
+        {"en": "I'd like to check out, please.", "zh": "我要退房。"}
+      ]},
+      {"id": "roomservice", "name": "客房問題", "lv": 2, "items": [
+        {"en": "The air conditioner isn't working.", "zh": "冷氣壞了。"},
+        {"en": "There's no hot water.", "zh": "沒有熱水。"},
+        {"en": "Can I get some extra towels?", "zh": "可以多給我幾條毛巾嗎？"},
+        {"en": "The room is too noisy.", "zh": "房間太吵了。"},
+        {"en": "Could I change rooms?", "zh": "可以換房間嗎？"},
+        {"en": "Could you clean my room, please?", "zh": "可以幫我打掃房間嗎？"},
+        {"en": "I locked myself out.", "zh": "我把自己鎖在門外了。"},
+        {"en": "Could I have a wake up call at seven?", "zh": "可以七點叫我起床嗎？"},
+        {"en": "How do I connect to the internet?", "zh": "要怎麼連上網路？"}
+      ]},
+      {"id": "directions", "name": "問路", "lv": 1, "items": [
+        {"en": "Excuse me, where is the train station?", "zh": "不好意思，請問火車站在哪裡？"},
+        {"en": "How do I get to the museum?", "zh": "請問博物館怎麼去？"},
+        {"en": "Is it far from here?", "zh": "離這裡遠嗎？"},
+        {"en": "Can I walk there?", "zh": "走路到得了嗎？"},
+        {"q": "It's about ten minutes on foot.", "en": "Thank you for your help.", "zh": "謝謝你的幫忙。"},
+        {"en": "Could you show me on the map?", "zh": "可以在地圖上指給我看嗎？"},
+        {"en": "Where is the nearest subway station?", "zh": "最近的地鐵站在哪裡？"},
+        {"en": "Is there a convenience store near here?", "zh": "這附近有便利商店嗎？"},
+        {"en": "Which way is the beach?", "zh": "海灘往哪個方向？"},
+        {"en": "I think I'm lost.", "zh": "我好像迷路了。"}
+      ]},
+      {"id": "taxi", "name": "計程車與叫車", "lv": 1, "items": [
+        {"q": "Where to?", "en": "Please take me to this address.", "zh": "請載我到這個地址。"},
+        {"en": "How much is it to the airport?", "zh": "到機場多少錢？"},
+        {"en": "Could you turn on the meter?", "zh": "可以跳表嗎？"},
+        {"en": "I'm in a hurry.", "zh": "我在趕時間。"},
+        {"en": "Could you wait for me here?", "zh": "可以在這裡等我嗎？"},
+        {"en": "Please stop here.", "zh": "請在這裡停車。"},
+        {"en": "Could you open the trunk?", "zh": "可以開一下後車廂嗎？"},
+        {"en": "Can I pay by credit card?", "zh": "可以刷卡嗎？"}
+      ]},
+      {"id": "train", "name": "火車與地鐵", "lv": 1, "items": [
+        {"en": "One ticket to the airport, please.", "zh": "一張到機場的票。"},
+        {"en": "A round trip ticket, please.", "zh": "一張來回票。"},
+        {"en": "How do I buy a transit card?", "zh": "交通卡要怎麼買？"},
+        {"en": "Which platform is it?", "zh": "在哪個月台？"},
+        {"en": "Does this train go downtown?", "zh": "這班火車有到市中心嗎？"},
+        {"en": "How many stops is it?", "zh": "要坐幾站？"},
+        {"en": "Where should I change trains?", "zh": "我應該在哪裡轉車？"},
+        {"en": "Is this seat taken?", "zh": "這個位子有人坐嗎？"},
+        {"en": "When is the next train?", "zh": "下一班車是幾點？"}
+      ]},
+      {"id": "rentcar", "name": "租車自駕", "lv": 2, "items": [
+        {"en": "I'd like to rent a car for three days.", "zh": "我想租車三天。"},
+        {"en": "Do you have an automatic car?", "zh": "有自排車嗎？"},
+        {"q": "Can I see your driver's license?", "en": "Here is my international driving permit.", "zh": "這是我的國際駕照。"},
+        {"en": "Is insurance included?", "zh": "有含保險嗎？"},
+        {"en": "The car has a scratch here.", "zh": "車子這裡有刮痕。"},
+        {"en": "Do I need to return it with a full tank?", "zh": "還車時需要加滿油嗎？"},
+        {"en": "Is there a gas station near here?", "zh": "這附近有加油站嗎？"},
+        {"en": "Where can I return the car?", "zh": "車子要在哪裡還？"}
+      ]},
+      {"id": "sights", "name": "觀光景點", "lv": 1, "items": [
+        {"en": "Two adult tickets, please.", "zh": "兩張全票。"},
+        {"en": "Is there a student discount?", "zh": "有學生優惠嗎？"},
+        {"en": "What time does it close?", "zh": "幾點關門？"},
+        {"en": "Is there a guided tour?", "zh": "有導覽行程嗎？"},
+        {"en": "Do you have a map in Chinese?", "zh": "有中文地圖嗎？"},
+        {"en": "Where is the entrance?", "zh": "入口在哪裡？"},
+        {"en": "Can I take pictures here?", "zh": "這裡可以拍照嗎？"},
+        {"en": "Could you take a picture of us?", "zh": "可以幫我們拍張照嗎？"},
+        {"en": "What do you recommend seeing here?", "zh": "這裡你推薦看什麼？"}
+      ]}
+    ]},
+    {"id": "dining", "name": "餐廳", "icon": "🍽️", "scenes": [
+      {"id": "reserve", "name": "訂位", "lv": 2, "items": [
+        {"q": "Thank you for calling. How can I help you?", "en": "I'd like to make a reservation.", "zh": "我想訂位。"},
+        {"q": "For how many people?", "en": "For four people, please.", "zh": "四位。"},
+        {"q": "What time would you like?", "en": "At seven tonight.", "zh": "今晚七點。"},
+        {"en": "Do you have a table by the window?", "zh": "有靠窗的位子嗎？"},
+        {"en": "Can we sit outside?", "zh": "我們可以坐戶外嗎？"},
+        {"en": "We have a reservation under Lin.", "zh": "我們有訂位，姓林。"},
+        {"en": "How long is the wait?", "zh": "要等多久？"},
+        {"en": "I'd like to cancel my reservation.", "zh": "我想取消訂位。"}
+      ]},
+      {"id": "order", "name": "點餐", "lv": 1, "items": [
+        {"q": "How many people?", "en": "A table for two, please.", "zh": "兩位，謝謝。"},
+        {"en": "Can I see the menu, please?", "zh": "可以給我看菜單嗎？"},
+        {"en": "What's today's special?", "zh": "今天的特餐是什麼？"},
+        {"en": "What do you recommend?", "zh": "你推薦什麼？"},
+        {"en": "Is this dish spicy?", "zh": "這道菜會辣嗎？"},
+        {"q": "Are you ready to order?", "en": "Yes, I'd like the chicken salad.", "zh": "好了，我要雞肉沙拉。"},
+        {"en": "I'll have the same.", "zh": "我也點一樣的。"},
+        {"q": "How would you like your steak?", "en": "Medium, please.", "zh": "五分熟，謝謝。"},
+        {"en": "Can I have some water, please?", "zh": "可以給我一些水嗎？"},
+        {"en": "No ice, please.", "zh": "不要加冰塊。"}
+      ]},
+      {"id": "diet", "name": "飲食禁忌", "lv": 2, "items": [
+        {"en": "I'm a vegetarian.", "zh": "我吃素。"},
+        {"en": "Does this have meat in it?", "zh": "這裡面有肉嗎？"},
+        {"en": "I'm allergic to peanuts.", "zh": "我對花生過敏。"},
+        {"en": "I can't eat seafood.", "zh": "我不能吃海鮮。"},
+        {"en": "Could you make it less spicy?", "zh": "可以做小辣一點嗎？"},
+        {"en": "Can I have it without onions?", "zh": "可以不要加洋蔥嗎？"},
+        {"en": "Is this gluten free?", "zh": "這是無麩質的嗎？"},
+        {"en": "Could I have the dressing on the side?", "zh": "醬汁可以另外放嗎？"}
+      ]},
+      {"id": "problems", "name": "用餐狀況", "lv": 2, "items": [
+        {"en": "Could we have more time to decide?", "zh": "我們可以再想一下嗎？"},
+        {"en": "Excuse me, we're still waiting for our food.", "zh": "不好意思，我們的餐還沒來。"},
+        {"en": "This is not what I ordered.", "zh": "這不是我點的。"},
+        {"en": "My soup is cold.", "zh": "我的湯是冷的。"},
+        {"en": "Could you warm this up?", "zh": "可以幫我加熱一下嗎？"},
+        {"en": "Could I have a clean fork?", "zh": "可以給我一支乾淨的叉子嗎？"},
+        {"en": "Could we have some more napkins?", "zh": "可以再給我們一些餐巾紙嗎？"},
+        {"en": "Can I have a box for the leftovers?", "zh": "可以給我一個盒子打包剩菜嗎？"}
+      ]},
+      {"id": "bill", "name": "結帳", "lv": 1, "items": [
+        {"en": "Can I have the bill, please?", "zh": "可以給我帳單嗎？"},
+        {"en": "Is the service charge included?", "zh": "有含服務費嗎？"},
+        {"en": "Can we pay separately?", "zh": "我們可以分開付嗎？"},
+        {"q": "Cash or card?", "en": "Card, please.", "zh": "刷卡。"},
+        {"en": "I think there's a mistake on the bill.", "zh": "帳單好像有錯。"},
+        {"en": "Could I get a receipt?", "zh": "可以給我收據嗎？"},
+        {"en": "Can I get this to go?", "zh": "這個可以打包帶走嗎？"},
+        {"en": "Keep the change.", "zh": "不用找了。"}
+      ]},
+      {"id": "cafe", "name": "咖啡店", "lv": 1, "items": [
+        {"q": "What can I get for you?", "en": "A large latte, please.", "zh": "一杯大杯拿鐵。"},
+        {"en": "Could I get an iced americano?", "zh": "可以給我一杯冰美式嗎？"},
+        {"en": "Can I have it with less sugar?", "zh": "可以少糖嗎？"},
+        {"en": "Do you have oat milk?", "zh": "有燕麥奶嗎？"},
+        {"q": "For here or to go?", "en": "To go, please.", "zh": "外帶。"},
+        {"q": "What name should I put on it?", "en": "My name is Amy.", "zh": "我叫 Amy。"},
+        {"q": "Anything else?", "en": "No, that's all. Thank you.", "zh": "沒有了，謝謝。"},
+        {"en": "Can I have a receipt?", "zh": "可以給我收據嗎？"}
+      ]},
+      {"id": "fastfood", "name": "速食店", "lv": 1, "items": [
+        {"q": "Can I take your order?", "en": "I'd like a cheeseburger, please.", "zh": "我要一個起司漢堡。"},
+        {"q": "Would you like to make it a meal?", "en": "Yes, with fries and a coke.", "zh": "好，配薯條和可樂。"},
+        {"en": "Medium size, please.", "zh": "中杯，謝謝。"},
+        {"en": "No pickles, please.", "zh": "不要酸黃瓜。"},
+        {"q": "For here or to go?", "en": "For here, please.", "zh": "內用。"},
+        {"en": "Could I have some ketchup?", "zh": "可以給我一些番茄醬嗎？"},
+        {"en": "Can I get a refill?", "zh": "可以續杯嗎？"}
+      ]},
+      {"id": "bar", "name": "酒吧", "lv": 2, "items": [
+        {"en": "Could I see the drink menu?", "zh": "可以看一下飲料單嗎？"},
+        {"en": "What beers do you have on tap?", "zh": "你們有哪些生啤酒？"},
+        {"en": "I'll have a glass of red wine.", "zh": "我要一杯紅酒。"},
+        {"en": "Something without alcohol, please.", "zh": "請給我無酒精的飲料。"},
+        {"en": "Can I start a tab?", "zh": "可以先記帳最後再付嗎？"},
+        {"en": "Another one, please.", "zh": "再來一杯。"},
+        {"en": "Cheers!", "zh": "乾杯！"}
+      ]}
+    ]},
+    {"id": "shopping", "name": "購物", "icon": "🛍️", "scenes": [
+      {"id": "clothes", "name": "逛街試穿", "lv": 1, "items": [
+        {"q": "Can I help you?", "en": "I'm just looking, thank you.", "zh": "我只是看看，謝謝。"},
+        {"en": "Can I try this on?", "zh": "我可以試穿這件嗎？"},
+        {"en": "Where is the fitting room?", "zh": "試衣間在哪裡？"},
+        {"en": "Does it come in a medium?", "zh": "有 M 號嗎？"},
+        {"en": "Do you have this in a smaller size?", "zh": "這件有小一點的尺寸嗎？"},
+        {"en": "Do you have it in another color?", "zh": "有別的顏色嗎？"},
+        {"en": "It's a little too big.", "zh": "有點太大了。"},
+        {"en": "It fits well.", "zh": "很合身。"},
+        {"en": "How much is this?", "zh": "這個多少錢？"},
+        {"en": "I'll take it.", "zh": "我要買這個。"}
+      ]},
+      {"id": "supermarket", "name": "超市", "lv": 1, "items": [
+        {"en": "Where are the shopping carts?", "zh": "購物車在哪裡？"},
+        {"en": "Where can I find the milk?", "zh": "牛奶在哪裡？"},
+        {"en": "Which aisle is the rice in?", "zh": "米在哪一排？"},
+        {"en": "Do you have any fresh bread?", "zh": "有新鮮的麵包嗎？"},
+        {"en": "When does this expire?", "zh": "這個什麼時候過期？"},
+        {"en": "Is this on sale?", "zh": "這個有打折嗎？"},
+        {"q": "Do you have a member card?", "en": "No, I don't.", "zh": "沒有。"},
+        {"en": "Can I get a plastic bag?", "zh": "可以給我一個塑膠袋嗎？"}
+      ]},
+      {"id": "drugstore", "name": "藥妝店", "lv": 1, "items": [
+        {"en": "I'm looking for lip balm.", "zh": "我在找護唇膏。"},
+        {"en": "Do you have sunscreen?", "zh": "有防曬乳嗎？"},
+        {"en": "Which one is good for dry skin?", "zh": "哪一個適合乾性肌膚？"},
+        {"en": "Can I try this?", "zh": "這個可以試用嗎？"},
+        {"en": "Is this a popular brand?", "zh": "這是熱門品牌嗎？"},
+        {"en": "Do you have a smaller one?", "zh": "有小一點的嗎？"},
+        {"en": "Is this buy one get one free?", "zh": "這是買一送一嗎？"}
+      ]},
+      {"id": "electronics", "name": "電子產品", "lv": 2, "items": [
+        {"en": "I'm looking for a phone charger.", "zh": "我在找手機充電器。"},
+        {"en": "Is this compatible with my phone?", "zh": "這個跟我的手機相容嗎？"},
+        {"en": "Can I see how it works?", "zh": "可以示範一下怎麼用嗎？"},
+        {"en": "How long does the battery last?", "zh": "電池可以用多久？"},
+        {"en": "Will this plug work in Taiwan?", "zh": "這個插頭在台灣可以用嗎？"},
+        {"en": "Does it come with a warranty?", "zh": "有保固嗎？"},
+        {"en": "Do you have it in stock?", "zh": "這個有現貨嗎？"}
+      ]},
+      {"id": "market", "name": "市集殺價", "lv": 2, "items": [
+        {"en": "Is this handmade?", "zh": "這是手工做的嗎？"},
+        {"en": "How much for two?", "zh": "兩個多少錢？"},
+        {"en": "That's too expensive.", "zh": "太貴了。"},
+        {"en": "Can you give me a better price?", "zh": "可以算便宜一點嗎？"},
+        {"en": "I'll take three if it's cheaper.", "zh": "如果比較便宜我就買三個。"},
+        {"en": "Can I pay in cash?", "zh": "可以付現嗎？"},
+        {"en": "Do you take cards?", "zh": "可以刷卡嗎？"},
+        {"en": "I'll think about it.", "zh": "我考慮一下。"}
+      ]},
+      {"id": "checkout", "name": "結帳退換", "lv": 2, "items": [
+        {"en": "Can I get a discount?", "zh": "可以算便宜一點嗎？"},
+        {"en": "Do you accept credit cards?", "zh": "你們收信用卡嗎？"},
+        {"en": "Can I get a tax refund?", "zh": "可以退稅嗎？"},
+        {"en": "Can you gift wrap it?", "zh": "可以幫我包裝成禮物嗎？"},
+        {"q": "Would you like a receipt?", "en": "Yes, please.", "zh": "要，謝謝。"},
+        {"q": "Do you need a bag?", "en": "No, thank you. I have one.", "zh": "不用，謝謝，我有袋子。"},
+        {"en": "I'd like to return this.", "zh": "我想退這個。"},
+        {"en": "Can I exchange it for a different size?", "zh": "可以換別的尺寸嗎？"}
+      ]},
+      {"id": "online", "name": "網購客服", "lv": 3, "items": [
+        {"en": "Could you check my order status?", "zh": "可以幫我查一下訂單狀態嗎？"},
+        {"en": "How long does shipping take?", "zh": "運送要多久？"},
+        {"en": "My order hasn't arrived yet.", "zh": "我的訂單還沒到。"},
+        {"en": "I received the wrong item.", "zh": "我收到錯的商品。"},
+        {"en": "The package was damaged.", "zh": "包裹破損了。"},
+        {"en": "Can I get a refund?", "zh": "可以退款嗎？"},
+        {"en": "I'd like to cancel my order.", "zh": "我想取消訂單。"}
+      ]}
+    ]},
+    {"id": "life", "name": "生活", "icon": "🏠", "scenes": [
+      {"id": "doctor", "name": "看醫生", "lv": 1, "items": [
+        {"q": "What seems to be the problem?", "en": "I have a headache.", "zh": "我頭痛。"},
+        {"en": "I have a fever.", "zh": "我發燒了。"},
+        {"en": "I have a sore throat.", "zh": "我喉嚨痛。"},
+        {"en": "I have a stomachache.", "zh": "我肚子痛。"},
+        {"en": "I can't stop coughing.", "zh": "我一直咳嗽。"},
+        {"en": "I feel dizzy.", "zh": "我頭暈。"},
+        {"q": "How long have you felt this way?", "en": "Since yesterday.", "zh": "從昨天開始。"},
+        {"en": "How often should I take this medicine?", "zh": "這個藥要多久吃一次？"}
+      ]},
+      {"id": "pharmacy", "name": "藥局", "lv": 1, "items": [
+        {"en": "I need something for a cold.", "zh": "我需要感冒藥。"},
+        {"en": "Do you have anything for a headache?", "zh": "有治頭痛的藥嗎？"},
+        {"en": "Do I need a prescription?", "zh": "需要處方箋嗎？"},
+        {"en": "How many should I take?", "zh": "要吃幾顆？"},
+        {"en": "Should I take it after meals?", "zh": "要飯後吃嗎？"},
+        {"en": "Does it make you sleepy?", "zh": "吃了會想睡嗎？"},
+        {"en": "I need some band aids.", "zh": "我需要一些 OK 繃。"}
+      ]},
+      {"id": "bank", "name": "銀行", "lv": 2, "items": [
+        {"en": "I'd like to open an account.", "zh": "我想開戶。"},
+        {"en": "What documents do I need?", "zh": "我需要哪些文件？"},
+        {"en": "I'd like to deposit some money.", "zh": "我想存一些錢。"},
+        {"en": "I'd like to withdraw two hundred dollars.", "zh": "我想領兩百元。"},
+        {"en": "I want to transfer money to this account.", "zh": "我想轉帳到這個帳戶。"},
+        {"en": "Is there a fee for this?", "zh": "這需要手續費嗎？"},
+        {"en": "I lost my bank card.", "zh": "我的提款卡不見了。"}
+      ]},
+      {"id": "post", "name": "郵局寄件", "lv": 2, "items": [
+        {"en": "I'd like to send this package to Taiwan.", "zh": "我想把這個包裹寄到台灣。"},
+        {"q": "What's inside?", "en": "Just some clothes and books.", "zh": "只有一些衣服和書。"},
+        {"en": "How much does it cost to send this?", "zh": "寄這個要多少錢？"},
+        {"en": "I'd like to send it by airmail.", "zh": "我想寄航空。"},
+        {"en": "How long will it take?", "zh": "要多久才會到？"},
+        {"en": "Can I track this package?", "zh": "這個包裹可以追蹤嗎？"},
+        {"en": "Can I buy some stamps?", "zh": "我可以買一些郵票嗎？"}
+      ]},
+      {"id": "rent", "name": "租屋看房", "lv": 3, "items": [
+        {"en": "I'm calling about the apartment for rent.", "zh": "我打來是想問出租的公寓。"},
+        {"en": "How much is the rent?", "zh": "房租多少？"},
+        {"en": "Are utilities included?", "zh": "有含水電費嗎？"},
+        {"en": "How much is the deposit?", "zh": "押金多少？"},
+        {"en": "Is it close to the subway?", "zh": "離地鐵近嗎？"},
+        {"en": "Are pets allowed?", "zh": "可以養寵物嗎？"},
+        {"en": "Can I see the apartment this weekend?", "zh": "這週末可以看房嗎？"},
+        {"en": "When can I move in?", "zh": "我什麼時候可以搬進去？"}
+      ]},
+      {"id": "repair", "name": "居家報修", "lv": 2, "items": [
+        {"en": "My sink is leaking.", "zh": "我的水槽在漏水。"},
+        {"en": "The light in the bathroom doesn't work.", "zh": "浴室的燈不亮。"},
+        {"en": "The toilet is blocked.", "zh": "馬桶堵住了。"},
+        {"en": "The heater is broken.", "zh": "暖氣壞了。"},
+        {"en": "When can someone come to fix it?", "zh": "什麼時候可以有人來修？"},
+        {"en": "I'll be home after six.", "zh": "我六點以後在家。"},
+        {"en": "How much will it cost?", "zh": "要花多少錢？"}
+      ]},
+      {"id": "haircut", "name": "剪頭髮", "lv": 2, "items": [
+        {"en": "I'd like a haircut, please.", "zh": "我想剪頭髮。"},
+        {"en": "How much is a haircut?", "zh": "剪髮多少錢？"},
+        {"en": "Just a little shorter, please.", "zh": "稍微剪短一點就好。"},
+        {"en": "Please don't cut it too short.", "zh": "請不要剪太短。"},
+        {"en": "Could you trim my bangs?", "zh": "可以幫我修瀏海嗎？"},
+        {"en": "I'd like to dye my hair brown.", "zh": "我想把頭髮染成棕色。"},
+        {"en": "It looks great, thank you.", "zh": "看起來很棒，謝謝。"}
+      ]},
+      {"id": "gym", "name": "健身房", "lv": 2, "items": [
+        {"en": "What time do you open?", "zh": "你們幾點開門？"},
+        {"en": "How much is a monthly membership?", "zh": "月費多少？"},
+        {"en": "Can I try it for one day?", "zh": "可以試用一天嗎？"},
+        {"en": "Where are the lockers?", "zh": "置物櫃在哪裡？"},
+        {"en": "How do I use this machine?", "zh": "這台機器要怎麼用？"},
+        {"en": "Are you using this?", "zh": "你在用這個嗎？"},
+        {"en": "Do you have yoga classes?", "zh": "你們有瑜珈課嗎？"}
+      ]},
+      {"id": "neighbor", "name": "鄰居往來", "lv": 2, "items": [
+        {"en": "Hi, I just moved in next door.", "zh": "嗨，我剛搬到隔壁。"},
+        {"en": "Which day is garbage day?", "zh": "哪天收垃圾？"},
+        {"en": "I received a package for you.", "zh": "我收到你的包裹。"},
+        {"en": "Could you water my plants while I'm away?", "zh": "我不在的時候可以幫我澆花嗎？"},
+        {"en": "Could you keep it down a little?", "zh": "可以小聲一點嗎？"},
+        {"en": "Let me know if you need anything.", "zh": "需要什麼就跟我說。"}
+      ]}
+    ]},
+    {"id": "social", "name": "社交", "icon": "💬", "scenes": [
+      {"id": "meet", "name": "初次見面", "lv": 1, "items": [
+        {"en": "Nice to meet you.", "zh": "很高興認識你。"},
+        {"q": "Where are you from?", "en": "I'm from Taiwan.", "zh": "我來自台灣。"},
+        {"q": "How long have you been here?", "en": "I've been here for two weeks.", "zh": "我來這裡兩個星期了。"},
+        {"en": "What do you do for a living?", "zh": "你是做什麼工作的？"},
+        {"en": "What do you do for fun?", "zh": "你平常喜歡做什麼？"},
+        {"en": "How was your weekend?", "zh": "你週末過得怎麼樣？"},
+        {"en": "Can I have your phone number?", "zh": "可以給我你的電話號碼嗎？"},
+        {"en": "It was nice talking to you.", "zh": "很高興和你聊天。"}
+      ]},
+      {"id": "hobbies", "name": "天氣與興趣", "lv": 1, "items": [
+        {"en": "It's a beautiful day today.", "zh": "今天天氣真好。"},
+        {"en": "It's so hot today.", "zh": "今天好熱。"},
+        {"en": "It looks like it's going to rain.", "zh": "看起來要下雨了。"},
+        {"en": "What kind of music do you like?", "zh": "你喜歡什麼樣的音樂？"},
+        {"en": "I like watching movies at home.", "zh": "我喜歡在家看電影。"},
+        {"en": "Do you play any sports?", "zh": "你有在運動嗎？"},
+        {"en": "I like hiking on weekends.", "zh": "我週末喜歡去爬山。"},
+        {"en": "Have you ever been to Taiwan?", "zh": "你去過台灣嗎？"}
+      ]},
+      {"id": "invite", "name": "邀約", "lv": 2, "items": [
+        {"en": "Are you free this Saturday?", "zh": "你這個星期六有空嗎？"},
+        {"en": "Would you like to see a movie?", "zh": "要不要去看電影？"},
+        {"en": "Let's have dinner together.", "zh": "我們一起吃晚餐吧。"},
+        {"en": "What time works for you?", "zh": "你幾點方便？"},
+        {"en": "Where should we meet?", "zh": "我們要在哪裡碰面？"},
+        {"en": "Sounds great!", "zh": "聽起來很棒！"},
+        {"en": "Sorry, I already have plans.", "zh": "抱歉，我已經有約了。"},
+        {"en": "Maybe next time.", "zh": "下次吧。"}
+      ]},
+      {"id": "party", "name": "聚會派對", "lv": 2, "items": [
+        {"en": "Thank you for inviting me.", "zh": "謝謝你邀請我。"},
+        {"en": "Happy birthday!", "zh": "生日快樂！"},
+        {"en": "This is a small gift for you.", "zh": "這是送你的小禮物。"},
+        {"en": "How do you know the host?", "zh": "你怎麼認識主人的？"},
+        {"en": "The food is delicious.", "zh": "食物很好吃。"},
+        {"en": "I had a great time tonight.", "zh": "我今晚玩得很開心。"},
+        {"en": "I should get going.", "zh": "我差不多該走了。"}
+      ]},
+      {"id": "feelings", "name": "道歉、安慰與祝賀", "lv": 2, "items": [
+        {"en": "I'm so sorry I'm late.", "zh": "真抱歉我遲到了。"},
+        {"en": "It was my fault.", "zh": "是我的錯。"},
+        {"en": "Don't worry about it.", "zh": "別擔心。"},
+        {"en": "That's too bad.", "zh": "真可惜。"},
+        {"en": "I hope you feel better soon.", "zh": "希望你早日康復。"},
+        {"en": "Congratulations on your new job!", "zh": "恭喜你找到新工作！"},
+        {"en": "I'm proud of you.", "zh": "我以你為榮。"},
+        {"en": "Thank you so much for everything.", "zh": "真的很謝謝你為我做的一切。"}
+      ]}
+    ]},
+    {"id": "work", "name": "職場", "icon": "💼", "scenes": [
+      {"id": "intro", "name": "自我介紹", "lv": 1, "items": [
+        {"en": "Nice to meet you, I'm Amy.", "zh": "很高興認識你，我是 Amy。"},
+        {"q": "What do you do?", "en": "I'm a software engineer.", "zh": "我是軟體工程師。"},
+        {"en": "I work in the marketing department.", "zh": "我在行銷部工作。"},
+        {"en": "I'm in charge of sales.", "zh": "我負責業務。"},
+        {"en": "I just joined the team.", "zh": "我剛加入這個團隊。"},
+        {"en": "I've worked here for three years.", "zh": "我在這裡工作三年了。"},
+        {"en": "Let me introduce my colleague.", "zh": "讓我介紹一下我的同事。"},
+        {"en": "Here is my business card.", "zh": "這是我的名片。"}
+      ]},
+      {"id": "smalltalk", "name": "同事閒聊", "lv": 2, "items": [
+        {"q": "How was your weekend?", "en": "It was great. I went to the beach.", "zh": "很棒，我去了海邊。"},
+        {"en": "Do you want to grab lunch?", "zh": "要不要一起去吃午餐？"},
+        {"en": "How's the project going?", "zh": "專案進行得怎麼樣？"},
+        {"en": "I'm so busy this week.", "zh": "我這週好忙。"},
+        {"en": "Thanks for your help yesterday.", "zh": "謝謝你昨天的幫忙。"},
+        {"en": "Have a nice weekend!", "zh": "週末愉快！"},
+        {"en": "See you tomorrow.", "zh": "明天見。"}
+      ]},
+      {"id": "meeting", "name": "開會", "lv": 2, "items": [
+        {"en": "Can everyone hear me?", "zh": "大家聽得到我嗎？"},
+        {"en": "Let's get started.", "zh": "我們開始吧。"},
+        {"en": "Let me share my screen.", "zh": "我來分享一下螢幕。"},
+        {"en": "Could you say that again?", "zh": "可以再說一次嗎？"},
+        {"en": "I agree with you.", "zh": "我同意你的看法。"},
+        {"en": "I have a different idea.", "zh": "我有不同的想法。"},
+        {"en": "Can we move on to the next topic?", "zh": "我們可以進入下一個議題嗎？"},
+        {"en": "Let's schedule another meeting.", "zh": "我們再約一次會議吧。"},
+        {"en": "Let's wrap up for today.", "zh": "我們今天就到這裡吧。"}
+      ]},
+      {"id": "presentation", "name": "簡報", "lv": 3, "items": [
+        {"en": "Today I'd like to talk about our new product.", "zh": "今天我想談談我們的新產品。"},
+        {"en": "Let's look at this chart.", "zh": "我們來看這張圖表。"},
+        {"en": "Sales went up last quarter.", "zh": "上一季業績上升了。"},
+        {"en": "This is the most important point.", "zh": "這是最重要的一點。"},
+        {"en": "To sum up, we need more time.", "zh": "總結來說，我們需要更多時間。"},
+        {"en": "Does anyone have any questions?", "zh": "大家有任何問題嗎？"},
+        {"en": "That's a good question.", "zh": "這是個好問題。"},
+        {"en": "Thank you for your attention.", "zh": "謝謝大家的聆聽。"}
+      ]},
+      {"id": "phone", "name": "電話", "lv": 2, "items": [
+        {"q": "Who's calling, please?", "en": "This is Amy from the sales team.", "zh": "我是業務部的 Amy。"},
+        {"en": "May I speak to Mr. Lin?", "zh": "請問林先生在嗎？"},
+        {"q": "He's not here right now.", "en": "Can I leave a message?", "zh": "我可以留言嗎？"},
+        {"en": "I'm calling about the meeting tomorrow.", "zh": "我打來是關於明天的會議。"},
+        {"en": "Could you speak more slowly?", "zh": "可以說慢一點嗎？"},
+        {"en": "Sorry, I think I have the wrong number.", "zh": "抱歉，我好像打錯電話了。"},
+        {"en": "I'll call you back later.", "zh": "我晚點回電給你。"}
+      ]},
+      {"id": "schedule", "name": "約時間與 Email", "lv": 2, "items": [
+        {"en": "Are you free next Monday?", "zh": "你下週一有空嗎？"},
+        {"en": "Does three o'clock work for you?", "zh": "三點你方便嗎？"},
+        {"en": "Let's meet on Thursday afternoon.", "zh": "我們星期四下午見吧。"},
+        {"en": "I need to reschedule our meeting.", "zh": "我需要改一下會議時間。"},
+        {"en": "Could you send me the details?", "zh": "可以把細節寄給我嗎？"},
+        {"en": "Please find the file attached.", "zh": "附件是檔案，請查收。"},
+        {"en": "Sorry for the late reply.", "zh": "抱歉這麼晚回覆。"},
+        {"en": "I'll get back to you by Friday.", "zh": "我週五前回覆你。"}
+      ]},
+      {"id": "leave", "name": "請假與加班", "lv": 2, "items": [
+        {"en": "I'm not feeling well today.", "zh": "我今天身體不太舒服。"},
+        {"en": "I'd like to take tomorrow off.", "zh": "我明天想請假。"},
+        {"en": "I'll be a little late this morning.", "zh": "我今天早上會晚一點到。"},
+        {"en": "Can I work from home today?", "zh": "我今天可以在家工作嗎？"},
+        {"en": "I need to leave early today.", "zh": "我今天需要早點走。"},
+        {"en": "I have to work overtime tonight.", "zh": "我今晚要加班。"},
+        {"en": "Could you cover for me?", "zh": "可以幫我代班嗎？"}
+      ]},
+      {"id": "interview", "name": "求職面試", "lv": 3, "items": [
+        {"q": "Tell me about yourself.", "en": "I have five years of experience in marketing.", "zh": "我有五年的行銷經驗。"},
+        {"q": "Why do you want this job?", "en": "I want to grow with your company.", "zh": "我想和貴公司一起成長。"},
+        {"q": "What are your strengths?", "en": "I'm a good team player.", "zh": "我很善於團隊合作。"},
+        {"q": "What is your weakness?", "en": "Sometimes I work too slowly.", "zh": "我有時候做事太慢。"},
+        {"q": "Where do you see yourself in five years?", "en": "I hope to lead a team.", "zh": "我希望能帶領一個團隊。"},
+        {"q": "Do you have any questions for us?", "en": "What does a typical day look like?", "zh": "這份工作一天通常是什麼樣子？"},
+        {"en": "When can I expect to hear from you?", "zh": "什麼時候會通知我結果？"},
+        {"en": "Thank you for your time.", "zh": "謝謝您撥空。"}
+      ]},
+      {"id": "clients", "name": "接待客戶", "lv": 3, "items": [
+        {"en": "Welcome to our office.", "zh": "歡迎來到我們公司。"},
+        {"en": "Did you find us easily?", "zh": "我們這裡好找嗎？"},
+        {"en": "Please have a seat.", "zh": "請坐。"},
+        {"en": "Can I get you something to drink?", "zh": "要不要喝點什麼？"},
+        {"en": "Let me show you around.", "zh": "我帶您四處參觀一下。"},
+        {"en": "We look forward to working with you.", "zh": "我們很期待與您合作。"},
+        {"en": "I'll walk you to the elevator.", "zh": "我送您到電梯。"}
+      ]},
+      {"id": "negotiate", "name": "商務談判", "lv": 3, "items": [
+        {"en": "Could you lower the price a little?", "zh": "價格可以再降一點嗎？"},
+        {"en": "That's a little over our budget.", "zh": "這有點超出我們的預算。"},
+        {"en": "What if we order a larger quantity?", "zh": "如果我們訂更多呢？"},
+        {"en": "Can you deliver by the end of the month?", "zh": "可以在月底前交貨嗎？"},
+        {"en": "I need to check with my manager.", "zh": "我需要跟我主管確認。"},
+        {"en": "I think we have a deal.", "zh": "我想我們達成協議了。"},
+        {"en": "Let's put it in writing.", "zh": "我們把它寫成書面吧。"}
+      ]}
+    ]},
+    {"id": "school", "name": "校園", "icon": "🏫", "scenes": [
+      {"id": "class", "name": "上課發問", "lv": 1, "items": [
+        {"en": "Excuse me, I have a question.", "zh": "不好意思，我有一個問題。"},
+        {"en": "Could you repeat that, please?", "zh": "可以再說一次嗎？"},
+        {"en": "Could you speak a little louder?", "zh": "可以說大聲一點嗎？"},
+        {"en": "What does this word mean?", "zh": "這個字是什麼意思？"},
+        {"en": "How do you spell it?", "zh": "這要怎麼拼？"},
+        {"en": "I don't understand this part.", "zh": "我不懂這個部分。"},
+        {"en": "When is the homework due?", "zh": "作業什麼時候要交？"},
+        {"en": "May I go to the restroom?", "zh": "我可以去洗手間嗎？"}
+      ]},
+      {"id": "library", "name": "圖書館", "lv": 1, "items": [
+        {"en": "Where can I find books about history?", "zh": "歷史的書在哪裡？"},
+        {"en": "I'd like to borrow this book.", "zh": "我想借這本書。"},
+        {"en": "How long can I keep it?", "zh": "可以借多久？"},
+        {"en": "Can I renew this book?", "zh": "這本書可以續借嗎？"},
+        {"en": "Is there a quiet place to study?", "zh": "有安靜的地方可以讀書嗎？"},
+        {"en": "How do I use the printer?", "zh": "印表機要怎麼用？"},
+        {"en": "I'd like to return these books.", "zh": "我要還這些書。"}
+      ]},
+      {"id": "group", "name": "小組報告", "lv": 2, "items": [
+        {"en": "Let's divide the work.", "zh": "我們來分工吧。"},
+        {"en": "I can do the research part.", "zh": "我可以負責資料研究的部分。"},
+        {"en": "When should we meet again?", "zh": "我們什麼時候再碰面？"},
+        {"en": "Could you send me your slides?", "zh": "可以把你的投影片寄給我嗎？"},
+        {"en": "I think we should add more examples.", "zh": "我覺得我們應該多加一些例子。"},
+        {"en": "Let's practice the presentation together.", "zh": "我們一起練習報告吧。"},
+        {"en": "Great job, everyone.", "zh": "大家做得很好。"}
+      ]}
+    ]},
+    {"id": "emergency", "name": "緊急狀況", "icon": "🚨", "scenes": [
+      {"id": "lost", "name": "遺失物品", "lv": 1, "items": [
+        {"en": "I lost my wallet.", "zh": "我的錢包不見了。"},
+        {"en": "I left my phone in the taxi.", "zh": "我把手機忘在計程車上了。"},
+        {"en": "Where is the lost and found?", "zh": "失物招領處在哪裡？"},
+        {"en": "Has anyone turned in a black bag?", "zh": "有人交來一個黑色包包嗎？"},
+        {"en": "I need to cancel my credit card.", "zh": "我需要停用我的信用卡。"},
+        {"en": "I lost my passport.", "zh": "我的護照不見了。"},
+        {"en": "Where is the embassy?", "zh": "大使館在哪裡？"}
+      ]},
+      {"id": "police", "name": "報警求助", "lv": 1, "items": [
+        {"en": "Help!", "zh": "救命！"},
+        {"en": "Can you help me, please?", "zh": "可以請你幫我嗎？"},
+        {"en": "Please call the police.", "zh": "請幫我報警。"},
+        {"en": "Someone stole my bag.", "zh": "有人偷了我的包包。"},
+        {"en": "A man took my phone and ran away.", "zh": "有個男人搶了我的手機跑走了。"},
+        {"en": "I need to report a theft.", "zh": "我要報案，東西被偷了。"},
+        {"en": "Do you speak Chinese?", "zh": "你會說中文嗎？"},
+        {"en": "I need an interpreter.", "zh": "我需要翻譯。"}
+      ]},
+      {"id": "medical", "name": "急診受傷", "lv": 2, "items": [
+        {"en": "I need a doctor.", "zh": "我需要看醫生。"},
+        {"en": "Please call an ambulance.", "zh": "請叫救護車。"},
+        {"en": "My friend fainted.", "zh": "我朋友昏倒了。"},
+        {"en": "I hurt my ankle.", "zh": "我扭傷腳踝了。"},
+        {"en": "I cut my finger.", "zh": "我割到手指了。"},
+        {"en": "It hurts here.", "zh": "這裡痛。"},
+        {"en": "Where is the nearest hospital?", "zh": "最近的醫院在哪裡？"},
+        {"en": "I have travel insurance.", "zh": "我有旅遊保險。"}
+      ]},
+      {"id": "accident", "name": "車禍與故障", "lv": 3, "items": [
+        {"en": "There's been an accident.", "zh": "發生車禍了。"},
+        {"en": "Is anyone hurt?", "zh": "有人受傷嗎？"},
+        {"en": "The other car hit me.", "zh": "另一台車撞到我。"},
+        {"en": "Can you be a witness?", "zh": "你可以當證人嗎？"},
+        {"en": "Let's exchange insurance information.", "zh": "我們交換一下保險資料吧。"},
+        {"en": "My car broke down.", "zh": "我的車拋錨了。"},
+        {"en": "I need to call my rental company.", "zh": "我需要打給租車公司。"}
+      ]}
+    ]}
   ]
 }

@@ -66,9 +66,13 @@ function mockDictation() {
   assert(await page.locator("#drive-scenes").isHidden(), "scene picker hidden for mixed practice");
   await page.locator("#dk-scene").check();
   await page.waitForSelector('#drive-cats [data-cat="travel"]');
-  assert.equal(await page.locator("#drive-cats button").count(), 5, "five categories");
+  assert.equal(await page.locator("#drive-cats button").count(), 9, "random + eight categories");
+  await page.locator('#drive-cats [data-cat="all"]').click();
+  assert(await page.locator("#drive-scs").isHidden(), "no sub-scenes in random mode");
+  assert.match(await page.locator("#drive-scene-note").innerText(), /從 8 大類、59 個場景隨機出題，共 465 句/);
+  await page.locator('#drive-cats [data-cat="travel"]').click();
   await page.locator('#drive-scs [data-scene="customs"]').click();
-  assert.match(await page.locator("#drive-scene-note").innerText(), /旅遊 · 海關入境：共 8 句/);
+  assert.match(await page.locator("#drive-scene-note").innerText(), /旅遊 · 海關入境（入門）：10 句，依真實對話的順序/);
   await page.locator('#drive-pace-setup [data-rate="0.75"]').click();
   await page.locator('#drive-pace-setup [data-think="3"]').click();
   assert.deepEqual(
@@ -85,7 +89,8 @@ function mockDictation() {
   await page.waitForFunction(() => /🤔/.test(document.getElementById("drive-state").textContent), null, { timeout: 10000 });
   const said = await ev(() => __said);
   const q = said.find((s) => s.lang === "en-US");
-  assert(q && /\?$/.test(q.text), "officer question spoken in English");
+  assert.equal(q.text, "What is the purpose of your visit?", "a single scene starts at its first line");
+  assert.equal(await ev(() => D.cur.it.en), "I'm here for sightseeing.");
   near(q.rate, 0.85 * 0.75, "English prompt slowed");
   assert(said.some((s) => s.text.startsWith("你要回答：") && Math.abs(s.rate - 0.75) < 1e-3), "Chinese cue slowed");
   near((await ev(() => __plays.find((p) => /zh\/ui\//.test(p.src)))).rate, 0.75, "recorded clips slowed");
@@ -114,6 +119,25 @@ function mockDictation() {
   await page.waitForTimeout(1500);
   assert(await ev((n) => __said.length <= n + 1, n1), "nothing after stop except the goodbye line");
   await ctx1.close();
+
+  /* ---------- 1b. Answer judging accepts how recognizers actually write things ---------- */
+  const ctxJ = await browser.newContext();
+  const pj = await ctxJ.newPage();
+  await pj.goto(URL);
+  await pj.waitForSelector(".world-canvas");
+  const judged = await pj.evaluate(() =>
+    [
+      ["I will stay for five days.", "I will stay for 5 days"],
+      ["Does three o'clock work for you?", "does 3:00 work for you"],
+      ["What time is check out?", "what time is checkout"],
+      ["Okay, no problem.", "OK no problem"],
+      ["My suitcase hasn't arrived.", "my suitcase has not arrived"],
+      ["I'd like to withdraw two hundred dollars.", "I'd like to withdraw 200 dollars"],
+    ].map(([t, a]) => sentScore(t, a) >= 0.75),
+  );
+  assert.deepEqual(judged, [true, true, true, true, true, true], "digits, spacing and contractions accepted");
+  assert(await pj.evaluate(() => sentScore("I'm here for sightseeing.", "I'm here for business") < 0.75), "wrong answers still rejected");
+  await ctxJ.close();
 
   /* ---------- 2. Voice answers through claude.ai dictation (mocked viewer) ---------- */
   const ctx2 = await browser.newContext({ viewport: { width: 390, height: 844 } });
