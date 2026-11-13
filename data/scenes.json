@@ -57,6 +57,13 @@
         {"en": "My suitcase is damaged.", "zh": "我的行李箱壞了。"},
         {"q": "Where should we send it?", "en": "Please send it to my hotel.", "zh": "請把它送到我的飯店。"}
       ]},
+      {"id": "lostbag", "name": "行李沒出來（初級）", "lv": 1, "items": [
+        {"q": "Hello. Can I help you?", "en": "My bag is not here.", "zh": "我的行李沒有出來。"},
+        {"q": "What does your bag look like?", "en": "It's a big black suitcase.", "zh": "是一個大的黑色行李箱。"},
+        {"q": "Can I see your baggage tag?", "en": "Here it is.", "zh": "在這裡。"},
+        {"q": "Where are you staying?", "en": "I'm staying at a hotel near the beach.", "zh": "我住在海邊附近的飯店。"},
+        {"q": "We will send it to your hotel.", "en": "Thank you very much.", "zh": "非常謝謝你。"}
+      ]},
       {"id": "money", "name": "換匯提款", "lv": 2, "items": [
         {"en": "Where can I exchange money?", "zh": "哪裡可以換錢？"},
         {"en": "What is the exchange rate today?", "zh": "今天的匯率是多少？"},

@@ -203,12 +203,16 @@ const Battle = (() => {
     bar("bt-foe-hp", B.hp, B.maxHp);
     bar("bt-me-hp", st.hp, s.maxHp);
     bar("bt-me-mp", st.mp, s.maxMp);
+    $("bt-foe-shield").textContent = B.shield ? `${B.shield.icon} ${B.shield.name}：普攻減半，答對英文技能可破除` : "";
+    $("bt-foe-shield").hidden = !B.shield;
     paint();
   }
-  /* ctx: { region, skills:[{id,name,icon,mp,desc,make:()=>question,kind:'attack'|'heal',mult}], fleeAlways, tutorial, onEnd(result, drops) } */
+  /* ctx: { region, skills:[{id,name,icon,mp,desc,learn,make:()=>question,kind:'attack'|'heal',mult,retry}],
+          freeCasts, fleeAlways, tutorial, onEnd(result, drops) }
+     look.shield {name, icon}: halves normal attacks until a correct English skill breaks it. */
   function start(mob, ctx) {
     const s = stats();
-    B = { mob, look: mob.look, hp: mob.look.hp || 30, maxHp: mob.look.hp || 30, ctx, busy: false, answered: 0 };
+    B = { mob, look: mob.look, hp: mob.look.hp || 30, maxHp: mob.look.hp || 30, ctx, busy: false, answered: 0, free: ctx.freeCasts || 0, shield: mob.look.shield || null };
     World.paused = true;
     World.clearKeys();
     const el = $("battle");
@@ -222,21 +226,45 @@ const Battle = (() => {
       World.portrait($("bt-me-cv"), "hero", World.heroLook, { dir: "up" });
     });
     paintBattle();
-    log(ctx.intro || `Lv.${mob.look.lv || 1} ${mob.look.name} 擋住了去路！`);
+    log(ctx.intro || `Lv.${mob.look.lv || 1} ${mob.look.name} 擋住了去路！${B.shield ? `牠有${B.shield.name}，用英文技能破除！` : ""}`);
     menu();
   }
   function act(html) {
     $("bt-act").innerHTML = html;
   }
+  /* One screen, one tap: attack, each English skill (cost, effect, what it practises), items, focus, flee. */
   function menu() {
     if (!B) return;
     B.busy = false;
-    act(`<div class="bt-menu"><button id="bt-attack">⚔️ 攻擊<small>不耗 MP</small></button><button id="bt-skill">✨ 技能<small>英文題</small></button><button id="bt-item">🎒 道具</button><button id="bt-run">🏃 逃跑</button></div>`);
+    const s = stats(),
+      low = B.ctx.skills.every((k) => !(B.free > 0) && st.mp < k.mp);
+    act(`<div class="bt-menu"><button id="bt-attack" class="bt-main">⚔️ 攻擊<small>不耗 MP${B.shield ? " · 有盾時減半" : ""}</small></button>${B.ctx.skills
+      .map((k, i) => {
+        const free = B.free > 0,
+          can = free || st.mp >= k.mp;
+        return `<button data-k="${i}" class="bt-skill" ${can ? "" : "disabled"}><b>${k.icon} ${esc(k.name)}</b><small>${free ? "這次免費" : `MP ${k.mp}`} · ${esc(k.desc)}</small>${k.learn ? `<small class="bt-learn">練：${esc(k.learn)}</small>` : ""}</button>`;
+      })
+      .join("")}<button id="bt-item">🎒 道具<small>🍓${count("berry")} 💧${count("dew")}</small></button><button id="bt-focus">🧘 專注<small>回復 ${focusMp()} MP</small></button><button id="bt-run">🏃 逃跑</button></div>${low ? `<p class="bt-tip">MP 不夠施法：按「🧘 專注」或用藍露珠回復 MP，也可以先普通攻擊或逃跑。</p>` : ""}`);
     $("bt-attack").onclick = attack;
-    $("bt-skill").onclick = skills;
+    $("bt-act")
+      .querySelectorAll("[data-k]")
+      .forEach((b) => (b.onclick = () => cast(B.ctx.skills[+b.dataset.k])));
     $("bt-item").onclick = items;
+    $("bt-focus").onclick = focus;
     $("bt-run").onclick = flee;
     if (B.ctx.tutorial && !B.answered) log(B.ctx.tutorial);
+  }
+  const focusMp = () => Math.max(6, Math.round(stats().maxMp * 0.25));
+  function focus() {
+    if (B.busy) return;
+    B.busy = true;
+    const s = stats(),
+      g = Math.min(focusMp(), s.maxMp - st.mp);
+    st.mp += g;
+    pop("me", `+${g} MP`, "heal");
+    log(`集中精神，回復 ${g} MP。`);
+    paintBattle();
+    after();
   }
   function damageFoe(dmg, crit, label) {
     B.hp = Math.max(0, B.hp - dmg);
@@ -251,41 +279,35 @@ const Battle = (() => {
     B.busy = true;
     const s = stats(),
       crit = rnd() < 0.12,
-      phys = B.look.resist && B.look.resist.phys != null ? B.look.resist.phys : 1;
+      phys = B.shield ? 0.5 : 1;
     const dmg = Math.max(1, Math.round(s.atk * (0.85 + rnd() * 0.3) * (crit ? 1.5 : 1) * phys));
-    damageFoe(dmg, crit, phys < 1 ? "普通攻擊效果不太好" : "揮動法杖");
+    damageFoe(dmg, crit, B.shield ? `${B.shield.name}擋住了一半的力量` : "揮動法杖");
     after();
   }
-  function skills() {
-    if (B.busy) return;
-    const list = B.ctx.skills
-      .map(
-        (k, i) =>
-          `<button data-k="${i}" ${st.mp < k.mp ? "disabled" : ""}><b>${k.icon} ${esc(k.name)}</b><small>MP ${k.mp} · ${esc(k.desc)}</small></button>`,
-      )
-      .join("");
-    act(`<div class="bt-list">${list}<button class="bt-back" id="bt-back">↩ 返回</button></div>${st.mp < Math.min(...B.ctx.skills.map((k) => k.mp)) ? '<p class="fine">MP 不夠了：用藍露珠補充，或先用普通攻擊。</p>' : ""}`);
-    $("bt-back").onclick = menu;
-    $("bt-act")
-      .querySelectorAll("[data-k]")
-      .forEach((b) => (b.onclick = () => cast(B.ctx.skills[+b.dataset.k])));
-  }
+  /* MP is spent only when the spell works: a wrong answer teaches the right one and costs a turn, not MP. */
   async function cast(k) {
-    if (B.busy || st.mp < k.mp) return;
+    const free = B.free > 0;
+    if (B.busy || (!free && st.mp < k.mp)) return;
     B.busy = true;
-    st.mp -= k.mp;
-    paintBattle();
-    log(`${k.icon} ${k.name}：答對英文題就能發動！`);
+    log(`${k.icon} ${k.name}：答對就發動${free ? "（這次免費示範）" : `，成功才消耗 ${k.mp} MP`}。`);
     const q = k.make();
     B.answered++;
     await Learn.ask($("bt-act"), q, {
       src: "battle",
       next: "繼續戰鬥",
+      retry: !!k.retry,
       onAnswer(ok) {
         if (!ok) {
           pop("me", "失敗", "miss");
-          log(`咒語沒有成功（MP 已消耗）。記住正確答案，下次再試！`);
+          log(`咒語沒有成功，沒有消耗 MP。看一下正確答案，下次再試！`);
           return;
+        }
+        if (free) B.free--;
+        else st.mp -= k.mp;
+        if (B.shield) {
+          pop("foe", `${B.shield.icon} 破盾！`, "crit");
+          log(`${B.shield.name}被破除了！`);
+          B.shield = null;
         }
         if (k.kind === "heal") {
           const s = stats(),
@@ -424,7 +446,7 @@ const Battle = (() => {
       persist();
     },
     get foe() {
-      return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name };
+      return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: !!B.shield };
     },
   };
 })();

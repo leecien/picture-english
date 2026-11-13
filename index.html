@@ -328,17 +328,22 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
   </header>
   <p class="hud-msg" id="hud-msg" role="status" hidden></p>
   <nav class="hud-acts" aria-label="動作">
-    <button id="hud-berry" aria-label="使用小紅莓（1）" title="小紅莓：回復 HP（1）">🍓<small></small></button>
-    <button id="hud-dew" aria-label="使用藍露珠（2）" title="藍露珠：回復 MP（2）">💧<small></small></button>
-    <button id="hud-sit" aria-label="坐下休息（R）" title="坐下休息（R）">🧘</button>
-    <button id="hud-bag" aria-label="背包（B）" title="背包（B）">🎒</button>
-    <button id="act-fight" class="big" aria-label="找最近的怪物戰鬥（F）" title="找最近的怪物戰鬥（F）">⚔️</button>
-    <button id="act-talk" class="big" aria-label="和附近的居民說話（E）" title="互動（E）">💬</button>
+    <div class="hud-tray" id="hud-tray" hidden>
+      <button id="hud-dew" aria-label="使用藍露珠（2）" title="藍露珠：回復 MP（2）">💧<small></small></button>
+      <button id="hud-sit" aria-label="坐下休息（R）" title="坐下休息（R）">🧘</button>
+      <button id="hud-bag" aria-label="背包（B）" title="背包（B）">🎒</button>
+      <button id="act-fight" aria-label="找最近的怪物戰鬥（F）" title="找最近的怪物戰鬥（F）">⚔️</button>
+    </div>
+    <div class="hud-row">
+      <button id="hud-berry" aria-label="使用小紅莓（1）" title="小紅莓：回復 HP（1）" hidden>🍓<small></small></button>
+      <button id="hud-more" aria-expanded="false" aria-controls="hud-tray" aria-label="更多動作：補給、休息、背包、戰鬥">⋯</button>
+      <button id="act-talk" class="primary-act" aria-label="主要動作（E）"><span aria-hidden="true">💬</span><b id="act-label">說話</b></button>
+    </div>
   </nav>
   <section class="dlg" id="dlg" hidden aria-live="polite"><div class="dlg-head"><canvas id="dlg-face" width="64" height="64" aria-hidden="true"></canvas><b id="dlg-name"></b></div><div class="dlg-body" id="dlg-body"></div></section>
   <section class="bt" id="battle" hidden aria-label="戰鬥">
     <div class="bt-stage">
-      <div class="bt-foe" id="bt-foe"><div class="bt-tag"><b id="bt-foe-name"></b> <span id="bt-foe-lv"></span><div class="bbar hp"><i id="bt-foe-hp"></i><span></span></div></div><canvas id="bt-foe-cv" aria-hidden="true"></canvas></div>
+      <div class="bt-foe" id="bt-foe"><div class="bt-tag"><b id="bt-foe-name"></b> <span id="bt-foe-lv"></span><div class="bbar hp"><i id="bt-foe-hp"></i><span></span></div><small class="bt-shield" id="bt-foe-shield" hidden></small></div><canvas id="bt-foe-cv" aria-hidden="true"></canvas></div>
       <div class="bt-me" id="bt-me"><canvas id="bt-me-cv" aria-hidden="true"></canvas><div class="bt-tag"><b>你</b> <span id="bt-me-lv"></span><div class="bbar hp"><i id="bt-me-hp"></i><span></span></div><div class="bbar mp"><i id="bt-me-mp"></i><span></span></div></div></div>
     </div>
     <p class="bt-log" id="bt-log" role="status"></p>
@@ -667,7 +672,8 @@ function makePlan(types){
 /* The learning pages (practice, card book, log, commute) open as a panel over the game; toField() returns. */
 function showScreen(id){['home','result','game','drive'].forEach(s=>$(s).hidden=s!==id);$('sheet').hidden=true;
   $('panel').hidden=false;document.body.classList.remove('field');if(window.World)World.paused=true;$('panel').scrollTop=0;window.scrollTo(0,0)}
-function toField(){if(D.on)stopDrive();$('panel').hidden=true;$('sheet').hidden=true;document.body.classList.add('field');RPG.resume()}
+function toField(){const back=!$('drive').hidden&&D.from==='field';if(D.on)stopDrive();$('panel').hidden=true;$('sheet').hidden=true;document.body.classList.add('field');RPG.resume();
+  if(back&&D.lastRun&&D.lastRun.n)RPG.say(`開車模式練了 ${D.lastRun.n} 題${D.lastRun.seen?`（開口回答 ${D.lastRun.seen} 題，答對 ${D.lastRun.ok}）`:'（跟讀不計分）'}。接下來：${RPG.objective().text}`);D.lastRun=null}
 function showTab(pid){document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.p===pid)));
   ['p-play','p-book','p-log'].forEach(p=>$(p).hidden=p!==pid);
   if(pid==='p-book')renderBook();if(pid==='p-log')renderLog();if(pid==='p-play')updateHome()}
@@ -990,7 +996,7 @@ function clip(src,fbText,lang,force){return new Promise(res=>{
 function listen(ms){return new Promise(res=>{
   if(MIC.use){
     if(MIC.lost){res(null);return}
-    MIC.buf=[];MIC.part='';MIC.open=Date.now();MIC.win=true;driveState('🎤 請說英文','listening');
+    MIC.buf=[];MIC.part='';MIC.open=Date.now();MIC.win=true;driveState('🎤 輪到你說','listening');
     let quiet=null;const t=setTimeout(fin,ms),iv=setInterval(()=>{if(MIC.lost||!MIC.win)fin();else if(MIC.buf.length&&!quiet)quiet=setTimeout(fin,900)},150);
     function fin(){clearTimeout(t);clearTimeout(quiet);clearInterval(iv);MIC.win=false;if(MIC.lost){res(null);return}
       const said=(MIC.buf.join('')+' '+MIC.part).trim();res(said?[said]:[])}
@@ -1002,7 +1008,7 @@ function listen(ms){return new Promise(res=>{
   r.onresult=e=>{for(const x of e.results)for(let i=0;i<x.length;i++)out.push(x[i].transcript)};
   r.onerror=e=>{D.lastErr=e.error;if(e.error==='not-allowed'||e.error==='service-not-allowed'||e.error==='audio-capture'||e.error==='network'){denied=true;D.micDenied=true}};
   r.onend=()=>{clearTimeout(t);D.rec=null;res(denied?null:out)};
-  try{r.start();driveState('🎤 請說英文','listening')}catch(e){clearTimeout(t);D.rec=null;res(null)}
+  try{r.start();driveState('🎤 輪到你說','listening')}catch(e){clearTimeout(t);D.rec=null;res(null)}
 })}
 const CONTR={"i'm":"i am","it's":"it is","don't":"do not","can't":"cannot","won't":"will not","i've":"i have","she's":"she is","he's":"he is","we're":"we are","i'd":"i would",
   "that's":"that is","what's":"what is","where's":"where is","there's":"there is","let's":"let us","i'll":"i will","we'll":"we will","you're":"you are","they're":"they are","isn't":"is not","doesn't":"does not",
@@ -1079,13 +1085,13 @@ async function driveLoop(resume){
     let it,kind;
     if(resume&&D.cur){({it,kind}=D.cur);resume=false}
     else{
-      if(D.kind==='scene'){if(!D.queue.length)D.queue=sceneOrdered()?sceneItems():shuffle(sceneItems());it=D.queue.shift();kind='scene';if(!it){stopDrive();return}}
+      if(D.kind==='scene'){if(!D.queue.length){const all=sceneItems(),due=Learn.reviewIn(all),rest=all.filter(x=>!due.includes(x));D.queue=[...due,...(sceneOrdered()?rest:shuffle(rest))]}it=D.queue.shift();kind='scene';if(!it){stopDrive();return}}
       else{const useS=D.kind==='sent'||(D.kind==='mix'&&D.n%3===2);it=take(useS?'s':'w');kind=useS?'s':'w'}
       D.n++;D.cur={it,kind};
     }
     const useS=kind!=='w',target=useS?it.en:it.w;
     $('drive-q').innerHTML=kind==='scene'?`<small>${esc(it.scn)}</small>${it.q?`<span class="drv-their">對方：${esc(it.q)}</span>`:''}${esc(it.zh)}`:esc(useS?it.zh:it.z);
-    $('drive-heard').textContent='';$('drive-ans').innerHTML='';driveState('🎧 聽題目');
+    $('drive-heard').textContent='';$('drive-ans').innerHTML='';driveState('🎧 正在播題');
     if(kind==='scene'){
       if(it.q){await clip('','對方說','zh-TW');if(!alive())return;await clip('',it.q,'en-US');if(!alive())return;await gap(300)}
       await clip('',(it.q?'你要回答：':'用英文說：')+it.zh);
@@ -1095,14 +1101,18 @@ async function driveLoop(resume){
     let ok=null;
     if(!D.listen){
       SND.play('tap');await wait(150);
-      const alts=await listen((useS?7000:4500)+DP.think*1000);if(!alive())return;
+      let alts=await listen((useS?7000:4500)+DP.think*1000);if(!alive())return;
+      // Silence is not a wrong answer: ask once more, then show the answer without grading.
+      if(alts&&!alts.length){driveState('🔁 沒聽到，請再說一次');await clip('','沒聽到，請再說一次。');if(!alive())return;SND.play('tap');alts=await listen((useS?7000:4500)+DP.think*1000);if(!alive())return}
       if(alts===null){micFail();return}
       else{
         if(alts.some(a=>/\b(stop|quit)\b/i.test(a))&&!/\bstop\b/i.test(target)){stopDrive();return}
-        ok=useS?alts.some(a=>sentScore(target,a)>=.75):alts.some(a=>wordOk(target,a));
-        $('drive-heard').textContent=alts.length?`聽到：「${alts[0]}」`:'沒有聽到聲音';
-        if(ok){driveState('✅ 答對了','ok');SND.play('correct');await clip(UIV('correct'),'答對了！')}
-        else{driveState('❌ 再記一下');await clip(UIV(alts.length?'answer_is':'no_hear'),alts.length?'正確答案是':'沒聽清楚。正確答案是')}
+        if(alts.length){driveState('📝 收到回答');ok=useS?alts.some(a=>sentScore(target,a)>=.75):alts.some(a=>wordOk(target,a))}
+        else ok=null;
+        $('drive-heard').textContent=alts.length?`聽到：「${alts[0]}」`:'還是沒聽到聲音，這題不計分，直接聽答案。';
+        if(ok===true){driveState('✅ 答對了','ok');SND.play('correct');await clip(UIV('correct'),'答對了！')}
+        else if(ok===false){driveState('❌ 再記一下');await clip(UIV('answer_is'),'正確答案是')}
+        else{driveState('🔊 聽答案');await clip(UIV('no_hear'),'沒聽清楚。正確答案是')}
       }
     }
     if(D.listen){driveState('🤔 想一想');await clip(UIV('think'),'想一想。');if(!alive())return;await wait(DP.think*1000+(useS?1000:0))}
@@ -1114,6 +1124,7 @@ async function driveLoop(resume){
     if(ok!==null){
       D.seen++;D.segSeen++;if(ok){D.ok++;D.segOk++;P.correct++;P[useS?'s':'w']++;addXP(10);award('first')}
       record([{k:useS?'s':'w',it,ok}]);
+      Learn.note(useS?'s':'w',it,ok,'commute');
     }
     D.cur=null;
     driveStats();
@@ -1147,6 +1158,7 @@ function stopDrive(){
   if(!D.on)return;D.on=false;D.paused=false;D.run++;
   hush();
   if(MIC.use&&MIC.d){try{MIC.d.stop().catch(()=>{})}catch(e){}}MIC.use=false;
+  D.lastRun={n:D.n,seen:D.seen,ok:D.ok};
   logDrive();
   try{if(D.wake)D.wake.release()}catch(e){}
   clip(UIV('stop'),'開車模式結束，辛苦了。','zh-TW',true);

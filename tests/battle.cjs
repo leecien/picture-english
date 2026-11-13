@@ -69,11 +69,11 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
 
   /* Skill: MP is spent; a wrong answer does nothing; the right answer is shown and logged as weak */
   const foe1 = await ev(() => Battle.foe.hp);
-  await page.locator("#bt-skill").click();
-  await page.locator('.bt-list [data-k="0"]').click();
-  assert.equal(await ev(() => Battle.mp), mp0 - 4, "skill costs MP");
+  await page.locator('.bt-skill[data-k="0"]').click();
+  assert.equal(await ev(() => Battle.mp), mp0, "MP is not taken before the answer");
   await pickAnswer(false);
   assert.equal(await ev(() => Battle.foe.hp), foe1, "wrong answer: no damage");
+  assert.equal(await ev(() => Battle.mp), mp0, "a failed spell costs no MP");
   assert.match(await page.locator(".qz-f").innerText(), /正確答案/);
   const weakWord = await ev(() => Learn.last.item.w);
   await page.locator(".qz-next").click();
@@ -82,13 +82,13 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
   /* Correct answer: damage at once, XP and a card; the same word again soon gives nothing extra */
   const xp1 = await ev(() => P.xp);
   await ev(() => Battle.setMp(30));
-  await page.locator("#bt-skill").click();
-  await page.locator('.bt-list [data-k="0"]').click();
+  await page.locator('.bt-skill[data-k="0"]').click();
   const foe2 = await ev(() => Battle.foe.hp);
   await pickAnswer(true);
   assert((await ev(() => Battle.foe.hp)) < foe2, "correct answer hits immediately");
   const word = await ev(() => Learn.last.item.w);
   assert.equal(await ev(() => P.xp), xp1 + 6, "battle English gives XP");
+  assert.equal(await ev(() => Battle.mp), 26, "MP spent on a successful spell");
   const c1 = await ev((w) => JSON.parse(localStorage.getItem("pm-cards"))[w].c, word);
   await page.locator(".qz-next").click();
   // Anti-farming: grade the same word again right away.
@@ -113,8 +113,7 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
   await ev(() => Math.random = ((r) => () => 0.05)(Math.random));
   await ev(() => Battle.setMp(30));
   for (let i = 0; i < 12 && !(await page.locator("#bt-claim").count()); i++) {
-    await page.locator("#bt-skill").click();
-    await page.locator('.bt-list [data-k="0"]').click();
+    await page.locator('.bt-skill[data-k="0"]').click();
     await pickAnswer(true);
     await page.locator(".qz-next").click();
     await page.waitForFunction(() => document.getElementById("bt-claim") || Battle.ready);
@@ -156,6 +155,8 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
 
   /* Field: rest, items, bag and resident trade (all in-scene) */
   await ev(() => (Math.random = () => 0.5));
+  await page.locator("#hud-more").click();
+  assert.equal(await page.locator("#hud-tray").isVisible(), true, "supplies and rest in the tray");
   await page.locator("#hud-sit").click();
   assert(await ev(() => World.hero.sit));
   const hpSit = await ev(() => Battle.hp);
@@ -200,6 +201,9 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
   await page.waitForSelector(".world-canvas");
   assert.deepEqual(await ev(() => ({ hp: Battle.hp, berry: Battle.count("berry"), at: RPG.data.at })), saved);
   assert.equal(await ev(() => localStorage.getItem("pm-progress") !== null), true);
+  // Anti-farming survives a reload (pm-learn-v1), and old keys keep their shape.
+  assert.equal(await ev((w) => Learn.grade({ recK: "w", item: WORDS.find((x) => x.w === w) }, true, "battle").fresh, word), false, "cooldown kept across reload");
+  assert(await ev(() => { const s = JSON.parse(localStorage.getItem("pm-learn-v1")); return s.v === 1 && Array.isArray(s.review) && typeof s.recent === "object"; }));
   assert(await ev(() => document.documentElement.scrollWidth <= innerWidth), "no horizontal scroll");
   await page.screenshot({ path: "/tmp/picture-battle-mobile.png" });
   assert.deepEqual(errors, []);

@@ -1533,6 +1533,41 @@ const World = (() => {
       }
     }
   }
+  /* Edge arrow toward the current objective when it is off screen. */
+  function drawGuide() {
+    const g = opts.guide && opts.guide();
+    if (!g || api.paused) return;
+    const m = 26,
+      x0 = cam.x + m,
+      y0 = cam.y + m + 40,
+      x1 = cam.x + ew - m,
+      y1 = cam.y + eh - m - 60,
+      tx = g.px,
+      ty = g.py - 10;
+    if (tx > x0 && tx < x1 && ty > y0 && ty < y1) return;
+    const cx = cam.x + ew / 2,
+      cy = cam.y + eh / 2,
+      a = Math.atan2(ty - cy, tx - cx),
+      ax = Math.min(x1, Math.max(x0, tx)),
+      ay = Math.min(y1, Math.max(y0, ty)),
+      b = reduce ? 0 : Math.sin(clock * 5) * 3;
+    ctx.save();
+    ctx.translate(ax + Math.cos(a) * b, ay + Math.sin(a) * b);
+    ctx.rotate(a);
+    ctx.fillStyle = "#ffbf3f";
+    ctx.strokeStyle = "#8a5a1d";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(14, 0);
+    ctx.lineTo(-8, -10);
+    ctx.lineTo(-3, 0);
+    ctx.lineTo(-8, 10);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+    label(g.name, ax, ay + 24, "#fff3c4");
+  }
   function draw() {
     const k = dpr * Z;
     ctx.setTransform(k, 0, 0, k, 0, 0);
@@ -1632,6 +1667,7 @@ const World = (() => {
       });
     labels.forEach((f) => f());
     drawFx();
+    drawGuide();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
 
@@ -1646,6 +1682,17 @@ const World = (() => {
     near,
     clearKeys: () => held.clear(),
     npc: (id) => ents.find((e) => e.kind === "npc" && e.id === id),
+    /* Back to the map's start tile (menu "回到入口" when stuck). */
+    toStart() {
+      const s0 = find("P");
+      hero.path = [];
+      hero.target = null;
+      Object.assign(hero, { tx: s0.x, ty: s0.y, px: center(s0.x), py: center(s0.y) });
+      const pet = ents.find((e) => e.kind === "pet");
+      if (pet) Object.assign(pet, { tx: s0.x, ty: s0.y + 1, px: center(s0.x), py: center(s0.y + 1), path: [], trail: [] });
+      snapCam();
+      if (opts.onMove) opts.onMove(hero.tx, hero.ty);
+    },
     setMark(id, on) {
       const n = ents.find((e) => e.kind === "npc" && e.id === id);
       if (n) n.mark = !!on;

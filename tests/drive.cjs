@@ -70,7 +70,7 @@ function mockDictation() {
   assert.equal(await page.locator("#drive-cats button").count(), 9, "random + eight categories");
   await page.locator('#drive-cats [data-cat="all"]').click();
   assert(await page.locator("#drive-scs").isHidden(), "no sub-scenes in random mode");
-  assert.match(await page.locator("#drive-scene-note").innerText(), /從 8 大類、59 個場景隨機出題，共 465 句/);
+  assert.match(await page.locator("#drive-scene-note").innerText(), /從 8 大類、60 個場景隨機出題，共 470 句/);
   await page.locator('#drive-cats [data-cat="travel"]').click();
   await page.locator('#drive-scs [data-scene="customs"]').click();
   assert.match(await page.locator("#drive-scene-note").innerText(), /旅遊 · 海關入境（初級）：10 句，依真實對話的順序/);
@@ -284,6 +284,13 @@ function mockDictation() {
   });
   await p4.locator("#mic-retry").click();
   await p4.waitForFunction(() => /答對了/.test(document.getElementById("drive-state").textContent), null, { timeout: 15000 });
+  // Silence is not a wrong answer: one more try, then the answer is shown without grading.
+  await p4.waitForFunction(() => D.seen >= 1, null, { timeout: 10000 }); // the right answer above is recorded first
+  const seen0 = await p4.evaluate(() => D.seen);
+  await p4.evaluate(() => (__mode.sr = "empty"));
+  await p4.waitForFunction(() => /沒聽到，請再說一次/.test(document.getElementById("drive-state").textContent), null, { timeout: 20000 });
+  await p4.waitForFunction(() => /還是沒聽到聲音，這題不計分/.test(document.getElementById("drive-heard").textContent), null, { timeout: 20000 });
+  assert.equal(await p4.evaluate(() => D.seen), seen0, "silence is not graded");
   await p4.evaluate(() => (__mode.sr = "audio-capture"));
   await p4.waitForSelector("#mic-follow", { timeout: 20000 });
   await p4.locator("#mic-follow").click();
@@ -292,7 +299,7 @@ function mockDictation() {
   await ctx4.close();
 
   assert.deepEqual(errors, []);
-  console.log("PASS: scene picker, speed and think time saved, slowed clips and speech, pinned control bar, pause/resume replay, immediate stop, mid-session speed change, dictation voice answers with echo guard, scene records and log, no-mic fallback, mic check (permission, input level, recognition lifecycle, timeout, retry), recording failure with retry and listen-along, no browser errors");
+  console.log("PASS: scene picker, speed and think time saved, slowed clips and speech, pinned control bar, pause/resume replay, immediate stop, mid-session speed change, dictation voice answers with echo guard, scene records and log, no-mic fallback, mic check (permission, input level, recognition lifecycle, timeout, retry), recording failure with retry and listen-along, silence not graded, no browser errors");
   await browser.close();
 })().catch((e) => {
   console.error(e);

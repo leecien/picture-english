@@ -4,7 +4,7 @@
 
 純靜態網頁，不需要建置。開啟即進入滿版 RPG（`shell.css`、`index.html` 的 `#shell`）；原有題庫載入、十種題型、卡冊、成就、分級、開車模式與學習紀錄改在遊戲上方的面板（`#panel`）開啟。`world.js` 是 Canvas 場景引擎（點地面走路、尋路、鏡頭縮放、多 NPC、橋樑閘門、傳送門、遇敵、立繪）；`learn.js` 是任務與戰鬥共用的英文題與計分；`battle.js` 是數值、道具與回合制戰鬥；`rpg.js` 是地圖、NPC 腳本、KK 新手村、風之旅行故事、選單與任務日誌。
 
-分階段計畫、完成度與美術清單見 [RO_PLAN.md](RO_PLAN.md)。驗收單見 issue #4。測試：`node tests/story.cjs`、`node tests/battle.cjs`、`node tests/rpg.cjs`、`node tests/drive.cjs`。
+分階段計畫、完成度與美術清單見 [RO_PLAN.md](RO_PLAN.md)。驗收單見 issue #4。測試：`node tests/content.cjs`（題庫品質，不需瀏覽器）、`node tests/story.cjs`、`node tests/battle.cjs`、`node tests/rpg.cjs`、`node tests/drive.cjs`。
 
 五站依序為莓果美食市場、兔兔動物森林、雨滴自然湖畔、微風旅行車站、星光生活小鎮。每站有單字、句子各一個十題任務；答對七題完成，首次完成加 30 XP，兩項都完成後解鎖下一站。每張地圖另有一次性的 15 XP 寶箱。任務重玩仍保留正常答題 XP 與卡片紀錄，但不重複發放首次獎勵。離開未完成任務不會完成或解鎖。
 
@@ -13,6 +13,7 @@
 ## 不可破壞的相容契約
 
 - 不改名、不清除、不遷移原有 `pm-progress`、`pm-cards`、`pm-sents`、`pm-days`、`pm-log`、`pm-sound`、`pm-best-*` 等鍵及其資料形狀。
+- 學習輔助狀態另存 `pm-learn-v1`：防刷分的近期答對時間（3 分鐘後自動清除）、待複習清單（最多 80 筆、21 天）、最近出過的題目、各音標的熟練度。錯過的音要在 10 分鐘後的複習再答對兩次才算熟練。
 - 開車模式偏好另存 `pm-drive-pref`（速度、想一想秒數、上次的情境）；情境答題記進 `pm-sents`，`pm-log` 的開車紀錄可帶 `scn`（場景名稱）欄位。
 - RPG 使用獨立 `pm-rpg-v1` 鍵，包含 version、map、positions、cleared、chests；新增欄位 `world`（各地圖位置）、`hero`（HP、MP、道具）、`at`（目前地圖）、`kk`（新手村進度）、`story.wind`（風之旅行進度）。`positions` 保留 PR #1 的九宮格意義，不讀也不寫。
 - 共用原有 `start`、`take`、`done`、`record`、`finish`、`addXP`，讓任務答題繼續產生卡片、成就與紀錄。

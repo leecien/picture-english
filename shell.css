@@ -138,13 +138,25 @@ body.field {
   right: max(10px, var(--sar));
   bottom: calc(var(--sab) + 12px);
   display: grid;
-  grid-template-columns: repeat(2, 48px);
+  justify-items: end;
   gap: 8px;
   z-index: 3;
 }
+.hud-row,
+.hud-tray {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.hud-tray {
+  padding: 6px;
+  border-radius: 16px;
+  background: #fffdf5cc;
+  box-shadow: 0 3px 0 #0000002a;
+}
 .hud-acts button {
   position: relative;
-  width: 48px;
+  min-width: 48px;
   height: 48px;
   border-radius: 14px;
   border: 1px solid var(--g-line);
@@ -153,11 +165,35 @@ body.field {
   font-family: var(--emoji);
   font-size: 20px;
 }
-.hud-acts button.big {
+#hud-berry {
+  background: #ffe3e6f0;
+  border-color: #e5677d;
+}
+#hud-more {
+  font-family: var(--body);
+  font-weight: 700;
+}
+#hud-more[aria-expanded="true"] {
+  background: #e0ebc8;
+  border-color: var(--g-accent);
+}
+.hud-acts .primary-act {
   height: 58px;
-  font-size: 26px;
+  min-width: 132px;
+  max-width: 62vw;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  font-size: 22px;
   background: #fff3c4f0;
   border-color: #e3c768;
+}
+.primary-act b {
+  font: 700 15px var(--body);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .hud-acts small {
   position: absolute;
@@ -598,6 +634,119 @@ canvas.hit {
   margin: 0;
 }
 
+.bt-menu .bt-main {
+  grid-column: 1 / -1;
+}
+.bt-menu .bt-skill {
+  grid-column: 1 / -1;
+  text-align: left;
+  justify-items: start;
+  background: #eef3ff;
+  border-color: #b9c8ef;
+}
+.bt-menu .bt-skill b {
+  font-size: 16px;
+}
+.bt-learn {
+  color: #4f6aa8 !important;
+}
+.bt-tip {
+  margin: 8px 0 0;
+  font-size: 13px;
+  background: #fff3c4;
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+.bt-shield {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #4f6aa8;
+}
+
+/* ---- teaching, targets, summaries ---- */
+.teach {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin: 6px 0;
+}
+.teach-card {
+  background: var(--g-paper2);
+  border-radius: 12px;
+  padding: 8px 10px;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+.teach-card p {
+  margin: 0;
+  font-size: 13.5px;
+}
+.teach-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.shell button.demo {
+  min-height: 44px;
+  border: 1px solid #b9c8ef;
+  border-radius: 10px;
+  background: #eef3ff;
+  padding: 6px 10px;
+}
+.qz-cue {
+  font-size: 14px;
+  background: var(--g-paper2);
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+.qz-cue summary {
+  cursor: pointer;
+  color: #6f6440;
+  min-height: 32px;
+  line-height: 32px;
+}
+.targets {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  display: grid;
+  gap: 4px;
+}
+.targets small {
+  display: block;
+  color: #4f6aa8;
+}
+.targets span {
+  color: #6f7861;
+  font-size: 13px;
+}
+.summary h4 {
+  margin: 4px 0;
+  font-family: var(--display);
+}
+.summary p {
+  margin: 6px 0;
+}
+.chip-en {
+  display: inline-block;
+  background: #ddf4e8;
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin: 2px 0;
+  font-size: 13px;
+}
+.chip-en.weak {
+  background: #fce3e3;
+}
+.summary .next {
+  font-weight: 700;
+  background: #fff3c4;
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+
 /* ---- menu sheet ---- */
 .menu {
   position: absolute;
@@ -632,8 +781,8 @@ canvas.hit {
   position: absolute;
   right: 12px;
   top: 10px;
-  min-height: 40px !important;
-  width: 40px;
+  min-height: 44px !important;
+  width: 44px;
   padding: 0 !important;
 }
 .menu-grid {
@@ -798,15 +947,8 @@ canvas.hit {
   .hud-msg {
     top: calc(var(--sat) + 56px);
   }
-  .hud-acts {
-    grid-template-columns: repeat(3, 44px);
-  }
-  .hud-acts button {
-    width: 44px;
-    height: 44px;
-  }
-  .hud-acts button.big {
-    height: 44px;
+  .hud-acts .primary-act {
+    height: 48px;
   }
   .dlg {
     left: auto;

@@ -252,7 +252,7 @@ const RPG = (() => {
       { ch: "c", id: "stress", name: "重音老師 Stella", look: look({ skin: "#fff1e4", hair: "#f08b47", cloth: "#e8737f", accent: "#fff3b0", ears: "fox" }) },
       { ch: "d", id: "word", name: "村長 Kai", look: look({ hair: "#8a8a8a", cloth: "#6b8f5a", accent: "#f3d27a", hat: "#4f6d8f" }) },
     ],
-    mob: { name: "音節泡泡", shape: "bubble", colors: ["#c9b6ff", "#ffffff"], lv: 1, hp: 26, atk: 3, aggressive: false, resist: { phys: 0.6 } },
+    mob: { name: "音節泡泡", shape: "bubble", colors: ["#c9b6ff", "#ffffff"], lv: 1, hp: 26, atk: 3, aggressive: false, shield: { name: "泡泡膜", icon: "🫧" } },
   };
   const WIND = {
     id: "wind",
@@ -272,22 +272,22 @@ const RPG = (() => {
       { ch: "s", id: "baggage", name: "行李服務 Sam", look: look({ hair: "#6b4a3a", cloth: "#e98f73", accent: "#ffffff" }) },
       { ch: "h", id: "hotel", name: "飯店櫃檯 Noah", look: look({ hair: "#3d2b24", cloth: "#b5384a", accent: "#f3d27a" }) },
     ],
-    mob: { name: "紙飛鳥", shape: "bird", colors: ["#f6f3ff", "#b9a8ec"], lv: 3, hp: 40, atk: 5, aggressive: false, sprite: "mob-bird" },
+    mob: { name: "紙飛鳥", shape: "bird", colors: ["#f6f3ff", "#b9a8ec"], lv: 3, hp: 40, atk: 5, aggressive: false, sprite: "mob-bird", shield: { name: "風之盾", icon: "🌀" } },
   };
   const LEVELS = { 1: "初級", 2: "中級", 3: "高級" };
   const ELEMENTS = { wind: "風", kk: "音", fire: "火", wood: "木", water: "水", earth: "土" };
   /* Wind story stages. cat/scene point into data/scenes.json and are shared with the commute mode. */
   const STAGES = [
-    { id: "checkin", npc: "checkin", cat: "travel", scene: "airport", title: "機場報到", learn: "回答護照、托運行李、座位與登機時間的問題", toeic: "多益準備目標：Part 2 應答問題中常見的機場報到問句" },
-    { id: "customs", npc: "officer", cat: "travel", scene: "customs", title: "海關問答", learn: "說明來訪目的、停留天數、住宿地點與申報", toeic: "多益準備目標：Part 2 應答、Part 3 旅遊對話裡的入境情境" },
-    { id: "baggage", npc: "baggage", cat: "travel", scene: "baggage", title: "找回行李", learn: "說明行李沒出現、描述行李外觀、請對方寄送", toeic: "多益準備目標：Part 3 客服對話與機場廣播常見用語" },
-    { id: "hotel", npc: "hotel", cat: "travel", scene: "hotel", title: "抵達飯店", learn: "辦理入住、詢問早餐與退房時間", toeic: "多益準備目標：Part 2、Part 3 飯店櫃檯對話" },
+    { id: "checkin", npc: "checkin", cat: "travel", scene: "airport", targets: [0, 1, 2, 3], title: "機場報到", learn: "聽懂並回答目的地、護照、托運行李、行李秤重", toeic: "多益準備目標：Part 2 應答問題（機場報到的常見問句與回應）" },
+    { id: "customs", npc: "officer", cat: "travel", scene: "customs", targets: [2, 3, 4], title: "海關問答", learn: "說明來訪目的（觀光或出差）、停留天數、住宿與申報", toeic: "多益準備目標：Part 2 應答問題（Wh- 問句與 Yes/No 問句）" },
+    { id: "baggage", npc: "baggage", cat: "travel", scene: "lostbag", targets: [0, 1, 2, 3, 4], title: "找回行李", learn: "用簡單句說行李沒出來、描述行李、提供住宿地點", toeic: "多益準備目標：Part 2 應答問題（服務櫃檯的請求與回應）" },
+    { id: "hotel", npc: "hotel", cat: "travel", scene: "hotel", targets: [0, 1, 2, 3], title: "抵達飯店", learn: "辦理入住、說訂房名字與住幾晚、詢問早餐", toeic: "多益準備目標：Part 2 應答問題（飯店櫃檯的常見問句）" },
   ];
   const KK_TASKS = [
-    { id: "vowel", npc: "vowel", title: "母音", type: "vowel", learn: "認得 æ、ɛ、ɪ、ʌ 等母音符號，連到單字的發音" },
-    { id: "consonant", npc: "consonant", title: "子音", type: "consonant", learn: "認得 θ、ʃ、tʃ、dʒ、ŋ 等子音符號" },
-    { id: "stress", npc: "stress", title: "重音", type: "stress", learn: "看 ˋ 符號、聽發音，判斷重音在第幾個音節" },
-    { id: "word", npc: "word", title: "整字發音", type: "word", learn: "聽單字選音標、看音標選單字" },
+    { id: "vowel", npc: "vowel", title: "母音", type: "vowel", learn: "三個對比單元：/i/ 和 /ɪ/、/æ/ 和 /ɛ/、/ɑ/ 和 /ʌ/" },
+    { id: "consonant", npc: "consonant", title: "子音", type: "consonant", learn: "三個對比單元：/ʃ/ 和 /tʃ/、/r/ 和 /l/、/s/ 和 /z/" },
+    { id: "stress", npc: "stress", title: "重音", type: "stress", learn: "看 ˋ 符號、聽發音，判斷兩音節與三音節單字的重音" },
+    { id: "word", npc: "word", title: "整字發音", type: "word", learn: "用學過的母音：聽單字選音標、看音標選單字" },
   ];
 
   const maps = [KK, WIND, ...LEGACY];
@@ -393,21 +393,36 @@ const RPG = (() => {
         if (f) f.focus({ preventScroll: true });
       });
     }
-    async function quiz(q, head) {
-      const r = await Learn.ask($("dlg-body"), q, { src: "quest" });
-      return r.ok;
+    /* resolves {ok, tries}; opt.retry gives one more try after a miss */
+    async function quiz(q, opt = {}) {
+      return Learn.ask($("dlg-body"), q, { src: "quest", ...opt });
+    }
+    /* Free-form teaching panel: buttons with data-say play a recorded word. */
+    function panel(html, next) {
+      return new Promise((res) => {
+        $("dlg-body").innerHTML = `${html}<div class="dlg-row"><button class="dlg-next" type="button">${esc(next || "▶ 繼續")}</button></div>`;
+        $("dlg-body")
+          .querySelectorAll("[data-say]")
+          .forEach((b) => {
+            const w = Learn.wordBy(b.dataset.say);
+            b.onclick = () => w && speak(w.w, w.au);
+          });
+        const nx = $("dlg-body").querySelector(".dlg-next");
+        nx.onclick = () => res();
+        nx.focus({ preventScroll: true });
+      });
     }
     /* A short English round inside the dialog: returns how many were right. */
     async function round(title, make, n) {
       let ok = 0;
       for (let i = 0; i < n; i++) {
         $("dlg-name").dataset.step = `${title} ${i + 1}/${n}`;
-        if (await quiz(make(i))) ok++;
+        if ((await quiz(make(i))).ok) ok++;
       }
       delete $("dlg-name").dataset.step;
       return ok;
     }
-    return { show, close, line, choose, quiz, round, get open() { return open; } };
+    return { show, close, line, choose, quiz, round, panel, get open() { return open; } };
   })();
 
   /* ---------- sheets (menu, journal, world map, bag, mic check) ---------- */
@@ -435,6 +450,7 @@ const RPG = (() => {
       <button data-m="book">🃏<b>卡冊</b><small>收集的單字卡</small></button>
       <button data-m="log">📈<b>學習紀錄</b><small>每天學了什麼</small></button>
       <button data-m="mic">🎤<b>麥克風檢查</b><small>收不到聲音時用</small></button>
+      <button data-m="start">🧭<b>回到入口</b><small>卡住時回到地圖起點</small></button>
       <button data-m="sound">${SND.on ? "🔊" : "🔇"}<b>音效</b><small>${SND.on ? "開" : "關"}</small></button>
     </div>`);
     $("menu-body")
@@ -446,6 +462,12 @@ const RPG = (() => {
             if (m === "map") return worldMap();
             if (m === "journal") return journal();
             if (m === "bag") return bag();
+            if (m === "start") {
+              closeSheet();
+              World.toStart();
+              status("回到這張地圖的入口了。");
+              return refresh();
+            }
             if (m === "sound") {
               SND.toggle();
               paintMute();
@@ -483,14 +505,19 @@ const RPG = (() => {
     return { sc, cid, path: `${ELEMENTS[el] || el}／旅遊／${sc ? sc.name : s.title}／${LEVELS[lv] || "初級"}`, level: LEVELS[lv] || "初級" };
   }
   function journal() {
-    const kkRows = KK_TASKS.map((t) => `<li class="${data.kk[t.id] ? "done" : ""}"><b>${data.kk[t.id] ? "✅" : "⬜"} ${t.title}</b><small>${t.learn}</small></li>`).join("");
+    const kkRows = KK_TASKS.map((t) => {
+      const us = LESSON_UNITS[t.id],
+        n = us.filter((u) => data.kk.units[u.id] || data.kk[t.id]).length;
+      return `<li class="${data.kk[t.id] ? "done" : ""}"><b>${data.kk[t.id] ? "✅" : n ? "▶️" : "⬜"} ${t.title}（${n}/${us.length} 單元）</b><small>${t.learn}</small></li>`;
+    }).join("");
+    const due = Learn.soundsDue();
     const windRows = STAGES.map((s, i) => {
       const m = stageMeta(s),
         done = W.stage > i || W.done;
       return `<li class="${done ? "done" : ""}"><b>${done ? "✅" : i === W.stage && kkDone() ? "▶️" : "⬜"} ${s.title}</b><small>會學：${s.learn}</small><small>內容：${esc(m.path)}（${m.sc ? m.sc.items.length : 0} 句）· 程度：${m.level}</small><small>${s.toeic}</small></li>`;
     }).join("");
     sheet(`<h3>📜 任務日誌</h3><p class="journal-now">目前目標：${esc(objective().text)}</p>
-      <h4>🔤 KK 新手村 ${kkDone() ? "· 已畢業" : ""}</h4><ul class="journal">${kkRows}<li class="${data.kk.battle ? "done" : ""}"><b>${data.kk.battle ? "✅" : "⬜"} 教學戰鬥</b><small>用音標魔法打倒村口的音節泡泡</small></li></ul>
+      <h4>🔤 KK 新手村 ${kkDone() ? "· 已畢業" : ""}</h4>${due.length ? `<p class="fine">需要多練的音：${due.map((x) => `/${esc(x)}/`).join(" ")}（找對應的老師選「練需要加強的音」）</p>` : ""}<ul class="journal">${kkRows}<li class="${data.kk.battle ? "done" : ""}"><b>${data.kk.battle ? "✅" : "⬜"} 教學戰鬥</b><small>用音標魔法打倒村口的音節泡泡</small></li></ul>
       <h4>🌬️ 風之旅行群島 ${W.done ? "· 故事完成" : ""}</h4><ul class="journal">${windRows}</ul>
       <p class="fine">多益準備目標只說明這段內容練的是哪一類題型，不代表考試分數，也不把遊戲等級換算成成績。</p>`);
   }
@@ -535,9 +562,29 @@ const RPG = (() => {
     const left = ["word", "sent"].filter((k) => !data.cleared.includes(m.id + ":" + k)).length;
     return { text: left ? `找${m.person}接英文任務（還有 ${left} 項）` : `${m.name}的任務都完成了`, short: m.name, npc: left ? "main" : null, map: m.id };
   }
+  /* The one main button: talk if someone is next to you, otherwise walk to whoever the objective needs. */
+  function primary() {
+    if (!World.hero) return { label: "說話" };
+    const ents = World.entities,
+      chest = ents.find((e) => e.kind === "chest" && !e.open && World.near(e));
+    if (chest) return { label: "打開禮物", icon: "🎁" };
+    const o = objective(),
+      goal = o.map === data.at && o.npc && World.npc(o.npc);
+    if (goal) return World.near(goal) ? { label: "對話", icon: "💬" } : { label: `前往 ${goal.name.split(" ").pop()}`, icon: "🧭" };
+    const npc = ents.filter((e) => e.kind === "npc").sort((a, b) => dist(a) - dist(b))[0];
+    return npc && World.near(npc) ? { label: "對話", icon: "💬" } : { label: npc ? `找 ${npc.name.split(" ").pop()}` : "說話", icon: "💬" };
+  }
+  function paintPrimary() {
+    const p = primary();
+    $("act-label").textContent = p.label;
+    $("act-talk").firstElementChild.textContent = p.icon || "💬";
+    const b = Battle.bars();
+    $("hud-berry").hidden = !(b.hp / b.maxHp < 0.3 || $("hud-more").getAttribute("aria-expanded") === "true");
+  }
   function refresh() {
     const o = objective();
     $("quest-text").textContent = o.text;
+    paintPrimary();
     // "!" over whoever the current objective points to (or every legacy resident with work left)
     World.entities.filter((e) => e.kind === "npc").forEach((e) => (e.mark = o.map === data.at && e.id === o.npc));
     Battle.paint();
@@ -583,6 +630,11 @@ const RPG = (() => {
       onMove: (x, y) => {
         data.world[m.id] = { x, y };
         save();
+        paintPrimary();
+      },
+      guide: () => {
+        const o = objective();
+        return o.map === data.at && o.npc ? World.npc(o.npc) : data.kk.bubble && !data.kk.battle && data.at === "kk" ? World.entities.find((e) => e.story === "tutorial") : W.bag === "search" && data.at === "wind" ? World.entities.find((e) => e.story === "thief") : null;
       },
       onStatus: status,
       onTick: Battle.tick,
@@ -614,11 +666,11 @@ const RPG = (() => {
   function spawnSpecials() {
     if (data.at === "kk" && data.kk.bubble && !data.kk.battle) {
       const p = findChar("@");
-      World.spawn({ name: "搗蛋音節泡泡", shape: "bubble", colors: ["#ff9fd0", "#ffffff"], lv: 2, hp: 40, atk: 3, resist: { phys: 0.5 } }, p.x - 3, p.y + 1, { unique: true, story: "tutorial" });
+      World.spawn({ name: "搗蛋音節泡泡", shape: "bubble", colors: ["#ff9fd0", "#ffffff"], lv: 2, hp: 40, atk: 3, shield: { name: "泡泡膜", icon: "🫧" } }, p.x - 3, p.y + 1, { unique: true, story: "tutorial" });
     }
     if (data.at === "wind" && W.stage === 2 && W.bag === "search") {
       const p = findChar("x");
-      World.spawn({ name: "搗蛋海鷗", shape: "bird", colors: ["#ffffff", "#9aa3b5"], lv: 4, hp: 46, atk: 5, drop: "feather" }, p.x, p.y, { unique: true, story: "thief" });
+      World.spawn({ name: "搗蛋海鷗", shape: "bird", colors: ["#ffffff", "#9aa3b5"], lv: 4, hp: 46, atk: 5, drop: "feather", shield: { name: "風之盾", icon: "🌀" } }, p.x, p.y, { unique: true, story: "thief" });
     }
   }
   function portal() {
@@ -676,8 +728,78 @@ const RPG = (() => {
     }
   }
 
-  /* KK village */
-  const kkMake = (type) => () => Learn.kkQuestion(type === "word" ? (Math.random() < 0.5 ? "listen" : "read") : type);
+  /* KK village: micro-lessons. Each unit demonstrates two sounds (recorded demo words + mouth/tongue hints),
+     then asks the learner to tell them apart. A wrong answer brings back that unit's demo and a fresh question,
+     never the whole lesson. Unit progress lives in data.kk.units; the four lesson flags keep their meaning. */
+  const LESSON_UNITS = {
+    vowel: Learn.UNITS.filter((u) => u.lesson === "vowel").map((u) => ({ ...u, type: "pair" })),
+    consonant: Learn.UNITS.filter((u) => u.lesson === "consonant").map((u) => ({ ...u, type: "pair" })),
+    stress: [
+      { id: "s1", type: "stress", level: 1, title: "兩個音節的重音" },
+      { id: "s2", type: "stress", level: 2, title: "三個音節的重音" },
+    ],
+    word: [
+      { id: "w1", type: "word", kind: "listen", title: "聽發音選音標" },
+      { id: "w2", type: "word", kind: "read", title: "看音標選單字" },
+    ],
+  };
+  data.kk.units = obj(data.kk.units);
+  /* Units taught so far (older saves: a finished lesson counts as all of its units taught). */
+  function taughtUnits() {
+    const out = Object.keys(data.kk.units).filter((k) => data.kk.units[k]);
+    for (const t of ["vowel", "consonant"]) if (data.kk[t]) LESSON_UNITS[t].forEach((u) => out.includes(u.id) || out.push(u.id));
+    return out;
+  }
+  const taughtVowels = () => new Set(LESSON_UNITS.vowel.filter((u) => taughtUnits().includes(u.id)).flatMap((u) => u.pair));
+  const demoBtn = (word) => {
+    const w = Learn.wordBy(word);
+    return w ? `<button type="button" class="demo" data-say="${esc(w.w)}">🔊 ${esc(w.w)} <small class="qz-kk">${esc(w.kk)}</small></button>` : "";
+  };
+  function teachPairHTML(u) {
+    return `<p class="dlg-zh">這一課：<b>${esc(u.title)}</b>。先聽示範單字（真人錄音），注意口形和舌頭位置。</p><div class="teach">${u.pair
+      .map((s) => `<div class="teach-card"><b class="qz-sym big">/${esc(s)}/</b><p>${esc(Learn.SOUNDS[s].hint)}</p><div class="teach-demo">${Learn.SOUNDS[s].demo.map(demoBtn).join("")}</div></div>`)
+      .join("")}</div>`;
+  }
+  async function teachUnit(u, again) {
+    if (u.type === "pair") return Talk.panel(teachPairHTML(u), again ? "再試一題" : "▶ 我聽好了，開始練習");
+    if (u.type === "stress")
+      return Talk.panel(
+        `<p class="dlg-zh">KK 用 <b>ˋ</b> 標出重音：它寫在<b>重讀音節的前面</b>。重讀的音節比較長、比較響亮。</p><div class="teach"><div class="teach-card"><b>banana</b> <span class="qz-kk big">[bəˋnænə]</span><p>ˋ 在 n 前面：重讀的是 <b class="qz-kk">${esc(Learn.stressSpan("[bəˋnænə]"))}</b>，第 2 個音節。</p>${demoBtn("banana")}</div><div class="teach-card"><b>apple</b> <span class="qz-kk big">[ˋæpḷ]</span><p>ˋ 在最前面：重音在第 1 個音節。</p>${demoBtn("apple")}</div></div>${u.level === 2 ? '<p class="dlg-zh">接下來是三個音節的字，一樣找 ˋ 的位置，再用耳朵確認。</p>' : ""}`,
+        again ? "再試一題" : "▶ 開始練習",
+      );
+    return Talk.panel(
+      `<p class="dlg-zh">把學過的音組成整個單字。${u.kind === "listen" ? "聽單字的發音，選出它的 KK 音標。" : "看 KK 音標，選出是哪個單字。"}這一課只用你學過的母音。</p><div class="teach"><div class="teach-card">${demoBtn("fish")}${demoBtn("cat")}${demoBtn("sun")}</div></div>`,
+      again ? "再試一題" : "▶ 開始練習",
+    );
+  }
+  function unitQuestion(u, i, avoid) {
+    if (u.type === "pair") {
+      const q = Learn.unitQuestion(u, i % 2 ? "find" : "which", avoid);
+      q.retryHint = `再聽一次：/${u.pair[0]}/ ${Learn.SOUNDS[u.pair[0]].hint} /${u.pair[1]}/ ${Learn.SOUNDS[u.pair[1]].hint}`;
+      return q;
+    }
+    if (u.type === "stress") return Learn.stressQuestion(u.level);
+    return Learn.wordKK(u.kind, taughtVowels());
+  }
+  /* One unit: teach, then 3 correct answers. Misses get a hint and a retry, then the unit's demo again. */
+  async function runUnit(u, title) {
+    await teachUnit(u);
+    let ok = 0,
+      asked = 0,
+      lastWord = "";
+    while (ok < 3 && asked < 8) {
+      $("dlg-name").dataset.step = `${title}：${u.title} ${ok}/3`;
+      const q = unitQuestion(u, asked++, lastWord);
+      lastWord = q.item.w;
+      const r = await Talk.quiz(q, { retry: true });
+      if (r.ok && !r.tries) ok++;
+      else if (r.ok) ok += 0.5;
+      else await teachUnit(u, true);
+    }
+    delete $("dlg-name").dataset.step;
+    data.kk.units[u.id] = true;
+    save();
+  }
   async function kkNpc(e) {
     const task = KK_TASKS.find((t) => t.npc === e.id);
     if (e.id === "word" && data.kk.word) {
@@ -686,42 +808,64 @@ const RPG = (() => {
       return Talk.line("Finish your other lessons first.", `還有${left}課沒上完，完成後再來找我。`);
     }
     if (data.kk[task.id]) {
-      const v = await Talk.choose(`${task.title}課已經完成了。要再複習一次嗎？`, [
-        { label: "🔁 再練一次（5 題）", value: "again" },
+      const due = Learn.soundsDue().filter((s) => LESSON_UNITS[task.id].some((u) => u.pair && u.pair.includes(s)));
+      const v = await Talk.choose(`${task.title}課已經完成了。${due.length ? `還需要多練的音：${due.map((s) => `/${s}/`).join(" ")}` : ""}`, [
+        ...(due.length ? [{ label: "🎯 練需要加強的音", value: "due" }] : []),
+        { label: "🔁 從頭複習這一課", value: "again" },
         { label: "稍後再聊", value: "bye" },
       ]);
-      if (v === "again") await lesson(task, true);
+      if (v === "due") await lesson(task, LESSON_UNITS[task.id].filter((u) => u.pair && u.pair.some((s) => due.includes(s))));
+      if (v === "again") await lesson(task, LESSON_UNITS[task.id]);
       return;
     }
-    await lesson(task, false);
+    await lesson(task);
     if (e.id === "word" && KK_TASKS.every((t) => data.kk[t.id])) await chief();
   }
   const INTRO = {
-    vowel: ["Vowels are the heart of every word.", "母音是單字的核心。KK 音標用 æ、ɛ、ɪ 這些符號表示不同的母音。我會先播一個<b>示範單字</b>，再請你找出含有同一個音的單字。"],
-    consonant: ["Let's listen to the consonants.", "子音像 θ（think 的 th）、ʃ（fish 的 sh）。一樣先聽示範單字，再找出含有那個音的字。"],
-    stress: ["Where is the stress?", "重音符號 ˋ 標在重讀音節的前面。聽聽看哪一段比較重、比較長。"],
-    word: ["Now put it all together.", "最後是整個單字：聽發音選音標，或看音標選單字。"],
+    vowel: ["Vowels are the heart of every word.", "母音課有三個小單元，每次只學兩個容易搞混的音。先聽示範，再分辨。"],
+    consonant: ["Let's listen to the consonants.", "子音課也是三個小單元：/ʃ/ 和 /tʃ/、/r/ 和 /l/、/s/ 和 /z/。"],
+    stress: ["Where is the stress?", "重音課：先學看 ˋ 符號，再用耳朵確認重讀的音節。"],
+    word: ["Now put it all together.", "最後把學過的音組起來：聽單字選音標、看音標選單字。"],
   };
-  async function lesson(task, review) {
+  async function lesson(task, only) {
     const [en, zh] = INTRO[task.id];
     await Talk.line(en, zh);
-    const ok = await Talk.round(`${task.title}練習`, kkMake(task.type), 5);
-    Learn.flush("quest", `KK 新手村・${task.title}`);
-    if (ok >= 3) {
-      if (!data.kk[task.id]) {
-        data.kk[task.id] = true;
-        save();
-        Battle.give("berry");
-        toast("🔤", `${task.title}課完成`, `答對 ${ok}/5 題 · 獲得小紅莓`, "badge");
+    const units = only || LESSON_UNITS[task.id].filter((u) => !data.kk.units[u.id]);
+    for (let i = 0; i < units.length; i++) {
+      await runUnit(units[i], task.title);
+      if (i < units.length - 1) {
+        const v = await Talk.choose(`「${units[i].title}」完成！`, [
+          { label: `▶ 下一個：${units[i + 1].title}`, value: "next" },
+          { label: "先休息，稍後再來（進度會保留）", value: "later" },
+        ]);
+        if (v === "later") return finishSummary(`KK 新手村・${task.title}`, "回來找老師就能接著上下一個單元。");
       }
-      await Talk.line("Great job!", `答對 ${ok} 題，${review ? "複習完成" : "這堂課過關了"}！${KK_TASKS.every((t) => data.kk[t.id]) ? "" : "去找下一位老師吧。"}`);
-    } else await Talk.line("Let's try again.", `答對 ${ok} 題，要答對 3 題才過關。聽示範單字多練幾次，再來找我。`);
+    }
+    const first = !data.kk[task.id];
+    if (first && LESSON_UNITS[task.id].every((u) => data.kk.units[u.id])) {
+      data.kk[task.id] = true;
+      save();
+      Battle.give("berry");
+      toast("🔤", `${task.title}課完成`, "獲得小紅莓", "badge");
+    }
+    const next = KK_TASKS.find((t) => !data.kk[t.id]);
+    await finishSummary(`KK 新手村・${task.title}`, next ? `下一步：找${KK.npcs.find((n) => n.id === next.npc).name}上「${next.title}」課。` : "四課都完成了，找村長 Kai 吧！");
     refresh();
+  }
+  /* End-of-section summary: what was used, what still needs practice, what to do next. */
+  async function finishSummary(label, nextText) {
+    const s = Learn.flush("quest", label);
+    if (!s) return;
+    const sounds = s.sounds.length ? `<p>還要多練的音：${s.sounds.map((x) => `<b class="qz-kk">/${esc(x)}/</b>`).join(" ")}（之後的戰鬥和複習會再出現）</p>` : "";
+    await Talk.panel(
+      `<div class="summary"><h4>📋 ${esc(label)}</h4><p>答對 ${s.ok}/${s.n} 題。</p>${s.good.length ? `<p>這段練到：${s.good.slice(0, 6).map((x) => `<span class="chip-en">${esc(x)}</span>`).join(" ")}</p>` : ""}${s.weak.length ? `<p>待複習：${s.weak.slice(0, 6).map((x) => `<span class="chip-en weak">${esc(x)}</span>`).join(" ")}</p>` : ""}${sounds}<p class="next">${esc(nextText)}</p></div>`,
+      "▶ 好",
+    );
   }
   async function chief() {
     if (!data.kk.bubble) {
       await Talk.line("You learned all four lessons!", "四堂課都完成了！不過村口有一隻<b>搗蛋音節泡泡</b>，把字典裡的音標弄亂了。");
-      await Talk.line("Use phonics magic!", "戰鬥時選「✨ 技能 → 音標魔法」，答對音標題就能打出大傷害。泡泡不怕普通攻擊喔。");
+      await Talk.line("Use phonics magic!", "泡泡有一層「泡泡膜」，普通攻擊只有一半效果。按「🔤 音標魔法」答對音標題就能戳破泡泡膜。第一次施法免費，答錯也能再試一次。");
       data.kk.bubble = true;
       save();
       spawnSpecials();
@@ -735,14 +879,14 @@ const RPG = (() => {
       World.refresh();
       addXP(20);
       toast("🎓", "KK 新手村畢業", "傳送門已啟動：前往風之旅行群島", "levelup");
-      await Talk.line("You are ready to travel!", "你已經會看 KK 音標了。村口東邊的傳送門已經啟動，下一站是<b>風之旅行群島</b>：機場報到、海關、飯店，一路用英文闖關！");
+      await Talk.line("You are ready to travel!", "你已經會看 KK 音標了。村口東邊的傳送門已經啟動，下一站是<b>風之旅行群島</b>：機場報到、海關、找回行李、飯店，一路用英文闖關！");
       return refresh();
     }
     await Talk.line("Have a nice trip!", "旅途愉快！想複習音標，隨時回來找老師們。");
   }
 
-  /* Wind islands */
-  const sq = (s, i) => () => Learn.sceneQuestion(s.cat, s.scene, i);
+  /* Wind islands: listen first, then answer. Each stage practises 3–5 target expressions from its scene. */
+  const sq = (s, i) => Learn.sceneQuestion(s.cat, s.scene, i, { mode: "listen", ctx: `story:${s.id}` });
   async function windNpc(e) {
     if (e.id === "guide") return guide();
     const idx = STAGES.findIndex((s) => s.npc === e.id);
@@ -751,16 +895,25 @@ const RPG = (() => {
     await ({ checkin, customs, baggage, hotel })[STAGES[idx].id]();
     refresh();
   }
-  async function stageOffer(s) {
+  function targetsHTML(s, idxs) {
+    const sc = Learn.scene(s.cat, s.scene);
+    if (!sc) return "";
+    return `<ul class="targets">${idxs
+      .map((i) => sc.items[i])
+      .filter(Boolean)
+      .map((it) => `<li>${it.q ? `<small>🗣️ ${esc(it.q)}</small>` : ""}<b>${esc(it.en)}</b> <span>${esc(it.zh)}</span></li>`)
+      .join("")}</ul>`;
+  }
+  async function stageOffer(s, idxs) {
     const m = stageMeta(s);
-    return Talk.choose(`<b>${s.title}</b> · ${m.level}<br><small>會學：${s.learn}</small><br><small>${s.toeic}</small>`, [
-      { label: "▶ 開始對話", value: "go" },
-      { label: "🚗 先用開車模式練這段", value: "drive", sub: `同一批 ${m.sc ? m.sc.items.length : 0} 句情境` },
+    return Talk.choose(`<b>${s.title}</b> · ${m.level}<br><small>會學：${s.learn}</small><br><small>${s.toeic}</small><details class="qz-cue"><summary>這段要用的 ${idxs.length} 句（可先看）</summary>${targetsHTML(s, idxs)}</details>`, [
+      { label: "▶ 開始對話", value: "go", sub: "先聽對方說英文，再選你的回答" },
+      { label: "🚗 先用開車模式練這段", value: "drive", sub: `同一批情境（${m.sc ? m.sc.items.length : 0} 句）` },
       { label: "稍後再來", value: "later" },
     ]);
   }
   async function guide() {
-    await Talk.line("Welcome to the Wind Islands!", "歡迎來到風之旅行群島！這裡練的是<b>初級旅遊英文</b>：先在機場報到，過橋到海關，再到飯店入住。");
+    await Talk.line("Welcome to the Wind Islands!", "歡迎來到風之旅行群島！這裡練的是<b>初級旅遊英文</b>：機場報到 → 過橋到海關 → 找回行李 → 飯店入住。每一段會先聽對方說，再選你的回答。");
     const v = await Talk.choose("想先做什麼？", [
       { label: "📜 看任務日誌", value: "journal" },
       { label: "🚗 用開車模式練目前這段", value: "drive" },
@@ -775,23 +928,38 @@ const RPG = (() => {
       openDriveFrom(sceneContext());
     }
   }
-  async function stagePass(s, ok, n, key) {
-    Learn.flush("quest", `風之旅行・${s.title}`);
-    return ok >= Math.ceil(n * 0.6);
+  /* Play the stage's lines in order; a miss gets one retry with the Chinese cue opened. */
+  async function stageTalk(s, idxs) {
+    let ok = 0;
+    for (let k = 0; k < idxs.length; k++) {
+      $("dlg-name").dataset.step = `${s.title} ${k + 1}/${idxs.length}`;
+      const q = sq(s, idxs[k]);
+      q.retryHint = "打開「中文提示」看看對方的意思，再選一次。";
+      const r = await Talk.quiz(q, { retry: true });
+      if (r.ok) ok++;
+    }
+    delete $("dlg-name").dataset.step;
+    return ok;
+  }
+  async function stageEnd(s, ok, n, nextText) {
+    const pass = ok >= Math.ceil(n * 0.6);
+    await finishSummary(`風之旅行・${s.title}`, pass ? nextText : "再練一次這段（可以先用開車模式聽熟），回來找同一位 NPC。");
+    return pass;
   }
   async function checkin() {
     const s = STAGES[0],
-      v = await stageOffer(s);
+      v = await stageOffer(s, s.targets);
     if (v === "drive") return Talk.close(), openDriveFrom(sceneContext());
     if (v !== "go") return;
-    await Talk.line("Good morning! Where are you flying today?", "櫃檯人員先問你要飛去哪裡。接下來看英文問題，選出最適合的回答。");
-    const ok = await Talk.round("報到", (i) => sq(s, i)(), 4);
-    const seat = await Talk.choose("最後她問你座位偏好（兩個都是好答案）：", [
+    await Talk.line("Good morning! Welcome to Wind Air.", "櫃檯人員 Mia 會用英文問你問題。先聽，再選出最適合的回答。");
+    const ok = await stageTalk(s, s.targets);
+    const seat = await Talk.choose("最後她問你座位偏好。兩個都是好答案，選你想要的：", [
       { label: "Can I have a window seat?", value: "window", sub: "靠窗" },
       { label: "Can I have an aisle seat, please?", value: "aisle", sub: "靠走道" },
     ]);
     W.seat = seat;
-    if (!(await stagePass(s, ok, 4))) return Talk.line("Let's try once more.", `答對 ${ok}/4 題。多聽幾次對話再試一次（可以先用開車模式練習）。`);
+    save();
+    if (!(await stageEnd(s, ok, s.targets.length, "下一步：走過東邊的橋，到海關找 Officer Lee。"))) return;
     W.stage = 1;
     save();
     World.refresh();
@@ -801,10 +969,10 @@ const RPG = (() => {
   }
   async function customs() {
     const s = STAGES[1],
-      v = await stageOffer(s);
+      v = await stageOffer(s, [2, 3, 4, 5, 9]);
     if (v === "drive") return Talk.close(), openDriveFrom(sceneContext());
     if (v !== "go") return;
-    await Talk.line("Next, please. What is the purpose of your visit?", "海關問你來訪的目的。你的回答會改變接下來的問題。");
+    await Talk.line("Next, please. What is the purpose of your visit?", "海關問你來訪的目的。<b>觀光和出差都是正確的回答</b>，你的選擇會改變接下來的問題。");
     const why = await Talk.choose("你要怎麼回答？", [
       { label: "I'm here for sightseeing.", value: "sightseeing", sub: "我是來觀光的" },
       { label: "I'm here on business.", value: "business", sub: "我是來出差的" },
@@ -813,10 +981,9 @@ const RPG = (() => {
     save();
     // Follow-up questions depend on the answer (indexes into the customs scene, in conversation order).
     const follow = why === "business" ? [5, 2, 9] : [2, 3, 4];
-    await Talk.line(why === "business" ? "On business? Let me ask a few more questions." : "Sightseeing, great. Just a few questions.", why === "business" ? "出差的話，海關會多問你的工作。" : "觀光的話，海關會問停留天數和住宿。");
-    let ok = 0;
-    for (let i = 0; i < follow.length; i++) if (await Talk.quiz(sq(s, follow[i])())) ok++;
-    if (!(await stagePass(s, ok, 3))) return Talk.line("Please review and come back.", `答對 ${ok}/3 題。再練一下海關問答（可以切到開車模式）再回來。`);
+    await Talk.line(why === "business" ? "On business? I have a few more questions." : "Sightseeing, great. Just a few questions.", why === "business" ? "出差的話，海關會多問你的工作。" : "觀光的話，海關會問停留天數和住宿。");
+    const ok = await stageTalk(s, follow);
+    if (!(await stageEnd(s, ok, follow.length, "下一步：到南邊的行李轉盤，找行李服務 Sam。"))) return;
     W.stage = 2;
     save();
     addXP(20);
@@ -826,12 +993,12 @@ const RPG = (() => {
   async function baggage() {
     const s = STAGES[2];
     if (W.bag === "search") return Talk.line("Did you find your bag?", "海鷗往轉盤西邊飛了！點牠就能開戰，把行李箱搶回來。");
-    const v = await stageOffer(s);
+    const v = await stageOffer(s, s.targets);
     if (v === "drive") return Talk.close(), openDriveFrom(sceneContext());
     if (v !== "go") return;
     await Talk.line("", "轉盤停了……你的行李箱沒有出現！旁邊好像有一隻海鷗叼著一個黑色行李箱飛走了。");
     const how = await Talk.choose("你要怎麼處理？", [
-      { label: "🧾 到服務櫃檯用英文申報", value: "desk", sub: "回答 3 題，行李會送到飯店" },
+      { label: "🧾 到服務櫃檯用英文申報", value: "desk", sub: `回答 ${s.targets.length} 句，行李會送到飯店` },
       { label: "🏃 自己去追那隻海鷗", value: "search", sub: "戰鬥搶回行李，馬上拿到" },
     ]);
     if (how === "search") {
@@ -841,25 +1008,25 @@ const RPG = (() => {
       status("搗蛋海鷗在轉盤西邊！點牠開始戰鬥。", true);
       return Talk.line("Hey, come back with my bag!", "去追那隻海鷗吧！牠就在轉盤西邊。");
     }
-    await Talk.line("Hi, how can I help you?", "Sam 會問你行李的狀況，選出最適合的英文。");
-    const ok = await Talk.round("申報行李", (i) => sq(s, [3, 5, 7][i])(), 3);
-    if (!(await stagePass(s, ok, 3))) return Talk.line("Sorry, could you say that again?", `答對 ${ok}/3 題。Sam 沒聽懂，再試一次。`);
+    await Talk.line("Hello. Can I help you?", "Sam 會用英文問你行李的狀況。先聽，再選最適合的回答。");
+    const ok = await stageTalk(s, s.targets);
+    if (!(await stageEnd(s, ok, s.targets.length, "下一步：走過東邊的橋，到飯店找櫃檯的 Noah。"))) return;
     W.bag = "desk";
     W.stage = 3;
     save();
     World.refresh();
     addXP(20);
     toast("🧳", "行李申報完成", "行李會送到飯店 · 東邊的橋已開放", "badge");
-    await Talk.line("We'll send it to your hotel tonight.", "Sam 會把行李送到飯店。走過東邊的橋去飯店吧！");
+    await Talk.line("We will send it to your hotel tonight.", "Sam 會把行李送到飯店。走過東邊的橋去飯店吧！");
   }
   async function hotel() {
     const s = STAGES[3],
-      v = await stageOffer(s);
+      v = await stageOffer(s, s.targets);
     if (v === "drive") return Talk.close(), openDriveFrom(sceneContext());
     if (v !== "go") return;
-    await Talk.line("Good evening. How can I help you?", "飯店櫃檯 Noah 要幫你辦理入住。");
-    const ok = await Talk.round("入住", (i) => sq(s, [0, 1, 2, 4][i])(), 4);
-    if (!(await stagePass(s, ok, 4))) return Talk.line("Let's go over it again.", `答對 ${ok}/4 題，再練一次入住對話吧。`);
+    await Talk.line("Good evening. Welcome to the Sea Breeze Hotel.", "飯店櫃檯 Noah 要幫你辦理入住。先聽，再選回答。");
+    const ok = await stageTalk(s, s.targets);
+    if (!(await stageEnd(s, ok, s.targets.length, "下一步：故事完成！可以用開車模式複習全部旅遊情境。"))) return;
     if (W.bag === "desk") await Talk.line("Oh, and your suitcase arrived an hour ago.", "對了，機場送來的行李箱一小時前到了！申報行李的英文派上用場了。");
     else await Talk.line("Can I help you with your bag?", "你自己搶回了行李箱，Noah 幫你把它送上樓。");
     W.stage = 4;
@@ -917,26 +1084,31 @@ const RPG = (() => {
     const m = cur(),
       region = m.region || m.id;
     let skills,
-      tutorial = "";
+      tutorial = "",
+      freeCasts = 0;
     if (region === "kk") {
+      const taught = taughtUnits();
       skills = [
-        { id: "kk", name: "音標魔法", icon: "🔤", mp: 5, kind: "attack", mult: 2.8, desc: "答對 KK 音標題，造成 2.8 倍傷害", make: () => Learn.kkQuestion(["vowel", "consonant", "stress", "listen", "read"][Math.floor(Math.random() * 5)]) },
-        { id: "heal", name: "整字回復", icon: "💚", mp: 6, kind: "heal", heal: 0.4, desc: "答對整字發音題，回復 40% HP", make: () => Learn.kkQuestion("listen") },
+        { id: "kk", name: "音標魔法", icon: "🔤", mp: 5, kind: "attack", mult: 2.8, retry: true, desc: "2.8 倍傷害，可破泡泡膜", learn: taught.length ? "學過的音標對比" : "整字音標", make: () => Learn.phonicsQuestion(taught) },
+        { id: "heal", name: "整字回復", icon: "💚", mp: 6, kind: "heal", heal: 0.4, retry: true, desc: "回復 40% HP", learn: "聽單字選音標", make: () => Learn.wordKK("listen", taughtVowels()) },
       ];
-      if (mob.story === "tutorial") tutorial = "教學：泡泡不怕普通攻擊。選「✨ 技能 → 🔤 音標魔法」，答對音標題就能打出大傷害！";
+      if (mob.story === "tutorial") {
+        freeCasts = 1;
+        tutorial = "教學：泡泡膜讓普通攻擊只剩一半。按「🔤 音標魔法」，答對就能戳破泡泡膜！第一次施法免費，答錯可以再試一次。";
+      }
     } else if (region === "wind") {
       const s = STAGES[Math.min(W.stage, 3)];
       skills = [
-        { id: "talk", name: "旅遊會話", icon: "💬", mp: 6, kind: "attack", mult: 2.4, desc: `${s.title}情境題，2.4 倍傷害`, make: () => Learn.sceneQuestion(s.cat, s.scene) },
-        { id: "word", name: "單字飛彈", icon: "🔤", mp: 4, kind: "attack", mult: 1.8, desc: "旅行單字題，1.8 倍傷害", make: () => Learn.wordQuestion((w) => w.th === "transport") },
-        { id: "heal", name: "治癒短句", icon: "💚", mp: 8, kind: "heal", heal: 0.4, desc: "旅遊情境題，回復 40% HP", make: () => Learn.sceneQuestion("travel", ["airport", "customs", "hotel"][Math.floor(Math.random() * 3)]) },
+        { id: "talk", name: "旅遊會話", icon: "💬", mp: 6, kind: "attack", mult: 2.4, desc: "2.4 倍傷害，可破風之盾", learn: `${s.title}的對話`, make: () => Learn.sceneQuestion(s.cat, s.scene, null, { mode: "listen", ctx: "battle" }) },
+        { id: "word", name: "單字飛彈", icon: "🔤", mp: 4, kind: "attack", mult: 1.8, desc: "1.8 倍傷害", learn: "交通與旅行單字", make: () => Learn.wordQuestion((w) => w.th === "transport", null, "battle") },
+        { id: "heal", name: "治癒短句", icon: "💚", mp: 8, kind: "heal", heal: 0.4, desc: "回復 40% HP", learn: "已走過的旅遊情境", make: () => { const done = STAGES.slice(0, Math.max(1, Math.min(W.stage + 1, 4))); const t = done[Math.floor(Math.random() * done.length)]; return Learn.sceneQuestion(t.cat, t.scene, null, { mode: "listen", ctx: "battle" }); } },
       ];
     } else {
       const route = SENT.some((s) => s.route === m.route && s.lv <= maxLv()) ? m.route : "daily";
       skills = [
-        { id: "word", name: "單字飛彈", icon: "🔤", mp: 4, kind: "attack", mult: 1.8, desc: "主題單字題，1.8 倍傷害", make: () => Learn.wordQuestion((w) => w.th === m.id) },
-        { id: "sent", name: "句子爆發", icon: "💥", mp: 8, kind: "attack", mult: 2.8, desc: "句子題，2.8 倍傷害", make: () => Learn.sentQuestion((s) => s.route === route) },
-        { id: "heal", name: "治癒短句", icon: "💚", mp: 8, kind: "heal", heal: 0.4, desc: "句子題，回復 40% HP", make: () => Learn.sentQuestion() },
+        { id: "word", name: "單字飛彈", icon: "🔤", mp: 4, kind: "attack", mult: 1.8, desc: "1.8 倍傷害", learn: `${m.name}的主題單字`, make: () => Learn.wordQuestion((w) => w.th === m.id, null, "battle") },
+        { id: "sent", name: "句子爆發", icon: "💥", mp: 8, kind: "attack", mult: 2.8, desc: "2.8 倍傷害", learn: "句子填空與翻譯", make: () => Learn.sentQuestion((s) => s.route === route, "battle") },
+        { id: "heal", name: "治癒短句", icon: "💚", mp: 8, kind: "heal", heal: 0.4, desc: "回復 40% HP", learn: "句子", make: () => Learn.sentQuestion(null, "battle") },
       ];
     }
     const look = mob.look.hp ? mob.look : { ...mob.look, hp: mob.maxHp };
@@ -944,6 +1116,7 @@ const RPG = (() => {
       region,
       skills,
       tutorial,
+      freeCasts,
       fleeAlways: mob.story === "tutorial",
       intro: mob.story === "thief" ? "搗蛋海鷗叼著你的行李箱！打倒牠把行李搶回來！" : "",
       onEnd(result) {
@@ -982,6 +1155,12 @@ const RPG = (() => {
     $("hud-dew").onclick = () => Battle.use("dew");
     $("hud-sit").onclick = () => Battle.toggleSit();
     $("hud-bag").onclick = bag;
+    $("hud-more").onclick = () => {
+      const open = $("hud-more").getAttribute("aria-expanded") !== "true";
+      $("hud-more").setAttribute("aria-expanded", String(open));
+      $("hud-tray").hidden = !open;
+      paintPrimary();
+    };
     $("menu").addEventListener("click", (e) => {
       if (e.target === $("menu")) closeSheet();
     });
@@ -1025,6 +1204,7 @@ const RPG = (() => {
     stages: STAGES,
     sceneContext,
     objective,
+    say: (t) => status(t, true),
     openMenu,
     journal,
     get data() {
