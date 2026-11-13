@@ -29,14 +29,41 @@ from PIL import Image, ImageChops, ImageDraw, ImageStat
 GAME_ORDER = ["down", "left", "right", "up"]
 
 
-def load_frames(src, cols, rows):
+def split_points(profile, n, size):
+    """Cut positions at the emptiest line near each even split, so uneven generated grids slice cleanly."""
+    cuts = [0]
+    for k in range(1, n):
+        want = round(k * size / n)
+        win = size // (n * 3)
+        lo, hi = max(cuts[-1] + 1, want - win), min(size - 1, want + win)
+        best = min(range(lo, hi + 1), key=lambda i: (profile[i], abs(i - want)))
+        cuts.append(best)
+    cuts.append(size)
+    return cuts
+
+
+def load_frames(src, cols, rows, prep=None, auto=False):
     p = Path(src)
     if p.is_dir():
         files = sorted(f for f in p.iterdir() if f.suffix.lower() in (".png", ".webp", ".jpg", ".jpeg"))
         if len(files) != cols * rows:
             sys.exit(f"{src}: found {len(files)} frames, expected cols*rows = {cols * rows} (sorted by file name, row by row)")
-        return [Image.open(f).convert("RGBA") for f in files]
+        return [(prep or (lambda im: im))(Image.open(f).convert("RGBA")) for f in files]
     sheet = Image.open(p).convert("RGBA")
+    if prep:
+        sheet = prep(sheet)
+    if auto:
+        a = sheet.getchannel("A").point(lambda v: 1 if v > 100 else 0)
+        px = a.load()
+        w, h = a.size
+        rowp = [sum(px[x, y] for x in range(0, w, 2)) for y in range(h)]
+        ys = split_points(rowp, rows, h)
+        out = []
+        for r in range(rows):
+            colp = [sum(px[x, y] for y in range(ys[r], ys[r + 1], 2)) for x in range(w)]
+            xs = split_points(colp, cols, w)
+            out += [sheet.crop((xs[c], ys[r], xs[c + 1], ys[r + 1])) for c in range(cols)]
+        return out
     fw, fh = sheet.width / cols, sheet.height / rows
     return [
         sheet.crop((round(c * fw), round(r * fh), round((c + 1) * fw), round((r + 1) * fh)))
@@ -65,6 +92,67 @@ def remove_bg(img, mode, tol):
                 op[x, y] = (r, g, b, 0)
             elif d <= tol * 2:  # soften the fringe instead of leaving a halo
                 op[x, y] = (r, g, b, int(a * (d - tol) / tol))
+    return out
+
+
+def clean_alpha(img, floor, solid):
+    """Drop faint generation noise (alpha <= floor) and make the body fully opaque (alpha >= solid -> 255)."""
+    if not floor and not solid:
+        return img
+    r, g, b, a = img.split()
+    a = a.point(lambda v: 0 if v <= floor else (255 if solid and v >= solid else v))
+    return Image.merge("RGBA", (r, g, b, a))
+
+
+def keep_main(img, thr=100, keep_ratio=0.02):
+    """Keep the largest opaque blob plus any blob at least keep_ratio of its size (a separate staff tip, a tail)."""
+    a = img.getchannel("A")
+    w, h = a.size
+    px = a.load()
+    seen = bytearray(w * h)
+    blobs = []
+    for y in range(h):
+        for x in range(w):
+            i = y * w + x
+            if seen[i] or px[x, y] <= thr:
+                continue
+            stack, pts = [i], []
+            seen[i] = 1
+            while stack:
+                j = stack.pop()
+                pts.append(j)
+                jx, jy = j % w, j // w
+                for nx, ny in ((jx + 1, jy), (jx - 1, jy), (jx, jy + 1), (jx, jy - 1)):
+                    if 0 <= nx < w and 0 <= ny < h:
+                        k = ny * w + nx
+                        if not seen[k] and px[nx, ny] > thr:
+                            seen[k] = 1
+                            stack.append(k)
+            blobs.append(pts)
+    if not blobs:
+        return img
+    big = max(len(b) for b in blobs)
+    keep = bytearray(w * h)
+    for b in blobs:
+        if len(b) >= big * keep_ratio:
+            for j in b:
+                keep[j] = 1
+    # grow the kept mask by 2px so soft anti-aliased edges survive
+    out = img.copy()
+    op = out.load()
+    for y in range(h):
+        for x in range(w):
+            if keep[y * w + x]:
+                continue
+            near = any(
+                keep[(y + dy) * w + (x + dx)]
+                for dy in (-2, -1, 0, 1, 2)
+                for dx in (-2, -1, 0, 1, 2)
+                if 0 <= x + dx < w and 0 <= y + dy < h
+            )
+            if not near:
+                r, g, b, _ = op[x, y]
+                op[x, y] = (r, g, b, 0)
     return out
 
 
@@ -102,13 +190,20 @@ def main():
     ap.add_argument("--bg", choices=["none", "white", "auto"], default="none", help="background to remove")
     ap.add_argument("--tol", type=int, default=18, help="background colour tolerance")
     ap.add_argument("--fps", type=int, default=8, help="preview speed")
+    ap.add_argument("--alpha-floor", type=int, default=0, help="pixels at or below this alpha become transparent (generation noise)")
+    ap.add_argument("--solid", type=int, default=0, help="pixels at or above this alpha become fully opaque")
+    ap.add_argument("--auto-grid", action="store_true", help="cut frames along the emptiest lines instead of an even grid")
+    ap.add_argument("--keep-main", action="store_true", help="keep only the main figure in each frame (drop stray specks)")
     ap.add_argument("--out", required=True, help="output path without extension")
     a = ap.parse_args()
 
     order = [d.strip() for d in a.order.split(",")]
     if len(order) != a.rows or any(d not in GAME_ORDER for d in order):
         sys.exit(f"--order needs {a.rows} names from {GAME_ORDER}")
-    frames = [remove_bg(f, a.bg, a.tol) for f in load_frames(a.src, a.cols, a.rows)]
+    prep = lambda im: clean_alpha(remove_bg(im, a.bg, a.tol), a.alpha_floor, a.solid)
+    frames = load_frames(a.src, a.cols, a.rows, prep, a.auto_grid)
+    if a.keep_main:
+        frames = [keep_main(f) for f in frames]
     rows = {d: frames[i * a.cols:(i + 1) * a.cols] for i, d in enumerate(order)}
     if a.mirror_left and "right" in rows:
         rows["left"] = [f.transpose(Image.FLIP_LEFT_RIGHT) for f in rows["right"]]
