@@ -1,20 +1,20 @@
-/* RO-style combat rules (phase 2): hero HP/MP, items, recovery and knock-outs.
-   Saved under pm-rpg-v1.hero (rpg.js owns the key). Learning progress makes the hero stronger
-   because stats scale with the learning tier, but fighting never writes cards, badges or pm-log;
-   English skills that do are phase 3. */
+/* Hero stats, items, recovery, and the turn-based English battle.
+   Saved under pm-rpg-v1.hero (rpg.js owns the key). Stats grow with the learning tier.
+   Fighting itself never writes learning records: only English answered in battle does, through Learn.grade. */
 const Battle = (() => {
   const ITEMS = {
     berry: { name: "小紅莓", icon: "🍓", hp: 35, desc: "回復 35 HP" },
     dew: { name: "藍露珠", icon: "💧", mp: 20, desc: "回復 20 MP" },
-    frosting: { name: "糖霜", icon: "🧁", mat: true, desc: "鬆餅仔的掉落物" },
-    shell: { name: "橡實殼", icon: "🌰", mat: true, desc: "橡實寶的掉落物" },
-    crystal: { name: "雨滴晶", icon: "💎", mat: true, desc: "雨滴精的掉落物" },
-    feather: { name: "紙羽毛", icon: "🪶", mat: true, desc: "紙飛鳥的掉落物" },
-    tealeaf: { name: "茶葉", icon: "🍃", mat: true, desc: "茶壺噗的掉落物" },
+    frosting: { name: "糖霜", icon: "🧁", mat: true, desc: "美食市場的掉落物" },
+    shell: { name: "橡實殼", icon: "🌰", mat: true, desc: "動物森林的掉落物" },
+    crystal: { name: "雨滴晶", icon: "💎", mat: true, desc: "自然湖畔的掉落物" },
+    feather: { name: "紙羽毛", icon: "🪶", mat: true, desc: "風之群島、旅行車站的掉落物" },
+    tealeaf: { name: "茶葉", icon: "🍃", mat: true, desc: "生活小鎮的掉落物" },
+    bubble: { name: "音節泡泡", icon: "🫧", mat: true, desc: "KK 新手村的掉落物" },
   };
-  const MAT = { food: "frosting", animal: "shell", nature: "crystal", transport: "feather", things: "tealeaf" };
-  const TRADE = 3; // materials per supply item at a resident
-  // Monster strength per map, in unlock order. Maps 3+ have monsters that attack on sight.
+  const MAT = { food: "frosting", animal: "shell", nature: "crystal", transport: "feather", things: "tealeaf", wind: "feather", kk: "bubble" };
+  const TRADE = 3;
+  // Legacy-map monster strength, in unlock order.
   const MOBS = [
     { lv: 1, hp: 30, atk: 4, aggressive: false },
     { lv: 3, hp: 44, atk: 6, aggressive: false },
@@ -24,7 +24,6 @@ const Battle = (() => {
   ];
   let st = null,
     saveFn = null,
-    saveTimer = 0,
     acc = 0,
     statusFn = () => {};
   const rnd = () => Math.random();
@@ -54,44 +53,19 @@ const Battle = (() => {
     const s = stats();
     st.hp = Math.max(0, Math.min(s.maxHp, Math.round(st.hp)));
     st.mp = Math.max(0, Math.min(s.maxMp, Math.round(st.mp)));
-    // A saved knock-out (page closed mid-fall) wakes up at half strength.
     if (st.hp === 0) st.hp = Math.ceil(s.maxHp / 2);
   }
+  /* Save at once: a phone can close the page right after a fight, and the save is a small JSON write. */
   function persist() {
     paint();
-    clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => saveFn && saveFn(), 400);
+    if (saveFn) saveFn();
   }
   const count = (k) => st.items[k] || 0;
   function give(k, n = 1) {
     st.items[k] = count(k) + n;
     persist();
   }
-
-  /* ---------- world callbacks ---------- */
   const mobFor = (i) => MOBS[Math.min(i, MOBS.length - 1)];
-  function heroHit() {
-    const s = stats(),
-      crit = rnd() < 0.12,
-      dmg = Math.max(1, Math.round(s.atk * (0.85 + rnd() * 0.3) * (crit ? 1.5 : 1)));
-    return { dmg, crit };
-  }
-  function mobHit(m) {
-    if (rnd() < 0.1) return 0;
-    const dmg = Math.max(1, Math.round(m.look.atk * (0.8 + rnd() * 0.4)));
-    applyDamage(dmg);
-    return dmg;
-  }
-  function applyDamage(dmg) {
-    if (World.hero && World.hero.down) return;
-    st.hp = Math.max(0, st.hp - dmg);
-    if (st.hp === 0) {
-      st.downs++;
-      World.knockout();
-      statusFn("你倒下了…稍後會在地圖入口醒來。學習紀錄和卡片都不受影響。");
-    }
-    persist();
-  }
   function revive() {
     const s = stats();
     st.hp = Math.ceil(s.maxHp / 2);
@@ -99,30 +73,15 @@ const Battle = (() => {
     persist();
     toast("🌱", "在入口醒來了", "HP、MP 恢復一半，坐下休息可以更快回滿");
   }
-  function kill(m, mapId) {
-    st.kills++;
-    const out = [];
-    if (rnd() < 0.7) out.push(MAT[mapId] || "frosting");
-    if (rnd() < 0.25) out.push("berry");
-    if (rnd() < 0.15) out.push("dew");
-    statusFn(`打倒了 ${m.name}！${out.length ? "走過去或點地上的道具就能撿起。" : ""}`);
-    persist();
-    return out;
-  }
-  function pick(item) {
-    give(item);
-    statusFn(`撿到 ${ITEMS[item].icon} ${ITEMS[item].name}`);
-  }
-  /* Recovery: sitting heals fast; standing outside combat heals slowly. */
-  function tick(dt, fighting) {
+  /* Recovery on the field: sitting heals fast; walking around heals slowly. */
+  function tick(dt) {
     const s = stats(),
       h = World.hero;
-    if (!h || h.down) return;
+    if (!h || h.down || World.paused) return;
     acc += dt;
     const every = h.sit ? 2 : 6;
     if (acc < every) return;
     acc = 0;
-    if (!h.sit && fighting) return;
     const hp0 = st.hp,
       mp0 = st.mp;
     st.hp = Math.min(s.maxHp, st.hp + (h.sit ? Math.max(4, Math.round(s.maxHp * 0.08)) : Math.max(1, Math.round(s.maxHp * 0.02))));
@@ -132,9 +91,7 @@ const Battle = (() => {
       persist();
     }
   }
-
-  /* ---------- player actions ---------- */
-  function use(k) {
+  function useItem(k, onField = true) {
     const it = ITEMS[k],
       s = stats();
     if (!it || it.mat) return false;
@@ -149,7 +106,7 @@ const Battle = (() => {
     st.items[k]--;
     if (it.hp) st.hp = Math.min(s.maxHp, st.hp + it.hp);
     if (it.mp) st.mp = Math.min(s.maxMp, st.mp + it.mp);
-    World.heroFloat(it.hp ? "+" + it.hp : "+" + it.mp + " MP", it.hp ? "#8dffa0" : "#9fd0ff");
+    if (onField) World.heroFloat(it.hp ? "+" + it.hp : "+" + it.mp + " MP", it.hp ? "#8dffa0" : "#9fd0ff");
     SND.play("tap");
     persist();
     return true;
@@ -158,31 +115,33 @@ const Battle = (() => {
     const on = !World.hero.sit;
     if (!World.sit(on)) return;
     acc = 0;
-    statusFn(on ? "坐下休息中：HP、MP 回復較快。移動或被攻擊就會站起來。" : "站起來了。");
+    statusFn(on ? "坐下休息中：HP、MP 回復較快。移動就會站起來。" : "站起來了。");
     paint();
   }
   const mats = () => Object.keys(ITEMS).filter((k) => ITEMS[k].mat);
   const matTotal = () => mats().reduce((n, k) => n + count(k), 0);
-  /* Exchange any TRADE materials (largest stacks first) for one supply item. */
   function trade(k) {
     if (matTotal() < TRADE) return false;
-    for (let left = TRADE; left > 0; ) {
+    for (let left = TRADE; left > 0; left--) {
       const top = mats().sort((a, b) => count(b) - count(a))[0];
       st.items[top]--;
-      left--;
     }
     give(k);
     toast(ITEMS[k].icon, "補給交換成功", `${ITEMS[k].name} ×1`);
     return true;
   }
-
-  /* ---------- status bar ---------- */
-  function hudHTML() {
-    return `<div class="hud" id="rpg-hud"><div class="hud-bars"><span class="hud-lv" id="hud-lv"></span><div class="hbar hp" role="meter" aria-label="HP" id="hud-hp"><i></i><b></b></div><div class="hbar mp" role="meter" aria-label="MP" id="hud-mp"><i></i><b></b></div></div><div class="hud-btns"><button id="hud-attack" aria-label="攻擊最近的怪物（F）" title="攻擊最近的怪物（F）">⚔️</button><button id="hud-berry" aria-label="使用小紅莓（1）" title="使用小紅莓（1）">🍓<small></small></button><button id="hud-dew" aria-label="使用藍露珠（2）" title="使用藍露珠（2）">💧<small></small></button><button id="hud-sit" aria-label="坐下休息（R）" title="坐下休息（R）">🧘</button><button id="hud-bag" aria-label="背包（B）" title="背包（B）">🎒</button></div></div>`;
+  function rollDrops(look, region) {
+    const out = [];
+    if (look.drop) out.push(look.drop);
+    if (rnd() < 0.7) out.push(MAT[region] || "feather");
+    if (rnd() < 0.3) out.push("berry");
+    if (rnd() < 0.2) out.push("dew");
+    return out;
   }
+
+  /* ---------- status bar (always on top of the scene) ---------- */
   function paint() {
-    const el = $("rpg-hud");
-    if (!el || !st) return;
+    if (!st || !$("hud-hp")) return;
     const s = stats();
     $("hud-lv").textContent = "Lv." + s.lv;
     [
@@ -198,8 +157,7 @@ const Battle = (() => {
     });
     $("hud-berry").querySelector("small").textContent = count("berry");
     $("hud-dew").querySelector("small").textContent = count("dew");
-    const sit = World.hero && World.hero.sit;
-    $("hud-sit").setAttribute("aria-pressed", String(!!sit));
+    $("hud-sit").setAttribute("aria-pressed", String(!!(World.hero && World.hero.sit)));
   }
   function bagHTML() {
     const s = stats(),
@@ -210,46 +168,263 @@ const Battle = (() => {
             `<li><span class="bag-i">${it.icon}</span><span><b>${it.name} ×${count(k)}</b><small>${it.desc}</small></span>${it.mat ? "" : `<button data-use="${k}" ${count(k) ? "" : "disabled"}>使用</button>`}</li>`,
         )
         .join("");
-    return `<div class="npc-dialog bag" role="dialog" aria-label="背包"><h3>🎒 背包</h3><p class="bag-stat">Lv.${s.lv} · 攻擊 ${s.atk} · HP ${st.hp}/${s.maxHp} · MP ${st.mp}/${s.maxMp} · 打倒 ${st.kills} 隻</p><p class="fine">角色等級跟著學習程度成長：多答對英文題，打怪就更輕鬆。英文技能（耗 MP）將在下一階段開放。</p><ul class="bag-list">${rows}</ul><p class="fine">素材 ${matTotal()} 個：任何 ${TRADE} 個素材可以向地圖居民換 1 個小紅莓或藍露珠。</p><button id="bag-close">關閉</button></div>`;
+    return `<h3>🎒 背包</h3><p class="bag-stat">Lv.${s.lv} · 攻擊 ${s.atk} · HP ${st.hp}/${s.maxHp} · MP ${st.mp}/${s.maxMp} · 打倒 ${st.kills} 隻</p><p class="fine">角色等級跟著學習程度成長：多答對英文，打怪就更輕鬆。</p><ul class="bag-list">${rows}</ul><p class="fine">素材 ${matTotal()} 個：任何 ${TRADE} 個素材可以向居民換 1 個小紅莓或藍露珠。</p>`;
   }
   function tradeHTML() {
     const n = matTotal();
-    return `<p class="trade-note">🧺 補給交換：素材 ${n} 個（${TRADE} 個換 1 個）</p><button data-trade="berry" ${n >= TRADE ? "" : "disabled"}>🍓 換小紅莓</button><button data-trade="dew" ${n >= TRADE ? "" : "disabled"}>💧 換藍露珠</button>`;
+    return `<p class="trade-note">🧺 補給交換：素材 ${n} 個（${TRADE} 個換 1 個）</p><div class="dlg-row"><button data-trade="berry" ${n >= TRADE ? "" : "disabled"}>🍓 換小紅莓</button><button data-trade="dew" ${n >= TRADE ? "" : "disabled"}>💧 換藍露珠</button></div>`;
+  }
+
+  /* ---------- turn-based battle ---------- */
+  let B = null;
+  const bar = (id, v, m) => {
+    const el = $(id);
+    el.style.width = Math.max(0, (v / m) * 100) + "%";
+    el.parentElement.querySelector("span").textContent = `${Math.max(0, v)}/${m}`;
+  };
+  function pop(side, text, cls) {
+    const el = document.createElement("span");
+    el.className = "bt-pop " + (cls || "");
+    el.textContent = text;
+    $(side === "foe" ? "bt-foe" : "bt-me").appendChild(el);
+    setTimeout(() => el.remove(), 900);
+  }
+  function shake(side) {
+    const el = $(side === "foe" ? "bt-foe-cv" : "bt-me-cv");
+    el.classList.remove("hit");
+    void el.offsetWidth;
+    el.classList.add("hit");
+  }
+  function log(t) {
+    $("bt-log").textContent = t;
+  }
+  function paintBattle() {
+    const s = stats();
+    bar("bt-foe-hp", B.hp, B.maxHp);
+    bar("bt-me-hp", st.hp, s.maxHp);
+    bar("bt-me-mp", st.mp, s.maxMp);
+    paint();
+  }
+  /* ctx: { region, skills:[{id,name,icon,mp,desc,make:()=>question,kind:'attack'|'heal',mult}], fleeAlways, tutorial, onEnd(result, drops) } */
+  function start(mob, ctx) {
+    const s = stats();
+    B = { mob, look: mob.look, hp: mob.look.hp || 30, maxHp: mob.look.hp || 30, ctx, busy: false, answered: 0 };
+    World.paused = true;
+    World.clearKeys();
+    const el = $("battle");
+    el.hidden = false;
+    el.dataset.region = ctx.region || "";
+    $("bt-foe-name").textContent = mob.look.name;
+    $("bt-foe-lv").textContent = "Lv." + (mob.look.lv || 1);
+    $("bt-me-lv").textContent = "Lv." + s.lv;
+    requestAnimationFrame(() => {
+      World.portrait($("bt-foe-cv"), "mob", mob.look, { dir: "down", zoom: 1.1 });
+      World.portrait($("bt-me-cv"), "hero", World.heroLook, { dir: "up" });
+    });
+    paintBattle();
+    log(ctx.intro || `Lv.${mob.look.lv || 1} ${mob.look.name} 擋住了去路！`);
+    menu();
+  }
+  function act(html) {
+    $("bt-act").innerHTML = html;
+  }
+  function menu() {
+    if (!B) return;
+    B.busy = false;
+    act(`<div class="bt-menu"><button id="bt-attack">⚔️ 攻擊<small>不耗 MP</small></button><button id="bt-skill">✨ 技能<small>英文題</small></button><button id="bt-item">🎒 道具</button><button id="bt-run">🏃 逃跑</button></div>`);
+    $("bt-attack").onclick = attack;
+    $("bt-skill").onclick = skills;
+    $("bt-item").onclick = items;
+    $("bt-run").onclick = flee;
+    if (B.ctx.tutorial && !B.answered) log(B.ctx.tutorial);
+  }
+  function damageFoe(dmg, crit, label) {
+    B.hp = Math.max(0, B.hp - dmg);
+    shake("foe");
+    pop("foe", (crit ? "暴擊 " : "") + dmg, crit ? "crit" : "");
+    SND.play("hit");
+    log(label + `，造成 ${dmg} 點傷害。`);
+    paintBattle();
+  }
+  function attack() {
+    if (B.busy) return;
+    B.busy = true;
+    const s = stats(),
+      crit = rnd() < 0.12,
+      phys = B.look.resist && B.look.resist.phys != null ? B.look.resist.phys : 1;
+    const dmg = Math.max(1, Math.round(s.atk * (0.85 + rnd() * 0.3) * (crit ? 1.5 : 1) * phys));
+    damageFoe(dmg, crit, phys < 1 ? "普通攻擊效果不太好" : "揮動法杖");
+    after();
+  }
+  function skills() {
+    if (B.busy) return;
+    const list = B.ctx.skills
+      .map(
+        (k, i) =>
+          `<button data-k="${i}" ${st.mp < k.mp ? "disabled" : ""}><b>${k.icon} ${esc(k.name)}</b><small>MP ${k.mp} · ${esc(k.desc)}</small></button>`,
+      )
+      .join("");
+    act(`<div class="bt-list">${list}<button class="bt-back" id="bt-back">↩ 返回</button></div>${st.mp < Math.min(...B.ctx.skills.map((k) => k.mp)) ? '<p class="fine">MP 不夠了：用藍露珠補充，或先用普通攻擊。</p>' : ""}`);
+    $("bt-back").onclick = menu;
+    $("bt-act")
+      .querySelectorAll("[data-k]")
+      .forEach((b) => (b.onclick = () => cast(B.ctx.skills[+b.dataset.k])));
+  }
+  async function cast(k) {
+    if (B.busy || st.mp < k.mp) return;
+    B.busy = true;
+    st.mp -= k.mp;
+    paintBattle();
+    log(`${k.icon} ${k.name}：答對英文題就能發動！`);
+    const q = k.make();
+    B.answered++;
+    await Learn.ask($("bt-act"), q, {
+      src: "battle",
+      next: "繼續戰鬥",
+      onAnswer(ok) {
+        if (!ok) {
+          pop("me", "失敗", "miss");
+          log(`咒語沒有成功（MP 已消耗）。記住正確答案，下次再試！`);
+          return;
+        }
+        if (k.kind === "heal") {
+          const s = stats(),
+            h = Math.round(s.maxHp * (k.heal || 0.4));
+          st.hp = Math.min(s.maxHp, st.hp + h);
+          pop("me", "+" + h, "heal");
+          log(`${k.name} 成功，回復 ${h} HP。`);
+          paintBattle();
+        } else {
+          const s = stats(),
+            dmg = Math.max(1, Math.round(s.atk * (k.mult || 2) * (0.9 + rnd() * 0.2)));
+          damageFoe(dmg, false, `${k.name} 命中`);
+        }
+      },
+    });
+    after();
+  }
+  function items() {
+    if (B.busy) return;
+    const list = ["berry", "dew"]
+      .map((k) => `<button data-i="${k}" ${count(k) ? "" : "disabled"}><b>${ITEMS[k].icon} ${ITEMS[k].name} ×${count(k)}</b><small>${ITEMS[k].desc}</small></button>`)
+      .join("");
+    act(`<div class="bt-list">${list}<button class="bt-back" id="bt-back">↩ 返回</button></div>`);
+    $("bt-back").onclick = menu;
+    $("bt-act")
+      .querySelectorAll("[data-i]")
+      .forEach(
+        (b) =>
+          (b.onclick = () => {
+            const k = b.dataset.i,
+              s = stats();
+            const full = (ITEMS[k].hp && st.hp >= s.maxHp) || (ITEMS[k].mp && st.mp >= s.maxMp);
+            if (full) {
+              log(ITEMS[k].hp ? "HP 已經是滿的。" : "MP 已經是滿的。");
+              return;
+            }
+            B.busy = true;
+            useItem(k, false);
+            pop("me", ITEMS[k].hp ? "+" + ITEMS[k].hp : "+" + ITEMS[k].mp + " MP", "heal");
+            log(`使用了 ${ITEMS[k].name}。`);
+            paintBattle();
+            after();
+          }),
+      );
+  }
+  function flee() {
+    if (B.busy) return;
+    B.busy = true;
+    if (B.ctx.fleeAlways || rnd() < 0.75) {
+      log("成功逃走了！");
+      setTimeout(() => end("flee"), 500);
+      return;
+    }
+    log("沒逃掉！");
+    after();
+  }
+  /* After the hero's action: win, or the foe answers with its own attack. */
+  function after() {
+    if (B.hp <= 0) return setTimeout(victory, 500);
+    setTimeout(foeTurn, 650);
+  }
+  function foeTurn() {
+    if (!B) return;
+    if (rnd() < 0.1) {
+      pop("me", "Miss", "miss");
+      log(`${B.look.name} 的攻擊落空了。`);
+    } else {
+      const dmg = Math.max(1, Math.round((B.look.atk || 4) * (0.8 + rnd() * 0.4)));
+      st.hp = Math.max(0, st.hp - dmg);
+      shake("me");
+      pop("me", dmg, "hurt");
+      log(`${B.look.name} 發動攻擊，你受到 ${dmg} 點傷害。`);
+      persist();
+    }
+    paintBattle();
+    if (st.hp <= 0) return setTimeout(defeat, 500);
+    setTimeout(menu, 350);
+  }
+  function victory() {
+    st.kills++;
+    const drops = rollDrops(B.look, B.ctx.region);
+    SND.play("roundend");
+    log(`打倒了 ${B.look.name}！`);
+    act(`<div class="bt-end"><h3>🎉 勝利</h3><p>獲得：${drops.length ? drops.map((d) => `${ITEMS[d].icon} ${ITEMS[d].name}`).join("、") : "沒有掉落物"}</p><p class="fine">學習經驗只來自答對的英文題。</p><button id="bt-claim" class="qz-next">收下並回到原地</button></div>`);
+    $("bt-claim").onclick = () => {
+      drops.forEach((d) => give(d));
+      end("win", drops);
+    };
+    $("bt-claim").focus({ preventScroll: true });
+  }
+  function defeat() {
+    st.downs++;
+    persist();
+    log("你倒下了……");
+    act(`<div class="bt-end"><h3>💫 倒下了</h3><p>會在這張地圖的入口醒來，HP、MP 恢復一半。卡片和學習紀錄都不受影響。</p><button id="bt-wake" class="qz-next">在入口醒來</button></div>`);
+    $("bt-wake").onclick = () => end("down");
+  }
+  function end(result, drops) {
+    const b = B;
+    B = null;
+    $("battle").hidden = true;
+    $("bt-act").innerHTML = "";
+    Learn.flush("battle", b.look.name);
+    World.paused = false;
+    persist();
+    if (b.ctx.onEnd) b.ctx.onEnd(result, drops || []);
   }
 
   return {
-    ITEMS,
-    init,
-    sync,
-    stats,
-    mobFor,
-    heroHit,
-    mobHit,
-    revive,
-    kill,
-    pick,
-    tick,
-    use,
-    toggleSit,
-    trade,
-    hudHTML,
-    paint,
-    bagHTML,
-    tradeHTML,
+    ITEMS, init, sync, stats, mobFor, revive, tick, toggleSit, trade, tradeHTML, bagHTML, paint, count, give, start, matTotal,
+    use: (k) => useItem(k, true),
+    get active() {
+      return !!B;
+    },
+    /* true while the action menu is waiting for the player */
+    get ready() {
+      return !!B && !B.busy && !!document.getElementById("bt-attack");
+    },
     get hp() {
       return st.hp;
     },
     get mp() {
       return st.mp;
     },
-    count,
     bars() {
       const s = stats();
       return { hp: st.hp, maxHp: s.maxHp, mp: st.mp, maxMp: s.maxMp };
     },
-    /* Test hook: deal damage as if a monster hit the hero. */
-    hurt(n) {
-      applyDamage(n);
+    /* Test hooks */
+    setHp(v) {
+      st.hp = v;
+      persist();
+    },
+    setMp(v) {
+      st.mp = v;
+      persist();
+    },
+    get foe() {
+      return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name };
     },
   };
 })();

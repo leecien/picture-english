@@ -1,7 +1,7 @@
 {
-  "_說明": "開車模式的情境對話。q 是對方先說的英文（可省略），en 是你要說的英文，zh 是中文提示；lv 是難度（1 入門、2 進階、3 挑戰）。單一場景依對話順序出題，全部或隨機時打散。答對記進句子紀錄（pm-sents）。英文避免數字與連字號，語音辨識比較好判斷。",
+  "_說明": "開車模式的情境對話。q 是對方先說的英文（可省略），en 是你要說的英文，zh 是中文提示；lv 是難度（1 初級、2 中級、3 高級）。分類的 element 是所屬區域（travel 屬於風之旅行群島），共用內容 ID 寫成「區域/分類/場景/難度」，例如 wind/travel/customs/1，RPG 任務與開車模式用同一個 ID。單一場景依對話順序出題，全部或隨機時打散。答對記進句子紀錄（pm-sents）。英文避免數字與連字號，語音辨識比較好判斷。",
   "categories": [
-    {"id": "travel", "name": "旅遊", "icon": "✈️", "scenes": [
+    {"id": "travel", "name": "旅遊", "icon": "✈️", "element": "wind", "scenes": [
       {"id": "airport", "name": "機場報到", "lv": 1, "items": [
         {"q": "Good morning. Where are you flying today?", "en": "I'm flying to Tokyo.", "zh": "我要飛東京。"},
         {"q": "May I see your passport, please?", "en": "Here is my passport.", "zh": "這是我的護照。"},

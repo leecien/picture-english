@@ -61,7 +61,8 @@ function mockDictation() {
   await page.goto(URL);
   await page.waitForSelector(".world-canvas");
   const ev = (f, a) => page.evaluate(f, a);
-  await page.locator("#quick-drive").click();
+  await page.locator("#hud-menu").click();
+  await page.locator('[data-m="drive"]').click();
   await page.waitForSelector("#drive:not([hidden])");
   assert(await page.locator("#drive-scenes").isHidden(), "scene picker hidden for mixed practice");
   await page.locator("#dk-scene").check();
@@ -72,7 +73,7 @@ function mockDictation() {
   assert.match(await page.locator("#drive-scene-note").innerText(), /從 8 大類、59 個場景隨機出題，共 465 句/);
   await page.locator('#drive-cats [data-cat="travel"]').click();
   await page.locator('#drive-scs [data-scene="customs"]').click();
-  assert.match(await page.locator("#drive-scene-note").innerText(), /旅遊 · 海關入境（入門）：10 句，依真實對話的順序/);
+  assert.match(await page.locator("#drive-scene-note").innerText(), /旅遊 · 海關入境（初級）：10 句，依真實對話的順序/);
   await page.locator('#drive-pace-setup [data-rate="0.75"]').click();
   await page.locator('#drive-pace-setup [data-think="3"]').click();
   assert.deepEqual(
@@ -148,7 +149,8 @@ function mockDictation() {
   await p2.addInitScript(() => localStorage.setItem("pm-progress", JSON.stringify({ xp: 25, s: 0, badges: [], placeDismissed: true })));
   await p2.goto(URL);
   await p2.waitForSelector(".world-canvas");
-  await p2.locator("#quick-drive").click();
+  await p2.locator("#hud-menu").click();
+  await p2.locator('[data-m="drive"]').click();
   await p2.waitForFunction(() => /Claude 的聽寫/.test(document.getElementById("drive-mic-note").textContent));
   await p2.locator("#dk-scene").check();
   await p2.locator('#drive-cats [data-cat="dining"]').click();
@@ -173,7 +175,9 @@ function mockDictation() {
   assert.equal(log.scn, "餐廳 · 咖啡店");
   assert(log.n.includes(target));
   await p2.locator("#drive-back").click();
-  await p2.locator("#tab-log").click();
+  await p2.waitForSelector("#panel", { state: "hidden" });
+  await p2.locator("#hud-menu").click();
+  await p2.locator('[data-m="log"]').click();
   assert.match(await p2.locator("#logs").innerText(), /開車模式 · 餐廳 · 咖啡店/);
   await ctx2.close();
 
@@ -185,15 +189,110 @@ function mockDictation() {
   await p3.addInitScript(() => (window.claude = { use: async () => null }));
   await p3.goto(URL);
   await p3.waitForSelector(".world-canvas");
-  await p3.locator("#quick-drive").click();
+  await p3.locator("#hud-menu").click();
+  await p3.locator('[data-m="drive"]').click();
   assert.match(await p3.locator("#drive-mic-note").innerText(), /不能使用麥克風/);
   await p3.locator("#drive-start").click();
   assert(await p3.evaluate(() => D.listen), "listen-along without a microphone");
   await p3.locator("#drive-stop").click();
   await ctx3.close();
 
+  /* ---------- 4. Microphone check and recording failures (stubbed browser APIs) ---------- */
+  const ctx4 = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const p4 = await ctx4.newPage();
+  p4.on("pageerror", (e) => errors.push(e.message));
+  await p4.addInitScript(stubAudio);
+  await p4.addInitScript(() => {
+    window.__mode = { gum: "deny", sr: "not-allowed" };
+    navigator.mediaDevices.getUserMedia = async () => {
+      if (__mode.gum === "deny") throw Object.assign(new Error("denied"), { name: "NotAllowedError" });
+      // a silent but working microphone
+      const ac = new AudioContext(),
+        dest = ac.createMediaStreamDestination();
+      return dest.stream;
+    };
+    class FakeSR {
+      constructor() {
+        this._l = {};
+      }
+      addEventListener(n, f) {
+        (this._l[n] = this._l[n] || []).push(f);
+      }
+      _fire(n) {
+        (this._l[n] || []).forEach((f) => f());
+      }
+      start() {
+        setTimeout(() => {
+          this._fire("start");
+          this._fire("audiostart");
+          if (__mode.sr === "ok") {
+            this._fire("speechstart");
+            this.onresult && this.onresult({ results: [Object.assign([{ transcript: __mode.say || "hello" }], { isFinal: true })] });
+          } else if (__mode.sr !== "silent") this.onerror && this.onerror({ error: __mode.sr });
+          if (__mode.sr !== "silent") {
+            this._fire("audioend");
+            this.onend && this.onend();
+          }
+        }, 30);
+      }
+      stop() {
+        setTimeout(() => this.onend && this.onend(), 10);
+      }
+      abort() {
+        this.stop();
+      }
+    }
+    window.SpeechRecognition = FakeSR;
+  });
+  await p4.goto(URL);
+  await p4.waitForSelector(".world-canvas");
+  await p4.locator("#hud-menu").click();
+  await p4.locator('[data-m="mic"]').click();
+  await p4.waitForSelector("#mic-check:not([hidden])");
+  assert.match(await p4.locator("#mic-check").innerText(), /語音辨識：✅ 支援/);
+  assert.match(await p4.locator("#mic-check").innerText(), /錄音回放：尚未實作/);
+  // permission denied for raw audio input
+  await p4.locator("#mc-level-go").click();
+  await p4.waitForFunction(() => /權限被拒絕/.test(document.getElementById("mc-level").textContent));
+  assert.equal(await p4.locator("#mc-level-go").innerText(), "重試");
+  // working but silent microphone
+  await p4.evaluate(() => (__mode.gum = "ok"));
+  await p4.locator("#mc-level-go").click();
+  await p4.waitForFunction(() => /幾乎沒有聲音|有收到聲音/.test(document.getElementById("mc-level").textContent), null, { timeout: 8000 });
+  // recognition lifecycle: error, then success
+  await p4.locator("#mc-sr-go").click();
+  await p4.waitForFunction(() => /權限被拒絕/.test(document.getElementById("mc-sr").textContent));
+  assert.match(await p4.locator("#mc-log").innerText(), /start[\s\S]*audiostart[\s\S]*error：not-allowed[\s\S]*end/);
+  await p4.evaluate(() => (__mode.sr = "ok"));
+  await p4.locator("#mc-sr-go").click();
+  await p4.waitForFunction(() => /辨識成功：「hello」/.test(document.getElementById("mc-sr").textContent));
+  // timeout when nothing comes back
+  await p4.evaluate(() => (__mode.sr = "silent"));
+  await p4.locator("#mc-sr-go").click();
+  await p4.waitForFunction(() => /沒有辨識到內容/.test(document.getElementById("mc-sr").textContent), null, { timeout: 12000 });
+  assert.match(await p4.locator("#mc-log").innerText(), /逾時 8 秒/);
+  // A recording failure during practice pauses with a reason, retry and listen-along.
+  await p4.evaluate(() => (__mode.sr = "not-allowed"));
+  await p4.locator('#drive-pace-setup [data-think="3"]').click();
+  await p4.locator("#drive-start").click();
+  await p4.waitForSelector("#mic-retry", { timeout: 15000 });
+  assert.match(await p4.locator("#drive-heard").innerText(), /權限被拒絕/);
+  assert.match(await p4.locator("#drive-state").innerText(), /收音失敗/);
+  await p4.evaluate(() => {
+    __mode.sr = "ok";
+    __mode.say = D.cur.it.w || D.cur.it.en;
+  });
+  await p4.locator("#mic-retry").click();
+  await p4.waitForFunction(() => /答對了/.test(document.getElementById("drive-state").textContent), null, { timeout: 15000 });
+  await p4.evaluate(() => (__mode.sr = "audio-capture"));
+  await p4.waitForSelector("#mic-follow", { timeout: 20000 });
+  await p4.locator("#mic-follow").click();
+  await p4.waitForFunction(() => D.listen && !D.paused);
+  await p4.locator("#drive-stop").click();
+  await ctx4.close();
+
   assert.deepEqual(errors, []);
-  console.log("PASS: scene picker, speed and think time saved, slowed clips and speech, pinned control bar, pause/resume replay, immediate stop, mid-session speed change, dictation voice answers with echo guard, scene records and log, no-mic fallback, no browser errors");
+  console.log("PASS: scene picker, speed and think time saved, slowed clips and speech, pinned control bar, pause/resume replay, immediate stop, mid-session speed change, dictation voice answers with echo guard, scene records and log, no-mic fallback, mic check (permission, input level, recognition lifecycle, timeout, retry), recording failure with retry and listen-along, no browser errors");
   await browser.close();
 })().catch((e) => {
   console.error(e);

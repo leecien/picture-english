@@ -1,15 +1,17 @@
-// Phase 2 combat regression: HP/MP bar, auto-attack, monster counter-attack, drops and pick-up,
-// supply items, resting, knock-out recovery, resident trade, backpack, save/reload, sprite sheets.
+// Turn-based English battle on a legacy map (returning player): encounter, attack without MP, skills that cost MP
+// and resolve on the answer, wrong answers, items, flee, defeat and revive, victory loot, anti-farming,
+// aggressive monsters, field items / rest / bag / trade, save and reload, real sprite sheets.
 // Run with a local HTTP server: python -m http.server 8000
 const assert = require("node:assert/strict");
 const { chromium } = require("playwright");
+const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
 (async () => {
   const browser = await chromium.launch({
     headless: true,
     ...(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {}),
     args: ["--no-sandbox"],
   });
-  const page = await browser.newPage({ viewport: { width: 390, height: 844 } }),
+  const page = await browser.newPage({ viewport: { width: 390, height: 760 } }),
     errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   const legacy = {
@@ -18,168 +20,190 @@ const { chromium } = require("playwright");
     "pm-log": "[]",
   };
   await page.addInitScript((values) => {
+    HTMLMediaElement.prototype.play = function () {
+      setTimeout(() => this.dispatchEvent(new Event("ended")), 5);
+      return Promise.resolve();
+    };
+    if (window.speechSynthesis) speechSynthesis.speak = (u) => setTimeout(() => u.onend && u.onend(), 5);
     if (!localStorage.getItem("test-seeded")) {
       for (const [k, v] of Object.entries(values)) localStorage.setItem(k, v);
       localStorage.setItem("test-seeded", "1");
     }
   }, legacy);
-  // Serve a prepared sprite sheet through the manifest, as real art will be.
-  await page.route("**/assets/manifest.json", async (route) => {
-    const res = await route.fetch(),
-      m = await res.json();
-    m.sprites["hero-walk"].file = "tests/fixtures/hero-walk.png";
-    await route.fulfill({ response: res, json: m });
-  });
-  await page.goto(process.env.TEST_URL || "http://127.0.0.1:8000");
+  await page.goto(URL);
   await page.waitForSelector(".world-canvas");
-  await page.locator(".rpg-stage").scrollIntoViewIfNeeded();
-  const idle = () => page.waitForFunction(() => !World.hero.moving, null, { timeout: 15000 });
   const ev = (f, a) => page.evaluate(f, a);
-
-  // Status bar is always visible with starting supplies.
-  assert.equal(await page.locator("#hud-hp b").innerText(), "HP 80/80");
-  assert.equal(await page.locator("#hud-mp b").innerText(), "MP 30/30");
-  assert.equal(await page.locator("#hud-berry small").innerText(), "3");
-  assert.equal(await page.locator("#hud-dew small").innerText(), "2");
-  await page.waitForFunction(() => World.hasArt("hero-walk"));
-
-  // Companion follows the hero.
-  await ev(() => World.walkTo(12, 10));
-  await idle();
-  await page.waitForTimeout(500);
-  assert(
+  const ready = () => page.waitForFunction(() => Battle.ready, null, { timeout: 10000 });
+  const fight = async () => {
     await ev(() => {
-      const p = World.entities.find((e) => e.kind === "pet");
-      return Math.max(Math.abs(p.tx - World.hero.x), Math.abs(p.ty - World.hero.y)) <= 2;
-    }),
-    "pet follows",
-  );
+      const ms = World.entities.filter((e) => e.kind === "mob");
+      ms.forEach((m) => (m.wait = 999));
+      const h = World.hero,
+        m = ms.sort((a, b) => Math.hypot(a.tx - h.x, a.ty - h.y) - Math.hypot(b.tx - h.x, b.ty - h.y))[0];
+      World.approach(m);
+    });
+    await page.waitForSelector("#battle:not([hidden])", { timeout: 30000 });
+    await ready();
+  };
+  const pickAnswer = async (ok) => {
+    await page.waitForSelector(".qz-o button:not([disabled])");
+    const i = await ev((ok) => Learn.last.options.findIndex((o) => !!o.ok === ok), ok);
+    await page.locator(".qz-o button").nth(i).click();
+  };
 
-  // Click a (held still) monster on the canvas: the hero chases and attacks it.
-  const xp0 = await ev(() => P.xp);
-  const mob = await ev(() => {
-    const ms = World.entities.filter((e) => e.kind === "mob");
-    ms.forEach((m) => (m.wait = 999));
-    const m = ms.sort((a, b) => Math.hypot(a.tx - 12, a.ty - 10) - Math.hypot(b.tx - 12, b.ty - 10))[0];
-    m.path = [];
-    m.px = (m.tx + 0.5) * 32;
-    m.py = (m.ty + 0.5) * 32;
-    m.hp = m.maxHp = 999;
-    m.testTarget = true;
-    return [m.tx, m.ty];
-  });
-  await ev(([x, y]) => World.walkTo(x + 2 < 23 ? x + 2 : x - 2, y), mob).catch(() => {});
-  await idle();
-  const at = await ev(([x, y]) => World.tileToClient(x, y), mob);
-  await page.mouse.click(at.x, at.y - 6);
-  assert(await ev(() => World.hero.fighting), "click locks target");
-  await page.waitForFunction(() => World.entities.some((e) => e.testTarget && e.hp < 999), null, { timeout: 8000 });
-  // Struck monsters fight back.
-  await page.waitForFunction(() => Battle.hp < 80, null, { timeout: 10000 });
-  assert.match(await page.locator("#hud-hp b").innerText(), /^HP \d+\/80$/);
-  assert.equal(await ev(() => Battle.mp), 30, "normal attack costs no MP");
+  // Returning player lands on their legacy map, with the real hero / puppy art loaded.
+  assert.equal(await ev(() => RPG.data.at), "food");
+  await page.waitForFunction(() => World.hasArt("hero-walk") && World.hasArt("pet-walk"));
+  assert.equal(await page.locator("#hud-hp b").innerText(), "HP 80/80");
+  assert.equal(await page.locator("#hud-berry small").innerText(), "3");
 
-  // Finish it with a guaranteed drop roll: material + berry + dew.
-  await ev(() => {
-    window._rnd = Math.random;
-    Math.random = () => 0.05;
-    World.entities.find((e) => e.testTarget).hp = 1;
-  });
-  await page.waitForFunction(() => World.entities.filter((e) => e.kind === "drop").length === 3, null, { timeout: 8000 });
-  await ev(() => (Math.random = window._rnd));
-  assert(!(await ev(() => World.hero.fighting)), "target cleared after kill");
-  for (let i = 0; i < 3; i++) {
-    await page.waitForTimeout(400);
-    await ev(() => World.approach(World.entities.find((e) => e.kind === "drop")));
-    await idle();
-    await page.waitForTimeout(100);
+  /* Encounter -> attack (no MP) -> foe turn */
+  await fight();
+  assert.equal(await ev(() => World.paused), true, "monsters pause in battle");
+  const mp0 = await ev(() => Battle.mp),
+    foe0 = await ev(() => Battle.foe.hp);
+  await page.locator("#bt-attack").click();
+  assert((await ev(() => Battle.foe.hp)) < foe0, "attack hits");
+  assert.equal(await ev(() => Battle.mp), mp0, "normal attack costs no MP");
+  await ready();
+
+  /* Skill: MP is spent; a wrong answer does nothing; the right answer is shown and logged as weak */
+  const foe1 = await ev(() => Battle.foe.hp);
+  await page.locator("#bt-skill").click();
+  await page.locator('.bt-list [data-k="0"]').click();
+  assert.equal(await ev(() => Battle.mp), mp0 - 4, "skill costs MP");
+  await pickAnswer(false);
+  assert.equal(await ev(() => Battle.foe.hp), foe1, "wrong answer: no damage");
+  assert.match(await page.locator(".qz-f").innerText(), /正確答案/);
+  const weakWord = await ev(() => Learn.last.item.w);
+  await page.locator(".qz-next").click();
+  await ready();
+
+  /* Correct answer: damage at once, XP and a card; the same word again soon gives nothing extra */
+  const xp1 = await ev(() => P.xp);
+  await ev(() => Battle.setMp(30));
+  await page.locator("#bt-skill").click();
+  await page.locator('.bt-list [data-k="0"]').click();
+  const foe2 = await ev(() => Battle.foe.hp);
+  await pickAnswer(true);
+  assert((await ev(() => Battle.foe.hp)) < foe2, "correct answer hits immediately");
+  const word = await ev(() => Learn.last.item.w);
+  assert.equal(await ev(() => P.xp), xp1 + 6, "battle English gives XP");
+  const c1 = await ev((w) => JSON.parse(localStorage.getItem("pm-cards"))[w].c, word);
+  await page.locator(".qz-next").click();
+  // Anti-farming: grade the same word again right away.
+  const farm = await ev((w) => {
+    const it = WORDS.find((x) => x.w === w),
+      xp = P.xp,
+      r = Learn.grade({ recK: "w", item: it }, true, "battle");
+    return { fresh: r.fresh, xp: P.xp - xp, c: JSON.parse(localStorage.getItem("pm-cards"))[w].c };
+  }, word);
+  assert.deepEqual(farm, { fresh: false, xp: 0, c: c1 }, "same item within 3 minutes: no XP, no card progress");
+  await ready();
+
+  /* Items in battle */
+  await ev(() => Battle.setHp(30));
+  await page.locator("#bt-item").click();
+  await page.locator('[data-i="berry"]').click();
+  assert.equal(await ev(() => Battle.count("berry")), 2);
+  await ready();
+
+  /* Victory: loot, back to the same spot, field resumes; the battle is logged with its English */
+  const spot = await ev(() => World.hero);
+  await ev(() => Math.random = ((r) => () => 0.05)(Math.random));
+  await ev(() => Battle.setMp(30));
+  for (let i = 0; i < 12 && !(await page.locator("#bt-claim").count()); i++) {
+    await page.locator("#bt-skill").click();
+    await page.locator('.bt-list [data-k="0"]').click();
+    await pickAnswer(true);
+    await page.locator(".qz-next").click();
+    await page.waitForFunction(() => document.getElementById("bt-claim") || Battle.ready);
+    await ev(() => Battle.setMp(30));
+    await ev(() => Battle.setHp(80));
   }
-  assert.equal(await ev(() => World.entities.filter((e) => e.kind === "drop").length), 0, "all picked up");
-  assert.deepEqual(await ev(() => [Battle.count("berry"), Battle.count("dew"), Battle.count("frosting")]), [4, 3, 1]);
-  assert.equal(await ev(() => P.xp), xp0, "fighting never adds learning XP");
-  assert.equal(await ev(() => localStorage.getItem("pm-log")), "[]", "fighting never writes pm-log");
+  assert.match(await page.locator(".bt-end").innerText(), /勝利[\s\S]*糖霜/);
+  await page.locator("#bt-claim").click();
+  await page.waitForSelector("#battle", { state: "hidden" });
+  await ev(() => (Math.random = Math.random));
+  assert.equal(await ev(() => Battle.count("frosting")), 1, "loot added");
+  assert.deepEqual(await ev(() => [World.hero.x, World.hero.y, World.paused]), [spot.x, spot.y, false]);
+  const blog = await ev(() => JSON.parse(localStorage.getItem("pm-log"))[0]);
+  assert.equal(blog.m, "battle");
+  assert(blog.w.includes(weakWord) && blog.tot >= 3, "battle log lists answered English");
 
-  // Supply item via keyboard.
-  await ev(() => Battle.hurt(30));
-  const hpLow = await ev(() => Battle.hp);
-  await page.locator(".world-canvas").focus();
-  await page.keyboard.press("1");
-  assert.equal(await ev(() => Battle.hp), Math.min(80, hpLow + 35));
-  assert.equal(await ev(() => Battle.count("berry")), 3);
-
-  // Knock-out: revive at the entrance with half HP/MP; nothing learned is lost.
-  await ev(() => Battle.hurt(999));
-  assert(await ev(() => World.hero.down));
-  await page.waitForFunction(() => !World.hero.down, null, { timeout: 5000 });
-  assert.deepEqual(await ev(() => [World.hero.x, World.hero.y, Battle.hp]), [16, 8, 40]);
-  assert.equal(await ev(() => JSON.parse(localStorage.getItem("pm-cards")).apple.c), 2);
-
-  // Rest: sitting recovers faster; moving stands up.
-  await page.locator(".world-canvas").focus();
-  await page.keyboard.press("r");
-  assert(await ev(() => World.hero.sit));
-  assert.equal(await page.locator("#hud-sit").getAttribute("aria-pressed"), "true");
-  const hpSit = await ev(() => Battle.hp);
-  await ev(() => Battle.tick(2.1, false));
-  assert((await ev(() => Battle.hp)) > hpSit, "sitting regenerates");
-  await ev(() => World.walkTo(16, 10));
-  assert(!(await ev(() => World.hero.sit)), "moving stands up");
-  await idle();
-
-  // Trade three materials for a supply item at the resident.
-  await ev(() => {
-    Battle.pick("frosting");
-    Battle.pick("shell");
-  });
-  await page.locator("#rpg-interact").click();
-  await page.waitForSelector("[data-trade]", { timeout: 15000 });
-  const berries = await ev(() => Battle.count("berry"));
-  await page.locator('[data-trade="berry"]').click();
-  assert.equal(await ev(() => Battle.count("berry")), berries + 1);
-  assert.equal(await ev(() => Battle.count("frosting") + Battle.count("shell")), 0);
-  assert(await page.locator('[data-trade="berry"]').isDisabled());
-  await page.locator("#npc-close").click();
-
-  // Backpack pauses the field (monsters freeze).
-  await page.locator("#hud-bag").click();
-  await page.waitForSelector(".bag");
-  const before = await ev(() => World.entities.filter((e) => e.kind === "mob").map((e) => [e.px, e.py]));
-  await ev(() => World.entities.forEach((e) => e.kind === "mob" && (e.wait = 0)));
-  await page.waitForTimeout(900);
-  assert.deepEqual(await ev(() => World.entities.filter((e) => e.kind === "mob").map((e) => [e.px, e.py])), before);
-  await page.locator('[data-use="dew"]').click();
-  await page.locator("#bag-close").click();
-  assert(!(await ev(() => World.paused)));
-
-  // Everything persists across reload; legacy keys keep their shape.
-  await page.waitForTimeout(600);
-  const saved = await ev(() => ({ hp: Battle.hp, mp: Battle.mp, berry: Battle.count("berry") }));
+  /* Flee: always an exit (forced success here), monsters calm down */
   await page.reload();
   await page.waitForSelector(".world-canvas");
-  assert.deepEqual(await ev(() => ({ hp: Battle.hp, mp: Battle.mp, berry: Battle.count("berry") })), saved);
-  const rpg = await ev(() => JSON.parse(localStorage.getItem("pm-rpg-v1")));
-  assert.equal(rpg.version, 1);
-  assert(rpg.hero.kills >= 1 && rpg.hero.downs === 1);
-  assert.equal(await ev(() => localStorage.getItem("pm-progress")), legacy["pm-progress"]);
+  await fight();
+  await ev(() => (Math.random = () => 0.1));
+  await page.locator("#bt-run").click();
+  await page.waitForSelector("#battle", { state: "hidden" });
+  assert.equal(await ev(() => World.paused), false);
 
-  // Every map builds monsters with the per-map strength table.
+  /* Defeat: wake at the entrance with half HP; learning records untouched */
+  await page.reload();
+  await page.waitForSelector(".world-canvas");
+  const cardsBefore = await ev(() => localStorage.getItem("pm-cards"));
+  await fight();
+  await ev(() => Battle.setHp(1));
+  await ev(() => (Math.random = () => 0.5));
+  await page.locator("#bt-attack").click();
+  await page.waitForSelector("#bt-wake", { timeout: 10000 });
+  await page.locator("#bt-wake").click();
+  await page.waitForFunction(() => !World.hero.down && Battle.hp === 40, null, { timeout: 8000 });
+  assert.deepEqual(await ev(() => [World.hero.x, World.hero.y]), [16, 8], "revived at the map entrance");
+  assert.equal(await ev(() => localStorage.getItem("pm-cards")), cardsBefore, "defeat leaves the card book untouched");
+
+  /* Field: rest, items, bag and resident trade (all in-scene) */
+  await ev(() => (Math.random = () => 0.5));
+  await page.locator("#hud-sit").click();
+  assert(await ev(() => World.hero.sit));
+  const hpSit = await ev(() => Battle.hp);
+  await ev(() => Battle.tick(2.1));
+  assert((await ev(() => Battle.hp)) > hpSit, "resting heals");
+  await page.locator("#hud-bag").click();
+  assert.match(await page.locator("#menu-body").innerText(), /背包/);
+  await page.locator("#menu-close").click();
+  await ev(() => {
+    Battle.give("shell");
+    Battle.give("tealeaf");
+  });
+  await page.locator("#act-talk").click();
+  await page.waitForSelector("#dlg:not([hidden])", { timeout: 30000 });
+  await page.locator(".dlg-next").click();
+  await page.locator(".dlg-choices button", { hasText: "補給交換" }).click();
+  const berries = await ev(() => Battle.count("berry"));
+  await page.locator(".dlg-choices button", { hasText: "換小紅莓" }).click();
+  assert.equal(await ev(() => Battle.count("berry")), berries + 1, "trade works in the dialog");
+  await page.locator(".dlg-choices button", { hasText: "完成" }).click();
+  await page.waitForSelector("#dlg", { state: "hidden" });
+
+  /* Aggressive monsters (third legacy map) start the battle themselves */
   await ev(() => {
     const d = JSON.parse(localStorage.getItem("pm-rpg-v1"));
-    d.cleared = ["food", "animal", "nature", "transport", "things"].flatMap((id) => [id + ":word", id + ":sent"]);
+    d.cleared = ["food:word", "food:sent", "animal:word", "animal:sent"];
     localStorage.setItem("pm-rpg-v1", JSON.stringify(d));
   });
   await page.reload();
   await page.waitForSelector(".world-canvas");
-  for (let map = 0; map < 5; map++) {
-    await page.locator(`[data-map="${map}"]`).click();
-    const m = await ev(() => World.entities.find((e) => e.kind === "mob"));
-    assert.equal(m.maxHp, [30, 44, 60, 78, 96][map]);
-    assert.equal(m.look.aggressive, map >= 2);
-  }
-  assert(await ev(() => document.documentElement.scrollWidth <= innerWidth), "no mobile overflow");
-  await page.locator(".rpg-stage").screenshot({ path: "/tmp/picture-battle-mobile.png" });
+  await ev(() => RPG.travel("nature"));
+  await ev(() => {
+    const m = World.entities.find((e) => e.kind === "mob");
+    World.walkTo(m.tx + 1 < 23 ? m.tx + 1 : m.tx - 1, m.ty);
+  });
+  await page.waitForSelector("#battle:not([hidden])", { timeout: 30000 });
+  assert.match(await page.locator("#bt-foe-name").innerText(), /雨滴精/);
+
+  /* Save and reload */
+  const saved = await ev(() => ({ hp: Battle.hp, berry: Battle.count("berry"), at: RPG.data.at }));
+  await page.reload();
+  await page.waitForSelector(".world-canvas");
+  assert.deepEqual(await ev(() => ({ hp: Battle.hp, berry: Battle.count("berry"), at: RPG.data.at })), saved);
+  assert.equal(await ev(() => localStorage.getItem("pm-progress") !== null), true);
+  assert(await ev(() => document.documentElement.scrollWidth <= innerWidth), "no horizontal scroll");
+  await page.screenshot({ path: "/tmp/picture-battle-mobile.png" });
   assert.deepEqual(errors, []);
-  console.log("PASS: status bar, pet follow, click-to-attack, counter-attack, no-MP normal attack, drops and pick-up, supply items, knock-out recovery, resting, trade, backpack pause, save/reload, per-map monsters, sprite sheet loading, no browser errors");
+  console.log("PASS: legacy start with real sprites, encounter, no-MP attack, MP skills, wrong answer, immediate hit, XP and cards, anti-farming, battle items, victory loot and return spot, battle log, flee, defeat revive, rest, bag, trade dialog, aggressive encounter, save/reload, no browser errors");
   await browser.close();
 })().catch((e) => {
   console.error(e);

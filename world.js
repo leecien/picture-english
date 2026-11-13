@@ -24,7 +24,12 @@ const World = (() => {
     opts = {},
     clock = 0,
     fx = [],
-    respawns = [];
+    respawns = [],
+    Z = 1,
+    portals = [],
+    ew = 0,
+    eh = 0,
+    grace = 0;
   const held = new Set(),
     art = { sprites: {}, tiles: {} },
     reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -47,8 +52,10 @@ const World = (() => {
   /* ---------- map helpers ---------- */
   const cell = (x, y) =>
     map && y >= 0 && y < map.h && x >= 0 && x < map.w ? map.rows[y][x] : "T";
+  const gateClosed = (c) => /[1-4]/.test(c) && !(opts.gateOpen && opts.gateOpen(c));
   const solid = (x, y) =>
     SOLID.has(cell(x, y)) ||
+    gateClosed(cell(x, y)) ||
     ents.some((e) => e.block && e.tx === x && e.ty === y);
   const walkable = (x, y) => !solid(x, y);
   const center = (t) => (t + 0.5) * T;
@@ -174,23 +181,36 @@ const World = (() => {
       o.start && walkableRaw(o.start.x, o.start.y) ? o.start : find("P");
     hero = actor("hero", s.x, s.y, { look: def.heroLook || {} });
     ents.push(hero);
-    const n = find("N");
-    if (n)
-      ents.push(
-        actor("npc", n.x, n.y, {
-          block: true,
-          look: def.npcLook,
-          name: def.npcName,
-          mark: true,
-        }),
-      );
+    if (def.npcs)
+      def.npcs.forEach((n) => {
+        const at = find(n.ch);
+        if (at) ents.push(actor("npc", at.x, at.y, { block: true, id: n.id, look: n.look, name: n.name, mark: false, dir: n.dir || "down" }));
+      });
+    else {
+      const n = find("N");
+      if (n)
+        ents.push(
+          actor("npc", n.x, n.y, {
+            block: true,
+            id: "main",
+            look: def.npcLook,
+            name: def.npcName,
+            mark: true,
+          }),
+        );
+    }
+    if (opts.marks) opts.marks();
     const c = find("C");
     if (c) ents.push(actor("chest", c.x, c.y, { block: true, open: !!o.chestOpen }));
     fx = [];
     respawns = [];
+    portals = findAll("@");
     findAll("m").forEach((p, i) => ents.push(spawnMob(p, 0.5 + i * 0.4)));
-    if (def.petLook)
-      ents.push(actor("pet", hero.tx, hero.ty, { look: def.petLook, trail: [] }));
+    if (def.petLook) {
+      // The puppy starts beside the hero, never on top of it.
+      const spot = [[-1, 1], [1, 1], [-1, 0], [1, 0], [0, 1]].map(([dx, dy]) => ({ x: hero.tx + dx, y: hero.ty + dy })).find((q) => walkableRaw(q.x, q.y)) || { x: hero.tx, y: hero.ty };
+      ents.push(actor("pet", spot.x, spot.y, { look: def.petLook, trail: [] }));
+    }
     if (!cv) {
       cv = document.createElement("canvas");
       cv.className = "world-canvas";
@@ -229,12 +249,19 @@ const World = (() => {
     Number.isInteger(x) &&
     Number.isInteger(y) &&
     !SOLID.has(cell(x, y)) &&
+    !gateClosed(cell(x, y)) &&
+    !npcAt(x, y) &&
     !"NC".includes(cell(x, y));
+  const npcAt = (x, y) => (map.npcs || []).some((n) => cell(x, y) === n.ch);
   function resize() {
     if (!host) return;
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    vw = Math.max(240, host.clientWidth);
-    vh = Math.round(Math.min(Math.max(vw * 0.72, 280), 460, map.h * T));
+    vw = Math.max(200, host.clientWidth);
+    vh = Math.max(160, host.clientHeight || Math.round(vw * 0.72));
+    // Zoom so the map fills a tall phone screen (RO-like close camera), never below 1.
+    Z = Math.min(1.8, Math.max(1, Math.min(vh / (map.h * T), 1.8), vw < 520 ? 1.25 : 1));
+    ew = vw / Z;
+    eh = vh / Z;
     cv.style.width = vw + "px";
     cv.style.height = vh + "px";
     cv.width = Math.round(vw * dpr);
@@ -248,8 +275,8 @@ const World = (() => {
       mh = map.h * T,
       clamp = (v, size, full) =>
         full <= size ? (full - size) / 2 : Math.min(Math.max(v, 0), full - size);
-    cam.x = clamp(hero.px - vw / 2, vw, mw);
-    cam.y = clamp(hero.py - vh / 2, vh, mh);
+    cam.x = clamp(hero.px - ew / 2, ew, mw);
+    cam.y = clamp(hero.py - eh / 2, eh, mh);
   }
   function run() {
     if (raf) return;
@@ -273,8 +300,8 @@ const World = (() => {
   /* ---------- input ---------- */
   function toTile(cx, cy) {
     const r = cv.getBoundingClientRect(),
-      wx = cx - r.left + cam.x,
-      wy = cy - r.top + cam.y;
+      wx = (cx - r.left) / Z + cam.x,
+      wy = (cy - r.top) / Z + cam.y;
     return { wx, wy, x: tileOf(wx), y: tileOf(wy) };
   }
   function hitEntity(wx, wy) {
@@ -376,6 +403,7 @@ const World = (() => {
   function arrive() {
     marker = null;
     if (opts.onMove) opts.onMove(hero.tx, hero.ty);
+    if (cell(hero.tx, hero.ty) === "@" && opts.onPortal) opts.onPortal();
     const f = hero.pending;
     hero.pending = null;
     if (f) f();
@@ -471,8 +499,8 @@ const World = (() => {
     if (opts.onTick) opts.onTick(dt, inCombat());
     const mw = map.w * T,
       mh = map.h * T,
-      tx = mw <= vw ? (mw - vw) / 2 : Math.min(Math.max(hero.px - vw / 2, 0), mw - vw),
-      ty = mh <= vh ? (mh - vh) / 2 : Math.min(Math.max(hero.py - vh / 2, 0), mh - vh),
+      tx = mw <= ew ? (mw - ew) / 2 : Math.min(Math.max(hero.px - ew / 2, 0), mw - ew),
+      ty = mh <= eh ? (mh - eh) / 2 : Math.min(Math.max(hero.py - eh / 2, 0), mh - eh),
       k = Math.min(1, dt * 8);
     cam.x += (tx - cam.x) * k;
     cam.y += (ty - cam.y) * k;
@@ -522,6 +550,11 @@ const World = (() => {
         return;
       }
       face(m);
+      if (opts.onEncounter) {
+        hero.target = null;
+        opts.onEncounter(m);
+        return;
+      }
       if (hero.cd <= 0) {
         hero.cd = opts.heroAttackDelay || 0.9;
         hero.swing = 0.25;
@@ -582,7 +615,7 @@ const World = (() => {
     }
     const L = e.look,
       dHome = Math.max(Math.abs(e.tx - e.home.x), Math.abs(e.ty - e.home.y));
-    if (e.state === "wander" && L.aggressive && !hero.down && cheb(e, hero) <= (L.sight || 3)) {
+    if (e.state === "wander" && L.aggressive && !hero.down && clock > grace && cheb(e, hero) <= (L.sight || 3)) {
       e.state = "chase";
       e.path = [];
     }
@@ -610,6 +643,10 @@ const World = (() => {
         const dx = hero.tx - e.tx,
           dy = hero.ty - e.ty;
         e.dir = Math.abs(dx) > Math.abs(dy) ? (dx < 0 ? "left" : "right") : dy < 0 ? "up" : "down";
+        if (opts.onEncounter) {
+          if (clock > grace && !hero.down) opts.onEncounter(e);
+          return;
+        }
         if (e.cd <= 0) {
           e.cd = L.attackDelay || 1.6;
           e.lunge = 0.2;
@@ -693,7 +730,8 @@ const World = (() => {
     for (let y = 0; y < map.h; y++)
       for (let x = 0; x < map.w; x++) {
         const c = cell(x, y);
-        ground(g, x, y, c === "=" ? "path" : c === "~" ? "water" : "grass", P, sheet);
+        ground(g, x, y, c === "=" || c === "@" ? "path" : c === "~" || c === "b" || /[1-4]/.test(c) ? "water" : "grass", P, sheet);
+        if (c === "b" || /[1-4]/.test(c)) bridge(g, x, y, gateClosed(c));
       }
     const houses = [],
       seen = new Set();
@@ -777,6 +815,29 @@ const World = (() => {
         g.lineTo(bx + 2, by - 5);
         g.stroke();
       }
+    }
+  }
+  function bridge(g, x, y, closed) {
+    const X = x * T,
+      Y = y * T;
+    g.fillStyle = "#c99a62";
+    g.fillRect(X, Y + 4, T, T - 8);
+    g.fillStyle = "#a87a4e";
+    for (let i = 0; i < 4; i++) g.fillRect(X + i * 8 + 1, Y + 4, 1.5, T - 8);
+    g.fillStyle = "#8a5f38";
+    g.fillRect(X, Y + 3, T, 2);
+    g.fillRect(X, Y + T - 5, T, 2);
+    if (closed) {
+      // Rope barrier with a little sign: the bridge opens when the story allows.
+      g.fillStyle = "#7a4b26";
+      g.fillRect(X + 4, Y + 6, 4, 20);
+      g.fillRect(X + T - 8, Y + 6, 4, 20);
+      g.strokeStyle = "#e5475f";
+      g.lineWidth = 3;
+      g.beginPath();
+      g.moveTo(X + 6, Y + 10);
+      g.quadraticCurveTo(X + 16, Y + 16, X + T - 6, Y + 10);
+      g.stroke();
     }
   }
   function flower(g, x, y, P) {
@@ -1220,6 +1281,21 @@ const World = (() => {
         ctx.arc(0, -21, 2.5, 0, 7);
         ctx.fill();
         break;
+      case "bubble":
+        // A wobbly letter bubble: translucent body, shine, and a tiny floating "ə".
+        ctx.globalAlpha *= 0.85;
+        ctx.arc(0, -12, 12 + Math.sin(e.t * 3) * 0.8, 0, 7);
+        ctx.fill();
+        ctx.globalAlpha /= 0.85;
+        ctx.fillStyle = "#ffffffb0";
+        ctx.beginPath();
+        ctx.ellipse(-5, -18, 3.5, 2.2, -0.6, 0, 7);
+        ctx.fill();
+        ctx.fillStyle = "#6b4fb0";
+        ctx.font = "700 9px serif";
+        ctx.textAlign = "center";
+        ctx.fillText("ə", 6, -22 + Math.sin(e.t * 2) * 1.5);
+        break;
       default:
         ctx.arc(0, -11, 12, 0, 7);
         ctx.fill();
@@ -1458,11 +1534,12 @@ const World = (() => {
     }
   }
   function draw() {
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const k = dpr * Z;
+    ctx.setTransform(k, 0, 0, k, 0, 0);
     ctx.fillStyle = map.palette.edge || "#5d8a52";
-    ctx.fillRect(0, 0, vw, vh);
-    const ox = Math.round(cam.x * dpr) / dpr,
-      oy = Math.round(cam.y * dpr) / dpr;
+    ctx.fillRect(0, 0, ew, eh);
+    const ox = Math.round(cam.x * k) / k,
+      oy = Math.round(cam.y * k) / k;
     ctx.translate(-ox, -oy);
     ctx.drawImage(bg, 0, 0, map.w * T, map.h * T);
     if (marker) {
@@ -1477,6 +1554,22 @@ const World = (() => {
         ctx.ellipse(mx, my, r, r * 0.45, 0, 0, 7);
         ctx.stroke();
       }
+    }
+    for (const p of portals) {
+      const on = !opts.portalOn || opts.portalOn(),
+        cx = center(p.x),
+        cy = center(p.y),
+        t = clock * (on ? 2.4 : 0.6);
+      ctx.save();
+      ctx.globalAlpha = on ? 0.95 : 0.45;
+      for (let i = 0; i < 3; i++) {
+        ctx.strokeStyle = on ? ["#8fd3ff", "#c4a7ff", "#ffffff"][i] : "#9aa3b5";
+        ctx.lineWidth = 2.5 - i * 0.6;
+        ctx.beginPath();
+        ctx.ellipse(cx, cy + 2, 13 - i * 3.5, 7 - i * 2, 0, t + i, t + i + Math.PI * 1.4);
+        ctx.stroke();
+      }
+      ctx.restore();
     }
     const tg = hero.target;
     if (tg && !tg.dead) {
@@ -1496,7 +1589,7 @@ const World = (() => {
         const row = DIRS.indexOf(e.dir);
         if (e.kind === "drop") return dropIcon(e);
         if (e.kind === "pet") {
-          if (!actorSheet("pet", e, row, 40)) puppy(e, e.look);
+          if (!actorSheet("pet", e, row, 32)) puppy(e, e.look);
           return;
         }
         if (e.kind === "hero" && e.down) {
@@ -1552,6 +1645,60 @@ const World = (() => {
     key,
     near,
     clearKeys: () => held.clear(),
+    npc: (id) => ents.find((e) => e.kind === "npc" && e.id === id),
+    setMark(id, on) {
+      const n = ents.find((e) => e.kind === "npc" && e.id === id);
+      if (n) n.mark = !!on;
+    },
+    /* Add a monster at runtime (story events, tutorials). */
+    spawn(look, x, y, extra) {
+      const m = actor("mob", x, y, { home: { x, y }, wait: 1, look, name: look.name, hp: look.hp || 30, maxHp: look.hp || 30, state: "wander", cd: 1, hurt: 0, ...extra });
+      ents.push(m);
+      return m;
+    },
+    remove(e) {
+      const i = ents.indexOf(e);
+      if (i >= 0) ents.splice(i, 1);
+      if (hero.target === e) hero.target = null;
+    },
+    /* Battle outcome on the field: a beaten monster leaves (and respawns later unless unique). */
+    defeat(e) {
+      this.remove(e);
+      if (!e.unique) respawns.push({ home: e.home, t: opts.respawnDelay || 20 });
+    },
+    /* After fleeing: monsters calm down and nobody can start a fight for a few seconds. */
+    calm(sec = 3) {
+      grace = clock + sec;
+      ents.forEach((e) => e.kind === "mob" && e.state === "chase" && ((e.state = "return"), (e.path = [])));
+    },
+    refresh() {
+      paintStatic();
+    },
+    /* Draw an actor large on another canvas (battle screen, dialog portrait). */
+    portrait(canvas, kind, look, opt = {}) {
+      const c2 = canvas.getContext("2d"),
+        saved = ctx,
+        r = window.devicePixelRatio > 1 ? 2 : 1,
+        w = canvas.clientWidth || canvas.width,
+        h = canvas.clientHeight || canvas.height;
+      canvas.width = w * r;
+      canvas.height = h * r;
+      const s0 = (h / 64) * (opt.zoom || 1);
+      c2.setTransform(r * s0, 0, 0, r * s0, 0, 0);
+      c2.clearRect(0, 0, w, h);
+      ctx = c2;
+      const e = { kind, look, px: w / s0 / 2, py: h / s0 - 18, dir: opt.dir || "down", t: opt.t || 0, moving: false, hurt: opt.hurt || 0, swing: opt.swing || 0, lunge: 0 };
+      try {
+        const sheet = kind === "hero" ? "hero" : kind === "pet" ? "pet" : look && look.sprite;
+        if (!actorSheet(sheet, e, DIRS.indexOf(e.dir), kind === "mob" ? 44 : 48)) {
+          if (kind === "mob") monster(e, look);
+          else if (kind === "pet") puppy(e, look);
+          else chibi(e, look);
+        }
+      } finally {
+        ctx = saved;
+      }
+    },
     knockout() {
       hero.down = 1.6;
       hero.path = [];
@@ -1589,7 +1736,7 @@ const World = (() => {
     /* Viewport position of a tile centre, for tests and tutorial pointers. */
     tileToClient(x, y) {
       const r = cv.getBoundingClientRect();
-      return { x: r.left + center(x) - cam.x, y: r.top + center(y) - cam.y };
+      return { x: r.left + (center(x) - cam.x) * Z, y: r.top + (center(y) - cam.y) * Z };
     },
     centerOn() {
       snapCam();
