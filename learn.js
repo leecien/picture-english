@@ -160,11 +160,11 @@ const Learn = (() => {
     const yes = fresh(pairWords(unit.pair, sym).filter((w) => w.w !== avoid), "w"),
       no = pairWords(unit.pair, other);
     const w = pick(yes.filter((x) => x.lv <= 2).length ? yes.filter((x) => x.lv <= 2) : yes);
-    if (kind === "which")
+    if (kind === "which" || kind === "find")
       return {
         kind: "kk", recK: "w", item: w, sym, unit: unit.id,
-        prompt: `<p class="qz-ask">聽 <b>${esc(w.w)}</b>，它有哪一個音？</p>`,
-        audio: { text: w.w, file: w.au, label: `再聽 ${w.w}` }, autoplay: true,
+        prompt: `<p class="qz-ask">聽發音，選出這個單字含有的音。</p>`,
+        audio: { text: w.w, file: w.au, label: "再聽一次" }, autoplay: true,
         options: shuf(unit.pair).map((p) => ({ html: `<span class="qz-sym">/${esc(p)}/</span>`, ok: p === sym })),
         answer: wordAns(w),
         explain: `${w.w} ${w.kk} 裡的是 /${sym}/。`,
@@ -189,8 +189,8 @@ const Learn = (() => {
       k = parseKK(w.kk);
     return {
       kind: "kk", recK: "w", item: w,
-      prompt: `<div class="qz-big">${pic(w)}</div><p class="qz-ask"><b>${esc(w.w)}</b> <span class="qz-kk">${esc(w.kk)}</span> 的重音在第幾個音節？</p><p class="qz-hint">共 ${k.syl} 個音節。ˋ 標在重讀音節的前面；重讀的音節比較長、比較響亮。</p>`,
-      audio: { text: w.w, file: w.au, label: `聽 ${w.w}` }, autoplay: true,
+      prompt: `<p class="qz-ask">聽發音，重音在第幾個音節？</p><p class="qz-hint">共 ${k.syl} 個音節。ˋ 標在重讀音節的前面；重讀的音節比較長、比較響亮。</p>`,
+      audio: { text: w.w, file: w.au, label: "再聽一次" }, autoplay: true,
       options: Array.from({ length: k.syl }, (_, i) => ({ html: `第 ${i + 1} 音節`, ok: i + 1 === k.stress })),
       answer: wordAns(w),
       explain: `重讀部分是 ${stressSpan(w.kk)}：第 ${k.stress} 個音節。`,
@@ -203,7 +203,7 @@ const Learn = (() => {
     if (pool.length < 4) pool = kkWords();
     const w = pick(fresh(pool, "w"));
     const opts = dedupe([w, ...shuf(pool.filter((x) => x !== w && x.kk !== w.kk))], (x) => x.kk).slice(0, 3);
-    if (kind === "listen")
+    if (kind === "listen" || kind === "read")
       return {
         kind: "kk", recK: "w", item: w,
         prompt: `<p class="qz-ask">聽發音，選出正確的 KK 音標</p>`,
@@ -442,6 +442,29 @@ const Learn = (() => {
   }
   /* The revealed answer: tap the line to hear it again, tap a word for its KK. */
   const answerHTML = (a) => (a.en ? `<span class="qz-ans">${sayHTML(a.en, a.file || "")}</span>` : "");
+  let cancelPlayback = () => {};
+  function cancelAudio() { cancelPlayback(); }
+  function playAudio(a) {
+    cancelAudio();
+    return new Promise(resolve => {
+      let done = false;
+      const finish = ok => { if(done)return; done=true; clearTimeout(timer); resolve(ok); };
+      const timer = setTimeout(() => { VOICE.pause(); finish(false); }, 15000);
+      cancelPlayback = () => { VOICE.pause(); if(window.speechSynthesis)speechSynthesis.cancel(); finish(false); };
+      const tts = () => {
+        if(done)return;
+        if(!window.speechSynthesis)return finish(false);
+        speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(a.text); u.lang='en-US'; u.rate=.85;
+        u.onend=()=>finish(true); u.onerror=()=>finish(false); speechSynthesis.speak(u);
+      };
+      if(!a)return finish(true);
+      if(!a.file)return tts();
+      VOICE.onended=()=>finish(true); VOICE.onerror=tts;
+      VOICE.src=a.file; VOICE.currentTime=0; VOICE.playbackRate=1;
+      try { const pending=VOICE.play(); if(pending)pending.catch(tts); } catch(e) { tts(); }
+    });
+  }
   function play(a) {
     if (a) speak(a.text, a.file || "");
   }
@@ -453,15 +476,26 @@ const Learn = (() => {
     markAsked(q);
     return new Promise((res) => {
       const wide = q.options.some((o) => o.wide);
-      el.innerHTML = `<div class="qz"><div class="qz-p">${q.prompt}</div>${q.audio ? `<button class="qz-say" type="button">🔊 ${esc(q.audio.label || "再聽一次")}</button>` : ""}<div class="qz-o${wide ? " wide" : ""}${q.cols ? " c" + q.cols : ""}">${optionsHTML(q)}</div><div class="qz-f" role="status"></div></div>`;
+      el.innerHTML = `<div class="qz"><div class="qz-p">${q.prompt}</div>${q.audio ? `<button class="qz-say" type="button">🔊 ${esc(q.audio.label || "再聽一次")}</button>` : ""}<div class="qz-o${wide ? " wide" : ""}${q.cols ? " c" + q.cols : ""}">${optionsHTML(q, !!q.audio)}</div><div class="qz-f" role="status"></div></div>`;
       const say = el.querySelector(".qz-say");
-      if (say) say.onclick = () => play(q.audio);
-      if (q.autoplay) setTimeout(() => play(q.audio), 250);
+      const choices=el.querySelector('.qz-o');
+      let audioRun=0, resolved=false;
+      const listenFirst=async()=>{
+        if(resolved){await playAudio(q.audio);return;}
+        const run=++audioRun; choices.hidden=true;
+        const ok=await playAudio(q.audio);
+        if(run!==audioRun || !el.isConnected || !el.contains(choices))return;
+        if(!ok){el.querySelector('.qz-f').textContent='聲音未播放，請點「再聽一次」重試。';return;}
+        if(!el.querySelector('.wrong'))el.querySelector('.qz-f').textContent=''; choices.hidden=false;
+        choices.querySelectorAll('button').forEach(b=>{if(!b.classList.contains('wrong'))b.disabled=false});
+      };
+      if(q.audio){choices.hidden=true;if(say)say.onclick=listenFirst;if(q.autoplay)listenFirst();}
       const bs = [...el.querySelectorAll(".qz-o button")];
       let tries = 0;
       bs.forEach(
         (b) =>
           (b.onclick = () => {
+            if(resolved)return;
             const o = q.options[+b.dataset.i],
               ok = !!o.ok;
             if (!ok && opt.retry && tries === 0) {
@@ -476,19 +510,27 @@ const Learn = (() => {
               b.classList.add("wrong");
               SND.play("wrong");
               el.querySelector(".qz-f").innerHTML = `<b class="bad">再試一次</b><small>${esc(q.retryHint || "再聽一次，注意剛剛示範的口形。")}</small>`;
-              if (q.audio) play(q.audio);
+              if (q.audio) listenFirst();
               return;
             }
+            resolved=true;
             bs.forEach((x, i) => {
               x.disabled = true;
-              if (q.options[i].ok) x.classList.add("right");
+              if ((ok || q.kind !== "kk") && q.options[i].ok) x.classList.add("right");
             });
             if (!ok) b.classList.add("wrong");
             SND.play(ok ? "correct" : "wrong");
             const g = grade(q, ok, opt.src);
             const a = q.answer || {};
+            const reveal = () => {
             el.querySelector(".qz-f").innerHTML = `<b class="${ok ? "good" : "bad"}">${ok ? (tries ? "答對了（第二次）" : "答對了！") : "正確答案"}</b> ${answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${ok && !g.fresh ? "<small>剛剛練過這題，這次不重複計分。</small>" : ""}`;
-            if (q.after || !ok || q.kind === "kk") speak(a.en, a.file || "");
+              bs.forEach((b,i)=>{if(q.options[i].ok)b.classList.add('right')});
+            };
+            if(!ok && q.kind==='kk'){
+              el.querySelector('.qz-f').innerHTML='<b class="bad">還沒選對</b><p>需要提示時再查看正確答案。</p><button type="button" class="qz-assist">查看示範（輔助）</button>';
+              el.querySelector('.qz-assist').onclick=()=>{reveal();Learn.assisted(q);speak(a.en,a.file||'')};
+            }else reveal();
+            if ((ok || q.kind !== "kk") && (q.after || !ok || q.kind === "kk")) speak(a.en, a.file || "");
             if (opt.onAnswer) opt.onAnswer(ok);
             if (opt.auto) return res({ ok, tries });
             const go = document.createElement("button");
@@ -504,7 +546,7 @@ const Learn = (() => {
   }
 
   return {
-    parseKK, stressSpan, SOUNDS, UNITS, wordBy, pairWords, unitQuestion, stressQuestion, wordKK, phonicsQuestion,
+    playAudio, cancelAudio, parseKK, stressSpan, SOUNDS, UNITS, wordBy, pairWords, unitQuestion, stressQuestion, wordKK, phonicsQuestion,
     soundDue, soundsDue, wordQuestion, sentQuestion, sceneQuestion, scene, contentId, setScenes,
     grade, flush, ask, play, dueItems, optionsHTML, answerHTML, sayHTML,
     /* A question shown outside Learn.ask (the timed battle) still counts as "recently asked". */

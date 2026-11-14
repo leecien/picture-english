@@ -1355,7 +1355,7 @@ const World = (() => {
         ctx.stroke();
         break;
       case "bubble":
-        // A wobbly letter bubble: translucent body, shine, and a tiny floating "ə".
+        // A wobbly letter bubble: translucent body, shine, and a small decorative sparkle.
         ctx.globalAlpha *= 0.85;
         ctx.arc(0, -12, 12 + Math.sin(e.t * 3) * 0.8, 0, 7);
         ctx.fill();
@@ -1367,7 +1367,7 @@ const World = (() => {
         ctx.fillStyle = "#6b4fb0";
         ctx.font = "700 9px serif";
         ctx.textAlign = "center";
-        ctx.fillText("ə", 6, -22 + Math.sin(e.t * 2) * 1.5);
+        ctx.fillText("✦", 6, -22 + Math.sin(e.t * 2) * 1.5);
         break;
       default:
         ctx.arc(0, -11, 12, 0, 7);

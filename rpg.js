@@ -854,8 +854,10 @@ const RPG = (() => {
       else await teachUnit(u, true);
     }
     delete $("dlg-name").dataset.step;
+    if(ok < 3) return false;
     data.kk.units[u.id] = true;
     save();
+    return true;
   }
   async function kkNpc(e) {
     const task = KK_TASKS.find((t) => t.npc === e.id);
@@ -889,7 +891,10 @@ const RPG = (() => {
     await Talk.line(en, zh);
     const units = only || LESSON_UNITS[task.id].filter((u) => !data.kk.units[u.id]);
     for (let i = 0; i < units.length; i++) {
-      await runUnit(units[i], task.title);
+      if(!await runUnit(units[i], task.title)) {
+        await finishSummary(`KK 新手村・${task.title}`, '這個單元還沒完成，下次找老師可繼續。');
+        return;
+      }
       if (i < units.length - 1) {
         const v = await Talk.choose(`「${units[i].title}」完成！`, [
           { label: `▶ 下一個：${units[i + 1].title}`, value: "next" },
