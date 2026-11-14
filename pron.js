@@ -28,7 +28,7 @@ const Pron = (() => {
       .map((part) => {
         if (/^\s+$/.test(part)) return part;
         const w = opt.noWords ? null : lookup(part);
-        return w ? `<span class="wd" data-w="${ESC(w.w)}" role="button" tabindex="0" aria-label="${ESC(w.w)} 的發音">${ESC(part)}</span>` : ESC(part);
+        return w ? `<span class="pw" data-w="${ESC(w.w)}" role="button" tabindex="0" aria-label="${ESC(w.w)} 的發音">${ESC(part)}</span>` : ESC(part);
       })
       .join("");
     return `<span class="say-s" data-say="${ESC(text)}"${file ? ` data-file="${ESC(file)}"` : ""} role="button" tabindex="0">${words}</span><span class="say-btn" data-say="${ESC(text)}"${file ? ` data-file="${ESC(file)}"` : ""} role="button" tabindex="0" aria-label="播放整句">🔊</span>`;
@@ -63,42 +63,49 @@ const Pron = (() => {
       if (window.speechSynthesis) speechSynthesis.cancel();
     } catch (e) {}
   }
+  /* Resolves true when the sound played to the end, false if it could not play (or a newer tap replaced it). */
   function play(text, file) {
+    let resolve;
+    const result = new Promise((r) => (resolve = r));
     const my = ++seq;
     stopAll();
     busy(true);
     let done = false;
-    const fin = () => {
+    const fin = (ok) => {
       if (done) return;
       done = true;
       clearTimeout(guard);
       busy(false);
+      resolve(ok !== false && my === seq);
     };
-    const guard = setTimeout(fin, 12000);
+    const guard = setTimeout(() => fin(false), 12000);
     const tts = () => {
       try {
-        if (my !== seq || !window.speechSynthesis) return fin();
+        if (my !== seq || !window.speechSynthesis) return fin(false);
         const u = new SpeechSynthesisUtterance(text);
         u.lang = "en-US";
         u.rate = 0.85;
         const v = (speechSynthesis.getVoices() || []).find((x) => /^en[-_]US/i.test(x.lang)) || (speechSynthesis.getVoices() || []).find((x) => /^en/i.test(x.lang));
         if (v) u.voice = v;
-        u.onend = fin;
-        u.onerror = fin;
+        u.onend = () => fin(true);
+        u.onerror = () => fin(false);
         speechSynthesis.speak(u);
       } catch (e) {
-        fin();
+        fin(false);
       }
     };
-    if (!file || typeof VOICE === "undefined") return tts();
+    if (!file || typeof VOICE === "undefined") {
+      tts();
+      return result;
+    }
     try {
-      VOICE.onended = () => my === seq && fin();
-      VOICE.onerror = () => (my === seq ? tts() : fin());
+      VOICE.onended = () => my === seq && fin(true);
+      VOICE.onerror = () => (my === seq ? tts() : fin(false));
       VOICE.src = file;
       VOICE.currentTime = 0;
       VOICE.volume = 1;
       const p = VOICE.play();
-      if (p) p.catch(() => (my === seq ? tts() : fin()));
+      if (p) p.catch(() => (my === seq ? tts() : fin(false)));
     } catch (e) {
       tts();
     }
@@ -106,9 +113,10 @@ const Pron = (() => {
     const check = setInterval(() => {
       if (my !== seq) {
         clearInterval(check);
-        fin();
+        fin(false);
       } else if (done) clearInterval(check);
     }, 100);
+    return result;
   }
 
   /* ---------- word card ---------- */
@@ -139,7 +147,7 @@ const Pron = (() => {
   if (typeof document !== "undefined") {
     // Capture phase: a hear control never reaches an answer button, a dialog, or the map underneath.
     const act = (e) => {
-      const wd = e.target.closest && e.target.closest(".wd");
+      const wd = e.target.closest && e.target.closest(".pw[data-w]");
       if (wd) {
         e.preventDefault();
         e.stopPropagation();
@@ -156,7 +164,7 @@ const Pron = (() => {
     document.addEventListener(
       "keydown",
       (e) => {
-        if ((e.key === "Enter" || e.key === " ") && e.target.matches && e.target.matches(".wd, .say-s, .say-btn, .qz-hear")) act(e);
+        if ((e.key === "Enter" || e.key === " ") && e.target.matches && e.target.matches(".pw, .say-s, .say-btn, .qz-hear")) act(e);
         if (e.key === "Escape") closeWord();
       },
       true,

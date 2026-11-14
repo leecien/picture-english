@@ -141,13 +141,31 @@ const { chromium } = require("playwright");
   // Original practice still works inside the panel.
   await page.locator("#go-word").click();
   await page.waitForSelector("#game:not([hidden])");
-  for (const type of ["pic2word", "word2pic", "match", "wflash", "spell"]) {
+  for (const type of ["pic2word", "word2pic", "match", "spell"]) {
     await ev((t) => {
       $("stage").innerHTML = "";
       G[t]($("stage"));
       clearTimeout(S.timer);
     }, type);
   }
+  // The flash-memory / covered-cards mode is gone from every list (old saves keep their data).
+  assert.deepEqual(await ev(() => [typeof G.wflash, typeof G.sflash, [...TYPES.word, ...TYPES.sent].some((t) => /flash/.test(t.id))]), ["undefined", "undefined", false]);
+  assert.doesNotMatch(await page.locator("#p-play").innerText(), /閃現記憶/);
+  // Sentence order: real taps put a word into the answer and take it back out.
+  await ev(() => {
+    S.answered = false;
+    $("stage").innerHTML = "";
+    G.order($("stage"));
+  });
+  const first = await page.locator("#pool .wd").first().innerText();
+  const nPool = await page.locator("#pool .wd").count();
+  await page.locator("#pool .wd").first().click();
+  assert.equal(await page.locator("#build .wd").count(), 1, "tap a word: it goes into the answer");
+  assert.equal(await page.locator("#build .wd").first().innerText(), first);
+  assert.equal(await page.locator("#pool .wd").count(), nPool - 1);
+  await page.locator("#build .wd").first().click();
+  assert.equal(await page.locator("#build .wd").count(), 0, "tap it in the answer: it goes back");
+  assert.equal(await page.locator("#pool .wd").count(), nPool);
   await page.locator("#back").click();
   await page.locator("#quick-map").click();
   await page.waitForSelector("#panel", { state: "hidden" });
@@ -186,7 +204,7 @@ const { chromium } = require("playwright");
   assert(await ev(() => document.documentElement.scrollWidth <= innerWidth), "no horizontal scroll");
   await page.screenshot({ path: "/tmp/picture-rpg-mobile.png" });
   assert.deepEqual(errors, []);
-  console.log("PASS: legacy saves kept, returning player on legacy map, collision and click-to-walk, world map locks, in-dialog legacy quests with shared records and log, fail and repeat rules, unlock, chest once, learning panel round trip, original practice renderers, reload with PR #1 fields untouched, all legacy maps, KK village for returning players, no browser errors");
+  console.log("PASS: legacy saves kept, returning player on legacy map, collision and click-to-walk, world map locks, in-dialog legacy quests with shared records and log, fail and repeat rules, unlock, chest once, learning panel round trip, original practice renderers, no flash-memory mode, sentence order taps in and out, reload with PR #1 fields untouched, all legacy maps, KK village for returning players, no browser errors");
   await browser.close();
 })().catch((e) => {
   console.error(e);

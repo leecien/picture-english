@@ -482,7 +482,7 @@ button:disabled {
   background: #fff3c9;
   border-radius: 4px;
 }
-.wd {
+.pw {
   text-decoration: underline dotted #8a7d4a;
   text-underline-offset: 3px;
   cursor: help;
@@ -1394,4 +1394,271 @@ b.nv-hit {
   display: block;
   font-size: 11px;
   color: #5d6653;
+}
+
+/* ---- 生活情境找物 (lifescene.js): always light, readable over a photo ---- */
+.life {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  height: var(--app-h, 100dvh);
+  background: #f7f4ea;
+  color: #2f382b;
+  font-family: var(--body);
+  padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);
+}
+.life[hidden] {
+  display: none;
+}
+.life-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+}
+.life-top button,
+.life-tabs button,
+.life .dlg-row button,
+.life-missions button,
+.life-scenes button {
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid #c9cfba;
+  background: #fffdf6;
+  color: #2f382b;
+  font-size: 15px;
+  padding: 6px 12px;
+}
+.life-top b {
+  flex: 1;
+  font-size: 17px;
+}
+.life-top span {
+  font-size: 14px;
+  color: #3e5a2c;
+  font-weight: 700;
+}
+.life-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 0 12px 8px;
+}
+.life-tabs button {
+  flex: none;
+}
+.life-tabs button[aria-pressed="true"] {
+  background: #3e5a2c;
+  color: #fff;
+  border-color: #3e5a2c;
+}
+.life-stage {
+  position: relative;
+  flex: none;
+  height: 52%;
+  overflow: hidden;
+  background: #2b2b2b;
+  touch-action: none;
+  user-select: none;
+}
+.life-stage[hidden] {
+  display: none;
+}
+.life-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+.life-layer img,
+.life-layer svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.lo {
+  fill: rgba(255, 255, 255, 0.12);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+.lo-found {
+  stroke: #ffd25e;
+}
+.lo-good {
+  stroke: #2fbf71;
+  fill: rgba(47, 191, 113, 0.18);
+}
+.lo-bad {
+  stroke: #e04848;
+  fill: rgba(224, 72, 72, 0.15);
+}
+.life-zoom {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: flex;
+  gap: 6px;
+}
+.life-zoom button {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 253, 246, 0.92);
+  color: #2f382b;
+  font-size: 20px;
+}
+.life-toast {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 30, 0.85);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+.life-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 14px 16px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  font-size: 16px;
+}
+.life-lead,
+.life-hint {
+  margin: 0;
+  line-height: 1.5;
+}
+.life-wait {
+  margin: 0;
+  color: #6b4e00;
+  font-weight: 700;
+}
+.life-scenes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.life-scenes button {
+  display: grid;
+  gap: 4px;
+  padding: 6px;
+  text-align: left;
+}
+.life-scenes img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.life-scenes small {
+  color: #5d6653;
+}
+.life-card {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #fffdf6;
+  border: 1px solid #d9d2b8;
+}
+.life-word {
+  font-size: 28px;
+}
+.life-zh {
+  font-size: 17px;
+}
+.life-kk {
+  font-size: 22px;
+  color: #1d4f7a;
+}
+.life-nokk {
+  font-size: 13px;
+  color: #6f5a2a;
+}
+.life-card small,
+.life-sum small {
+  color: #5d6653;
+  font-size: 12px;
+}
+.life-new {
+  color: #8a5a00 !important;
+  font-weight: 700;
+}
+.life-slots,
+.life-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+.life-slot,
+.life-tile {
+  min-width: 44px;
+  min-height: 48px;
+  font-size: 22px;
+  border-radius: 10px;
+  border: 2px solid #c9cfba;
+  background: #fffdf6;
+  color: #2f382b;
+}
+.life-slot {
+  border-style: dashed;
+}
+.life-tile:disabled {
+  opacity: 1;
+  background: #ece8da;
+  color: #8a8f80;
+}
+.life-mine .ok {
+  color: #153f2b;
+  background: #ddf4e8;
+}
+.life-mine .no {
+  color: #732423;
+  background: #fde8e7;
+  text-decoration: underline;
+}
+.life-missions {
+  display: grid;
+  gap: 8px;
+}
+.life-missions button {
+  display: grid;
+  text-align: left;
+  gap: 2px;
+}
+.life-check {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  font-size: 17px;
+}
+.life-sum ul {
+  margin: 6px 0;
+  padding-left: 18px;
+}
+.life .good {
+  color: #1b6b3f;
+}
+.life .bad {
+  color: #9b2c2c;
+}
+.life .qz-f {
+  background: #fffdf6;
+  border-radius: 12px;
+  padding: 6px 10px;
+}
+.life .qz-f:empty {
+  display: none;
 }

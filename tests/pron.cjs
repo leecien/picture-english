@@ -126,7 +126,7 @@ async function run(browser, scheme) {
     document.getElementById("dlg").hidden = false;
     document.getElementById("dlg-body").innerHTML = `<p class="dlg-en">${Learn.sayHTML("I like apple juice.")}</p>`;
   });
-  await page.locator(".dlg-en .wd", { hasText: "apple" }).click();
+  await page.locator(".dlg-en .pw", { hasText: "apple" }).click();
   await page.waitForSelector(".wd-card:not([hidden])");
   const card = await page.locator(".wd-card").innerText();
   const apple = await ev(() => WORDS.find((w) => w.w === "apple"));

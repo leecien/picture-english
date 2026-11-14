@@ -407,8 +407,8 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
           <span class="pic">🍎</span>
           <span>
             <h2>單字 <small>Words</small></h2>
-            <p>看圖認字、配對、記位置、拼字</p>
-            <span class="chips"><span class="chip">看圖選字</span><span class="chip">看字選圖</span><span class="chip">圖字配對</span><span class="chip">閃現記憶</span><span class="chip">看圖拼字</span></span>
+            <p>看圖認字、配對、拼字</p>
+            <span class="chips"><span class="chip">看圖選字</span><span class="chip">看字選圖</span><span class="chip">圖字配對</span><span class="chip">看圖拼字</span></span>
             <div class="best" id="best-word"></div>
           </span>
         </button>
@@ -417,8 +417,16 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
           <span>
             <h2>句子 <small>Sentences</small></h2>
             <p>看畫面理解整句、填空、排出正確語序</p>
-            <span class="chips"><span class="chip">看圖選句</span><span class="chip">看句選圖</span><span class="chip">看圖填空</span><span class="chip">句子排序</span><span class="chip">閃現記憶</span></span>
+            <span class="chips"><span class="chip">看圖選句</span><span class="chip">看句選圖</span><span class="chip">看圖填空</span><span class="chip">句子排序</span></span>
             <div class="best" id="best-sent"></div>
+          </span>
+        </button>
+        <button class="mode" id="go-life">
+          <span class="pic">🛒</span>
+          <span>
+            <h2>生活情境找物 <small>Everyday scenes</small></h2>
+            <p>六張寫實生活照，每張 6 個單字：點物件聽發音、聽音找物、找物拼字、完成生活小任務</p>
+            <span class="chips"><span class="chip">餐廳</span><span class="chip">超市</span><span class="chip">臥室</span><span class="chip">浴室</span><span class="chip">辦公室</span><span class="chip">機場</span></span>
           </span>
         </button>
         <button class="mode" id="go-drive">
@@ -556,14 +564,12 @@ const TYPES={
   {id:'pic2word',name:'看圖選字',hint:'這張圖是哪個英文單字？'},
   {id:'word2pic',name:'看字選圖',hint:'哪一張圖符合這個單字？'},
   {id:'match',name:'圖字配對',hint:'先點一張圖，再點對應的單字。'},
-  {id:'wflash',name:'閃現記憶',hint:'記住每張圖在哪一格，時間到會蓋起來。'},
   {id:'spell',name:'看圖拼字',hint:'照順序點字母，拼出這個單字。'}],
  sent:[
   {id:'scene2sent',name:'看圖選句',hint:'哪一句英文在描述這個畫面？'},
   {id:'sent2scene',name:'看句選圖',hint:'哪個畫面符合這句英文？'},
   {id:'blank',name:'看圖填空',hint:'看畫面，選出空格裡的單字。'},
-  {id:'order',name:'句子排序',hint:'點單字，排成正確的英文句子。'},
-  {id:'sflash',name:'閃現記憶',hint:'記住每句話在哪一格，時間到會蓋起來。'}],
+  {id:'order',name:'句子排序',hint:'點單字，排成正確的英文句子。'}],
  place:[
   {id:'pic2word',name:'分級測驗・單字',hint:'這張圖是哪個英文單字？'},
   {id:'blank',name:'分級測驗・填空',hint:'選出空格裡最正確的字。'},
@@ -816,17 +822,6 @@ const G={
    }else{miss++;missed.add(a.w);missed.add(c.w);SND.play('wrong');$('mnote').textContent=`配錯 ${miss} 次`;pair.forEach(x=>{x.classList.add('wrong');setTimeout(()=>x.classList.remove('wrong'),450)})}
   });
  },
- wflash(st){
-  const items=[take('w'),take('w'),take('w'),take('w')],ti=rnd(4),target=items[ti],sec=5;
-  st.innerHTML=`<div class="timer"><i style="animation-duration:${sec}s"></i></div><div class="grid2">${items.map((o,k)=>`<button class="ft" data-k="${k}" disabled><span class="fe">${pic(o)}</span><span class="fw">${o.w}</span><span class="q">?</span></button>`).join('')}</div><div class="ask" id="ask"><button class="ghost" id="ready">我記住了</button></div>`;
-  const ts=[...st.querySelectorAll('.ft')];
-  const hide=()=>{clearTimeout(S.timer);st.querySelector('.timer').classList.add('off');SND.play('cover');
-   ts.forEach(t=>{t.classList.add('cover');t.disabled=false});
-   const ask=$('ask');ask.innerHTML=`<span>哪一格是</span><span class="word" style="font-size:26px">${target.w}</span>`;ask.appendChild(sayBtn(target));sayItem(target)};
-  S.timer=setTimeout(hide,sec*1000);$('ready').onclick=hide;
-  ts.forEach(b=>b.onclick=()=>{if(S.answered||!b.classList.contains('cover'))return;ts.forEach(t=>t.classList.remove('cover'));
-   const ok=+b.dataset.k===ti;mark(ts,k=>k===ti,b);done(ok,wInfo(target,[{k:'w',it:target,ok}]))});
- },
  spell(st){
   const it=take('w',w=>w.w.length<=6),L=it.w.split('');let sh;
   do{sh=shuffle(L.slice())}while(sh.join('')===it.w);
@@ -871,17 +866,6 @@ const G={
     if(built.length===toks.length){const ok=built.map(k=>toks[k]).join(' ')===it.en;$('build').classList.add(ok?'ok':'no');
      st.querySelectorAll('.wd').forEach(x=>x.disabled=true);done(ok,{en:it.en,zh:it.zh,say:it,rec:[{k:'s',it,ok}]})}else SND.play('tap')});
   };draw();
- },
- sflash(st){
-  const items=[take('s'),take('s'),take('s')],ti=rnd(3),target=items[ti],sec=7;
-  st.innerHTML=`<div class="timer"><i style="animation-duration:${sec}s"></i></div><div class="stack">${items.map((o,k)=>`<button class="sf" data-k="${k}" disabled><span class="se">${pic(o)}</span><span class="st">${o.en}</span><span class="q"><span>${k+1}<b>點這格</b></span></span></button>`).join('')}</div><div class="ask" id="ask"><button class="ghost" id="ready">我記住了</button></div>`;
-  const ts=[...st.querySelectorAll('.sf')];
-  const hide=()=>{clearTimeout(S.timer);st.querySelector('.timer').classList.add('off');SND.play('cover');
-   ts.forEach(t=>{t.classList.add('cover');t.disabled=false});
-   const ask=$('ask');ask.innerHTML=`<span class="sentence">${target.en}</span>`;ask.appendChild(sayBtn(target));sayItem(target)};
-  S.timer=setTimeout(hide,sec*1000);$('ready').onclick=hide;
-  ts.forEach(b=>b.onclick=()=>{if(S.answered||!b.classList.contains('cover'))return;ts.forEach(t=>t.classList.remove('cover'));
-   const ok=+b.dataset.k===ti;mark(ts,k=>k===ti,b);done(ok,{en:target.en,zh:target.zh,say:target,rec:[{k:'s',it:target,ok}]})});
  }
 };
 
@@ -1404,6 +1388,7 @@ function micRecog(){
   try{r.start();out.textContent='請說 hello…'}catch(e){clearTimeout(t);done('❌ 無法開始辨識：'+e.message)}
 }
 $('go-drive').onclick=openDrive;
+$('go-life').onclick=()=>Life.open();
 $('quick-drive').onclick=openDrive;
 $('quick-map').onclick=toField;
 $('drive-start').onclick=startDrive;
@@ -1459,6 +1444,7 @@ $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 <script src="battle.js"></script>
 <script src="learn.js"></script>
 <script src="novice.js"></script>
+<script src="lifescene.js"></script>
 <script src="rpg.js"></script>
 <script>boot();</script>
 </body>

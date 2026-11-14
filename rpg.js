@@ -510,6 +510,7 @@ const RPG = (() => {
       <button data-m="drive">🚗<b>開車模式</b><small>${ctx ? "練這段：" + esc(ctx.label) : "聽中文、說英文"}</small></button>
       ${C.claimed ? `<button data-m="buddy">🧚<b>旅伴</b><small>露米・默契 Lv.${bondLv()}</small></button>` : ""}
       <button data-m="bag">🎒<b>背包</b><small>道具與素材</small></button>
+      <button data-m="life">🛒<b>生活情境找物</b><small>餐廳、超市、機場…點物件學單字</small></button>
       <button data-m="practice">📚<b>練習與成就</b><small>單字、句子、分級</small></button>
       <button data-m="book">🃏<b>卡冊</b><small>收集的單字卡</small></button>
       <button data-m="log">📈<b>學習紀錄</b><small>每天學了什麼</small></button>
@@ -527,6 +528,11 @@ const RPG = (() => {
             if (m === "journal") return journal();
             if (m === "bag") return bag();
             if (m === "buddy") return buddy();
+            if (m === "life") {
+              closeSheet();
+              World.paused = true;
+              return Life.open({ onClose: () => (syncPause(), refresh()) });
+            }
             if (m === "start") {
               closeSheet();
               World.toStart();

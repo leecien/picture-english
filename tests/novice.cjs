@@ -160,7 +160,7 @@ async function noLeak(ev, where) {
   const rv = await page.locator("#dlg-body").innerText();
   assert.match(rv.replace(/\s+/g, ""), /組對了（重試後）[\s\S]*cat[\s\S]*\[kæt\][\s\S]*c→\/k\/a→\/æ\/t→\/t\//);
   assert(await ev(() => __plays.some((p) => /cat\.mp3/.test(p.src))), "the word plays when revealed");
-  await page.locator(".nv-reveal .wd").click();
+  await page.locator(".nv-reveal .pw").click();
   assert.match(await page.locator(".wd-card").innerText(), /\[kæt\]/, "tap the word: its KK");
   await page.locator(".wd-card .wd-close").click();
   await page.locator("#nv-done").click();
