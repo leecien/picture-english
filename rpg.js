@@ -488,6 +488,7 @@ const RPG = (() => {
     const ctx = sceneContext();
     sheet(`<h3>☰ 選單</h3><div class="menu-grid">
       <button data-m="map">🗺️<b>世界地圖</b><small>${maps.filter((m) => unlocked(m.id)).length}/${maps.length} 區域</small></button>
+      <button data-m="phonics">🔤<b>字母與發音</b><small>拼字、KK 與聲音組合</small></button>
       <button data-m="journal">📜<b>任務日誌</b><small>${esc(objective().short)}</small></button>
       <button data-m="drive">🚗<b>開車模式</b><small>${ctx ? "練這段：" + esc(ctx.label) : "聽中文、說英文"}</small></button>
       ${C.claimed ? `<button data-m="buddy">🧚<b>旅伴</b><small>露米・默契 Lv.${bondLv()}</small></button>` : ""}
@@ -506,6 +507,9 @@ const RPG = (() => {
           (b.onclick = () => {
             const m = b.dataset.m;
             if (m === "map") return worldMap();
+            if(m==='phonics'){
+              closeSheet();Talk.show(KK.npcs[0]);spellingLesson(true).finally(()=>Talk.close());return;
+            }
             if (m === "journal") return journal();
             if (m === "bag") return bag();
             if (m === "buddy") return buddy();
@@ -859,8 +863,25 @@ const RPG = (() => {
     save();
     return true;
   }
+  async function spellingLesson(replay=false) {
+    let step = replay ? 0 : Math.max(0, Math.min(Phonics.pages.length, Number(data.kk.spellingIntroStep)||0));
+    for(;step<Phonics.pages.length;step++){
+      $("dlg-name").dataset.step=`字母與發音 ${step+1}/${Phonics.pages.length}`;
+      await Talk.panel(Phonics.html(Phonics.pages[step], WORDS), '我聽好了，繼續');
+      data.kk.spellingIntroStep=step+1; save();
+      if(step<Phonics.pages.length-1){
+        const v=await Talk.choose('繼續下一小節嗎？',[{label:'繼續學習',value:'next'},{label:'先休息，進度保留',value:'later'}]);
+        if(v==='later'){delete $("dlg-name").dataset.step;return false;}
+      }
+    }
+    data.kk.spellingIntroSeen=true; save();delete $("dlg-name").dataset.step;
+    return true;
+  }
   async function kkNpc(e) {
     const task = KK_TASKS.find((t) => t.npc === e.id);
+    if(e.id==='vowel'&&!data.kk.spellingIntroSeen){
+      if(!await spellingLesson())return;
+    }
     if (e.id === "word" && data.kk.word) {
       if (KK_TASKS.every((t) => data.kk[t.id])) return chief();
       const left = KK_TASKS.filter((t) => !data.kk[t.id]).map((t) => t.title).join("、");

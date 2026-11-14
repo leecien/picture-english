@@ -20,3 +20,11 @@
 本批尚未交付完整 41 音課程、獨立怪物原野、至少 30 題的新手村魔王與新手村取得旅伴；不得因這批修復標成全部功能完成。
 
 預覽：嘗試建立獨立 GitHub Pages 儲存庫時，GitHub 整合回覆 `Resource not accessible by integration (createRepository)`。未修改正式 Pages 設定或覆蓋 main。
+
+## 字母與音標的橋接教學
+
+新增 `phonics.js` 六小節：字母名字與實際發音、短母音、字尾 e、sh/ch/ph/th、相同拼字的不同讀法、聲音組合。以現有題庫的 cat、cake、fish、tree、moon、book 等例字音檔示範，沒有用 TTS 朗讀單一音標，也不假設字母與 KK 一對一。
+
+第一次找母音老師先進此段，每節可休息；`pm-rpg-v1.kk.spellingIntroStep` 保存讀到哪裡，`spellingIntroSeen` 只表示看過導讀，不等於母音課過關。選單的「字母與發音」可隨時重新開啟。尚非完整 A–Z 拼讀規則表或完整 41 音課程。
+
+`tests/phonics.cjs` 驗證例字存在、音標對照、例字錄音播放、初次入口、中斷重載接續與選單重看；完整故事與原有 RPG 回歸另行測試。
