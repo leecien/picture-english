@@ -1,0 +1,50 @@
+[
+  {
+    "file": "assets/voice/words/cat.mp3",
+    "LUFS": "-20.55",
+    "truePeak": "-8.66",
+    "LRA": "0.00"
+  },
+  {
+    "file": "assets/voice/words/apple.mp3",
+    "LUFS": "-21.38",
+    "truePeak": "-6.94",
+    "LRA": "0.00"
+  },
+  {
+    "file": "assets/voice/words/hospital.mp3",
+    "LUFS": "-20.94",
+    "truePeak": "-8.32",
+    "LRA": "0.00"
+  },
+  {
+    "file": "assets/voice/zh/ui/think.mp3",
+    "LUFS": "-14.83",
+    "truePeak": "-2.94",
+    "LRA": "0.00"
+  },
+  {
+    "file": "assets/voice/zh/ui/correct.mp3",
+    "LUFS": "-15.26",
+    "truePeak": "-4.92",
+    "LRA": "0.00"
+  },
+  {
+    "file": "assets/voice/zh/ui/start.mp3",
+    "LUFS": "-16.19",
+    "truePeak": "-3.40",
+    "LRA": "0.00"
+  },
+  {
+    "file": "assets/voice/sentences/my-dad-drives-a-car.mp3",
+    "LUFS": "-22.33",
+    "truePeak": "-7.41",
+    "LRA": "0.00"
+  },
+  {
+    "file": "assets/voice/zh/words/apple.mp3",
+    "LUFS": "-15.19",
+    "truePeak": "-0.19",
+    "LRA": "0.00"
+  }
+]
