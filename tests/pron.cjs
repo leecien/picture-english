@@ -146,7 +146,8 @@ async function run(browser, scheme) {
     m.wait = 999;
     World.approach(m);
   });
-  await page.waitForFunction(() => Battle.ready, null, { timeout: 30000 });
+  try { await page.waitForFunction(() => Battle.ready, null, { timeout: 30000 }); }
+  catch(e){console.error('BATTLE STATE',await ev(()=>({battle:Battle.state,hero:World.hero,paused:World.paused,log:document.getElementById('bt-feedback').textContent,loading:document.getElementById('bt-clock-n').textContent})));throw e}
   if (await page.locator("#bt-act .qz-hear").count()) {
     await page.locator("#bt-act .qz-hear").first().click();
     const l1 = await ev(() => Battle.state.left);
@@ -155,6 +156,10 @@ async function run(browser, scheme) {
     assert.equal(await ev(() => Battle.state.settled), false, "hearing is not answering");
   }
   await page.locator("#bt-act .qz-o > .qz-opt > button").nth(await ev(() => Learn.last.options.findIndex((o) => !o.ok))).click();
+  if(await page.locator('#bt-assist').count()){
+    assert.equal(await page.locator('#bt-act .qz-o button.right').count(),0,'KK correction requires explicit assistance');
+    await page.locator('#bt-assist').click();
+  }
   const s = await style("#bt-act .qz-o button.right");
   assert.deepEqual(rgb(s.bg), [221, 244, 232], `${scheme}: battle right option`);
   assert(ratio(rgb(s.bg), rgb(s.color)) >= 4.5);

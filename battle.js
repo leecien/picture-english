@@ -338,61 +338,29 @@ const Battle = (() => {
       startClock(timeFor(q));
     };
     const sayBtn = $("bt-say");
-    if (sayBtn) sayBtn.onclick = () => playAwait(q.audio);
-    if (q.audio && q.autoplay) {
-      $("bt-clock-n").textContent = "播放中…";
-      playAwait(q.audio).then((ok) => {
-        if (!live(tok) || B.q !== q) return;
-        if (ok) return go();
-        // Audio failed: say so, offer a replay or the written word; the clock waits.
-        $("bt-feedback").innerHTML = `<b class="bad">聲音沒有播出來</b><span class="dlg-row"><button type="button" id="bt-replay">🔊 重播</button><button type="button" id="bt-read">👀 改看文字</button></span>`;
-        $("bt-replay").onclick = () => playAwait(q.audio).then((ok2) => ok2 && ($("bt-feedback").innerHTML = "", go()));
-        $("bt-read").onclick = () => {
-          $("bt-feedback").innerHTML = `<b>題目文字：</b>${esc(q.audio.text)}`;
-          go();
-        };
-      });
-    } else go();
-  }
-  /* Resolves true once the clip (or speech) has played to the end, false if it could not play. */
-  function playAwait(a) {
-    return new Promise((res) => {
-      if (!a) return res(true);
-      let done = false;
-      const fin = (ok) => {
-        if (done) return;
-        done = true;
-        clearTimeout(t);
-        res(ok);
-      };
-      const t = setTimeout(() => fin(false), 8000);
-      const tts = () => {
-        try {
-          if (!window.speechSynthesis) return fin(false);
-          speechSynthesis.cancel();
-          const u = new SpeechSynthesisUtterance(a.text);
-          u.lang = "en-US";
-          u.rate = 0.85;
-          u.onend = () => fin(true);
-          u.onerror = () => fin(false);
-          speechSynthesis.speak(u);
-        } catch (e) {
-          fin(false);
-        }
-      };
-      if (!a.file) return tts();
-      try {
-        VOICE.onended = () => fin(true);
-        VOICE.onerror = () => tts();
-        VOICE.src = a.file;
-        VOICE.currentTime = 0;
-        const p = VOICE.play();
-        if (p) p.catch(tts);
-      } catch (e) {
-        tts();
+    let audioRun=0, started=false;
+    const choices=$("bt-act").querySelector('.qz-o');
+    const listenFirst=async()=>{
+      const run=++audioRun;
+      B.loading=true; choices.hidden=true;
+      $("bt-clock-n").textContent='播放中…';
+      const ok=await playAwait(q.audio);
+      if(!live(tok)||B.q!==q||run!==audioRun)return;
+      if(!ok){
+        $("bt-feedback").innerHTML='<b class="bad">聲音沒有播出來，請點「再聽一次」重試。</b>'+(q.kind==='kk'?'':'<button id="bt-read" type="button">改看文字</button>');
+        if($("bt-read"))$("bt-read").onclick=()=>{$("bt-feedback").textContent="題目文字："+q.audio.text;B.loading=false;choices.hidden=false;if(!started){started=true;go()}};
+        return;
       }
-    });
+      B.loading=false; choices.hidden=false; $("bt-feedback").textContent='';
+      if(!started){started=true;go();}
+      if(B.waitingAudio){B.waitingAudio=false;after();}
+    };
+    if(sayBtn)sayBtn.onclick=listenFirst;
+    if(q.audio&&q.autoplay)listenFirst();else go();
   }
+
+  /* Resolves true once the clip (or speech) has played to the end, false if it could not play. */
+  function playAwait(a) { return Learn.playAudio(a); }
   function startClock(sec) {
     stopClock();
     if (st.pref.practice) {
@@ -410,7 +378,7 @@ const Battle = (() => {
     paintClock();
     B.timer.iv = setInterval(() => {
       if (!live(tok) || !B.timer) return;
-      if (B.paused || B.anim || B.hearing) return;
+      if (B.paused || B.anim || B.hearing || B.loading || document.hidden) return;
       B.timer.left = Math.max(0, B.timer.left - 0.1);
       paintClock();
       if (B.timer.left <= 0) settle("timeout");
@@ -424,7 +392,7 @@ const Battle = (() => {
   }
   /* Pause (button, hidden page, blur): freeze the clock and the fight until the player taps "準備好了". */
   function hold(why) {
-    if (!B || B.paused || B.settled) return;
+    if (!B || B.paused) return;
     B.paused = true;
     $("bt-pause").hidden = false;
     $("bt-pause-why").textContent = why || "已暫停";
@@ -432,12 +400,13 @@ const Battle = (() => {
       if (!B) return;
       B.paused = false;
       $("bt-pause").hidden = true;
+      if(B.pendingAfter){B.pendingAfter=false;after();}
     };
   }
   document.addEventListener("visibilitychange", () => document.hidden && hold("畫面切換了，已暫停"));
   /* Tapping 🔊 or a word card (pron.js) stops the clock while it plays or stays open; no answer, no damage. */
   window.addEventListener("pron:busy", (e) => {
-    if (B) B.hearing = !!e.detail;
+    if (B) { B.hearing = !!e.detail; if(!B.hearing && B.waitingAudio){B.waitingAudio=false;after();} }
   });
   window.addEventListener("blur", () => hold("已暫停"));
   /* Short animations (companion help) stop the clock while they play. */
@@ -513,7 +482,7 @@ const Battle = (() => {
   }
   /* One settlement per question: double taps, an answer racing the timeout and replayed audio cannot repeat it. */
   function settle(kind, idx) {
-    if (!B || B.settled || B.paused) return;
+    if (!B || B.settled || B.paused || B.loading) return;
     const q = B.q,
       tok = B.tok;
     B.settled = true;
@@ -521,7 +490,7 @@ const Battle = (() => {
     const bs = [...$("bt-act").querySelectorAll(".qz-o button")];
     bs.forEach((b, i) => {
       b.disabled = true;
-      if (q.options[i].ok) b.classList.add("right");
+      if ((kind === "right" || q.kind !== "kk") && q.options[i].ok) b.classList.add("right");
     });
     if (kind === "wrong" && bs[idx]) bs[idx].classList.add("wrong");
     const ok = kind === "right";
@@ -540,7 +509,14 @@ const Battle = (() => {
     } else {
       // The explanation is not timed: read it, then continue.
       $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "正確答案"}</b> ${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${kind === "timeout" ? "<small>時間到不算英文答錯，這題會在之後的複習再出現。</small>" : ""}`;
-      if (a.en) speak(a.en, a.file || "");
+      if(q.kind==='kk'){
+        $("bt-feedback").innerHTML='<b class="bad">'+(kind==='timeout'?'時間到':'還沒選對')+'</b><p>答案暫不揭曉，可選擇查看示範。</p><button type="button" id="bt-assist">查看示範（輔助）</button>';
+        $("bt-assist").onclick=()=>{
+          $("bt-feedback").innerHTML=Learn.answerHTML(a)+(a.kk?' '+esc(a.kk):'');
+          bs.forEach((b,i)=>{if(q.options[i].ok)b.classList.add('right')});
+          Learn.assisted(q);speak(a.en,a.file||'');
+        };
+      }else if (a.en) speak(a.en, a.file || "");
       const go = document.createElement("button");
       go.type = "button";
       go.className = "qz-next";
@@ -624,6 +600,8 @@ const Battle = (() => {
   }
   function after() {
     if (!B) return;
+    if(B.paused || document.hidden){B.pendingAfter=true;hold("已暫停");return;}
+    if(B.hearing || B.loading){B.waitingAudio=true;return;}
     if (B.chase && B.dist >= B.chase.max) return escaped();
     if (B.chase ? B.dist <= 0 : B.hp <= 0) return victory();
     if (st.hp <= 0) return defeat();
@@ -664,6 +642,7 @@ const Battle = (() => {
   function end(result, drops) {
     const b = B;
     stopClock();
+    Learn.cancelAudio();
     B = null; // invalidates every pending timer and audio callback of this battle
     $("battle").hidden = true;
     $("bt-act").innerHTML = "";
@@ -685,7 +664,7 @@ const Battle = (() => {
     },
     /* true while a question is waiting for an answer (options usable, not paused) */
     get ready() {
-      return !!B && !B.settled && !B.paused && !!document.querySelector(".qz-o button:not([disabled])");
+      return !!B && !B.settled && !B.paused && !B.loading && !!document.querySelector(".qz-o button:not([disabled])");
     },
     get hp() {
       return st.hp;
