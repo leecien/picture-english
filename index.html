@@ -289,7 +289,42 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
 .drv-ans{font-family:var(--display);font-size:30px;font-weight:600;color:var(--accent);min-height:1.3em;overflow-wrap:anywhere}
 .drv-ans small{display:block;font-family:var(--body);font-size:16px;font-weight:400;color:var(--muted)}
 .drv-stats{font-size:16px;color:var(--muted);font-variant-numeric:tabular-nums}
-.drv-stop{border:none;background:var(--bad);color:#fff;border-radius:22px;padding:28px;font-family:var(--display);font-size:32px;font-weight:700;margin-top:8px}
+.drv-run{padding-bottom:calc(190px + env(safe-area-inset-bottom,0px))}
+.drv-q small{display:block;font-family:var(--body);font-size:15px;font-weight:500;color:var(--muted)}
+.drv-their{display:block;font-family:var(--display);font-size:22px;font-weight:500;color:var(--accent);margin-bottom:6px}
+/* Fixed control bar: pause / stop always in the same place, reachable at any moment of the loop */
+.drv-stage{font-weight:700;color:var(--accent,#3f7bd9);margin:6px 0 2px;font-size:15px}
+.drv-target{display:block;font-size:24px;font-weight:700;line-height:1.35}
+.drv-heard .sw-line{display:block;font-size:22px;line-height:1.6;font-weight:600}
+.sw{padding:0 2px;border-radius:4px}
+.sw sup{font-size:11px;margin-left:1px}
+.sw-ok{color:#1f8a4c;background:#e3f6ea}
+.sw-miss{color:#b3261e;text-decoration:underline wavy;text-underline-offset:4px}
+.sw-sub{color:#b45309;text-decoration:underline;text-underline-offset:4px;background:#fff1dc}
+.sw-unsure,.sw-none{color:#7a7f8a;background:#eef0f3}
+.sw-interim{color:#8a8f99;font-style:italic}
+.sw-said,.sw-extra,.sw-verdict{display:block;margin-top:4px;font-size:13px;color:var(--muted,#667)}
+.sw-extra{color:#b45309}
+.sw-verdict.sv-pass{color:#1f8a4c;font-weight:700;font-size:15px}
+.drv-tools{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.drv-tools button{min-height:44px;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);font-size:15px}
+.drv-round{margin:10px 0;padding:12px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.drv-round button{min-height:44px;margin:6px 0;width:100%}
+@media (prefers-color-scheme:dark){.sw-ok{background:#123a24;color:#7fdca3}.sw-sub{background:#3a2a10;color:#f3b968}.sw-miss{color:#ff8a80}.sw-unsure,.sw-none{background:#2a2d33;color:#a0a6b0}}
+.drv-bar{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(10,20,50,.12);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:grid;gap:10px}
+.drv-bar>*{max-width:560px;width:100%;margin:0 auto}
+.drv-bar-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.drv-pause,.drv-stop{border:none;border-radius:18px;padding:18px 10px;font-family:var(--display);font-size:24px;font-weight:700;color:#fff}
+.drv-pause{background:var(--accent)}
+.drv-stop{background:var(--bad)}
+.drv-pace{display:grid;gap:8px}
+.pace-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.pace-row>span{min-width:4.5em;font-size:14px;font-weight:700;color:var(--muted)}
+.pace-row button,.drv-chips button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:15px;min-height:40px}
+.pace-row button[aria-pressed="true"],.drv-chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.drv-scenes{display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.drv-chips{display:flex;flex-wrap:wrap;gap:6px}
 
 @media (max-width:420px){
   .home h1{font-size:34px} .big{font-size:72px} .word{font-size:30px} .sentence{font-size:20px}
@@ -299,8 +334,44 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
 </style>
 <style>html{color-scheme:light}body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 <link rel="stylesheet" href="rpg.css">
+<link rel="stylesheet" href="shell.css">
 </head>
 <body>
+<div class="shell" id="shell">
+  <div class="stage-host" id="stage-host"></div>
+  <header class="hud-top">
+    <div class="hud-bars"><span class="hud-lv" id="hud-lv"></span><div class="hbar hp" role="meter" aria-label="HP" id="hud-hp"><i></i><b></b></div><div class="hbar mp" role="meter" aria-label="MP" id="hud-mp"><i></i><b></b></div></div>
+    <button class="hud-quest" id="hud-quest" aria-label="目前目標，點開任務日誌"><small id="hud-map"></small><span id="quest-text">載入中…</span></button>
+    <button class="hud-menu" id="hud-menu" aria-label="選單（M）">☰</button>
+  </header>
+  <p class="hud-msg" id="hud-msg" role="status" hidden></p>
+  <nav class="hud-acts" aria-label="動作">
+    <div class="hud-tray" id="hud-tray" hidden>
+      <button id="hud-dew" aria-label="使用藍露珠（2）" title="藍露珠：回復 MP（2）">💧<small></small></button>
+      <button id="hud-sit" aria-label="坐下休息（R）" title="坐下休息（R）">🧘</button>
+      <button id="hud-bag" aria-label="背包（B）" title="背包（B）">🎒</button>
+      <button id="act-fight" aria-label="找最近的怪物戰鬥（F）" title="找最近的怪物戰鬥（F）">⚔️</button>
+    </div>
+    <div class="hud-row">
+      <button id="hud-berry" aria-label="使用小紅莓（1）" title="小紅莓：回復 HP（1）" hidden>🍓<small></small></button>
+      <button id="hud-more" aria-expanded="false" aria-controls="hud-tray" aria-label="更多動作：補給、休息、背包、戰鬥">⋯</button>
+      <button id="act-talk" class="primary-act" aria-label="主要動作（E）"><span aria-hidden="true">💬</span><b id="act-label">說話</b></button>
+    </div>
+  </nav>
+  <section class="dlg" id="dlg" hidden aria-live="polite"><div class="dlg-head"><canvas id="dlg-face" width="64" height="64" aria-hidden="true"></canvas><b id="dlg-name"></b></div><div class="dlg-body" id="dlg-body"></div></section>
+  <section class="bt" id="battle" hidden aria-label="戰鬥">
+    <div class="bt-stage">
+      <div class="bt-foe" id="bt-foe"><div class="bt-tag"><b id="bt-foe-name"></b> <span id="bt-foe-lv"></span><div class="bbar hp"><i id="bt-foe-hp"></i><span></span></div><small class="bt-shield" id="bt-foe-shield" hidden></small></div><canvas id="bt-foe-cv" aria-hidden="true"></canvas></div>
+      <div class="bt-me" id="bt-me"><canvas id="bt-me-cv" aria-hidden="true"></canvas><canvas id="bt-buddy" class="bt-buddy" aria-hidden="true" hidden></canvas><div class="bt-tag"><b>你</b> <span id="bt-me-lv"></span><div class="bbar hp"><i id="bt-me-hp"></i><span></span></div><div class="bbar mp"><i id="bt-me-mp"></i><span></span></div><small class="bt-shield" id="bt-me-tags"></small></div></div>
+    </div>
+    <p class="bt-log" id="bt-log" role="status"></p>
+    <div class="bt-act" id="bt-act"></div>
+    <div class="bt-pause" id="bt-pause" hidden><p id="bt-pause-why">已暫停</p><p class="fine">倒數和戰鬥都停住了。</p><button type="button" id="bt-ready" class="bt-ready">準備好了</button></div>
+  </section>
+  <div class="menu" id="menu" hidden><div class="menu-card" role="dialog" aria-label="選單"><button class="menu-close" id="menu-close" aria-label="關閉">✕</button><div id="menu-body"></div></div></div>
+</div>
+
+<div class="panel" id="panel" hidden>
 <div class="app">
   <section class="home" id="home">
     <div class="topline">
@@ -326,7 +397,10 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
           <div class="pl-btns"><button class="pl-go" id="place-go">開始分級測驗</button><button class="pl-skip" id="place-skip">我是初學者，直接開始</button></div>
         </div>
       </div>
-      <div id="rpg-root"></div>
+      <nav class="quick" aria-label="快速入口">
+        <button id="quick-map"><span aria-hidden="true">🗺️</span><b>回到冒險</b><small>回到剛才的位置和任務</small></button>
+        <button id="quick-drive"><span aria-hidden="true">🚗</span><b>開車模式</b><small>不看螢幕，聽中文說英文</small></button>
+      </nav>
       <div class="lvl" id="lvl"></div>
       <div class="modes">
         <button class="mode" id="go-word">
@@ -352,7 +426,7 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
           <span>
             <h2>開車模式 <small>Commute</small></h2>
             <p>不用看螢幕：聽中文，直接開口說英文，答對一樣收集卡片</p>
-            <span class="chips"><span class="chip">純語音</span><span class="chip">語音辨識</span><span class="chip">跟讀模式</span></span>
+            <span class="chips"><span class="chip">純語音</span><span class="chip">語音辨識</span><span class="chip">跟讀練習</span><span class="chip">聆聽模式</span></span>
           </span>
         </button>
       </div>
@@ -386,28 +460,50 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
 
     <div id="drive-setup" class="drv-setup">
       <h1 class="drv-h">🚗 開車模式</h1>
-      <p class="drv-lead">按下開始後就不用再碰手機。遊戲會用中文唸題目，你直接開口說英文，它會告訴你對不對，再唸出正確答案，接著自動進入下一題。</p>
+      <p class="drv-lead">按下開始後就不用再碰手機。先有人帶著念、知道哪裡要修正，之後才考自己會不會念。</p>
+      <p class="drv-from" id="drive-from" hidden></p>
       <p class="drv-last" id="drive-last" hidden></p>
       <fieldset class="drv-opts">
         <legend>練什麼</legend>
         <label><input type="radio" name="drive-kind" id="dk-mix" value="mix" checked> 單字和句子混合</label>
         <label><input type="radio" name="drive-kind" id="dk-word" value="word"> 只練單字</label>
         <label><input type="radio" name="drive-kind" id="dk-sent" value="sent"> 只練句子</label>
+        <label><input type="radio" name="drive-kind" id="dk-scene" value="scene"> 情境對話：旅遊、餐廳、購物、生活、社交、職場、校園、緊急狀況</label>
       </fieldset>
-      <label class="drv-check"><input type="checkbox" id="drive-listen"> 跟讀模式：不用開口回答，只聽中文、想一想、再聽英文答案</label>
+      <div class="drv-scenes" id="drive-scenes" hidden>
+        <div class="drv-chips" id="drive-cats" role="group" aria-label="情境分類"></div>
+        <div class="drv-chips" id="drive-scs" role="group" aria-label="細分場景"></div>
+        <p class="drv-note" id="drive-scene-note"></p>
+      </div>
+      <div class="drv-pace" id="drive-pace-setup"></div>
+      <fieldset class="drv-opts" id="drive-modes">
+        <legend>怎麼練</legend>
+        <label><input type="radio" name="drive-mode" value="shadow" id="dm-shadow"> 🗣️ 跟讀練習：先聽示範，再跟著念，逐字告訴你哪裡要修正（不限時）</label>
+        <label><input type="radio" name="drive-mode" value="answer" id="dm-answer" checked> 💬 開口回答：聽中文提示，自己用英文說（情境回想）</label>
+        <label><input type="radio" name="drive-mode" value="listen" id="drive-listen"> 🎧 聆聽模式：只播放、不收音、不計分</label>
+        <p class="drv-note">獨立朗讀（不先播示範、自己念）會在一輪跟讀完成後出現。綠色代表語音辨識聽到了這個字，不是 KK 音標或口音的精準評分。</p>
+      </fieldset>
       <p class="drv-note" id="drive-mic-note"></p>
+      <button class="drv-micbtn" id="drive-mic" type="button">🎤 麥克風檢查（收不到聲音時用）</button>
+      <div class="mic-check" id="mic-check" hidden></div>
       <button class="drv-start" id="drive-start">開始</button>
       <p class="drv-safe">開車時請先把手機固定好、調好音量再出發，行駛中不要看螢幕或操作手機。說「stop」就能結束。</p>
     </div>
 
     <div id="drive-run" class="drv-run" hidden>
       <div class="drv-state" id="drive-state">準備中</div>
+      <div class="drv-stage" id="drive-stage" hidden></div>
       <div class="drv-q" id="drive-q"></div>
-      <div class="drv-heard" id="drive-heard"></div>
+      <div class="drv-heard" id="drive-heard" aria-live="polite"></div>
+      <div class="drv-tools" id="drive-tools" hidden><button type="button" id="drv-demo">🔊 再聽示範</button><button type="button" id="drv-again" hidden>🎤 再念一次</button><button type="button" id="drv-skip">⏭ 下一句</button></div>
+      <div class="drv-round" id="drive-round" hidden></div>
       <div class="drv-ans" id="drive-ans"></div>
       <div class="drv-stats" id="drive-stats"></div>
-      <button class="drv-stop" id="drive-stop">停止</button>
       <p class="drv-safe" id="drive-hint">說「stop」也可以結束。螢幕會保持亮著。</p>
+      <div class="drv-bar" id="drive-bar">
+        <div class="drv-pace" id="drive-pace-run"></div>
+        <div class="drv-bar-btns"><button class="drv-pause" id="drive-pause">⏸ 暫停</button><button class="drv-stop" id="drive-stop">⏹ 停止</button></div>
+      </div>
     </div>
   </section>
 
@@ -440,6 +536,7 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
     </div>
   </section>
 </div>
+</div>
 
 <div class="sheet" id="sheet" hidden>
   <div class="sheet-in">
@@ -449,6 +546,7 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
   </div>
 </div>
 
+<script src="speech.js"></script>
 <script>
 /* ===== Content (loaded from data/*.json) ===== */
 let WORDS=[],SENT=[],TIERS=[],CARD_TIERS=[],BADGES={},THEMES={},ELEM={},LV_NAMES={};
@@ -600,7 +698,11 @@ function makePlan(types){
 }
 
 /* ===== Screens ===== */
-function showScreen(id){['home','result','game','drive'].forEach(s=>$(s).hidden=s!==id);$('sheet').hidden=true;window.scrollTo(0,0)}
+/* The learning pages (practice, card book, log, commute) open as a panel over the game; toField() returns. */
+function showScreen(id){['home','result','game','drive'].forEach(s=>$(s).hidden=s!==id);$('sheet').hidden=true;
+  $('panel').hidden=false;document.body.classList.remove('field');if(window.World)World.paused=true;$('panel').scrollTop=0;window.scrollTo(0,0)}
+function toField(){const back=!$('drive').hidden&&D.from==='field';if(D.on)stopDrive();$('panel').hidden=true;$('sheet').hidden=true;document.body.classList.add('field');RPG.resume();
+  if(back&&D.lastRun&&D.lastRun.n)RPG.say(`開車模式練了 ${D.lastRun.n} 題${D.lastRun.seen?`（開口回答或自己念 ${D.lastRun.seen} 題，答對 ${D.lastRun.ok}）`:'（聆聽或跟讀練習，不列入答對）'}。接下來：${RPG.objective().text}`);D.lastRun=null}
 function showTab(pid){document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.p===pid)));
   ['p-play','p-book','p-log'].forEach(p=>$(p).hidden=p!==pid);
   if(pid==='p-book')renderBook();if(pid==='p-log')renderLog();if(pid==='p-play')updateHome()}
@@ -886,15 +988,28 @@ function renderLog(){
     cells+=`<span class="d${on?' on':''}${+d===+today?' today':''}${d>today?' future':''}" title="${k}">${d.getDate()}</span>`}
   $('cal').innerHTML=`<div class="cal-h"><b>學習日曆</b><span>最近 5 週玩了 ${played} 天</span></div><div class="cal-g">${cells}</div>`;
   const log=LS.get('pm-log',[]);
-  $('logs').innerHTML=log.length?log.map(l=>{const d=new Date(l.t),W=l.m!=='sent';
-    return `<div class="log"><div class="log-top"><b>${l.m==='place'?`分級測驗 → ${esc(l.tag||'')}`:l.m==='commute'?'🚗 開車模式':l.rv?'複習回合':(W?'單字回合':'句子回合')}　${l.sc}/${l.tot||10}</b><span>${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}</span></div>
+  $('logs').innerHTML=log.length?log.map(l=>{const d=new Date(l.t),W=l.m!=='sent'&&l.m!=='quest'&&l.m!=='battle';
+    return `<div class="log"><div class="log-top"><b>${l.m==='place'?`分級測驗 → ${esc(l.tag||'')}`:l.m==='commute'?'🚗 開車模式'+(l.scn?` · ${esc(l.scn)}`:''):l.m==='quest'?'📜 '+esc(l.scn||'任務'):l.m==='battle'?'⚔️ 戰鬥 · '+esc(l.scn||''):l.rv?'複習回合':(W?'單字回合':'句子回合')}　${l.sc}/${l.tot||10}</b><span>${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}</span></div>
      <div class="log-body"><span class="n">新學會 ${l.n.length}</span>${l.n.length&&W?'：'+esc(l.n.join('、')):''}　複習 ${l.r}　<span class="w">不熟 ${l.w.length}</span>${l.w.length&&W?'：'+esc(l.w.join('、')):''}</div></div>`}).join('')
     :'<div class="empty-state">玩完第一回合後，這裡會列出每回合學會了哪些字。</div>';
 }
 
 /* ===== Commute mode: hands-free loop (prompt in Chinese → listen → judge → say answer) ===== */
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
-const D={on:false,run:0,kind:'mix',listen:false,n:0,seen:0,ok:0,segSeen:0,segOk:0,rec:null,micDenied:false,wake:null};
+const D={on:false,run:0,kind:'mix',listen:false,n:0,seen:0,ok:0,segSeen:0,segOk:0,rec:null,micDenied:false,wake:null,paused:false,cur:null,queue:[]};
+/* Commute preferences (playback speed, think time, last topic). New key; older pm-* keys are untouched. */
+const DP=Object.assign({rate:.9,think:5,kind:'mix',cat:'travel',scene:'',mode:'answer',voice:'brief'},LS.get('pm-drive-pref',{})||{});
+const saveDP=()=>LS.set('pm-drive-pref',DP);
+let SCENES=[];
+/* Inside the claude.ai viewer the browser's own speech recognition is blocked, so the page uses the
+   platform's dictation instead: one session opened by the Start tap, words accepted only while it is our turn to listen. */
+const INV=!!(window.claude&&typeof window.claude.use==='function');
+const MIC={d:null,use:false,win:false,open:0,buf:[],part:'',lost:''};
+if(INV){try{window.claude.use('dictation').then(d=>{if(!d)return;MIC.d=d;
+  d.onFinal(e=>{if(MIC.win&&Date.now()-MIC.open>700)MIC.buf.push(e.text)});
+  d.onPartial(e=>{if(MIC.win){MIC.part=e.text||'';if(MIC.part&&MIC.onPart)MIC.onPart(MIC.part.trim())}});
+  d.onState(e=>{if(e.state==='idle'&&MIC.use&&D.on)MIC.lost=e.reason||'upstream_error'});
+  if(!$('drive').hidden&&!D.on)micNote()}).catch(()=>{})}catch(e){}}
 const UIV=k=>`assets/voice/zh/ui/${k}.mp3`;
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 function clip(src,fbText,lang,force){return new Promise(res=>{
@@ -903,123 +1018,426 @@ function clip(src,fbText,lang,force){return new Promise(res=>{
   const onErr=()=>{if(VOICE.onerror===onErr)VOICE.onerror=null;fb()};
   const t=setTimeout(end,15000);
   const fb=()=>{try{if(!fbText||!window.speechSynthesis){end();return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(fbText);
-    u.lang=lang||'zh-TW';u.rate=lang==='en-US'?.85:1;u.onend=end;u.onerror=end;speechSynthesis.speak(u)}catch(e){end()}};
+    u.lang=lang||'zh-TW';const v=pickVoice(u.lang);if(v)u.voice=v;u.rate=(lang==='en-US'?.85:1)*DP.rate;u.onend=end;u.onerror=end;speechSynthesis.speak(u)}catch(e){end()}};
   if(!src){fb();return}
-  try{VOICE.onended=end;VOICE.onerror=onErr;VOICE.src=src;VOICE.currentTime=0;const p=VOICE.play();if(p)p.catch(fb)}catch(e){fb()}
+  try{VOICE.onended=end;VOICE.onerror=onErr;VOICE.src=src;VOICE.currentTime=0;VOICE.defaultPlaybackRate=VOICE.playbackRate=DP.rate;const p=VOICE.play();if(p)p.catch(fb)}catch(e){fb()}
 })}
-function listen(ms){return new Promise(res=>{
+/* Same device voice for each language all session, so a missing recording does not jump to another voice. */
+const VOICES={};
+function pickVoice(lang){if(VOICES[lang])return VOICES[lang];try{const vs=window.speechSynthesis?speechSynthesis.getVoices():[];if(!vs.length)return null;
+  VOICES[lang]=vs.find(v=>v.lang===lang)||vs.find(v=>v.lang&&v.lang.slice(0,2)===lang.slice(0,2))||null}catch(e){return null}return VOICES[lang]}
+/* One listening window. Resolves null when the microphone cannot be used, [] for silence, otherwise the
+   recognizer's final candidates (best first; .conf = its confidence when given). Interim text goes to onPart. */
+function listen(ms,onPart){return new Promise(res=>{
+  const run=D.run,part=t=>{if(run===D.run&&onPart&&t)onPart(t)};
+  if(MIC.use){
+    if(MIC.lost){res(null);return}
+    MIC.buf=[];MIC.part='';MIC.open=Date.now();MIC.win=true;MIC.onPart=part;driveState('🎤 輪到你說','listening');
+    let quiet=null;const t=setTimeout(fin,ms),iv=setInterval(()=>{if(MIC.lost||!MIC.win)fin();else if(MIC.buf.length&&!quiet)quiet=setTimeout(fin,900)},150);
+    function fin(){clearTimeout(t);clearTimeout(quiet);clearInterval(iv);MIC.win=false;MIC.onPart=null;if(MIC.lost){res(null);return}
+      const said=MIC.buf.join('').trim()||'';res(said?[said]:[])}
+    return}
   if(!SR||D.micDenied){res(null);return}
   let r;try{r=new SR()}catch(e){res(null);return}
-  D.rec=r;r.lang='en-US';r.interimResults=false;r.continuous=false;r.maxAlternatives=5;
-  let out=[],denied=false;const t=setTimeout(()=>{try{r.stop()}catch(e){}},ms);
-  r.onresult=e=>{for(const x of e.results)for(let i=0;i<x.length;i++)out.push(x[i].transcript)};
-  r.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'||e.error==='audio-capture'){denied=true;D.micDenied=true}};
-  r.onend=()=>{clearTimeout(t);D.rec=null;res(denied?null:out)};
-  try{r.start();driveState('🎤 請說英文','listening')}catch(e){clearTimeout(t);D.rec=null;res(null)}
+  D.rec=r;r.lang='en-US';r.interimResults=true;r.continuous=false;r.maxAlternatives=5;
+  let finals=[],denied=false;const t=setTimeout(()=>{try{r.stop()}catch(e){}},ms);
+  r.onresult=e=>{let interim='';for(let k=e.resultIndex||0;k<e.results.length;k++){const x=e.results[k];if(x.isFinal)finals.push(x);else interim+=x[0].transcript}part(interim.trim())};
+  r.onerror=e=>{D.lastErr=e.error;if(e.error==='not-allowed'||e.error==='service-not-allowed'||e.error==='audio-capture'||e.error==='network'){denied=true;D.micDenied=true}};
+  r.onend=()=>{clearTimeout(t);D.rec=null;if(denied){res(null);return}
+    let out=[];
+    if(finals.length===1){const x=finals[0];out=Array.from({length:x.length},(_,i)=>x[i].transcript);out.conf=x[0].confidence}
+    else if(finals.length>1){out=[finals.map(x=>x[0].transcript).join(' ')];out.conf=Math.min(...finals.map(x=>x[0].confidence||1))}
+    res(out)};
+  try{r.start();driveState('🎤 輪到你說','listening')}catch(e){clearTimeout(t);D.rec=null;res(null)}
 })}
-const CONTR={"i'm":"i am","it's":"it is","don't":"do not","can't":"cannot","won't":"will not","i've":"i have","she's":"she is","he's":"he is","we're":"we are","i'd":"i would"};
-const norm=s=>String(s).toLowerCase().replace(/[’']/g,"'").split(/\s+/).map(w=>CONTR[w.replace(/[^a-z']/g,'')]||w).join(' ').replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
-function lev(a,b){const d=Array.from({length:a.length+1},(_,i)=>[i]);for(let j=1;j<=b.length;j++)d[0][j]=j;
-  for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[a.length][b.length]}
-function wordOk(target,alt){const t=norm(target),toks=norm(alt).split(' ');
-  return norm(alt)===t||toks.some(w=>w===t||w===t+'s'||w===t+'es'||(t.length>=5&&lev(w,t)<=1))}
-function sentScore(target,alt){const t=norm(target).split(' '),a=norm(alt).split(' ');const pool=a.slice();let hit=0;
-  t.forEach(w=>{const k=pool.indexOf(w);if(k>=0){hit++;pool.splice(k,1)}});return hit/t.length}
+const sentScore=(t,a)=>Speech.align(t,a).score;
+const VERDICT={pass:'✅ 每個字都辨識到了，可以換下一句',partial:'🟠 部分字詞沒辨識到：看「漏」「≠」的位置',fail:'❌ 辨識到的字和目標差很多',uncertain:'⚪ 辨識不確定，這次不判對錯',silent:'⚪ 這次沒有收到聲音，不算錯'};
+function showInterim(t){$('drive-heard').innerHTML=`<span class="sw-interim">辨識中：「${esc(t)}」…</span>`}
+function showJudge(j){const unsure=j.status==='uncertain'||j.status==='silent';
+  $('drive-heard').innerHTML=`${Speech.html(j,unsure)}<small class="sw-said">辨識到：「${esc(j.basis||'（沒有聲音）')}」</small><small class="sw-verdict sv-${j.status}">${VERDICT[j.status]}</small>`;
+  D.judged.push({t:j.target,s:j.status,r:j.rule,b:j.basis})}
+function showTarget(text,sub){$('drive-q').innerHTML=`<span class="drv-target">${esc(text)}</span>${sub?`<small>${esc(sub)}</small>`:''}`}
+function stage(t){$('drive-stage').hidden=!t;$('drive-stage').textContent=t||''}
+function tools(o){$('drive-tools').hidden=!o;if(!o)return;$('drv-demo').hidden=!o.demo;$('drv-again').hidden=!o.again;$('drv-skip').hidden=!o.skip}
+const guided=()=>DP.voice==='guided';
+const listenMs=(target,extra)=>Math.max(5000,target.split(/\s+/).length*900)+DP.think*1000+(extra||0);
+function waitTap(){return new Promise(r=>{D.tap=r})}
+function tapNow(v){const f=D.tap;D.tap=null;if(f)f(v)}
 function driveState(txt,cls){const el=$('drive-state');el.textContent=txt;el.className='drv-state'+(cls?' '+cls:'')}
-function driveStats(){$('drive-stats').textContent=D.listen&&!D.seen?`已練 ${D.n} 題（跟讀模式不計分）`:`答對 ${D.ok} / ${D.seen} 題 · 累計 ${owned().length} 張卡`}
+function driveStats(){$('drive-stats').textContent=D.mode==='listen'&&!D.seen?`已聽 ${D.n} 題（聆聽模式不收音、不計分）`:D.mode==='shadow'?`跟讀念對 ${D.shPass} 句${D.seen?` · 自己念對 ${D.ok} / ${D.seen}`:''}`:`答對 ${D.ok} / ${D.seen} 題 · 累計 ${owned().length} 張卡`}
 async function wakeOn(){try{if(navigator.wakeLock&&!D.wake){D.wake=await navigator.wakeLock.request('screen');D.wake.addEventListener('release',()=>{D.wake=null})}}catch(e){}}
 document.addEventListener('visibilitychange',()=>{if(D.on&&document.visibilityState==='visible')wakeOn()});
 function logDrive(){
-  if(!D.segSeen&&!S.rep.newW.size)return;
-  const log=LS.get('pm-log',[]);log.unshift({t:Date.now(),m:'commute',sc:D.segOk,tot:D.segSeen,n:[...S.rep.newW.keys()],r:S.rep.revW.size,w:[...S.rep.weakW.keys()]});LS.set('pm-log',log.slice(0,30));
+  if(!D.segSeen&&!D.segSh&&!S.rep.newW.size&&!S.rep.newS.size)return;
+  const scn=D.kind==='scene'?sceneLabel():'';
+  const log=LS.get('pm-log',[]);log.unshift({t:Date.now(),m:'commute',sc:D.segOk,tot:D.segSeen,...(D.segSh?{sh:D.segSh}:{}),n:[...S.rep.newW.keys(),...S.rep.newS.keys()],r:S.rep.revW.size+S.rep.revS.size,w:[...S.rep.weakW.keys(),...S.rep.weakS.keys()],...(scn?{scn}:{})});LS.set('pm-log',log.slice(0,30));
   const days=LS.get('pm-days',[]),today=dayKey(Date.now());if(!days.includes(today)){days.push(today);LS.set('pm-days',days.slice(-400))}
   const sd=streakDays();if(sd>=3)award('day3');if(sd>=7)award('day7');
-  P.rounds++;saveP();D.segSeen=0;D.segOk=0;newRep();
+  P.rounds++;saveP();D.segSeen=0;D.segOk=0;D.segSh=0;newRep();
 }
 function newRep(){S.rep={newW:new Map(),revW:new Map(),weakW:new Map(),newS:new Map(),revS:new Map(),weakS:new Map()}}
-async function driveLoop(){
-  const run=++D.run,alive=()=>D.on&&run===D.run;
-  driveState('🎧 聽題目');
-  await clip(UIV(D.listen?'start_listen':'start'),D.listen?'跟讀模式開始。':'開車模式開始。聽中文，用英文回答。');
-  while(alive()){
-    const useS=D.kind==='sent'||(D.kind==='mix'&&D.n%3===2);
-    const it=take(useS?'s':'w'),target=useS?it.en:it.w;D.n++;
-    $('drive-q').textContent=useS?it.zh:it.z;$('drive-heard').textContent='';$('drive-ans').innerHTML='';driveState('🎧 聽題目');
-    await clip(it.az,useS?it.zh:`${it.z}，英文怎麼說？`);if(!alive())return;
-    if(useS&&!D.listen){await clip(UIV('say_sentence'),'請用英文說這句話。');if(!alive())return}
-    let ok=null;
-    if(!D.listen){
-      SND.play('tap');await wait(150);
-      const alts=await listen(useS?9000:6000);if(!alive())return;
-      if(alts===null){D.listen=true;$('drive-heard').textContent='這個瀏覽器聽不到麥克風，已改成跟讀模式';$('drive-hint').textContent='跟讀模式只會播放，不會聽你說話。螢幕會保持亮著。';}
-      else{
-        if(alts.some(a=>/\b(stop|quit)\b/i.test(a))&&!/\bstop\b/i.test(target)){stopDrive();return}
-        ok=useS?alts.some(a=>sentScore(target,a)>=.75):alts.some(a=>wordOk(target,a));
-        $('drive-heard').textContent=alts.length?`聽到：「${alts[0]}」`:'沒有聽到聲音';
-        if(ok){driveState('✅ 答對了','ok');SND.play('correct');await clip(UIV('correct'),'答對了！')}
-        else{driveState('❌ 再記一下');await clip(UIV(alts.length?'answer_is':'no_hear'),alts.length?'正確答案是':'沒聽清楚。正確答案是')}
-      }
-    }
-    if(D.listen){driveState('🤔 想一想');await clip(UIV('think'),'想一想。');await wait(useS?3500:2500)}
+/* Scene practice: the other person speaks first (English), then a Chinese cue for what you answer. */
+/* DP.cat 'all' mixes every scene. A single scene plays in conversation order; a whole category or 'all' is shuffled. */
+const LV_TAG={1:'初級',2:'中級',3:'高級'};
+function sceneCat(){return DP.cat==='all'?null:(SCENES.find(c=>c.id===DP.cat)||SCENES[0])}
+function sceneItems(){const cats=DP.cat==='all'?SCENES:[sceneCat()].filter(Boolean);
+  return cats.flatMap(c=>(DP.cat!=='all'&&DP.scene?c.scenes.filter(x=>x.id===DP.scene):c.scenes)
+    .flatMap(x=>x.items.map(i=>({en:i.en,zh:i.zh,q:i.q||'',scn:`${c.name} · ${x.name}`,lv:x.lv||1,au:'',az:'',sc:'💬',
+      /* other replies that are explicitly right for the same line */
+      acc:[...(i.alt||[]).map(a=>a.en),...(i.q?x.items.filter(o=>o!==i&&o.q===i.q).map(o=>o.en):[])]}))))}
+const sceneOrdered=()=>DP.cat!=='all'&&!!DP.scene;
+function sceneLabel(){if(DP.cat==='all')return'隨機情境';const c=sceneCat();if(!c)return'';const x=c.scenes.find(v=>v.id===DP.scene);return x?`${c.name} · ${x.name}`:`${c.name}（全部）`}
+function paintScenes(){
+  const box=$('drive-scenes');box.hidden=DP.kind!=='scene';if(box.hidden)return;
+  if(!SCENES.length){$('drive-cats').innerHTML='';$('drive-scs').innerHTML='';$('drive-scene-note').textContent='情境題目沒有載入成功，請重新整理頁面再試一次。';return}
+  const c=sceneCat();
+  if(c){DP.cat=c.id;if(!c.scenes.some(x=>x.id===DP.scene))DP.scene=''}
+  const nScenes=SCENES.reduce((n,v)=>n+v.scenes.length,0);
+  $('drive-cats').innerHTML=`<button data-cat="all" aria-pressed="${!c}">🎲 隨機</button>`+SCENES.map(v=>`<button data-cat="${esc(v.id)}" aria-pressed="${!!c&&v.id===c.id}">${v.icon||''} ${esc(v.name)}</button>`).join('');
+  $('drive-scs').hidden=!c;
+  $('drive-scs').innerHTML=c?`<button data-scene="" aria-pressed="${!DP.scene}">全部${esc(c.name)}</button>`+c.scenes.map(v=>`<button data-scene="${esc(v.id)}" aria-pressed="${v.id===DP.scene}">${esc(v.name)}</button>`).join(''):'';
+  const x=c&&c.scenes.find(v=>v.id===DP.scene);
+  $('drive-scene-note').textContent=!c?`從 ${SCENES.length} 大類、${nScenes} 個場景隨機出題，共 ${sceneItems().length} 句。`
+    :x?`${sceneLabel()}（${LV_TAG[x.lv]||'入門'}）：${x.items.length} 句，依真實對話的順序練習。對方先用英文開口，你聽中文提示，再用英文回答。`
+    :`${sceneLabel()}：${c.scenes.length} 個場景、共 ${sceneItems().length} 句，隨機出題。`;
+  $('drive-cats').querySelectorAll('button').forEach(b=>b.onclick=()=>{DP.cat=b.dataset.cat;DP.scene='';saveDP();paintScenes()});
+  $('drive-scs').querySelectorAll('button').forEach(b=>b.onclick=()=>{DP.scene=b.dataset.scene;saveDP();paintScenes()});
+}
+function paceHTML(){
+  return `<div class="pace-row"><span>播放速度</span>${[[.75,'慢'],[.9,'稍慢'],[1,'正常']].map(([v,l])=>`<button data-rate="${v}" aria-pressed="${DP.rate===v}">${l}</button>`).join('')}</div>`+
+   `<div class="pace-row"><span>回答等待時間</span>${[3,5,8].map(v=>`<button data-think="${v}" aria-pressed="${DP.think===v}">${v} 秒</button>`).join('')}</div>`+
+   `<div class="pace-row"><span>語音提示</span>${[['brief','精簡'],['guided','引導']].map(([v,l])=>`<button data-voice="${v}" aria-pressed="${DP.voice===v}">${l}</button>`).join('')}</div>`}
+function paintPace(){['drive-pace-setup','drive-pace-run'].forEach(id=>{const el=$(id);el.innerHTML=paceHTML();
+  el.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{DP.rate=+b.dataset.rate;saveDP();try{VOICE.playbackRate=DP.rate}catch(e){}paintPace()});
+  el.querySelectorAll('[data-think]').forEach(b=>b.onclick=()=>{DP.think=+b.dataset.think;saveDP();paintPace()});
+  el.querySelectorAll('[data-voice]').forEach(b=>b.onclick=()=>{DP.voice=b.dataset.voice;saveDP();paintPace()})})}
+const gap=ms=>wait(ms/DP.rate);
+/* Modes: listen (play only), shadow (demo → you repeat → word feedback, untimed), read (no demo first; offered
+   after a shadow round), answer (Chinese cue → you say it: recall, a different skill from reading aloud). */
+const SHADOW_ROUND=5;
+async function driveLoop(resume){
+  const run=++D.run,alive=()=>D.on&&!D.paused&&run===D.run;
+  $('drive-round').hidden=true;
+  if(!resume){driveState('🎧 準備');
+    if(D.mode==='listen')await clip('','聆聽模式開始。只播放，不用開口。');
+    else if(D.mode==='shadow')await clip('','跟讀練習開始。先聽示範，再跟著念。');
+    else await clip(UIV('start'),'開車模式開始。聽中文，用英文回答。');
     if(!alive())return;
-    $('drive-ans').innerHTML=`${esc(target)}${!useS&&it.kk?`<small>${esc(it.kk)}　${esc(it.z)}</small>`:`<small>${esc(it.zh||'')}</small>`}`;
-    if(ok!==true)driveState('🔊 聽答案');
-    await clip(it.au,target,'en-US');if(!alive())return;
-    if(ok!==true){await wait(400);await clip(UIV('repeat'),'跟我唸一次。');await clip(it.au,target,'en-US');if(!alive())return}
-    if(ok!==null){
-      D.seen++;D.segSeen++;if(ok){D.ok++;D.segOk++;P.correct++;P[useS?'s':'w']++;addXP(10);award('first')}
-      record([{k:useS?'s':'w',it,ok}]);
+    // The rhythm is explained once, not before every question.
+    if(guided())await clip('',D.mode==='listen'?'每一題先播中文，留一段時間給你想，再播英文。':D.mode==='shadow'?'示範播完會嗶一聲，聽到嗶聲就跟著念。':'聽完中文提示，嗶一聲後用英文回答。');
+    if(!alive())return}
+  while(alive()){
+    if(D.mode==='read'){const r=await readStep(alive);if(r==='stop'||!alive())return;continue}
+    let it,kind;
+    if(resume&&D.cur){({it,kind}=D.cur);resume=false}
+    else{
+      if(D.kind==='scene'){if(!D.queue.length){const all=sceneItems(),due=Learn.reviewIn(all),rest=all.filter(x=>!due.includes(x));D.queue=[...due,...(sceneOrdered()?rest:shuffle(rest))]}it=D.queue.shift();kind='scene';if(!it){stopDrive();return}}
+      else{const useS=D.kind==='sent'||(D.kind==='mix'&&D.n%3===2);it=take(useS?'s':'w');kind=useS?'s':'w'}
+      D.n++;D.cur={it,kind};
+      if(D.mode==='shadow')D.round.push({it,kind,st:'try'});
     }
-    driveStats();
-    if(D.n%10===0){logDrive();driveState('🏁 一輪結束');await clip(UIV('round_end'),'這一輪結束，做得很好。繼續下一輪。')}
-    await wait(ok===true?600:1000);
+    const r=D.mode==='shadow'?await shadowItem(it,kind,alive):D.mode==='listen'?await listenItem(it,kind,alive):await answerItem(it,kind,alive);
+    if(r==='stop'||!alive())return;
+    D.cur=null;driveStats();
+    if(D.mode==='shadow'&&D.round.length>=SHADOW_ROUND){roundEnd();return}
+    if(D.mode!=='shadow'&&D.n%10===0){logDrive();driveState('🏁 一輪結束');await clip(UIV('round_end'),'這一輪結束，做得很好。繼續下一輪。')}
+    await gap(r==='pass'?800:1200);
   }
 }
+const askLine=(it,kind)=>kind==='w'?`${it.z}，英文怎麼說？`:it.zh;
+function showQuestion(it,kind){
+  const useS=kind!=='w';
+  $('drive-q').innerHTML=kind==='scene'?`<small>${esc(it.scn)}</small>${it.q?`<span class="drv-their">對方：${esc(it.q)}</span>`:''}${esc(it.zh)}`:esc(useS?it.zh:it.z);
+  $('drive-heard').textContent='';$('drive-ans').innerHTML='';stage('');tools(null);driveState('🎧 正在播題')}
+async function playQuestion(it,kind,alive){
+  if(kind==='scene'){
+    if(it.q){await clip('','對方說','zh-TW');if(!alive())return false;await clip('',it.q,'en-US');if(!alive())return false;await gap(300)}
+    await clip('',(it.q?'你要回答：':'用英文說：')+it.zh);
+  }else await clip(it.az,askLine(it,kind));
+  return alive()}
+function showAnswer(it,kind){const useS=kind!=='w',target=useS?it.en:it.w;
+  $('drive-ans').innerHTML=`${esc(target)}${!useS&&it.kk?`<small>${esc(it.kk)}　${esc(it.z)}</small>`:`<small>${esc(it.zh||'')}</small>`}`}
+const demo=(it,kind)=>clip(it.au||'',kind==='w'?it.w:it.en,'en-US');
+/* 聆聽模式: play only. No microphone, nothing graded, no "repeat after me" claims. */
+async function listenItem(it,kind,alive){
+  showQuestion(it,kind);if(!await playQuestion(it,kind,alive))return'stop';
+  driveState('⏳ 回答等待時間');await wait(DP.think*1000+(kind!=='w'?1000:0));if(!alive())return'stop';
+  showAnswer(it,kind);driveState('🔊 英文');await demo(it,kind);if(!alive())return'stop';
+  return'done'}
+/* 開口回答 (recall): Chinese cue → you say it in English → word-by-word check against the answer(s). */
+async function answerItem(it,kind,alive){
+  const useS=kind!=='w',target=useS?it.en:it.w;
+  showQuestion(it,kind);if(!await playQuestion(it,kind,alive))return'stop';
+  if(guided()&&kind==='s'&&!D.saidSent){D.saidSent=true;await clip(UIV('say_sentence'),'請用英文說這句話。');if(!alive())return'stop'}
+  let j=null;
+  for(let k=0;k<2;k++){
+    SND.play('tap');await wait(150);
+    $('drive-heard').textContent='';
+    const alts=await listen(listenMs(target,useS?2000:0),showInterim);if(!alive())return'stop';
+    if(alts===null){micFail();return'stop'}
+    if(alts.some(a=>/\b(stop|quit)\b/i.test(a))&&!/\bstop\b/i.test(target)){stopDrive();return'stop'}
+    j=Speech.judge(target,alts,{accept:it.acc||[]});
+    if(k===0&&j.status!=='pass'&&j.status!=='fail'){
+      D.judged.push({t:target,s:j.status,r:j.rule,b:j.basis});
+      // Silence, an unsure result or a near miss: one more try (the answer is not revealed yet).
+      driveState(j.status==='silent'?'🔁 沒聽到，請再說一次':'🔁 再試一次');
+      $('drive-heard').textContent=j.basis?`辨識到：「${j.basis}」`:'';
+      await clip('',j.status==='silent'?'這次沒有收到聲音。再試一次，我在聽。':j.status==='uncertain'?'聽不太清楚。再試一次，我在聽。':'差一點。再試一次，我在聽。');if(!alive())return'stop';continue}
+    break}
+  const ok=j.status==='pass'?true:j.status==='fail'||j.status==='partial'?false:null;
+  showAnswer(it,kind);
+  if(j.status==='silent')$('drive-heard').textContent='還是沒聽到聲音，這題不計分，直接聽答案。';
+  else showJudge(j);
+  if(ok===true){driveState('✅ 答對了','ok');SND.play('correct');if(guided())await clip(UIV('correct'),'答對了！')}
+  else if(ok===false){driveState('❌ 再記一下');await clip('','先聽我說一次。')}
+  else driveState('🔊 聽答案');
+  if(!alive())return'stop';
+  await demo(it,kind);
+  if(!alive())return'stop';
+  if(ok!==null){
+    D.seen++;D.segSeen++;if(ok){D.ok++;D.segOk++;P.correct++;P[useS?'s':'w']++;addXP(10);award('first')}
+    record([{k:useS?'s':'w',it,ok}]);
+    Learn.note(useS?'s':'w',it,ok,'commute');
+  }
+  return ok?'pass':'done'}
+/* 跟讀練習: demo → you repeat → word-by-word feedback. Correction first, no countdown: a miss replays the demo,
+   silence or an unsure result waits for you. Passing here is practice, not proof the word is mastered. */
+async function shadowItem(it,kind,alive){
+  const target=kind==='w'?it.w:it.en,rec=D.round[D.round.length-1];
+  showTarget(target,kind==='w'?`${it.kk||''}　${it.z}`:it.zh);$('drive-heard').innerHTML='';$('drive-ans').innerHTML='';tools({demo:true,skip:true});
+  let tries=0,skipDemo=false;
+  while(tries<3){
+    if(!skipDemo){stage('① 聽示範');driveState('🔊 聽示範');await demo(it,kind);if(!alive())return'stop'}
+    skipDemo=false;
+    stage('② 跟讀：跟著念一次（不限時）');SND.play('tap');await wait(150);
+    const alts=await listen(listenMs(target),showInterim);if(!alive())return'stop';
+    if(alts===null){micFail();return'stop'}
+    const j=Speech.judge(target,alts);showJudge(j);
+    if(j.status==='pass'){rec.st='pass';D.shPass++;D.segSh++;driveState('✅ 跟讀念對了','ok');SND.play('correct');if(guided())await clip('','念對了，換下一句。');return'pass'}
+    if(j.status==='silent'||j.status==='uncertain'){
+      driveState(j.status==='silent'?'⚪ 沒有收到聲音':'⚪ 辨識不確定');
+      await clip('',j.status==='silent'?'這次沒有收到聲音。':'這次聽不太清楚。');if(!alive())return'stop';
+      driveState('⏸ 準備好再按「再念一次」');tools({demo:true,again:true,skip:true});
+      await waitTap();if(!alive())return'stop';
+      tools({demo:true,skip:true});skipDemo=true;continue}
+    tries++;rec.st='fix';driveState('🟠 再聽一次，再念');
+    const pr=Speech.problems(j).slice(0,2);
+    if(j.status==='partial'&&pr.length){await clip('','注意這裡');if(!alive())return'stop';await clip('',pr.join(', '),'en-US')}
+    else await clip('','再聽一次。');
+    if(!alive())return'stop';
+  }
+  rec.st='later';driveState('⏭ 先跳過，之後再練');await clip('','先跳過，之後再練。');
+  return'skip'}
+/* After a shadow round: a clear way into reading on your own (only the lines you just got right). */
+function roundEnd(){
+  const passed=D.round.filter(x=>x.st==='pass'),later=D.round.filter(x=>x.st!=='pass');
+  stage('');tools(null);driveState('🏁 這一輪跟讀完成');D.cur=null;
+  const box=$('drive-round');box.hidden=false;
+  box.innerHTML=`<p>跟讀念對 <b>${passed.length}</b> / ${D.round.length} 句。${later.length?`需要再練：${later.map(x=>`<span class="chip-en weak">${esc(x.kind==='w'?x.it.w:x.it.en)}</span>`).join(' ')}`:''}</p>
+    ${passed.length?`<button type="button" class="drv-start" id="drv-read">🎯 試著自己念（${passed.length} 句，不先播示範）</button>`:''}
+    <button type="button" id="drv-more">🗣️ 繼續跟讀下一輪</button>`;
+  clip('',passed.length?'這一輪跟讀完成。準備好了，可以試著自己念。':'這一輪跟讀完成。');
+  if($('drv-read'))$('drv-read').onclick=()=>{D.mode='read';D.readQ=passed.slice();D.readDone=[];D.round=[];box.hidden=true;driveLoop(true)};
+  $('drv-more').onclick=()=>{D.round=[];box.hidden=true;driveLoop(true)};
+}
+/* 獨立朗讀: the text is shown but NOT played first; you read it, then get the word check and the demo. */
+async function readStep(alive){
+  const x=D.readQ[0];
+  if(!x){
+    const ok=D.readDone.filter(r=>r.ok).length;
+    stage('');tools(null);driveState('🏁 獨立朗讀完成');
+    const box=$('drive-round');box.hidden=false;
+    box.innerHTML=`<p>自己念對 <b>${ok}</b> / ${D.readDone.length} 句。${D.readDone.some(r=>!r.ok)?'沒念對的句子會排進待複習。':''}</p><button type="button" class="drv-start" id="drv-more">🗣️ 回到跟讀練習</button>`;
+    $('drv-more').onclick=()=>{D.mode='shadow';box.hidden=true;driveLoop(true)};
+    await clip('',`自己念對 ${ok} 句。`);return'stop'}
+  const {it,kind}=x,target=kind==='w'?it.w:it.en,useS=kind!=='w';
+  D.cur={it,kind};
+  showTarget(target,'');$('drive-heard').innerHTML='';$('drive-ans').innerHTML='';
+  stage('③ 獨立朗讀：自己念，這次不先播示範');tools({skip:true});driveState('👀 看著念');
+  let j=null;
+  for(let k=0;k<2;k++){
+    SND.play('tap');await wait(150);
+    const alts=await listen(listenMs(target),showInterim);if(!alive())return'stop';
+    if(alts===null){micFail();return'stop'}
+    j=Speech.judge(target,alts);showJudge(j);
+    if(k===0&&(j.status==='silent'||j.status==='uncertain')){await clip('',j.status==='silent'?'這次沒有收到聲音。再試一次，我在聽。':'聽不太清楚。再試一次，我在聽。');if(!alive())return'stop';continue}
+    break}
+  const ok=j.status==='pass'?true:j.status==='fail'||j.status==='partial'?false:null;
+  if(ok===true){driveState('✅ 自己念對了','ok');SND.play('correct')}
+  else if(ok===false)driveState('🟠 對照示範');else driveState('⚪ 這句不計分');
+  $('drive-ans').innerHTML=`<small>${esc(useS?it.zh:`${it.kk||''}　${it.z}`)}</small>`;
+  await clip('',ok===true?'念對了。聽一次示範對照。':'聽一次示範。');if(!alive())return'stop';
+  await demo(it,kind);if(!alive())return'stop';
+  if(ok!==null){
+    D.seen++;D.segSeen++;if(ok){D.ok++;D.segOk++;P.correct++;P[useS?'s':'w']++;addXP(10);award('first')}
+    record([{k:useS?'s':'w',it,ok}]);Learn.note(useS?'s':'w',it,ok,'read');
+  }
+  D.readQ.shift();D.readDone.push({ok:!!ok});D.cur=null;driveStats();
+  await gap(900);return'done'}
 function startDrive(){
-  D.kind=(document.querySelector('input[name="drive-kind"]:checked')||{}).value||'mix';
-  D.listen=$('drive-listen').checked||!SR||D.micDenied;
-  D.on=true;D.n=0;D.seen=0;D.ok=0;D.segSeen=0;D.segOk=0;S.review=false;S.forceLv=0;S.pl=null;S.mode='word';newRep();
+  // Dictation must be opened synchronously inside this tap, before anything else is awaited.
+  const pick=(document.querySelector('input[name="drive-mode"]:checked')||{}).value||'answer';
+  const want=pick!=='listen';
+  MIC.use=false;MIC.lost='';
+  if(want&&MIC.d){MIC.use=true;MIC.d.start({language:'en'}).catch(e=>{MIC.lost=(e&&e.code)||'upstream_error'})}
+  D.kind=(document.querySelector('input[name="drive-kind"]:checked')||{}).value||'mix';DP.kind=D.kind;DP.mode=pick;saveDP();
+  if(D.kind==='scene'&&!sceneItems().length){paintScenes();return}
+  const noMic=D.micDenied||(!MIC.use&&(INV||!SR));
+  D.mode=want&&!noMic?pick:'listen';D.listen=D.mode==='listen';
+  D.on=true;D.paused=false;D.cur=null;D.queue=[];D.n=0;D.seen=0;D.ok=0;D.segSeen=0;D.segOk=0;D.segSh=0;D.shPass=0;D.round=[];D.readQ=[];D.readDone=[];D.judged=[];D.saidSent=false;D.tap=null;
+  S.review=false;S.forceLv=0;S.pl=null;S.mode='word';newRep();
   SND.unlock();unlockVoice();wakeOn();
-  $('drive-hint').textContent=D.listen?'跟讀模式只會播放，不會聽你說話。螢幕會保持亮著。':'說「stop」也可以結束。螢幕會保持亮著。';
-  $('drive-setup').hidden=true;$('drive-run').hidden=false;$('drive-q').textContent='';$('drive-heard').textContent='';$('drive-ans').innerHTML='';driveStats();
+  $('drive-hint').textContent=D.mode==='listen'?(want?'這個環境不能收音，已改成聆聽模式：只播放，不收音、不計分。':'聆聽模式只會播放，不會聽你說話，也不會判斷對錯。螢幕會保持亮著。'):'說「stop」也可以結束。螢幕會保持亮著。';
+  $('drive-setup').hidden=true;$('drive-run').hidden=false;$('drive-q').textContent='';$('drive-heard').textContent='';$('drive-ans').innerHTML='';$('drive-round').hidden=true;stage('');tools(null);driveStats();
+  $('drive-pause').textContent='⏸ 暫停';paintPace();
   driveLoop();
 }
+function hush(){try{if(D.rec)D.rec.abort()}catch(e){}MIC.win=false;MIC.onPart=null;D.tap=null;try{VOICE.pause()}catch(e){}try{if(window.speechSynthesis)speechSynthesis.cancel()}catch(e){}}
+/* Pause stops all sound at once; resume replays the current question from the start. */
+function pauseDrive(){
+  if(!D.on)return;
+  if(D.paused){D.paused=false;$('drive-pause').textContent='⏸ 暫停';driveLoop(true);return}
+  D.paused=true;D.run++;hush();driveState('⏸ 已暫停');$('drive-pause').textContent='▶ 繼續';
+}
 function stopDrive(){
-  if(!D.on)return;D.on=false;D.run++;
-  try{if(D.rec)D.rec.abort()}catch(e){}
-  try{VOICE.pause()}catch(e){}try{if(window.speechSynthesis)speechSynthesis.cancel()}catch(e){}
+  if(!D.on)return;D.on=false;D.paused=false;D.run++;
+  hush();
+  if(MIC.use&&MIC.d){try{MIC.d.stop().catch(()=>{})}catch(e){}}MIC.use=false;
+  D.lastRun={n:D.n,seen:D.seen,ok:D.ok};
   logDrive();
   try{if(D.wake)D.wake.release()}catch(e){}
   clip(UIV('stop'),'開車模式結束，辛苦了。','zh-TW',true);
   $('drive-run').hidden=true;$('drive-setup').hidden=false;
+  $('drive-round').hidden=true;stage('');tools(null);
   const l=$('drive-last');l.hidden=!D.n;
   l.textContent=D.seen?`剛剛練了 ${D.n} 題，答對 ${D.ok} 題。新卡片已經收進卡冊。`:`剛剛練了 ${D.n} 題。`;
 }
-function openDrive(){
+function micNote(){
+  const note=$('drive-mic-note');note.className='drv-note';
+  if(INV){note.textContent=MIC.d?'開口回答使用 Claude 的聽寫：第一次開始時會詢問是否允許，請按允許。聽寫中畫面會出現「Listening」提示。':'這個測試頁在目前的瀏覽器或 App 裡不能使用麥克風，會改成聆聽模式（只播放、不收音）。想測開口回答或跟讀，請用電腦或 Android 手機的 Chrome 瀏覽器開啟。';if(!MIC.d)note.className='drv-note warn'}
+  else if(!SR){note.textContent='這個瀏覽器不支援語音辨識，會自動使用聆聽模式（只播放、不收音）。想要開口回答或跟讀，建議用 Android 手機的 Chrome 開啟。';note.className='drv-note warn'}
+  else note.textContent='第一次開始時，瀏覽器會詢問是否允許使用麥克風，請按「允許」。';
+}
+/* opt: {from:'field'|'home', ctx:{cat,scene,label,cid}, check} — a quest hands over its scene, level and progress. */
+function openDrive(opt){
+  opt=opt&&opt.from?opt:{from:'home'};
+  D.from=opt.from;D.ctx=opt.ctx||null;
+  $('drive-back').textContent=D.from==='field'?'← 回到冒險':'← 回首頁';
+  if(opt.ctx){DP.kind='scene';DP.cat=opt.ctx.cat;DP.scene=opt.ctx.scene||'';saveDP()}
+  const fr=$('drive-from');fr.hidden=!opt.ctx;
+  if(opt.ctx){const items=sceneItems(),got=items.filter(x=>(SENTS[x.en]||{}).c>0).length;
+    fr.innerHTML=`📜 來自任務：<b>${esc(opt.ctx.label)}</b><br><small>內容 ${esc(opt.ctx.cid||'')} · 已學會 ${got}/${items.length} 句 · 回到冒險會回到原本的位置和任務</small>`}
   $('drive-tier').innerHTML=`<span class="cefr">${TIERS[tierIdx(P.xp)].tag}</span>`;
-  const note=$('drive-mic-note');
-  if(!SR){note.textContent='這個瀏覽器不支援語音辨識，會自動使用跟讀模式。想要開口回答，建議用 Android 手機的 Chrome 開啟。';note.className='drv-note warn'}
-  else{note.textContent='第一次開始時，瀏覽器會詢問是否允許使用麥克風，請按「允許」。';note.className='drv-note'}
+  micNote();$('mic-check').hidden=true;
+  const r=document.querySelector(`input[name="drive-kind"][value="${DP.kind}"]`);if(r)r.checked=true;
+  const md=document.querySelector(`input[name="drive-mode"][value="${DP.mode}"]`);if(md)md.checked=true;
+  paintScenes();paintPace();
   $('drive-setup').hidden=false;$('drive-run').hidden=true;
   showScreen('drive');
+  if(opt.check)openMicCheck();
+}
+/* A failed recording pauses the drive and says why: retry, or knowingly switch to play-only 聆聽模式. */
+const SR_ERR={'not-allowed':'麥克風權限被拒絕。請在瀏覽器網址列左邊的設定把「麥克風」改成允許。','service-not-allowed':'瀏覽器不允許語音辨識服務（內嵌頁面、隱私模式或系統設定會擋）。','audio-capture':'抓不到麥克風的聲音：檢查是否有麥克風、是否被其他 App（通話、錄音）佔用。','network':'語音辨識需要網路，連線失敗。','no-speech':'沒有聽到說話聲。','aborted':'收音被中止。'};
+const DICT_ERR={not_granted:'聽寫權限沒有開放（或瀏覽器擋住麥克風）。可以在這個頁面的「權限」選單開啟。',dismissed:'沒有回應聽寫的詢問。',unavailable:'這個裝置或帳號目前不提供聽寫。',rate_limited:'聽寫使用太頻繁，稍等一下再試。',upstream_error:'麥克風或語音服務出錯。',hidden:'畫面被切走，聽寫停止了。',viewer_stopped:'聽寫被停止了。',time_limit:'聽寫超過時間上限。',no_gesture:'需要再按一次按鈕才能開始收音。'};
+function micFail(){
+  const why=MIC.use?(DICT_ERR[MIC.lost]||'聽寫停止了。'):(SR_ERR[D.lastErr]||(!SR?'這個瀏覽器不支援語音辨識。':'麥克風沒有回應。'));
+  D.paused=true;D.run++;hush();driveState('🎤 收音失敗');$('drive-pause').textContent='▶ 繼續';
+  $('drive-heard').innerHTML=`<span class="mic-err">${esc(why)}</span><span class="dlg-row"><button type="button" id="mic-retry">🎤 重試收音</button><button type="button" id="mic-follow">改用聆聽模式（只播放、不計分）</button></span>`;
+  $('mic-retry').onclick=()=>{D.micDenied=false;D.lastErr='';
+    if(MIC.use&&MIC.d){MIC.lost='';MIC.d.start({language:'en'}).catch(e=>{MIC.lost=(e&&e.code)||'upstream_error'})}
+    D.paused=false;$('drive-pause').textContent='⏸ 暫停';driveLoop(true)};
+  $('mic-follow').onclick=()=>{D.listen=true;D.mode='listen';D.cur=null;tools(null);stage('');$('drive-hint').textContent='聆聽模式只會播放，不會聽你說話，也不會判斷對錯。螢幕會保持亮著。';D.paused=false;$('drive-pause').textContent='⏸ 暫停';driveLoop(true)};
+}
+
+/* ===== Microphone check: support, permission, audio input, recognition lifecycle (no playback) ===== */
+function openMicCheck(){
+  const box=$('mic-check');box.hidden=false;
+  const gum=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia);
+  box.innerHTML=`<h3>🎤 麥克風檢查</h3>
+   <ol class="mic-steps">
+    <li><b>1. 支援度</b><span>語音辨識：${SR?'✅ 支援':'❌ 不支援'}　收音輸入：${gum?'✅ 支援':'❌ 不支援'}${INV?`　Claude 聽寫：${MIC.d?'✅ 可用':'❌ 這個裝置不提供'}`:''}</span></li>
+    <li><b>2. 權限</b><span id="mc-perm">查詢中…</span></li>
+    <li><b>3. 收音音量</b><span id="mc-level">按下測試後對手機說話 3 秒。</span><span class="mc-meter"><i id="mc-bar"></i></span><button type="button" id="mc-level-go">開始收音測試</button></li>
+    <li><b>4. 語音辨識</b><span id="mc-sr">按下測試後說「hello」。</span><ul class="mc-log" id="mc-log"></ul><button type="button" id="mc-sr-go">開始辨識測試</button></li>
+   </ol>
+   <p class="fine">錄音回放：尚未實作。這個檢查只測收音音量和語音辨識，聽不到自己的錄音不代表辨識失敗。真實手機的麥克風請以實機為準。</p>`;
+  const perm=$('mc-perm');
+  if(navigator.permissions&&navigator.permissions.query)navigator.permissions.query({name:'microphone'}).then(r=>{
+    perm.textContent={granted:'✅ 已允許',denied:'❌ 已拒絕：請在瀏覽器網址列左邊的網站設定把麥克風改成允許',prompt:'❔ 還沒決定：開始時瀏覽器會詢問'}[r.state]||r.state}).catch(()=>perm.textContent='無法查詢（這個瀏覽器不提供權限查詢，以實際測試為準）');
+  else perm.textContent='無法查詢（這個瀏覽器不提供權限查詢，以實際測試為準）';
+  $('mc-level-go').onclick=micLevel;
+  $('mc-sr-go').onclick=micRecog;
+}
+async function micLevel(){
+  const out=$('mc-level'),bar=$('mc-bar'),btn=$('mc-level-go');btn.disabled=true;
+  if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)){out.textContent='❌ 這個瀏覽器不能直接收音。';btn.disabled=false;return}
+  out.textContent='收音中，請說話…';let stream;
+  try{stream=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){
+    out.textContent={NotAllowedError:'❌ 麥克風權限被拒絕（或這個頁面環境不允許收音）。請在網址列左邊的設定允許麥克風再重試。',NotFoundError:'❌ 找不到麥克風裝置。',NotReadableError:'❌ 麥克風被其他 App 佔用（通話、錄音、視訊）。',SecurityError:'❌ 這個頁面環境不允許直接收音。'}[e&&e.name]||('❌ 無法開啟麥克風：'+((e&&e.name)||'未知錯誤'));
+    btn.textContent='重試';btn.disabled=false;return}
+  const C=window.AudioContext||window.webkitAudioContext,ac=new C(),an=ac.createAnalyser();an.fftSize=1024;ac.createMediaStreamSource(stream).connect(an);
+  const buf=new Float32Array(an.fftSize),t0=performance.now();let peak=0;
+  await new Promise(done=>{const f=()=>{an.getFloatTimeDomainData(buf);let sum=0;for(const v of buf)sum+=v*v;const rms=Math.sqrt(sum/buf.length);peak=Math.max(peak,rms);
+    bar.style.width=Math.min(100,rms*400)+'%';if(performance.now()-t0<3000)requestAnimationFrame(f);else done()};f()});
+  const label=(stream.getAudioTracks()[0]||{}).label||'';stream.getTracks().forEach(t=>t.stop());try{ac.close()}catch(e){}
+  bar.style.width='0%';
+  out.textContent=peak>0.02?`✅ 有收到聲音（最大音量 ${Math.round(Math.min(1,peak*4)*100)}%）${label?'，裝置：'+label:''}`:`⚠️ 麥克風有開，但幾乎沒有聲音${label?'（'+label+'）':''}：檢查是否靜音、藍牙耳機是否接管麥克風。`;
+  btn.textContent='重試';btn.disabled=false;
+}
+function micRecog(){
+  const out=$('mc-sr'),log=$('mc-log'),btn=$('mc-sr-go');log.innerHTML='';btn.disabled=true;
+  const ev=t=>{const li=document.createElement('li');li.textContent=t;log.appendChild(li)};
+  const done=(t)=>{out.textContent=t;btn.textContent='重試';btn.disabled=false};
+  if(INV&&MIC.d){ // claude.ai viewer: platform dictation, opened from this tap
+    let heard='',stopT=0;const offF=MIC.d.onFinal(e=>{heard+=e.text;ev('final：'+e.text.trim())}),offS=MIC.d.onState(e=>{ev('state：'+e.state+(e.reason?'（'+e.reason+'）':''));
+      if(e.state==='idle'){offF();offS();clearTimeout(stopT);done(heard.trim()?`✅ 聽寫成功：「${heard.trim()}」`:e.reason&&e.reason!=='stopped'?'❌ '+(DICT_ERR[e.reason]||e.reason):'⚠️ 沒有聽到內容，請再試一次。')}});
+    MIC.d.start({language:'en'}).then(()=>{out.textContent='請說 hello…';stopT=setTimeout(()=>MIC.d.stop().catch(()=>{}),6000)}).catch(e=>{offF();offS();done('❌ '+(DICT_ERR[e&&e.code]||'無法開始聽寫'))});
+    return}
+  if(!SR){done('❌ 這個瀏覽器不支援語音辨識：建議用 Android 或電腦版 Chrome，iPhone 請用 Safari 14.1 以上。');return}
+  let r,heard='',err='';try{r=new SR()}catch(e){done('❌ 無法建立語音辨識。');return}
+  r.lang='en-US';r.interimResults=true;r.maxAlternatives=1;
+  ['start','audiostart','soundstart','speechstart','speechend','soundend','audioend','nomatch'].forEach(n=>r.addEventListener(n,()=>ev(n)));
+  r.onresult=e=>{const x=e.results[e.results.length-1];ev(`result${x.isFinal?'（final）':''}：${x[0].transcript}`);if(x.isFinal)heard=x[0].transcript};
+  r.onerror=e=>{err=e.error;ev('error：'+e.error)};
+  const t=setTimeout(()=>{ev('逾時 8 秒，自動停止');try{r.stop()}catch(e){}},8000);
+  r.onend=()=>{clearTimeout(t);ev('end');done(heard?`✅ 辨識成功：「${heard}」`:err?'❌ '+(SR_ERR[err]||err):'⚠️ 沒有辨識到內容（逾時或沒說話），請再試一次。')};
+  try{r.start();out.textContent='請說 hello…'}catch(e){clearTimeout(t);done('❌ 無法開始辨識：'+e.message)}
 }
 $('go-drive').onclick=openDrive;
+$('quick-drive').onclick=openDrive;
+$('quick-map').onclick=toField;
 $('drive-start').onclick=startDrive;
 $('drive-stop').onclick=stopDrive;
-$('drive-back').onclick=()=>{stopDrive();showScreen('home');showTab('p-play')};
+$('drive-pause').onclick=pauseDrive;
+/* Untimed shadowing controls: hear the demo again (restarts this line), try again, or move on. */
+$('drv-demo').onclick=()=>{if(!D.on)return;D.paused=false;hush();$('drive-pause').textContent='⏸ 暫停';driveLoop(true)};
+$('drv-again').onclick=()=>tapNow('again');
+$('drv-skip').onclick=()=>{if(!D.on)return;if(D.mode==='read'&&D.readQ.length){D.readQ.shift();D.readDone.push({ok:false,skip:true})}D.cur=null;D.paused=false;hush();$('drive-pause').textContent='⏸ 暫停';driveLoop(true)};
+$('drive-mic').onclick=()=>$('mic-check').hidden?openMicCheck():($('mic-check').hidden=true);
+document.querySelectorAll('input[name="drive-mode"]').forEach(r=>r.onchange=()=>{DP.mode=r.value;saveDP()});
+document.querySelectorAll('input[name="drive-kind"]').forEach(r=>r.onchange=()=>{DP.kind=r.value;saveDP();paintScenes()});
+$('drive-back').onclick=()=>{stopDrive();if(D.from==='field')toField();else{showScreen('home');showTab('p-play')}};
+
+/* ===== Full-screen fit: follow the visible viewport, not the layout viewport ===== */
+function fitShell(){const vv=window.visualViewport,h=vv?vv.height:window.innerHeight;document.documentElement.style.setProperty('--app-h',Math.round(h)+'px')}
+fitShell();addEventListener('resize',fitShell);addEventListener('orientationchange',()=>setTimeout(fitShell,250));
+if(window.visualViewport)visualViewport.addEventListener('resize',fitShell);
 
 /* ===== Boot ===== */
 async function boot(){
   paintMute();
   try{
     const urls=['data/words.json','data/sentences.json','data/levels.json','data/themes.json','assets/manifest.json'];
+    const scenesP=fetch('data/scenes.json').then(r=>r.ok?r.json():null).catch(()=>null);
     const [w,s,l,t,m]=await Promise.all(urls.map(u=>fetch(u).then(r=>{if(!r.ok)throw new Error(u);return r.json()})));
+    const sj=await scenesP;SCENES=(sj&&Array.isArray(sj.categories))?sj.categories:[];
     WORDS=w.map(x=>({w:x.word,z:x.zh,e:x.emoji,kk:x.kk,th:x.theme,lv:x.level||1,img:x.image||'',au:x.audio||'',az:x.audioZh||''}));
     SENT=s.map(x=>({en:x.en,zh:x.zh,sc:x.scene,b:x.blank,o:x.distractors,lv:x.level||1,route:x.route,img:x.image||'',au:x.audio||'',az:x.audioZh||''}));
     TIERS=l.tiers;CARD_TIERS=l.cardTiers;BADGES=l.badges;THEMES=t.themes;ELEM=t.elements;LV_NAMES=l.levelNames||{};
-    SND.load(m);
-  }catch(e){$('boot').textContent='題目資料沒有載入成功，請重新整理頁面再試一次。';return}
+    SND.load(m);RPG.loadArt(m);
+  }catch(e){$('panel').hidden=false;$('boot').textContent='題目資料沒有載入成功，請重新整理頁面再試一次。';return}
   $('boot').hidden=true;showTab('p-play');
+  RPG.boot();document.body.classList.add('field');
 }
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>showTab(b.dataset.p));
 $('go-word').onclick=()=>start('word');
@@ -1036,6 +1454,10 @@ $('home-btn').onclick=()=>{showScreen('home');showTab('p-play')};
 ['mute-home','mute-game'].forEach(id=>$(id).onclick=()=>{SND.toggle();paintMute()});
 $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 </script>
+<script src="pron.js"></script>
+<script src="world.js"></script>
+<script src="battle.js"></script>
+<script src="learn.js"></script>
 <script src="rpg.js"></script>
 <script>boot();</script>
 </body>

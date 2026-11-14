@@ -79,66 +79,60 @@
   font-size: 12px;
   color: #737b65;
 }
-.rpg-map {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  aspect-ratio: 9/7;
-  background: var(--grass);
-  border: 5px solid #f0e6cd;
+.rpg-stage {
+  position: relative;
+  margin-top: 6px;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: inset 0 0 0 2px #a0bc8b;
-  background-image: radial-gradient(#ffffff35 1.5px, transparent 1.5px);
-  background-size: 15px 15px;
+  border: 4px solid #f0e6cd;
+  box-shadow: inset 0 0 0 2px #a0bc8b, 0 4px 0 #e4e5d5;
+  background: #78ab62;
+  line-height: 0;
 }
-.rpg-tile,
-.hero {
-  display: flex;
+.world-canvas {
+  display: block;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.world-canvas:focus-visible {
+  outline: 3px solid #7c9858;
+  outline-offset: -3px;
+}
+.quick {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.quick button {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
   align-items: center;
-  justify-content: center;
-  min-width: 0;
-  font-size: clamp(20px, 5vw, 38px);
+  text-align: left;
+  border: 2px solid #dbdfc9;
+  border-radius: 18px;
+  background: #fffdf5;
+  box-shadow: 0 4px 0 #e4e5d5;
+  padding: 12px 14px;
+  min-height: 64px;
+  color: #3c4539;
 }
-.path {
-  background: #ead7a6;
-  box-shadow: inset 0 0 0 1px #e3cc93;
+.quick button span {
+  grid-row: span 2;
+  font-size: 28px;
+  font-family: var(--emoji);
 }
-.scenery {
-  background: #7fa77025;
+.quick button small {
+  color: #717865;
+  font-size: 12px;
+  line-height: 1.3;
 }
-.resident,
-.treasure {
-  background: #f0dfa9;
-  border-radius: 14px;
-  filter: drop-shadow(0 4px 1px #557b4c40);
-}
-.resident:after {
-  content: "!";
-  font: 700 14px sans-serif;
-  color: #fff;
-  background: #d38b53;
-  border-radius: 50%;
-  align-self: start;
-  padding: 0 5px;
-}
-.hero {
-  z-index: 2;
-  pointer-events: none;
-  transition: all 0.12s;
-}
-.hero span {
-  background: #fff5d9;
-  border-radius: 50% 50% 40% 40%;
-  box-shadow: 0 4px 0 #6f8a5a66;
-  line-height: 1.2;
-  padding: 3px;
-  animation: hero-bob 1.5s infinite ease-in-out;
-}
-@keyframes hero-bob {
-  50% {
-    transform: translateY(-3px);
-  }
+#quick-drive {
+  border-color: #c9d5ef;
+  background: #f4f7ff;
 }
 .rpg-status {
   font-size: 13px;
@@ -152,27 +146,10 @@
   align-items: center;
   gap: 14px;
 }
-.dpad {
-  display: grid;
-  grid-template-columns: repeat(3, 46px);
-  gap: 4px;
+.rpg-controls .rpg-tip {
+  margin: 0;
 }
-.dpad button:first-child {
-  grid-column: 2;
-}
-.dpad button:nth-child(2) {
-  grid-column: 1;
-  grid-row: 2;
-}
-.dpad button:nth-child(3) {
-  grid-column: 2;
-  grid-row: 2;
-}
-.dpad button:nth-child(4) {
-  grid-column: 3;
-  grid-row: 2;
-}
-.rpg-controls button,
+.interact,
 .npc-dialog button {
   min-height: 44px;
   border: 1px solid #bfc9a9;
@@ -183,6 +160,8 @@
   touch-action: manipulation;
 }
 .interact {
+  flex: none;
+  white-space: nowrap;
   padding: 12px 20px;
   font-weight: 700;
 }
@@ -224,11 +203,169 @@
     padding-top: 12px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .hero {
-    transition: none;
+@media (max-width: 450px) {
+  .quick button {
+    padding: 10px;
+    grid-template-columns: 1fr;
+    text-align: center;
   }
-  .hero span {
-    animation: none;
+  .quick button span {
+    grid-row: auto;
+  }
+  .rpg-stage {
+    margin-inline: -4px;
+    border-width: 3px;
+  }
+}
+/* Phase 2: always-on status bar over the scene */
+.hud {
+  position: absolute;
+  inset: 8px 8px auto 8px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  pointer-events: none;
+  line-height: 1.2;
+}
+.hud > * {
+  pointer-events: auto;
+}
+.hud-bars {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3px 6px;
+  align-items: center;
+  width: min(46%, 190px);
+  padding: 6px 8px;
+  border-radius: 12px;
+  background: #fffdf5e6;
+  box-shadow: 0 2px 0 #00000022;
+}
+.hud-lv {
+  grid-row: span 2;
+  font: 700 12px var(--display);
+  color: #fff;
+  background: #7c9858;
+  border-radius: 9px;
+  padding: 6px 5px;
+}
+.hbar {
+  position: relative;
+  height: 14px;
+  border-radius: 7px;
+  background: #e6e3d4;
+  overflow: hidden;
+}
+.hbar i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(#7fe08a, #4cbf5b);
+  transition: width 0.25s;
+}
+.hbar.mp i {
+  background: linear-gradient(#8cc8ff, #4f9be8);
+}
+.hbar.low i {
+  background: linear-gradient(#ff9a8a, #e5584a);
+}
+.hbar b {
+  position: relative;
+  display: block;
+  font-size: 10px;
+  line-height: 14px;
+  padding-left: 6px;
+  color: #2f382b;
+  white-space: nowrap;
+}
+.hud-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px;
+  max-width: 52%;
+}
+.hud-btns button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #c9cfb4;
+  border-radius: 12px;
+  background: #fffdf5e6;
+  box-shadow: 0 2px 0 #00000022;
+  font-family: var(--emoji);
+  font-size: 18px;
+  touch-action: manipulation;
+}
+.hud-btns button[aria-pressed="true"] {
+  background: #e0ebc8;
+  border-color: #7c9858;
+}
+.hud-btns small {
+  position: absolute;
+  right: 2px;
+  bottom: 1px;
+  font: 700 10px var(--body);
+  color: #45523b;
+}
+.bag-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  display: grid;
+  gap: 6px;
+}
+.bag-list li {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  background: #fffdf5;
+  border-radius: 12px;
+  padding: 6px 8px;
+}
+.bag-i {
+  font-family: var(--emoji);
+  font-size: 22px;
+}
+.bag-list small {
+  display: block;
+  color: #717865;
+  font-size: 12px;
+}
+.bag-stat {
+  font-weight: 700;
+}
+.trade {
+  border-top: 1px dashed #c6d3ae;
+  margin-top: 8px;
+  padding-top: 4px;
+}
+.trade-note {
+  margin: 6px 4px 0;
+  font-size: 13px;
+}
+.npc-dialog button:disabled {
+  opacity: 0.5;
+}
+@media (max-width: 450px) {
+  .hud {
+    inset: 6px 6px auto 6px;
+  }
+  .hud-bars {
+    width: 41%;
+    padding: 5px 6px;
+  }
+  .hud-btns {
+    flex-wrap: nowrap;
+    max-width: none;
+    gap: 3px;
+  }
+  .hud-btns button {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+    border-radius: 10px;
   }
 }
