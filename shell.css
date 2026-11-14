@@ -405,21 +405,132 @@ button:disabled {
 .qz-e.big {
   font-size: 34px;
 }
+/* Answer states. Explicit pairs of background / text / border, also when disabled, so a settled question stays
+   readable. !important because index.html's older global .right/.wrong use theme variables that turn dark
+   green / dark red when the phone is in dark mode (the cause of the unreadable screenshot). */
 .qz-o button:disabled {
-  opacity: 0.55;
+  opacity: 1 !important;
+  color: #3b4233 !important;
 }
-.qz-o button.right {
-  background: #ddf4e8;
-  border-color: #3a9d6a;
-  border-width: 2px;
-  opacity: 1;
+.qz-o button.right,
+.qz-o button.right:disabled {
+  background: #ddf4e8 !important;
+  color: #153f2b !important;
+  border: 2px solid #238653 !important;
+  opacity: 1 !important;
+  animation: none;
 }
-.qz-o button.wrong {
-  opacity: 1;
+.qz-o button.wrong,
+.qz-o button.wrong:disabled {
+  background: #fde8e7 !important;
+  color: #732423 !important;
+  border: 2px solid #bc4141 !important;
+  opacity: 1 !important;
 }
-.qz-o button.wrong {
-  background: #fce3e3;
-  border-color: var(--g-bad);
+.qz-o button.right *,
+.qz-o button.wrong * {
+  color: inherit !important;
+}
+.qz-o button.right::after,
+.qz-o button.wrong::after {
+  font: 700 12px/1.2 var(--body);
+  justify-self: start;
+}
+.qz-o button.right::after {
+  content: "✓ 正確";
+}
+.qz-o button.wrong::after {
+  content: "✕ 你的回答";
+}
+/* option row: the answer button and its own 🔊 (siblings, never nested) */
+.qz-opt {
+  display: flex;
+  gap: 4px;
+  align-items: stretch;
+  min-width: 0;
+}
+.qz-opt > button {
+  flex: 1;
+  min-width: 0;
+}
+.qz-hear,
+.say-btn {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid #c9cfba;
+  background: #fffdf6;
+  color: #2f382b;
+  cursor: pointer;
+  font-family: var(--emoji);
+  user-select: none;
+}
+.say-btn {
+  min-width: 32px;
+  min-height: 32px;
+  margin-left: 4px;
+  vertical-align: middle;
+  font-size: 14px;
+}
+.say-s {
+  cursor: pointer;
+}
+.say-s:hover,
+.say-s:focus-visible {
+  background: #fff3c9;
+  border-radius: 4px;
+}
+.wd {
+  text-decoration: underline dotted #8a7d4a;
+  text-underline-offset: 3px;
+  cursor: help;
+}
+.wd-card {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 96px);
+  transform: translateX(-50%);
+  z-index: 60;
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  min-width: 220px;
+  max-width: calc(100vw - 32px);
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: #fffdf6;
+  color: #2f382b;
+  border: 2px solid #c9a45c;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  font-family: var(--body);
+}
+.wd-card[hidden] {
+  display: none;
+}
+.wd-w {
+  font-size: 22px;
+}
+.wd-kk {
+  font-size: 18px;
+  color: #1d4f7a;
+}
+.wd-none {
+  font-size: 13px;
+  color: #6f6a5a;
+}
+.wd-row {
+  display: flex;
+  gap: 8px;
+}
+.wd-row button {
+  min-height: 44px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: 1px solid #c9cfba;
+  background: #fff;
+  color: #2f382b;
 }
 .qz-f:empty {
   display: none;

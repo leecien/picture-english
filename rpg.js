@@ -417,7 +417,7 @@ const RPG = (() => {
     /* A line of dialog. English lines are spoken; tap ▶ to continue. */
     function line(en, zh, opt = {}) {
       return new Promise((res) => {
-        $("dlg-body").innerHTML = `${en ? `<p class="dlg-en">${esc(en)}</p>` : ""}${zh ? `<p class="dlg-zh">${zh}</p>` : ""}<div class="dlg-row">${en ? '<button class="dlg-say" type="button">🔊</button>' : ""}<button class="dlg-next" type="button">${esc(opt.next || "▶ 繼續")}</button></div>`;
+        $("dlg-body").innerHTML = `${en ? `<p class="dlg-en">${Learn.sayHTML(en)}</p>` : ""}${zh ? `<p class="dlg-zh">${zh}</p>` : ""}<div class="dlg-row">${en ? '<button class="dlg-say" type="button">🔊</button>' : ""}<button class="dlg-next" type="button">${esc(opt.next || "▶ 繼續")}</button></div>`;
         const say = $("dlg-body").querySelector(".dlg-say");
         if (say) say.onclick = () => speak(en);
         if (en && opt.speak !== false) speak(en);
@@ -429,7 +429,8 @@ const RPG = (() => {
     /* Choices: [{label, value, sub}] -> value */
     function choose(prompt, options) {
       return new Promise((res) => {
-        $("dlg-body").innerHTML = `${prompt ? `<p class="dlg-zh">${prompt}</p>` : ""}<div class="dlg-choices">${options.map((o, i) => `<button type="button" data-i="${i}"${o.disabled ? " disabled" : ""}>${o.label}${o.sub ? `<small>${o.sub}</small>` : ""}</button>`).join("")}</div>`;
+        // o.say: an English choice gets its own 🔊 next to it (hearing it never picks it)
+        $("dlg-body").innerHTML = `${prompt ? `<p class="dlg-zh">${prompt}</p>` : ""}<div class="dlg-choices">${options.map((o, i) => `${o.say ? '<div class="qz-opt">' : ""}<button type="button" data-i="${i}"${o.disabled ? " disabled" : ""}>${o.label}${o.sub ? `<small>${o.sub}</small>` : ""}</button>${o.say ? Pron.hear(o.say, "", "聽這句") + "</div>" : ""}`).join("")}</div>`;
         $("dlg-body")
           .querySelectorAll("[data-i]")
           .forEach((b) => (b.onclick = () => res(options[+b.dataset.i].value)));
@@ -1011,8 +1012,8 @@ const RPG = (() => {
     await Talk.line("Good morning! Welcome to Wind Air.", "櫃檯人員 Mia 會用英文問你問題。先聽，再選出最適合的回答。");
     const ok = await stageTalk(s, s.targets);
     const seat = await Talk.choose("最後她問你座位偏好。兩個都是好答案，選你想要的：", [
-      { label: "Can I have a window seat?", value: "window", sub: "靠窗" },
-      { label: "Can I have an aisle seat, please?", value: "aisle", sub: "靠走道" },
+      { label: "Can I have a window seat?", value: "window", sub: "靠窗", say: "Can I have a window seat?" },
+      { label: "Can I have an aisle seat, please?", value: "aisle", sub: "靠走道", say: "Can I have an aisle seat, please?" },
     ]);
     W.seat = seat;
     save();
@@ -1031,8 +1032,8 @@ const RPG = (() => {
     if (v !== "go") return;
     await Talk.line("Next, please. What is the purpose of your visit?", "海關問你來訪的目的。<b>觀光和出差都是正確的回答</b>，你的選擇會改變接下來的問題。");
     const why = await Talk.choose("你要怎麼回答？", [
-      { label: "I'm here for sightseeing.", value: "sightseeing", sub: "我是來觀光的" },
-      { label: "I'm here on business.", value: "business", sub: "我是來出差的" },
+      { label: "I'm here for sightseeing.", value: "sightseeing", sub: "我是來觀光的", say: "I'm here for sightseeing." },
+      { label: "I'm here on business.", value: "business", sub: "我是來出差的", say: "I'm here on business." },
     ]);
     W.purpose = why;
     save();
@@ -1368,11 +1369,9 @@ const RPG = (() => {
         $("dlg-name").dataset.step = `${sc.name} ${k + 1}/${picked.length}`;
         speak(it.q);
         const wait = Talk.choose(
-          `<p class="dlg-en">${esc(it.q)}</p><div class="dlg-row"><button class="dlg-say" type="button">🔊</button></div><details class="qz-cue"><summary>中文提示</summary>${esc(it.zh)}</details><p class="dlg-zh">你要怎麼回？（可能不只一個好回答）</p>`,
-          opts.map((o, i) => ({ label: esc(o.en), value: i })),
+          `<p class="dlg-en">${Learn.sayHTML(it.q)}</p><details class="qz-cue"><summary>中文提示</summary>${esc(it.zh)}</details><p class="dlg-zh">你要怎麼回？（可能不只一個好回答）</p>`,
+          opts.map((o, i) => ({ label: esc(o.en), value: i, say: o.en })),
         );
-        const say = $("dlg-body").querySelector(".dlg-say");
-        if (say) say.onclick = () => speak(it.q);
         const pick = opts[await wait],
           q = { kind: "s", recK: "s", item: { en: it.en, zh: it.zh, q: it.q }, ctx: `companion:${topic}` };
         Learn.track(q);

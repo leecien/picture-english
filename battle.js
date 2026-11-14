@@ -313,7 +313,7 @@ const Battle = (() => {
       <div class="bt-clock" ${practice ? "hidden" : ""}><i id="bt-clock-bar"></i><span id="bt-clock-n"></span></div>
       <div class="qz-p">${q.prompt}</div>
       ${q.audio ? `<button class="qz-say" type="button" id="bt-say">🔊 ${esc(q.audio.label || "再聽一次")}</button>` : ""}
-      <div class="qz-o${q.options.some((o) => o.wide) ? " wide" : ""}${q.cols ? " c" + q.cols : ""}">${q.options.map((o, i) => `<button type="button" data-i="${i}" disabled>${o.html}</button>`).join("")}</div>
+      <div class="qz-o${q.options.some((o) => o.wide) ? " wide" : ""}${q.cols ? " c" + q.cols : ""}">${Learn.optionsHTML(q, true)}</div>
       <div class="qz-f" role="status" id="bt-feedback"></div>
       <div class="bt-help">${help.map(([k, label, mp, off]) => `<button type="button" data-help="${k}" ${st.mp < mp || off ? "disabled" : ""}>${label}<small>MP ${mp}</small></button>`).join("")}<button type="button" data-help="berry" ${count("berry") && st.hp < m.maxHp ? "" : "disabled"}>🍓<small>×${count("berry")}</small></button>${B.comp ? `<button type="button" data-help="hint" class="bt-buddy-hint" ${B.comp.hintLeft ? "" : "disabled"}>🧚 提示<small>每場 ${B.comp.hintLeft} 次</small></button>` : ""}</div>
     </div>`;
@@ -410,7 +410,7 @@ const Battle = (() => {
     paintClock();
     B.timer.iv = setInterval(() => {
       if (!live(tok) || !B.timer) return;
-      if (B.paused || B.anim) return;
+      if (B.paused || B.anim || B.hearing) return;
       B.timer.left = Math.max(0, B.timer.left - 0.1);
       paintClock();
       if (B.timer.left <= 0) settle("timeout");
@@ -435,6 +435,10 @@ const Battle = (() => {
     };
   }
   document.addEventListener("visibilitychange", () => document.hidden && hold("畫面切換了，已暫停"));
+  /* Tapping 🔊 or a word card (pron.js) stops the clock while it plays or stays open; no answer, no damage. */
+  window.addEventListener("pron:busy", (e) => {
+    if (B) B.hearing = !!e.detail;
+  });
   window.addEventListener("blur", () => hold("已暫停"));
   /* Short animations (companion help) stop the clock while they play. */
   function anim(ms, fn) {
@@ -531,11 +535,11 @@ const Battle = (() => {
     paintBattle();
     const a = q.answer || {};
     if (ok) {
-      $("bt-feedback").innerHTML = `<b class="good">答對了！</b> <span class="qz-ans">${esc(a.en || "")}</span> <span class="qz-zh">${esc(a.zh || "")}</span>`;
+      $("bt-feedback").innerHTML = `<b class="good">✓ 答對了！</b> ${Learn.answerHTML(a)} <span class="qz-zh">${esc(a.zh || "")}</span>`;
       setTimeout(() => live(tok) && after(), 900);
     } else {
       // The explanation is not timed: read it, then continue.
-      $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "正確答案"}</b> <span class="qz-ans">${esc(a.en || "")}</span>${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${kind === "timeout" ? "<small>時間到不算英文答錯，這題會在之後的複習再出現。</small>" : ""}`;
+      $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "正確答案"}</b> ${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${kind === "timeout" ? "<small>時間到不算英文答錯，這題會在之後的複習再出現。</small>" : ""}`;
       if (a.en) speak(a.en, a.file || "");
       const go = document.createElement("button");
       go.type = "button";

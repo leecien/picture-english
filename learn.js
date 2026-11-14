@@ -339,8 +339,8 @@ const Learn = (() => {
     return {
       kind: "s", recK: "s", item,
       prompt: listen
-        ? `<p class="qz-their">🗣️ ${esc(it.q)}</p><p class="qz-ask">你要怎麼回答？</p><details class="qz-cue"><summary>中文提示</summary>${esc(it.zh)}</details>`
-        : (it.q ? `<p class="qz-their">🗣️ ${esc(it.q)}</p>` : "") + `<p class="qz-ask">${it.q ? "你想回答" : "你想說"}：「${esc(it.zh)}」</p>`,
+        ? `<p class="qz-their">🗣️ ${sayHTML(it.q)}</p><p class="qz-ask">你要怎麼回答？</p><details class="qz-cue"><summary>中文提示</summary>${esc(it.zh)}</details>`
+        : (it.q ? `<p class="qz-their">🗣️ ${sayHTML(it.q)}</p>` : "") + `<p class="qz-ask">${it.q ? "你想回答" : "你想說"}：「${esc(it.zh)}」</p>`,
       audio: it.q ? { text: it.q, label: "再聽對方說" } : null,
       autoplay: !!it.q,
       options: shuf(dedupe([it, ...wrong], (x) => x.en)).map((x) => ({ html: esc(x.en), ok: x.en === it.en, wide: true })),
@@ -427,6 +427,21 @@ const Learn = (() => {
   }
 
   /* ---------- question UI (dialog box and battle panel) ---------- */
+  /* Tap-to-hear markup (pron.js); plain text when it is not loaded (e.g. the content checks). */
+  const hasPron = () => typeof Pron !== "undefined";
+  const sayHTML = (t, f) => (hasPron() ? Pron.sent(t, f) : esc(t));
+  /* Each option: the answer button plus, for plain-English options, a separate 🔊 control next to it.
+     Listening never submits; the 🔊 keeps working after the question is settled. */
+  function optionsHTML(q, disabled) {
+    return q.options
+      .map((o, i) => {
+        const s = hasPron() && Pron.optionText(o);
+        return `<div class="qz-opt"><button type="button" data-i="${i}"${o.label ? ` aria-label="${esc(o.label)}"` : ""}${disabled ? " disabled" : ""}>${o.html}</button>${s ? Pron.hear(s.text, s.file) : ""}</div>`;
+      })
+      .join("");
+  }
+  /* The revealed answer: tap the line to hear it again, tap a word for its KK. */
+  const answerHTML = (a) => (a.en ? `<span class="qz-ans">${sayHTML(a.en, a.file || "")}</span>` : "");
   function play(a) {
     if (a) speak(a.text, a.file || "");
   }
@@ -438,7 +453,7 @@ const Learn = (() => {
     markAsked(q);
     return new Promise((res) => {
       const wide = q.options.some((o) => o.wide);
-      el.innerHTML = `<div class="qz"><div class="qz-p">${q.prompt}</div>${q.audio ? `<button class="qz-say" type="button">🔊 ${esc(q.audio.label || "再聽一次")}</button>` : ""}<div class="qz-o${wide ? " wide" : ""}${q.cols ? " c" + q.cols : ""}">${q.options.map((o, i) => `<button type="button" data-i="${i}"${o.label ? ` aria-label="${esc(o.label)}"` : ""}>${o.html}</button>`).join("")}</div><div class="qz-f" role="status"></div></div>`;
+      el.innerHTML = `<div class="qz"><div class="qz-p">${q.prompt}</div>${q.audio ? `<button class="qz-say" type="button">🔊 ${esc(q.audio.label || "再聽一次")}</button>` : ""}<div class="qz-o${wide ? " wide" : ""}${q.cols ? " c" + q.cols : ""}">${optionsHTML(q)}</div><div class="qz-f" role="status"></div></div>`;
       const say = el.querySelector(".qz-say");
       if (say) say.onclick = () => play(q.audio);
       if (q.autoplay) setTimeout(() => play(q.audio), 250);
@@ -472,7 +487,7 @@ const Learn = (() => {
             SND.play(ok ? "correct" : "wrong");
             const g = grade(q, ok, opt.src);
             const a = q.answer || {};
-            el.querySelector(".qz-f").innerHTML = `<b class="${ok ? "good" : "bad"}">${ok ? (tries ? "答對了（第二次）" : "答對了！") : "正確答案"}</b> <span class="qz-ans">${esc(a.en || "")}</span>${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${ok && !g.fresh ? "<small>剛剛練過這題，這次不重複計分。</small>" : ""}`;
+            el.querySelector(".qz-f").innerHTML = `<b class="${ok ? "good" : "bad"}">${ok ? (tries ? "答對了（第二次）" : "答對了！") : "正確答案"}</b> ${answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${ok && !g.fresh ? "<small>剛剛練過這題，這次不重複計分。</small>" : ""}`;
             if (q.after || !ok || q.kind === "kk") speak(a.en, a.file || "");
             if (opt.onAnswer) opt.onAnswer(ok);
             if (opt.auto) return res({ ok, tries });
@@ -491,7 +506,7 @@ const Learn = (() => {
   return {
     parseKK, stressSpan, SOUNDS, UNITS, wordBy, pairWords, unitQuestion, stressQuestion, wordKK, phonicsQuestion,
     soundDue, soundsDue, wordQuestion, sentQuestion, sceneQuestion, scene, contentId, setScenes,
-    grade, flush, ask, play, dueItems,
+    grade, flush, ask, play, dueItems, optionsHTML, answerHTML, sayHTML,
     /* A question shown outside Learn.ask (the timed battle) still counts as "recently asked". */
     track(q) {
       last = q;
