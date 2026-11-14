@@ -92,16 +92,34 @@ const travel = scenes.categories.find((c) => c.id === "travel");
 for (const id of ["airport", "customs", "lostbag", "hotel"]) assert.equal(travel.scenes.find((s) => s.id === id).lv, 1, id + " is beginner level");
 assert.equal(travel.element, "wind");
 
-// 4. Commute judge (from index.html): digits, contractions, joined words accepted; wrong key words rejected.
-const html = read("index.html");
-const judge = new Function(html.slice(html.indexOf("const CONTR="), html.indexOf("function driveState")) + ";return{sentScore,wordOk}")();
+// 4. Spoken-answer judge (speech.js): ordered word alignment, not a bag of words.
+const Speech = require(path.join(root, "speech.js"));
+const pass = (t, a, o) => Speech.judge(t, [a], o).status;
 for (const [t, a] of [
   ["I will stay for five days.", "I will stay for 5 days"],
   ["Does three o'clock work for you?", "does 3:00 work for you"],
   ["What time is check out?", "what time is checkout"],
+  ["Okay, no problem.", "OK no problem"],
   ["My suitcase hasn't arrived.", "my suitcase has not arrived"],
-]) assert(judge.sentScore(t, a) >= 0.75, `accepted: ${a}`);
-assert(judge.sentScore("I'm here for sightseeing.", "I'm here for business") < 0.75, "wrong key word rejected");
-for (const c of scenes.categories) for (const sc of c.scenes) for (const it of sc.items) assert.equal(judge.sentScore(it.en, it.en.replace(/[.,!?]/g, "")), 1, "self match " + it.en);
+  ["I'd like to withdraw two hundred dollars.", "I'd like to withdraw 200 dollars"],
+  ["I'm here for sightseeing.", "um I'm here for sightseeing"],
+  ["cat", "the cat"],
+]) assert.equal(pass(t, a), "pass", `accepted: ${a}`);
+const W = (t, a) => Speech.align(t, a).words.map((x) => x.st).join(" ");
+assert.equal(pass("I'm here for sightseeing.", "I'm here for business"), "partial", "wrong key word is not a pass");
+assert.equal(W("I'm here for sightseeing.", "I'm here for business"), "ok ok ok sub", "the wrong word is marked in place");
+assert.equal(W("I'm here for sightseeing.", "I'm for sightseeing"), "ok miss ok ok", "missing word marked at its position");
+assert.deepEqual(Speech.align("I'm here for sightseeing.", "I'm here for sightseeing today").extra, ["today"], "extra word listed");
+assert.equal(pass("I'm here for sightseeing.", "I'm here for sightseeing today"), "partial", "extra words are not a full pass");
+assert.equal(W("Thank you very very much.", "thank you very much"), "ok ok miss ok ok", "repeated words counted by position");
+assert.equal(pass("Thank you very very much.", "thank you very much"), "partial");
+assert.notEqual(pass("I am here for sightseeing.", "sightseeing for here I am"), "pass", "word order matters");
+assert.equal(pass("Give me five minutes.", "give me five minutes", { accept: [] }), "pass");
+assert.equal(pass("Yes, I'm ready.", "give me five minutes", { accept: ["Give me five minutes."] }), "pass", "explicitly accepted reply");
+assert.equal(Speech.judge("Yes, I'm ready.", ["yes I am red", "yes I am ready"]).status, "uncertain", "a lower candidate matching is not a pass");
+assert.equal(Speech.judge("Yes, I'm ready.", Object.assign(["yes I am ready"], { conf: 0.2 })).status, "uncertain", "low confidence is not graded");
+assert.equal(Speech.judge("Yes, I'm ready.", []).status, "silent");
+assert.match(Speech.html(Speech.judge("I'm here for sightseeing.", ["I'm for sightseeing"])), /sw-miss[^>]*>here<sup>漏<\/sup>/, "missing word marked with text, not colour alone");
+for (const c of scenes.categories) for (const sc of c.scenes) for (const it of sc.items) assert.equal(pass(it.en, it.en.replace(/[.,!?]/g, "")), "pass", "self match " + it.en);
 
-console.log("PASS: KK syllables and stress (hand-checked), unit questions stay in the taught pair with unambiguous words and recorded demos, one right answer and unique options for every generator, scene distractors never another valid reply, beginner story scenes, commute judge");
+console.log("PASS: KK syllables and stress (hand-checked), unit questions stay in the taught pair with unambiguous words and recorded demos, one right answer and unique options for every generator, scene distractors never another valid reply, beginner story scenes, spoken-answer judge (order, missing / extra / repeated words, contractions, numbers, accepted replies, unsure candidates and low confidence)");
