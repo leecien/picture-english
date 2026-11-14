@@ -1,0 +1,127 @@
+[
+  {
+    "id": "audio-before-ended",
+    "result": {
+      "prompt": "聽 hospital，它有哪一個音？",
+      "target": "hospital",
+      "label": "🔊 再聽 hospital",
+      "optionsVisible": true,
+      "enabled": false,
+      "timer": null
+    }
+  },
+  {
+    "id": "replay-timer",
+    "before": 9.8,
+    "after": 9.100000000000003,
+    "timerContinues": true
+  },
+  {
+    "id": "feedback-light",
+    "result": {
+      "feedback": "正確答案 umbrella [ʌmˋbrɛlə] 雨傘umbrella [ʌmˋbrɛlə] 有 /ʌ/；hospital [ˋhɑspɪtḷ] 是 /ɑ/。",
+      "styles": [
+        {
+          "text": "☂️umbrella[ʌmˋbrɛlə]",
+          "disabled": true,
+          "bg": "rgb(221, 244, 232)",
+          "color": "rgb(47, 56, 43)",
+          "opacity": "1"
+        },
+        {
+          "text": "🏥hospital[ˋhɑspɪtḷ]",
+          "disabled": true,
+          "bg": "rgb(252, 227, 227)",
+          "color": "rgb(47, 56, 43)",
+          "opacity": "1"
+        }
+      ],
+      "sentenceReplayControls": 0,
+      "rootScheme": "light"
+    }
+  },
+  {
+    "id": "feedback-dark",
+    "result": {
+      "feedback": "正確答案 bus [bʌs] 公車bus [bʌs] 有 /ʌ/；hospital [ˋhɑspɪtḷ] 是 /ɑ/。",
+      "styles": [
+        {
+          "text": "🚌bus[bʌs]",
+          "disabled": true,
+          "bg": "rgb(23, 58, 49)",
+          "color": "rgb(47, 56, 43)",
+          "opacity": "1"
+        },
+        {
+          "text": "🏥hospital[ˋhɑspɪtḷ]",
+          "disabled": true,
+          "bg": "rgb(71, 32, 42)",
+          "color": "rgb(47, 56, 43)",
+          "opacity": "1"
+        }
+      ],
+      "sentenceReplayControls": 0,
+      "rootScheme": "dark"
+    }
+  },
+  {
+    "id": "hide-after-success",
+    "first": {
+      "hp": 106,
+      "maxHp": 120,
+      "name": "Audit bubble",
+      "shield": false,
+      "combo": 1,
+      "power": false,
+      "guard": 0,
+      "intent": "",
+      "dist": 0,
+      "turn": 2,
+      "paused": false,
+      "settled": false,
+      "left": 9.700000000000001,
+      "phase": "",
+      "energy": null,
+      "hint": null
+    },
+    "later": {
+      "hp": 106,
+      "maxHp": 120,
+      "name": "Audit bubble",
+      "shield": false,
+      "combo": 1,
+      "power": false,
+      "guard": 0,
+      "intent": "",
+      "dist": 0,
+      "turn": 2,
+      "paused": false,
+      "settled": false,
+      "left": 9.200000000000003,
+      "phase": "",
+      "energy": null,
+      "hint": null
+    },
+    "backgroundTimerRuns": true
+  },
+  {
+    "id": "unit-fails-open",
+    "steps": 34,
+    "missClicks": 16,
+    "result": {
+      "unitComplete": true,
+      "correctDelta": 0,
+      "kkSoundCount": 12
+    }
+  },
+  {
+    "id": "tutorial-turns",
+    "turns": 3,
+    "win": true,
+    "result": {
+      "level": 1,
+      "hasCompanion": false,
+      "requiredBossLevel": "undefined"
+    }
+  }
+]
