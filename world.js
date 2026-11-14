@@ -209,7 +209,10 @@ const World = (() => {
     fx = [];
     respawns = [];
     portals = findAll("@");
-    findAll("m").forEach((p, i) => ents.push(spawnMob(p, 0.5 + i * 0.4)));
+    findAll("m").forEach((p, i) => {
+      const e = spawnMob(p, 0.5 + i * 0.4);
+      if (e) ents.push(e);
+    });
     if (def.petLook) {
       // The companion starts beside the hero, never on top of it.
       const spot = [[-1, 1], [1, 1], [-1, 0], [1, 0], [0, 1]].map(([dx, dy]) => ({ x: hero.tx + dx, y: hero.ty + dy })).find((q) => walkableRaw(q.x, q.y)) || { x: hero.tx, y: hero.ty };
@@ -235,8 +238,10 @@ const World = (() => {
     snapCam();
     run();
   }
+  /* null when this spot has no monster yet (e.g. nothing taught in the novice village) */
   function spawnMob(p, wait) {
-    const m = (map.mobAt && map.mobAt(p)) || map.mob;
+    const m = map.mobAt ? map.mobAt(p) : map.mob;
+    if (!m) return null;
     return actor("mob", p.x, p.y, {
       home: p,
       wait,
@@ -500,7 +505,8 @@ const World = (() => {
     respawns = respawns.filter((r) => {
       r.t -= dt;
       if (r.t > 0) return true;
-      ents.push(spawnMob(r.home, 0.5));
+      const e = spawnMob(r.home, 0.5);
+      if (e) ents.push(e);
       return false;
     });
     fx = fx.filter((f) => (f.t += dt) < f.life);

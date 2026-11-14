@@ -464,6 +464,18 @@ const Learn = (() => {
           (b.onclick = () => {
             const o = q.options[+b.dataset.i],
               ok = !!o.ok;
+            // Listen-first sound questions: a miss never shows the right option or the word; hear it again and
+            // try again. Only a first-try right answer counts as independent.
+            if (!ok && q.reveal === "right-only") {
+              if (!tries) grade(q, false, opt.src);
+              tries++;
+              b.disabled = true;
+              b.classList.add("wrong");
+              SND.play("wrong");
+              el.querySelector(".qz-f").innerHTML = `<b class="bad">✕ 不是這個音</b><small>再聽一次，再選一次。這題已記為「需要再練」，答案不會直接公布。</small>`;
+              if (q.audio) play(q.audio);
+              return;
+            }
             if (!ok && opt.retry && tries === 0) {
               // first miss: a hint and one more try, nothing recorded yet
               tries++;
@@ -485,9 +497,9 @@ const Learn = (() => {
             });
             if (!ok) b.classList.add("wrong");
             SND.play(ok ? "correct" : "wrong");
-            const g = grade(q, ok, opt.src);
+            const g = q.reveal === "right-only" && tries ? { fresh: true } : grade(q, ok, opt.src);
             const a = q.answer || {};
-            el.querySelector(".qz-f").innerHTML = `<b class="${ok ? "good" : "bad"}">${ok ? (tries ? "答對了（第二次）" : "答對了！") : "正確答案"}</b> ${answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${ok && !g.fresh ? "<small>剛剛練過這題，這次不重複計分。</small>" : ""}`;
+            el.querySelector(".qz-f").innerHTML = `<b class="${ok ? "good" : "bad"}">${ok ? (tries ? (q.reveal === "right-only" ? "✓ 這次對了（重試後答對，不算獨立答對）" : "答對了（第二次）") : "✓ 答對了！") : "正確答案"}</b> ${answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${ok && !g.fresh ? "<small>剛剛練過這題，這次不重複計分。</small>" : ""}`;
             if (q.after || !ok || q.kind === "kk") speak(a.en, a.file || "");
             if (opt.onAnswer) opt.onAnswer(ok);
             if (opt.auto) return res({ ok, tries });

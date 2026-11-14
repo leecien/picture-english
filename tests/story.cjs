@@ -114,6 +114,10 @@ const h = (page) => {
   /* ---------- 1. Full-screen shell on a phone: one goal, one main action ---------- */
   const { ctx, page, errors } = await setup(browser);
   const t = h(page);
+  // The new novice unit (cat) and its field battle are covered by tests/novice.cjs; start right after them.
+  await t.ev(() => localStorage.setItem("pm-rpg-v1", JSON.stringify({ version: 1, at: "kk", nv: { track: "v1", step: "done", n01: true, field: true, taught: ["k", "æ", "t"], passed: ["k", "æ", "t"], lv: 2 } })));
+  await page.reload();
+  await page.waitForSelector(".world-canvas");
   const onScreen = (ids) =>
     t.ev((ids) => ids.every((id) => {
       const r = document.getElementById(id).getBoundingClientRect();

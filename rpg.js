@@ -203,7 +203,7 @@ const RPG = (() => {
       "T..HHH..........HHH....T",
       "T...a............b.....T",
       "T..,..==========.......T",
-      "T.....=........=....,..T",
+      "T.....=.....e..=....,..T",
       "T.m...=...,....=.......T",
       "T.....=...P....======@.T",
       "T.....=........=.......T",
@@ -251,6 +251,7 @@ const RPG = (() => {
       { ch: "b", id: "consonant", name: "子音老師 Cody", look: look({ skin: "#e8c39e", hair: "#a8744c", earIn: "#f3d2b3", cloth: "#5b8fb5", accent: "#ffd25e", ears: "bear" }) },
       { ch: "c", id: "stress", name: "重音老師 Stella", look: look({ skin: "#fff1e4", hair: "#f08b47", cloth: "#e8737f", accent: "#fff3b0", ears: "fox" }) },
       { ch: "d", id: "word", name: "村長 Kai", look: look({ hair: "#8a8a8a", cloth: "#6b8f5a", accent: "#f3d27a", hat: "#4f6d8f" }) },
+      { ch: "e", id: "echo", name: "音標圖鑑老師 Echo", look: look({ skin: "#f6dcc4", hair: "#3e5c8a", cloth: "#e9e2c8", accent: "#7fb4e6", hat: "#c9a45c" }) },
     ],
     mob: { name: "音節泡泡", shape: "bubble", colors: ["#c9b6ff", "#ffffff"], lv: 1, hp: 24, atk: 3, aggressive: false, kind: "phonics" },
   };
@@ -284,7 +285,11 @@ const RPG = (() => {
     turtle: { name: "岩甲龜", shape: "turtle", colors: ["#b3b3c0", "#7a8a5a"], lv: 4, hp: 80, atk: 6, aggressive: false, intents: ["guard", "attack", "attack"], shield: { name: "岩甲", icon: "🪨" }, kind: "scene" },
   };
   WIND.mob = WIND_MOBS.slime;
+  // No field monsters before anything is taught; after the first unit, only taught sounds are asked.
+  KK.mobAt = () => (NV.n01 ? ECHO_MOB : taughtUnits().length ? KK.mob : null);
   WIND.mobAt = (p) => (p.x < 12 ? WIND_MOBS.slime : p.x < 26 ? WIND_MOBS.bird : WIND_MOBS.turtle);
+  /* Novice-village field monster (docs/NOVICE_VILLAGE_V1.md §8): only taught sounds, long time, low damage. */
+  const ECHO_MOB = { name: "回音泡泡", shape: "bubble", colors: ["#bfe6ff", "#ffffff"], lv: 1, hp: 24, atk: 2, aggressive: false, kind: "sound" };
   const GUARDIAN = { name: "風之守衛", shape: "guardian", colors: ["#e3f5ff", "#7fb4e6"], lv: 6, hp: 120, atk: 6, intents: ["attack", "charge", "attack", "guard"], shield: { name: "風之盾", icon: "🌀" } };
   const GULL = { name: "搗蛋海鷗", shape: "bird", colors: ["#ffffff", "#9aa3b5"], lv: 4, hp: 1, atk: 0 };
   const LEVELS = { 1: "初級", 2: "中級", 3: "高級" };
@@ -344,6 +349,19 @@ const RPG = (() => {
   };
   if (!unlocked(data.at)) data.at = "kk";
   const W = data.story.wind;
+  /* Novice village v1 (pm-rpg-v1 .nv). track "v1": new players take the new course; "legacy": players who
+     already started the old KK lessons keep them (the new unit is offered by Echo). Results per sound keep
+     first-try right, right after a retry, wrong, timeout and assisted apart. */
+  data.nv = { step: "", taught: [], passed: [], n01: false, field: false, lv: 1, rec: {}, ...obj(data.nv) };
+  const NV = data.nv;
+  NV.taught = Array.isArray(NV.taught) ? NV.taught : [];
+  NV.passed = Array.isArray(NV.passed) ? NV.passed : [];
+  NV.rec = obj(NV.rec);
+  if (!NV.track) NV.track = data.kk.done || ["vowel", "consonant", "stress", "word"].some((k) => data.kk[k]) || Object.keys(obj(data.kk.units)).length ? "legacy" : "v1";
+  function nvRec(sym, kind) {
+    const r = (NV.rec[sym] = { ind: 0, retry: 0, wrong: 0, timeout: 0, assist: 0, ...obj(NV.rec[sym]) });
+    r[kind]++;
+  }
   /* Companion (pm-rpg-v1 .companion): earned in the find-luggage stage, never given at the start.
      bond grows from chats, wins and story; no feeding, no daily chores. */
   data.companion = { met: false, claimed: false, active: true, bond: 0, outfit: "", chat: {}, day: {}, ...obj(data.companion) };
@@ -564,6 +582,7 @@ const RPG = (() => {
       return `<li class="${done ? "done" : ""}"><b>${done ? "✅" : i === W.stage && kkDone() ? "▶️" : "⬜"} ${s.title}</b><small>會學：${s.learn}</small><small>內容：${esc(m.path)}（${m.sc ? m.sc.items.length : 0} 句）· 程度：${m.level}</small><small>${s.toeic}</small></li>`;
     }).join("");
     sheet(`<h3>📜 任務日誌</h3><p class="journal-now">目前目標：${esc(objective().text)}</p>
+      <h4>🐱 音之新手村（新版）· 冒險 Lv.${NV.lv}</h4><ul class="journal"><li class="${NV.n01 ? "done" : ""}"><b>${NV.n01 ? "✅" : NV.step ? "▶️" : "⬜"} N00＋N01 第一個字 cat</b><small>字母、聲音、KK 的不同；/k/ /æ/ /t/；先聽後選；組出 cat</small></li><li class="${NV.field ? "done" : ""}"><b>${NV.field ? "✅" : "⬜"} 回聲原野：回音泡泡</b><small>只考已教的音；答錯不公布答案，之後換別的字再出現</small></li><li><b>⬜ N02–N13、旅伴、三枚印記、失音魔王</b><small>製作中（docs/NOVICE_VILLAGE_V1.md）。目前接著用舊版的四堂課。</small></li></ul>
       <h4>🔤 KK 新手村 ${kkDone() ? "· 已畢業" : ""}</h4>${due.length ? `<p class="fine">需要多練的音：${due.map((x) => `/${esc(x)}/`).join(" ")}（找對應的老師選「練需要加強的音」）</p>` : ""}<ul class="journal">${kkRows}<li class="${data.kk.battle ? "done" : ""}"><b>${data.kk.battle ? "✅" : "⬜"} 教學戰鬥</b><small>答音標題打倒村口的音節泡泡</small></li></ul>
       <h4>🌬️ 風之旅行群島 ${W.done ? "· 故事完成" : ""}</h4><ul class="journal">${windRows}</ul>
       <h4>🧚 旅伴</h4><ul class="journal"><li class="${C.claimed ? "done" : ""}"><b>${C.claimed ? `✅ 露米同行中・默契 Lv.${bondLv()}` : W.stage >= 3 ? "▶️ 露米在行李轉盤等你" : "⬜ 完成「找回行李」後相遇"}</b><small>戰鬥中提供提示與護盾，也能一起用英文聊天</small></li></ul>
@@ -592,6 +611,10 @@ const RPG = (() => {
   /* ---------- objective / quest tracker ---------- */
   function objective() {
     const at = data.at;
+    if (NV.track === "v1" && !kkDone()) {
+      if (!NV.n01) return { text: "找村長 Kai：學第一個字 cat（字母、聲音、KK）", short: "新手村：cat", npc: "word", map: "kk" };
+      if (!NV.field) return { text: "到村子的回聲原野，用學過的 /k/ /æ/ /t/ 打倒一隻回音泡泡", short: "原野戰鬥", npc: null, map: "kk", mob: true };
+    }
     if (at === "kk" || !kkDone()) {
       const next = KK_TASKS.find((t) => !data.kk[t.id]);
       if (next) return { text: `找${KK.npcs.find((n) => n.id === next.npc).name}上「${next.title}」課`, short: `KK：${next.title}`, npc: next.npc, map: "kk" };
@@ -684,7 +707,7 @@ const RPG = (() => {
       },
       guide: () => {
         const o = objective();
-        return o.map === data.at && o.npc ? World.npc(o.npc) : data.kk.bubble && !data.kk.battle && data.at === "kk" ? World.entities.find((e) => e.story === "tutorial") : W.bag === "search" && data.at === "wind" ? World.entities.find((e) => e.story === "thief") : null;
+        return o.map === data.at && o.npc ? World.npc(o.npc) : o.mob && data.at === "kk" ? World.entities.filter((e) => e.kind === "mob" && !e.dead).sort((a, b) => dist(a) - dist(b))[0] : data.kk.bubble && !data.kk.battle && data.at === "kk" ? World.entities.find((e) => e.story === "tutorial") : W.bag === "search" && data.at === "wind" ? World.entities.find((e) => e.story === "thief") : null;
       },
       onStatus: status,
       onTick: Battle.tick,
@@ -858,6 +881,8 @@ const RPG = (() => {
     save();
   }
   async function kkNpc(e) {
+    if (e.id === "echo") return echo();
+    if (e.id === "word" && NV.track === "v1" && !NV.n01) return noviceUnit();
     const task = KK_TASKS.find((t) => t.npc === e.id);
     if (e.id === "word" && data.kk.word) {
       if (KK_TASKS.every((t) => data.kk[t.id])) return chief();
@@ -909,6 +934,235 @@ const RPG = (() => {
     await finishSummary(`KK 新手村・${task.title}`, next ? `下一步：找${KK.npcs.find((n) => n.id === next.npc).name}上「${next.title}」課。` : "四課都完成了，找村長 Kai 吧！");
     refresh();
   }
+  /* ---------- 音之新手村 v1: N00 + N01 (cat) ---------- */
+  const NV_STEPS = ["intro", "k", "æ", "check1", "t", "check2", "build"];
+  /* Plays a word's recording slowed down (labelled as such: it is not a single-sound recording). */
+  function slowWord(w) {
+    const it = Novice.word(w);
+    if (!it) return;
+    try {
+      VOICE.pause();
+      VOICE.src = it.au;
+      VOICE.currentTime = 0;
+      VOICE.defaultPlaybackRate = VOICE.playbackRate = 0.6;
+      VOICE.onended = () => (VOICE.defaultPlaybackRate = VOICE.playbackRate = 1);
+      const p = VOICE.play();
+      if (p) p.catch(() => {});
+    } catch (e) {}
+  }
+  function bindNv() {
+    $("dlg-body").querySelectorAll("[data-slow]").forEach((b) => (b.onclick = () => slowWord(b.dataset.slow)));
+    $("dlg-body").querySelectorAll("[data-tts]").forEach((b) => (b.onclick = () => Pron.play(b.dataset.tts, "")));
+  }
+  const exampleBtn = (w, sym) => {
+    const it = Novice.word(w);
+    return it ? `<button type="button" class="demo" data-say="${esc(w)}">🔊 ${Novice.splitHTML(w, sym)} <small class="qz-kk">${esc(it.kk)}</small></button>` : "";
+  };
+  async function nvPanel(html, next) {
+    const p = Talk.panel(html, next);
+    bindNv();
+    return p;
+  }
+  /* Untimed teaching panel for one taught sound: hear (example words), how, spelling, examples. */
+  function soundCardHTML(sym) {
+    const S = Novice.SOUNDS[sym];
+    return `<div class="nv-card"><p class="dlg-zh">新的音：<b class="qz-sym big">/${esc(sym)}/</b>（${S.kind}）</p>
+      <p><b>① 聽聲音</b>　單音錄音還沒有，先聽含有這個音的例字：標起來的字母就是 /${esc(sym)}/。</p>
+      <p><b>② 怎麼發</b>　${esc(S.how)}</p>
+      <p><b>③ 怎麼寫</b>　${S.spell.map(([l, ex]) => `<b class="nv-hit">${esc(l)}</b>（${esc(ex)}）`).join("　")}</p>
+      <p><b>④ 聽例字</b>（每個都可以重複點）</p><div class="teach-demo">${S.examples.map((w) => exampleBtn(w, sym)).join("")}<button type="button" class="demo" data-slow="${esc(S.examples[0])}">🐢 放慢的整字 ${esc(S.examples[0])}<small>錄音 0.6 倍速，不是單音</small></button></div></div>`;
+  }
+  async function nvStepDone(label) {
+    const v = await Talk.choose(`「${label}」完成！進度已保存。`, [
+      { label: "▶ 繼續下一步", value: "next" },
+      { label: "先休息（回來找 Kai 會接著上）", value: "later" },
+    ]);
+    return v === "next";
+  }
+  /* First recognition: hear, then pick (untimed). A target counts only when it is right on the first try. */
+  async function nvCheck(targets, label) {
+    const need = targets.filter((t) => !NV.passed.includes(t));
+    let asked = 0,
+      last = "";
+    while (need.length && asked < 10) {
+      const target = need[asked % need.length];
+      const q = Novice.soundQuestion(NV.taught, { target, avoid: last, ctx: "novice" });
+      last = q.wordId;
+      $("dlg-name").dataset.step = `${label}：還要 ${need.length} 個音`;
+      const r = await Talk.quiz(q);
+      asked++;
+      nvRec(target, r.tries ? "retry" : "ind");
+      if (!r.tries) {
+        NV.passed.push(target);
+        need.splice(need.indexOf(target), 1);
+      }
+      save();
+    }
+    delete $("dlg-name").dataset.step;
+    return !need.length;
+  }
+  /* Picture → put the taught sounds into the slots → confirm. Wrong slots stay open; the word is revealed only when right. */
+  function nvBuild(w) {
+    const it = Novice.word(w),
+      target = Novice.kkSounds(it.kk);
+    return new Promise((res) => {
+      let tries = 0;
+      const slots = target.map(() => null);
+      const chips = Novice.CHAPTERS.find((c) => c.id === "N01").sounds.slice().sort(() => Math.random() - 0.5);
+      const paint = (marks) => {
+        $("dlg-body").innerHTML = `<p class="dlg-zh">看圖，把這個字的聲音依順序放進格子，再按確認。（不會先播答案）</p><div class="nv-pic" aria-label="圖片題">${pic(it)}</div>
+          <div class="nv-slots">${slots.map((x, i) => `<button type="button" class="nv-slot ${marks ? marks[i] : ""}" data-slot="${i}" aria-label="第 ${i + 1} 格">${x ? `/${esc(x)}/` : "＿"}${marks && marks[i] === "bad" ? "<sup>✕</sup>" : marks && marks[i] === "good" ? "<sup>✓</sup>" : ""}</button>`).join("")}</div>
+          <div class="nv-chips">${chips.map((c) => `<button type="button" class="nv-chip" data-chip="${esc(c)}">/${esc(c)}/</button>`).join("")}</div>
+          <div class="qz-f" role="status">${marks ? "<b class='bad'>✕ 還沒組對</b><small>標 ✕ 的格子清空了，再聽想一想。對的格子留著。</small>" : ""}</div>
+          <div class="dlg-row"><button type="button" class="dlg-next" id="nv-ok" ${slots.every(Boolean) ? "" : "disabled"}>確認</button></div>`;
+        $("dlg-body").querySelectorAll("[data-chip]").forEach((b) => (b.onclick = () => {
+          const i = slots.indexOf(null);
+          if (i < 0) return;
+          slots[i] = b.dataset.chip;
+          paint();
+        }));
+        $("dlg-body").querySelectorAll("[data-slot]").forEach((b) => (b.onclick = () => {
+          slots[+b.dataset.slot] = null;
+          paint();
+        }));
+        $("nv-ok").onclick = () => {
+          const ok = slots.every((x, i) => x === target[i]);
+          if (!ok) {
+            if (!tries) Learn.grade({ recK: "w", item: it, ctx: "novice-build" }, false, "quest");
+            tries++;
+            SND.play("wrong");
+            const marks = slots.map((x, i) => (x === target[i] ? "good" : "bad"));
+            slots.forEach((x, i) => marks[i] === "bad" && (slots[i] = null));
+            return paint(marks);
+          }
+          if (!tries) Learn.grade({ recK: "w", item: it, ctx: "novice-build" }, true, "quest");
+          SND.play("correct");
+          speak(it.w, it.au);
+          $("dlg-body").innerHTML = `<p class="dlg-zh"><b class="good">✓ 組對了${tries ? "（重試後）" : ""}！</b></p><div class="nv-reveal"><span class="nv-pic">${pic(it)}</span><span class="nv-word">${Learn.sayHTML(it.w, it.au)}</span><span class="qz-kk big">${esc(it.kk)}</span>${Novice.breakdownHTML(w)}</div>
+            <div class="teach-demo"><button type="button" class="demo" data-say="${esc(w)}">🔊 正常速度 ${esc(w)}（錄音）</button><button type="button" class="demo" data-slow="${esc(w)}">🐢 放慢的整字（錄音 0.6 倍速）</button></div><p class="fine">單音一個一個接起來的錄音還沒有；這裡播放的都是整字錄音。</p>
+            <div class="dlg-row"><button type="button" class="dlg-next" id="nv-done">▶ 繼續</button></div>`;
+          $("dlg-body").querySelectorAll("[data-say]").forEach((b) => (b.onclick = () => speak(it.w, it.au)));
+          bindNv();
+          $("nv-done").onclick = () => res({ ok: true, tries });
+        };
+      };
+      paint();
+    });
+  }
+  async function noviceUnit() {
+    if (!NV.step) NV.step = "intro";
+    const at = () => NV_STEPS.indexOf(NV.step);
+    if (at() <= 0) {
+      await Talk.line("Hello! Let's start with one word: cat.", "歡迎來到<b>音之新手村</b>！村裡的聲音都跑散了。我們先從一個字開始：<b>cat</b>。");
+      await nvPanel(`<p class="dlg-zh">同一個字有三種「樣子」，它們不是同一件事：</p><div class="teach">
+        <div class="teach-card"><b>① 字母（拼字）</b><p class="nv-big">c　a　t</p><p>每個字母有自己的名字：c 念 see、a 念 ay、t 念 tee。</p><button type="button" class="demo" data-tts="C. A. T.">🔤 聽字母名字（裝置語音）</button></div>
+        <div class="teach-card"><b>② 聲音</b><p class="nv-big">${pic(Novice.word("cat"))}</p><p>念 cat 的時候，不是把三個字母的名字念出來。</p><button type="button" class="demo" data-say="cat">🔊 聽整字 cat（錄音）</button></div>
+        <div class="teach-card"><b>③ KK 音標</b><p class="qz-kk big">[kæt]</p><p>KK 記的是<b>聲音</b>：cat 有三個音 /k/ /æ/ /t/。</p></div></div>
+        <p class="dlg-zh">所以：字母 c 的名字是 see，但在 cat 裡，它發的是 <b class="qz-sym">/k/</b> 的聲音。接下來一次學一個音。</p>`, "▶ 我懂了，學第一個音");
+      NV.step = "k";
+      save();
+    }
+    for (const sym of ["k", "æ"]) {
+      if (NV.step !== sym) continue;
+      await nvPanel(soundCardHTML(sym), "▶ 我聽好了");
+      if (!NV.taught.includes(sym)) NV.taught.push(sym);
+      NV.step = sym === "k" ? "æ" : "check1";
+      save();
+      if (!(await nvStepDone(`/${sym}/`))) return finishSummary("音之新手村・cat", "回來找村長 Kai 會接著上。");
+    }
+    if (NV.step === "check1") {
+      await Talk.line("Listen, then choose.", "來試試看：<b>先聽一個字，再選它的音</b>。不限時；選錯不會公布答案，可以再聽再選。");
+      if (!(await nvCheck(["k", "æ"], "辨認 /k/ /æ/"))) return finishSummary("音之新手村・cat", "還有音要再認一次。回來找 Kai 會接著練。");
+      NV.step = "t";
+      save();
+      if (!(await nvStepDone("辨認 /k/ /æ/"))) return finishSummary("音之新手村・cat", "回來找村長 Kai 會接著上。");
+    }
+    if (NV.step === "t") {
+      await nvPanel(soundCardHTML("t"), "▶ 我聽好了");
+      if (!NV.taught.includes("t")) NV.taught.push("t");
+      NV.step = "check2";
+      save();
+    }
+    if (NV.step === "check2") {
+      if (!(await nvCheck(["k", "æ", "t"], "辨認 /k/ /æ/ /t/"))) return finishSummary("音之新手村・cat", "還有音要再認一次。回來找 Kai 會接著練。");
+      NV.step = "build";
+      save();
+      if (!(await nvStepDone("辨認 /k/ /æ/ /t/"))) return finishSummary("音之新手村・cat", "回來找村長 Kai 會接著上。");
+    }
+    if (NV.step === "build") {
+      await Talk.line("", "最後，把三個音接起來：<b>看圖組音標</b>。");
+      await nvBuild("cat");
+      NV.step = "done";
+      NV.n01 = true;
+      NV.lv = Math.max(NV.lv, 2);
+      save();
+      addXP(15);
+      toast("🐱", "第一個字 cat 完成", "冒險 Lv.2 · 回聲原野出現了回音泡泡", "levelup");
+      await finishSummary("音之新手村・N01 cat", "下一步：到回聲原野，用 /k/ /æ/ /t/ 打倒一隻回音泡泡。Echo 可以隨時查音和查字。");
+      afterTalk = mount; // field monsters appear now that sounds are taught
+    }
+  }
+  /* Echo: the sound picture-dictionary. Every one of the 41 sounds can be previewed; only taught ones are practised. */
+  function pickFrom(html) {
+    return new Promise((res) => {
+      $("dlg-body").innerHTML = `${html}<div class="dlg-row"><button type="button" class="dlg-next" data-v="">↩ 回上一層</button></div>`;
+      $("dlg-body").querySelectorAll("[data-v]").forEach((b) => (b.onclick = () => res(b.dataset.v)));
+    });
+  }
+  async function echo() {
+    for (;;) {
+      const v = await Talk.choose("我是 <b>Echo</b>，音標圖鑑老師。想查什麼？", [
+        { label: "🔤 選一個音：它常出現在哪些字？", value: "snd", sub: "41 個音都能預覽" },
+        { label: "📖 選一個字：它是哪些聲音組成的？", value: "word", sub: "只列出人工核對過拆音的字" },
+        ...(NV.track === "legacy" && !NV.n01 ? [{ label: "🐱 上新版入門課：cat", value: "unit", sub: "字母、聲音、KK＋/k/ /æ/ /t/" }] : []),
+        { label: "再見", value: "bye" },
+      ]);
+      if (v === "bye") return;
+      if (v === "unit") return noviceUnit();
+      if (v === "snd") {
+        const grid = (title, list) => `<h4 class="nv-h">${title}</h4><div class="nv-grid">${list.map((x) => `<button type="button" data-v="${esc(x)}" class="${NV.taught.includes(x) ? "taught" : ""}">/${esc(x)}/${NV.taught.includes(x) ? "<small>已學</small>" : ""}</button>`).join("")}</div>`;
+        const all = Novice.CHAPTERS.flatMap((c) => c.sounds);
+        const sym = await pickFrom(`<p class="dlg-zh">41 個音（17 母音＋24 子音）。已學的音可以練習；其他的先預覽。</p>${grid("母音", all.filter((x) => Novice.VOWELS.includes(x)))}${grid("子音", all.filter((x) => !Novice.VOWELS.includes(x)))}`);
+        if (!sym) continue;
+        if (Novice.SOUNDS[sym] && NV.taught.includes(sym)) {
+          const r = await pickFrom(`${soundCardHTML(sym)}${NV.taught.length >= 2 ? '<div class="dlg-row"><button type="button" class="dlg-next" data-v="practice">🎯 開始練習（3 題，不限時）</button></div>' : '<p class="fine">再學一個音之後就能在這裡練習。</p>'}`);
+          if (r === "practice") {
+            let last = "";
+            for (let i = 0; i < 3; i++) {
+              const q = Novice.soundQuestion(NV.taught, { target: i === 1 ? null : sym, avoid: last, ctx: "echo" });
+              last = q.wordId;
+              const res = await Talk.quiz(q);
+              nvRec(q.targetSound, res.tries ? "retry" : "ind");
+            }
+            save();
+            await finishSummary(`Echo・/${sym}/ 練習`, "可以再查其他的音或字。");
+          }
+          continue;
+        }
+        const ch = Novice.chapterOf(sym);
+        await pickFrom(`<div class="nv-card"><p class="dlg-zh"><b class="qz-sym big">/${esc(sym)}/</b>（${Novice.VOWELS.includes(sym) ? "母音" : "子音"}）</p><p>預覽：會在 <b>${esc(ch.id)} ${esc(ch.title)}</b> 教。</p><p>規劃例字：${esc(Novice.PLAN_EXAMPLES[sym] || "")}<small>（發音說明、例字錄音與拆音核對完成後才開放教學與出題）</small></p></div>`);
+        continue;
+      }
+      const w = await pickFrom(`<p class="dlg-zh">選一個字，看它由哪些聲音組成：</p><div class="nv-grid words">${Object.keys(Novice.WORDS_SPLIT).map((x) => `<button type="button" data-v="${esc(x)}">${pic(Novice.word(x))} ${esc(x)}</button>`).join("")}</div>`);
+      if (!w) continue;
+      const it = Novice.word(w);
+      await pickFrom(`<div class="nv-reveal"><span class="nv-pic">${pic(it)}</span><span class="nv-word">${Learn.sayHTML(it.w, it.au)}</span><span class="qz-kk big">${esc(it.kk)}</span>${Novice.breakdownHTML(w)}</div>
+        <div class="teach-demo"><button type="button" class="demo" data-say="${esc(w)}">🔊 正常速度（整字錄音）</button><button type="button" class="demo" data-slow="${esc(w)}">🐢 放慢（整字錄音 0.6 倍速）</button><button type="button" class="demo" disabled>單音錄音：尚未提供</button></div><p class="fine">「放慢」只是把整字錄音放慢，不是把單音一個一個接起來。</p>`);
+    }
+  }
+  /* bind data-say / data-slow inside Echo's pages too */
+  new MutationObserver(() => {
+    const b = $("dlg-body");
+    b.querySelectorAll("[data-say]:not([data-bound])").forEach((x) => {
+      x.dataset.bound = "1";
+      if (!x.onclick && !x.classList.contains("say-s") && !x.classList.contains("say-btn") && !x.classList.contains("qz-hear")) x.onclick = () => {
+        const w = Learn.wordBy(x.dataset.say) || Novice.word(x.dataset.say);
+        if (w) speak(w.w, w.au);
+      };
+    });
+    b.querySelectorAll("[data-slow]:not([data-bound])").forEach((x) => ((x.dataset.bound = "1"), (x.onclick = () => slowWord(x.dataset.slow))));
+  }).observe($("dlg-body"), { childList: true, subtree: true });
+
   /* End-of-section summary: what was used, what still needs practice, what to do next. */
   async function finishSummary(label, nextText) {
     const s = Learn.flush("quest", label);
@@ -1184,7 +1438,14 @@ const RPG = (() => {
       look = mob.look.hp ? mob.look : { ...mob.look, hp: mob.maxHp };
     let make,
       tutorial = "";
-    if (region === "kk") {
+    if (region === "kk" && look.kind === "sound") {
+      let lastWord = "";
+      make = () => {
+        const q = Novice.soundQuestion(NV.taught, { ctx: "battle", avoid: lastWord });
+        lastWord = q.wordId;
+        return q;
+      };
+    } else if (region === "kk") {
       const taught = taughtUnits();
       make = (B) => (B.turn % 3 === 0 ? Learn.wordKK("listen", taughtVowels()) : Learn.phonicsQuestion(taught));
       if (mob.story === "tutorial") tutorial = "教學：答對就攻擊，第一次答對會先戳破泡泡膜；答錯或時間到會被攻擊。前三題時間比較多，傷害也比較低。";
@@ -1210,10 +1471,16 @@ const RPG = (() => {
       make,
       tutorial,
       companion: buddyCtx(),
+      onSettle: look.kind === "sound" ? (q, kind) => (nvRec(q.targetSound, kind === "right" ? (q.assisted ? "assist" : "ind") : kind), save()) : null,
       onEnd(result) {
         if (result === "win") {
           World.defeat(mob);
           winBond();
+          if (look.kind === "sound" && !NV.field) {
+            NV.field = true;
+            save();
+            toast("🫧", "第一場原野戰鬥勝利", "下一步：接著上村裡老師的課", "badge");
+          }
           if (mob.story === "tutorial") {
             data.kk.battle = true;
             save();

@@ -1259,3 +1259,139 @@ canvas.hit {
     animation: none;
   }
 }
+
+/* ---- 音之新手村 v1 (novice.js / rpg.js) ---- */
+.nv-card {
+  display: grid;
+  gap: 6px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2f382b;
+}
+.nv-card p {
+  margin: 0;
+}
+.nv-card small {
+  display: block;
+  color: #5d6653;
+}
+.qz-sym.big {
+  font-size: 28px;
+}
+.nv-big {
+  font-size: 30px;
+  letter-spacing: 0.08em;
+  margin: 4px 0;
+}
+mark.nv-hit,
+b.nv-hit {
+  background: #fff1b8;
+  color: #6b3e00;
+  border-bottom: 3px solid #d08a00;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+.nv-pic {
+  font-family: var(--emoji);
+  font-size: 64px;
+  text-align: center;
+  line-height: 1.1;
+}
+.nv-slots,
+.nv-chips {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+.nv-slot,
+.nv-chip {
+  min-width: 64px;
+  min-height: 56px;
+  font-size: 26px;
+  border-radius: 14px;
+  border: 2px solid #c9cfba;
+  background: #fffdf6;
+  color: #2f382b;
+}
+.nv-slot {
+  border-style: dashed;
+}
+.nv-slot.good {
+  background: #ddf4e8;
+  color: #153f2b;
+  border: 2px solid #238653;
+}
+.nv-slot.bad {
+  background: #fde8e7;
+  color: #732423;
+  border: 2px solid #bc4141;
+}
+.nv-slot sup {
+  font-size: 13px;
+}
+.nv-reveal {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  font-size: 18px;
+}
+.nv-word {
+  font-size: 28px;
+  font-weight: 700;
+}
+.nv-break {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.nv-pair {
+  display: inline-flex;
+  gap: 4px;
+  align-items: baseline;
+  padding: 4px 8px;
+  border-radius: 10px;
+  background: #f3efe0;
+  color: #2f382b;
+}
+.nv-pair i {
+  color: #7a6d4a;
+  font-style: normal;
+}
+.nv-h {
+  margin: 6px 0 4px;
+}
+.nv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+  gap: 6px;
+}
+.nv-grid.words {
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+}
+.nv-grid button {
+  min-height: 48px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: 1px solid #c9cfba;
+  background: #fffdf6;
+  color: #2f382b;
+}
+.nv-grid.words button {
+  font-size: 16px;
+}
+.nv-grid button.taught {
+  background: #ddf4e8;
+  color: #153f2b;
+  border-color: #238653;
+}
+.nv-grid small {
+  display: block;
+  font-size: 11px;
+}
+.teach-demo button small {
+  display: block;
+  font-size: 11px;
+  color: #5d6653;
+}

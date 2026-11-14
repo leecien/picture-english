@@ -258,7 +258,7 @@ const Battle = (() => {
   }
   /* Seconds for a question: 10 by default, 14 for sentences, more for long options and the tutorial. */
   function timeFor(q) {
-    let t = q.recK === "s" ? 14 : 10;
+    let t = q.time || (q.recK === "s" ? 14 : 10);
     if (q.options.some((o) => String(o.html).replace(/<[^>]+>/g, "").length > 28)) t += 4;
     if (B.ctx.tutorial && B.turn <= 3) t *= 1.5;
     if (st.pref.relaxed) t *= 1.5;
@@ -345,9 +345,10 @@ const Battle = (() => {
         if (!live(tok) || B.q !== q) return;
         if (ok) return go();
         // Audio failed: say so, offer a replay or the written word; the clock waits.
-        $("bt-feedback").innerHTML = `<b class="bad">聲音沒有播出來</b><span class="dlg-row"><button type="button" id="bt-replay">🔊 重播</button><button type="button" id="bt-read">👀 改看文字</button></span>`;
+        // A sound question cannot fall back to text (the word would give the answer away): replay only.
+        $("bt-feedback").innerHTML = `<b class="bad">聲音沒有播出來</b><span class="dlg-row"><button type="button" id="bt-replay">🔊 點擊播放</button>${q.noText ? "" : '<button type="button" id="bt-read">👀 改看文字</button>'}</span>${q.noText ? "<small>倒數和選項會等聲音播完才開始。</small>" : ""}`;
         $("bt-replay").onclick = () => playAwait(q.audio).then((ok2) => ok2 && ($("bt-feedback").innerHTML = "", go()));
-        $("bt-read").onclick = () => {
+        if ($("bt-read")) $("bt-read").onclick = () => {
           $("bt-feedback").innerHTML = `<b>題目文字：</b>${esc(q.audio.text)}`;
           go();
         };
@@ -519,14 +520,17 @@ const Battle = (() => {
     B.settled = true;
     stopClock();
     const bs = [...$("bt-act").querySelectorAll(".qz-o button")];
+    // Listen-first sound questions reveal nothing on a miss (no lit-up answer, no word, no recording of it).
+    const hide = q.reveal === "right-only" && kind !== "right";
     bs.forEach((b, i) => {
       b.disabled = true;
-      if (q.options[i].ok) b.classList.add("right");
+      if (q.options[i].ok && !hide) b.classList.add("right");
     });
     if (kind === "wrong" && bs[idx]) bs[idx].classList.add("wrong");
     const ok = kind === "right";
     SND.play(ok ? "correct" : "wrong");
     // Records: answers through Learn; a timeout is metadata, not a language error; hinted-to-one is practice.
+    if (B.ctx.onSettle) B.ctx.onSettle(q, kind);
     if (kind === "timeout") Learn.timeout(q);
     else if (q.assisted && ok) Learn.assisted(q);
     else Learn.grade(q, ok, "battle");
@@ -539,8 +543,10 @@ const Battle = (() => {
       setTimeout(() => live(tok) && after(), 900);
     } else {
       // The explanation is not timed: read it, then continue.
-      $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "正確答案"}</b> ${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${kind === "timeout" ? "<small>時間到不算英文答錯，這題會在之後的複習再出現。</small>" : ""}`;
-      if (a.en) speak(a.en, a.file || "");
+      if (hide)
+        $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "✕ 不是這個音"}</b><small>這題記下來了，之後換別的字再出現。答案不在這裡公布。</small>${kind === "timeout" ? "<small>時間到不算辨音答錯。</small>" : ""}`;
+      else $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "正確答案"}</b> ${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${kind === "timeout" ? "<small>時間到不算英文答錯，這題會在之後的複習再出現。</small>" : ""}`;
+      if (a.en && !hide) speak(a.en, a.file || "");
       const go = document.createElement("button");
       go.type = "button";
       go.className = "qz-next";
