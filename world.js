@@ -36,10 +36,14 @@ const World = (() => {
   const api = { paused: false, T };
 
   /* ---------- art loading (manifest.sprites / manifest.tiles) ---------- */
+  /* Art rule (#6): characters share the simple NPC look drawn in code. A character sheet is used only when its
+     manifest entry says "style": "simple" (drawn to match); anything else, such as the PR #3 hand-painted
+     sources, is ignored on purpose rather than waiting for a load failure. Tiles are not affected. */
   function loadArt(m) {
     for (const group of ["sprites", "tiles"])
       for (const [k, s] of Object.entries((m && m[group]) || {})) {
         if (!s || !s.file) continue;
+        if (group === "sprites" && !k.startsWith("item-") && s.style !== "simple") continue;
         const img = new Image();
         img.onload = () => {
           art[group][k] = { img, ...s };
@@ -207,7 +211,7 @@ const World = (() => {
     portals = findAll("@");
     findAll("m").forEach((p, i) => ents.push(spawnMob(p, 0.5 + i * 0.4)));
     if (def.petLook) {
-      // The puppy starts beside the hero, never on top of it.
+      // The companion starts beside the hero, never on top of it.
       const spot = [[-1, 1], [1, 1], [-1, 0], [1, 0], [0, 1]].map(([dx, dy]) => ({ x: hero.tx + dx, y: hero.ty + dy })).find((q) => walkableRaw(q.x, q.y)) || { x: hero.tx, y: hero.ty };
       ents.push(actor("pet", spot.x, spot.y, { look: def.petLook, trail: [] }));
     }
@@ -232,7 +236,7 @@ const World = (() => {
     run();
   }
   function spawnMob(p, wait) {
-    const m = map.mob;
+    const m = (map.mobAt && map.mobAt(p)) || map.mob;
     return actor("mob", p.x, p.y, {
       home: p,
       wait,
@@ -308,7 +312,7 @@ const World = (() => {
     let best = null,
       bd = 22;
     for (const e of ents) {
-      if (e === hero || e.kind === "pet" || e.dead) continue;
+      if (e === hero || (e.kind === "pet" && !(e.look && e.look.kind === "sprite")) || e.dead) continue;
       const d = Math.hypot(e.px - wx, e.py - (e.kind === "drop" ? 0 : 8) - wy);
       if (d < bd) {
         bd = d;
@@ -356,6 +360,10 @@ const World = (() => {
   const near = (e) => Math.max(Math.abs(e.tx - hero.tx), Math.abs(e.ty - hero.ty)) <= 1;
   function approach(e) {
     if (hero.down) return;
+    if (e.kind === "pet") {
+      if (opts.onTap) opts.onTap(e);
+      return;
+    }
     standUp();
     if (e.kind === "mob") {
       if (e.dead) return;
@@ -1025,6 +1033,20 @@ const World = (() => {
     }
     ctx.fill();
     const by = foot - (e.sit ? 2 : 7) - bob;
+    if (L.cape) {
+      // short cape: behind the body from the front, over it from the back
+      ctx.fillStyle = L.cape;
+      ctx.beginPath();
+      const sway = e.moving ? Math.sin(e.t * 12) * 1.5 : 0;
+      if (back) ctx.roundRect(x - 9, by - 13, 18, 15 + sway * 0.3, [5, 5, 3, 3]);
+      else {
+        ctx.moveTo(x - 8, by - 12);
+        ctx.lineTo(x + 8, by - 12);
+        ctx.lineTo(x + 10 - side * 2 + sway, by + 1);
+        ctx.lineTo(x - 10 - side * 2 + sway, by + 1);
+      }
+      ctx.fill();
+    }
     // body
     ctx.fillStyle = L.cloth;
     ctx.beginPath();
@@ -1281,6 +1303,57 @@ const World = (() => {
         ctx.arc(0, -21, 2.5, 0, 7);
         ctx.fill();
         break;
+      case "slime":
+        // a round grass slime with a leaf on top
+        ctx.moveTo(-12, 0);
+        ctx.quadraticCurveTo(-13, -16, 0, -18);
+        ctx.quadraticCurveTo(13, -16, 12, 0);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = c2;
+        ctx.beginPath();
+        ctx.ellipse(3, -19, 5, 2.4, -0.5, 0, 7);
+        ctx.fill();
+        ctx.fillStyle = "#ffffff60";
+        ctx.beginPath();
+        ctx.ellipse(-5, -12, 3, 2, -0.4, 0, 7);
+        ctx.fill();
+        break;
+      case "turtle":
+        // rock-shell turtle: legs, head, and a stony dome
+        ctx.fillStyle = c2;
+        [-8, 8].forEach((dx) => ctx.fillRect(dx - 2.5, -4, 5, 5));
+        ctx.beginPath();
+        ctx.arc(e.dir === "left" ? -12 : 12, -7, 4, 0, 7);
+        ctx.fill();
+        ctx.fillStyle = c1;
+        ctx.beginPath();
+        ctx.ellipse(0, -8, 12, 9, 0, Math.PI, 0);
+        ctx.lineTo(12, -4);
+        ctx.lineTo(-12, -4);
+        ctx.fill();
+        ctx.strokeStyle = "#00000030";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(-6, -15);
+        ctx.lineTo(-3, -6);
+        ctx.moveTo(5, -16);
+        ctx.lineTo(3, -6);
+        ctx.stroke();
+        break;
+      case "guardian":
+        // wind guardian: a cloud with a calm mask and a swirl
+        [[-9, -12, 8], [9, -12, 8], [0, -18, 10], [0, -8, 11]].forEach(([dx, dy, r]) => {
+          ctx.beginPath();
+          ctx.arc(dx, dy, r, 0, 7);
+          ctx.fill();
+        });
+        ctx.strokeStyle = c2;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(0, -26, 4, Math.PI * 0.2, Math.PI * 1.8);
+        ctx.stroke();
+        break;
       case "bubble":
         // A wobbly letter bubble: translucent body, shine, and a tiny floating "ə".
         ctx.globalAlpha *= 0.85;
@@ -1502,6 +1575,24 @@ const World = (() => {
       ctx.fillRect(hx - 5, hy + 5, 10, 2.5);
     }
   }
+  /* Wind sprite companion: the NPC chibi, scaled down, floating, with leaf-shaped wings. */
+  function fairy(e, L) {
+    const fl = reduce ? 0 : Math.sin(e.t * 3) * 2.5;
+    shadow(e.px, e.py + 10, 6);
+    ctx.save();
+    ctx.translate(e.px, e.py + 10 - 8 + fl);
+    ctx.scale(0.72, 0.72);
+    ctx.translate(-e.px, -(e.py + 10));
+    const flap = reduce ? 0.2 : Math.abs(Math.sin(e.t * 9)) * 0.35;
+    ctx.fillStyle = L.wing || "#c8f4ffb0";
+    [-1, 1].forEach((s0) => {
+      ctx.beginPath();
+      ctx.ellipse(e.px + s0 * 11, e.py - 14, 9, 4.5, s0 * (0.6 + flap), 0, 7);
+      ctx.fill();
+    });
+    chibi({ ...e, moving: false, sit: false }, L);
+    ctx.restore();
+  }
   function drawFx() {
     for (const f of fx) {
       const k = f.t / f.life;
@@ -1624,7 +1715,8 @@ const World = (() => {
         const row = DIRS.indexOf(e.dir);
         if (e.kind === "drop") return dropIcon(e);
         if (e.kind === "pet") {
-          if (!actorSheet("pet", e, row, 32)) puppy(e, e.look);
+          if (e.look.kind === "sprite") fairy(e, e.look);
+          else if (!actorSheet("pet", e, row, 32)) puppy(e, e.look);
           return;
         }
         if (e.kind === "hero" && e.down) {
@@ -1682,6 +1774,14 @@ const World = (() => {
     near,
     clearKeys: () => held.clear(),
     npc: (id) => ents.find((e) => e.kind === "npc" && e.id === id),
+    /* Companion joins or leaves the party at runtime (story reward, rest/active toggle). */
+    setCompanion(look) {
+      const old = ents.find((e) => e.kind === "pet");
+      if (old) ents.splice(ents.indexOf(old), 1);
+      if (!look) return;
+      const spot = [[-1, 1], [1, 1], [-1, 0], [1, 0], [0, 1]].map(([dx, dy]) => ({ x: hero.tx + dx, y: hero.ty + dy })).find((q) => walkableRaw(q.x, q.y)) || { x: hero.tx, y: hero.ty };
+      ents.push(actor("pet", spot.x, spot.y, { look, trail: [], name: look.name }));
+    },
     /* Back to the map's start tile (menu "回到入口" when stuck). */
     toStart() {
       const s0 = find("P");
@@ -1737,7 +1837,8 @@ const World = (() => {
       const e = { kind, look, px: w / s0 / 2, py: h / s0 - 18, dir: opt.dir || "down", t: opt.t || 0, moving: false, hurt: opt.hurt || 0, swing: opt.swing || 0, lunge: 0 };
       try {
         const sheet = kind === "hero" ? "hero" : kind === "pet" ? "pet" : look && look.sprite;
-        if (!actorSheet(sheet, e, DIRS.indexOf(e.dir), kind === "mob" ? 44 : 48)) {
+        if (look && look.kind === "sprite") fairy(e, look);
+        else if (!actorSheet(sheet, e, DIRS.indexOf(e.dir), kind === "mob" ? 44 : 48)) {
           if (kind === "mob") monster(e, look);
           else if (kind === "pet") puppy(e, look);
           else chibi(e, look);

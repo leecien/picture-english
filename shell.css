@@ -285,7 +285,8 @@ body.field {
   cursor: pointer;
 }
 .dlg-next,
-.qz-next {
+.qz-next,
+.bt-ready {
   background: var(--g-accent) !important;
   color: #fff !important;
   border-color: var(--g-accent) !important;
@@ -664,6 +665,164 @@ canvas.hit {
   color: #4f6aa8;
 }
 
+/* ---- timed battle ---- */
+.bt {
+  grid-template-rows: minmax(120px, 0.7fr) auto minmax(0, auto);
+}
+.bt-foe canvas,
+.bt-me canvas {
+  width: min(28vw, 120px);
+  height: min(28vw, 120px);
+}
+.bt-me canvas.bt-buddy {
+  width: 56px;
+  height: 56px;
+  align-self: flex-end;
+  margin-left: -24px;
+}
+.bt-q {
+  display: grid;
+  gap: 6px;
+}
+.bt-top {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.bt-turn {
+  font-weight: 700;
+  margin-right: auto;
+  font-size: 13px;
+}
+.shell .bt-mini {
+  min-height: 36px !important;
+  padding: 4px 10px !important;
+  font-size: 12.5px;
+  box-shadow: none !important;
+}
+.bt-clock {
+  position: relative;
+  height: 16px;
+  border-radius: 8px;
+  background: #e6e3d4;
+  overflow: hidden;
+}
+.bt-clock i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, #7fb4e6, #4f9be8);
+  transition: width 0.1s linear;
+}
+.bt-clock i.low {
+  background: linear-gradient(90deg, #ff9a8a, #e5584a);
+}
+.bt-clock span {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  font: 700 11px/16px var(--body);
+}
+.bt-q .qz-o button {
+  min-height: 52px;
+}
+.qz-o button.gone {
+  visibility: hidden;
+}
+.bt-help {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.shell .bt-help button {
+  min-height: 44px;
+  padding: 4px 8px;
+  font-size: 13px;
+  display: grid;
+  justify-items: center;
+  box-shadow: none;
+}
+.bt-help small {
+  font-size: 10.5px;
+  color: #6f7861;
+}
+.bt-buddy-hint {
+  background: #e9f9ff !important;
+  border-color: #9fd7ea !important;
+}
+.bt-pause {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  background: #1b2216cc;
+  color: #fff;
+  z-index: 2;
+  text-align: center;
+}
+.bt-pause p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+.bt-pause .fine {
+  color: #e8eedc;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* ---- companion panel ---- */
+.buddy-card {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+.buddy-card canvas {
+  width: 84px;
+  height: 84px;
+  border-radius: 16px;
+  background: #e9f9ff;
+}
+.bond {
+  height: 12px;
+  border-radius: 6px;
+  background: #e6e3d4;
+  overflow: hidden;
+}
+.bond i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #a7e3f5, #6fc6e8);
+}
+.ability {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0;
+  display: grid;
+  gap: 4px;
+}
+.ability li {
+  background: var(--g-paper2);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 13.5px;
+}
+.ability li.locked {
+  opacity: 0.6;
+}
+.outfits {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.outfits button[aria-pressed="true"] {
+  border-color: var(--g-accent) !important;
+  background: #e0ebc8 !important;
+}
+
 /* ---- teaching, targets, summaries ---- */
 .teach {
   display: grid;
@@ -940,6 +1099,10 @@ canvas.hit {
 
 /* ---- landscape phones: side-by-side battle, shorter dialog ---- */
 @media (orientation: landscape) and (max-height: 520px) {
+  .bt-pause {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
   .hud-top {
     grid-template-columns: minmax(0, 180px) minmax(0, 320px) auto;
     justify-content: space-between;

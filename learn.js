@@ -12,7 +12,7 @@ const Learn = (() => {
     ASKED_MAX = 24;
   const freshRep = () => ({ newW: new Map(), revW: new Map(), weakW: new Map(), newS: new Map(), revS: new Map(), weakS: new Map() });
   let rep = freshRep(),
-    tally = { n: 0, ok: 0, items: [] };
+    tally = { n: 0, ok: 0, items: [], timeouts: 0, assisted: 0 };
   let SCN = [],
     last = null;
   const setScenes = (c) => (SCN = Array.isArray(c) ? c : []);
@@ -393,7 +393,7 @@ const Learn = (() => {
   /* One pm-log entry for the quest or battle that just ended (only when English was answered).
      Returns a summary for the end screen: what was used, what still needs practice. */
   function flush(m, label) {
-    if (!tally.n) return null;
+    if (!tally.n && !tally.timeouts) return null;
     const summary = {
       ok: tally.ok,
       n: tally.n,
@@ -408,6 +408,8 @@ const Learn = (() => {
       r: rep.revW.size + rep.revS.size,
       w: [...rep.weakW.keys(), ...rep.weakS.keys()],
       ...(label ? { scn: label } : {}),
+      ...(tally.timeouts ? { to: tally.timeouts } : {}),
+      ...(tally.assisted ? { as: tally.assisted } : {}),
     });
     LS.set("pm-log", log.slice(0, 30));
     const days = LS.get("pm-days", []),
@@ -420,7 +422,7 @@ const Learn = (() => {
     if (sd >= 3) award("day3");
     if (sd >= 7) award("day7");
     rep = freshRep();
-    tally = { n: 0, ok: 0, items: [] };
+    tally = { n: 0, ok: 0, items: [], timeouts: 0, assisted: 0 };
     return summary;
   }
 
@@ -490,6 +492,24 @@ const Learn = (() => {
     parseKK, stressSpan, SOUNDS, UNITS, wordBy, pairWords, unitQuestion, stressQuestion, wordKK, phonicsQuestion,
     soundDue, soundsDue, wordQuestion, sentQuestion, sceneQuestion, scene, contentId, setScenes,
     grade, flush, ask, play, dueItems,
+    /* A question shown outside Learn.ask (the timed battle) still counts as "recently asked". */
+    track(q) {
+      last = q;
+      markAsked(q);
+    },
+    /* Time ran out: not a language error. Kept as review metadata only (why: "timeout"); cards and XP untouched. */
+    timeout(q) {
+      const key = keyOf(q.recK, q.item);
+      tally.timeouts++;
+      tally.items.push({ en: q.item.w || q.item.en, ok: false, timeout: true });
+      ST.review = ST.review.filter((r) => r.key !== key).concat({ key, recK: q.recK, id: q.item.w || q.item.en, ctx: q.ctx || "battle", t: Date.now(), why: "timeout" });
+      store();
+    },
+    /* Answered after a hint left only one option: practice, not a mastery check (no XP, no card progress). */
+    assisted(q) {
+      tally.assisted++;
+      tally.items.push({ en: q.item.w || q.item.en, ok: true, assisted: true });
+    },
     /* The commute mode's spoken answers update the review list only (it keeps its own XP and records). */
     note(recK, item, ok, ctx) {
       const key = keyOf(recK, item),

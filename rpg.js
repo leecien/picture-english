@@ -2,16 +2,16 @@
    Rendering and movement live in world.js, battles and stats in battle.js, English questions in learn.js.
    Legacy pm-* learning records stay owned by index.html; this file only adds fields to pm-rpg-v1. */
 const RPG = (() => {
+  // One art language (#6): the hero is drawn like the NPCs; chestnut hair, cream tunic, teal cape, amber staff.
   const HERO = {
     skin: "#ffe0c7",
-    hair: "#6b4a3a",
-    cloth: "#6fa86a",
-    accent: "#f3d27a",
-    boots: "#7a5a44",
-    staff: "#ffd25e",
-    sprout: true,
+    hair: "#8a5a3c",
+    cloth: "#f3ead6",
+    accent: "#c9a45c",
+    cape: "#3f9c94",
+    boots: "#6b4a3a",
+    staff: "#ffb84d",
   };
-  const PET = { fur: "#f3d7a8", ear: "#b07a4a", muzzle: "#fff6e8", scarf: "#e8737f" };
   const LEGACY = [
     {
       id: "food",
@@ -226,7 +226,7 @@ const RPG = (() => {
       "T.....=.....~~...=........~~.....=.....T",
       "T.@.P=======11============22======.....T",
       "T...........~~..=.........~~.........,.T",
-      "T..g.....,..~~..=.........~~...........T",
+      "T..g.....,..~~..=......L..~~...........T",
       "T...........~~.,=..HHHHHH.~~...,.......T",
       "T...,...m...~~..x..HHHHHH.~~........m..T",
       "T.T.........~~.......s..m.~~..m........T",
@@ -252,7 +252,7 @@ const RPG = (() => {
       { ch: "c", id: "stress", name: "重音老師 Stella", look: look({ skin: "#fff1e4", hair: "#f08b47", cloth: "#e8737f", accent: "#fff3b0", ears: "fox" }) },
       { ch: "d", id: "word", name: "村長 Kai", look: look({ hair: "#8a8a8a", cloth: "#6b8f5a", accent: "#f3d27a", hat: "#4f6d8f" }) },
     ],
-    mob: { name: "音節泡泡", shape: "bubble", colors: ["#c9b6ff", "#ffffff"], lv: 1, hp: 26, atk: 3, aggressive: false, shield: { name: "泡泡膜", icon: "🫧" } },
+    mob: { name: "音節泡泡", shape: "bubble", colors: ["#c9b6ff", "#ffffff"], lv: 1, hp: 24, atk: 3, aggressive: false, kind: "phonics" },
   };
   const WIND = {
     id: "wind",
@@ -271,9 +271,22 @@ const RPG = (() => {
       { ch: "o", id: "officer", name: "海關 Officer Lee", look: look({ hair: "#2b2b2b", cloth: "#2f3b55", accent: "#c9a45c", hat: "#2f3b55" }) },
       { ch: "s", id: "baggage", name: "行李服務 Sam", look: look({ hair: "#6b4a3a", cloth: "#e98f73", accent: "#ffffff" }) },
       { ch: "h", id: "hotel", name: "飯店櫃檯 Noah", look: look({ hair: "#3d2b24", cloth: "#b5384a", accent: "#f3d27a" }) },
+      // shown only while she can still be invited (see companionNpc)
+      { ch: "L", id: "lumi", name: "風之小精靈 露米", look: { kind: "sprite", name: "露米", skin: "#fff6f2", hair: "#bdeeff", cloth: "#8fd8e8", accent: "#ffffff", boots: "#7fb4e6", wing: "#c8f4ffb0" }, optional: true },
     ],
-    mob: { name: "紙飛鳥", shape: "bird", colors: ["#f6f3ff", "#b9a8ec"], lv: 3, hp: 40, atk: 5, aggressive: false, sprite: "mob-bird", shield: { name: "風之盾", icon: "🌀" } },
+    // Each island has its own monster (see WIND_MOBS); x decides which one spawns.
+    mob: null,
   };
+  /* Test monsters (#6 / companion handoff): HP 24 / 40 / 55 / 80 / boss 120, starting values to tune by play. */
+  const WIND_MOBS = {
+    slime: { name: "草地史萊姆", shape: "slime", colors: ["#9bd68f", "#4f9a5c"], lv: 2, hp: 40, atk: 4, aggressive: false, kind: "word" },
+    bird: { name: "旋風雀", shape: "bird", colors: ["#eaf6ff", "#7fb4e6"], lv: 3, hp: 55, atk: 5, aggressive: false, intents: ["attack", "charge", "attack"], kind: "listen" },
+    turtle: { name: "岩甲龜", shape: "turtle", colors: ["#b3b3c0", "#7a8a5a"], lv: 4, hp: 80, atk: 6, aggressive: false, intents: ["guard", "attack", "attack"], shield: { name: "岩甲", icon: "🪨" }, kind: "scene" },
+  };
+  WIND.mob = WIND_MOBS.slime;
+  WIND.mobAt = (p) => (p.x < 12 ? WIND_MOBS.slime : p.x < 26 ? WIND_MOBS.bird : WIND_MOBS.turtle);
+  const GUARDIAN = { name: "風之守衛", shape: "guardian", colors: ["#e3f5ff", "#7fb4e6"], lv: 6, hp: 120, atk: 6, intents: ["attack", "charge", "attack", "guard"], shield: { name: "風之盾", icon: "🌀" } };
+  const GULL = { name: "搗蛋海鷗", shape: "bird", colors: ["#ffffff", "#9aa3b5"], lv: 4, hp: 1, atk: 0 };
   const LEVELS = { 1: "初級", 2: "中級", 3: "高級" };
   const ELEMENTS = { wind: "風", kk: "音", fire: "火", wood: "木", water: "水", earth: "土" };
   /* Wind story stages. cat/scene point into data/scenes.json and are shared with the commute mode. */
@@ -331,6 +344,37 @@ const RPG = (() => {
   };
   if (!unlocked(data.at)) data.at = "kk";
   const W = data.story.wind;
+  /* Companion (pm-rpg-v1 .companion): earned in the find-luggage stage, never given at the start.
+     bond grows from chats, wins and story; no feeding, no daily chores. */
+  data.companion = { met: false, claimed: false, active: true, bond: 0, outfit: "", chat: {}, day: {}, ...obj(data.companion) };
+  const C = data.companion;
+  C.chat = obj(C.chat);
+  C.day = obj(C.day);
+  const LUMI = { kind: "sprite", name: "露米", skin: "#fff6f2", hair: "#bdeeff", cloth: "#8fd8e8", accent: "#ffffff", boots: "#7fb4e6", wing: "#c8f4ffb0" };
+  const BOND_AT = [0, 12, 30, 55];
+  const OUTFITS = [
+    { id: "", name: "原本的樣子", lv: 1, look: {} },
+    { id: "ribbon", name: "風之緞帶", lv: 2, look: { accent: "#ff9fc0" } },
+    { id: "leaf", name: "葉子帽", lv: 3, look: { hat: "#7cc56a" } },
+    { id: "star", name: "星光翅膀", lv: 4, look: { wing: "#ffe9a8c0" } },
+  ];
+  const ABILITIES = [
+    { lv: 1, icon: "💡", name: "提示", desc: "每場一次，幫你排除一個錯誤選項（不替你答題）" },
+    { lv: 1, icon: "🛡️", name: "風之護盾", desc: "連續答對累積 3 點能量，擋下下一次攻擊" },
+    { lv: 2, icon: "💚", name: "微風治療", desc: "HP 低於 35% 時，每場回復一次 25%" },
+    { lv: 3, icon: "💨", name: "追擊", desc: "你答對攻擊時，露米追加 4 點傷害" },
+  ];
+  const bondLv = () => BOND_AT.filter((t) => C.bond >= t).length;
+  const lumiLook = () => ({ ...LUMI, ...((OUTFITS.find((o) => o.id === C.outfit && o.lv <= bondLv()) || OUTFITS[0]).look) });
+  const withLumi = () => C.claimed && C.active;
+  const today = () => {
+    const d = new Date();
+    return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+  };
+  function dayRec() {
+    if (C.day.date !== today()) C.day = { date: today(), chats: {}, wins: 0 };
+    return C.day;
+  }
 
   /* ---------- shell helpers ---------- */
   let mounted = null,
@@ -445,6 +489,7 @@ const RPG = (() => {
       <button data-m="map">🗺️<b>世界地圖</b><small>${maps.filter((m) => unlocked(m.id)).length}/${maps.length} 區域</small></button>
       <button data-m="journal">📜<b>任務日誌</b><small>${esc(objective().short)}</small></button>
       <button data-m="drive">🚗<b>開車模式</b><small>${ctx ? "練這段：" + esc(ctx.label) : "聽中文、說英文"}</small></button>
+      ${C.claimed ? `<button data-m="buddy">🧚<b>旅伴</b><small>露米・默契 Lv.${bondLv()}</small></button>` : ""}
       <button data-m="bag">🎒<b>背包</b><small>道具與素材</small></button>
       <button data-m="practice">📚<b>練習與成就</b><small>單字、句子、分級</small></button>
       <button data-m="book">🃏<b>卡冊</b><small>收集的單字卡</small></button>
@@ -462,6 +507,7 @@ const RPG = (() => {
             if (m === "map") return worldMap();
             if (m === "journal") return journal();
             if (m === "bag") return bag();
+            if (m === "buddy") return buddy();
             if (m === "start") {
               closeSheet();
               World.toStart();
@@ -517,8 +563,9 @@ const RPG = (() => {
       return `<li class="${done ? "done" : ""}"><b>${done ? "✅" : i === W.stage && kkDone() ? "▶️" : "⬜"} ${s.title}</b><small>會學：${s.learn}</small><small>內容：${esc(m.path)}（${m.sc ? m.sc.items.length : 0} 句）· 程度：${m.level}</small><small>${s.toeic}</small></li>`;
     }).join("");
     sheet(`<h3>📜 任務日誌</h3><p class="journal-now">目前目標：${esc(objective().text)}</p>
-      <h4>🔤 KK 新手村 ${kkDone() ? "· 已畢業" : ""}</h4>${due.length ? `<p class="fine">需要多練的音：${due.map((x) => `/${esc(x)}/`).join(" ")}（找對應的老師選「練需要加強的音」）</p>` : ""}<ul class="journal">${kkRows}<li class="${data.kk.battle ? "done" : ""}"><b>${data.kk.battle ? "✅" : "⬜"} 教學戰鬥</b><small>用音標魔法打倒村口的音節泡泡</small></li></ul>
+      <h4>🔤 KK 新手村 ${kkDone() ? "· 已畢業" : ""}</h4>${due.length ? `<p class="fine">需要多練的音：${due.map((x) => `/${esc(x)}/`).join(" ")}（找對應的老師選「練需要加強的音」）</p>` : ""}<ul class="journal">${kkRows}<li class="${data.kk.battle ? "done" : ""}"><b>${data.kk.battle ? "✅" : "⬜"} 教學戰鬥</b><small>答音標題打倒村口的音節泡泡</small></li></ul>
       <h4>🌬️ 風之旅行群島 ${W.done ? "· 故事完成" : ""}</h4><ul class="journal">${windRows}</ul>
+      <h4>🧚 旅伴</h4><ul class="journal"><li class="${C.claimed ? "done" : ""}"><b>${C.claimed ? `✅ 露米同行中・默契 Lv.${bondLv()}` : W.stage >= 3 ? "▶️ 露米在行李轉盤等你" : "⬜ 完成「找回行李」後相遇"}</b><small>戰鬥中提供提示與護盾，也能一起用英文聊天</small></li></ul>
       <p class="fine">多益準備目標只說明這段內容練的是哪一類題型，不代表考試分數，也不把遊戲等級換算成成績。</p>`);
   }
   function bag() {
@@ -547,11 +594,12 @@ const RPG = (() => {
     if (at === "kk" || !kkDone()) {
       const next = KK_TASKS.find((t) => !data.kk[t.id]);
       if (next) return { text: `找${KK.npcs.find((n) => n.id === next.npc).name}上「${next.title}」課`, short: `KK：${next.title}`, npc: next.npc, map: "kk" };
-      if (!data.kk.battle) return { text: data.kk.bubble ? "用音標魔法打倒村口的音節泡泡" : "找村長 Kai 報告", short: "KK：教學戰鬥", npc: data.kk.bubble ? null : "word", map: "kk" };
+      if (!data.kk.battle) return { text: data.kk.bubble ? "答音標題打倒村口的音節泡泡" : "找村長 Kai 報告", short: "KK：教學戰鬥", npc: data.kk.bubble ? null : "word", map: "kk" };
       if (!kkDone()) return { text: "回去找村長 Kai 領畢業證書", short: "KK：畢業", npc: "word", map: "kk" };
     }
     if (at === "kk") return { text: "走進村口東邊的傳送門，前往風之旅行群島", short: "前往風之群島", map: "kk" };
     if (at === "wind" || !W.done) {
+      if (W.done && !C.claimed) return { text: "到行李轉盤找風之小精靈露米，邀請牠同行", short: "邀請露米", npc: "lumi", map: "wind" };
       if (W.done) return { text: "風之旅行完成！可以在世界地圖選其他區域，或用開車模式複習", short: "風之旅行完成", map: "wind" };
       const s = STAGES[W.stage];
       if (s.id === "baggage" && W.bag === "search") return { text: "追上叼走行李箱的搗蛋海鷗（轉盤西邊）", short: "找回行李", map: "wind" };
@@ -622,7 +670,8 @@ const RPG = (() => {
     const def = m.region
       ? { ...m }
       : { ...m, npcLook: m.npcLook, npcName: m.person, mob: { ...m.mob, ...Battle.mobFor(legacyIdx(m.id)) } };
-    World.mount($("stage-host"), { ...def, heroLook: HERO, petLook: PET }, {
+    if (def.npcs) def.npcs = def.npcs.filter((n) => !n.optional || (n.id === "lumi" && lumiWaiting()));
+    World.mount($("stage-host"), { ...def, heroLook: HERO, petLook: withLumi() ? lumiLook() : null }, {
       start: data.world[m.id],
       chestOpen: data.chests.includes(m.id),
       onTap: tapped,
@@ -666,11 +715,11 @@ const RPG = (() => {
   function spawnSpecials() {
     if (data.at === "kk" && data.kk.bubble && !data.kk.battle) {
       const p = findChar("@");
-      World.spawn({ name: "搗蛋音節泡泡", shape: "bubble", colors: ["#ff9fd0", "#ffffff"], lv: 2, hp: 40, atk: 3, shield: { name: "泡泡膜", icon: "🫧" } }, p.x - 3, p.y + 1, { unique: true, story: "tutorial" });
+      World.spawn({ name: "搗蛋音節泡泡", shape: "bubble", colors: ["#ff9fd0", "#ffffff"], lv: 2, hp: 24, atk: 3, shield: { name: "泡泡膜", icon: "🫧" } }, p.x - 3, p.y + 1, { unique: true, story: "tutorial" });
     }
     if (data.at === "wind" && W.stage === 2 && W.bag === "search") {
       const p = findChar("x");
-      World.spawn({ name: "搗蛋海鷗", shape: "bird", colors: ["#ffffff", "#9aa3b5"], lv: 4, hp: 46, atk: 5, drop: "feather", shield: { name: "風之盾", icon: "🌀" } }, p.x, p.y, { unique: true, story: "thief" });
+      World.spawn(GULL, p.x, p.y, { unique: true, story: "thief" });
     }
   }
   function portal() {
@@ -687,6 +736,7 @@ const RPG = (() => {
   function tapped(e) {
     if (Battle.active || Talk.open) return;
     if (e.kind === "chest") return openChest();
+    if (e.kind === "pet" && withLumi()) return buddy();
     if (e.kind === "npc") return talkTo(e);
   }
   function openChest() {
@@ -726,7 +776,13 @@ const RPG = (() => {
     } finally {
       Talk.close();
     }
+    if (afterTalk) {
+      const f = afterTalk;
+      afterTalk = null;
+      f();
+    }
   }
+  let afterTalk = null;
 
   /* KK village: micro-lessons. Each unit demonstrates two sounds (recorded demo words + mouth/tongue hints),
      then asks the learner to tell them apart. A wrong answer brings back that unit's demo and a fresh question,
@@ -865,14 +921,14 @@ const RPG = (() => {
   async function chief() {
     if (!data.kk.bubble) {
       await Talk.line("You learned all four lessons!", "四堂課都完成了！不過村口有一隻<b>搗蛋音節泡泡</b>，把字典裡的音標弄亂了。");
-      await Talk.line("Use phonics magic!", "泡泡有一層「泡泡膜」，普通攻擊只有一半效果。按「🔤 音標魔法」答對音標題就能戳破泡泡膜。第一次施法免費，答錯也能再試一次。");
+      await Talk.line("Answer to attack!", "戰鬥時每回合一題：<b>答對就攻擊，答錯或時間到會被攻擊</b>。泡泡有一層「泡泡膜」，第一次答對會先戳破它。教學的前三題時間比較多，也可以切換成不計時的練習模式。");
       data.kk.bubble = true;
       save();
       spawnSpecials();
       status("村口出現了搗蛋音節泡泡！點它開始教學戰鬥。", true);
       return refresh();
     }
-    if (!data.kk.battle) return Talk.line("The bubble is near the gate.", "泡泡在村口傳送門附近。用音標魔法打倒它再回來！");
+    if (!data.kk.battle) return Talk.line("The bubble is near the gate.", "泡泡在村口傳送門附近。答對音標題就能打倒它，再回來找我！");
     if (!kkDone()) {
       data.kk.done = true;
       save();
@@ -889,6 +945,7 @@ const RPG = (() => {
   const sq = (s, i) => Learn.sceneQuestion(s.cat, s.scene, i, { mode: "listen", ctx: `story:${s.id}` });
   async function windNpc(e) {
     if (e.id === "guide") return guide();
+    if (e.id === "lumi") return lumiInvite(e);
     const idx = STAGES.findIndex((s) => s.npc === e.id);
     if (W.done || idx < W.stage) return Talk.line("Thank you!", `這一段已經完成了。${W.done ? "風之旅行故事完成！" : "繼續往下一個目標前進吧。"}`);
     if (idx > W.stage) return Talk.line("Please come back later.", "先完成前面的步驟再過來喔。");
@@ -979,16 +1036,44 @@ const RPG = (() => {
     ]);
     W.purpose = why;
     save();
-    // Follow-up questions depend on the answer (indexes into the customs scene, in conversation order).
-    const follow = why === "business" ? [5, 2, 9] : [2, 3, 4];
-    await Talk.line(why === "business" ? "On business? I have a few more questions." : "Sightseeing, great. Just a few questions.", why === "business" ? "出差的話，海關會多問你的工作。" : "觀光的話，海關會問停留天數和住宿。");
-    const ok = await stageTalk(s, follow);
-    if (!(await stageEnd(s, ok, follow.length, "下一步：到南邊的行李轉盤，找行李服務 Sam。"))) return;
-    W.stage = 2;
-    save();
-    addXP(20);
-    toast("🛂", "通過海關", why === "business" ? "Good luck with your meetings!" : "Enjoy your trip!", "badge");
-    await Talk.line(why === "business" ? "Welcome. Good luck with your meetings." : "Welcome. Enjoy your trip!", "入境章蓋好了！去南邊的行李轉盤領行李吧，行李服務 Sam 在那裡。");
+    await Talk.line(why === "business" ? "On business? Please answer a few more questions." : "Sightseeing? Please answer a few more questions.", "櫃檯後面捲起一陣風……<b>風之守衛</b>出現了！這是「入境考驗」：分三個階段問你<b>來訪目的、住宿、停留天數</b>。答對就削弱守衛，Officer Lee 不是攻擊目標。");
+    afterTalk = customsTrial;
+  }
+  /* Customs boss: three phases by HP, each asking that part of the immigration interview. */
+  const CUSTOMS_POOLS = () => [W.purpose === "business" ? [1, 5, 6] : [0, 4, 6], [3, 9], [2, 7]];
+  function customsTrial() {
+    const s = STAGES[1],
+      pools = CUSTOMS_POOLS();
+    Battle.start({ look: { ...GUARDIAN }, maxHp: GUARDIAN.hp, story: "customs" }, {
+      region: "wind",
+      intro: "入境考驗開始！聽守衛的問題，選出你的回答。",
+      phases: [
+        { until: 0.66, label: "入境考驗 1/3：來訪目的" },
+        { until: 0.33, label: "入境考驗 2/3：住宿" },
+        { until: -1, label: "入境考驗 3/3：停留天數" },
+      ],
+      companion: buddyCtx(),
+      make: (B) => {
+        const pool = pools[B.phaseIdx || 0];
+        return Learn.sceneQuestion(s.cat, s.scene, pool[B.turn % pool.length], { mode: "listen", ctx: "story:customs" });
+      },
+      onEnd: async (result) => {
+        if (result === "down") World.knockout();
+        if (result !== "win") {
+          status("入境考驗還沒通過：可以先用開車模式練海關對話，再找 Officer Lee。", true);
+          return refresh();
+        }
+        W.stage = 2;
+        save();
+        addXP(20);
+        bondUp(4, "一起通過入境考驗");
+        toast("🛂", "通過入境考驗", W.purpose === "business" ? "Good luck with your meetings!" : "Enjoy your trip!", "badge");
+        const officer = World.npc("officer");
+        Talk.show(officer);
+        await Talk.line(W.purpose === "business" ? "Welcome. Good luck with your meetings." : "Welcome. Enjoy your trip!", "入境章蓋好了！去南邊的行李轉盤領行李吧，行李服務 Sam 在那裡。");
+        Talk.close();
+      },
+    });
   }
   async function baggage() {
     const s = STAGES[2];
@@ -997,6 +1082,11 @@ const RPG = (() => {
     if (v === "drive") return Talk.close(), openDriveFrom(sceneContext());
     if (v !== "go") return;
     await Talk.line("", "轉盤停了……你的行李箱沒有出現！旁邊好像有一隻海鷗叼著一個黑色行李箱飛走了。");
+    if (!C.met) {
+      C.met = true;
+      save();
+    }
+    await Talk.line("Hi! I saw it! A gull took your bag!", "一隻小小的<b>風之小精靈</b>從轉盤上飄了下來：「我叫<b>露米</b>！我看到了，是海鷗叼走的！」");
     const how = await Talk.choose("你要怎麼處理？", [
       { label: "🧾 到服務櫃檯用英文申報", value: "desk", sub: `回答 ${s.targets.length} 句，行李會送到飯店` },
       { label: "🏃 自己去追那隻海鷗", value: "search", sub: "戰鬥搶回行李，馬上拿到" },
@@ -1005,8 +1095,8 @@ const RPG = (() => {
       W.bag = "search";
       save();
       spawnSpecials();
-      status("搗蛋海鷗在轉盤西邊！點牠開始戰鬥。", true);
-      return Talk.line("Hey, come back with my bag!", "去追那隻海鷗吧！牠就在轉盤西邊。");
+      status("搗蛋海鷗在轉盤西邊！點牠開始追逐。", true);
+      return Talk.line("It flew west. Let's go!", "露米：「牠往西邊飛了！答對就追近一步，答錯牠會飛遠一點。」");
     }
     await Talk.line("Hello. Can I help you?", "Sam 會用英文問你行李的狀況。先聽，再選最適合的回答。");
     const ok = await stageTalk(s, s.targets);
@@ -1018,6 +1108,7 @@ const RPG = (() => {
     addXP(20);
     toast("🧳", "行李申報完成", "行李會送到飯店 · 東邊的橋已開放", "badge");
     await Talk.line("We will send it to your hotel tonight.", "Sam 會把行李送到飯店。走過東邊的橋去飯店吧！");
+    await lumiInvite();
   }
   async function hotel() {
     const s = STAGES[3],
@@ -1032,6 +1123,7 @@ const RPG = (() => {
     W.stage = 4;
     W.done = true;
     save();
+    bondUp(4, "一起完成風之旅行");
     addXP(30);
     Battle.give("berry", 2);
     Battle.give("dew", 2);
@@ -1060,6 +1152,7 @@ const RPG = (() => {
     data.cleared.push(key);
     save();
     addXP(30);
+    bondUp(4, "一起完成居民任務");
     toast("✨", "居民任務完成！", "首次完成獲得 30 XP", "levelup");
     const i = legacyIdx(m.id);
     if (i < 4 && legacyUnlocked(i + 1)) toast(LEGACY[i + 1].icon, "新地圖解鎖", LEGACY[i + 1].name, "badge");
@@ -1078,68 +1171,233 @@ const RPG = (() => {
     }
   }
 
-  /* ---------- battles ---------- */
+  /* ---------- battles: one question per turn (Battle.start ctx.make) ---------- */
+  function buddyCtx() {
+    return withLumi() ? { name: "露米", bond: bondLv(), look: lumiLook() } : null;
+  }
   function encounter(mob) {
     if (Battle.active || Talk.open || !$("menu").hidden || !$("panel").hidden) return;
+    if (mob.story === "thief") return gullChase(mob);
     const m = cur(),
-      region = m.region || m.id;
-    let skills,
-      tutorial = "",
-      freeCasts = 0;
+      region = m.region || m.id,
+      look = mob.look.hp ? mob.look : { ...mob.look, hp: mob.maxHp };
+    let make,
+      tutorial = "";
     if (region === "kk") {
       const taught = taughtUnits();
-      skills = [
-        { id: "kk", name: "音標魔法", icon: "🔤", mp: 5, kind: "attack", mult: 2.8, retry: true, desc: "2.8 倍傷害，可破泡泡膜", learn: taught.length ? "學過的音標對比" : "整字音標", make: () => Learn.phonicsQuestion(taught) },
-        { id: "heal", name: "整字回復", icon: "💚", mp: 6, kind: "heal", heal: 0.4, retry: true, desc: "回復 40% HP", learn: "聽單字選音標", make: () => Learn.wordKK("listen", taughtVowels()) },
-      ];
-      if (mob.story === "tutorial") {
-        freeCasts = 1;
-        tutorial = "教學：泡泡膜讓普通攻擊只剩一半。按「🔤 音標魔法」，答對就能戳破泡泡膜！第一次施法免費，答錯可以再試一次。";
-      }
+      make = (B) => (B.turn % 3 === 0 ? Learn.wordKK("listen", taughtVowels()) : Learn.phonicsQuestion(taught));
+      if (mob.story === "tutorial") tutorial = "教學：答對就攻擊，第一次答對會先戳破泡泡膜；答錯或時間到會被攻擊。前三題時間比較多，傷害也比較低。";
     } else if (region === "wind") {
-      const s = STAGES[Math.min(W.stage, 3)];
-      skills = [
-        { id: "talk", name: "旅遊會話", icon: "💬", mp: 6, kind: "attack", mult: 2.4, desc: "2.4 倍傷害，可破風之盾", learn: `${s.title}的對話`, make: () => Learn.sceneQuestion(s.cat, s.scene, null, { mode: "listen", ctx: "battle" }) },
-        { id: "word", name: "單字飛彈", icon: "🔤", mp: 4, kind: "attack", mult: 1.8, desc: "1.8 倍傷害", learn: "交通與旅行單字", make: () => Learn.wordQuestion((w) => w.th === "transport", null, "battle") },
-        { id: "heal", name: "治癒短句", icon: "💚", mp: 8, kind: "heal", heal: 0.4, desc: "回復 40% HP", learn: "已走過的旅遊情境", make: () => { const done = STAGES.slice(0, Math.max(1, Math.min(W.stage + 1, 4))); const t = done[Math.floor(Math.random() * done.length)]; return Learn.sceneQuestion(t.cat, t.scene, null, { mode: "listen", ctx: "battle" }); } },
-      ];
+      const s = STAGES[Math.min(W.stage, 3)],
+        done = STAGES.slice(0, Math.max(1, Math.min(W.stage + 1, 4))),
+        kind = look.kind || "word";
+      make =
+        kind === "word"
+          ? () => Learn.wordQuestion((w) => w.th === "transport", null, "battle")
+          : kind === "listen"
+            ? () => Learn.sceneQuestion(s.cat, s.scene, null, { mode: "listen", ctx: "battle" })
+            : () => {
+                const t = done[Math.floor(Math.random() * done.length)];
+                return Learn.sceneQuestion(t.cat, t.scene, null, { mode: "listen", ctx: "battle" });
+              };
     } else {
       const route = SENT.some((s) => s.route === m.route && s.lv <= maxLv()) ? m.route : "daily";
-      skills = [
-        { id: "word", name: "單字飛彈", icon: "🔤", mp: 4, kind: "attack", mult: 1.8, desc: "1.8 倍傷害", learn: `${m.name}的主題單字`, make: () => Learn.wordQuestion((w) => w.th === m.id, null, "battle") },
-        { id: "sent", name: "句子爆發", icon: "💥", mp: 8, kind: "attack", mult: 2.8, desc: "2.8 倍傷害", learn: "句子填空與翻譯", make: () => Learn.sentQuestion((s) => s.route === route, "battle") },
-        { id: "heal", name: "治癒短句", icon: "💚", mp: 8, kind: "heal", heal: 0.4, desc: "回復 40% HP", learn: "句子", make: () => Learn.sentQuestion(null, "battle") },
-      ];
+      make = (B) => (B.turn % 2 ? Learn.wordQuestion((w) => w.th === m.id, null, "battle") : Learn.sentQuestion((s) => s.route === route, "battle"));
     }
-    const look = mob.look.hp ? mob.look : { ...mob.look, hp: mob.maxHp };
     Battle.start({ ...mob, look }, {
       region,
-      skills,
+      make,
       tutorial,
-      freeCasts,
-      fleeAlways: mob.story === "tutorial",
-      intro: mob.story === "thief" ? "搗蛋海鷗叼著你的行李箱！打倒牠把行李搶回來！" : "",
+      companion: buddyCtx(),
       onEnd(result) {
         if (result === "win") {
           World.defeat(mob);
+          winBond();
           if (mob.story === "tutorial") {
             data.kk.battle = true;
             save();
             toast("🫧", "教學戰鬥勝利", "回去找村長 Kai 領畢業證書", "badge");
-          }
-          if (mob.story === "thief") {
-            W.bag = "found";
-            W.stage = 3;
-            save();
-            World.refresh();
-            addXP(20);
-            toast("🧳", "搶回行李箱了！", "東邊的橋已開放：前往飯店", "badge");
           }
         } else if (result === "flee") World.calm(3);
         else if (result === "down") World.knockout();
         refresh();
       },
     });
+  }
+  /* Gull chase: right answers close the gap, wrong ones let it fly further. No damage either way. */
+  function gullChase(mob) {
+    const s = STAGES[2];
+    Battle.start({ ...mob, look: { ...GULL } }, {
+      region: "wind",
+      intro: "搗蛋海鷗叼著你的行李箱！答對就追近一步，答錯牠會飛遠一點。",
+      chase: { start: 3, max: 6 },
+      companion: buddyCtx(),
+      make: (B) => Learn.sceneQuestion(s.cat, s.scene, (B.turn - 1) % 5, { mode: "listen", ctx: "story:baggage" }),
+      async onEnd(result) {
+        if (result !== "win") {
+          World.calm(3);
+          status("海鷗飛遠了。休息一下再點牠追一次。", true);
+          return refresh();
+        }
+        World.defeat(mob);
+        W.bag = "found";
+        W.stage = 3;
+        save();
+        World.refresh();
+        addXP(20);
+        toast("🧳", "搶回行李箱了！", "東邊的橋已開放：前往飯店", "badge");
+        Talk.show({ name: "風之小精靈 露米", look: LUMI });
+        try {
+          await Talk.line("You got your bag back!", "露米：「你拿回行李了！英文好厲害！」");
+          await lumiInvite();
+        } finally {
+          Talk.close();
+        }
+      },
+    });
+  }
+
+  /* ---------- companion: 露米 ---------- */
+  const lumiWaiting = () => data.at === "wind" && W.stage >= 3 && !C.claimed;
+  function bondUp(n, why) {
+    if (!C.claimed) return;
+    const before = bondLv();
+    C.bond += n;
+    save();
+    const after = bondLv();
+    if (after > before) {
+      const unlock = [...ABILITIES.filter((a) => a.lv === after).map((a) => a.icon + a.name), ...OUTFITS.filter((o) => o.lv === after).map((o) => "👗" + o.name)];
+      toast("🧚", `和露米的默契 Lv.${after}`, unlock.length ? "解鎖：" + unlock.join("、") : why, "levelup");
+    }
+  }
+  function winBond() {
+    if (!withLumi()) return;
+    const d = dayRec();
+    if (d.wins >= 5) return;
+    d.wins++;
+    bondUp(1, "一起打贏");
+  }
+  /* The invitation after the find-luggage stage (both endings), or later from the carousel. */
+  async function lumiInvite(npc) {
+    if (C.claimed) return;
+    if (npc) await Talk.line("Hi again! Can I travel with you?", "露米在轉盤旁邊等你：「我可以跟你一起旅行嗎？」");
+    else await Talk.line("Can I travel with you?", "露米飄到你身邊：「你好厲害！我可以跟你一起旅行嗎？」");
+    await Talk.panel(
+      `<div class="buddy-card"><p class="dlg-zh"><b>🧚 旅伴・露米</b>：會跟著你冒險、陪你用英文聊天。<b>牠不會替你答題</b>，但會在戰鬥中幫忙：</p><ul class="ability">${ABILITIES.map((a) => `<li>${a.icon} <b>${a.name}</b>${a.lv > 1 ? `（默契 Lv.${a.lv}）` : ""}：${a.desc}</li>`).join("")}</ul><p class="fine">一起聊天和冒險會增加默契，解鎖新台詞、外觀和能力。不用餵食，也不用每天登入照顧。</p></div>`,
+      "▶ 繼續",
+    );
+    const v = await Talk.choose("要邀請露米同行嗎？", [
+      { label: "🧚 一起走吧！", value: "yes", sub: "Let's travel together!" },
+      { label: "等一下再說", value: "later", sub: "之後可以回行李轉盤找牠" },
+    ]);
+    C.met = true;
+    if (v !== "yes") {
+      save();
+      return Talk.line("Okay! I'll wait here.", "露米：「好呀，我會在行李轉盤這裡等你。」");
+    }
+    C.claimed = true;
+    C.active = true;
+    save();
+    World.setCompanion(lumiLook());
+    const n = World.npc("lumi");
+    if (n) World.remove(n);
+    toast("🧚", "露米加入了！", "點露米可以聊天、看默契與能力", "badge");
+    await Talk.line("Yay! Let's go together!", "露米加入旅伴！在地圖上點牠，或從選單的「🧚 旅伴」就能聊天、看默契和能力。");
+    refresh();
+  }
+  const chatScenes = () => ((typeof SCENES !== "undefined" && SCENES.find((c) => c.id === "companion")) || { scenes: [] }).scenes;
+  function buddy() {
+    if (Battle.active || Talk.open) return;
+    if (!C.claimed) return status(C.met ? "露米在風之群島的行李轉盤等你。" : "完成「找回行李」後會遇到新的旅伴。");
+    const lv = bondLv(),
+      next = BOND_AT[lv],
+      base = BOND_AT[lv - 1],
+      d = dayRec(),
+      pct = next ? Math.round(((C.bond - base) / (next - base)) * 100) : 100;
+    sheet(`<h3>🧚 旅伴・露米</h3><div class="buddy-card"><canvas id="buddy-face" width="72" height="72"></canvas><div><p><b>默契 Lv.${lv}</b> ${next ? `（${C.bond}/${next}）` : "（最高）"}</p><div class="bond"><i style="width:${pct}%"></i></div><p class="fine">聊天（每個話題每天第一次 +3）、一起打贏（每天最多 +5）、完成故事任務（+4）都會增加默契。</p></div></div>
+      <h4>聊天話題（每次 3–5 輪）</h4><div class="menu-grid">${chatScenes()
+        .map((sc) => `<button data-chat="${esc(sc.id)}">💬<b>${esc(sc.name)}</b><small>${d.chats[sc.id] ? "今天聊過了（可以再聊）" : C.chat[sc.id] ? `聊過 ${C.chat[sc.id]} 次` : "新話題"}</small></button>`)
+        .join("")}</div>
+      <h4>支援能力</h4><ul class="ability">${ABILITIES.map((a) => `<li class="${a.lv <= lv ? "" : "locked"}">${a.lv <= lv ? a.icon : "🔒"} <b>${a.name}</b>${a.lv > lv ? `（默契 Lv.${a.lv}）` : ""}：${a.desc}</li>`).join("")}</ul>
+      <h4>外觀</h4><div class="outfits">${OUTFITS.map((o) => `<button data-outfit="${o.id}" ${o.lv <= lv ? "" : "disabled"} aria-pressed="${(C.outfit || "") === o.id}">${o.lv <= lv ? "" : "🔒 "}${o.name}${o.lv > 1 ? `<small>Lv.${o.lv}</small>` : ""}</button>`).join("")}</div>
+      <div class="menu-grid"><button data-buddy="drive">🚗<b>用開車模式練聊天</b><small>聽露米說、用英文回答</small></button><button data-buddy="toggle">${C.active ? "😴<b>讓露米休息</b><small>不跟隨、不參加戰鬥</small>" : "🧚<b>叫露米一起走</b><small>跟隨並在戰鬥中幫忙</small>"}</button></div>`);
+    requestAnimationFrame(() => {
+      const cv = $("buddy-face");
+      if (cv) World.portrait(cv, "pet", lumiLook(), { zoom: 1.2 });
+    });
+    const body = $("menu-body");
+    body.querySelectorAll("[data-chat]").forEach((b) => (b.onclick = () => (closeSheet(), chat(b.dataset.chat))));
+    body.querySelectorAll("[data-outfit]").forEach(
+      (b) =>
+        (b.onclick = () => {
+          C.outfit = b.dataset.outfit;
+          save();
+          if (withLumi()) World.setCompanion(lumiLook());
+          buddy();
+        }),
+    );
+    body.querySelector('[data-buddy="toggle"]').onclick = () => {
+      C.active = !C.active;
+      save();
+      World.setCompanion(withLumi() ? lumiLook() : null);
+      status(C.active ? "露米回到你身邊了。" : "露米先休息，需要時從選單叫牠。");
+      buddy();
+    };
+    body.querySelector('[data-buddy="drive"]').onclick = () => {
+      closeSheet();
+      const sc = chatScenes()[0];
+      openDriveFrom({ cat: "companion", scene: "", label: "旅伴聊天・全部話題", cid: Learn.contentId("companion", sc ? sc.id : "greet") });
+    };
+  }
+  /* A short friend chat: Lumi asks, you pick a reply. Several replies can be right; an off-topic one gets a gentle fix. */
+  async function chat(topic) {
+    const sc = Learn.scene("companion", topic);
+    if (!sc) return;
+    const lv = bondLv(),
+      pool = sc.items.map((it, i) => ({ it, i })).filter((x) => !x.it.bond || x.it.bond <= lv),
+      n = Math.min(pool.length, 3 + Math.floor(Math.random() * 3)),
+      picked = [pool[0], ...shuffle(pool.slice(1)).slice(0, n - 1)].sort((a, b) => a.i - b.i).map((x) => x.it),
+      others = chatScenes().filter((x) => x.id !== topic).flatMap((x) => x.items);
+    Talk.show({ name: "旅伴 露米", look: lumiLook() });
+    let ok = 0;
+    try {
+      for (let k = 0; k < picked.length; k++) {
+        const it = picked[k],
+          off = others[Math.floor(Math.random() * others.length)],
+          opts = shuffle([{ en: it.en, zh: it.zh, react: it.react, ok: true }, ...(it.alt || []).slice(0, 1).map((a) => ({ ...a, ok: true })), { en: off.en, zh: off.zh, ok: false }]);
+        $("dlg-name").dataset.step = `${sc.name} ${k + 1}/${picked.length}`;
+        speak(it.q);
+        const wait = Talk.choose(
+          `<p class="dlg-en">${esc(it.q)}</p><div class="dlg-row"><button class="dlg-say" type="button">🔊</button></div><details class="qz-cue"><summary>中文提示</summary>${esc(it.zh)}</details><p class="dlg-zh">你要怎麼回？（可能不只一個好回答）</p>`,
+          opts.map((o, i) => ({ label: esc(o.en), value: i })),
+        );
+        const say = $("dlg-body").querySelector(".dlg-say");
+        if (say) say.onclick = () => speak(it.q);
+        const pick = opts[await wait],
+          q = { kind: "s", recK: "s", item: { en: it.en, zh: it.zh, q: it.q }, ctx: `companion:${topic}` };
+        Learn.track(q);
+        Learn.grade(q, pick.ok, "quest");
+        if (pick.ok) {
+          ok++;
+          SND.play("correct");
+          await Talk.line(pick.react || "Nice!", `你說：${esc(pick.en)}（${esc(pick.zh)}）`);
+        } else {
+          SND.play("wrong");
+          await Talk.line("Hmm? " + it.q, `這句接不太上喔。可以回答：<b>${esc(it.en)}</b>（${esc(it.zh)}）`);
+        }
+      }
+      delete $("dlg-name").dataset.step;
+      const d = dayRec(),
+        first = !d.chats[topic];
+      d.chats[topic] = true;
+      C.chat[topic] = (C.chat[topic] || 0) + 1;
+      save();
+      if (first) bondUp(3, "一起聊天");
+      await finishSummary(`旅伴聊天・${sc.name}`, first ? "默契 +3。也可以用開車模式練同一批對話。" : "今天這個話題的默契已經加過了，練習紀錄照樣保留。");
+    } finally {
+      delete $("dlg-name").dataset.step;
+      Talk.close();
+    }
   }
 
   /* ---------- HUD wiring and public API ---------- */

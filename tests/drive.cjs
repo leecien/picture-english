@@ -67,10 +67,10 @@ function mockDictation() {
   assert(await page.locator("#drive-scenes").isHidden(), "scene picker hidden for mixed practice");
   await page.locator("#dk-scene").check();
   await page.waitForSelector('#drive-cats [data-cat="travel"]');
-  assert.equal(await page.locator("#drive-cats button").count(), 9, "random + eight categories");
+  assert.equal(await page.locator("#drive-cats button").count(), 10, "random + nine categories (incl. companion chat)");
   await page.locator('#drive-cats [data-cat="all"]').click();
   assert(await page.locator("#drive-scs").isHidden(), "no sub-scenes in random mode");
-  assert.match(await page.locator("#drive-scene-note").innerText(), /從 8 大類、60 個場景隨機出題，共 470 句/);
+  assert.match(await page.locator("#drive-scene-note").innerText(), /從 9 大類、65 個場景隨機出題，共 503 句/);
   await page.locator('#drive-cats [data-cat="travel"]').click();
   await page.locator('#drive-scs [data-scene="customs"]').click();
   assert.match(await page.locator("#drive-scene-note").innerText(), /旅遊 · 海關入境（初級）：10 句，依真實對話的順序/);

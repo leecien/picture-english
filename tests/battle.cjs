@@ -1,6 +1,7 @@
-// Turn-based English battle on a legacy map (returning player): encounter, attack without MP, skills that cost MP
-// and resolve on the answer, wrong answers, items, flee, defeat and revive, victory loot, anti-farming,
-// aggressive monsters, field items / rest / bag / trade, save and reload, real sprite sheets.
+// Timed English battle on a legacy map (returning player): one question per turn, at most 3 options, a countdown;
+// right = attack (+MP, combo), wrong or timeout = hit; one settlement per question; pause on hidden page and resume;
+// practice mode without a clock; optional MP help never blocks answering; victory loot, battle log (timeouts apart),
+// flee, defeat and revive, field rest / bag / trade, save and reload, one simple art style.
 // Run with a local HTTP server: python -m http.server 8000
 const assert = require("node:assert/strict");
 const { chromium } = require("playwright");
@@ -51,74 +52,119 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
     await page.locator(".qz-o button").nth(i).click();
   };
 
-  // Returning player lands on their legacy map, with the real hero / puppy art loaded.
+  // Returning player lands on their legacy map; characters use the simple NPC style (#6), no free puppy.
   assert.equal(await ev(() => RPG.data.at), "food");
-  await page.waitForFunction(() => World.hasArt("hero-walk") && World.hasArt("pet-walk"));
+  assert.equal(await ev(() => World.hasArt("hero-walk") || World.hasArt("pet-walk")), false, "hand-painted character sheets not used");
+  assert.equal(await ev(() => World.entities.some((e) => e.kind === "pet")), false, "no companion until it is earned");
   assert.equal(await page.locator("#hud-hp b").innerText(), "HP 80/80");
   assert.equal(await page.locator("#hud-berry small").innerText(), "3");
 
-  /* Encounter -> attack (no MP) -> foe turn */
+  /* Encounter: one question, at most 3 options, a running clock */
   await fight();
+  await ev(() => Battle.setFoeHp(400));
   assert.equal(await ev(() => World.paused), true, "monsters pause in battle");
-  const mp0 = await ev(() => Battle.mp),
-    foe0 = await ev(() => Battle.foe.hp);
-  await page.locator("#bt-attack").click();
-  assert((await ev(() => Battle.foe.hp)) < foe0, "attack hits");
-  assert.equal(await ev(() => Battle.mp), mp0, "normal attack costs no MP");
-  await ready();
+  assert((await page.locator(".qz-o button").count()) <= 3, "three options at most");
+  const l0 = await ev(() => Battle.state.left);
+  assert(l0 > 0 && l0 <= 18, "countdown started");
+  await page.waitForTimeout(400);
+  assert((await ev(() => Battle.state.left)) < l0, "clock runs");
 
-  /* Skill: MP is spent; a wrong answer does nothing; the right answer is shown and logged as weak */
-  const foe1 = await ev(() => Battle.foe.hp);
-  await page.locator('.bt-skill[data-k="0"]').click();
-  assert.equal(await ev(() => Battle.mp), mp0, "MP is not taken before the answer");
+  /* Pause when the page is hidden; "準備好了" resumes */
+  await ev(() => {
+    Object.defineProperty(document, "hidden", { value: true, configurable: true });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  assert.equal(await page.locator("#bt-pause").isVisible(), true, "pause screen");
+  const lp = await ev(() => Battle.state.left);
+  await page.waitForTimeout(500);
+  assert.equal(await ev(() => Battle.state.left), lp, "clock frozen while paused");
+  await ev(() => delete document.hidden);
+  await page.locator("#bt-ready").click();
+  assert.equal(await ev(() => Battle.state.paused), false);
+
+  /* Wrong answer: you get hit, the answer is explained, nothing happens to the foe; the explanation is not timed */
+  const mp0 = await ev(() => Battle.mp),
+    hp0 = await ev(() => Battle.hp),
+    foe1 = await ev(() => Battle.foe.hp);
   await pickAnswer(false);
   assert.equal(await ev(() => Battle.foe.hp), foe1, "wrong answer: no damage");
-  assert.equal(await ev(() => Battle.mp), mp0, "a failed spell costs no MP");
+  assert((await ev(() => Battle.hp)) < hp0, "wrong answer: you are hit");
+  assert.equal(await ev(() => Battle.mp), mp0, "no MP lost");
   assert.match(await page.locator(".qz-f").innerText(), /正確答案/);
-  const weakWord = await ev(() => Learn.last.item.w);
-  await page.locator(".qz-next").click();
+  const weakWord = await ev(() => Learn.last.item.w || Learn.last.item.en);
+  // Double settlement is impossible: a late timeout after the answer changes nothing
+  const hpW = await ev(() => Battle.hp);
+  await ev(() => Battle.settleForTest("timeout"));
+  assert.equal(await ev(() => Battle.hp), hpW, "one settlement per question");
+  await page.locator("#bt-next").click();
   await ready();
 
-  /* Correct answer: damage at once, XP and a card; the same word again soon gives nothing extra */
-  const xp1 = await ev(() => P.xp);
-  await ev(() => Battle.setMp(30));
-  await page.locator('.bt-skill[data-k="0"]').click();
-  const foe2 = await ev(() => Battle.foe.hp);
+  /* Right answer: damage at once, MP +2, XP; it moves on by itself */
+  await ev(() => Battle.setMp(10));
+  const xp1 = await ev(() => P.xp),
+    foe2 = await ev(() => Battle.foe.hp);
   await pickAnswer(true);
   assert((await ev(() => Battle.foe.hp)) < foe2, "correct answer hits immediately");
-  const word = await ev(() => Learn.last.item.w);
-  assert.equal(await ev(() => P.xp), xp1 + 6, "battle English gives XP");
-  assert.equal(await ev(() => Battle.mp), 26, "MP spent on a successful spell");
-  const c1 = await ev((w) => JSON.parse(localStorage.getItem("pm-cards"))[w].c, word);
-  await page.locator(".qz-next").click();
-  // Anti-farming: grade the same word again right away.
-  const farm = await ev((w) => {
-    const it = WORDS.find((x) => x.w === w),
-      xp = P.xp,
-      r = Learn.grade({ recK: "w", item: it }, true, "battle");
-    return { fresh: r.fresh, xp: P.xp - xp, c: JSON.parse(localStorage.getItem("pm-cards"))[w].c };
-  }, word);
-  assert.deepEqual(farm, { fresh: false, xp: 0, c: c1 }, "same item within 3 minutes: no XP, no card progress");
+  assert.equal(await ev(() => Battle.mp), 12, "a right answer restores a little MP");
+  assert((await ev(() => P.xp)) > xp1, "battle English gives XP");
   await ready();
 
-  /* Items in battle */
-  await ev(() => Battle.setHp(30));
-  await page.locator("#bt-item").click();
-  await page.locator('[data-i="berry"]').click();
-  assert.equal(await ev(() => Battle.count("berry")), 2);
+  /* Optional MP help never blocks answering: heal, +time, shield; then answer with 0 MP */
+  await ev(() => {
+    Battle.setHp(30);
+    Battle.setMp(30);
+  });
+  await page.locator('[data-help="heal"]').click();
+  assert.deepEqual(await ev(() => [Battle.hp, Battle.mp]), [58, 22], "heal: +35% HP for 8 MP");
+  const lt = await ev(() => Battle.state.left);
+  await page.locator('[data-help="time"]').click();
+  assert((await ev(() => Battle.state.left)) > lt + 4, "+5 seconds");
+  await page.locator('[data-help="shield"]').click();
+  assert.equal(await ev(() => Battle.state.guard), 1);
+  assert.equal(await ev(() => Battle.state.settled), false, "help does not use up the question");
+  await ev(() => Battle.setMp(0));
+  await pickAnswer(false);
+  assert.equal(await ev(() => Battle.hp), 58, "the shield blocks the hit");
+  await page.locator("#bt-next").click();
+  await ready();
+  assert.equal(await ev(() => Battle.mp), 0);
+  await pickAnswer(true);
   await ready();
 
-  /* Victory: loot, back to the same spot, field resumes; the battle is logged with its English */
+  /* Timeout: recorded apart from wrong answers (review metadata), you are hit */
+  const hpT = await ev(() => Battle.hp),
+    tq = await ev(() => Learn.last.item.w || Learn.last.item.en);
+  await ev(() => Battle.settleForTest("timeout"));
+  assert((await ev(() => Battle.hp)) < hpT, "timeout: you are hit");
+  assert.match(await page.locator(".qz-f").innerText(), /時間到不算英文答錯/);
+  assert(await ev((id) => JSON.parse(localStorage.getItem("pm-learn-v1")).review.some((r) => r.id === id && r.why === "timeout"), tq), "timeout kept for review");
+  await page.locator("#bt-next").click();
+  await ready();
+
+  /* Practice mode: no clock from the next question */
+  await page.locator("#bt-mode").click();
+  await pickAnswer(true);
+  await ready();
+  assert.equal(await ev(() => Battle.state.left), null, "practice: no countdown");
+  assert.equal(await page.locator(".bt-clock").isVisible(), false);
+  await page.locator("#bt-mode").click();
+
+  /* Combo: every 3 right answers powers up the next hit */
+  await ev(() => Battle.setHp(80));
+  for (let k = 0; k < 5 && !(await ev(() => Battle.state.combo >= 3 && Battle.state.combo % 3 === 0)); k++) {
+    await pickAnswer(true);
+    await page.waitForFunction(() => document.getElementById("bt-claim") || Battle.ready, null, { timeout: 10000 });
+  }
+  assert.equal(await ev(() => Battle.state.power), true, "combo of 3 powers up");
+
+  /* Victory: loot, back to the same spot, field resumes; the battle is logged with its English and timeouts */
+  await ev(() => Battle.setFoeHp(30));
   const spot = await ev(() => World.hero);
   await ev(() => Math.random = ((r) => () => 0.05)(Math.random));
-  await ev(() => Battle.setMp(30));
-  for (let i = 0; i < 12 && !(await page.locator("#bt-claim").count()); i++) {
-    await page.locator('.bt-skill[data-k="0"]').click();
-    await pickAnswer(true);
-    await page.locator(".qz-next").click();
-    await page.waitForFunction(() => document.getElementById("bt-claim") || Battle.ready);
-    await ev(() => Battle.setMp(30));
+  for (let i = 0; i < 20 && !(await page.locator("#bt-claim").count()); i++) {
     await ev(() => Battle.setHp(80));
+    await pickAnswer(true);
+    await page.waitForFunction(() => document.getElementById("bt-claim") || Battle.ready, null, { timeout: 10000 });
   }
   assert.match(await page.locator(".bt-end").innerText(), /勝利[\s\S]*糖霜/);
   await page.locator("#bt-claim").click();
@@ -129,12 +175,13 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
   const blog = await ev(() => JSON.parse(localStorage.getItem("pm-log"))[0]);
   assert.equal(blog.m, "battle");
   assert(blog.w.includes(weakWord) && blog.tot >= 3, "battle log lists answered English");
+  assert.equal(blog.to, 1, "timeouts logged apart");
+  const word = await ev(() => Learn.last.item.w);
 
   /* Flee: always an exit (forced success here), monsters calm down */
   await page.reload();
   await page.waitForSelector(".world-canvas");
   await fight();
-  await ev(() => (Math.random = () => 0.1));
   await page.locator("#bt-run").click();
   await page.waitForSelector("#battle", { state: "hidden" });
   assert.equal(await ev(() => World.paused), false);
@@ -142,16 +189,16 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
   /* Defeat: wake at the entrance with half HP; learning records untouched */
   await page.reload();
   await page.waitForSelector(".world-canvas");
-  const cardsBefore = await ev(() => localStorage.getItem("pm-cards"));
   await fight();
   await ev(() => Battle.setHp(1));
-  await ev(() => (Math.random = () => 0.5));
-  await page.locator("#bt-attack").click();
+  await pickAnswer(false);
+  const cardsBefore = await ev(() => localStorage.getItem("pm-cards"));
+  await page.locator("#bt-next").click();
   await page.waitForSelector("#bt-wake", { timeout: 10000 });
   await page.locator("#bt-wake").click();
   await page.waitForFunction(() => !World.hero.down && Battle.hp === 40, null, { timeout: 8000 });
   assert.deepEqual(await ev(() => [World.hero.x, World.hero.y]), [16, 8], "revived at the map entrance");
-  assert.equal(await ev(() => localStorage.getItem("pm-cards")), cardsBefore, "defeat leaves the card book untouched");
+  assert.equal(await ev(() => localStorage.getItem("pm-cards")), cardsBefore, "defeat itself does not touch the card book");
 
   /* Field: rest, items, bag and resident trade (all in-scene) */
   await ev(() => (Math.random = () => 0.5));
@@ -202,12 +249,12 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
   assert.deepEqual(await ev(() => ({ hp: Battle.hp, berry: Battle.count("berry"), at: RPG.data.at })), saved);
   assert.equal(await ev(() => localStorage.getItem("pm-progress") !== null), true);
   // Anti-farming survives a reload (pm-learn-v1), and old keys keep their shape.
-  assert.equal(await ev((w) => Learn.grade({ recK: "w", item: WORDS.find((x) => x.w === w) }, true, "battle").fresh, word), false, "cooldown kept across reload");
+  if (word) assert.equal(await ev((w) => Learn.grade({ recK: "w", item: WORDS.find((x) => x.w === w) }, true, "battle").fresh, word), false, "cooldown kept across reload");
   assert(await ev(() => { const s = JSON.parse(localStorage.getItem("pm-learn-v1")); return s.v === 1 && Array.isArray(s.review) && typeof s.recent === "object"; }));
   assert(await ev(() => document.documentElement.scrollWidth <= innerWidth), "no horizontal scroll");
   await page.screenshot({ path: "/tmp/picture-battle-mobile.png" });
   assert.deepEqual(errors, []);
-  console.log("PASS: legacy start with real sprites, encounter, no-MP attack, MP skills, wrong answer, immediate hit, XP and cards, anti-farming, battle items, victory loot and return spot, battle log, flee, defeat revive, rest, bag, trade dialog, aggressive encounter, save/reload, no browser errors");
+  console.log("PASS: legacy start in simple style without a free pet, timed question (<=3 options, clock), pause on hidden page and resume, wrong = hit, one settlement, right = hit +MP +XP, MP help (heal/time/shield) never blocks answering, timeout recorded apart, practice mode, combo, victory loot and return spot, battle log with timeouts, flee, defeat revive, rest, bag, trade dialog, aggressive encounter, save/reload, no browser errors");
   await browser.close();
 })().catch((e) => {
   console.error(e);

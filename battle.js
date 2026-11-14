@@ -175,12 +175,19 @@ const Battle = (() => {
     return `<p class="trade-note">🧺 補給交換：素材 ${n} 個（${TRADE} 個換 1 個）</p><div class="dlg-row"><button data-trade="berry" ${n >= TRADE ? "" : "disabled"}>🍓 換小紅莓</button><button data-trade="dew" ${n >= TRADE ? "" : "disabled"}>💧 換藍露珠</button></div>`;
   }
 
-  /* ---------- turn-based battle ---------- */
+  /* ---------- timed English battle (#6) ----------
+     Each turn is one question with at most three options and a countdown:
+       right -> the hero attacks;  wrong or time out -> the foe attacks.  Settled exactly once per question.
+     Listening questions start the clock only after the audio has finished and the options are usable.
+     Hidden page, window blur (permission dialogs) and the pause button stop the clock; "準備好了" resumes.
+     MP pays for optional help (heal / shield / +5 s) and never blocks answering; right answers restore a little MP.
+     ctx: { region, make(B) -> question, tutorial, phases:[{until, label}], chase:{start,max}, companion, onEnd(result, drops) } */
   let B = null;
+  const PREF = () => (st.pref = { practice: false, relaxed: false, ...(st.pref || {}) });
   const bar = (id, v, m) => {
     const el = $(id);
-    el.style.width = Math.max(0, (v / m) * 100) + "%";
-    el.parentElement.querySelector("span").textContent = `${Math.max(0, v)}/${m}`;
+    el.style.width = Math.max(0, Math.min(100, (v / m) * 100)) + "%";
+    el.parentElement.querySelector("span").textContent = `${Math.max(0, Math.round(v))}/${m}`;
   };
   function pop(side, text, cls) {
     const el = document.createElement("span");
@@ -195,24 +202,41 @@ const Battle = (() => {
     void el.offsetWidth;
     el.classList.add("hit");
   }
-  function log(t) {
-    $("bt-log").textContent = t;
-  }
+  const log = (t) => ($("bt-log").textContent = t);
+  const live = (tok) => B && B.tok === tok;
   function paintBattle() {
+    if (!B) return;
     const s = stats();
-    bar("bt-foe-hp", B.hp, B.maxHp);
+    if (B.chase) {
+      bar("bt-foe-hp", B.chase.max - B.dist, B.chase.max);
+      $("bt-foe-hp").parentElement.querySelector("span").textContent = `距離 ${B.dist}`;
+    } else bar("bt-foe-hp", B.hp, B.maxHp);
     bar("bt-me-hp", st.hp, s.maxHp);
     bar("bt-me-mp", st.mp, s.maxMp);
-    $("bt-foe-shield").textContent = B.shield ? `${B.shield.icon} ${B.shield.name}：普攻減半，答對英文技能可破除` : "";
-    $("bt-foe-shield").hidden = !B.shield;
+    const tags = [];
+    if (B.foeShield) tags.push(`${(B.look.shield || {}).icon || "🛡️"} ${(B.look.shield || {}).name || "護盾"}：下一次答對只會破盾`);
+    if (B.intent === "charge") tags.push("💨 準備衝刺：答錯會受到加倍傷害，答對就擋下");
+    if (B.phase) tags.push(B.phase);
+    $("bt-foe-shield").textContent = tags.join("　");
+    $("bt-foe-shield").hidden = !tags.length;
+    const me = [];
+    if (B.combo) me.push(`🔥 連答 ${B.combo}`);
+    if (B.power) me.push("⚡ 下一擊強化");
+    if (B.guard) me.push("🛡️ 護盾");
+    if (B.comp) me.push(`🧚 能量 ${B.comp.energy}/3`);
+    $("bt-me-tags").textContent = me.join("　");
     paint();
   }
-  /* ctx: { region, skills:[{id,name,icon,mp,desc,learn,make:()=>question,kind:'attack'|'heal',mult,retry}],
-          freeCasts, fleeAlways, tutorial, onEnd(result, drops) }
-     look.shield {name, icon}: halves normal attacks until a correct English skill breaks it. */
   function start(mob, ctx) {
     const s = stats();
-    B = { mob, look: mob.look, hp: mob.look.hp || 30, maxHp: mob.look.hp || 30, ctx, busy: false, answered: 0, free: ctx.freeCasts || 0, shield: mob.look.shield || null };
+    const tok = Math.random();
+    B = {
+      tok, mob, look: mob.look, hp: mob.look.hp || 30, maxHp: mob.look.hp || 30, ctx, turn: 0, combo: 0, power: false, guard: 0,
+      foeShield: !!mob.look.shield, intent: "", phase: "", q: null, settled: true, paused: false, timer: null,
+      chase: ctx.chase || null, dist: ctx.chase ? ctx.chase.start : 0,
+      comp: ctx.companion ? { ...ctx.companion, energy: 0, hintLeft: 1, healed: false } : null,
+    };
+    PREF();
     World.paused = true;
     World.clearKeys();
     const el = $("battle");
@@ -221,177 +245,404 @@ const Battle = (() => {
     $("bt-foe-name").textContent = mob.look.name;
     $("bt-foe-lv").textContent = "Lv." + (mob.look.lv || 1);
     $("bt-me-lv").textContent = "Lv." + s.lv;
+    $("bt-pause").hidden = true;
     requestAnimationFrame(() => {
       World.portrait($("bt-foe-cv"), "mob", mob.look, { dir: "down", zoom: 1.1 });
       World.portrait($("bt-me-cv"), "hero", World.heroLook, { dir: "up" });
+      $("bt-buddy").hidden = !B || !B.comp;
+      if (B && B.comp) World.portrait($("bt-buddy"), "pet", B.comp.look, { zoom: 1 });
     });
     paintBattle();
-    log(ctx.intro || `Lv.${mob.look.lv || 1} ${mob.look.name} 擋住了去路！${B.shield ? `牠有${B.shield.name}，用英文技能破除！` : ""}`);
-    menu();
+    log(ctx.intro || `Lv.${mob.look.lv || 1} ${mob.look.name} 擋住了去路！答對就攻擊，答錯或時間到會被攻擊。`);
+    setTimeout(() => live(tok) && ask(), ctx.intro || ctx.tutorial ? 900 : 500);
   }
-  function act(html) {
-    $("bt-act").innerHTML = html;
+  /* Seconds for a question: 10 by default, 14 for sentences, more for long options and the tutorial. */
+  function timeFor(q) {
+    let t = q.recK === "s" ? 14 : 10;
+    if (q.options.some((o) => String(o.html).replace(/<[^>]+>/g, "").length > 28)) t += 4;
+    if (B.ctx.tutorial && B.turn <= 3) t *= 1.5;
+    if (st.pref.relaxed) t *= 1.5;
+    return Math.round(t);
   }
-  /* One screen, one tap: attack, each English skill (cost, effect, what it practises), items, focus, flee. */
-  function menu() {
+  /* Three clear options at most: the right one plus up to two wrong ones. */
+  function trim(q) {
+    const right = q.options.filter((o) => o.ok),
+      wrong = q.options.filter((o) => !o.ok).slice(0, 2);
+    q.options = shuffle([...right, ...wrong]);
+    if (q.cols) q.cols = Math.min(q.cols, 3);
+    return q;
+  }
+  function nextIntent() {
+    const seq = B.look.intents;
+    if (!seq || B.chase) return "";
+    const it = seq[B.turn % seq.length];
+    if (it === "guard") B.foeShield = true;
+    return it === "charge" ? "charge" : "";
+  }
+  function ask() {
     if (!B) return;
-    B.busy = false;
-    const s = stats(),
-      low = B.ctx.skills.every((k) => !(B.free > 0) && st.mp < k.mp);
-    act(`<div class="bt-menu"><button id="bt-attack" class="bt-main">⚔️ 攻擊<small>不耗 MP${B.shield ? " · 有盾時減半" : ""}</small></button>${B.ctx.skills
-      .map((k, i) => {
-        const free = B.free > 0,
-          can = free || st.mp >= k.mp;
-        return `<button data-k="${i}" class="bt-skill" ${can ? "" : "disabled"}><b>${k.icon} ${esc(k.name)}</b><small>${free ? "這次免費" : `MP ${k.mp}`} · ${esc(k.desc)}</small>${k.learn ? `<small class="bt-learn">練：${esc(k.learn)}</small>` : ""}</button>`;
-      })
-      .join("")}<button id="bt-item">🎒 道具<small>🍓${count("berry")} 💧${count("dew")}</small></button><button id="bt-focus">🧘 專注<small>回復 ${focusMp()} MP</small></button><button id="bt-run">🏃 逃跑</button></div>${low ? `<p class="bt-tip">MP 不夠施法：按「🧘 專注」或用藍露珠回復 MP，也可以先普通攻擊或逃跑。</p>` : ""}`);
-    $("bt-attack").onclick = attack;
-    $("bt-act")
-      .querySelectorAll("[data-k]")
-      .forEach((b) => (b.onclick = () => cast(B.ctx.skills[+b.dataset.k])));
-    $("bt-item").onclick = items;
-    $("bt-focus").onclick = focus;
+    if (B.chase ? B.dist <= 0 : B.hp <= 0) return victory();
+    if (st.hp <= 0) return defeat();
+    B.turn++;
+    if (B.ctx.phases) {
+      const f = B.hp / B.maxHp,
+        ph = B.ctx.phases.find((p) => f > p.until) || B.ctx.phases[B.ctx.phases.length - 1];
+      B.phase = ph.label;
+      B.phaseIdx = B.ctx.phases.indexOf(ph);
+    }
+    B.intent = nextIntent();
+    const q = trim(B.ctx.make(B));
+    B.q = q;
+    B.settled = false;
+    B.used = {};
+    Learn.track(q);
+    paintBattle();
+    render(q);
+  }
+  function render(q) {
+    const tok = B.tok,
+      practice = st.pref.practice,
+      m = stats();
+    const help = [
+      ["heal", "💚 補血", 8, st.hp >= m.maxHp],
+      ["shield", "🛡️ 護盾", 6, B.guard > 0],
+      ["time", "⏳ +5 秒", 4, practice],
+    ];
+    $("bt-act").innerHTML = `<div class="bt-q">
+      <div class="bt-top"><span class="bt-turn">第 ${B.turn} 題${B.chase ? " · 追海鷗" : ""}</span><button type="button" id="bt-mode" class="bt-mini">${practice ? "🌱 練習（不限時）" : "⏱ 限時"}</button><button type="button" id="bt-hold" class="bt-mini" aria-label="暫停">⏸</button><button type="button" id="bt-run" class="bt-mini">🏃 逃跑</button></div>
+      <div class="bt-clock" ${practice ? "hidden" : ""}><i id="bt-clock-bar"></i><span id="bt-clock-n"></span></div>
+      <div class="qz-p">${q.prompt}</div>
+      ${q.audio ? `<button class="qz-say" type="button" id="bt-say">🔊 ${esc(q.audio.label || "再聽一次")}</button>` : ""}
+      <div class="qz-o${q.options.some((o) => o.wide) ? " wide" : ""}${q.cols ? " c" + q.cols : ""}">${q.options.map((o, i) => `<button type="button" data-i="${i}" disabled>${o.html}</button>`).join("")}</div>
+      <div class="qz-f" role="status" id="bt-feedback"></div>
+      <div class="bt-help">${help.map(([k, label, mp, off]) => `<button type="button" data-help="${k}" ${st.mp < mp || off ? "disabled" : ""}>${label}<small>MP ${mp}</small></button>`).join("")}<button type="button" data-help="berry" ${count("berry") && st.hp < m.maxHp ? "" : "disabled"}>🍓<small>×${count("berry")}</small></button>${B.comp ? `<button type="button" data-help="hint" class="bt-buddy-hint" ${B.comp.hintLeft ? "" : "disabled"}>🧚 提示<small>每場 ${B.comp.hintLeft} 次</small></button>` : ""}</div>
+    </div>`;
+    $("bt-mode").onclick = () => {
+      st.pref.practice = !st.pref.practice;
+      persist();
+      $("bt-mode").textContent = st.pref.practice ? "🌱 練習（不限時）" : "⏱ 限時（下一題起）";
+      if (st.pref.practice) stopClock();
+    };
+    $("bt-hold").onclick = () => hold("已暫停");
     $("bt-run").onclick = flee;
-    if (B.ctx.tutorial && !B.answered) log(B.ctx.tutorial);
+    $("bt-act").querySelectorAll("[data-help]").forEach((b) => (b.onclick = () => helpAct(b.dataset.help)));
+    $("bt-act").querySelectorAll(".qz-o button").forEach((b) => (b.onclick = () => settle(q.options[+b.dataset.i].ok ? "right" : "wrong", +b.dataset.i)));
+    if (B.ctx.tutorial && B.turn === 1) log(B.ctx.tutorial);
+    else if (B.intent === "charge") log(`${B.look.name} 準備衝刺！答對就能擋下。`);
+    else if (B.foeShield) log(`${B.look.name} 展開了${(B.look.shield || {}).name || "護盾"}，答對可以破盾。`);
+    else if (!B.chase) log(`${B.look.name} 等著你的答案……`);
+    // Listening: clock starts only after the audio has really played and the options are usable.
+    const go = () => {
+      if (!live(tok) || B.q !== q || B.settled) return;
+      $("bt-act").querySelectorAll(".qz-o button").forEach((b) => (b.disabled = false));
+      startClock(timeFor(q));
+    };
+    const sayBtn = $("bt-say");
+    if (sayBtn) sayBtn.onclick = () => playAwait(q.audio);
+    if (q.audio && q.autoplay) {
+      $("bt-clock-n").textContent = "播放中…";
+      playAwait(q.audio).then((ok) => {
+        if (!live(tok) || B.q !== q) return;
+        if (ok) return go();
+        // Audio failed: say so, offer a replay or the written word; the clock waits.
+        $("bt-feedback").innerHTML = `<b class="bad">聲音沒有播出來</b><span class="dlg-row"><button type="button" id="bt-replay">🔊 重播</button><button type="button" id="bt-read">👀 改看文字</button></span>`;
+        $("bt-replay").onclick = () => playAwait(q.audio).then((ok2) => ok2 && ($("bt-feedback").innerHTML = "", go()));
+        $("bt-read").onclick = () => {
+          $("bt-feedback").innerHTML = `<b>題目文字：</b>${esc(q.audio.text)}`;
+          go();
+        };
+      });
+    } else go();
   }
-  const focusMp = () => Math.max(6, Math.round(stats().maxMp * 0.25));
-  function focus() {
-    if (B.busy) return;
-    B.busy = true;
-    const s = stats(),
-      g = Math.min(focusMp(), s.maxMp - st.mp);
-    st.mp += g;
-    pop("me", `+${g} MP`, "heal");
-    log(`集中精神，回復 ${g} MP。`);
-    paintBattle();
-    after();
-  }
-  function damageFoe(dmg, crit, label) {
-    B.hp = Math.max(0, B.hp - dmg);
-    shake("foe");
-    pop("foe", (crit ? "暴擊 " : "") + dmg, crit ? "crit" : "");
-    SND.play("hit");
-    log(label + `，造成 ${dmg} 點傷害。`);
-    paintBattle();
-  }
-  function attack() {
-    if (B.busy) return;
-    B.busy = true;
-    const s = stats(),
-      crit = rnd() < 0.12,
-      phys = B.shield ? 0.5 : 1;
-    const dmg = Math.max(1, Math.round(s.atk * (0.85 + rnd() * 0.3) * (crit ? 1.5 : 1) * phys));
-    damageFoe(dmg, crit, B.shield ? `${B.shield.name}擋住了一半的力量` : "揮動法杖");
-    after();
-  }
-  /* MP is spent only when the spell works: a wrong answer teaches the right one and costs a turn, not MP. */
-  async function cast(k) {
-    const free = B.free > 0;
-    if (B.busy || (!free && st.mp < k.mp)) return;
-    B.busy = true;
-    log(`${k.icon} ${k.name}：答對就發動${free ? "（這次免費示範）" : `，成功才消耗 ${k.mp} MP`}。`);
-    const q = k.make();
-    B.answered++;
-    await Learn.ask($("bt-act"), q, {
-      src: "battle",
-      next: "繼續戰鬥",
-      retry: !!k.retry,
-      onAnswer(ok) {
-        if (!ok) {
-          pop("me", "失敗", "miss");
-          log(`咒語沒有成功，沒有消耗 MP。看一下正確答案，下次再試！`);
-          return;
+  /* Resolves true once the clip (or speech) has played to the end, false if it could not play. */
+  function playAwait(a) {
+    return new Promise((res) => {
+      if (!a) return res(true);
+      let done = false;
+      const fin = (ok) => {
+        if (done) return;
+        done = true;
+        clearTimeout(t);
+        res(ok);
+      };
+      const t = setTimeout(() => fin(false), 8000);
+      const tts = () => {
+        try {
+          if (!window.speechSynthesis) return fin(false);
+          speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(a.text);
+          u.lang = "en-US";
+          u.rate = 0.85;
+          u.onend = () => fin(true);
+          u.onerror = () => fin(false);
+          speechSynthesis.speak(u);
+        } catch (e) {
+          fin(false);
         }
-        if (free) B.free--;
-        else st.mp -= k.mp;
-        if (B.shield) {
-          pop("foe", `${B.shield.icon} 破盾！`, "crit");
-          log(`${B.shield.name}被破除了！`);
-          B.shield = null;
-        }
-        if (k.kind === "heal") {
-          const s = stats(),
-            h = Math.round(s.maxHp * (k.heal || 0.4));
-          st.hp = Math.min(s.maxHp, st.hp + h);
-          pop("me", "+" + h, "heal");
-          log(`${k.name} 成功，回復 ${h} HP。`);
-          paintBattle();
-        } else {
-          const s = stats(),
-            dmg = Math.max(1, Math.round(s.atk * (k.mult || 2) * (0.9 + rnd() * 0.2)));
-          damageFoe(dmg, false, `${k.name} 命中`);
-        }
-      },
+      };
+      if (!a.file) return tts();
+      try {
+        VOICE.onended = () => fin(true);
+        VOICE.onerror = () => tts();
+        VOICE.src = a.file;
+        VOICE.currentTime = 0;
+        const p = VOICE.play();
+        if (p) p.catch(tts);
+      } catch (e) {
+        tts();
+      }
     });
-    after();
   }
-  function items() {
-    if (B.busy) return;
-    const list = ["berry", "dew"]
-      .map((k) => `<button data-i="${k}" ${count(k) ? "" : "disabled"}><b>${ITEMS[k].icon} ${ITEMS[k].name} ×${count(k)}</b><small>${ITEMS[k].desc}</small></button>`)
-      .join("");
-    act(`<div class="bt-list">${list}<button class="bt-back" id="bt-back">↩ 返回</button></div>`);
-    $("bt-back").onclick = menu;
-    $("bt-act")
-      .querySelectorAll("[data-i]")
-      .forEach(
-        (b) =>
-          (b.onclick = () => {
-            const k = b.dataset.i,
-              s = stats();
-            const full = (ITEMS[k].hp && st.hp >= s.maxHp) || (ITEMS[k].mp && st.mp >= s.maxMp);
-            if (full) {
-              log(ITEMS[k].hp ? "HP 已經是滿的。" : "MP 已經是滿的。");
-              return;
-            }
-            B.busy = true;
-            useItem(k, false);
-            pop("me", ITEMS[k].hp ? "+" + ITEMS[k].hp : "+" + ITEMS[k].mp + " MP", "heal");
-            log(`使用了 ${ITEMS[k].name}。`);
-            paintBattle();
-            after();
-          }),
-      );
-  }
-  function flee() {
-    if (B.busy) return;
-    B.busy = true;
-    if (B.ctx.fleeAlways || rnd() < 0.75) {
-      log("成功逃走了！");
-      setTimeout(() => end("flee"), 500);
+  function startClock(sec) {
+    stopClock();
+    if (st.pref.practice) {
+      $("bt-clock-n") && ($("bt-clock-n").textContent = "");
       return;
     }
-    log("沒逃掉！");
-    after();
+    const tok = B.tok;
+    B.timer = { left: sec, total: sec };
+    const paintClock = () => {
+      if (!$("bt-clock-bar")) return;
+      $("bt-clock-bar").style.width = (B.timer.left / B.timer.total) * 100 + "%";
+      $("bt-clock-bar").classList.toggle("low", B.timer.left <= 3);
+      $("bt-clock-n").textContent = `${Math.ceil(B.timer.left)} 秒`;
+    };
+    paintClock();
+    B.timer.iv = setInterval(() => {
+      if (!live(tok) || !B.timer) return;
+      if (B.paused || B.anim) return;
+      B.timer.left = Math.max(0, B.timer.left - 0.1);
+      paintClock();
+      if (B.timer.left <= 0) settle("timeout");
+    }, 100);
   }
-  /* After the hero's action: win, or the foe answers with its own attack. */
-  function after() {
-    if (B.hp <= 0) return setTimeout(victory, 500);
-    setTimeout(foeTurn, 650);
+  function stopClock() {
+    if (B && B.timer) {
+      clearInterval(B.timer.iv);
+      B.timer = null;
+    }
   }
-  function foeTurn() {
-    if (!B) return;
-    if (rnd() < 0.1) {
-      pop("me", "Miss", "miss");
-      log(`${B.look.name} 的攻擊落空了。`);
+  /* Pause (button, hidden page, blur): freeze the clock and the fight until the player taps "準備好了". */
+  function hold(why) {
+    if (!B || B.paused || B.settled) return;
+    B.paused = true;
+    $("bt-pause").hidden = false;
+    $("bt-pause-why").textContent = why || "已暫停";
+    $("bt-ready").onclick = () => {
+      if (!B) return;
+      B.paused = false;
+      $("bt-pause").hidden = true;
+    };
+  }
+  document.addEventListener("visibilitychange", () => document.hidden && hold("畫面切換了，已暫停"));
+  window.addEventListener("blur", () => hold("已暫停"));
+  /* Short animations (companion help) stop the clock while they play. */
+  function anim(ms, fn) {
+    B.anim = true;
+    const tok = B.tok;
+    setTimeout(() => {
+      if (!live(tok)) return;
+      B.anim = false;
+      fn && fn();
+    }, ms);
+  }
+  function helpAct(k) {
+    if (!B || B.settled) return;
+    const s = stats();
+    if (k === "heal" && st.mp >= 8 && st.hp < s.maxHp) {
+      st.mp -= 8;
+      const h = Math.round(s.maxHp * 0.35);
+      st.hp = Math.min(s.maxHp, st.hp + h);
+      pop("me", "+" + h, "heal");
+    } else if (k === "shield" && st.mp >= 6 && !B.guard) {
+      st.mp -= 6;
+      B.guard = 1;
+      pop("me", "🛡️", "heal");
+    } else if (k === "time" && st.mp >= 4 && B.timer) {
+      st.mp -= 4;
+      B.timer.left += 5;
+      B.timer.total = Math.max(B.timer.total, B.timer.left);
+    } else if (k === "berry" && count("berry") && st.hp < s.maxHp) {
+      useItem("berry", false);
+      pop("me", "+" + ITEMS.berry.hp, "heal");
+    } else if (k === "hint" && B.comp && B.comp.hintLeft) return companionHint();
+    else return;
+    persist();
+    paintBattle();
+    refreshHelp();
+  }
+  function refreshHelp() {
+    const s = stats(),
+      need = { heal: 8, shield: 6, time: 4 };
+    $("bt-act").querySelectorAll("[data-help]").forEach((b) => {
+      const k = b.dataset.help;
+      if (need[k]) b.disabled = st.mp < need[k] || (k === "heal" && st.hp >= s.maxHp) || (k === "shield" && B.guard > 0) || (k === "time" && !B.timer);
+      if (k === "berry") {
+        b.disabled = !count("berry") || st.hp >= s.maxHp;
+        b.querySelector("small").textContent = "×" + count("berry");
+      }
+    });
+  }
+  /* Companion hint: removes one wrong option. If only one option is left, the question becomes assisted practice. */
+  function companionHint() {
+    const q = B.q,
+      bs = [...$("bt-act").querySelectorAll(".qz-o button")],
+      wrong = bs.filter((b) => !q.options[+b.dataset.i].ok && !b.classList.contains("gone"));
+    if (!wrong.length) return;
+    B.comp.hintLeft--;
+    const b = wrong[Math.floor(Math.random() * wrong.length)];
+    log(`🧚 ${B.comp.name}：「不是這個喔！」`);
+    anim(600, () => {
+      b.classList.add("gone");
+      b.disabled = true;
+      const left = bs.filter((x) => !x.classList.contains("gone")).length;
+      if (left <= 1) {
+        q.assisted = true;
+        $("bt-feedback").innerHTML = "<small>只剩一個選項：這題算輔助練習，不列入掌握評估。</small>";
+      }
+      const h = $("bt-act").querySelector('[data-help="hint"]');
+      if (h) {
+        h.disabled = true;
+        h.querySelector("small").textContent = "每場 0 次";
+      }
+    });
+  }
+  /* One settlement per question: double taps, an answer racing the timeout and replayed audio cannot repeat it. */
+  function settle(kind, idx) {
+    if (!B || B.settled || B.paused) return;
+    const q = B.q,
+      tok = B.tok;
+    B.settled = true;
+    stopClock();
+    const bs = [...$("bt-act").querySelectorAll(".qz-o button")];
+    bs.forEach((b, i) => {
+      b.disabled = true;
+      if (q.options[i].ok) b.classList.add("right");
+    });
+    if (kind === "wrong" && bs[idx]) bs[idx].classList.add("wrong");
+    const ok = kind === "right";
+    SND.play(ok ? "correct" : "wrong");
+    // Records: answers through Learn; a timeout is metadata, not a language error; hinted-to-one is practice.
+    if (kind === "timeout") Learn.timeout(q);
+    else if (q.assisted && ok) Learn.assisted(q);
+    else Learn.grade(q, ok, "battle");
+    if (ok) heroHits();
+    else foeHits(kind === "timeout");
+    paintBattle();
+    const a = q.answer || {};
+    if (ok) {
+      $("bt-feedback").innerHTML = `<b class="good">答對了！</b> <span class="qz-ans">${esc(a.en || "")}</span> <span class="qz-zh">${esc(a.zh || "")}</span>`;
+      setTimeout(() => live(tok) && after(), 900);
     } else {
-      const dmg = Math.max(1, Math.round((B.look.atk || 4) * (0.8 + rnd() * 0.4)));
+      // The explanation is not timed: read it, then continue.
+      $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "正確答案"}</b> <span class="qz-ans">${esc(a.en || "")}</span>${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${kind === "timeout" ? "<small>時間到不算英文答錯，這題會在之後的複習再出現。</small>" : ""}`;
+      if (a.en) speak(a.en, a.file || "");
+      const go = document.createElement("button");
+      go.type = "button";
+      go.className = "qz-next";
+      go.id = "bt-next";
+      go.textContent = "下一題";
+      go.onclick = () => live(tok) && after();
+      $("bt-act").querySelector(".bt-q").insertBefore(go, $("bt-act").querySelector(".bt-help"));
+      go.focus({ preventScroll: true });
+    }
+  }
+  function heroHits() {
+    const s = stats();
+    B.combo++;
+    st.mp = Math.min(s.maxMp, st.mp + 2);
+    if (B.chase) {
+      B.dist = Math.max(0, B.dist - 1);
+      pop("foe", "拉近！", "crit");
+      log(B.dist ? `追上了一點！還差 ${B.dist}。` : "抓到海鷗了！");
+    } else if (B.foeShield) {
+      B.foeShield = false;
+      pop("foe", `${(B.look.shield || {}).icon || "🛡️"} 破盾！`, "crit");
+      log(`答對了，${(B.look.shield || {}).name || "護盾"}被破除！`);
+    } else {
+      let dmg = s.atk * 2 * (0.9 + rnd() * 0.2) * (B.power ? 1.5 : 1);
+      if (B.comp && B.comp.bond >= 3) dmg += 4;
+      dmg = Math.max(1, Math.round(dmg));
+      B.hp = Math.max(0, B.hp - dmg);
+      shake("foe");
+      pop("foe", (B.power ? "強化 " : "") + dmg, B.power ? "crit" : "");
+      SND.play("hit");
+      log(`${B.intent === "charge" ? "擋下衝刺，並且" : ""}命中！造成 ${dmg} 點傷害${B.comp && B.comp.bond >= 3 ? `（${B.comp.name}追擊 +4）` : ""}。`);
+      B.power = false;
+    }
+    B.intent = "";
+    if (B.combo % 3 === 0) {
+      B.power = true;
+      log(`連答 ${B.combo} 題！下一擊強化。`);
+    }
+    if (B.comp) {
+      B.comp.energy++;
+      if (B.comp.energy >= 3) {
+        B.comp.energy = 0;
+        B.guard = 1;
+        pop("me", "🧚🛡️", "heal");
+        log(`🧚 ${B.comp.name}放出風之護盾，擋下下一次攻擊！`);
+      }
+    }
+  }
+  function foeHits(timeout) {
+    const s = stats();
+    B.combo = 0;
+    if (B.chase) {
+      B.dist = Math.min(B.chase.max, B.dist + 1);
+      pop("foe", "飛遠了", "miss");
+      log(timeout ? "時間到，海鷗飛遠了一點。" : `海鷗飛遠了一點（距離 ${B.dist}）。`);
+      return;
+    }
+    let dmg = (B.look.atk || 4) * (0.8 + rnd() * 0.4) * (B.intent === "charge" ? 1.8 : 1);
+    if (B.ctx.tutorial && B.turn <= 3) dmg *= 0.5;
+    dmg = Math.max(1, Math.round(dmg));
+    if (B.guard) {
+      B.guard = 0;
+      pop("me", "擋下", "heal");
+      log(`${timeout ? "時間到。" : ""}${B.look.name} 的攻擊被護盾擋下了。`);
+    } else {
       st.hp = Math.max(0, st.hp - dmg);
       shake("me");
       pop("me", dmg, "hurt");
-      log(`${B.look.name} 發動攻擊，你受到 ${dmg} 點傷害。`);
-      persist();
+      log(`${timeout ? "時間到。" : ""}${B.look.name} ${B.intent === "charge" ? "衝刺撞來" : "發動攻擊"}，你受到 ${dmg} 點傷害。`);
     }
-    paintBattle();
-    if (st.hp <= 0) return setTimeout(defeat, 500);
-    setTimeout(menu, 350);
+    B.intent = "";
+    // Companion heal (bond 2+): once per battle when HP runs low.
+    if (B.comp && B.comp.bond >= 2 && !B.comp.healed && st.hp > 0 && st.hp / s.maxHp < 0.35) {
+      B.comp.healed = true;
+      const h = Math.round(s.maxHp * 0.25);
+      st.hp = Math.min(s.maxHp, st.hp + h);
+      pop("me", "🧚+" + h, "heal");
+      log(`🧚 ${B.comp.name}用微風幫你回復 ${h} HP。`);
+    }
+    persist();
+  }
+  function after() {
+    if (!B) return;
+    if (B.chase && B.dist >= B.chase.max) return escaped();
+    if (B.chase ? B.dist <= 0 : B.hp <= 0) return victory();
+    if (st.hp <= 0) return defeat();
+    ask();
+  }
+  function flee() {
+    if (!B) return;
+    stopClock();
+    log("成功離開了戰鬥。");
+    end("flee");
+  }
+  function escaped() {
+    stopClock();
+    $("bt-act").innerHTML = `<div class="bt-end"><h3>💨 海鷗飛走了</h3><p>牠飛遠了，等一下再去追。練到的英文都已經記錄。</p><button id="bt-claim" class="qz-next">回到原地</button></div>`;
+    $("bt-claim").onclick = () => end("escape");
   }
   function victory() {
+    stopClock();
     st.kills++;
-    const drops = rollDrops(B.look, B.ctx.region);
+    const drops = B.chase ? [] : rollDrops(B.look, B.ctx.region);
     SND.play("roundend");
-    log(`打倒了 ${B.look.name}！`);
-    act(`<div class="bt-end"><h3>🎉 勝利</h3><p>獲得：${drops.length ? drops.map((d) => `${ITEMS[d].icon} ${ITEMS[d].name}`).join("、") : "沒有掉落物"}</p><p class="fine">學習經驗只來自答對的英文題。</p><button id="bt-claim" class="qz-next">收下並回到原地</button></div>`);
+    log(B.chase ? "抓到海鷗了！" : `打倒了 ${B.look.name}！`);
+    $("bt-act").innerHTML = `<div class="bt-end"><h3>🎉 ${B.chase ? "搶回行李了" : "勝利"}</h3><p>${drops.length ? "獲得：" + drops.map((d) => `${ITEMS[d].icon} ${ITEMS[d].name}`).join("、") : B.chase ? "行李箱回到你手上了。" : "沒有掉落物"}</p><p class="fine">學習經驗只來自答對的英文題。</p><button id="bt-claim" class="qz-next">收下並回到原地</button></div>`;
     $("bt-claim").onclick = () => {
       drops.forEach((d) => give(d));
       end("win", drops);
@@ -399,17 +650,23 @@ const Battle = (() => {
     $("bt-claim").focus({ preventScroll: true });
   }
   function defeat() {
+    stopClock();
     st.downs++;
     persist();
     log("你倒下了……");
-    act(`<div class="bt-end"><h3>💫 倒下了</h3><p>會在這張地圖的入口醒來，HP、MP 恢復一半。卡片和學習紀錄都不受影響。</p><button id="bt-wake" class="qz-next">在入口醒來</button></div>`);
+    $("bt-act").innerHTML = `<div class="bt-end"><h3>💫 倒下了</h3><p>會在這張地圖的入口醒來，HP、MP 恢復一半。卡片和學習紀錄都不受影響。</p><button id="bt-wake" class="qz-next">在入口醒來</button></div>`;
     $("bt-wake").onclick = () => end("down");
   }
   function end(result, drops) {
     const b = B;
-    B = null;
+    stopClock();
+    B = null; // invalidates every pending timer and audio callback of this battle
     $("battle").hidden = true;
     $("bt-act").innerHTML = "";
+    $("bt-pause").hidden = true;
+    try {
+      VOICE.onended = null;
+    } catch (e) {}
     Learn.flush("battle", b.look.name);
     World.paused = false;
     persist();
@@ -422,15 +679,18 @@ const Battle = (() => {
     get active() {
       return !!B;
     },
-    /* true while the action menu is waiting for the player */
+    /* true while a question is waiting for an answer (options usable, not paused) */
     get ready() {
-      return !!B && !B.busy && !!document.getElementById("bt-attack");
+      return !!B && !B.settled && !B.paused && !!document.querySelector(".qz-o button:not([disabled])");
     },
     get hp() {
       return st.hp;
     },
     get mp() {
       return st.mp;
+    },
+    get pref() {
+      return PREF();
     },
     bars() {
       const s = stats();
@@ -445,8 +705,19 @@ const Battle = (() => {
       st.mp = v;
       persist();
     },
+    get state() {
+      return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield, combo: B.combo, power: B.power, guard: B.guard, intent: B.intent, dist: B.dist, turn: B.turn, paused: B.paused, settled: B.settled, left: B.timer ? B.timer.left : null, phase: B.phase, energy: B.comp ? B.comp.energy : null, hint: B.comp ? B.comp.hintLeft : null };
+    },
     get foe() {
-      return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: !!B.shield };
+      return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield };
+    },
+    settleForTest: (k) => settle(k),
+    /* tests only: keep a fight alive long enough to check every rule, or end it quickly */
+    setFoeHp(n) {
+      if (B) B.hp = B.maxHp = Math.max(1, n);
+    },
+    get mob() {
+      return B && B.mob;
     },
   };
 })();

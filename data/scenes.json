@@ -1,5 +1,5 @@
 {
-  "_說明": "開車模式的情境對話。q 是對方先說的英文（可省略），en 是你要說的英文，zh 是中文提示；lv 是難度（1 初級、2 中級、3 高級）。分類的 element 是所屬區域（travel 屬於風之旅行群島），共用內容 ID 寫成「區域/分類/場景/難度」，例如 wind/travel/customs/1，RPG 任務與開車模式用同一個 ID。單一場景依對話順序出題，全部或隨機時打散。答對記進句子紀錄（pm-sents）。英文避免數字與連字號，語音辨識比較好判斷。",
+  "_說明": "開車模式的情境對話。q 是對方先說的英文（可省略），en 是你要說的英文，zh 是中文提示；lv 是難度（1 初級、2 中級、3 高級）。分類的 element 是所屬區域（travel 屬於風之旅行群島），共用內容 ID 寫成「區域/分類/場景/難度」，例如 wind/travel/customs/1，RPG 任務與開車模式用同一個 ID。單一場景依對話順序出題，全部或隨機時打散。答對記進句子紀錄（pm-sents）。英文避免數字與連字號，語音辨識比較好判斷。 旅伴聊天（companion）的 q 是露米說的話，en 是主要回答，alt 是其他合理回答，react 是露米的回應，bond 是解鎖所需的好感等級；開車模式只練 q 與 en。",
   "categories": [
     {"id": "travel", "name": "旅遊", "icon": "✈️", "element": "wind", "scenes": [
       {"id": "airport", "name": "機場報到", "lv": 1, "items": [
@@ -605,6 +605,51 @@
         {"en": "Let's exchange insurance information.", "zh": "我們交換一下保險資料吧。"},
         {"en": "My car broke down.", "zh": "我的車拋錨了。"},
         {"en": "I need to call my rental company.", "zh": "我需要打給租車公司。"}
+      ]}
+    ]},
+    {"id": "companion", "name": "旅伴聊天", "icon": "🧚", "element": "wind", "scenes": [
+      {"id": "greet", "name": "打招呼", "lv": 1, "items": [
+        {"q": "Hi! How are you today?", "en": "I'm good, thanks. And you?", "zh": "我很好，謝謝。你呢？", "react": "I'm great! The wind is soft today.", "alt": [{"en": "I'm a little tired.", "zh": "我有點累。", "react": "Oh no. Let's take it slow today."}]},
+        {"q": "Did you sleep well?", "en": "Yes, I slept very well.", "zh": "有，我睡得很好。", "react": "Me too! I slept on a cloud.", "alt": [{"en": "No, I didn't sleep well.", "zh": "沒有，我沒睡好。", "react": "Poor you. Maybe a short nap later?"}]},
+        {"q": "Good morning! Are you ready to go?", "en": "Yes, I'm ready.", "zh": "好了，我準備好了。", "react": "Yay! Let's go!", "alt": [{"en": "Give me five minutes.", "zh": "給我五分鐘。", "react": "Okay, I'll wait right here."}]},
+        {"q": "What's new with you?", "en": "Not much. How about you?", "zh": "沒什麼特別的。你呢？", "react": "I found a shiny feather!"},
+        {"q": "Nice to see you again!", "en": "Nice to see you too.", "zh": "我也很高興見到你。", "react": "Hehe, you're my best travel buddy."},
+        {"q": "Can I call you my friend?", "en": "Of course! You're my friend.", "zh": "當然！你是我的朋友。", "react": "That makes me so happy!", "bond": 2},
+        {"q": "See you later!", "en": "See you!", "zh": "待會見！", "react": "Bye for now!"}
+      ]},
+      {"id": "mood", "name": "聊心情", "lv": 1, "items": [
+        {"q": "How do you feel today?", "en": "I feel happy today.", "zh": "我今天很開心。", "react": "Happy is the best!", "alt": [{"en": "I feel a little sad.", "zh": "我有點難過。", "react": "I'm here for you. Want a wind hug?"}]},
+        {"q": "Why are you so happy?", "en": "Because the weather is nice.", "zh": "因為天氣很好。", "react": "The wind loves sunny days too!", "alt": [{"en": "Because I passed the test.", "zh": "因為我通過考試了。", "react": "Wow, great job!"}]},
+        {"q": "Are you nervous about the trip?", "en": "Just a little.", "zh": "只有一點點。", "react": "Don't worry. I'll be with you.", "alt": [{"en": "No, I'm excited!", "zh": "不會，我很興奮！", "react": "Me too!"}]},
+        {"q": "What makes you smile?", "en": "Good food and good friends.", "zh": "好吃的東西和好朋友。", "react": "Then I'm half of your smile!"},
+        {"q": "Are you okay?", "en": "Yes, I'm fine. Thank you.", "zh": "嗯，我沒事。謝謝你。", "react": "Good. Tell me if you need help.", "alt": [{"en": "Not really. I'm stressed.", "zh": "不太好，我壓力很大。", "react": "Let's take a deep breath together."}]},
+        {"q": "What do you do when you feel down?", "en": "I listen to music.", "zh": "我會聽音樂。", "react": "I sing with the wind!", "alt": [{"en": "I go for a walk.", "zh": "我會去散步。", "react": "A walk in fresh air? I love that."}], "bond": 2}
+      ]},
+      {"id": "food", "name": "今天吃什麼", "lv": 1, "items": [
+        {"q": "I'm hungry. What should we eat?", "en": "How about noodles?", "zh": "吃麵怎麼樣？", "react": "Noodles! Long and wavy like the wind!", "alt": [{"en": "Let's get some rice.", "zh": "我們吃飯吧。", "react": "Rice sounds good to me."}]},
+        {"q": "Do you like spicy food?", "en": "Yes, I love spicy food.", "zh": "喜歡，我超愛吃辣。", "react": "Wow, you're brave!", "alt": [{"en": "No, I can't eat spicy food.", "zh": "不行，我不能吃辣。", "react": "Okay, no spicy food today."}]},
+        {"q": "What's your favorite food?", "en": "My favorite food is fried rice.", "zh": "我最喜歡的食物是炒飯。", "react": "I want to try it someday!"},
+        {"q": "Do you want something to drink?", "en": "Yes, a cup of tea, please.", "zh": "好，請給我一杯茶。", "react": "Hot tea, coming up!", "alt": [{"en": "Just water, thanks.", "zh": "水就好，謝謝。", "react": "Water is good for you."}]},
+        {"q": "Should we eat here or take it out?", "en": "Let's eat here.", "zh": "我們在這裡吃吧。", "react": "Great, I see a table by the window.", "alt": [{"en": "Let's take it out.", "zh": "我們外帶吧。", "react": "A picnic in the wind? Yes!"}]},
+        {"q": "Was the food good?", "en": "It was delicious!", "zh": "很好吃！", "react": "Yay! Let's come back again.", "alt": [{"en": "It was a little salty.", "zh": "有點鹹。", "react": "Next time we can ask for less salt."}]},
+        {"q": "Can you teach me how to use chopsticks?", "en": "Sure. Hold them like this.", "zh": "當然，像這樣拿。", "react": "Like this? Oops, my noodles flew away!", "bond": 2}
+      ]},
+      {"id": "shopping", "name": "一起逛街", "lv": 1, "items": [
+        {"q": "Let's go shopping! What do you need?", "en": "I need a new jacket.", "zh": "我需要一件新外套。", "react": "A warm one for windy days!", "alt": [{"en": "I need some souvenirs.", "zh": "我需要一些紀念品。", "react": "Souvenirs are fun to choose!"}]},
+        {"q": "How about this one?", "en": "It looks nice.", "zh": "看起來不錯。", "react": "I think so too!", "alt": [{"en": "It's a little too expensive.", "zh": "有點太貴了。", "react": "Let's look for a cheaper one."}]},
+        {"q": "What color do you like?", "en": "I like blue.", "zh": "我喜歡藍色。", "react": "Blue like the sky! Good choice."},
+        {"q": "Do you want to try it on?", "en": "Yes, where is the fitting room?", "zh": "好，試衣間在哪裡？", "react": "Over there, next to the mirror."},
+        {"q": "Are you going to buy it?", "en": "Yes, I'll take it.", "zh": "要，我買了。", "react": "Great! It suits you.", "alt": [{"en": "No, I'll think about it.", "zh": "不了，我再想想。", "react": "That's okay. No rush."}]},
+        {"q": "Can you help me pick a gift for a friend?", "en": "Sure. What does your friend like?", "zh": "當然。你朋友喜歡什麼？", "react": "She likes flowers and clouds!", "bond": 3}
+      ]},
+      {"id": "trip", "name": "規劃旅行", "lv": 1, "items": [
+        {"q": "Where should we go next?", "en": "Let's go to the beach.", "zh": "我們去海邊吧。", "react": "Waves and wind, my favorite!", "alt": [{"en": "Let's visit the mountains.", "zh": "我們去山上吧。", "react": "The mountain wind is so fresh!"}]},
+        {"q": "How will we get there?", "en": "We can take the train.", "zh": "我們可以搭火車。", "react": "I'll ride on the roof! Just kidding.", "alt": [{"en": "Let's take a bus.", "zh": "我們搭公車吧。", "react": "A bus is cheap and easy."}]},
+        {"q": "When should we leave?", "en": "Let's leave tomorrow morning.", "zh": "我們明天早上出發吧。", "react": "Early birds catch the breeze!"},
+        {"q": "How long will we stay?", "en": "Two or three days.", "zh": "兩、三天。", "react": "Perfect for a short trip."},
+        {"q": "What should we pack?", "en": "We need a map and some snacks.", "zh": "我們需要地圖和一些點心。", "react": "And an umbrella, just in case!"},
+        {"q": "Where will we sleep?", "en": "Let's book a small hotel.", "zh": "我們訂一間小旅館吧。", "react": "I'll find a room with a view."},
+        {"q": "What do you want to do there?", "en": "I want to take lots of photos.", "zh": "我想拍很多照片。", "react": "I'll do my best pose!", "alt": [{"en": "I just want to relax.", "zh": "我只想放鬆。", "react": "Relaxing sounds wonderful."}], "bond": 3}
       ]}
     ]}
   ]

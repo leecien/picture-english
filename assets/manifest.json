@@ -32,9 +32,9 @@
     "_說明": "單字和句子的圖片同樣在資料檔的 image 欄位填檔名，例如 assets/images/words/apple.png。沒填時顯示 emoji。"
   },
   "sprites": {
-    "_說明": "填入 file 就會取代程式畫的占位角色；動作名稱加在 key 後面（-walk、-idle）。留空時用占位圖。",
-    "hero-walk": {"file":"assets/sprites/hero-walk.png","frameW":96,"frameH":96,"use":"主角走路","spec":"每格 96×96，4 欄 × 4 列（列：下、左、右、上）"},
-    "hero-idle": {"file":"assets/sprites/hero-idle.png","frameW":96,"frameH":96,"use":"主角待機","spec":"每格 96×96，2 欄 × 4 列"},
+    "_說明": "畫風規則（#6）：角色一律用程式繪製的 NPC 簡潔造型。只有 style 標為 \"simple\"（照同一套造型繪製）的精靈圖才會用在遊戲裡；其他（例如 PR #3 的手繪原圖整理）保留作來源，不會被載入。動作名稱加在 key 後面（-walk、-idle）。",
+    "hero-walk": {"file":"assets/sprites/hero-walk.png","style":"handpainted","note":"PR #3 原圖整理；#6 起畫風統一為程式繪製的 NPC 簡潔造型，不用於遊戲","frameW":96,"frameH":96,"use":"主角走路","spec":"每格 96×96，4 欄 × 4 列（列：下、左、右、上）"},
+    "hero-idle": {"file":"assets/sprites/hero-idle.png","style":"handpainted","note":"PR #3 原圖整理；#6 起畫風統一為程式繪製的 NPC 簡潔造型，不用於遊戲","frameW":96,"frameH":96,"use":"主角待機","spec":"每格 96×96，2 欄 × 4 列"},
     "npc-cat-idle": {"file":"","frameW":96,"frameH":96,"use":"市場主廚貓 Momo 待機","spec":"每格 96×96，2 欄 × 4 列"},
     "npc-bunny-idle": {"file":"","frameW":96,"frameH":96,"use":"森林嚮導兔 Lily 待機","spec":"每格 96×96，2 欄 × 4 列"},
     "npc-frog-idle": {"file":"","frameW":96,"frameH":96,"use":"天氣博士蛙 Pip 待機","spec":"每格 96×96，2 欄 × 4 列"},
@@ -50,8 +50,8 @@
     "mob-bird-walk": {"file":"","frameW":96,"frameH":96,"use":"紙飛鳥 移動","spec":"每格 96×96，4 欄 × 4 列（可只畫一列）"},
     "mob-teapot-idle": {"file":"","frameW":96,"frameH":96,"use":"茶壺噗 待機","spec":"每格 96×96，2 欄 × 4 列（可只畫一列）"},
     "mob-teapot-walk": {"file":"","frameW":96,"frameH":96,"use":"茶壺噗 移動","spec":"每格 96×96，4 欄 × 4 列（可只畫一列）"},
-    "pet-walk": {"file":"assets/sprites/pet-walk.png","frameW":96,"frameH":96,"use":"小狗夥伴 走路","spec":"每格 96×96，4 欄 × 4 列（列：下、左、右、上）"},
-    "pet-idle": {"file":"assets/sprites/pet-idle.png","frameW":96,"frameH":96,"use":"小狗夥伴 待機","spec":"每格 96×96，2 欄 × 4 列"},
+    "pet-walk": {"file":"assets/sprites/pet-walk.png","style":"handpainted","note":"PR #3 原圖整理；#6 起畫風統一為程式繪製的 NPC 簡潔造型，不用於遊戲","frameW":96,"frameH":96,"use":"小狗夥伴 走路","spec":"每格 96×96，4 欄 × 4 列（列：下、左、右、上）"},
+    "pet-idle": {"file":"assets/sprites/pet-idle.png","style":"handpainted","note":"PR #3 原圖整理；#6 起畫風統一為程式繪製的 NPC 簡潔造型，不用於遊戲","frameW":96,"frameH":96,"use":"小狗夥伴 待機","spec":"每格 96×96，2 欄 × 4 列"},
     "item-berry": {"file":"","use":"小紅莓（回復 HP）掉落圖示","spec":"64×64 單張"},
     "item-dew": {"file":"","use":"藍露珠（回復 MP）掉落圖示","spec":"64×64 單張"}
   },

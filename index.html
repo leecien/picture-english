@@ -344,10 +344,11 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
   <section class="bt" id="battle" hidden aria-label="戰鬥">
     <div class="bt-stage">
       <div class="bt-foe" id="bt-foe"><div class="bt-tag"><b id="bt-foe-name"></b> <span id="bt-foe-lv"></span><div class="bbar hp"><i id="bt-foe-hp"></i><span></span></div><small class="bt-shield" id="bt-foe-shield" hidden></small></div><canvas id="bt-foe-cv" aria-hidden="true"></canvas></div>
-      <div class="bt-me" id="bt-me"><canvas id="bt-me-cv" aria-hidden="true"></canvas><div class="bt-tag"><b>你</b> <span id="bt-me-lv"></span><div class="bbar hp"><i id="bt-me-hp"></i><span></span></div><div class="bbar mp"><i id="bt-me-mp"></i><span></span></div></div></div>
+      <div class="bt-me" id="bt-me"><canvas id="bt-me-cv" aria-hidden="true"></canvas><canvas id="bt-buddy" class="bt-buddy" aria-hidden="true" hidden></canvas><div class="bt-tag"><b>你</b> <span id="bt-me-lv"></span><div class="bbar hp"><i id="bt-me-hp"></i><span></span></div><div class="bbar mp"><i id="bt-me-mp"></i><span></span></div><small class="bt-shield" id="bt-me-tags"></small></div></div>
     </div>
     <p class="bt-log" id="bt-log" role="status"></p>
     <div class="bt-act" id="bt-act"></div>
+    <div class="bt-pause" id="bt-pause" hidden><p id="bt-pause-why">已暫停</p><p class="fine">倒數和戰鬥都停住了。</p><button type="button" id="bt-ready" class="bt-ready">準備好了</button></div>
   </section>
   <div class="menu" id="menu" hidden><div class="menu-card" role="dialog" aria-label="選單"><button class="menu-close" id="menu-close" aria-label="關閉">✕</button><div id="menu-body"></div></div></div>
 </div>

@@ -84,17 +84,18 @@ const h = (page) => {
       }
       throw new Error("dialog did not finish");
     },
+    /* Timed battle: one question per turn; answer right until the claim button shows. */
     async battleWin() {
       await page.waitForSelector("#battle:not([hidden])", { timeout: 30000 });
-      for (let turn = 0; turn < 20 && (await ev(() => Battle.active)); turn++) {
-        await page.waitForFunction(() => Battle.ready || document.getElementById("bt-claim"), null, { timeout: 10000 });
+      for (let turn = 0; turn < 40 && (await ev(() => Battle.active)); turn++) {
+        await page.waitForFunction(() => Battle.ready || document.getElementById("bt-claim") || document.getElementById("bt-next"), null, { timeout: 10000 });
         if (await page.locator("#bt-claim").count()) break;
-        await ev(() => Battle.setMp(30));
-        await page.locator('.bt-skill[data-k="0"]').click();
-        await page.waitForSelector(".qz-o button:not([disabled])");
+        if (await page.locator("#bt-next").count()) {
+          await page.locator("#bt-next").click();
+          continue;
+        }
         await page.locator(".qz-o button").nth(await ev(() => Learn.last.options.findIndex((o) => o.ok))).click();
-        await page.locator(".qz-next").click();
-        await page.waitForFunction(() => document.getElementById("bt-claim") || Battle.ready || Battle.hp <= 0, null, { timeout: 10000 });
+        await page.waitForFunction(() => !Battle.ready, null, { timeout: 5000 });
       }
       await page.locator("#bt-claim").click();
       await page.waitForSelector("#battle", { state: "hidden" });
@@ -168,50 +169,30 @@ const h = (page) => {
     CUR = page;
   }
 
-  /* ---------- 3. Tutorial battle: free demo cast, MP only on success, shield ---------- */
+  /* ---------- 3. Tutorial battle: one timed question per turn, shield breaks on the first right answer ---------- */
   assert.match(await page.locator("#quest-text").innerText(), /音節泡泡/);
   await t.ev(() => World.approach(World.entities.find((e) => e.kind === "mob" && e.story === "tutorial")));
   await page.waitForSelector("#battle:not([hidden])", { timeout: 30000 });
   const before = await t.hero();
-  assert.match(await page.locator("#bt-log").innerText(), /音標魔法/, "tutorial hint");
   assert.match(await page.locator("#bt-foe-shield").innerText(), /泡泡膜/);
   await page.waitForFunction(() => Battle.ready);
-  assert.match(await page.locator('.bt-skill[data-k="0"]').innerText(), /這次免費[\s\S]*練：/, "skill shows cost, effect and what it practises");
-  const mp0 = await t.ev(() => Battle.mp);
-  await page.locator("#bt-attack").click();
-  await page.waitForFunction(() => Battle.ready, null, { timeout: 5000 });
-  assert.equal(await t.ev(() => Battle.mp), mp0, "normal attack costs no MP");
-  // A spell answered wrong twice (3-option heal question): no MP spent, shield stays, the turn passes
-  await page.locator('.bt-skill[data-k="1"]').click();
-  for (let k = 0; k < 2; k++) {
-    await page.waitForSelector(".qz-o button:not([disabled])");
-    await page.locator(".qz-o button").nth(await t.ev(() => Learn.last.options.findIndex((o, i) => !o.ok && !document.querySelectorAll(".qz-o button")[i].disabled))).click();
-  }
-  assert.equal(await t.ev(() => Battle.mp), mp0, "a failed spell costs no MP");
+  assert.match(await page.locator("#bt-log").innerText(), /答對就攻擊/, "tutorial hint");
+  assert(await page.locator(".qz-o button").count() <= 3, "three options at most");
+  assert(await t.ev(() => Battle.state.left > 10), "tutorial turns get extra time");
+  // Wrong answer: you get hit (softened in the tutorial), the explanation waits for "next"
+  const hp0 = await t.ev(() => Battle.hp);
+  await page.locator(".qz-o button").nth(await t.ev(() => Learn.last.options.findIndex((o) => !o.ok))).click();
+  assert((await t.ev(() => Battle.hp)) < hp0, "a wrong answer gets you hit");
   assert.equal(await t.ev(() => Battle.foe.shield), true);
-  await page.locator(".qz-next").click();
+  await page.locator("#bt-next").click();
   await page.waitForFunction(() => Battle.ready, null, { timeout: 5000 });
-  // Still free (the free cast is used only on success); right answer breaks the shield at once
   const hpA = await t.ev(() => Battle.foe.hp);
-  await page.locator('.bt-skill[data-k="0"]').click();
-  await page.waitForSelector(".qz-o button:not([disabled])");
   await page.locator(".qz-o button").nth(await t.ev(() => Learn.last.options.findIndex((o) => o.ok))).click();
-  assert((await t.ev(() => Battle.foe.hp)) < hpA, "correct answer hits at once");
-  assert.equal(await t.ev(() => Battle.foe.shield), false, "shield broken by English");
-  assert.equal(await t.ev(() => Battle.mp), mp0, "demo cast was free");
-  await page.locator(".qz-next").click();
-  await page.waitForFunction(() => Battle.ready || document.getElementById("bt-claim"), null, { timeout: 5000 });
-  if (await t.ev(() => Battle.ready)) {
-    // Out of MP: the focus action is there and restores it
-    await t.ev(() => Battle.setMp(0));
-    await page.locator("#bt-item").click();
-    await page.locator(".bt-back").click();
-    await page.waitForFunction(() => Battle.ready);
-    assert.match(await page.locator(".bt-tip").innerText(), /專注/);
-    await page.locator("#bt-focus").click();
-    await page.waitForFunction(() => Battle.ready || Battle.hp <= 0, null, { timeout: 5000 });
-    assert((await t.ev(() => Battle.mp)) > 0, "focus restores MP");
-  }
+  assert.equal(await t.ev(() => Battle.foe.shield), false, "first right answer breaks the bubble film");
+  assert.equal(await t.ev(() => Battle.foe.hp), hpA, "the shield took that hit");
+  await page.waitForFunction(() => Battle.ready, null, { timeout: 5000 });
+  await page.locator(".qz-o button").nth(await t.ev(() => Learn.last.options.findIndex((o) => o.ok))).click();
+  assert((await t.ev(() => Battle.foe.hp)) < hpA, "then right answers hit");
   await t.battleWin();
   const after = await t.hero();
   assert.deepEqual([after.x, after.y], [before.x, before.y], "back on the field where the fight began");
@@ -252,24 +233,43 @@ const h = (page) => {
   assert.deepEqual([(await t.hero()).x, (await t.hero()).y], [spot.x, spot.y], "same position after the round trip");
   assert.equal(await t.ev(() => RPG.data.story.wind.stage), 1, "quest unchanged");
 
-  /* ---------- 7. Customs: both purposes are valid and change the follow-up ---------- */
+  /* ---------- 7. Customs: purpose choice, then the three-phase immigration trial ---------- */
   await t.talk();
-  const cust = await t.play({ choices: [/開始對話/, /on business/] });
-  assert(cust.qs.some((q) => q.q === "What do you do?"), "business answer changes the follow-up");
+  await t.play({ choices: [/開始對話/, /on business/] });
   assert.equal(await t.ev(() => RPG.data.story.wind.purpose), "business");
+  await page.waitForSelector("#battle:not([hidden])", { timeout: 10000 });
+  assert.equal(await t.ev(() => Battle.foe.name), "風之守衛", "customs boss, the officer is not a target");
+  await page.waitForFunction(() => Battle.ready);
+  assert.match(await t.ev(() => Battle.state.phase), /1\/3：來訪目的/);
+  assert(["What is the purpose of your visit?", "What do you do?", "Are you traveling alone?"].includes(await t.ev(() => Learn.last.item.q)), "phase 1 asks about the visit");
+  const phases = new Set();
+  for (let k = 0; k < 40 && (await t.ev(() => Battle.active)); k++) {
+    await page.waitForFunction(() => Battle.ready || document.getElementById("bt-claim"), null, { timeout: 10000 });
+    if (await page.locator("#bt-claim").count()) break;
+    phases.add(await t.ev(() => Battle.state.phase));
+    await page.locator(".qz-o button").nth(await t.ev(() => Learn.last.options.findIndex((o) => o.ok))).click();
+    await page.waitForFunction(() => !Battle.ready, null, { timeout: 5000 });
+  }
+  assert.equal(phases.size, 3, "purpose, accommodation and days phases");
+  await page.locator("#bt-claim").click();
+  await page.waitForSelector("#dlg:not([hidden])");
+  await t.play();
   assert.equal(await t.ev(() => RPG.data.story.wind.stage), 2);
 
-  /* ---------- 8. Baggage at the desk: beginner lines ---------- */
+  /* ---------- 8. Baggage at the desk: beginner lines, meet Lumi, invite her ---------- */
   await t.talk();
-  const bag = await t.play({ choices: [/開始對話/, /服務櫃檯/] });
+  const bag = await t.play({ choices: [/開始對話/, /服務櫃檯/, /一起走吧/] });
   assert(bag.qs.length === 5 && bag.qs.every((q) => q.q), "five beginner lines, NPC first");
+  assert(bag.lines.some((l) => /露米/.test(l)) && bag.lines.some((l) => /不會替你答題/.test(l)), "meet Lumi; she does not answer for you");
   assert.equal(await t.ev(() => RPG.data.story.wind.bag), "desk");
+  assert.deepEqual(await t.ev(() => [RPG.data.companion.claimed, World.entities.some((e) => e.kind === "pet" && e.look.name === "露米")]), [true, true], "desk path earns the companion");
   assert.match(await t.ev(() => RPG.stages[2].scene), /lostbag/);
 
   /* ---------- 9. Hotel: the desk branch changes the clerk's line ---------- */
   await t.talk();
   const hotel = await t.play({ choices: [/開始對話/] });
   assert(hotel.lines.some((l) => /suitcase arrived/.test(l)));
+  assert(await t.ev(() => RPG.data.companion.bond === 4), "a story stage finished with Lumi adds bond");
   assert(await t.ev(() => RPG.data.story.wind.done), "story complete");
   await page.locator("#hud-quest").click();
   const journal = await page.locator("#menu-body").innerText();
@@ -290,7 +290,7 @@ const h = (page) => {
   assert.deepEqual(errors, []);
   await ctx.close();
 
-  /* ---------- 11. The other baggage branch: chase the gull (battle with a wind shield) ---------- */
+  /* ---------- 11. The other baggage branch: chase the gull (closer on right, further on wrong) ---------- */
   const b = await setup(browser);
   const t2 = h(b.page);
   await t2.ev(() => {
@@ -298,14 +298,28 @@ const h = (page) => {
   });
   await b.page.reload();
   await b.page.waitForSelector(".world-canvas");
+  assert.equal(await t2.ev(() => World.entities.some((e) => e.kind === "pet")), false, "no companion at the start");
   await t2.talk();
   await t2.play({ choices: [/開始對話/, /自己去追/] });
+  assert(await t2.ev(() => RPG.data.companion.met && !RPG.data.companion.claimed), "met Lumi, not yet invited");
   assert(await t2.ev(() => World.entities.some((e) => e.story === "thief")), "gull appears");
   await t2.ev(() => World.approach(World.entities.find((e) => e.story === "thief")));
   await b.page.waitForSelector("#battle:not([hidden])", { timeout: 30000 });
-  assert.match(await b.page.locator("#bt-foe-shield").innerText(), /風之盾/);
+  await b.page.waitForFunction(() => Battle.ready);
+  assert.equal(await t2.ev(() => Battle.state.dist), 3);
+  await b.page.locator(".qz-o button").nth(await t2.ev(() => Learn.last.options.findIndex((o) => !o.ok))).click();
+  assert.equal(await t2.ev(() => Battle.state.dist), 4, "wrong: the gull flies further");
+  const hpChase = await t2.ev(() => Battle.hp);
+  await b.page.locator("#bt-next").click();
+  await b.page.waitForFunction(() => Battle.ready);
+  await b.page.locator(".qz-o button").nth(await t2.ev(() => Learn.last.options.findIndex((o) => o.ok))).click();
+  assert.equal(await t2.ev(() => Battle.state.dist), 3, "right: closer");
+  assert.equal(await t2.ev(() => Battle.hp), hpChase, "a chase does not hurt");
   await t2.battleWin();
   assert.deepEqual(await t2.ev(() => [RPG.data.story.wind.bag, RPG.data.story.wind.stage]), ["found", 3], "chase branch recovers the bag");
+  await b.page.waitForSelector("#dlg:not([hidden])");
+  await t2.play({ choices: [/一起走吧/] });
+  assert(await t2.ev(() => RPG.data.companion.claimed), "chase path earns the companion too");
   await t2.talk();
   const h2 = await t2.play({ choices: [/開始對話/] });
   assert(h2.lines.some((l) => /help you with your bag/.test(l)), "chase branch has its own hotel line");
@@ -330,7 +344,7 @@ const h = (page) => {
   assert.deepEqual(l.errors, []);
   await l.ctx.close();
 
-  console.log("PASS: 390px full screen with one main action, KK micro-lessons (demo-first units, retry not restart, taught sounds only, review saved, resume after a break), tutorial battle (free demo cast, MP only on success, shield break, focus), graduation and portal, listen-first check-in with folded cue, commute round trip, customs branch, beginner baggage lines, hotel lines per branch, journal, reload, back to entrance, chase branch with wind shield, landscape, low-HP berry, resize");
+  console.log("PASS: 390px full screen with one main action, KK micro-lessons (demo-first units, retry not restart, taught sounds only, review saved, resume after a break), timed tutorial battle (3 options, extra time, hit on wrong, shield break), graduation and portal, listen-first check-in with folded cue, commute round trip, customs purpose + 3-phase immigration trial boss, beginner baggage lines, meeting and inviting Lumi, hotel lines per branch, journal, reload, back to entrance, gull chase (closer/further, no damage) and Lumi on that path too, landscape, low-HP berry, resize");
   await browser.close();
 })().catch(async (e) => {
   console.error(e);
