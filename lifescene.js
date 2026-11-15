@@ -498,6 +498,7 @@ const Life = (() => {
       round = { marks: {}, locked: true, onTap() {} };
       paintOutlines();
       const done = ST.missions[scene.id] || [];
+      if (!ms.length) return panel(`<p class="life-hint">🧺 這張圖還沒有生活任務（教材製作中）。可以先玩探索、聽音找物或找物拼字。</p>`);
       panel(`<p class="life-hint">🧺 選一個生活任務：</p><div class="life-missions">${ms.map((m, k) => `<button type="button" data-mission="${k}"><b>${done.includes(k) ? "✅ " : ""}${ESC(m.title)}</b><small>${ESC(m.prompt)}</small></button>`).join("")}</div>`);
       $l("life-panel").querySelectorAll("[data-mission]").forEach((b) => (b.onclick = () => mission(+b.dataset.mission)));
       return;

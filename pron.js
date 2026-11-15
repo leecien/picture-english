@@ -11,6 +11,21 @@ const Pron = (() => {
   const bank = () => (typeof WORDS !== "undefined" ? WORDS : []);
   let index = null;
   /* word bank lookup, tolerant of case, punctuation, plural -s/-es and possessive 's */
+  /* Draft dictionary (data/dict-draft.json, PR #11): look-up only. Meanings still need teaching review, there
+     is no checked KK, and nothing from it is graded. Common function words are not linked from the draft. */
+  let DRAFT = null;
+  const STOP = new Set("the a an to of in on at and or but is are am was were be been i you he she it we they me him her us them my your his its our their this that these those do does did have has had will would can could not no yes".split(" "));
+  if (typeof fetch !== "undefined" && typeof document !== "undefined")
+    fetch("data/dict-draft.json")
+      .then((r) => r.json())
+      .then((d) => (DRAFT = d))
+      .catch(() => {});
+  function draft(t) {
+    if (!DRAFT || STOP.has(t)) return null;
+    const base = DRAFT.words[t] ? t : DRAFT.forms[t];
+    const e = base && DRAFT.words[base];
+    return e ? { w: base, z: e[0], pos: e[1], kk: null, au: "", draft: true } : null;
+  }
   function lookup(raw) {
     if (!index) {
       index = new Map();
@@ -18,7 +33,10 @@ const Pron = (() => {
     }
     const t = String(raw).toLowerCase().replace(/[’]/g, "'").replace(/^[^a-z]+|[^a-z]+$/g, "");
     if (!t) return null;
-    return index.get(t) || index.get(t.replace(/'s$/, "")) || (t.length > 3 && (index.get(t.replace(/es$/, "")) || index.get(t.replace(/s$/, "")))) || null;
+    const verified = index.get(t) || index.get(t.replace(/'s$/, "")) || (t.length > 3 && (index.get(t.replace(/es$/, "")) || index.get(t.replace(/s$/, ""))));
+    if (verified) return verified;
+    const base = DRAFT && DRAFT.forms[t];
+    return (base && index.get(base)) || draft(t) || draft(t.replace(/'s$/, "")) || null;
   }
   /* A sentence the player can tap: the line plays; dotted words open their card. */
   function sent(text, file, opt = {}) {
@@ -133,7 +151,7 @@ const Pron = (() => {
     } else if (!card.hidden) busy(false);
     card.hidden = false;
     busy(true);
-    card.innerHTML = `<b class="wd-w">${ESC(w.w)}</b> ${w.kk ? `<span class="wd-kk">${ESC(w.kk)}</span>` : '<span class="wd-none">題庫沒有這個字的音標</span>'}<span class="wd-z">${ESC(w.z || "")}</span><span class="wd-row"><button type="button" class="wd-play">🔊 再聽一次</button><button type="button" class="wd-close">✕ 關閉</button></span>`;
+    card.innerHTML = `<b class="wd-w">${ESC(w.w)}</b> ${w.kk ? `<span class="wd-kk">${ESC(w.kk)}</span>` : '<span class="wd-none">音標待補（還沒有核對過的 KK）</span>'}<span class="wd-z">${ESC(w.z || "")}${w.pos ? ` <small>（${ESC(w.pos)}）</small>` : ""}</span>${w.draft ? '<span class="wd-none">釋義草稿，待教學校對</span>' : ""}${w.au ? "" : '<span class="wd-none">🔊 裝置語音念整個字（正式配音待補）</span>'}<span class="wd-row"><button type="button" class="wd-play">🔊 再聽一次</button><button type="button" class="wd-close">✕ 關閉</button></span>`;
     card.querySelector(".wd-play").onclick = () => play(w.w, w.au);
     card.querySelector(".wd-close").onclick = closeWord;
     play(w.w, w.au);

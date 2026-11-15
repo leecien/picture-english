@@ -81,8 +81,9 @@ async function setup(browser, opt = {}) {
   await page.locator("#hud-menu").click();
   await page.locator('[data-m="life"]').click();
   await page.waitForSelector("#life:not([hidden]) [data-scene]");
-  assert.equal(await page.locator("[data-scene]").count(), 6, "six scenes");
-  assert.deepEqual(await ev(() => Life.data.scenes.map((s) => s.targets.length)), [6, 6, 6, 6, 6, 6], "six targets each");
+  assert.equal(await page.locator("[data-scene]").count(), 12, "twelve scenes (PR #10 + PR #11)");
+  assert(await ev(() => Life.data.scenes.every((s) => s.targets.length === 6)), "six targets each");
+  assert.equal(await ev(() => new Set(Life.data.scenes.flatMap((s) => s.targets.map((t) => t.word))).size), 71, "71 different picture words");
   assert(await ev(() => Life.data.scenes.every((s) => s.missions.every((m) => m.targets.every((t) => s.targets.some((x) => x.id === t))))), "missions only use their scene's targets");
 
   /* ---------- every target is reachable from its centre, in every scene ---------- */
@@ -191,6 +192,15 @@ async function setup(browser, opt = {}) {
   await page.locator("#hud-menu").click();
   await page.locator('[data-m="practice"]').click();
   await page.locator("#go-life").click();
+  await page.waitForSelector("#life:not([hidden]) [data-scene]");
+  // a second-batch scene without missions says so
+  await openScene("kitchen");
+  await page.locator('[data-mode="mission"]').click();
+  assert.match(await page.locator("#life-panel").innerText(), /還沒有生活任務/);
+  await page.locator('[data-mode="explore"]').click();
+  await tapTarget("kettle");
+  assert.match(await page.locator("#life-panel").innerText(), /kettle[\s\S]*熱水壺[\s\S]*音標待補/);
+  await page.locator("#life-back").click();
   await openScene("bathroom");
   await tapTarget("toothbrush");
   assert.match(await page.locator("#life-panel").innerText(), /toothbrush[\s\S]*牙刷/, "small objects are tappable");
@@ -210,7 +220,7 @@ async function setup(browser, opt = {}) {
   assert.deepEqual(m.errors, []);
   await m.ctx.close();
 
-  console.log("PASS: 6 scenes × 6 targets with valid missions, every target's centre hits it (priority + 44px tolerance), drag pans without answering, zoom, explore (recording vs labelled device voice, no guessed KK, find count, first-find once), listen-first (locked until played, nothing named before the answer, miss then retry recorded apart), find-and-spell (tiles in and back, answer only after submit, long words find + hear), mission, saved progress, back to the same map spot, small objects (toothbrush, soap), sound failure blocks answering");
+  console.log("PASS: 12 scenes × 6 targets (71 words) with valid missions, every target's centre hits it (priority + 44px tolerance), drag pans without answering, zoom, explore (recording vs labelled device voice, no guessed KK, find count, first-find once), listen-first (locked until played, nothing named before the answer, miss then retry recorded apart), find-and-spell (tiles in and back, answer only after submit, long words find + hear), mission, saved progress, back to the same map spot, small objects (toothbrush, soap), sound failure blocks answering");
   await browser.close();
 })().catch(async (e) => {
   console.error(e);

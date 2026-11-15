@@ -61,8 +61,8 @@ async function run(browser, scheme) {
   await page.waitForSelector(".qz-o button:not([disabled])");
   // the other person's line plays when tapped
   const n0 = await ev(() => __said.length);
-  await page.locator(".qz-their .say-s").click();
-  assert.equal(await ev(() => __said[__said.length - 1]), await ev(() => Learn.last.item.q), "tap the line: whole sentence");
+  await page.locator(".qz-their .say-btn").click();
+  assert.equal(await ev(() => __said[__said.length - 1]), await ev(() => Learn.last.item.q), "the line's 🔊: whole sentence");
   // hearing an option never answers it
   const hears = await page.locator(".qz-o .qz-hear").count();
   assert.equal(hears, await page.locator(".qz-o > .qz-opt > button").count(), "every English option has its own 🔊");
@@ -134,6 +134,14 @@ async function run(browser, scheme) {
   assert(await ev(() => __plays.some((p) => /apple/.test(p))), "the word's recording plays");
   assert.equal(await ev(() => __said[__said.length - 1] === "I like apple juice."), false, "tapping a word does not play the sentence");
   await page.locator(".wd-card .wd-close").click();
+  // a word outside the checked bank comes from the draft dictionary, labelled as such, with no made-up KK
+  await page.waitForFunction(() => /pw/.test(Learn.sayHTML("We almost missed the bus.")));
+  await ev(() => (document.getElementById("dlg-body").innerHTML = `<p class="dlg-en">${Learn.sayHTML("We almost missed the bus.")}</p>`));
+  assert.equal(await page.locator('.dlg-en .pw[data-w="the"]').count(), 0, "common function words are not linked");
+  await page.locator('.dlg-en .pw[data-w="miss"]').click();
+  const dcard = await page.locator(".wd-card").innerText();
+  assert.match(dcard, /miss[\s\S]*音標待補[\s\S]*釋義草稿，待教學校對[\s\S]*裝置語音/, "missed → miss, draft meaning, no KK");
+  await page.locator(".wd-card .wd-close").click();
   assert.equal(await ev(() => Pron.lookup("juice") ? true : false) || true, true);
   await ev(() => {
     document.getElementById("dlg").hidden = true;
@@ -172,7 +180,7 @@ async function run(browser, scheme) {
     args: ["--no-sandbox"],
   });
   for (const scheme of ["light", "dark"]) await run(browser, scheme);
-  console.log("PASS: light and dark scheme: right = light green / dark green / ✓, wrong = light red / dark red / ✕, settled options opaque with >= 4.5:1 contrast (dialog and battle); line plays on tap; every English option has a separate 🔊 that never answers and pauses the battle clock; options and the answer replay after answering; English choices hearable; word card with KK and recording; one sound at a time");
+  console.log("PASS: light and dark scheme: right = light green / dark green / ✓, wrong = light red / dark red / ✕, settled options opaque with >= 4.5:1 contrast (dialog and battle); line plays on tap; every English option has a separate 🔊 that never answers and pauses the battle clock; options and the answer replay after answering; English choices hearable; word card with KK and recording; draft-dictionary words (forms → base) labelled, no guessed KK; one sound at a time");
   await browser.close();
 })().catch((e) => {
   console.error(e);
