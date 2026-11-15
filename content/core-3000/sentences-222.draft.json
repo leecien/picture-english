@@ -1,0 +1,3294 @@
+{
+  "version": 1,
+  "status": "draft-not-integrated",
+  "count": 222,
+  "legacyCount": 42,
+  "newAuthoredCount": 180,
+  "sentences": [
+    {
+      "id": "legacy-sentence-001",
+      "en": "The boy kicks the ball.",
+      "zh": "男孩踢球。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The boy kicks the ball.",
+        "zh": "男孩踢球。",
+        "scene": "👦 ⚽",
+        "blank": "kicks",
+        "distractors": [
+          "eats",
+          "reads",
+          "drives"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/the-boy-kicks-the-ball.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-boy-kicks-the-ball.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-002",
+      "en": "The cat sleeps on the bed.",
+      "zh": "貓在床上睡覺。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The cat sleeps on the bed.",
+        "zh": "貓在床上睡覺。",
+        "scene": "🐱 🛏️",
+        "blank": "sleeps",
+        "distractors": [
+          "swims",
+          "cooks",
+          "sings"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/the-cat-sleeps-on-the-bed.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-cat-sleeps-on-the-bed.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-003",
+      "en": "The dog eats a bone.",
+      "zh": "狗在吃骨頭。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The dog eats a bone.",
+        "zh": "狗在吃骨頭。",
+        "scene": "🐶 🦴",
+        "blank": "bone",
+        "distractors": [
+          "book",
+          "shoe",
+          "cake"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/the-dog-eats-a-bone.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-dog-eats-a-bone.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-004",
+      "en": "The girl reads a book.",
+      "zh": "女孩在看書。",
+      "topic": "school",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The girl reads a book.",
+        "zh": "女孩在看書。",
+        "scene": "👧 📖",
+        "blank": "book",
+        "distractors": [
+          "cup",
+          "ball",
+          "car"
+        ],
+        "level": 1,
+        "route": "school",
+        "image": "",
+        "audio": "assets/voice/sentences/the-girl-reads-a-book.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-girl-reads-a-book.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-005",
+      "en": "It is raining, so I take an umbrella.",
+      "zh": "下雨了，所以我帶傘。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "It is raining, so I take an umbrella.",
+        "zh": "下雨了，所以我帶傘。",
+        "scene": "🌧️ ☂️",
+        "blank": "umbrella",
+        "distractors": [
+          "apple",
+          "pencil",
+          "bike"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/it-is-raining-so-i-take-an-umbrella.mp3",
+        "audioZh": "assets/voice/zh/sentences/it-is-raining-so-i-take-an-umbrella.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-006",
+      "en": "The fish swims in the sea.",
+      "zh": "魚在海裡游泳。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The fish swims in the sea.",
+        "zh": "魚在海裡游泳。",
+        "scene": "🐟 🌊",
+        "blank": "swims",
+        "distractors": [
+          "flies",
+          "runs",
+          "sleeps"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/the-fish-swims-in-the-sea.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-fish-swims-in-the-sea.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-007",
+      "en": "My dad drives a car.",
+      "zh": "我爸爸開車。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "My dad drives a car.",
+        "zh": "我爸爸開車。",
+        "scene": "👨 🚗",
+        "blank": "drives",
+        "distractors": [
+          "drinks",
+          "writes",
+          "paints"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/my-dad-drives-a-car.mp3",
+        "audioZh": "assets/voice/zh/sentences/my-dad-drives-a-car.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-008",
+      "en": "A bird sings in the tree.",
+      "zh": "一隻鳥在樹上唱歌。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "A bird sings in the tree.",
+        "zh": "一隻鳥在樹上唱歌。",
+        "scene": "🐦 🌳",
+        "blank": "tree",
+        "distractors": [
+          "box",
+          "river",
+          "cup"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/a-bird-sings-in-the-tree.mp3",
+        "audioZh": "assets/voice/zh/sentences/a-bird-sings-in-the-tree.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-009",
+      "en": "The baby drinks milk.",
+      "zh": "寶寶在喝牛奶。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The baby drinks milk.",
+        "zh": "寶寶在喝牛奶。",
+        "scene": "👶 🍼",
+        "blank": "milk",
+        "distractors": [
+          "rice",
+          "sand",
+          "paper"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/the-baby-drinks-milk.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-baby-drinks-milk.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-010",
+      "en": "It is sunny at the beach.",
+      "zh": "海邊天氣晴朗。",
+      "topic": "travel",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "It is sunny at the beach.",
+        "zh": "海邊天氣晴朗。",
+        "scene": "☀️ 🏖️",
+        "blank": "sunny",
+        "distractors": [
+          "snowy",
+          "rainy",
+          "windy"
+        ],
+        "level": 1,
+        "route": "travel",
+        "image": "",
+        "audio": "assets/voice/sentences/it-is-sunny-at-the-beach.mp3",
+        "audioZh": "assets/voice/zh/sentences/it-is-sunny-at-the-beach.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-011",
+      "en": "The student walks to school.",
+      "zh": "學生走路去上學。",
+      "topic": "school",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The student walks to school.",
+        "zh": "學生走路去上學。",
+        "scene": "🧒 🏫",
+        "blank": "school",
+        "distractors": [
+          "bank",
+          "zoo",
+          "moon"
+        ],
+        "level": 1,
+        "route": "school",
+        "image": "",
+        "audio": "assets/voice/sentences/the-student-walks-to-school.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-student-walks-to-school.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-012",
+      "en": "Grandma drinks hot tea.",
+      "zh": "奶奶在喝熱茶。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "Grandma drinks hot tea.",
+        "zh": "奶奶在喝熱茶。",
+        "scene": "👵 🍵",
+        "blank": "hot",
+        "distractors": [
+          "tall",
+          "slow",
+          "sad"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/grandma-drinks-hot-tea.mp3",
+        "audioZh": "assets/voice/zh/sentences/grandma-drinks-hot-tea.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-013",
+      "en": "The rabbit eats a carrot.",
+      "zh": "兔子在吃紅蘿蔔。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The rabbit eats a carrot.",
+        "zh": "兔子在吃紅蘿蔔。",
+        "scene": "🐰 🥕",
+        "blank": "carrot",
+        "distractors": [
+          "chair",
+          "phone",
+          "sock"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/the-rabbit-eats-a-carrot.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-rabbit-eats-a-carrot.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-014",
+      "en": "We build a snowman in winter.",
+      "zh": "我們在冬天堆雪人。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "We build a snowman in winter.",
+        "zh": "我們在冬天堆雪人。",
+        "scene": "⛄ ❄️",
+        "blank": "winter",
+        "distractors": [
+          "summer",
+          "spring",
+          "autumn"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/we-build-a-snowman-in-winter.mp3",
+        "audioZh": "assets/voice/zh/sentences/we-build-a-snowman-in-winter.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-015",
+      "en": "Today is my birthday.",
+      "zh": "今天是我的生日。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "Today is my birthday.",
+        "zh": "今天是我的生日。",
+        "scene": "🎂 🎉",
+        "blank": "birthday",
+        "distractors": [
+          "homework",
+          "kitchen",
+          "window"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/today-is-my-birthday.mp3",
+        "audioZh": "assets/voice/zh/sentences/today-is-my-birthday.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-016",
+      "en": "The cook fries an egg.",
+      "zh": "廚師在煎蛋。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The cook fries an egg.",
+        "zh": "廚師在煎蛋。",
+        "scene": "🧑‍🍳 🍳",
+        "blank": "egg",
+        "distractors": [
+          "shoe",
+          "tree",
+          "bus"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/the-cook-fries-an-egg.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-cook-fries-an-egg.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-017",
+      "en": "The monkey eats a banana.",
+      "zh": "猴子在吃香蕉。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The monkey eats a banana.",
+        "zh": "猴子在吃香蕉。",
+        "scene": "🐒 🍌",
+        "blank": "monkey",
+        "distractors": [
+          "table",
+          "cloud",
+          "door"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/the-monkey-eats-a-banana.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-monkey-eats-a-banana.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-018",
+      "en": "I see the moon and stars at night.",
+      "zh": "晚上我看到月亮和星星。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "I see the moon and stars at night.",
+        "zh": "晚上我看到月亮和星星。",
+        "scene": "🌙 ⭐",
+        "blank": "night",
+        "distractors": [
+          "apple",
+          "chair",
+          "shoe"
+        ],
+        "level": 1,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/i-see-the-moon-and-stars-at-night.mp3",
+        "audioZh": "assets/voice/zh/sentences/i-see-the-moon-and-stars-at-night.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-019",
+      "en": "We are going to fly to Japan tomorrow.",
+      "zh": "我們明天要搭飛機去日本。",
+      "topic": "travel",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "We are going to fly to Japan tomorrow.",
+        "zh": "我們明天要搭飛機去日本。",
+        "scene": "🧳 ✈️",
+        "blank": "tomorrow",
+        "distractors": [
+          "yesterday",
+          "ago",
+          "last"
+        ],
+        "level": 2,
+        "route": "travel",
+        "image": "",
+        "audio": "assets/voice/sentences/we-are-going-to-fly-to-japan-tomorrow.mp3",
+        "audioZh": "assets/voice/zh/sentences/we-are-going-to-fly-to-japan-tomorrow.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-020",
+      "en": "She had a fever, so she went to the hospital.",
+      "zh": "她發燒了，所以去了醫院。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "She had a fever, so she went to the hospital.",
+        "zh": "她發燒了，所以去了醫院。",
+        "scene": "🤒 🏥",
+        "blank": "fever",
+        "distractors": [
+          "ticket",
+          "party",
+          "garden"
+        ],
+        "level": 2,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/she-had-a-fever-so-she-went-to-the-hospital.mp3",
+        "audioZh": "assets/voice/zh/sentences/she-had-a-fever-so-she-went-to-the-hospital.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-021",
+      "en": "If it rains, we will stay at home.",
+      "zh": "如果下雨，我們就待在家。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "If it rains, we will stay at home.",
+        "zh": "如果下雨，我們就待在家。",
+        "scene": "🌧️ 🏠",
+        "blank": "will",
+        "distractors": [
+          "was",
+          "did",
+          "are"
+        ],
+        "level": 2,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/if-it-rains-we-will-stay-at-home.mp3",
+        "audioZh": "assets/voice/zh/sentences/if-it-rains-we-will-stay-at-home.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-022",
+      "en": "He ran because he was late.",
+      "zh": "他用跑的，因為他快遲到了。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "He ran because he was late.",
+        "zh": "他用跑的，因為他快遲到了。",
+        "scene": "🏃 ⏰",
+        "blank": "because",
+        "distractors": [
+          "but",
+          "or",
+          "than"
+        ],
+        "level": 2,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/he-ran-because-he-was-late.mp3",
+        "audioZh": "assets/voice/zh/sentences/he-ran-because-he-was-late.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-023",
+      "en": "I have studied English for two years.",
+      "zh": "我已經學英文兩年了。",
+      "topic": "school",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "I have studied English for two years.",
+        "zh": "我已經學英文兩年了。",
+        "scene": "📚 🗓️",
+        "blank": "for",
+        "distractors": [
+          "since",
+          "at",
+          "on"
+        ],
+        "level": 2,
+        "route": "school",
+        "image": "",
+        "audio": "assets/voice/sentences/i-have-studied-english-for-two-years.mp3",
+        "audioZh": "assets/voice/zh/sentences/i-have-studied-english-for-two-years.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-024",
+      "en": "My family usually eats pizza on Friday.",
+      "zh": "我家通常星期五吃披薩。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "My family usually eats pizza on Friday.",
+        "zh": "我家通常星期五吃披薩。",
+        "scene": "🍕 👨‍👩‍👧",
+        "blank": "usually",
+        "distractors": [
+          "yesterday",
+          "tomorrow",
+          "ago"
+        ],
+        "level": 2,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/my-family-usually-eats-pizza-on-friday.mp3",
+        "audioZh": "assets/voice/zh/sentences/my-family-usually-eats-pizza-on-friday.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-025",
+      "en": "The bus was late because of the rain.",
+      "zh": "因為下雨，公車誤點了。",
+      "topic": "travel",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The bus was late because of the rain.",
+        "zh": "因為下雨，公車誤點了。",
+        "scene": "🚌 🌧️",
+        "blank": "late",
+        "distractors": [
+          "hungry",
+          "quiet",
+          "thirsty"
+        ],
+        "level": 2,
+        "route": "travel",
+        "image": "",
+        "audio": "assets/voice/sentences/the-bus-was-late-because-of-the-rain.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-bus-was-late-because-of-the-rain.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-026",
+      "en": "My phone battery is almost empty.",
+      "zh": "我的手機快沒電了。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "My phone battery is almost empty.",
+        "zh": "我的手機快沒電了。",
+        "scene": "📱 🔋",
+        "blank": "empty",
+        "distractors": [
+          "loud",
+          "hungry",
+          "tall"
+        ],
+        "level": 2,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/my-phone-battery-is-almost-empty.mp3",
+        "audioZh": "assets/voice/zh/sentences/my-phone-battery-is-almost-empty.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-027",
+      "en": "I have lived here since 2020.",
+      "zh": "我從 2020 年就住在這裡。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "I have lived here since 2020.",
+        "zh": "我從 2020 年就住在這裡。",
+        "scene": "🏠 📅",
+        "blank": "since",
+        "distractors": [
+          "for",
+          "during",
+          "ago"
+        ],
+        "level": 3,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/i-have-lived-here-since-2020.mp3",
+        "audioZh": "assets/voice/zh/sentences/i-have-lived-here-since-2020.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-028",
+      "en": "The museum was built in 1900.",
+      "zh": "這間博物館建於 1900 年。",
+      "topic": "travel",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The museum was built in 1900.",
+        "zh": "這間博物館建於 1900 年。",
+        "scene": "🏛️ 🧱",
+        "blank": "built",
+        "distractors": [
+          "build",
+          "building",
+          "builds"
+        ],
+        "level": 3,
+        "route": "travel",
+        "image": "",
+        "audio": "assets/voice/sentences/the-museum-was-built-in-1900.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-museum-was-built-in-1900.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-029",
+      "en": "She is the girl who won the race.",
+      "zh": "她就是贏得比賽的那個女孩。",
+      "topic": "school",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "She is the girl who won the race.",
+        "zh": "她就是贏得比賽的那個女孩。",
+        "scene": "👧 🏅",
+        "blank": "who",
+        "distractors": [
+          "which",
+          "where",
+          "whose"
+        ],
+        "level": 3,
+        "route": "school",
+        "image": "",
+        "audio": "assets/voice/sentences/she-is-the-girl-who-won-the-race.mp3",
+        "audioZh": "assets/voice/zh/sentences/she-is-the-girl-who-won-the-race.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-030",
+      "en": "If I were rich, I would buy a boat.",
+      "zh": "如果我很有錢，我會買一艘船。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "If I were rich, I would buy a boat.",
+        "zh": "如果我很有錢，我會買一艘船。",
+        "scene": "💰 ⛵",
+        "blank": "were",
+        "distractors": [
+          "is",
+          "am",
+          "be"
+        ],
+        "level": 3,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/if-i-were-rich-i-would-buy-a-boat.mp3",
+        "audioZh": "assets/voice/zh/sentences/if-i-were-rich-i-would-buy-a-boat.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-031",
+      "en": "I am looking forward to the trip.",
+      "zh": "我很期待這趟旅行。",
+      "topic": "travel",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "I am looking forward to the trip.",
+        "zh": "我很期待這趟旅行。",
+        "scene": "🧳 😄",
+        "blank": "forward",
+        "distractors": [
+          "ahead",
+          "back",
+          "after"
+        ],
+        "level": 3,
+        "route": "travel",
+        "image": "",
+        "audio": "assets/voice/sentences/i-am-looking-forward-to-the-trip.mp3",
+        "audioZh": "assets/voice/zh/sentences/i-am-looking-forward-to-the-trip.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-032",
+      "en": "The train had already left when we arrived.",
+      "zh": "我們到的時候，火車已經開走了。",
+      "topic": "travel",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The train had already left when we arrived.",
+        "zh": "我們到的時候，火車已經開走了。",
+        "scene": "🚆 🏃",
+        "blank": "already",
+        "distractors": [
+          "yet",
+          "still",
+          "ever"
+        ],
+        "level": 3,
+        "route": "travel",
+        "image": "",
+        "audio": "assets/voice/sentences/the-train-had-already-left-when-we-arrived.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-train-had-already-left-when-we-arrived.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-033",
+      "en": "Could you tell me where the station is?",
+      "zh": "你可以告訴我車站在哪裡嗎？",
+      "topic": "travel",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "Could you tell me where the station is?",
+        "zh": "你可以告訴我車站在哪裡嗎？",
+        "scene": "🧭 🚉",
+        "blank": "where",
+        "distractors": [
+          "what",
+          "who",
+          "which"
+        ],
+        "level": 3,
+        "route": "travel",
+        "image": "",
+        "audio": "assets/voice/sentences/could-you-tell-me-where-the-station-is.mp3",
+        "audioZh": "assets/voice/zh/sentences/could-you-tell-me-where-the-station-is.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-034",
+      "en": "I am not used to getting up early.",
+      "zh": "我不習慣早起。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "I am not used to getting up early.",
+        "zh": "我不習慣早起。",
+        "scene": "⏰ 😴",
+        "blank": "used",
+        "distractors": [
+          "use",
+          "using",
+          "uses"
+        ],
+        "level": 3,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/i-am-not-used-to-getting-up-early.mp3",
+        "audioZh": "assets/voice/zh/sentences/i-am-not-used-to-getting-up-early.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-035",
+      "en": "The report must be finished by Friday.",
+      "zh": "報告必須在星期五前完成。",
+      "topic": "business",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The report must be finished by Friday.",
+        "zh": "報告必須在星期五前完成。",
+        "scene": "📄 🗓️",
+        "blank": "finished",
+        "distractors": [
+          "finish",
+          "finishing",
+          "finishes"
+        ],
+        "level": 4,
+        "route": "business",
+        "image": "",
+        "audio": "assets/voice/sentences/the-report-must-be-finished-by-friday.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-report-must-be-finished-by-friday.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-036",
+      "en": "He said that he would call me later.",
+      "zh": "他說他晚點會打給我。",
+      "topic": "business",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "He said that he would call me later.",
+        "zh": "他說他晚點會打給我。",
+        "scene": "🗣️ 📞",
+        "blank": "said",
+        "distractors": [
+          "told",
+          "spoke",
+          "talked"
+        ],
+        "level": 4,
+        "route": "business",
+        "image": "",
+        "audio": "assets/voice/sentences/he-said-that-he-would-call-me-later.mp3",
+        "audioZh": "assets/voice/zh/sentences/he-said-that-he-would-call-me-later.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-037",
+      "en": "Had I known, I would have helped you.",
+      "zh": "要是我早知道，我就會幫你了。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "Had I known, I would have helped you.",
+        "zh": "要是我早知道，我就會幫你了。",
+        "scene": "🤔 🤝",
+        "blank": "Had",
+        "distractors": [
+          "Have",
+          "Did",
+          "Was"
+        ],
+        "level": 4,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/had-i-known-i-would-have-helped-you.mp3",
+        "audioZh": "assets/voice/zh/sentences/had-i-known-i-would-have-helped-you.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-038",
+      "en": "Despite the rain, the concert continued.",
+      "zh": "儘管下雨，演唱會還是照常進行。",
+      "topic": "travel",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "Despite the rain, the concert continued.",
+        "zh": "儘管下雨，演唱會還是照常進行。",
+        "scene": "🌧️ 🎤",
+        "blank": "Despite",
+        "distractors": [
+          "Although",
+          "Because",
+          "Unless"
+        ],
+        "level": 4,
+        "route": "travel",
+        "image": "",
+        "audio": "assets/voice/sentences/despite-the-rain-the-concert-continued.mp3",
+        "audioZh": "assets/voice/zh/sentences/despite-the-rain-the-concert-continued.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-039",
+      "en": "The meeting has been postponed until next week.",
+      "zh": "會議已經延到下週。",
+      "topic": "business",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The meeting has been postponed until next week.",
+        "zh": "會議已經延到下週。",
+        "scene": "📅 💼",
+        "blank": "postponed",
+        "distractors": [
+          "postpone",
+          "postponing",
+          "postpones"
+        ],
+        "level": 4,
+        "route": "business",
+        "image": "",
+        "audio": "assets/voice/sentences/the-meeting-has-been-postponed-until-next-week.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-meeting-has-been-postponed-until-next-week.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-040",
+      "en": "She has been working here for ten years.",
+      "zh": "她已經在這裡工作十年了。",
+      "topic": "business",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "She has been working here for ten years.",
+        "zh": "她已經在這裡工作十年了。",
+        "scene": "👩‍💼 🏢",
+        "blank": "been",
+        "distractors": [
+          "being",
+          "be",
+          "was"
+        ],
+        "level": 4,
+        "route": "business",
+        "image": "",
+        "audio": "assets/voice/sentences/she-has-been-working-here-for-ten-years.mp3",
+        "audioZh": "assets/voice/zh/sentences/she-has-been-working-here-for-ten-years.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-041",
+      "en": "Not only is it cheap, but it is also fast.",
+      "zh": "它不只便宜，而且很快。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "Not only is it cheap, but it is also fast.",
+        "zh": "它不只便宜，而且很快。",
+        "scene": "💰 ⚡",
+        "blank": "only",
+        "distractors": [
+          "just",
+          "even",
+          "still"
+        ],
+        "level": 4,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/not-only-is-it-cheap-but-it-is-also-fast.mp3",
+        "audioZh": "assets/voice/zh/sentences/not-only-is-it-cheap-but-it-is-also-fast.mp3"
+      }
+    },
+    {
+      "id": "legacy-sentence-042",
+      "en": "The car needs to be repaired.",
+      "zh": "這輛車需要修理。",
+      "topic": "daily",
+      "reviewStatus": "legacy-entry-preserved",
+      "legacyRecord": {
+        "en": "The car needs to be repaired.",
+        "zh": "這輛車需要修理。",
+        "scene": "🚗 🔧",
+        "blank": "repaired",
+        "distractors": [
+          "repair",
+          "repairing",
+          "repairs"
+        ],
+        "level": 4,
+        "route": "daily",
+        "image": "",
+        "audio": "assets/voice/sentences/the-car-needs-to-be-repaired.mp3",
+        "audioZh": "assets/voice/zh/sentences/the-car-needs-to-be-repaired.mp3"
+      }
+    },
+    {
+      "id": "life-sentence-001",
+      "en": "Hello, my name is Amy.",
+      "zh": "你好，我叫 Amy。",
+      "topic": "introductions",
+      "targetWordIds": [
+        "word:name"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-002",
+      "en": "What is your name?",
+      "zh": "你叫什麼名字？",
+      "topic": "introductions",
+      "targetWordIds": [
+        "word:name"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-003",
+      "en": "Nice to meet you.",
+      "zh": "很高興認識你。",
+      "topic": "introductions",
+      "targetWordIds": [
+        "word:meet"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-004",
+      "en": "I live in a small town.",
+      "zh": "我住在一個小鎮。",
+      "topic": "introductions",
+      "targetWordIds": [
+        "word:live",
+        "word:town"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-005",
+      "en": "I work at a bookstore.",
+      "zh": "我在書店工作。",
+      "topic": "introductions",
+      "targetWordIds": [
+        "word:work",
+        "word:bookstore"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-006",
+      "en": "Are you new here?",
+      "zh": "你是新來的嗎？",
+      "topic": "introductions",
+      "targetWordIds": [
+        "word:new",
+        "word:here"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-007",
+      "en": "Please speak a little more slowly.",
+      "zh": "請說慢一點。",
+      "topic": "introductions",
+      "targetWordIds": [
+        "word:speak",
+        "word:slowly"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-008",
+      "en": "Could you say that again?",
+      "zh": "可以再說一次嗎？",
+      "topic": "introductions",
+      "targetWordIds": [
+        "word:say",
+        "word:again"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-009",
+      "en": "I do not understand this word.",
+      "zh": "我不懂這個字。",
+      "topic": "introductions",
+      "targetWordIds": [
+        "word:understand",
+        "word:word"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-010",
+      "en": "How do you spell your name?",
+      "zh": "你的名字怎麼拼？",
+      "topic": "introductions",
+      "targetWordIds": [
+        "word:spell",
+        "word:name"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-011",
+      "en": "My sister lives near the station.",
+      "zh": "我姊姊住在車站附近。",
+      "topic": "family",
+      "targetWordIds": [
+        "word:sister",
+        "word:station"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-012",
+      "en": "There are four people in my family.",
+      "zh": "我家有四個人。",
+      "topic": "family",
+      "targetWordIds": [
+        "word:family",
+        "word:people"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-013",
+      "en": "My brother is making breakfast.",
+      "zh": "我哥哥正在做早餐。",
+      "topic": "family",
+      "targetWordIds": [
+        "word:brother",
+        "word:breakfast"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-014",
+      "en": "Our parents are coming tomorrow.",
+      "zh": "我們的父母明天會來。",
+      "topic": "family",
+      "targetWordIds": [
+        "word:parent",
+        "word:tomorrow"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-015",
+      "en": "Is this your grandmother?",
+      "zh": "這位是你的祖母嗎？",
+      "topic": "family",
+      "targetWordIds": [
+        "word:grandmother"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-016",
+      "en": "The children are playing outside.",
+      "zh": "孩子們正在外面玩。",
+      "topic": "family",
+      "targetWordIds": [
+        "word:child",
+        "word:outside"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-017",
+      "en": "I usually call my mother on Sunday.",
+      "zh": "我通常在星期日打電話給媽媽。",
+      "topic": "family",
+      "targetWordIds": [
+        "word:call",
+        "word:mother"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-018",
+      "en": "Who takes care of the baby?",
+      "zh": "誰照顧寶寶？",
+      "topic": "family",
+      "targetWordIds": [
+        "word:baby",
+        "word:care"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-019",
+      "en": "We eat dinner together every evening.",
+      "zh": "我們每天晚上一起吃晚餐。",
+      "topic": "family",
+      "targetWordIds": [
+        "word:dinner",
+        "word:together"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-020",
+      "en": "This is a photo of my family.",
+      "zh": "這是我家人的照片。",
+      "topic": "family",
+      "targetWordIds": [
+        "word:photo",
+        "word:family"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-021",
+      "en": "Please leave your shoes by the door.",
+      "zh": "請把鞋子放在門旁邊。",
+      "topic": "home",
+      "targetWordIds": [
+        "word:shoe",
+        "word:door"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-022",
+      "en": "The keys are on the kitchen counter.",
+      "zh": "鑰匙在廚房流理台上。",
+      "topic": "home",
+      "targetWordIds": [
+        "word:key",
+        "word:kitchen",
+        "word:counter"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-023",
+      "en": "Could you open the window?",
+      "zh": "你可以打開窗戶嗎？",
+      "topic": "home",
+      "targetWordIds": [
+        "word:open",
+        "word:window"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-024",
+      "en": "I need a clean towel.",
+      "zh": "我需要一條乾淨的毛巾。",
+      "topic": "home",
+      "targetWordIds": [
+        "word:clean",
+        "word:towel"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-025",
+      "en": "There is a lamp beside the bed.",
+      "zh": "床旁邊有一盞燈。",
+      "topic": "home",
+      "targetWordIds": [
+        "word:lamp",
+        "word:bed"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-026",
+      "en": "Please turn off the television.",
+      "zh": "請關掉電視。",
+      "topic": "home",
+      "targetWordIds": [
+        "word:television",
+        "word:turn"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-027",
+      "en": "The washing machine is in the bathroom.",
+      "zh": "洗衣機在浴室裡。",
+      "topic": "home",
+      "targetWordIds": [
+        "word:wash",
+        "word:machine",
+        "word:bathroom"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-028",
+      "en": "We keep the milk in the refrigerator.",
+      "zh": "我們把牛奶放在冰箱裡。",
+      "topic": "home",
+      "targetWordIds": [
+        "word:milk",
+        "word:refrigerator"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-029",
+      "en": "The room is too dark to read in.",
+      "zh": "這個房間太暗，沒辦法看書。",
+      "topic": "home",
+      "targetWordIds": [
+        "word:room",
+        "word:dark",
+        "word:read"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-030",
+      "en": "I cannot find the remote.",
+      "zh": "我找不到遙控器。",
+      "topic": "home",
+      "targetWordIds": [
+        "word:find",
+        "word:remote"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-031",
+      "en": "I would like a glass of water.",
+      "zh": "我想要一杯水。",
+      "topic": "food",
+      "targetWordIds": [
+        "word:glass",
+        "word:water"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-032",
+      "en": "May I see the menu, please?",
+      "zh": "可以給我看菜單嗎？",
+      "topic": "food",
+      "targetWordIds": [
+        "word:menu"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-033",
+      "en": "Does this soup contain milk?",
+      "zh": "這道湯含牛奶嗎？",
+      "topic": "food",
+      "targetWordIds": [
+        "word:soup",
+        "word:contain",
+        "word:milk"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-034",
+      "en": "I am allergic to peanuts.",
+      "zh": "我對花生過敏。",
+      "topic": "food",
+      "targetWordIds": [
+        "word:allergic",
+        "word:peanut"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-035",
+      "en": "Could we have two spoons?",
+      "zh": "可以給我們兩支湯匙嗎？",
+      "topic": "food",
+      "targetWordIds": [
+        "word:spoon"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-036",
+      "en": "The bread is still warm.",
+      "zh": "麵包還是溫熱的。",
+      "topic": "food",
+      "targetWordIds": [
+        "word:bread",
+        "word:warm"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-037",
+      "en": "Please put the rice in this bowl.",
+      "zh": "請把飯放進這個碗裡。",
+      "topic": "food",
+      "targetWordIds": [
+        "word:rice",
+        "word:bowl"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-038",
+      "en": "I would like my coffee without sugar.",
+      "zh": "我的咖啡不要加糖。",
+      "topic": "food",
+      "targetWordIds": [
+        "word:coffee",
+        "word:sugar"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-039",
+      "en": "Could we have the bill, please?",
+      "zh": "可以幫我們結帳嗎？",
+      "topic": "food",
+      "targetWordIds": [
+        "word:bill"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-040",
+      "en": "Can I take the rest home?",
+      "zh": "剩下的可以讓我打包帶走嗎？",
+      "topic": "food",
+      "targetWordIds": [
+        "word:rest",
+        "word:home"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-041",
+      "en": "How much does this shirt cost?",
+      "zh": "這件襯衫多少錢？",
+      "topic": "shopping",
+      "targetWordIds": [
+        "word:shirt",
+        "word:cost"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-042",
+      "en": "Do you have this in a smaller size?",
+      "zh": "這個有小一點的尺寸嗎？",
+      "topic": "shopping",
+      "targetWordIds": [
+        "word:size",
+        "word:small"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-043",
+      "en": "May I try these shoes on?",
+      "zh": "我可以試穿這雙鞋嗎？",
+      "topic": "shopping",
+      "targetWordIds": [
+        "word:try",
+        "word:shoe"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-044",
+      "en": "I am just looking, thank you.",
+      "zh": "我先看看，謝謝。",
+      "topic": "shopping",
+      "targetWordIds": [
+        "word:look",
+        "word:thank"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-045",
+      "en": "Where can I find a shopping basket?",
+      "zh": "我在哪裡可以拿到購物籃？",
+      "topic": "shopping",
+      "targetWordIds": [
+        "word:basket",
+        "word:shop"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-046",
+      "en": "These tomatoes look fresh.",
+      "zh": "這些番茄看起來很新鮮。",
+      "topic": "shopping",
+      "targetWordIds": [
+        "word:tomato",
+        "word:fresh"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-047",
+      "en": "Can I pay by card?",
+      "zh": "我可以刷卡嗎？",
+      "topic": "shopping",
+      "targetWordIds": [
+        "word:pay",
+        "word:card"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-048",
+      "en": "Could I have a receipt?",
+      "zh": "可以給我收據嗎？",
+      "topic": "shopping",
+      "targetWordIds": [
+        "word:receipt"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-049",
+      "en": "I bought the wrong size.",
+      "zh": "我買錯尺寸了。",
+      "topic": "shopping",
+      "targetWordIds": [
+        "word:buy",
+        "word:wrong",
+        "word:size"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-050",
+      "en": "Is it possible to return this item?",
+      "zh": "這件商品可以退貨嗎？",
+      "topic": "shopping",
+      "targetWordIds": [
+        "word:return",
+        "word:item"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-051",
+      "en": "Where is the check-in counter?",
+      "zh": "報到櫃檯在哪裡？",
+      "topic": "travel",
+      "targetWordIds": [
+        "word:counter"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-052",
+      "en": "Here is my passport.",
+      "zh": "這是我的護照。",
+      "topic": "travel",
+      "targetWordIds": [
+        "word:passport"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-053",
+      "en": "I have one suitcase to check.",
+      "zh": "我有一件行李箱要托運。",
+      "topic": "travel",
+      "targetWordIds": [
+        "word:suitcase",
+        "word:check"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-054",
+      "en": "Is this the line for security?",
+      "zh": "這是安檢的隊伍嗎？",
+      "topic": "travel",
+      "targetWordIds": [
+        "word:line",
+        "word:security"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-055",
+      "en": "Which gate should I go to?",
+      "zh": "我應該去哪一個登機門？",
+      "topic": "travel",
+      "targetWordIds": [
+        "word:gate"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-056",
+      "en": "My flight has been delayed.",
+      "zh": "我的航班延誤了。",
+      "topic": "travel",
+      "targetWordIds": [
+        "word:flight",
+        "word:delay"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-057",
+      "en": "I am visiting for a week.",
+      "zh": "我來拜訪一個星期。",
+      "topic": "travel",
+      "targetWordIds": [
+        "word:visit",
+        "word:week"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-058",
+      "en": "I will stay at a hotel near the airport.",
+      "zh": "我會住在機場附近的飯店。",
+      "topic": "travel",
+      "targetWordIds": [
+        "word:hotel",
+        "word:airport"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-059",
+      "en": "I have nothing to declare.",
+      "zh": "我沒有需要申報的物品。",
+      "topic": "travel",
+      "targetWordIds": [
+        "word:declare"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-060",
+      "en": "My suitcase did not arrive.",
+      "zh": "我的行李箱沒有送達。",
+      "topic": "travel",
+      "targetWordIds": [
+        "word:suitcase",
+        "word:arrive"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-061",
+      "en": "Does this bus go to the station?",
+      "zh": "這班公車會到車站嗎？",
+      "topic": "transport",
+      "targetWordIds": [
+        "word:bus",
+        "word:station"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-062",
+      "en": "Where can I buy a train ticket?",
+      "zh": "我在哪裡可以買火車票？",
+      "topic": "transport",
+      "targetWordIds": [
+        "word:train",
+        "word:ticket"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-063",
+      "en": "How often does the bus come?",
+      "zh": "公車多久來一班？",
+      "topic": "transport",
+      "targetWordIds": [
+        "word:often",
+        "word:bus"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-064",
+      "en": "Please let me know when we arrive.",
+      "zh": "到站時請告訴我。",
+      "topic": "transport",
+      "targetWordIds": [
+        "word:know",
+        "word:arrive"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-065",
+      "en": "Is this seat taken?",
+      "zh": "這個位子有人坐嗎？",
+      "topic": "transport",
+      "targetWordIds": [
+        "word:seat"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-066",
+      "en": "I missed the last train.",
+      "zh": "我錯過了最後一班火車。",
+      "topic": "transport",
+      "targetWordIds": [
+        "word:miss",
+        "word:last",
+        "word:train"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-067",
+      "en": "Could you take me to this address?",
+      "zh": "可以載我到這個地址嗎？",
+      "topic": "transport",
+      "targetWordIds": [
+        "word:address"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-068",
+      "en": "Please stop at the next corner.",
+      "zh": "請在下一個轉角停車。",
+      "topic": "transport",
+      "targetWordIds": [
+        "word:stop",
+        "word:corner"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-069",
+      "en": "You need to wear a helmet.",
+      "zh": "你需要戴安全帽。",
+      "topic": "transport",
+      "targetWordIds": [
+        "word:wear",
+        "word:helmet"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-070",
+      "en": "The traffic is heavy this morning.",
+      "zh": "今天早上的交通很壅塞。",
+      "topic": "transport",
+      "targetWordIds": [
+        "word:traffic",
+        "word:morning"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-071",
+      "en": "I have a reservation for two nights.",
+      "zh": "我訂了兩個晚上的住宿。",
+      "topic": "hotel",
+      "targetWordIds": [
+        "word:reservation",
+        "word:night"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-072",
+      "en": "Could I check in now?",
+      "zh": "我現在可以辦理入住嗎？",
+      "topic": "hotel",
+      "targetWordIds": [
+        "word:check",
+        "word:now"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-073",
+      "en": "What time is breakfast served?",
+      "zh": "早餐幾點供應？",
+      "topic": "hotel",
+      "targetWordIds": [
+        "word:breakfast",
+        "word:time"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-074",
+      "en": "Does the room have a private bathroom?",
+      "zh": "房間有獨立浴室嗎？",
+      "topic": "hotel",
+      "targetWordIds": [
+        "word:private",
+        "word:bathroom"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-075",
+      "en": "Could I have an extra pillow?",
+      "zh": "可以再給我一個枕頭嗎？",
+      "topic": "hotel",
+      "targetWordIds": [
+        "word:extra",
+        "word:pillow"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-076",
+      "en": "The air conditioner is not working.",
+      "zh": "冷氣壞了。",
+      "topic": "hotel",
+      "targetWordIds": [
+        "word:air",
+        "word:conditioner",
+        "word:work"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-077",
+      "en": "There is no hot water in the shower.",
+      "zh": "淋浴沒有熱水。",
+      "topic": "hotel",
+      "targetWordIds": [
+        "word:hot",
+        "word:water",
+        "word:shower"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-078",
+      "en": "Could someone clean the room?",
+      "zh": "可以請人清理房間嗎？",
+      "topic": "hotel",
+      "targetWordIds": [
+        "word:clean",
+        "word:room"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-079",
+      "en": "What time do we need to check out?",
+      "zh": "我們需要幾點退房？",
+      "topic": "hotel",
+      "targetWordIds": [
+        "word:time",
+        "word:check"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-080",
+      "en": "May I leave my bags here for a few hours?",
+      "zh": "我可以把行李寄放在這裡幾個小時嗎？",
+      "topic": "hotel",
+      "targetWordIds": [
+        "word:bag",
+        "word:hour"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-081",
+      "en": "I need to charge my laptop.",
+      "zh": "我需要替筆記型電腦充電。",
+      "topic": "office",
+      "targetWordIds": [
+        "word:charge",
+        "word:laptop"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-082",
+      "en": "The keyboard is not connected.",
+      "zh": "鍵盤沒有連接上。",
+      "topic": "office",
+      "targetWordIds": [
+        "word:keyboard",
+        "word:connect"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-083",
+      "en": "Could you send me the file?",
+      "zh": "你可以把檔案寄給我嗎？",
+      "topic": "office",
+      "targetWordIds": [
+        "word:send",
+        "word:file"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-084",
+      "en": "Let us discuss this after lunch.",
+      "zh": "我們午餐後再討論這件事。",
+      "topic": "office",
+      "targetWordIds": [
+        "word:discuss",
+        "word:lunch"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-085",
+      "en": "When is the next meeting?",
+      "zh": "下一場會議是什麼時候？",
+      "topic": "office",
+      "targetWordIds": [
+        "word:meet",
+        "word:next"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-086",
+      "en": "I wrote the details in my notebook.",
+      "zh": "我把細節寫在筆記本裡。",
+      "topic": "office",
+      "targetWordIds": [
+        "word:detail",
+        "word:notebook"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-087",
+      "en": "Could I borrow your pen?",
+      "zh": "我可以借你的筆嗎？",
+      "topic": "office",
+      "targetWordIds": [
+        "word:borrow",
+        "word:pen"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-088",
+      "en": "Please reply by Friday.",
+      "zh": "請在星期五以前回覆。",
+      "topic": "office",
+      "targetWordIds": [
+        "word:reply"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-089",
+      "en": "I have finished the first part.",
+      "zh": "我已經完成第一部分。",
+      "topic": "office",
+      "targetWordIds": [
+        "word:finish",
+        "word:part"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-090",
+      "en": "Could you explain the problem again?",
+      "zh": "你可以再解釋一次問題嗎？",
+      "topic": "office",
+      "targetWordIds": [
+        "word:explain",
+        "word:problem"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-091",
+      "en": "What does this sentence mean?",
+      "zh": "這個句子是什麼意思？",
+      "topic": "study",
+      "targetWordIds": [
+        "word:sentence",
+        "word:mean"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-092",
+      "en": "How do you pronounce this word?",
+      "zh": "這個字怎麼唸？",
+      "topic": "study",
+      "targetWordIds": [
+        "word:pronounce",
+        "word:word"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-093",
+      "en": "Please listen before you answer.",
+      "zh": "請先聽，再回答。",
+      "topic": "study",
+      "targetWordIds": [
+        "word:listen",
+        "word:answer"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-094",
+      "en": "Can you give me an example?",
+      "zh": "你可以舉個例子嗎？",
+      "topic": "study",
+      "targetWordIds": [
+        "word:example"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-095",
+      "en": "I made a spelling mistake.",
+      "zh": "我拼錯字了。",
+      "topic": "study",
+      "targetWordIds": [
+        "word:spell",
+        "word:mistake"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-096",
+      "en": "Let us practice one more time.",
+      "zh": "我們再練習一次。",
+      "topic": "study",
+      "targetWordIds": [
+        "word:practice",
+        "word:time"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-097",
+      "en": "Please write your answer here.",
+      "zh": "請把答案寫在這裡。",
+      "topic": "study",
+      "targetWordIds": [
+        "word:write",
+        "word:answer"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-098",
+      "en": "I remember the sound but not the spelling.",
+      "zh": "我記得發音，但不記得拼法。",
+      "topic": "study",
+      "targetWordIds": [
+        "word:remember",
+        "word:sound",
+        "word:spell"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-099",
+      "en": "This question is easier than the last one.",
+      "zh": "這一題比上一題容易。",
+      "topic": "study",
+      "targetWordIds": [
+        "word:question",
+        "word:easy"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-100",
+      "en": "I can understand more than before.",
+      "zh": "我比以前能聽懂更多了。",
+      "topic": "study",
+      "targetWordIds": [
+        "word:understand",
+        "word:before"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-101",
+      "en": "I do not feel well today.",
+      "zh": "我今天身體不太舒服。",
+      "topic": "health",
+      "targetWordIds": [
+        "word:feel",
+        "word:today"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-102",
+      "en": "I have a sore throat.",
+      "zh": "我的喉嚨痛。",
+      "topic": "health",
+      "targetWordIds": [
+        "word:sore",
+        "word:throat"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-103",
+      "en": "How long have you had this cough?",
+      "zh": "你咳嗽多久了？",
+      "topic": "health",
+      "targetWordIds": [
+        "word:cough",
+        "word:long"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-104",
+      "en": "I need to see a doctor.",
+      "zh": "我需要看醫生。",
+      "topic": "health",
+      "targetWordIds": [
+        "word:doctor"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-105",
+      "en": "Where is the nearest pharmacy?",
+      "zh": "最近的藥局在哪裡？",
+      "topic": "health",
+      "targetWordIds": [
+        "word:pharmacy",
+        "word:near"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-106",
+      "en": "How often should I take this medicine?",
+      "zh": "這個藥應該多久吃一次？",
+      "topic": "health",
+      "targetWordIds": [
+        "word:medicine",
+        "word:often"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-107",
+      "en": "Should I take it with food?",
+      "zh": "這個藥需要隨餐服用嗎？",
+      "topic": "health",
+      "targetWordIds": [
+        "word:food"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-108",
+      "en": "I am allergic to this medicine.",
+      "zh": "我對這個藥過敏。",
+      "topic": "health",
+      "targetWordIds": [
+        "word:allergic",
+        "word:medicine"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-109",
+      "en": "Could you call an ambulance?",
+      "zh": "可以幫忙叫救護車嗎？",
+      "topic": "health",
+      "targetWordIds": [
+        "word:ambulance",
+        "word:call"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-110",
+      "en": "Please wash your hands with soap.",
+      "zh": "請用肥皂洗手。",
+      "topic": "health",
+      "targetWordIds": [
+        "word:wash",
+        "word:hand",
+        "word:soap"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-111",
+      "en": "It looks like rain this afternoon.",
+      "zh": "今天下午看起來會下雨。",
+      "topic": "weather",
+      "targetWordIds": [
+        "word:rain",
+        "word:afternoon"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-112",
+      "en": "Do not forget your umbrella.",
+      "zh": "不要忘記帶傘。",
+      "topic": "weather",
+      "targetWordIds": [
+        "word:forget",
+        "word:umbrella"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-113",
+      "en": "It is much colder outside.",
+      "zh": "外面冷多了。",
+      "topic": "weather",
+      "targetWordIds": [
+        "word:cold",
+        "word:outside"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-114",
+      "en": "The sun is coming out.",
+      "zh": "太陽出來了。",
+      "topic": "weather",
+      "targetWordIds": [
+        "word:sun"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-115",
+      "en": "It is too windy to fly a kite.",
+      "zh": "風太大，不能放風箏。",
+      "topic": "weather",
+      "targetWordIds": [
+        "word:windy",
+        "word:kite"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-116",
+      "en": "The weather is nice enough for a walk.",
+      "zh": "天氣不錯，適合散步。",
+      "topic": "weather",
+      "targetWordIds": [
+        "word:weather",
+        "word:walk"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-117",
+      "en": "There may be a storm tonight.",
+      "zh": "今晚可能有暴風雨。",
+      "topic": "weather",
+      "targetWordIds": [
+        "word:storm",
+        "word:tonight"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-118",
+      "en": "The ground is still wet.",
+      "zh": "地面還是濕的。",
+      "topic": "weather",
+      "targetWordIds": [
+        "word:grind",
+        "word:wet"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-119",
+      "en": "Remember to drink water when it is hot.",
+      "zh": "天熱時記得喝水。",
+      "topic": "weather",
+      "targetWordIds": [
+        "word:drink",
+        "word:hot"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-120",
+      "en": "The rain stopped a few minutes ago.",
+      "zh": "雨在幾分鐘前停了。",
+      "topic": "weather",
+      "targetWordIds": [
+        "word:rain",
+        "word:minute"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-121",
+      "en": "What do you like to do on weekends?",
+      "zh": "你週末喜歡做什麼？",
+      "topic": "hobbies",
+      "targetWordIds": [
+        "word:weekend",
+        "word:like"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-122",
+      "en": "I enjoy taking photos.",
+      "zh": "我喜歡拍照。",
+      "topic": "hobbies",
+      "targetWordIds": [
+        "word:enjoy",
+        "word:photo"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-123",
+      "en": "Would you like to go for a walk?",
+      "zh": "你想去散步嗎？",
+      "topic": "hobbies",
+      "targetWordIds": [
+        "word:walk"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-124",
+      "en": "There is a park near my house.",
+      "zh": "我家附近有一座公園。",
+      "topic": "hobbies",
+      "targetWordIds": [
+        "word:park",
+        "word:house"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-125",
+      "en": "I am learning to play the guitar.",
+      "zh": "我正在學彈吉他。",
+      "topic": "hobbies",
+      "targetWordIds": [
+        "word:learn",
+        "word:guitar"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-126",
+      "en": "Do you want to watch a movie tonight?",
+      "zh": "你今晚想看電影嗎？",
+      "topic": "hobbies",
+      "targetWordIds": [
+        "word:watch",
+        "word:movie"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-127",
+      "en": "I usually read before bed.",
+      "zh": "我通常睡前看書。",
+      "topic": "hobbies",
+      "targetWordIds": [
+        "word:read",
+        "word:bed"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-128",
+      "en": "We are going swimming tomorrow.",
+      "zh": "我們明天要去游泳。",
+      "topic": "hobbies",
+      "targetWordIds": [
+        "word:swim",
+        "word:tomorrow"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-129",
+      "en": "Could you take a picture of us?",
+      "zh": "可以幫我們拍照嗎？",
+      "topic": "hobbies",
+      "targetWordIds": [
+        "word:picture"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-130",
+      "en": "Let us meet at the entrance.",
+      "zh": "我們在入口見。",
+      "topic": "hobbies",
+      "targetWordIds": [
+        "word:meet",
+        "word:entrance"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-131",
+      "en": "Excuse me, where is the restroom?",
+      "zh": "不好意思，洗手間在哪裡？",
+      "topic": "directions",
+      "targetWordIds": [
+        "word:restroom"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-132",
+      "en": "Go straight and turn left.",
+      "zh": "直走，再左轉。",
+      "topic": "directions",
+      "targetWordIds": [
+        "word:straight",
+        "word:leave"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-133",
+      "en": "The bank is across from the station.",
+      "zh": "銀行在車站對面。",
+      "topic": "directions",
+      "targetWordIds": [
+        "word:bank",
+        "word:station"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-134",
+      "en": "Is it within walking distance?",
+      "zh": "走路到得了嗎？",
+      "topic": "directions",
+      "targetWordIds": [
+        "word:distance"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-135",
+      "en": "You can cross at the next crosswalk.",
+      "zh": "你可以在下一個行人穿越道過馬路。",
+      "topic": "directions",
+      "targetWordIds": [
+        "word:cross",
+        "word:crosswalk"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-136",
+      "en": "The elevator is beside the stairs.",
+      "zh": "電梯在樓梯旁邊。",
+      "topic": "directions",
+      "targetWordIds": [
+        "word:elevator",
+        "word:stair"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-137",
+      "en": "I think we are going the wrong way.",
+      "zh": "我想我們走錯方向了。",
+      "topic": "directions",
+      "targetWordIds": [
+        "word:wrong",
+        "word:way"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-138",
+      "en": "Could you show me on the map?",
+      "zh": "你可以在地圖上指給我看嗎？",
+      "topic": "directions",
+      "targetWordIds": [
+        "word:show",
+        "word:map"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-139",
+      "en": "The shop is between the bank and the cafe.",
+      "zh": "那家店在銀行和咖啡廳之間。",
+      "topic": "directions",
+      "targetWordIds": [
+        "word:shop",
+        "word:between",
+        "word:cafe"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-140",
+      "en": "How long does it take to get there?",
+      "zh": "到那裡要多久？",
+      "topic": "directions",
+      "targetWordIds": [
+        "word:long",
+        "word:there"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-141",
+      "en": "My phone is almost out of battery.",
+      "zh": "我的手機快沒電了。",
+      "topic": "technology",
+      "targetWordIds": [
+        "word:phone",
+        "word:almost",
+        "word:battery"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-142",
+      "en": "Do you have a charger I can borrow?",
+      "zh": "你有充電器可以借我嗎？",
+      "topic": "technology",
+      "targetWordIds": [
+        "word:charger",
+        "word:borrow"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-143",
+      "en": "Could you turn down the volume?",
+      "zh": "你可以把音量調小一點嗎？",
+      "topic": "technology",
+      "targetWordIds": [
+        "word:volume"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-144",
+      "en": "I cannot hear you clearly.",
+      "zh": "我聽不清楚你說的話。",
+      "topic": "technology",
+      "targetWordIds": [
+        "word:hear",
+        "word:clearly"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-145",
+      "en": "The screen is too bright.",
+      "zh": "螢幕太亮了。",
+      "topic": "technology",
+      "targetWordIds": [
+        "word:screen",
+        "word:bright"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-146",
+      "en": "Please connect to the wireless network.",
+      "zh": "請連上無線網路。",
+      "topic": "technology",
+      "targetWordIds": [
+        "word:connect",
+        "word:wireless",
+        "word:network"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-147",
+      "en": "I forgot my password.",
+      "zh": "我忘記密碼了。",
+      "topic": "technology",
+      "targetWordIds": [
+        "word:forget",
+        "word:password"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-148",
+      "en": "The message did not go through.",
+      "zh": "訊息沒有傳送成功。",
+      "topic": "technology",
+      "targetWordIds": [
+        "word:message"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-149",
+      "en": "Try closing the app and opening it again.",
+      "zh": "試著關閉應用程式後再重新開啟。",
+      "topic": "technology",
+      "targetWordIds": [
+        "word:app",
+        "word:try"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-150",
+      "en": "Could you send me the photo?",
+      "zh": "你可以把照片傳給我嗎？",
+      "topic": "technology",
+      "targetWordIds": [
+        "word:send",
+        "word:photo"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-151",
+      "en": "What are you doing this weekend?",
+      "zh": "你這個週末打算做什麼？",
+      "topic": "plans",
+      "targetWordIds": [
+        "word:weekend"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-152",
+      "en": "I am going to visit a friend.",
+      "zh": "我打算去拜訪朋友。",
+      "topic": "plans",
+      "targetWordIds": [
+        "word:visit",
+        "word:friend"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-153",
+      "en": "Let us leave a little earlier.",
+      "zh": "我們提早一點出發吧。",
+      "topic": "plans",
+      "targetWordIds": [
+        "word:leave",
+        "word:early"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-154",
+      "en": "We need to book the tickets in advance.",
+      "zh": "我們需要事先訂票。",
+      "topic": "plans",
+      "targetWordIds": [
+        "word:book",
+        "word:ticket",
+        "word:advance"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-155",
+      "en": "I will call you when I arrive.",
+      "zh": "我到了會打電話給你。",
+      "topic": "plans",
+      "targetWordIds": [
+        "word:call",
+        "word:arrive"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-156",
+      "en": "Can we change the time?",
+      "zh": "我們可以改時間嗎？",
+      "topic": "plans",
+      "targetWordIds": [
+        "word:change",
+        "word:time"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-157",
+      "en": "I am free after three.",
+      "zh": "我三點以後有空。",
+      "topic": "plans",
+      "targetWordIds": [
+        "word:free",
+        "word:after"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-158",
+      "en": "Something came up at work.",
+      "zh": "工作上臨時有事。",
+      "topic": "plans",
+      "targetWordIds": [
+        "word:work"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-159",
+      "en": "Could we meet another day?",
+      "zh": "我們可以改天見面嗎？",
+      "topic": "plans",
+      "targetWordIds": [
+        "word:another",
+        "word:meet"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-160",
+      "en": "Please let me know if your plans change.",
+      "zh": "如果你的計畫有變，請告訴我。",
+      "topic": "plans",
+      "targetWordIds": [
+        "word:plan",
+        "word:change"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-161",
+      "en": "I am a little nervous.",
+      "zh": "我有一點緊張。",
+      "topic": "feelings",
+      "targetWordIds": [
+        "word:nervous"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-162",
+      "en": "You look tired today.",
+      "zh": "你今天看起來很累。",
+      "topic": "feelings",
+      "targetWordIds": [
+        "word:tired"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-163",
+      "en": "I am glad you are here.",
+      "zh": "我很高興你在這裡。",
+      "topic": "feelings",
+      "targetWordIds": [
+        "word:glad"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-164",
+      "en": "Do you need some help?",
+      "zh": "你需要幫忙嗎？",
+      "topic": "feelings",
+      "targetWordIds": [
+        "word:help"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-165",
+      "en": "It is okay to make mistakes.",
+      "zh": "犯錯沒有關係。",
+      "topic": "feelings",
+      "targetWordIds": [
+        "word:mistake"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-166",
+      "en": "I feel better after a short break.",
+      "zh": "短暫休息後，我覺得好多了。",
+      "topic": "feelings",
+      "targetWordIds": [
+        "word:feel",
+        "word:break"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-167",
+      "en": "Thank you for being patient.",
+      "zh": "謝謝你的耐心。",
+      "topic": "feelings",
+      "targetWordIds": [
+        "word:patient"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-168",
+      "en": "That sounds exciting.",
+      "zh": "那聽起來很令人期待。",
+      "topic": "feelings",
+      "targetWordIds": [
+        "word:exciting"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-169",
+      "en": "I am sorry I kept you waiting.",
+      "zh": "對不起，讓你久等了。",
+      "topic": "feelings",
+      "targetWordIds": [
+        "word:sorry",
+        "word:wait"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-170",
+      "en": "I am proud of what I have learned.",
+      "zh": "我為自己學會的東西感到驕傲。",
+      "topic": "feelings",
+      "targetWordIds": [
+        "word:proud",
+        "word:learn"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-171",
+      "en": "I think there is a mistake on the bill.",
+      "zh": "我覺得帳單上有一處錯誤。",
+      "topic": "problems",
+      "targetWordIds": [
+        "word:mistake",
+        "word:bill"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-172",
+      "en": "This is not what I ordered.",
+      "zh": "這不是我點的東西。",
+      "topic": "problems",
+      "targetWordIds": [
+        "word:order"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-173",
+      "en": "Could you help me find my bag?",
+      "zh": "你可以幫我找包包嗎？",
+      "topic": "problems",
+      "targetWordIds": [
+        "word:help",
+        "word:bag"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-174",
+      "en": "I left my wallet on the bus.",
+      "zh": "我把錢包忘在公車上了。",
+      "topic": "problems",
+      "targetWordIds": [
+        "word:wallet",
+        "word:bus"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-175",
+      "en": "My room key does not work.",
+      "zh": "我的房間鑰匙不能用。",
+      "topic": "problems",
+      "targetWordIds": [
+        "word:key",
+        "word:room"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-176",
+      "en": "Could I speak to the manager?",
+      "zh": "我可以找經理談嗎？",
+      "topic": "problems",
+      "targetWordIds": [
+        "word:manager",
+        "word:speak"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-177",
+      "en": "I need to cancel my reservation.",
+      "zh": "我需要取消預約。",
+      "topic": "problems",
+      "targetWordIds": [
+        "word:cancel",
+        "word:reservation"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-178",
+      "en": "Is there another way to solve this?",
+      "zh": "有其他方法可以解決這個問題嗎？",
+      "topic": "problems",
+      "targetWordIds": [
+        "word:solve",
+        "word:way"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-179",
+      "en": "Thank you for helping me sort this out.",
+      "zh": "謝謝你幫我處理好這件事。",
+      "topic": "problems",
+      "targetWordIds": [
+        "word:help",
+        "word:sort"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    },
+    {
+      "id": "life-sentence-180",
+      "en": "Everything is working now.",
+      "zh": "現在一切都正常了。",
+      "topic": "problems",
+      "targetWordIds": [
+        "word:everything",
+        "word:work"
+      ],
+      "reviewStatus": "authored-draft-needs-teaching-review",
+      "audio": null,
+      "image": null
+    }
+  ]
+}

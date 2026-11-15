@@ -1,0 +1,350 @@
+{
+  "a": {
+    "zh": "一個；一種（不定冠詞）",
+    "pos": "article"
+  },
+  "i": {
+    "zh": "我",
+    "pos": "pronoun"
+  },
+  "the": {
+    "zh": "這個；那個（定冠詞）",
+    "pos": "article"
+  },
+  "be": {
+    "zh": "是；在；處於某種狀態",
+    "pos": "verb"
+  },
+  "can": {
+    "zh": "能；可以",
+    "pos": "modal"
+  },
+  "will": {
+    "zh": "將會；願意",
+    "pos": "modal"
+  },
+  "would": {
+    "zh": "會；願意（也用於委婉請求）",
+    "pos": "modal"
+  },
+  "may": {
+    "zh": "可以；可能",
+    "pos": "modal"
+  },
+  "might": {
+    "zh": "可能",
+    "pos": "modal"
+  },
+  "must": {
+    "zh": "必須；一定",
+    "pos": "modal"
+  },
+  "should": {
+    "zh": "應該",
+    "pos": "modal"
+  },
+  "could": {
+    "zh": "能；可以（也用於委婉請求）",
+    "pos": "modal"
+  },
+  "like": {
+    "zh": "喜歡；像",
+    "pos": "verb,preposition"
+  },
+  "want": {
+    "zh": "想要；需要",
+    "pos": "verb"
+  },
+  "get": {
+    "zh": "得到；到達；變得",
+    "pos": "verb"
+  },
+  "have": {
+    "zh": "有；擁有（也作助動詞）",
+    "pos": "verb,auxiliary"
+  },
+  "do": {
+    "zh": "做（也作助動詞）",
+    "pos": "verb,auxiliary"
+  },
+  "of": {
+    "zh": "……的；屬於",
+    "pos": "preposition"
+  },
+  "for": {
+    "zh": "為了；給；對於",
+    "pos": "preposition"
+  },
+  "to": {
+    "zh": "向；到（也作不定詞標記）",
+    "pos": "preposition,particle"
+  },
+  "and": {
+    "zh": "和；而且",
+    "pos": "conjunction"
+  },
+  "but": {
+    "zh": "但是；不過",
+    "pos": "conjunction"
+  },
+  "or": {
+    "zh": "或；或者",
+    "pos": "conjunction"
+  },
+  "as": {
+    "zh": "作為；如同；當……時",
+    "pos": "preposition,conjunction"
+  },
+  "at": {
+    "zh": "在（某地或某時）",
+    "pos": "preposition"
+  },
+  "by": {
+    "zh": "在……旁邊；藉由；被",
+    "pos": "preposition"
+  },
+  "almost": {
+    "zh": "幾乎；差不多",
+    "pos": "adverb"
+  },
+  "just": {
+    "zh": "剛剛；只是；正好",
+    "pos": "adverb"
+  },
+  "well": {
+    "zh": "好地；健康的",
+    "pos": "adverb,adjective"
+  },
+  "right": {
+    "zh": "右邊；正確的",
+    "pos": "noun,adjective"
+  },
+  "left": {
+    "zh": "左邊；左側的",
+    "pos": "noun,adjective"
+  },
+  "mean": {
+    "zh": "意思是；意指",
+    "pos": "verb"
+  },
+  "miss": {
+    "zh": "錯過；想念",
+    "pos": "verb"
+  },
+  "book": {
+    "zh": "書；預訂",
+    "pos": "noun,verb"
+  },
+  "rest": {
+    "zh": "休息；其餘部分",
+    "pos": "noun,verb"
+  },
+  "patient": {
+    "zh": "有耐心的；病人",
+    "pos": "adjective,noun"
+  },
+  "order": {
+    "zh": "點餐；訂購；順序",
+    "pos": "verb,noun"
+  },
+  "charge": {
+    "zh": "充電；收費",
+    "pos": "verb"
+  },
+  "free": {
+    "zh": "有空的；免費的；自由的",
+    "pos": "adjective"
+  },
+  "glass": {
+    "zh": "玻璃杯；玻璃",
+    "pos": "noun"
+  },
+  "notebook": {
+    "zh": "筆記本",
+    "pos": "noun"
+  },
+  "pen": {
+    "zh": "筆；原子筆",
+    "pos": "noun"
+  },
+  "bowl": {
+    "zh": "碗",
+    "pos": "noun"
+  },
+  "plate": {
+    "zh": "餐盤；盤子",
+    "pos": "noun"
+  },
+  "menu": {
+    "zh": "菜單；選單",
+    "pos": "noun"
+  },
+  "spoon": {
+    "zh": "湯匙",
+    "pos": "noun"
+  },
+  "mug": {
+    "zh": "馬克杯",
+    "pos": "noun"
+  },
+  "tissues": {
+    "zh": "衛生紙",
+    "pos": "noun"
+  },
+  "tissue": {
+    "zh": "衛生紙；組織",
+    "pos": "noun"
+  },
+  "wardrobe": {
+    "zh": "衣櫃",
+    "pos": "noun"
+  },
+  "toilet": {
+    "zh": "馬桶；廁所",
+    "pos": "noun"
+  },
+  "seat": {
+    "zh": "座位",
+    "pos": "noun"
+  },
+  "ticket": {
+    "zh": "票；機票；車票",
+    "pos": "noun"
+  },
+  "basket": {
+    "zh": "籃子；購物籃",
+    "pos": "noun"
+  },
+  "helmet": {
+    "zh": "安全帽；頭盔",
+    "pos": "noun"
+  },
+  "backpack": {
+    "zh": "後背包",
+    "pos": "noun"
+  },
+  "clothespin": {
+    "zh": "曬衣夾",
+    "pos": "noun"
+  },
+  "washer": {
+    "zh": "洗衣機；墊圈",
+    "pos": "noun"
+  },
+  "dryer": {
+    "zh": "烘衣機；乾燥機",
+    "pos": "noun"
+  },
+  "remote": {
+    "zh": "遙控器；遙遠的",
+    "pos": "noun,adjective"
+  },
+  "stove": {
+    "zh": "爐子；瓦斯爐",
+    "pos": "noun"
+  },
+  "shelf": {
+    "zh": "架子；層架",
+    "pos": "noun"
+  },
+  "counter": {
+    "zh": "櫃檯；流理台",
+    "pos": "noun"
+  },
+  "bill": {
+    "zh": "帳單",
+    "pos": "noun"
+  },
+  "crosswalk": {
+    "zh": "行人穿越道；斑馬線",
+    "pos": "noun"
+  },
+  "conditioner": {
+    "zh": "調節機；潤髮乳（air conditioner 指冷氣）",
+    "pos": "noun"
+  },
+  "pan": {
+    "zh": "平底鍋",
+    "pos": "noun"
+  },
+  "pot": {
+    "zh": "鍋子",
+    "pos": "noun"
+  },
+  "microwave": {
+    "zh": "微波爐；微波",
+    "pos": "noun"
+  },
+  "refrigerator": {
+    "zh": "冰箱",
+    "pos": "noun"
+  },
+  "kettle": {
+    "zh": "熱水壺",
+    "pos": "noun"
+  },
+  "shirt": {
+    "zh": "襯衫",
+    "pos": "noun"
+  },
+  "sock": {
+    "zh": "襪子",
+    "pos": "noun"
+  },
+  "iron": {
+    "zh": "熨斗；鐵",
+    "pos": "noun,verb"
+  },
+  "detergent": {
+    "zh": "清潔劑；洗衣精",
+    "pos": "noun"
+  },
+  "hanger": {
+    "zh": "衣架",
+    "pos": "noun"
+  },
+  "sofa": {
+    "zh": "沙發",
+    "pos": "noun"
+  },
+  "cushion": {
+    "zh": "靠墊；坐墊",
+    "pos": "noun"
+  },
+  "rug": {
+    "zh": "小地毯",
+    "pos": "noun"
+  },
+  "scooter": {
+    "zh": "速克達；滑板車",
+    "pos": "noun"
+  },
+  "mask": {
+    "zh": "口罩；面具",
+    "pos": "noun"
+  },
+  "bandage": {
+    "zh": "繃帶；敷料",
+    "pos": "noun"
+  },
+  "medicine": {
+    "zh": "藥；醫學",
+    "pos": "noun"
+  },
+  "nurse": {
+    "zh": "護理師；護士",
+    "pos": "noun"
+  },
+  "thermometer": {
+    "zh": "溫度計；體溫計",
+    "pos": "noun"
+  },
+  "fountain": {
+    "zh": "噴水池",
+    "pos": "noun"
+  },
+  "bench": {
+    "zh": "長椅；工作台",
+    "pos": "noun"
+  }
+}
