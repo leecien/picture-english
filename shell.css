@@ -449,6 +449,14 @@ button:disabled {
   align-items: stretch;
   min-width: 0;
 }
+/* picture cards: the 🔊 sits under the card (still its own button: hearing never answers) */
+.qz-o:not(.wide) .qz-opt {
+  flex-direction: column;
+}
+.qz-o:not(.wide) .qz-opt .qz-hear {
+  width: 100%;
+  min-height: 44px;
+}
 .qz-opt > button {
   flex: 1;
   min-width: 0;

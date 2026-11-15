@@ -172,8 +172,9 @@ const Learn = (() => {
     const n = pick(no.filter((x) => x.lv <= 2).length ? no.filter((x) => x.lv <= 2) : no);
     return {
       kind: "kk", recK: "w", item: w, sym, unit: unit.id,
-      prompt: `<p class="qz-ask">哪個單字有 <b class="qz-sym">/${esc(sym)}/</b>？</p><p class="qz-hint">${esc(SOUNDS[sym].hint)}</p>`,
-      options: shuf([w, n]).map((x) => ({ html: wordChip(x), ok: x === w, say: { text: x.w, file: x.au } })),
+      // The KK is NOT on the cards (it would give the answer away): hear each word with its 🔊, choose, then the KK shows.
+      prompt: `<p class="qz-ask">哪個單字有 <b class="qz-sym">/${esc(sym)}/</b>？</p><p class="qz-hint">先按每張圖下面的 🔊 聽，再選。${esc(SOUNDS[sym].hint)}</p>`,
+      options: shuf([w, n]).map((x) => ({ html: wordChip(x, false), ok: x === w, say: { text: x.w, file: x.au }, kk: x.kk })),
       answer: wordAns(w),
       explain: `${w.w} ${w.kk} 有 /${sym}/；${n.w} ${n.kk} 是 /${other}/。`,
       after: true,
@@ -440,6 +441,13 @@ const Learn = (() => {
       })
       .join("");
   }
+  /* After answering, options that hid their KK show it (both the right and the other words). */
+  function revealKK(q, bs) {
+    bs.forEach((b, i) => {
+      const kk = q.options[i] && q.options[i].kk;
+      if (kk && !b.querySelector(".qz-kk")) b.insertAdjacentHTML("beforeend", `<small class="qz-kk">${esc(kk)}</small>`);
+    });
+  }
   /* The revealed answer: tap the line to hear it again, tap a word for its KK. */
   const answerHTML = (a) => (a.en ? `<span class="qz-ans">${sayHTML(a.en, a.file || "")}</span>` : "");
   function play(a) {
@@ -495,6 +503,7 @@ const Learn = (() => {
               x.disabled = true;
               if (q.options[i].ok) x.classList.add("right");
             });
+            revealKK(q, bs);
             if (!ok) b.classList.add("wrong");
             SND.play(ok ? "correct" : "wrong");
             const g = q.reveal === "right-only" && tries ? { fresh: true } : grade(q, ok, opt.src);
@@ -518,7 +527,7 @@ const Learn = (() => {
   return {
     parseKK, stressSpan, SOUNDS, UNITS, wordBy, pairWords, unitQuestion, stressQuestion, wordKK, phonicsQuestion,
     soundDue, soundsDue, wordQuestion, sentQuestion, sceneQuestion, scene, contentId, setScenes,
-    grade, flush, ask, play, dueItems, optionsHTML, answerHTML, sayHTML,
+    grade, flush, ask, play, dueItems, optionsHTML, answerHTML, sayHTML, revealKK,
     /* A question shown outside Learn.ask (the timed battle) still counts as "recently asked". */
     track(q) {
       last = q;

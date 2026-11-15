@@ -526,6 +526,7 @@ const Battle = (() => {
       b.disabled = true;
       if (q.options[i].ok && !hide) b.classList.add("right");
     });
+    if (!hide) Learn.revealKK(q, bs);
     if (kind === "wrong" && bs[idx]) bs[idx].classList.add("wrong");
     const ok = kind === "right";
     SND.play(ok ? "correct" : "wrong");

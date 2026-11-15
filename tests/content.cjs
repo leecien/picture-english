@@ -122,6 +122,14 @@ assert.equal(Speech.judge("Yes, I'm ready.", []).status, "silent");
 assert.match(Speech.html(Speech.judge("I'm here for sightseeing.", ["I'm for sightseeing"])), /sw-miss[^>]*>here<sup>漏<\/sup>/, "missing word marked with text, not colour alone");
 for (const c of scenes.categories) for (const sc of c.scenes) for (const it of sc.items) assert.equal(pass(it.en, it.en.replace(/[.,!?]/g, "")), "pass", "self match " + it.en);
 
+// "Which word has /x/?": the cards show picture + word only; the KK (which gives the answer away) is
+// kept on the option for after the answer.
+for (const u of Learn.UNITS)
+  for (let n = 0; n < 10; n++) {
+    const q = Learn.unitQuestion(u, "find");
+    assert(q.options.every((o) => o.kk && !o.html.includes(o.kk) && !o.html.includes("qz-kk")), "no KK on the cards before answering: " + u.id);
+    assert(q.options.every((o) => o.say && o.say.text), "each card can be heard");
+  }
 // 5. Novice village v1: every word split joins back to the word and to its KK; every pool question asks a
 //    sound that really sits at that place; taught sounds have two recorded example words; 41 sounds, no repeats.
 const Novice = require(path.join(root, "novice.js"));
