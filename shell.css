@@ -1717,3 +1717,59 @@ b.nv-hit {
 .tile.wrong::after {
   content: "✕ 你選的";
 }
+
+/* N02: locked (not yet taught) slots and spelling ↔ sound matching */
+.nv-slot.given {
+  background: #ece8da;
+  color: #4a4f40;
+  border: 2px solid #b9b4a0;
+  opacity: 1 !important;
+}
+.nv-slot.given small {
+  display: block;
+  font-size: 11px;
+}
+.nv-match {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.nv-match > div {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+.nv-sp,
+.nv-sd {
+  min-height: 52px;
+  font-size: 24px;
+  border-radius: 12px;
+  border: 2px solid #c9cfba;
+  background: #fffdf6;
+  color: #2f382b;
+}
+.nv-sp.sel {
+  border-color: #3e5a2c;
+  background: #edf2dc;
+}
+.nv-sp.good,
+.nv-sp.good:disabled {
+  background: #ddf4e8;
+  color: #153f2b;
+  border-color: #238653;
+  opacity: 1 !important;
+}
+.nv-sp small {
+  display: block;
+  font-size: 12px;
+}
+
+/* Game overlays keep their light paper in dark mode, so their small print cannot use the theme's --muted
+   (light grey in dark mode). */
+#dlg .fine,
+#menu .fine,
+#battle .fine,
+.life .fine,
+.wd-card .fine {
+  color: #5c6450;
+}

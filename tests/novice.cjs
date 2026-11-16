@@ -204,7 +204,7 @@ async function noLeak(ev, where) {
   await page.locator("#bt-claim").click();
   await page.waitForSelector("#battle", { state: "hidden" });
   assert.equal(await ev(() => RPG.data.nv.field), true);
-  assert.match(await page.locator("#quest-text").innerText(), /Ava/, "then on to the next lesson");
+  assert.match(await page.locator("#quest-text").innerText(), /Cody：N02/, "then on to N02 with Cody");
 
   /* ---------- 6. Echo: all 41 sounds, taught card with practice, previews, word breakdown ---------- */
   await ev(() => World.approach(World.npc("echo")));
@@ -251,7 +251,124 @@ async function noLeak(ev, where) {
   assert.deepEqual(l.errors, []);
   await l.ctx.close();
 
-  console.log("PASS: new player starts with Kai and no monsters, N00 letters / sound / KK, /k/ /æ/ /t/ cards (recording vs device voice vs slowed word labelled), listen-first recognition with no leak and no reveal on a miss, retry not counted as independent, stop and resume at the same step, picture → assemble with wrong slots left open, reveal with breakdown and word card, adventure Lv.2, field monsters appear, 回音泡泡 battle (taught sounds, long time, no reveal on a miss, timeout recorded apart), Echo (41 sounds, previews, cat breakdown), audio failure = replay only and no clock, legacy players keep the old lessons");
+  /* ---------- 9. N02 /m n s f/ with Cody: cards, recognition, matching, fill-the-slots build, field ---------- */
+  const AFTER_N01 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: true, field: true, taught: ["k", "æ", "t"], passed: ["k", "æ", "t"], lv: 2 } };
+  const z = await setup(browser, AFTER_N01);
+  const zp = z.page,
+    zev = z.ev;
+  assert.match(await zp.locator("#quest-text").innerText(), /Cody：N02 聲音小路/);
+  const answerRight = async () => {
+    await zp.waitForSelector(".qz-o > .qz-opt > button:not([disabled])");
+    await noLeak(zev, "#dlg-body");
+    await zp.locator(".qz-o > .qz-opt > button").nth(await zev(() => Learn.last.options.findIndex((o) => o.ok))).click();
+    await zp.locator(".qz-next").click();
+  };
+  await zp.locator("#act-talk").click();
+  await zp.waitForSelector("#dlg:not([hidden])", { timeout: 30000 });
+  assert.match(await zp.locator("#dlg-name").innerText(), /Cody/);
+  await zp.locator(".dlg-next").click(); // intro
+  assert.match(await zp.locator("#dlg-body").innerText(), /新的音：\/m\/[\s\S]*雙唇[\s\S]*moon/);
+  await zp.locator(".dlg-next").click();
+  assert.match(await zp.locator("#dlg-body").innerText(), /新的音：\/n\/[\s\S]*舌尖/);
+  await zp.locator(".dlg-next").click();
+  await zp.locator(".dlg-next").click(); // "listen, then choose"
+  // a learner who never gets a first try right cannot pass: 10 questions, then it stops and keeps the step
+  for (let k = 0; k < 10; k++) {
+    await zp.waitForSelector(".qz-o > .qz-opt > button:not([disabled])");
+    assert(await zev(() => ["m", "n"].includes(Learn.last.targetSound)), "only the new pair is targeted");
+    assert(await zev(() => Learn.last.options.every((o) => /\/(k|æ|t|m|n)\//.test(o.html))), "options only from taught sounds");
+    await zp.locator(".qz-o > .qz-opt > button").nth(await zev(() => Learn.last.options.findIndex((o) => !o.ok))).click();
+    await zp.locator(".qz-o > .qz-opt > button:not([disabled])").nth(await zev(() => {
+      const bs = [...document.querySelectorAll(".qz-o > .qz-opt > button")];
+      return bs.filter((b) => !b.disabled).findIndex((b) => Learn.last.options[+b.dataset.i].ok);
+    })).click();
+    await zp.locator(".qz-next").click();
+  }
+  for (let k = 0; k < 5 && (await z.visible("#dlg")); k++) await zp.locator(".dlg-next").click();
+  assert.equal(await zev(() => RPG.data.nv.n02step), "check-mn", "no pass on retries only: the step is kept");
+  assert.equal(await zev(() => RPG.data.nv.passed.includes("m") || RPG.data.nv.passed.includes("n")), false);
+  // back: straight to the check, right on first tries this time
+  await zp.locator("#act-talk").click();
+  await zp.waitForSelector("#dlg:not([hidden])", { timeout: 30000 });
+  await zp.locator(".dlg-next").click();
+  for (let k = 0; k < 6 && !(await z.visible(".dlg-choices")); k++) await answerRight();
+  // stop here; come back after a reload at /s/ /f/
+  await zp.locator(".dlg-choices button", { hasText: "先休息" }).click();
+  for (let k = 0; k < 5 && (await z.visible("#dlg")); k++) await zp.locator(".dlg-next").click();
+  await zp.reload();
+  await zp.waitForSelector(".world-canvas");
+  assert.equal(await zev(() => RPG.data.nv.n02step), "sf");
+  await zp.locator("#act-talk").click();
+  await zp.waitForSelector("#dlg:not([hidden])", { timeout: 30000 });
+  assert.match(await zp.locator("#dlg-body").innerText(), /新的音：\/s\//, "resumes at /s/");
+  await zp.locator(".dlg-next").click();
+  assert.match(await zp.locator("#dlg-body").innerText(), /新的音：\/f\/[\s\S]*ph/);
+  assert.equal(await zp.locator('#dlg-body mark.nv-hit', { hasText: "ph" }).count(), 1, "ph marked in phone");
+  await zp.locator(".dlg-next").click();
+  await zp.locator(".dlg-next").click();
+  for (let k = 0; k < 6 && !(await z.visible(".dlg-choices")); k++) await answerRight();
+  assert(await zev(() => ["m", "n", "s", "f"].every((x) => RPG.data.nv.passed.includes(x))), "each new sound right on a first try");
+  await zp.locator(".dlg-choices button", { hasText: "繼續下一步" }).click();
+  await zp.locator(".dlg-next").click(); // "f and ph both say /f/"
+  // matching: one wrong pair first, then all right
+  await zp.waitForSelector(".nv-match");
+  const pairs = await zev(() => Novice.MATCH.N02);
+  const leftIdx = async (sp) => zev((sp) => [...document.querySelectorAll("[data-l]")].findIndex((b) => b.textContent.trim().startsWith(sp) && !b.disabled), sp);
+  await zp.locator("[data-l]").nth(await leftIdx("ph")).click();
+  await zp.locator('[data-s="s"]').click();
+  assert.match(await zp.locator("#dlg-body .qz-f").innerText(), /ph 不是發 \/s\//);
+  for (const [sp, sd] of pairs) {
+    await zp.locator("[data-l]").nth(await leftIdx(sp)).click();
+    await zp.locator(`[data-s="${sd}"]`).click();
+  }
+  assert.equal(await zev(() => RPG.data.nv.rec.f.retry >= 1), true, "the missed pair is recorded as a retry");
+  await zp.locator(".dlg-choices button", { hasText: "繼續下一步" }).click();
+  await zp.locator(".dlg-next").click(); // "fill the taught slots"
+  // fill-the-slots: sun = /s ʌ n/ (ʌ not taught: placed and locked), phone = /f o n/ (o locked)
+  for (const [w, fill] of [["sun", ["s", "n"]], ["phone", ["f", "n"]]]) {
+    await zp.waitForSelector(".nv-slots");
+    assert(!(await zp.locator("#dlg-body").innerHTML()).includes(`>${w}<`), `${w}: no word before it is built`);
+    assert.equal(await zp.locator(".nv-slot.given").count(), 1, `${w}: one untaught sound placed for you`);
+    assert.equal(await zp.locator(".nv-slot.given").isDisabled(), true);
+    assert(await zev(() => [...document.querySelectorAll("[data-chip]")].every((b) => RPG.data.nv.taught.includes(b.dataset.chip))), "chips are taught sounds only");
+    for (const c of fill) await zp.locator(`[data-chip="${c}"]`).click();
+    await zp.locator("#nv-ok").click();
+    await zp.waitForSelector(".nv-reveal");
+    assert.match(await zp.locator("#dlg-body").innerText(), new RegExp(`組對了！[\\s\\S]*${w}`));
+    await zp.locator("#nv-done").click();
+  }
+  for (let k = 0; k < 5 && (await z.visible("#dlg")); k++) await zp.locator(".dlg-next").click();
+  assert.deepEqual(await zev(() => [RPG.data.nv.n02, RPG.data.nv.n02step]), [true, "done"]);
+  assert.match(await zp.locator("#quest-text").innerText(), /7 個音/);
+  // field battle with the seven sounds; newest ones come up; win -> field2, adventure Lv.3
+  await zev(() => {
+    const m = World.entities.filter((e) => e.kind === "mob").sort((p, q) => Math.hypot(p.tx - World.hero.x, p.ty - World.hero.y) - Math.hypot(q.tx - World.hero.x, q.ty - World.hero.y))[0];
+    m.wait = 999;
+    World.approach(m);
+  });
+  await zp.waitForSelector("#battle:not([hidden])", { timeout: 30000 });
+  const asked = new Set();
+  for (let k = 0; k < 25 && !(await zp.locator("#bt-claim").count()); k++) {
+    await zp.waitForFunction(() => Battle.ready || document.getElementById("bt-claim"), null, { timeout: 10000 });
+    if (await zp.locator("#bt-claim").count()) break;
+    await noLeak(zev, "#bt-act");
+    asked.add(await zev(() => Learn.last.targetSound));
+    if (k === 0) await zev(() => Battle.setFoeHp(60));
+    await zev(() => Battle.setHp(80));
+    await zp.locator("#bt-act .qz-o > .qz-opt > button").nth(await zev(() => Learn.last.options.findIndex((o) => o.ok))).click();
+  }
+  assert([...asked].some((x) => ["m", "n", "s", "f"].includes(x)), "N02 sounds asked in the field: " + [...asked]);
+  assert([...asked].every((x) => ["k", "æ", "t", "m", "n", "s", "f"].includes(x)), "only taught sounds");
+  await zp.locator("#bt-claim").click();
+  await zp.waitForSelector("#battle", { state: "hidden" });
+  assert.deepEqual(await zev(() => [RPG.data.nv.field2, RPG.data.nv.lv]), [true, 3]);
+  assert.match(await zp.locator("#quest-text").innerText(), /Ava/, "then the next lesson");
+  await zp.locator("#hud-quest").click();
+  assert.match(await zp.locator("#menu-body").innerText(), /✅ N02 聲音小路[\s\S]*✅ 回聲原野：7 個音/);
+  assert.deepEqual(z.errors, []);
+  await z.ctx.close();
+
+  console.log("PASS: N02 /m n s f/ (cards incl. ph, recognition only from taught sounds, no pass on retries only, resume after reload, spelling ↔ sound matching with a recorded miss, fill-the-slots build with untaught sounds locked, field battle asking N02 sounds, Lv.3, journal); new player starts with Kai and no monsters, N00 letters / sound / KK, /k/ /æ/ /t/ cards (recording vs device voice vs slowed word labelled), listen-first recognition with no leak and no reveal on a miss, retry not counted as independent, stop and resume at the same step, picture → assemble with wrong slots left open, reveal with breakdown and word card, adventure Lv.2, field monsters appear, 回音泡泡 battle (taught sounds, long time, no reveal on a miss, timeout recorded apart), Echo (41 sounds, previews, cat breakdown), audio failure = replay only and no clock, legacy players keep the old lessons");
   await browser.close();
 })().catch(async (e) => {
   console.error(e);

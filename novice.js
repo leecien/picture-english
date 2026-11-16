@@ -49,6 +49,23 @@ const Novice = (() => {
       kind: "子音", how: "舌尖頂住上排牙齒後面的牙齦，先擋住氣，再一下放開。聲帶不振動。",
       spell: [["t", "cat、hat、tree、tiger"]], examples: ["cat", "hat"],
     },
+    // N02
+    m: {
+      kind: "子音", how: "雙唇輕輕閉上，聲音從鼻子出來，喉嚨有振動（摸喉嚨會感覺到）。",
+      spell: [["m", "moon、map、milk"]], examples: ["moon", "map"],
+    },
+    n: {
+      kind: "子音", how: "舌尖頂住上排牙齒後面的牙齦，嘴巴微開，聲音從鼻子出來，喉嚨有振動。和 /m/ 的差別：/m/ 閉嘴唇，/n/ 用舌尖。",
+      spell: [["n", "sun、moon、rain、phone"]], examples: ["sun", "moon"],
+    },
+    s: {
+      kind: "子音", how: "舌尖靠近上排牙齦但不碰到，留一條小縫，讓氣流出細細的「嘶」聲。聲帶不振動。",
+      spell: [["s", "sun、star、bus"], ["se", "horse、house（字尾 e 不發音）"]], examples: ["sun", "bus"],
+    },
+    f: {
+      kind: "子音", how: "上排牙齒輕碰下唇，氣從縫中吹出來。聲帶不振動。",
+      spell: [["f", "fish、frog、flower"], ["ph", "phone"]], examples: ["fish", "phone"],
+    },
   };
   /* Hand-checked spelling → sound splits (spelling pieces join to the word; sounds join to its KK). */
   const WORDS_SPLIT = {
@@ -62,7 +79,26 @@ const Novice = (() => {
     tree: [["t", "t"], ["r", "r"], ["ee", "i"]],
     tiger: [["t", "t"], ["i", "aɪ"], ["g", "g"], ["er", "ɚ"]],
     apple: [["a", "æ"], ["pp", "p"], ["le", "ḷ"]],
+    // N02
+    moon: [["m", "m"], ["oo", "u"], ["n", "n"]],
+    sun: [["s", "s"], ["u", "ʌ"], ["n", "n"]],
+    bus: [["b", "b"], ["u", "ʌ"], ["s", "s"]],
+    fish: [["f", "f"], ["i", "ɪ"], ["sh", "ʃ"]],
+    phone: [["ph", "f"], ["o", "o"], ["n", "n"], ["e", ""]],
+    milk: [["m", "m"], ["i", "ɪ"], ["l", "l"], ["k", "k"]],
+    star: [["s", "s"], ["t", "t"], ["a", "ɑ"], ["r", "r"]],
+    horse: [["h", "h"], ["o", "ɔ"], ["r", "r"], ["s", "s"], ["e", ""]],
+    house: [["h", "h"], ["ou", "aʊ"], ["s", "s"], ["e", ""]],
+    frog: [["f", "f"], ["r", "r"], ["o", "ɑ"], ["g", "g"]],
+    flower: [["f", "f"], ["l", "l"], ["ow", "aʊ"], ["er", "ɚ"]],
+    rain: [["r", "r"], ["ai", "e"], ["n", "n"]],
   };
+  /* N02 spelling ↔ sound matching (each spelling has a recorded example with that spelling). */
+  const MATCH = {
+    N02: [["m", "m", "moon"], ["n", "n", "sun"], ["s", "s", "bus"], ["f", "f", "fish"], ["ph", "f", "phone"], ["c", "k", "cat"]],
+  };
+  /* "Fill the taught slots": the word's untaught sounds are placed and locked (labelled), never asked. */
+  const BUILDS = { N01: ["cat"], N02: ["sun", "phone", "moon", "map"] };
   /* Listen-first recognition: hear a whole word (its recording), pick the sound at a given place.
      The word, its picture and its KK are NOT shown until the answer is right. */
   const PLACES = { first: "開頭", last: "結尾", vowel: "中間的母音" };
@@ -71,6 +107,12 @@ const Novice = (() => {
     ["tree", "first", "t"], ["tiger", "first", "t"], ["apple", "first", "æ"],
     ["cat", "last", "t"], ["hat", "last", "t"], ["book", "last", "k"], ["cake", "last", "k"],
     ["cat", "vowel", "æ"], ["map", "vowel", "æ"], ["hat", "vowel", "æ"],
+    // N02 (first / last sound, checked against each word's KK in tests/content.cjs)
+    ["moon", "first", "m"], ["map", "first", "m"], ["milk", "first", "m"],
+    ["sun", "last", "n"], ["moon", "last", "n"], ["rain", "last", "n"], ["phone", "last", "n"],
+    ["sun", "first", "s"], ["star", "first", "s"],
+    ["bus", "last", "s"], ["horse", "last", "s"], ["house", "last", "s"],
+    ["fish", "first", "f"], ["frog", "first", "f"], ["flower", "first", "f"], ["phone", "first", "f"],
   ];
   const bank = () => (typeof WORDS !== "undefined" ? WORDS : []);
   const word = (w) => bank().find((x) => x.w === w);
@@ -85,12 +127,22 @@ const Novice = (() => {
   /* q: the shared question shape (Learn.ask / Battle). reveal "right-only": a wrong answer never lights up the
      right option or shows the word; noText: an audio failure offers replay only (the word would give it away). */
   function soundQuestion(taught, opt = {}) {
-    const pool = POOL.filter(([w, , s]) => taught.includes(s) && word(w) && word(w).au && (!opt.target || s === opt.target) && w !== opt.avoid);
+    const usable = POOL.filter(([w, , s]) => taught.includes(s) && word(w) && word(w).au && w !== opt.avoid);
+    if (!usable.length) return null;
+    let target = opt.target;
+    if (!target) {
+      const sounds = [...new Set(usable.map((x) => x[2]))],
+        fresh = (opt.prefer || []).filter((x) => sounds.includes(x));
+      target = fresh.length && Math.random() < 0.6 ? fresh[Math.floor(Math.random() * fresh.length)] : sounds[Math.floor(Math.random() * sounds.length)];
+    }
+    const pool = usable.filter((x) => x[2] === target);
     if (!pool.length) return null;
     const [w, place, sym] = pool[Math.floor(Math.random() * pool.length)],
       it = word(w),
-      choices = shuf(taught).slice(0, 3);
-    if (!choices.includes(sym)) choices[0] = sym;
+      // the sound it is easily confused with comes first (m/n, s/f…), then the rest
+      PARTNER = { m: "n", n: "m", s: "f", f: "s", k: "t", t: "k" },
+      others = shuf(taught.filter((x) => x !== sym)),
+      choices = [sym, ...(others.includes(PARTNER[sym]) ? [PARTNER[sym], ...others.filter((x) => x !== PARTNER[sym])] : others)].slice(0, 3);
     return {
       kind: "snd", type: "listen-sound", recK: "w", item: it, sym, targetSound: sym, wordId: w, place,
       prompt: `<p class="qz-ask">🎧 聽一個單字，選出它<b>${PLACES[place]}</b>的音</p><p class="qz-hint">播放的是整個單字的錄音（單音錄音還沒有）。聽完才會出現選項。</p>`,
@@ -127,6 +179,6 @@ const Novice = (() => {
     return out;
   }
   const chapterOf = (sym) => CHAPTERS.find((c) => c.sounds.includes(sym));
-  return { CHAPTERS, VOWELS, SOUNDS, WORDS_SPLIT, POOL, PLACES, PLAN_EXAMPLES, soundQuestion, splitHTML, breakdownHTML, kkSounds, chapterOf, word };
+  return { CHAPTERS, VOWELS, SOUNDS, WORDS_SPLIT, POOL, PLACES, PLAN_EXAMPLES, MATCH, BUILDS, soundQuestion, splitHTML, breakdownHTML, kkSounds, chapterOf, word };
 })();
 if (typeof module !== "undefined") module.exports = Novice;

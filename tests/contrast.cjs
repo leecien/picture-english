@@ -56,6 +56,25 @@ const SWEEP = () => {
     await p.evaluate(() => { document.getElementById("dlg-body").innerHTML = `<p class="dlg-en">${Learn.sayHTML("My phone battery is almost empty.")}</p>`; });
     await p.locator('.pw[data-w="almost"]').click(); await p.waitForTimeout(100); shots.card = await p.evaluate(SWEEP);
     await p.evaluate(() => { Pron.closeWord(); document.getElementById("dlg").hidden = true; });
+    // novice village: a teaching card, the N02 matching screen, Echo's 41-sound grid, a field battle
+    await p.evaluate(() => {
+      Object.assign(RPG.data.nv, { track: "v1", n01: true, field: true, taught: ["k", "æ", "t", "m", "n", "s", "f"], n02step: "match" });
+      RPG.travel("kk");
+    });
+    await p.waitForFunction(() => World.npc && World.npc("consonant"));
+    await p.evaluate(() => { document.getElementById("dlg").hidden = true; World.approach(World.npc("consonant")); });
+    await p.waitForSelector("#dlg:not([hidden]) .dlg-next", { timeout: 30000 });
+    await p.locator(".dlg-next").click();
+    await p.waitForSelector(".nv-match", { timeout: 10000 });
+    await p.locator("[data-l]").first().click();
+    shots.match = await p.evaluate(SWEEP);
+    await p.reload(); await p.waitForSelector(".world-canvas");
+    await p.evaluate(() => World.approach(World.npc("echo")));
+    await p.waitForSelector("#dlg:not([hidden]) .dlg-choices", { timeout: 30000 });
+    await p.locator(".dlg-choices button").first().click();
+    shots.echo = await p.evaluate(SWEEP);
+    await p.locator('[data-v=""]').click();
+    await p.locator(".dlg-choices button", { hasText: "再見" }).click();
     await p.evaluate(() => Life.open({ scene: "kitchen" })); await p.waitForTimeout(600);
     const q = await p.evaluate(() => Life.pointOf("kettle")); const r = await p.locator("#life-stage").boundingBox();
     await p.mouse.click(r.x + q.x, r.y + q.y); await p.waitForTimeout(150); shots.life = await p.evaluate(SWEEP);
@@ -63,7 +82,7 @@ const SWEEP = () => {
     for (const [k, v] of Object.entries(shots)) assert.deepEqual([...new Set(v)], [], `${scheme} / ${k}: text below 4.5:1 (3:1 for large text)`);
   }
   await b.close();
-  console.log("PASS: computed-colour contrast sweep in light and dark mode over the field, menu, practice home, all 8 practice question types before and after answering (answer sheet included), a dialog question answered, the word card, a life scene card and its mission list: all text >= 4.5:1 (large text >= 3:1)");
+  console.log("PASS: computed-colour contrast sweep in light and dark mode over the field, menu, practice home, all 8 practice question types before and after answering (answer sheet included), a dialog question answered, the word card, the N02 matching screen, Echo\'s 41-sound grid, a life scene card and its mission list: all text >= 4.5:1 (large text >= 3:1)");
 })().catch((e) => {
   console.error(e);
   process.exit(1);
