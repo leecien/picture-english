@@ -1450,6 +1450,13 @@ $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 <script src="novice.js"></script>
 <script src="lifescene.js"></script>
 <script src="rpg.js"></script>
-<script>boot();</script>
+<script>boot();
+/* Version label on the public HTTPS test copies (raw.githack / rawcdn.githack): the commit in the URL,
+   or "開發分支最新版" on the branch URL. The claude.ai build adds its own label. */
+(function(){const m=location.hostname.match(/githack\.com$/)&&location.pathname.match(/^\/[^/]+\/[^/]+\/([^/]+(?:\/[^/]+)*?)\/index\.html$/);
+ if(!m)return;const ref=m[1],tag=document.createElement('p');tag.className='playtest-tag';tag.id='ver-tag';
+ tag.textContent=/^[0-9a-f]{7,40}$/.test(ref)?'測試版 '+ref.slice(0,7):'開發分支最新版';
+ tag.style.cssText='position:fixed;left:8px;bottom:calc(env(safe-area-inset-bottom,0px) + 8px);margin:0;padding:2px 8px;border-radius:999px;background:#2f382bcc;color:#fff;font-size:11px;z-index:2;pointer-events:none';
+ document.body.appendChild(tag)})();</script>
 </body>
 </html>
