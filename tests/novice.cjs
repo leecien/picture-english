@@ -362,13 +362,116 @@ async function noLeak(ev, where) {
   await zp.locator("#bt-claim").click();
   await zp.waitForSelector("#battle", { state: "hidden" });
   assert.deepEqual(await zev(() => [RPG.data.nv.field2, RPG.data.nv.lv]), [true, 3]);
-  assert.match(await zp.locator("#quest-text").innerText(), /Ava/, "then the next lesson");
+  assert.match(await zp.locator("#quest-text").innerText(), /Cody：N03/, "then N03 with Cody");
   await zp.locator("#hud-quest").click();
   assert.match(await zp.locator("#menu-body").innerText(), /✅ N02 聲音小路[\s\S]*✅ 回聲原野：7 個音/);
   assert.deepEqual(z.errors, []);
   await z.ctx.close();
 
-  console.log("PASS: N02 /m n s f/ (cards incl. ph, recognition only from taught sounds, no pass on retries only, resume after reload, spelling ↔ sound matching with a recorded miss, fill-the-slots build with untaught sounds locked, field battle asking N02 sounds, Lv.3, journal); new player starts with Kai and no monsters, N00 letters / sound / KK, /k/ /æ/ /t/ cards (recording vs device voice vs slowed word labelled), listen-first recognition with no leak and no reveal on a miss, retry not counted as independent, stop and resume at the same step, picture → assemble with wrong slots left open, reveal with breakdown and word card, adventure Lv.2, field monsters appear, 回音泡泡 battle (taught sounds, long time, no reveal on a miss, timeout recorded apart), Echo (41 sounds, previews, cat breakdown), audio failure = replay only and no clock, legacy players keep the old lessons");
+  /* ---------- 10. N03 /p b d g h l/ with Cody: three pairs, matching (pp, ll), full builds, field, Lv.4 ---------- */
+  const AFTER_N02 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: true, field: true, n02: true, n02step: "done", field2: true, taught: ["k", "æ", "t", "m", "n", "s", "f"], passed: ["k", "æ", "t", "m", "n", "s", "f"], lv: 3 } };
+  const y = await setup(browser, AFTER_N02);
+  const yp = y.page,
+    yev = y.ev;
+  assert.match(await yp.locator("#quest-text").innerText(), /Cody：N03 子音工具箱/);
+  const yRight = async () => {
+    await yp.waitForSelector(".qz-o > .qz-opt > button:not([disabled])");
+    await noLeak(yev, "#dlg-body");
+    assert(await yev(() => Learn.last.options.every((o) => RPG.data.nv.taught.includes(o.label.replace(/\//g, "")))), "options only from taught sounds");
+    await yp.locator(".qz-o > .qz-opt > button").nth(await yev(() => Learn.last.options.findIndex((o) => o.ok))).click();
+    await yp.locator(".qz-next").click();
+  };
+  const yCards = async (syms) => {
+    for (const sym of syms) {
+      assert.match(await yp.locator("#dlg-body").innerText(), new RegExp(`新的音：/${sym}/`), "card for /" + sym + "/");
+      await yp.locator(".dlg-next").click();
+    }
+  };
+  await yp.locator("#act-talk").click();
+  await yp.waitForSelector("#dlg:not([hidden])", { timeout: 30000 });
+  await yp.locator(".dlg-next").click(); // intro
+  await yCards(["p", "b"]);
+  assert.match(await yp.locator("#dlg-body").innerText(), /重點是 \/p\/ 和 \/b\//);
+  await yp.locator(".dlg-next").click();
+  for (let k = 0; k < 6 && !(await y.visible(".dlg-choices")); k++) {
+    assert(await yev(() => ["p", "b"].includes(Learn.last ? Learn.last.targetSound : "p")));
+    await yRight();
+  }
+  // a break after the first pair; the next visit starts at /d/ /g/
+  await yp.locator(".dlg-choices button", { hasText: "先休息" }).click();
+  for (let k = 0; k < 5 && (await y.visible("#dlg")); k++) await yp.locator(".dlg-next").click();
+  await yp.reload();
+  await yp.waitForSelector(".world-canvas");
+  assert.equal(await yev(() => RPG.data.nv.ch.N03.step), "dg", "saved at the second pair");
+  await yp.locator("#act-talk").click();
+  await yp.waitForSelector("#dlg:not([hidden])", { timeout: 30000 });
+  await yCards(["d", "g"]);
+  await yp.locator(".dlg-next").click();
+  for (let k = 0; k < 6 && !(await y.visible(".dlg-choices")); k++) await yRight();
+  await yp.locator(".dlg-choices button", { hasText: "繼續下一步" }).click();
+  await yCards(["h", "l"]);
+  await yp.locator(".dlg-next").click();
+  for (let k = 0; k < 6 && !(await y.visible(".dlg-choices")); k++) await yRight();
+  assert(await yev(() => ["p", "b", "d", "g", "h", "l"].every((x) => RPG.data.nv.passed.includes(x))), "each new sound right on a first try");
+  assert.equal(await yev(() => RPG.data.nv.taught.length), 13);
+  await yp.locator(".dlg-choices button", { hasText: "繼續下一步" }).click();
+  await yp.locator(".dlg-next").click(); // matching line
+  await yp.waitForSelector(".nv-match");
+  const ypairs = await yev(() => Novice.MATCH.N03);
+  assert.equal(ypairs.length, 8);
+  const yLeft = async (sp) => yev((sp) => [...document.querySelectorAll("[data-l]")].findIndex((b) => b.firstChild.textContent.trim() === sp && !b.disabled), sp);
+  await yp.locator("[data-l]").nth(await yLeft("b")).click();
+  await yp.locator('[data-s="p"]').click();
+  assert.match(await yp.locator("#dlg-body .qz-f").innerText(), /b 不是發 \/p\//, "voiced vs voiceless miss");
+  for (const [sp, sd] of ypairs) {
+    await yp.locator("[data-l]").nth(await yLeft(sp)).click();
+    await yp.locator(`[data-s="${sd}"]`).click();
+  }
+  await yp.locator(".dlg-choices button", { hasText: "繼續下一步" }).click();
+  await yp.locator(".dlg-next").click(); // build line
+  // map and hat: every sound is taught now, so nothing is placed for you
+  for (const [w, fill] of [["map", ["m", "æ", "p"]], ["hat", ["h", "æ", "t"]]]) {
+    await yp.waitForSelector(".nv-slots");
+    assert.equal(await yp.locator(".nv-slot.given").count(), 0, `${w}: a full build, no slot given`);
+    assert(!(await yp.locator("#dlg-body").innerHTML()).includes(`>${w}<`), `${w}: not shown before it is built`);
+    for (const c of fill) await yp.locator(`[data-chip="${c}"]`).click();
+    await yp.locator("#nv-ok").click();
+    await yp.waitForSelector(".nv-reveal");
+    await yp.locator("#nv-done").click();
+  }
+  for (let k = 0; k < 5 && (await y.visible("#dlg")); k++) await yp.locator(".dlg-next").click();
+  assert.deepEqual(await yev(() => RPG.data.nv.ch.N03), { step: "done", done: true });
+  assert.match(await yp.locator("#quest-text").innerText(), /13 個音/);
+  // field: 13 sounds, N03 sounds come up, win -> field3, Lv.4
+  await yev(() => {
+    const m = World.entities.filter((e) => e.kind === "mob").sort((p, q) => Math.hypot(p.tx - World.hero.x, p.ty - World.hero.y) - Math.hypot(q.tx - World.hero.x, q.ty - World.hero.y))[0];
+    m.wait = 999;
+    World.approach(m);
+  });
+  await yp.waitForSelector("#battle:not([hidden])", { timeout: 30000 });
+  const yAsked = new Set();
+  for (let k = 0; k < 30 && !(await yp.locator("#bt-claim").count()); k++) {
+    await yp.waitForFunction(() => Battle.ready || document.getElementById("bt-claim"), null, { timeout: 10000 });
+    if (await yp.locator("#bt-claim").count()) break;
+    await noLeak(yev, "#bt-act");
+    yAsked.add(await yev(() => Learn.last.targetSound));
+    if (k === 0) await yev(() => Battle.setFoeHp(80));
+    await yev(() => Battle.setHp(80));
+    await yp.locator("#bt-act .qz-o > .qz-opt > button").nth(await yev(() => Learn.last.options.findIndex((o) => o.ok))).click();
+  }
+  assert([...yAsked].some((x) => ["p", "b", "d", "g", "h", "l"].includes(x)), "N03 sounds asked: " + [...yAsked]);
+  assert([...yAsked].every((x) => ["k", "æ", "t", "m", "n", "s", "f", "p", "b", "d", "g", "h", "l"].includes(x)), "only the 13 taught sounds");
+  await yp.locator("#bt-claim").click();
+  await yp.waitForSelector("#battle", { state: "hidden" });
+  assert.deepEqual(await yev(() => [RPG.data.nv.field3, RPG.data.nv.lv]), [true, 4]);
+  await yp.locator("#hud-quest").click();
+  assert.match(await yp.locator("#menu-body").innerText(), /✅ N03 子音工具箱[\s\S]*✅ 回聲原野：13 個音/);
+  // results are kept per sound: first-try right and retry apart
+  assert(await yev(() => RPG.data.nv.rec.b.retry >= 1 && RPG.data.nv.rec.p.ind >= 1), "first-try and retry recorded apart");
+  assert.deepEqual(y.errors, []);
+  await y.ctx.close();
+
+  console.log("PASS: N03 /p b d g h l/ (three pairs of cards, recognition only from taught sounds, resume at the second pair after reload, 8-pair matching incl. pp / ll with a voiced/voiceless miss recorded, full builds map + hat with no given slots, 13-sound field battle asking N03 sounds, Lv.4, journal); N02 /m n s f/ (cards incl. ph, recognition only from taught sounds, no pass on retries only, resume after reload, spelling ↔ sound matching with a recorded miss, fill-the-slots build with untaught sounds locked, field battle asking N02 sounds, Lv.3, journal); new player starts with Kai and no monsters, N00 letters / sound / KK, /k/ /æ/ /t/ cards (recording vs device voice vs slowed word labelled), listen-first recognition with no leak and no reveal on a miss, retry not counted as independent, stop and resume at the same step, picture → assemble with wrong slots left open, reveal with breakdown and word card, adventure Lv.2, field monsters appear, 回音泡泡 battle (taught sounds, long time, no reveal on a miss, timeout recorded apart), Echo (41 sounds, previews, cat breakdown), audio failure = replay only and no clock, legacy players keep the old lessons");
   await browser.close();
 })().catch(async (e) => {
   console.error(e);

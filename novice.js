@@ -66,6 +66,31 @@ const Novice = (() => {
       kind: "子音", how: "上排牙齒輕碰下唇，氣從縫中吹出來。聲帶不振動。",
       spell: [["f", "fish、frog、flower"], ["ph", "phone"]], examples: ["fish", "phone"],
     },
+    // N03 (voiceless / voiced pairs first: p–b; then d–g next to the taught t–k; then h and l)
+    p: {
+      kind: "子音", how: "雙唇閉起來擋住氣，再一下打開，送出一小股氣（手放在嘴前感覺得到）。聲帶不振動。",
+      spell: [["p", "map、passport、pineapple"], ["pp", "apple"]], examples: ["map", "passport"],
+    },
+    b: {
+      kind: "子音", how: "和 /p/ 一樣雙唇閉起再打開，但喉嚨要振動，送出的氣比較少。/p/ 是無聲、/b/ 是有聲。",
+      spell: [["b", "bus、book、bird、ball"]], examples: ["bus", "book"],
+    },
+    d: {
+      kind: "子音", how: "舌尖頂住上排牙齒後面的牙齦，擋住氣再放開，喉嚨振動。它是 /t/ 的有聲版。",
+      spell: [["d", "dog、bird、bread"]], examples: ["dog", "bird"],
+    },
+    g: {
+      kind: "子音", how: "舌頭後半部頂住口腔後上方，擋住氣再放開，喉嚨振動。它是 /k/ 的有聲版。",
+      spell: [["g", "gift、dog、frog"]], examples: ["gift", "dog"],
+    },
+    h: {
+      kind: "子音", how: "嘴巴張開，從喉嚨輕輕呼出一口氣，像對著手哈氣；舌頭和嘴唇都不擋氣。",
+      spell: [["h", "hat、house、horse"]], examples: ["hat", "house"],
+    },
+    l: {
+      kind: "子音", how: "舌尖頂住上排牙齒後面的牙齦，聲音從舌頭兩側流出來，喉嚨振動。",
+      spell: [["l", "lemon、ladder"], ["ll", "ball"]], examples: ["lemon", "ball"],
+    },
   };
   /* Hand-checked spelling → sound splits (spelling pieces join to the word; sounds join to its KK). */
   const WORDS_SPLIT = {
@@ -92,13 +117,21 @@ const Novice = (() => {
     frog: [["f", "f"], ["r", "r"], ["o", "ɑ"], ["g", "g"]],
     flower: [["f", "f"], ["l", "l"], ["ow", "aʊ"], ["er", "ɚ"]],
     rain: [["r", "r"], ["ai", "e"], ["n", "n"]],
+    // N03
+    passport: [["p", "p"], ["a", "æ"], ["ss", "s"], ["p", "p"], ["o", "ɔ"], ["r", "r"], ["t", "t"]],
+    dog: [["d", "d"], ["o", "ɔ"], ["g", "g"]],
+    bird: [["b", "b"], ["ir", "ɝ"], ["d", "d"]],
+    gift: [["g", "g"], ["i", "ɪ"], ["f", "f"], ["t", "t"]],
+    lemon: [["l", "l"], ["e", "ɛ"], ["m", "m"], ["o", "ə"], ["n", "n"]],
+    ball: [["b", "b"], ["a", "ɔ"], ["ll", "l"]],
   };
   /* N02 spelling ↔ sound matching (each spelling has a recorded example with that spelling). */
   const MATCH = {
     N02: [["m", "m", "moon"], ["n", "n", "sun"], ["s", "s", "bus"], ["f", "f", "fish"], ["ph", "f", "phone"], ["c", "k", "cat"]],
+    N03: [["p", "p", "map"], ["pp", "p", "apple"], ["b", "b", "bus"], ["d", "d", "dog"], ["g", "g", "gift"], ["h", "h", "hat"], ["l", "l", "lemon"], ["ll", "l", "ball"]],
   };
   /* "Fill the taught slots": the word's untaught sounds are placed and locked (labelled), never asked. */
-  const BUILDS = { N01: ["cat"], N02: ["sun", "phone", "moon", "map"] };
+  const BUILDS = { N01: ["cat"], N02: ["sun", "phone", "moon", "map"], N03: ["map", "hat", "dog", "gift"] };
   /* Listen-first recognition: hear a whole word (its recording), pick the sound at a given place.
      The word, its picture and its KK are NOT shown until the answer is right. */
   const PLACES = { first: "開頭", last: "結尾", vowel: "中間的母音" };
@@ -113,6 +146,13 @@ const Novice = (() => {
     ["sun", "first", "s"], ["star", "first", "s"],
     ["bus", "last", "s"], ["horse", "last", "s"], ["house", "last", "s"],
     ["fish", "first", "f"], ["frog", "first", "f"], ["flower", "first", "f"], ["phone", "first", "f"],
+    // N03
+    ["passport", "first", "p"], ["pineapple", "first", "p"], ["peacock", "first", "p"], ["map", "last", "p"], ["grape", "last", "p"],
+    ["bus", "first", "b"], ["book", "first", "b"], ["ball", "first", "b"], ["bike", "first", "b"], ["bird", "first", "b"],
+    ["dog", "first", "d"], ["doctor", "first", "d"], ["dolphin", "first", "d"], ["bread", "last", "d"], ["bird", "last", "d"],
+    ["gift", "first", "g"], ["garlic", "first", "g"], ["grape", "first", "g"], ["dog", "last", "g"], ["egg", "last", "g"], ["frog", "last", "g"],
+    ["hat", "first", "h"], ["house", "first", "h"], ["horse", "first", "h"], ["hospital", "first", "h"],
+    ["lemon", "first", "l"], ["ladder", "first", "l"], ["ball", "last", "l"],
   ];
   const bank = () => (typeof WORDS !== "undefined" ? WORDS : []);
   const word = (w) => bank().find((x) => x.w === w);
@@ -140,7 +180,7 @@ const Novice = (() => {
     const [w, place, sym] = pool[Math.floor(Math.random() * pool.length)],
       it = word(w),
       // the sound it is easily confused with comes first (m/n, s/f…), then the rest
-      PARTNER = { m: "n", n: "m", s: "f", f: "s", k: "t", t: "k" },
+      PARTNER = { m: "n", n: "m", s: "f", f: "s", k: "g", g: "k", t: "d", d: "t", p: "b", b: "p", h: "f", l: "n" },
       others = shuf(taught.filter((x) => x !== sym)),
       choices = [sym, ...(others.includes(PARTNER[sym]) ? [PARTNER[sym], ...others.filter((x) => x !== PARTNER[sym])] : others)].slice(0, 3);
     return {

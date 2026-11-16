@@ -352,11 +352,12 @@ const RPG = (() => {
   /* Novice village v1 (pm-rpg-v1 .nv). track "v1": new players take the new course; "legacy": players who
      already started the old KK lessons keep them (the new unit is offered by Echo). Results per sound keep
      first-try right, right after a retry, wrong, timeout and assisted apart. */
-  data.nv = { step: "", taught: [], passed: [], n01: false, field: false, lv: 1, rec: {}, n02: false, n02step: "", field2: false, ...obj(data.nv) };
+  data.nv = { step: "", taught: [], passed: [], n01: false, field: false, lv: 1, rec: {}, n02: false, n02step: "", field2: false, ch: {}, field3: false, ...obj(data.nv) };
   const NV = data.nv;
   NV.taught = Array.isArray(NV.taught) ? NV.taught : [];
   NV.passed = Array.isArray(NV.passed) ? NV.passed : [];
   NV.rec = obj(NV.rec);
+  NV.ch = obj(NV.ch); // later chapters: { N03: { step, done } }
   if (!NV.track) NV.track = data.kk.done || ["vowel", "consonant", "stress", "word"].some((k) => data.kk[k]) || Object.keys(obj(data.kk.units)).length ? "legacy" : "v1";
   function nvRec(sym, kind) {
     const r = (NV.rec[sym] = { ind: 0, retry: 0, wrong: 0, timeout: 0, assist: 0, ...obj(NV.rec[sym]) });
@@ -588,7 +589,7 @@ const RPG = (() => {
       return `<li class="${done ? "done" : ""}"><b>${done ? "✅" : i === W.stage && kkDone() ? "▶️" : "⬜"} ${s.title}</b><small>會學：${s.learn}</small><small>內容：${esc(m.path)}（${m.sc ? m.sc.items.length : 0} 句）· 程度：${m.level}</small><small>${s.toeic}</small></li>`;
     }).join("");
     sheet(`<h3>📜 任務日誌</h3><p class="journal-now">目前目標：${esc(objective().text)}</p>
-      <h4>🐱 音之新手村（新版）· 冒險 Lv.${NV.lv}</h4><ul class="journal"><li class="${NV.n01 ? "done" : ""}"><b>${NV.n01 ? "✅" : NV.step ? "▶️" : "⬜"} N00＋N01 第一個字 cat</b><small>字母、聲音、KK 的不同；/k/ /æ/ /t/；先聽後選；組出 cat</small></li><li class="${NV.field ? "done" : ""}"><b>${NV.field ? "✅" : "⬜"} 回聲原野：回音泡泡</b><small>只考已教的音；答錯不公布答案，之後換別的字再出現</small></li><li class="${NV.n02 ? "done" : ""}"><b>${NV.n02 ? "✅" : NV.n02step ? "▶️" : "⬜"} N02 聲音小路 /m/ /n/ /s/ /f/</b><small>找子音老師 Cody：教學卡、先聽後選、字母組合配對（ph 也念 /f/）、補空格組音</small></li><li class="${NV.field2 ? "done" : ""}"><b>${NV.field2 ? "✅" : "⬜"} 回聲原野：7 個音的戰鬥</b><small>/k/ /æ/ /t/ /m/ /n/ /s/ /f/</small></li><li><b>⬜ N03–N13、旅伴、三枚印記、失音魔王</b><small>製作中（docs/NOVICE_VILLAGE_V1.md）。目前接著用舊版的四堂課。</small></li></ul>
+      <h4>🐱 音之新手村（新版）· 冒險 Lv.${NV.lv}</h4><ul class="journal"><li class="${NV.n01 ? "done" : ""}"><b>${NV.n01 ? "✅" : NV.step ? "▶️" : "⬜"} N00＋N01 第一個字 cat</b><small>字母、聲音、KK 的不同；/k/ /æ/ /t/；先聽後選；組出 cat</small></li><li class="${NV.field ? "done" : ""}"><b>${NV.field ? "✅" : "⬜"} 回聲原野：回音泡泡</b><small>只考已教的音；答錯不公布答案，之後換別的字再出現</small></li><li class="${NV.n02 ? "done" : ""}"><b>${NV.n02 ? "✅" : NV.n02step ? "▶️" : "⬜"} N02 聲音小路 /m/ /n/ /s/ /f/</b><small>找子音老師 Cody：教學卡、先聽後選、字母組合配對（ph 也念 /f/）、補空格組音</small></li><li class="${NV.field2 ? "done" : ""}"><b>${NV.field2 ? "✅" : "⬜"} 回聲原野：7 個音的戰鬥</b><small>/k/ /æ/ /t/ /m/ /n/ /s/ /f/</small></li><li class="${n03done() ? "done" : ""}"><b>${n03done() ? "✅" : NV.ch.N03 ? "▶️" : "⬜"} N03 子音工具箱 /p/ /b/ /d/ /g/ /h/ /l/</b><small>找子音老師 Cody：無聲／有聲成對（p–b、t–d、k–g）、pp／ll 的寫法、用學過的音組整個字</small></li><li class="${NV.field3 ? "done" : ""}"><b>${NV.field3 ? "✅" : "⬜"} 回聲原野：13 個音的戰鬥</b><small>/k æ t m n s f p b d g h l/</small></li><li><b>⬜ N04–N13、旅伴、三枚印記、失音魔王</b><small>製作中（docs/NOVICE_VILLAGE_V1.md）。目前接著用舊版的四堂課。</small></li></ul>
       <h4>🔤 KK 新手村 ${kkDone() ? "· 已畢業" : ""}</h4>${due.length ? `<p class="fine">需要多練的音：${due.map((x) => `/${esc(x)}/`).join(" ")}（找對應的老師選「練需要加強的音」）</p>` : ""}<ul class="journal">${kkRows}<li class="${data.kk.battle ? "done" : ""}"><b>${data.kk.battle ? "✅" : "⬜"} 教學戰鬥</b><small>答音標題打倒村口的音節泡泡</small></li></ul>
       <h4>🌬️ 風之旅行群島 ${W.done ? "· 故事完成" : ""}</h4><ul class="journal">${windRows}</ul>
       <h4>🧚 旅伴</h4><ul class="journal"><li class="${C.claimed ? "done" : ""}"><b>${C.claimed ? `✅ 露米同行中・默契 Lv.${bondLv()}` : W.stage >= 3 ? "▶️ 露米在行李轉盤等你" : "⬜ 完成「找回行李」後相遇"}</b><small>戰鬥中提供提示與護盾，也能一起用英文聊天</small></li></ul>
@@ -622,6 +623,8 @@ const RPG = (() => {
       if (!NV.field) return { text: "到村子的回聲原野，用學過的 /k/ /æ/ /t/ 打倒一隻回音泡泡", short: "原野戰鬥", npc: null, map: "kk", mob: true };
       if (!NV.n02) return { text: "找子音老師 Cody：N02 聲音小路 /m/ /n/ /s/ /f/", short: "N02 聲音小路", npc: "consonant", map: "kk" };
       if (!NV.field2) return { text: "回聲原野：用學過的 7 個音再打倒一隻回音泡泡", short: "原野戰鬥 2", npc: null, map: "kk", mob: true };
+      if (!n03done()) return { text: "找子音老師 Cody：N03 子音工具箱 /p/ /b/ /d/ /g/ /h/ /l/", short: "N03 子音工具箱", npc: "consonant", map: "kk" };
+      if (!NV.field3) return { text: "回聲原野：用學過的 13 個音打倒一隻回音泡泡", short: "原野戰鬥 3", npc: null, map: "kk", mob: true };
     }
     if (at === "kk" || !kkDone()) {
       const next = KK_TASKS.find((t) => !data.kk[t.id]);
@@ -892,6 +895,7 @@ const RPG = (() => {
     if (e.id === "echo") return echo();
     if (e.id === "word" && NV.track === "v1" && !NV.n01) return noviceUnit();
     if (e.id === "consonant" && NV.n01 && !NV.n02 && (NV.track === "v1" || NV.n02step)) return noviceN02();
+    if (e.id === "consonant" && NV.n02 && NV.field2 && !n03done() && (NV.track === "v1" || NV.ch.N03)) return noviceN03();
     const task = KK_TASKS.find((t) => t.npc === e.id);
     if (e.id === "word" && data.kk.word) {
       if (KK_TASKS.every((t) => data.kk[t.id])) return chief();
@@ -1155,17 +1159,49 @@ const RPG = (() => {
       paint();
     });
   }
-  async function noviceN02() {
-    const step = () => NV.n02step || "intro",
-      go = (x) => ((NV.n02step = x), save()),
-      rest = () => finishSummary("音之新手村・N02 聲音小路", "回來找子音老師 Cody 會接著上。");
+  /* One runner for the consonant chapters taught by Cody. Steps are saved as they finish, so a chapter
+     resumes where it stopped. N02 keeps its original save fields (n02step / n02) for existing saves. */
+  const CHAPTER_RUN = {
+    N02: {
+      title: "N02 聲音小路",
+      intro: ["Let's learn four new sounds!", "N02 聲音小路：這一章學 4 個子音 <b>/m/ /n/ /s/ /f/</b>，一次兩個。學過的 /k/ /æ/ /t/ 也會一起出現。"],
+      groups: [{ sounds: ["m", "n"], card: "mn", check: "check-mn" }, { sounds: ["s", "f"], card: "sf", check: "check-sf" }],
+      matchLine: "拼字和聲音不是一對一：<b>f</b> 和 <b>ph</b> 都念 /f/。來配對看看。",
+      buildLine: "最後：<b>看圖，補上學過的音</b>。還沒教的音會先幫你放好（灰色），只考學過的。",
+      builds: ["sun", "phone"], fallback: ["moon", "map"],
+      get: () => NV.n02step || "intro", set: (x) => (NV.n02step = x),
+      finish: () => (NV.n02 = true),
+      toast: ["🛤️", "N02 聲音小路完成", "回聲原野：7 個音的戰鬥"],
+      next: "下一步：到回聲原野，用 7 個學過的音打倒一隻回音泡泡。",
+    },
+    N03: {
+      title: "N03 子音工具箱",
+      intro: ["Six more sounds, two at a time!", "N03 子音工具箱：這一章學 6 個子音 <b>/p/ /b/ /d/ /g/ /h/ /l/</b>，一次兩個。/p/ 和 /b/、/t/ 和 /d/、/k/ 和 /g/ 嘴形一樣，差在喉嚨有沒有振動。"],
+      groups: [{ sounds: ["p", "b"], card: "pb", check: "check-pb" }, { sounds: ["d", "g"], card: "dg", check: "check-dg" }, { sounds: ["h", "l"], card: "hl", check: "check-hl" }],
+      matchLine: "配對：同一個聲音可能有兩種寫法，<b>p</b> 和 <b>pp</b>、<b>l</b> 和 <b>ll</b>。",
+      buildLine: "最後：<b>看圖，用學過的音組出整個字</b>。這兩個字的每個音你都學過了，沒有先放好的格子。",
+      builds: ["map", "hat"], fallback: ["dog", "gift"],
+      get: () => (NV.ch.N03 && NV.ch.N03.step) || "intro", set: (x) => (NV.ch.N03 = { ...(NV.ch.N03 || {}), step: x }),
+      finish: () => (NV.ch.N03 = { ...(NV.ch.N03 || {}), done: true }),
+      toast: ["🧰", "N03 子音工具箱完成", "回聲原野：13 個音的戰鬥"],
+      next: "下一步：到回聲原野，用 13 個學過的音打倒一隻回音泡泡。",
+    },
+  };
+  async function runChapter(id) {
+    const C = CHAPTER_RUN[id],
+      step = C.get,
+      go = (x) => (C.set(x), save()),
+      label = "音之新手村・" + C.title,
+      rest = () => finishSummary(label, "回來找子音老師 Cody 會接著上。");
     if (step() === "intro") {
-      await Talk.line("Let's learn four new sounds!", "N02 聲音小路：這一章學 4 個子音 <b>/m/ /n/ /s/ /f/</b>，一次兩個。學過的 /k/ /æ/ /t/ 也會一起出現。");
-      go("mn");
+      await Talk.line(C.intro[0], C.intro[1]);
+      go(C.groups[0].card);
     }
-    for (const [pair, card, check] of [[["m", "n"], "mn", "check-mn"], [["s", "f"], "sf", "check-sf"]]) {
+    for (let g = 0; g < C.groups.length; g++) {
+      const { sounds, card, check } = C.groups[g],
+        after = g + 1 < C.groups.length ? C.groups[g + 1].card : "match";
       if (step() === card) {
-        for (const sym of pair) {
+        for (const sym of sounds) {
           await nvPanel(soundCardHTML(sym), "▶ 我聽好了");
           if (!NV.taught.includes(sym)) NV.taught.push(sym);
           save();
@@ -1173,44 +1209,47 @@ const RPG = (() => {
         go(check);
       }
       if (step() === check) {
-        await Talk.line("Listen, then choose.", `先聽一個字，選出它開頭或結尾的音。這次的重點是 <b>/${pair[0]}/ 和 /${pair[1]}/</b>。不限時；選錯不會公布答案。`);
-        if (!(await nvCheck(pair, `辨認 /${pair[0]}/ /${pair[1]}/`))) return finishSummary("音之新手村・N02 聲音小路", "還有音要再認一次。回來找 Cody 會接著練。");
-        go(check === "check-mn" ? "sf" : "match");
-        if (!(await nvStepDone(`辨認 /${pair[0]}/ /${pair[1]}/`))) return rest();
+        await Talk.line("Listen, then choose.", `先聽一個字，選出它開頭或結尾的音。這次的重點是 <b>/${sounds[0]}/ 和 /${sounds[1]}/</b>。不限時；選錯不會公布答案。`);
+        if (!(await nvCheck(sounds, `辨認 /${sounds[0]}/ /${sounds[1]}/`))) return finishSummary(label, "還有音要再認一次。回來找 Cody 會接著練。");
+        go(after);
+        if (!(await nvStepDone(`辨認 /${sounds[0]}/ /${sounds[1]}/`))) return rest();
       }
     }
     if (step() === "match") {
-      await Talk.line("", "拼字和聲音不是一對一：<b>f</b> 和 <b>ph</b> 都念 /f/。來配對看看。");
-      await nvMatch(Novice.MATCH.N02);
+      await Talk.line("", C.matchLine);
+      await nvMatch(Novice.MATCH[id]);
       go("build");
       if (!(await nvStepDone("字母組合配對"))) return rest();
     }
     if (step() === "build") {
-      await Talk.line("", "最後：<b>看圖，補上學過的音</b>。還沒教的音會先幫你放好（灰色），只考學過的。");
+      await Talk.line("", C.buildLine);
       let independent = 0;
-      for (const w of ["sun", "phone"]) {
+      for (const w of C.builds) {
         const r = await nvBuild(w);
         if (!r.tries) independent++;
       }
       if (!independent) {
         // finishing is not enough: at least one word has to be right on the first try
         await Talk.line("", "兩個字都是重試後才組對的。再練一個字：");
-        for (const w of ["moon", "map"]) {
+        for (const w of C.fallback) {
           const r = await nvBuild(w);
           if (!r.tries) {
             independent++;
             break;
           }
         }
-        if (!independent) return finishSummary("音之新手村・N02 聲音小路", "組音還要再練一次。回來找 Cody 會接著練。");
+        if (!independent) return finishSummary(label, "組音還要再練一次。回來找 Cody 會接著練。");
       }
-      NV.n02 = true;
+      C.finish();
       go("done");
       addXP(15);
-      toast("🛤️", "N02 聲音小路完成", "回聲原野：7 個音的戰鬥", "levelup");
-      await finishSummary("音之新手村・N02 聲音小路", "下一步：到回聲原野，用 7 個學過的音打倒一隻回音泡泡。");
+      toast(C.toast[0], C.toast[1], C.toast[2], "levelup");
+      await finishSummary(label, C.next);
     }
   }
+  const noviceN02 = () => runChapter("N02");
+  const noviceN03 = () => runChapter("N03");
+  const n03done = () => !!(NV.ch.N03 && NV.ch.N03.done);
 
   /* Echo: the sound picture-dictionary. Every one of the 41 sounds can be previewed; only taught ones are practised. */
   function pickFrom(html) {
@@ -1226,10 +1265,15 @@ const RPG = (() => {
         { label: "📖 選一個字：它是哪些聲音組成的？", value: "word", sub: "只列出人工核對過拆音的字" },
         ...(NV.track === "legacy" && !NV.n01 ? [{ label: "🐱 上新版入門課：cat", value: "unit", sub: "字母、聲音、KK＋/k/ /æ/ /t/" }] : []),
         ...(NV.track === "legacy" && NV.n01 && !NV.n02 ? [{ label: "🛤️ 上新版 N02：/m/ /n/ /s/ /f/", value: "n02", sub: "教學卡、配對、組音" }] : []),
+        ...(NV.track === "legacy" && NV.n02 && !n03done() ? [{ label: "🧰 上新版 N03：/p/ /b/ /d/ /g/ /h/ /l/", value: "n03", sub: "教學卡、配對、組音" }] : []),
         { label: "再見", value: "bye" },
       ]);
       if (v === "bye") return;
       if (v === "unit") return noviceUnit();
+      if (v === "n03") {
+        NV.ch.N03 = NV.ch.N03 || { step: "intro" };
+        return noviceN03();
+      }
       if (v === "n02") {
         NV.n02step = NV.n02step || "intro";
         return noviceN02();
@@ -1556,7 +1600,8 @@ const RPG = (() => {
     if (region === "kk" && look.kind === "sound") {
       let lastWord = "";
       make = () => {
-        const q = Novice.soundQuestion(NV.taught, { ctx: "battle", avoid: lastWord, prefer: NV.n02 ? Novice.CHAPTERS.find((c) => c.id === "N02").sounds : [] });
+        const newest = n03done() ? "N03" : NV.n02 ? "N02" : "";
+        const q = Novice.soundQuestion(NV.taught, { ctx: "battle", avoid: lastWord, prefer: newest ? Novice.CHAPTERS.find((c) => c.id === newest).sounds : [] });
         lastWord = q.wordId;
         return q;
       };
@@ -1599,7 +1644,12 @@ const RPG = (() => {
             NV.field2 = true;
             NV.lv = Math.max(NV.lv, 3);
             save();
-            toast("🫧", "N02 原野戰鬥勝利", "7 個音都上戰場了", "badge");
+            toast("🫧", "N02 原野戰鬥勝利", "下一步：找 Cody 上 N03", "badge");
+          } else if (look.kind === "sound" && n03done() && !NV.field3) {
+            NV.field3 = true;
+            NV.lv = Math.max(NV.lv, 4);
+            save();
+            toast("🫧", "N03 原野戰鬥勝利", "13 個音都上戰場了", "badge");
           }
           if (mob.story === "tutorial") {
             data.kk.battle = true;
