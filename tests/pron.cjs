@@ -137,10 +137,10 @@ async function run(browser, scheme) {
   // a word outside the checked bank comes from the draft dictionary, labelled as such, with no made-up KK
   await page.waitForFunction(() => /pw/.test(Learn.sayHTML("We almost missed the bus.")));
   await ev(() => (document.getElementById("dlg-body").innerHTML = `<p class="dlg-en">${Learn.sayHTML("We almost missed the bus.")}</p>`));
-  assert.equal(await page.locator('.dlg-en .pw[data-w="the"]').count(), 0, "common function words are not linked");
-  await page.locator('.dlg-en .pw[data-w="miss"]').click();
+  assert.equal(await page.locator('.dlg-en .pw[data-w="the"]').count(), 1, "function words can be looked up too (PR #12)");
+  await page.locator('.dlg-en .pw[data-w="missed"]').click();
   const dcard = await page.locator(".wd-card").innerText();
-  assert.match(dcard, /miss[\s\S]*音標待補[\s\S]*釋義草稿，待教學校對[\s\S]*裝置語音/, "missed → miss, draft meaning, no KK");
+  assert.match(dcard, /missed → 原形 miss[\s\S]*音標待補[\s\S]*釋義草稿，待教學校對[\s\S]*裝置語音/, "missed → miss, draft meaning, no KK");
   await page.locator(".wd-card .wd-close").click();
   assert.equal(await ev(() => Pron.lookup("juice") ? true : false) || true, true);
   await ev(() => {
@@ -173,6 +173,72 @@ async function run(browser, scheme) {
   await ctx.close();
 }
 
+/* The practice pages (not only the RPG dialog): "My phone battery is almost empty." (PR #12 example). */
+async function practicePages(browser) {
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 760 } });
+  const page = await ctx.newPage();
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  await page.addInitScript(() => {
+    window.__said = [];
+    window.__plays = [];
+    HTMLMediaElement.prototype.play = function () {
+      window.__plays.push(this.src);
+      setTimeout(() => this.dispatchEvent(new Event("ended")), 20);
+      return Promise.resolve();
+    };
+    speechSynthesis.speak = (u) => {
+      window.__said.push(u.text);
+      setTimeout(() => u.onend && u.onend(), 20);
+    };
+    localStorage.setItem("pm-progress", JSON.stringify({ xp: 25, rounds: 1, badges: [], placeDismissed: true }));
+  });
+  await page.goto(URL);
+  await page.waitForSelector(".world-canvas");
+  const ev = (f, a) => page.evaluate(f, a);
+  await page.locator("#hud-menu").click();
+  await page.locator('[data-m="practice"]').click();
+  await page.locator("#go-sent").click();
+  await page.waitForSelector("#game:not([hidden])");
+  await page.waitForFunction(() => /pw/.test(Pron.sent("almost", "")));
+  const force = (type) =>
+    ev((type) => {
+      const it = SENT.find((x) => x.en === "My phone battery is almost empty.");
+      window.take = () => it;
+      S.answered = false;
+      $("sheet").hidden = true;
+      $("stage").innerHTML = "";
+      G[type]($("stage"));
+    }, type);
+  // sent2scene: the sentence is the question; its words can be looked up without answering
+  await force("sent2scene");
+  await page.locator('#stage .pw[data-w="almost"]').click();
+  const card = await page.locator(".wd-card").innerText();
+  assert.match(card, /almost[\s\S]*音標待補[\s\S]*幾乎；差不多[\s\S]*adverb/, "almost: meaning, part of speech, KK status");
+  assert.equal(await ev(() => __said[__said.length - 1]), "almost", "the word is played");
+  assert.equal(await ev(() => S.answered), false, "looking a word up does not answer");
+  await page.locator(".wd-card .wd-close").click();
+  await page.locator('#stage .pw[data-w="is"]').click();
+  assert.match(await page.locator(".wd-card").innerText(), /is → 原形 be[\s\S]*是/, "is keeps its form and shows be");
+  assert.equal(await ev(() => __said[__said.length - 1]), "is", "the word as written is played");
+  await page.locator(".wd-card .wd-close").click();
+  await page.locator('#stage .say-btn').click();
+  assert.equal(await ev(() => __said[__said.length - 1]), "My phone battery is almost empty.", "the line has its own 🔊");
+  // blank: the gap and the options are not look-ups before answering; the full line is, afterwards
+  await force("blank");
+  assert.equal(await page.locator("#stage .gap .pw, #stage .opt .pw").count(), 0, "no look-up on the gap or the options");
+  assert.equal(await page.locator("#stage .say-s, #stage .say-btn").count(), 0, "the gapped line is not played (it would give the word away)");
+  assert(await page.locator('#stage .pw[data-w="almost"]').count(), "other words can be looked up");
+  await page.locator("#stage .opt").first().click();
+  await page.waitForSelector("#sheet:not([hidden])");
+  await page.locator('#ans-en .pw[data-w="empty"]').click();
+  assert.match(await page.locator(".wd-card").innerText(), /empty[\s\S]*空的/, "after answering, every word of the full line");
+  assert.equal(await page.locator("#sheet").isVisible(), true, "the card does not close the answer sheet or go to the next question");
+  await page.locator(".wd-card .wd-close").click();
+  assert.deepEqual(errors, []);
+  await ctx.close();
+}
+
 (async () => {
   const browser = await chromium.launch({
     headless: true,
@@ -180,7 +246,8 @@ async function run(browser, scheme) {
     args: ["--no-sandbox"],
   });
   for (const scheme of ["light", "dark"]) await run(browser, scheme);
-  console.log("PASS: light and dark scheme: right = light green / dark green / ✓, wrong = light red / dark red / ✕, settled options opaque with >= 4.5:1 contrast (dialog and battle); line plays on tap; every English option has a separate 🔊 that never answers and pauses the battle clock; options and the answer replay after answering; English choices hearable; word card with KK and recording; draft-dictionary words (forms → base) labelled, no guessed KK; one sound at a time");
+  await practicePages(browser);
+  console.log("PASS: light and dark scheme: right = light green / dark green / ✓, wrong = light red / dark red / ✕, settled options opaque with >= 4.5:1 contrast (dialog and battle); line plays on tap; every English option has a separate 🔊 that never answers and pauses the battle clock; options and the answer replay after answering; English choices hearable; word card with KK and recording; draft-dictionary words (forms → base) labelled, no guessed KK; practice pages: almost / is→be look-up, line 🔊, blank keeps gap and options closed, full line after answering; one sound at a time");
   await browser.close();
 })().catch((e) => {
   console.error(e);

@@ -48,6 +48,9 @@ h1,h2,.display{font-family:var(--display);text-wrap:balance;margin:0}
 .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px;margin-bottom:18px}
 .tabs button{border:none;background:none;border-radius:10px;padding:9px 4px;font-weight:500;color:var(--muted)}
 .tabs button[aria-selected="true"]{background:var(--accent);color:#fff}
+/* dark mode: the light-blue accent needs dark text (white on it is 2.7:1) */
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tabs button[aria-selected="true"],:root:not([data-theme="light"]) .primary{color:#0E1533}}
+:root[data-theme="dark"] .tabs button[aria-selected="true"],:root[data-theme="dark"] .primary{color:#0E1533}
 .modes{display:grid;gap:14px}
 .mode{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-align:left;background:var(--surface);
   border:2px solid var(--line);border-radius:20px;padding:18px;transition:border-color .15s,transform .15s}
@@ -777,7 +780,7 @@ function done(ok,info){
   if(S.i===4&&!S.pl)toast('🎯','過一半了',`這回合前 5 題答對 ${S.score} 題，已累積 ${S.gain} 分`);
   const sh=$('sheet');sh.classList.toggle('no',!ok);
   $('verdict').textContent=ok?(S.streak>=3?`答對了！連對 ${S.streak} 題`:'答對了！'):'再記一下這個';
-  $('ans-en').textContent=info.en;$('ans-kk').textContent=info.kk||'';$('ans-zh').textContent=info.zh||'';
+  $('ans-en').innerHTML=typeof Pron!=='undefined'?Pron.sent(info.en,'',{noBtn:true}):esc(info.en);$('ans-kk').textContent=info.kk||'';$('ans-zh').textContent=info.zh||'';
   S.say=info.say||null;$('sheet-say').hidden=!info.say;
   $('next').textContent=S.i>=S.plan.length-1?'看結果':'下一題';
   sh.hidden=false;
@@ -840,14 +843,15 @@ const G={
  },
  sent2scene(st){
   const it=take('s'),opts=shuffle([it,...others(it,2,SENT,'en')]);
-  st.innerHTML=`<div class="prompt"><span class="sentence">${it.en}</span></div><div class="grid3">${opts.map((o,k)=>`<button class="tile scene" data-k="${k}" aria-label="畫面 ${k+1}">${pic(o)}</button>`).join('')}</div>`;
+  st.innerHTML=`<div class="prompt"><span class="sentence">${typeof Pron!=='undefined'?Pron.sent(it.en,''):esc(it.en)}</span></div><div class="grid3">${opts.map((o,k)=>`<button class="tile scene" data-k="${k}" aria-label="畫面 ${k+1}">${pic(o)}</button>`).join('')}</div>`;
   st.querySelector('.prompt').appendChild(sayBtn(it));
   const bs=[...st.querySelectorAll('.tile')];
   bs.forEach(b=>b.onclick=()=>{if(S.answered)return;const ok=opts[b.dataset.k]===it;mark(bs,k=>opts[k]===it,b);done(ok,{en:it.en,zh:it.zh,say:it,rec:[{k:'s',it,ok}]})});
  },
  blank(st){
   const it=take('s'),opts=shuffle([it.b,...it.o]);
-  const html=it.en.replace(new RegExp('\\b'+it.b+'\\b'),'<span class="gap">'+it.b+'</span>');
+  const G0='\u0001\u0002\u0001',raw=it.en.replace(new RegExp('\\b'+it.b+'\\b'),G0);
+  const html=(typeof Pron!=='undefined'?Pron.sent(raw,'',{wordsOnly:true}):esc(raw)).replace(G0,'<span class="gap">'+it.b+'</span>');
   st.innerHTML=`<div class="big">${pic(it)}</div><p class="sentence">${html}</p><p class="zh" style="margin-top:-6px">${it.zh}</p><div class="grid2">${opts.map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join('')}</div>`;
   const bs=[...st.querySelectorAll('.opt')];
   bs.forEach(b=>b.onclick=()=>{if(S.answered)return;const g=st.querySelector('.gap');if(g)g.style.color='var(--accent)';

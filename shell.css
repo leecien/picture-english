@@ -306,7 +306,7 @@ body.field {
 .menu-grid small {
   display: block;
   font-size: 12px;
-  color: #6f7861;
+  color: #5c6450;
 }
 button:disabled {
   opacity: 0.5;
@@ -329,7 +329,7 @@ button:disabled {
 .qz-hint,
 .qz-f small {
   font-size: 13px;
-  color: #6f7861;
+  color: #5c6450;
   display: block;
 }
 .qz-their {
@@ -553,7 +553,7 @@ button:disabled {
   color: #2f8a57;
 }
 .qz-f .bad {
-  color: var(--g-bad);
+  color: #9b2c2c; /* 6.6:1 on the feedback box (the brighter --g-bad was 3.5:1) */
 }
 .qz-ans {
   font-family: var(--display);
@@ -731,7 +731,7 @@ canvas.hit {
 .bt-menu small {
   font-size: 11px;
   font-weight: 400;
-  color: #6f7861;
+  color: #5c6450;
 }
 .bt-list {
   display: grid;
@@ -863,7 +863,7 @@ canvas.hit {
 }
 .bt-help small {
   font-size: 10.5px;
-  color: #6f7861;
+  color: #5c6450;
 }
 .bt-buddy-hint {
   background: #e9f9ff !important;
@@ -997,7 +997,7 @@ canvas.hit {
   color: #4f6aa8;
 }
 .targets span {
-  color: #6f7861;
+  color: #5c6450;
   font-size: 13px;
 }
 .summary h4 {
@@ -1465,7 +1465,7 @@ b.nv-hit {
 .life-stage {
   position: relative;
   flex: none;
-  height: 52%;
+  height: 48%;
   overflow: hidden;
   background: #2b2b2b;
   touch-action: none;
@@ -1504,19 +1504,28 @@ b.nv-hit {
   stroke: #e04848;
   fill: rgba(224, 72, 72, 0.15);
 }
+/* zoom controls sit under the picture, never on top of it (they used to hide the spoon's corner) */
 .life-zoom {
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
   display: flex;
   gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 6px 12px 0;
+}
+.life-zoom[hidden] {
+  display: none;
+}
+.life-zoom small {
+  flex: 1;
+  color: #5c6450;
+  font-size: 12px;
 }
 .life-zoom button {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  border: none;
-  background: rgba(255, 253, 246, 0.92);
+  border: 1px solid #c9cfba;
+  background: #fffdf6;
   color: #2f382b;
   font-size: 20px;
 }
@@ -1669,4 +1678,42 @@ b.nv-hit {
 }
 .life .qz-f:empty {
   display: none;
+}
+
+/* Practice pages (index.html): answered options keep full contrast in light and dark mode. The old global
+   .right/.wrong use theme variables that turn dark green / dark red in dark mode; these pairs are explicit. */
+.opt:disabled,
+.tile:disabled,
+.lt:disabled,
+.wd:disabled,
+.mt:disabled {
+  opacity: 1 !important;
+}
+.opt.right,
+.tile.right {
+  background: #ddf4e8 !important;
+  color: #153f2b !important;
+  border-color: #238653 !important;
+}
+.opt.wrong,
+.tile.wrong {
+  background: #fde8e7 !important;
+  color: #732423 !important;
+  border-color: #bc4141 !important;
+}
+.opt.right::after {
+  content: " ✓";
+}
+.opt.wrong::after {
+  content: " ✕";
+}
+.tile.right::after,
+.tile.wrong::after {
+  font: 700 14px var(--body);
+}
+.tile.right::after {
+  content: "✓ 正確";
+}
+.tile.wrong::after {
+  content: "✕ 你選的";
 }

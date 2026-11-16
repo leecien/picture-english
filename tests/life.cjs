@@ -193,10 +193,10 @@ async function setup(browser, opt = {}) {
   await page.locator('[data-m="practice"]').click();
   await page.locator("#go-life").click();
   await page.waitForSelector("#life:not([hidden]) [data-scene]");
-  // a second-batch scene without missions says so
+  // second-batch scenes now have two missions each
   await openScene("kitchen");
   await page.locator('[data-mode="mission"]').click();
-  assert.match(await page.locator("#life-panel").innerText(), /還沒有生活任務/);
+  assert.match(await page.locator("#life-panel").innerText(), /熱剩菜[\s\S]*煎蛋配湯/);
   await page.locator('[data-mode="explore"]').click();
   await tapTarget("kettle");
   assert.match(await page.locator("#life-panel").innerText(), /kettle[\s\S]*熱水壺[\s\S]*音標待補/);
@@ -209,6 +209,71 @@ async function setup(browser, opt = {}) {
   assert.deepEqual(a.errors, []);
   await a.ctx.close();
 
+  /* ---------- per-scene acceptance: all 12 scenes, every play mode, real taps ---------- */
+  {
+    const c = await setup(browser);
+    const spot0 = await c.ev(() => [World.hero.x, World.hero.y]);
+    await c.page.locator("#hud-menu").click();
+    await c.page.locator('[data-m="life"]').click();
+    await c.page.waitForSelector("#life:not([hidden]) [data-scene]");
+    const ids = await c.ev(() => Life.data.scenes.map((s) => s.id));
+    const report = [];
+    for (const id of ids) {
+      await c.openScene(id);
+      const targets = await c.ev(() => Life.data.scenes.find((s) => s.id === Life.scene).targets.map((t) => ({ id: t.id, word: t.word, zh: t.zh })));
+      // explore: every object, its sound
+      for (const t of targets) {
+        const n = await c.ev(() => __said.length + __plays.length);
+        await c.tapTarget(t.id);
+        assert.match(await c.page.locator("#life-panel").innerText(), new RegExp(t.word), `${id}: ${t.word} shows its word`);
+        assert((await c.ev(() => __said.length + __plays.length)) > n, `${id}: ${t.word} plays`);
+      }
+      assert.equal(await c.page.locator("#life-count").innerText(), "找到 6 / 6", id);
+      // listen: three words, each answered after it played
+      await c.page.locator('[data-mode="listen"]').click();
+      for (let k = 0; k < 3; k++) {
+        await c.page.waitForFunction(() => Life.round && Life.round.target && !Life.round.locked, null, { timeout: 8000 });
+        const want = await c.ev(() => Life.round.target);
+        assert(!(await c.page.locator("#life-panel").innerText()).includes(targets.find((t) => t.id === want).word), `${id}: no answer before the tap`);
+        await c.tapTarget(want);
+        await c.page.locator("#life-next").click();
+      }
+      assert.match(await c.page.locator("#life-panel").innerText(), /這一輪完成/);
+      // spell: find from Chinese, then spell (long words: find and hear)
+      await c.page.locator('[data-mode="spell"]').click();
+      for (let k = 0; k < 3; k++) {
+        const zh = await c.page.locator("#life-panel b").first().innerText();
+        const t = targets.find((x) => x.zh === zh);
+        await c.tapTarget(t.id);
+        if (t.word.length <= 6) {
+          for (const ch of t.word) await c.page.locator(".life-tile:not([disabled])", { hasText: new RegExp(`^${ch}$`) }).first().click();
+          await c.page.locator("#life-submit").click();
+          assert.match(await c.page.locator("#life-panel").innerText(), /拼對了/, `${id}: ${t.word} spelled`);
+        }
+        await c.page.locator("#life-next").click();
+      }
+      // missions: both
+      await c.page.locator('[data-mode="mission"]').click();
+      const missions = await c.ev(() => Life.data.scenes.find((s) => s.id === Life.scene).missions);
+      assert.equal(missions.length, 2, `${id}: two missions`);
+      for (let m = 0; m < 2; m++) {
+        if (m) await c.page.locator("#life-again").click();
+        await c.page.locator(`[data-mission="${m}"]`).click();
+        for (const tid of missions[m].targets) await c.tapTarget(tid);
+        assert.match(await c.page.locator("#life-panel").innerText(), new RegExp(`任務完成：${missions[m].title}`), `${id}: mission ${m + 1}`);
+      }
+      report.push(id);
+      await c.page.locator("#life-back").click();
+      await c.page.waitForSelector("[data-scene]");
+    }
+    assert.equal(report.length, 12);
+    await c.page.locator("#life-back").click();
+    await c.page.waitForSelector("#life", { state: "hidden" });
+    assert.deepEqual(await c.ev(() => [World.hero.x, World.hero.y]), spot0, "back to the map spot after all scenes");
+    assert.deepEqual(c.errors, []);
+    await c.ctx.close();
+  }
+
   /* ---------- listen mode when sound cannot play: no answering ---------- */
   const m = await setup(browser, { mute: true });
   await m.page.locator("#hud-menu").click();
@@ -220,7 +285,7 @@ async function setup(browser, opt = {}) {
   assert.deepEqual(m.errors, []);
   await m.ctx.close();
 
-  console.log("PASS: 12 scenes × 6 targets (71 words) with valid missions, every target's centre hits it (priority + 44px tolerance), drag pans without answering, zoom, explore (recording vs labelled device voice, no guessed KK, find count, first-find once), listen-first (locked until played, nothing named before the answer, miss then retry recorded apart), find-and-spell (tiles in and back, answer only after submit, long words find + hear), mission, saved progress, back to the same map spot, small objects (toothbrush, soap), sound failure blocks answering");
+  console.log("PASS: per scene (all 12): explore all six with sound, a listen round, a spell round, both missions, back to the map; 12 scenes × 6 targets (71 words) with valid missions, every target's centre hits it (priority + 44px tolerance), drag pans without answering, zoom, explore (recording vs labelled device voice, no guessed KK, find count, first-find once), listen-first (locked until played, nothing named before the answer, miss then retry recorded apart), find-and-spell (tiles in and back, answer only after submit, long words find + hear), mission, saved progress, back to the same map spot, small objects (toothbrush, soap), sound failure blocks answering");
   await browser.close();
 })().catch(async (e) => {
   console.error(e);

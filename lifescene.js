@@ -55,7 +55,8 @@ const Life = (() => {
     el.innerHTML = `<div class="life-top"><button type="button" id="life-back">← 返回</button><b id="life-title">生活情境</b><span id="life-count"></span></div>
       <div class="life-tabs" id="life-tabs" hidden>${[["explore", "👆 探索"], ["listen", "🎧 聽音找物"], ["spell", "🔤 找物拼字"], ["mission", "🧺 生活任務"]].map(([k, l]) => `<button type="button" data-mode="${k}">${l}</button>`).join("")}</div>
       <div class="life-stage" id="life-stage" hidden><div class="life-layer" id="life-layer"><img id="life-img" alt="" draggable="false"><svg id="life-svg" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"></svg></div>
-        <div class="life-zoom"><button type="button" id="life-in" aria-label="放大">＋</button><button type="button" id="life-out" aria-label="縮小">－</button><button type="button" id="life-fit" aria-label="看整張">⤢</button></div><div class="life-toast" id="life-toast" hidden></div></div>
+        <div class="life-toast" id="life-toast" hidden></div></div>
+      <div class="life-zoom" id="life-zoom" hidden><small>拖曳移動，雙指或按鈕縮放</small><button type="button" id="life-in" aria-label="放大">＋</button><button type="button" id="life-out" aria-label="縮小">－</button><button type="button" id="life-fit" aria-label="看整張">⤢</button></div>
       <div class="life-panel" id="life-panel"></div>`;
     document.body.appendChild(el);
     el.querySelector("#life-back").onclick = () => (scene ? pickScene() : close());
@@ -92,6 +93,7 @@ const Life = (() => {
     $l("life-count").textContent = "";
     $l("life-tabs").hidden = true;
     $l("life-stage").hidden = true;
+    $l("life-zoom").hidden = true;
     $l("life-panel").innerHTML = `<p class="life-lead">每張圖固定 6 個單字。先點物件聽發音，再挑一種玩法：聽音找物、找物拼字或生活任務。</p><div class="life-scenes">${DATA.scenes
       .map((s) => `<button type="button" data-scene="${s.id}"><img src="${ESC(s.image)}" alt="" loading="lazy"><b>${ESC(s.title)}</b><small>找到 ${(ST.found[s.id] || []).length} / ${s.targets.length}</small></button>`)
       .join("")}</div>`;
@@ -103,6 +105,7 @@ const Life = (() => {
     $l("life-title").textContent = scene.title;
     $l("life-tabs").hidden = false;
     $l("life-stage").hidden = false;
+    $l("life-zoom").hidden = false;
     const img = $l("life-img");
     img.onload = () => fit();
     img.src = scene.image;

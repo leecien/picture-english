@@ -1,11 +1,11 @@
 :root {
-  --accent: #65784c;
+  --accent: #56713b;
   --accent-soft: #edf2dc;
   --bg: #f7f3e8;
   --ink: #3c4539;
   --surface: #fffdf7;
   --line: #dddcc9;
-  --muted: #717865;
+  --muted: #5c6450;
   color-scheme: light;
 }
 .app {
@@ -126,7 +126,7 @@
   font-family: var(--emoji);
 }
 .quick button small {
-  color: #717865;
+  color: #5c6450;
   font-size: 12px;
   line-height: 1.3;
 }
@@ -247,7 +247,7 @@
   grid-row: span 2;
   font: 700 12px var(--display);
   color: #fff;
-  background: #7c9858;
+  background: #5a7a3a;
   border-radius: 9px;
   padding: 6px 5px;
 }
@@ -331,7 +331,7 @@
 }
 .bag-list small {
   display: block;
-  color: #717865;
+  color: #5c6450;
   font-size: 12px;
 }
 .bag-stat {

@@ -2653,7 +2653,26 @@
    ],
    "notes": "爐面被鍋具覆蓋，先測鍋具，再測可見爐面；勿把抽油煙機當作爐子。",
    "source": "content/core-3000/images/kitchen.png",
-   "missions": []
+   "missions": [
+    {
+     "title": "熱剩菜",
+     "prompt": "從冰箱拿出剩菜，再用微波爐加熱。",
+     "targets": [
+      "refrigerator",
+      "microwave"
+     ]
+    },
+    {
+     "title": "煎蛋配湯",
+     "prompt": "找到煎蛋的平底鍋、煮湯的鍋子，還有瓦斯爐。",
+     "targets": [
+      "pan",
+      "pot",
+      "stove"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
   },
   {
    "id": "laundry",
@@ -3040,7 +3059,26 @@
    ],
    "notes": "衣架只取露出的掛鉤和木框，避免與襯衫互搶點擊；洗衣機及籃子是背景。",
    "source": "content/core-3000/images/laundry.png",
-   "missions": []
+   "missions": [
+    {
+     "title": "晾襯衫",
+     "prompt": "找到襯衫，再找到掛它的衣架。",
+     "targets": [
+      "shirt",
+      "hanger"
+     ]
+    },
+    {
+     "title": "洗好晾襪子",
+     "prompt": "找到洗衣精，再找到襪子和曬衣夾。",
+     "targets": [
+      "detergent",
+      "sock",
+      "clothespin"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
   },
   {
    "id": "living-room",
@@ -3367,7 +3405,25 @@
    ],
    "notes": "rug 對應區域地毯，不能直接用 carpet 泛稱；小地毯點擊範圍先只取前方露出部分。",
    "source": "content/core-3000/images/living-room.png",
-   "missions": []
+   "missions": [
+    {
+     "title": "看電視",
+     "prompt": "找到遙控器，再找到電視。",
+     "targets": [
+      "remote",
+      "television"
+     ]
+    },
+    {
+     "title": "舒服坐下",
+     "prompt": "找到沙發，再找到靠墊。",
+     "targets": [
+      "sofa",
+      "cushion"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
   },
   {
    "id": "street",
@@ -3902,7 +3958,25 @@
    ],
    "notes": "畫中是 scooter（速克達）；安全帽優先於車身。圖片邊緣的部分車身及輪子不應設為必點位置。",
    "source": "content/core-3000/images/street.png",
-   "missions": []
+   "missions": [
+    {
+     "title": "騎車出門",
+     "prompt": "找到速克達，再找到安全帽。",
+     "targets": [
+      "scooter",
+      "helmet"
+     ]
+    },
+    {
+     "title": "過馬路搭公車",
+     "prompt": "找到行人穿越道，再找到公車。",
+     "targets": [
+      "crosswalk",
+      "bus"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
   },
   {
    "id": "park",
@@ -4353,7 +4427,25 @@
    ],
    "notes": "tree 只先標前景大樹的樹幹與部分主枝；風箏與花朵需放大確認，小物件不能要求精準點一個像素。",
    "source": "content/core-3000/images/park.png",
-   "missions": []
+   "missions": [
+    {
+     "title": "樹下休息",
+     "prompt": "找到長椅，再找到可以遮陽的樹。",
+     "targets": [
+      "bench",
+      "tree"
+     ]
+    },
+    {
+     "title": "逛逛公園",
+     "prompt": "找到噴水池，再找到天上的風箏。",
+     "targets": [
+      "fountain",
+      "kite"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
   },
   {
    "id": "clinic",
@@ -4780,8 +4872,26 @@
    ],
    "notes": "medicine 是情境中藥瓶代表的藥品；一般無標籤棕色瓶本身不足以推斷藥名或劑量，本練習不教用藥。",
    "source": "content/core-3000/images/clinic.png",
-   "missions": []
+   "missions": [
+    {
+     "title": "量體溫",
+     "prompt": "找到護理師，再找到體溫計。",
+     "targets": [
+      "nurse",
+      "thermometer"
+     ]
+    },
+    {
+     "title": "看醫生拿藥",
+     "prompt": "找到醫師，再找到藥品。",
+     "targets": [
+      "doctor",
+      "medicine"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
   }
  ],
- "_說明": "由 assets/art-source/life-scenes-01/scenes.draft.json 產生：圖片轉成 webp，kk／audio 只沿用 data/words.json 已有的資料（沒有的就是 null，不猜）。多邊形沿用草稿，已疊圖目測，仍待實機點擊驗收。 第二批（PR #11 content/core-3000/images）沒有生活任務，畫面會說明。"
+ "_說明": "由 assets/art-source/life-scenes-01/scenes.draft.json 產生：圖片轉成 webp，kk／audio 只沿用 data/words.json 已有的資料（沒有的就是 null，不猜）。多邊形沿用草稿，已疊圖目測，仍待實機點擊驗收。 第二批（PR #11）的生活任務由 Claude 依每張圖的六詞補寫（missionSource），待教材校對。"
 }

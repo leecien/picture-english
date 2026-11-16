@@ -14,17 +14,17 @@ const Pron = (() => {
   /* Draft dictionary (data/dict-draft.json, PR #11): look-up only. Meanings still need teaching review, there
      is no checked KK, and nothing from it is graded. Common function words are not linked from the draft. */
   let DRAFT = null;
-  const STOP = new Set("the a an to of in on at and or but is are am was were be been i you he she it we they me him her us them my your his its our their this that these those do does did have has had will would can could not no yes".split(" "));
+  // (function words are linked too: "is" opens be, shown as the form it is)
   if (typeof fetch !== "undefined" && typeof document !== "undefined")
     fetch("data/dict-draft.json")
       .then((r) => r.json())
       .then((d) => (DRAFT = d))
       .catch(() => {});
   function draft(t) {
-    if (!DRAFT || STOP.has(t)) return null;
+    if (!DRAFT) return null;
     const base = DRAFT.words[t] ? t : DRAFT.forms[t];
     const e = base && DRAFT.words[base];
-    return e ? { w: base, z: e[0], pos: e[1], kk: null, au: "", draft: true } : null;
+    return e ? { w: base, z: e[0], pos: e[1], kk: null, au: "", draft: true, form: base !== t ? t : "" } : null;
   }
   function lookup(raw) {
     if (!index) {
@@ -35,8 +35,9 @@ const Pron = (() => {
     if (!t) return null;
     const verified = index.get(t) || index.get(t.replace(/'s$/, "")) || (t.length > 3 && (index.get(t.replace(/es$/, "")) || index.get(t.replace(/s$/, ""))));
     if (verified) return verified;
-    const base = DRAFT && DRAFT.forms[t];
-    return (base && index.get(base)) || draft(t) || draft(t.replace(/'s$/, "")) || null;
+    const base = DRAFT && DRAFT.forms[t],
+      vb = base && index.get(base);
+    return (vb && { ...vb, form: t }) || draft(t) || draft(t.replace(/'s$/, "")) || null;
   }
   /* A sentence the player can tap: the line plays; dotted words open their card. */
   function sent(text, file, opt = {}) {
@@ -46,9 +47,12 @@ const Pron = (() => {
       .map((part) => {
         if (/^\s+$/.test(part)) return part;
         const w = opt.noWords ? null : lookup(part);
-        return w ? `<span class="pw" data-w="${ESC(w.w)}" role="button" tabindex="0" aria-label="${ESC(w.w)} 的發音">${ESC(part)}</span>` : ESC(part);
+        const form = String(part).toLowerCase().replace(/^[^a-z']+|[^a-z']+$/g, "");
+        return w ? `<span class="pw" data-w="${ESC(form || w.w)}" role="button" tabindex="0" aria-label="${ESC(form || w.w)} 的意思和發音">${ESC(part)}</span>` : ESC(part);
       })
       .join("");
+    if (opt.wordsOnly) return words; // e.g. a fill-in-the-blank: words can be looked up, the line is not played
+    if (opt.noBtn) return `<span class="say-s" data-say="${ESC(text)}"${file ? ` data-file="${ESC(file)}"` : ""}>${words}</span>`;
     return `<span class="say-s" data-say="${ESC(text)}"${file ? ` data-file="${ESC(file)}"` : ""} role="button" tabindex="0">${words}</span><span class="say-btn" data-say="${ESC(text)}"${file ? ` data-file="${ESC(file)}"` : ""} role="button" tabindex="0" aria-label="播放整句">🔊</span>`;
   }
   /* A separate listen control for an answer option (a sibling of the answer button, not inside it). */
@@ -151,10 +155,12 @@ const Pron = (() => {
     } else if (!card.hidden) busy(false);
     card.hidden = false;
     busy(true);
-    card.innerHTML = `<b class="wd-w">${ESC(w.w)}</b> ${w.kk ? `<span class="wd-kk">${ESC(w.kk)}</span>` : '<span class="wd-none">音標待補（還沒有核對過的 KK）</span>'}<span class="wd-z">${ESC(w.z || "")}${w.pos ? ` <small>（${ESC(w.pos)}）</small>` : ""}</span>${w.draft ? '<span class="wd-none">釋義草稿，待教學校對</span>' : ""}${w.au ? "" : '<span class="wd-none">🔊 裝置語音念整個字（正式配音待補）</span>'}<span class="wd-row"><button type="button" class="wd-play">🔊 再聽一次</button><button type="button" class="wd-close">✕ 關閉</button></span>`;
-    card.querySelector(".wd-play").onclick = () => play(w.w, w.au);
+    card.innerHTML = `<b class="wd-w">${w.form ? `${ESC(w.form)} <small>→ 原形 ${ESC(w.w)}</small>` : ESC(w.w)}</b> ${w.kk ? `<span class="wd-kk">${ESC(w.kk)}</span>` : '<span class="wd-none">音標待補（還沒有核對過的 KK）</span>'}<span class="wd-z">${ESC(w.z || "")}${w.pos ? ` <small>（${ESC(w.pos)}）</small>` : ""}</span>${w.draft ? '<span class="wd-none">釋義草稿，待教學校對</span>' : ""}${w.au ? "" : '<span class="wd-none">🔊 裝置語音念整個字（正式配音待補）</span>'}<span class="wd-row"><button type="button" class="wd-play">🔊 再聽一次</button><button type="button" class="wd-close">✕ 關閉</button></span>`;
+    // the word as it appears ("went"): its recording only when it is the bank word itself
+    const say = () => (w.form ? play(w.form, "") : play(w.w, w.au));
+    card.querySelector(".wd-play").onclick = say;
     card.querySelector(".wd-close").onclick = closeWord;
-    play(w.w, w.au);
+    say();
   }
   function closeWord() {
     if (!card || card.hidden) return;
