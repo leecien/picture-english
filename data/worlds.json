@@ -1,0 +1,1737 @@
+{
+  "schemaVersion": 1,
+  "title": "共鳴群島",
+  "premise": "九枚元素印記連起九種生活。你從音之新手村出發，透過聽懂、說清楚與幫助居民，逐步修復共鳴燈塔的路網。",
+  "progressNote": "地圖解鎖沿用目前任務進度；各區標示實際可用的入口。",
+  "practiceModes": [
+    {
+      "id": "explore",
+      "label": "探索找單字"
+    },
+    {
+      "id": "listen",
+      "label": "聽音找物"
+    },
+    {
+      "id": "spell",
+      "label": "找物拼字"
+    },
+    {
+      "id": "mission",
+      "label": "生活小任務"
+    }
+  ],
+  "regions": [
+    {
+      "id": "sound",
+      "name": "音之新手村",
+      "element": "音",
+      "icon": "🔔",
+      "tone": "#7867b4",
+      "maps": [
+        {
+          "id": "kk",
+          "label": "KK 新手村"
+        }
+      ],
+      "tagline": "從聽見一個聲音，到拼出自己的第一個單字。",
+      "story": "共鳴燈塔失去第一枚聲音印記。旅人和村裡的老師一起找回字母與聲音的連結；每學會一個聲音，原野上的指引就亮起一點。這趟旅程從理解開始，不要求第一次就會。",
+      "npcs": [
+        {
+          "name": "Echo",
+          "role": "音標圖鑑與拆音引導",
+          "status": "existing"
+        },
+        {
+          "name": "Ava／Cody",
+          "role": "母音與子音老師",
+          "status": "existing"
+        },
+        {
+          "name": "Stella／Kai",
+          "role": "重音引導與村莊任務",
+          "status": "existing"
+        }
+      ],
+      "learningGoals": [
+        "分清字母名稱、拼字與聲音",
+        "聽音辨識、字母組合配對、已教音組字",
+        "逐步完成 41 音、音節與重音"
+      ],
+      "stages": [
+        {
+          "id": "sound-first-word",
+          "title": "第一盞回聲燈",
+          "plot": "先聽 cat，再把 c、a、t 的拼字與聲音接起來。",
+          "learningGoal": "建立 /k æ t/ 與 cat 的關係。",
+          "rewardIdea": "聲音手帳第一頁",
+          "implementation": "partial"
+        },
+        {
+          "id": "sound-path",
+          "title": "聲音小路",
+          "plot": "幫 Cody 找回沿路的聲音標記，讓原野中的回音泡泡恢復節奏。",
+          "learningGoal": "依序擴充已教音，辨識與組音分開練習。",
+          "rewardIdea": "回聲原野的新路段",
+          "implementation": "partial"
+        },
+        {
+          "id": "sound-seal",
+          "title": "共鳴守衛的試煉",
+          "plot": "在聲音徽章任務中遇見旅伴，再一起完成三段守衛試煉。",
+          "learningGoal": "至少 30 個完整題目，通關後開啟正式複習。",
+          "rewardIdea": "音之印記與可並肩練習的旅伴",
+          "implementation": "planned"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "sound-teachers",
+          "title": "老師的聲音教室",
+          "lifeSceneId": null,
+          "drive": null,
+          "wordPractice": null,
+          "mapId": "kk",
+          "arrivalHint": "進村後依任務指引找老師；只有已教的音進入考核。",
+          "wordRefs": [
+            {
+              "word": "cat",
+              "zh": "貓",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "map",
+              "zh": "地圖",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "hat",
+              "zh": "帽子",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "key",
+              "zh": "鑰匙",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "sound-archive",
+          "title": "Echo 的拆音手帳",
+          "lifeSceneId": null,
+          "drive": null,
+          "wordPractice": null,
+          "mapId": "kk",
+          "arrivalHint": "找音標圖鑑老師 Echo。圖鑑預覽不代表已學完該音。",
+          "wordRefs": [
+            {
+              "word": "cat",
+              "zh": "貓",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "book",
+              "zh": "書",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "tree",
+              "zh": "樹",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "phone",
+              "zh": "手機",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            }
+          ]
+        }
+      ],
+      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+    },
+    {
+      "id": "wind",
+      "name": "風之旅行群島",
+      "element": "風",
+      "icon": "🪁",
+      "tone": "#4b85a6",
+      "maps": [
+        {
+          "id": "wind",
+          "label": "風之旅行群島"
+        },
+        {
+          "id": "transport",
+          "label": "微風旅行車站"
+        }
+      ],
+      "tagline": "用英文帶著自己抵達新的地方。",
+      "story": "風橋連起不同的旅行小島。一位旅客的行李沒有抵達，車站與飯店也等著新的消息。旅人透過報到、詢問和描述，把零散的線索接成一趟安心的旅程。",
+      "npcs": [
+        {
+          "name": "Wendy",
+          "role": "旅行嚮導",
+          "status": "existing"
+        },
+        {
+          "name": "Mia／Officer Lee",
+          "role": "報到與入境服務",
+          "status": "existing"
+        },
+        {
+          "name": "Sam／Noah",
+          "role": "行李與飯店協助",
+          "status": "existing"
+        }
+      ],
+      "learningGoals": [
+        "說明目的地、旅遊目的與住宿",
+        "描述行李、問路與請求協助",
+        "同一旅行情境切換聆聽、跟讀和遊戲任務"
+      ],
+      "stages": [
+        {
+          "id": "wind-arrival",
+          "title": "風橋通行證",
+          "plot": "在報到與入境櫃檯準備好旅行需要的資訊。",
+          "learningGoal": "聽懂目的地、護照、來訪目的與停留天數。",
+          "rewardIdea": "開通前往行李島的風橋",
+          "implementation": "existing"
+        },
+        {
+          "id": "wind-baggage",
+          "title": "消失的行李標籤",
+          "plot": "選擇向服務台求助或沿轉盤尋找線索，描述自己的行李。",
+          "learningGoal": "用簡單句描述物品、說明問題與提供地點。",
+          "rewardIdea": "找回行李並推進旅伴故事",
+          "implementation": "existing"
+        },
+        {
+          "id": "wind-stay",
+          "title": "把旅程安頓好",
+          "plot": "帶著找回的行李抵達飯店，問清入住、早餐與下一段路線。",
+          "learningGoal": "完成訂房名字、住宿晚數與時間問答。",
+          "rewardIdea": "風之印記與下一趟旅行路線",
+          "implementation": "existing"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "wind-airport",
+          "title": "機場報到",
+          "lifeSceneId": "airport",
+          "drive": {
+            "cat": "travel",
+            "scene": "airport"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "transport"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "suitcase",
+              "zh": "行李箱",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "backpack",
+              "zh": "後背包",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "passport",
+              "zh": "護照",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "ticket",
+              "zh": "機票",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "phone",
+              "zh": "手機",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "seat",
+              "zh": "座位",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "wind-customs",
+          "title": "海關入境",
+          "lifeSceneId": "airport",
+          "drive": {
+            "cat": "travel",
+            "scene": "customs"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "transport"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "suitcase",
+              "zh": "行李箱",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "backpack",
+              "zh": "後背包",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "passport",
+              "zh": "護照",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "ticket",
+              "zh": "機票",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "phone",
+              "zh": "手機",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "seat",
+              "zh": "座位",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "wind-lostbag",
+          "title": "行李沒出來",
+          "lifeSceneId": "airport",
+          "drive": {
+            "cat": "travel",
+            "scene": "lostbag"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "transport"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "suitcase",
+              "zh": "行李箱",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "backpack",
+              "zh": "後背包",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "passport",
+              "zh": "護照",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "ticket",
+              "zh": "機票",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "phone",
+              "zh": "手機",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "seat",
+              "zh": "座位",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "wind-hotel",
+          "title": "飯店與交通",
+          "lifeSceneId": "street",
+          "drive": {
+            "cat": "travel",
+            "scene": "hotel"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "transport"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "car",
+              "zh": "汽車",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "bus",
+              "zh": "公車",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "bicycle",
+              "zh": "腳踏車",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "crosswalk",
+              "zh": "行人穿越道",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "helmet",
+              "zh": "安全帽",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "scooter",
+              "zh": "速克達",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        }
+      ],
+      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+    },
+    {
+      "id": "fire",
+      "name": "火之料理港",
+      "element": "火",
+      "icon": "🍲",
+      "tone": "#ac653e",
+      "maps": [
+        {
+          "id": "food",
+          "label": "莓果美食市場"
+        }
+      ],
+      "tagline": "替人準備一頓飯，也練習說出自己的需要。",
+      "story": "港口的共食晚餐需要重新開張。主廚正在尋找食材、確認客人的飲食需求，還要把每份訂單送到對的桌邊。旅人幫忙完成這頓飯，讓陌生人開始聊起日常。",
+      "npcs": [
+        {
+          "name": "Momo",
+          "role": "現有市場主廚",
+          "status": "existing"
+        },
+        {
+          "name": "Hana",
+          "role": "共食餐桌的服務夥伴",
+          "status": "planned"
+        }
+      ],
+      "learningGoals": [
+        "食物、餐具、數量與點餐",
+        "說明飲食需求和確認訂單",
+        "處理結帳與簡單用餐問題"
+      ],
+      "stages": [
+        {
+          "id": "fire-market",
+          "title": "找齊今晚的食材",
+          "plot": "在市場聽清楚清單，再確認買到的數量。",
+          "learningGoal": "辨認食材、容器和數量。",
+          "rewardIdea": "解鎖共食晚餐的菜單頁",
+          "implementation": "planned"
+        },
+        {
+          "id": "fire-table",
+          "title": "一張有故事的訂單",
+          "plot": "聽客人的需求，詢問口味與不能吃的食物。",
+          "learningGoal": "用禮貌句點餐、詢問與確認。",
+          "rewardIdea": "餐桌裝飾與新菜色故事",
+          "implementation": "planned"
+        },
+        {
+          "id": "fire-dinner",
+          "title": "港邊開飯了",
+          "plot": "處理漏單與結帳，讓每位客人安心完成晚餐。",
+          "learningGoal": "說明問題、提出請求、完成付款對話。",
+          "rewardIdea": "火之印記與料理港夜市通路",
+          "implementation": "planned"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "fire-order",
+          "title": "餐廳點餐",
+          "lifeSceneId": "restaurant",
+          "drive": {
+            "cat": "dining",
+            "scene": "order"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "food"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "glass",
+              "zh": "玻璃杯",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "plate",
+              "zh": "餐盤",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "spoon",
+              "zh": "湯匙",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "bowl",
+              "zh": "碗",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "menu",
+              "zh": "菜單",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "phone",
+              "zh": "手機",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "fire-kitchen",
+          "title": "廚房備料",
+          "lifeSceneId": "kitchen",
+          "drive": {
+            "cat": "dining",
+            "scene": "diet"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "food"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "refrigerator",
+              "zh": "冰箱",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "stove",
+              "zh": "瓦斯爐",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "microwave",
+              "zh": "微波爐",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "kettle",
+              "zh": "熱水壺",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "pan",
+              "zh": "平底鍋",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "pot",
+              "zh": "鍋子",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "fire-shopping",
+          "title": "市場與結帳",
+          "lifeSceneId": "supermarket",
+          "drive": {
+            "cat": "shopping",
+            "scene": "checkout"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "food"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "apple",
+              "zh": "蘋果",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "banana",
+              "zh": "香蕉",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "tomato",
+              "zh": "番茄",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "bread",
+              "zh": "麵包",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "milk",
+              "zh": "牛奶",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "basket",
+              "zh": "購物籃",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        }
+      ],
+      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+    },
+    {
+      "id": "wood",
+      "name": "木之森林聚落",
+      "element": "木",
+      "icon": "🌿",
+      "tone": "#4d8862",
+      "maps": [
+        {
+          "id": "animal",
+          "label": "兔兔動物森林"
+        },
+        {
+          "id": "nature",
+          "label": "雨滴自然湖畔"
+        }
+      ],
+      "tagline": "觀察眼前的世界，把看見的事情說清楚。",
+      "story": "森林嚮導留下的步道標記被雨沖散了。旅人要辨認動物、植物與天氣，向居民確認方向，幫大家重新連起通往湖畔的小路。",
+      "npcs": [
+        {
+          "name": "Lily",
+          "role": "現有森林嚮導",
+          "status": "existing"
+        },
+        {
+          "name": "Pip",
+          "role": "現有天氣觀察員",
+          "status": "existing"
+        }
+      ],
+      "learningGoals": [
+        "動物、植物、天氣與方位",
+        "描述看到的外觀與位置",
+        "規劃戶外活動並理解安全提醒"
+      ],
+      "stages": [
+        {
+          "id": "wood-traces",
+          "title": "誰走過這條小路",
+          "plot": "根據觀察辨認動物與步道旁的植物。",
+          "learningGoal": "連結圖像、詞語、外觀與位置。",
+          "rewardIdea": "自然手帳的觀察貼紙",
+          "implementation": "planned"
+        },
+        {
+          "id": "wood-weather",
+          "title": "下雨前的消息",
+          "plot": "聽湖畔居民描述天氣，挑選合適的戶外安排。",
+          "learningGoal": "描述天氣、時間與簡單建議。",
+          "rewardIdea": "通往湖畔的步道標記",
+          "implementation": "planned"
+        },
+        {
+          "id": "wood-path",
+          "title": "把回家的路接起來",
+          "plot": "沿著路標帶回需要協助的旅客，完成問路與指路。",
+          "learningGoal": "使用方向、地點與禮貌求助。",
+          "rewardIdea": "木之印記與森林小徑通路",
+          "implementation": "planned"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "wood-park",
+          "title": "公園觀察",
+          "lifeSceneId": "park",
+          "drive": {
+            "cat": "social",
+            "scene": "hobbies"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "animal"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "tree",
+              "zh": "樹",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "flower",
+              "zh": "花",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "bench",
+              "zh": "長椅",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "fountain",
+              "zh": "噴水池",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "dog",
+              "zh": "狗",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "kite",
+              "zh": "風箏",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "wood-directions",
+          "title": "步道問路",
+          "lifeSceneId": "park",
+          "drive": {
+            "cat": "travel",
+            "scene": "directions"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "nature"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "tree",
+              "zh": "樹",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "flower",
+              "zh": "花",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "bench",
+              "zh": "長椅",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "fountain",
+              "zh": "噴水池",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "dog",
+              "zh": "狗",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "kite",
+              "zh": "風箏",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        }
+      ],
+      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+    },
+    {
+      "id": "water",
+      "name": "水之療癒鎮",
+      "element": "水",
+      "icon": "💧",
+      "tone": "#4c8799",
+      "maps": [],
+      "tagline": "聽見身體與心情的訊息，練習尋求合適的幫助。",
+      "story": "療癒鎮的服務指引弄丟了，來訪的人不知道該往哪裡走。旅人協助居民描述不適、找到服務窗口，也學著在朋友需要時好好回應。",
+      "npcs": [
+        {
+          "name": "Iris",
+          "role": "診所接待與服務引導",
+          "status": "planned"
+        },
+        {
+          "name": "Neri",
+          "role": "療癒庭院的居民",
+          "status": "planned"
+        }
+      ],
+      "learningGoals": [
+        "身體、感受與盥洗用品",
+        "描述不適並詢問服務位置",
+        "聽懂一般健康對話；不提供診療或用藥建議"
+      ],
+      "stages": [
+        {
+          "id": "water-morning",
+          "title": "今天感覺如何",
+          "plot": "從晨間盥洗和日常感受認識照護情境。",
+          "learningGoal": "辨認用品並說出簡單感受。",
+          "rewardIdea": "療癒手帳的日常照護頁",
+          "implementation": "planned"
+        },
+        {
+          "id": "water-help",
+          "title": "找到對的窗口",
+          "plot": "在診所與藥局描述需求，確認該向誰求助。",
+          "learningGoal": "練習症狀描述、位置與禮貌詢問。",
+          "rewardIdea": "清楚可讀的服務指引",
+          "implementation": "planned"
+        },
+        {
+          "id": "water-company",
+          "title": "陪朋友走一段",
+          "plot": "聽朋友說明心情，用合適的句子回應與陪伴。",
+          "learningGoal": "理解感受、安慰和提供協助。",
+          "rewardIdea": "水之印記與庭院休息點",
+          "implementation": "planned"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "water-clinic",
+          "title": "診所求助",
+          "lifeSceneId": "clinic",
+          "drive": {
+            "cat": "life",
+            "scene": "doctor"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "doctor",
+              "zh": "醫師",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "nurse",
+              "zh": "護理師",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "mask",
+              "zh": "口罩",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "thermometer",
+              "zh": "體溫計",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "bandage",
+              "zh": "敷料貼布",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "medicine",
+              "zh": "藥品",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "water-hygiene",
+          "title": "晨間盥洗",
+          "lifeSceneId": "bathroom",
+          "drive": {
+            "cat": "life",
+            "scene": "pharmacy"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "sink",
+              "zh": "洗手台",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "mirror",
+              "zh": "鏡子",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "towel",
+              "zh": "毛巾",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "toothbrush",
+              "zh": "牙刷",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "soap",
+              "zh": "肥皂",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "toilet",
+              "zh": "馬桶",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        }
+      ],
+      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+    },
+    {
+      "id": "earth",
+      "name": "土之生活城",
+      "element": "土",
+      "icon": "🏡",
+      "tone": "#9b7956",
+      "maps": [
+        {
+          "id": "things",
+          "label": "星光生活小鎮"
+        }
+      ],
+      "tagline": "從自己的房間到鄰里，把日常過得更自在。",
+      "story": "生活城正在迎接新居民。家裡的設備需要整理，鄰居也在交換修繕和生活資訊。旅人用英文找到物品、說明需要，讓一間房慢慢成為家。",
+      "npcs": [
+        {
+          "name": "Bear",
+          "role": "現有生活小鎮鎮長",
+          "status": "existing"
+        },
+        {
+          "name": "Mina",
+          "role": "鄰里修繕夥伴",
+          "status": "planned"
+        }
+      ],
+      "learningGoals": [
+        "居家物件、位置與家務",
+        "說明設備問題與提出請求",
+        "購物、鄰里與日常安排"
+      ],
+      "stages": [
+        {
+          "id": "earth-home",
+          "title": "新家的第一天",
+          "plot": "找齊房間裡的用品，確認它們應該放在哪裡。",
+          "learningGoal": "物件名稱、位置與簡單指示。",
+          "rewardIdea": "房間佈置的構想獎勵",
+          "implementation": "planned"
+        },
+        {
+          "id": "earth-repair",
+          "title": "有件東西不太對",
+          "plot": "描述設備狀況，向修繕窗口提供足夠資訊。",
+          "learningGoal": "現在狀況、問題與禮貌請求。",
+          "rewardIdea": "修復後的居家互動物件",
+          "implementation": "planned"
+        },
+        {
+          "id": "earth-neighbors",
+          "title": "鄰居的交換日",
+          "plot": "幫居民採買、借物並安排歸還時間。",
+          "learningGoal": "日常購物、時間與鄰里對話。",
+          "rewardIdea": "土之印記與生活城公共空間",
+          "implementation": "planned"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "earth-room",
+          "title": "整理臥室",
+          "lifeSceneId": "bedroom",
+          "drive": {
+            "cat": "life",
+            "scene": "rent"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "bed",
+              "zh": "床",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "pillow",
+              "zh": "枕頭",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "blanket",
+              "zh": "毯子",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "lamp",
+              "zh": "檯燈",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "clock",
+              "zh": "時鐘",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "wardrobe",
+              "zh": "衣櫃",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "earth-laundry",
+          "title": "洗衣日常",
+          "lifeSceneId": "laundry",
+          "drive": {
+            "cat": "life",
+            "scene": "repair"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "shirt",
+              "zh": "襯衫",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "hanger",
+              "zh": "衣架",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "sock",
+              "zh": "襪子",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "clothespin",
+              "zh": "曬衣夾",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "iron",
+              "zh": "熨斗",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "detergent",
+              "zh": "洗衣精",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "earth-living",
+          "title": "客廳與鄰里",
+          "lifeSceneId": "living-room",
+          "drive": {
+            "cat": "life",
+            "scene": "neighbor"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "sofa",
+              "zh": "沙發",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "cushion",
+              "zh": "靠墊",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "rug",
+              "zh": "小地毯",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "television",
+              "zh": "電視",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "remote",
+              "zh": "遙控器",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "shelf",
+              "zh": "層架",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        }
+      ],
+      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+    },
+    {
+      "id": "light",
+      "name": "光之學園",
+      "element": "光",
+      "icon": "📖",
+      "tone": "#9d8535",
+      "maps": [],
+      "tagline": "問出不懂的地方，也把理解分享給別人。",
+      "story": "學園的公共展覽需要一群合作夥伴。從課堂提問、借書，到一起整理資訊，旅人練習清楚表達自己的想法，幫展覽找到能讓每個人看懂的說法。",
+      "npcs": [
+        {
+          "name": "Nora",
+          "role": "圖書館員",
+          "status": "planned"
+        },
+        {
+          "name": "Theo",
+          "role": "學園展覽召集人",
+          "status": "planned"
+        }
+      ],
+      "learningGoals": [
+        "課堂提問、文具與學習工具",
+        "借閱、詢問與確認理解",
+        "合作分工與簡單報告"
+      ],
+      "stages": [
+        {
+          "id": "light-question",
+          "title": "把問題問出來",
+          "plot": "在課堂上請對方再說一次，確認一個詞或指示的意思。",
+          "learningGoal": "提問、拼字、發音與確認理解。",
+          "rewardIdea": "提問手帳與學園新線索",
+          "implementation": "planned"
+        },
+        {
+          "id": "light-library",
+          "title": "書頁裡的線索",
+          "plot": "向圖書館員詢問資料，找到展覽需要的內容。",
+          "learningGoal": "位置、借閱與主題查詢。",
+          "rewardIdea": "圖書館通行標記",
+          "implementation": "planned"
+        },
+        {
+          "id": "light-exhibit",
+          "title": "一起完成展覽",
+          "plot": "協調組員的工作，向來訪的人介紹成果。",
+          "learningGoal": "分工、順序與簡單說明。",
+          "rewardIdea": "光之印記與展覽展示空間",
+          "implementation": "planned"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "light-tools",
+          "title": "桌面學習工具",
+          "lifeSceneId": "office",
+          "drive": {
+            "cat": "school",
+            "scene": "class"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "laptop",
+              "zh": "筆記型電腦",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "keyboard",
+              "zh": "鍵盤",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "mouse",
+              "zh": "滑鼠",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "notebook",
+              "zh": "筆記本",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "pen",
+              "zh": "原子筆",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "mug",
+              "zh": "馬克杯",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "light-library",
+          "title": "圖書館與提問",
+          "lifeSceneId": null,
+          "drive": {
+            "cat": "school",
+            "scene": "library"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "book",
+              "zh": "書",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "microscope",
+              "zh": "顯微鏡",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "telescope",
+              "zh": "望遠鏡",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "clock",
+              "zh": "時鐘",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            }
+          ]
+        }
+      ],
+      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+    },
+    {
+      "id": "metal",
+      "name": "金之商務都會",
+      "element": "金",
+      "icon": "🏙️",
+      "tone": "#677e93",
+      "maps": [],
+      "tagline": "把工作說清楚，讓合作有來有往。",
+      "story": "城市的合作日即將開始，幾份重要訊息卻沒有傳到對的人手裡。旅人要整理會議、時間與服務需求，幫團隊把合作重新接上。",
+      "npcs": [
+        {
+          "name": "Rowan",
+          "role": "合作日專案窗口",
+          "status": "planned"
+        },
+        {
+          "name": "June",
+          "role": "都會服務接待員",
+          "status": "planned"
+        }
+      ],
+      "learningGoals": [
+        "職場工具、自我介紹與行程",
+        "電話、Email、會議與確認事項",
+        "說明進度、提出問題與協調"
+      ],
+      "stages": [
+        {
+          "id": "metal-team",
+          "title": "第一次加入團隊",
+          "plot": "介紹自己的工作，確認今天需要完成什麼。",
+          "learningGoal": "角色、自我介紹與時間。",
+          "rewardIdea": "合作手帳的團隊頁",
+          "implementation": "planned"
+        },
+        {
+          "id": "metal-message",
+          "title": "沒有送達的訊息",
+          "plot": "聽懂電話與會議中的重點，補齊遺漏資訊。",
+          "learningGoal": "確認、重述、約時間與後續事項。",
+          "rewardIdea": "重新接通的城市消息站",
+          "implementation": "planned"
+        },
+        {
+          "id": "metal-project",
+          "title": "讓合作繼續前進",
+          "plot": "說明進度、處理變更，協助來訪的合作夥伴。",
+          "learningGoal": "進度、問題、接待與禮貌協調。",
+          "rewardIdea": "金之印記與合作日展示攤位",
+          "implementation": "planned"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "metal-desk",
+          "title": "辦公室開始工作",
+          "lifeSceneId": "office",
+          "drive": {
+            "cat": "work",
+            "scene": "intro"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "laptop",
+              "zh": "筆記型電腦",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "keyboard",
+              "zh": "鍵盤",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "mouse",
+              "zh": "滑鼠",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "notebook",
+              "zh": "筆記本",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "pen",
+              "zh": "原子筆",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "mug",
+              "zh": "馬克杯",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "metal-meeting",
+          "title": "會議與行程",
+          "lifeSceneId": null,
+          "drive": {
+            "cat": "work",
+            "scene": "meeting"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "phone",
+              "zh": "手機",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "clock",
+              "zh": "時鐘",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "envelope",
+              "zh": "信封",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "receipt",
+              "zh": "收據",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "metal-calls",
+          "title": "電話與訊息",
+          "lifeSceneId": null,
+          "drive": {
+            "cat": "work",
+            "scene": "phone"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "phone",
+              "zh": "手機",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "headphones",
+              "zh": "耳機",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "battery",
+              "zh": "電池",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            }
+          ]
+        }
+      ],
+      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+    },
+    {
+      "id": "star",
+      "name": "星之文化樂園",
+      "element": "星",
+      "icon": "🎨",
+      "tone": "#8a6fa0",
+      "maps": [],
+      "tagline": "從興趣出發，用英文分享自己的生活。",
+      "story": "一年一度的星光文化日需要居民一起完成。旅人聽大家介紹興趣，協調邀約與場地，最後把九地的故事帶回共鳴燈塔。",
+      "npcs": [
+        {
+          "name": "Vega",
+          "role": "文化日嚮導",
+          "status": "planned"
+        },
+        {
+          "name": "Ari",
+          "role": "星光廣場的活動夥伴",
+          "status": "planned"
+        }
+      ],
+      "learningGoals": [
+        "興趣、邀約與休閒用品",
+        "描述喜好、活動與簡單感受",
+        "文化交流、禮貌回應與旅伴聊天"
+      ],
+      "stages": [
+        {
+          "id": "star-interests",
+          "title": "找到共同的喜歡",
+          "plot": "和居民聊興趣，收集文化日的活動點子。",
+          "learningGoal": "喜好、頻率與休閒活動。",
+          "rewardIdea": "文化手帳的活動貼紙",
+          "implementation": "planned"
+        },
+        {
+          "id": "star-invitation",
+          "title": "把邀請送到手上",
+          "plot": "邀請朋友參與並協調時間與集合地點。",
+          "learningGoal": "邀約、時間、地點與合適的回應。",
+          "rewardIdea": "星光廣場的活動布置",
+          "implementation": "planned"
+        },
+        {
+          "id": "star-festival",
+          "title": "九地的聲音一起亮起",
+          "plot": "用旅途學到的英文介紹一件喜歡的事，和旅伴回顧這段路。",
+          "learningGoal": "結合描述、敘事與交流。",
+          "rewardIdea": "星之印記與共鳴燈塔的結局篇章",
+          "implementation": "planned"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "star-park",
+          "title": "公園與興趣",
+          "lifeSceneId": "park",
+          "drive": {
+            "cat": "social",
+            "scene": "hobbies"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "nature"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "tree",
+              "zh": "樹",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "flower",
+              "zh": "花",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "bench",
+              "zh": "長椅",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "fountain",
+              "zh": "噴水池",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            },
+            {
+              "word": "dog",
+              "zh": "狗",
+              "source": "active-life-scene",
+              "kkAvailable": true
+            },
+            {
+              "word": "kite",
+              "zh": "風箏",
+              "source": "active-life-scene",
+              "kkAvailable": false
+            }
+          ]
+        },
+        {
+          "id": "star-invite",
+          "title": "邀朋友出門",
+          "lifeSceneId": null,
+          "drive": {
+            "cat": "social",
+            "scene": "invite"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "gift",
+              "zh": "禮物",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "ball",
+              "zh": "球",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "book",
+              "zh": "書",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "phone",
+              "zh": "手機",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "star-friends",
+          "title": "旅伴聊生活",
+          "lifeSceneId": null,
+          "drive": {
+            "cat": "companion",
+            "scene": "mood"
+          },
+          "wordPractice": {
+            "kind": "word",
+            "theme": "things"
+          },
+          "mapId": null,
+          "arrivalHint": null,
+          "wordRefs": [
+            {
+              "word": "gift",
+              "zh": "禮物",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "book",
+              "zh": "書",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            },
+            {
+              "word": "star",
+              "zh": "星星",
+              "source": "active-word-bank",
+              "kkAvailable": true
+            }
+          ]
+        }
+      ],
+      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+    }
+  ]
+}

@@ -25,7 +25,7 @@ const SWEEP = () => {
   return out;
 };
 (async () => {
-  const b = await chromium.launch({ headless: true, args: ["--no-sandbox"] });
+  const b = await chromium.launch({ headless: true, ...(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {}), args: ["--no-sandbox"] });
   for (const scheme of ["light","dark"]) {
     const p = await (await b.newContext({ viewport: { width: 390, height: 844 }, colorScheme: scheme })).newPage();
     await p.addInitScript(() => { HTMLMediaElement.prototype.play = function () { setTimeout(() => this.dispatchEvent(new Event("ended")), 20); return Promise.resolve(); }; speechSynthesis.speak = (u) => setTimeout(() => u.onend && u.onend(), 20); localStorage.setItem("pm-progress", JSON.stringify({xp:25,rounds:1,badges:[],placeDismissed:true})); });

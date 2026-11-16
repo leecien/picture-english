@@ -407,7 +407,7 @@ const RPG = (() => {
     clearTimeout(statusTimer);
     if (t && !keep) statusTimer = setTimeout(() => (el.hidden = true), 4500);
   }
-  const busy = () => Battle.active || !$("dlg").hidden || !$("menu").hidden || !$("panel").hidden;
+  const busy = () => Battle.active || !$("dlg").hidden || !$("menu").hidden || !$("panel").hidden || (typeof Atlas !== "undefined" && Atlas.isOpen) || (typeof Platform !== "undefined" && Platform.isOpen);
   function syncPause() {
     World.paused = busy();
   }
@@ -506,6 +506,7 @@ const RPG = (() => {
   function openMenu() {
     const ctx = sceneContext();
     sheet(`<h3>☰ 選單</h3><div class="menu-grid">
+      <button data-m="atlas">🌏<b>九元素世界</b><small>故事、主題與生活情境</small></button>
       <button data-m="map">🗺️<b>世界地圖</b><small>${maps.filter((m) => unlocked(m.id)).length}/${maps.length} 區域</small></button>
       <button data-m="journal">📜<b>任務日誌</b><small>${esc(objective().short)}</small></button>
       <button data-m="drive">🚗<b>開車模式</b><small>${ctx ? "練這段：" + esc(ctx.label) : "聽中文、說英文"}</small></button>
@@ -516,6 +517,7 @@ const RPG = (() => {
       <button data-m="book">🃏<b>卡冊</b><small>收集的單字卡</small></button>
       <button data-m="log">📈<b>學習紀錄</b><small>每天學了什麼</small></button>
       <button data-m="mic">🎤<b>麥克風檢查</b><small>收不到聲音時用</small></button>
+      <button data-m="platform">📱<b>App 與存檔</b><small>安裝、離線與備份</small></button>
       <button data-m="start">🧭<b>回到入口</b><small>卡住時回到地圖起點</small></button>
       <button data-m="sound">${SND.on ? "🔊" : "🔇"}<b>音效</b><small>${SND.on ? "開" : "關"}</small></button>
     </div>`);
@@ -525,6 +527,8 @@ const RPG = (() => {
         (b) =>
           (b.onclick = () => {
             const m = b.dataset.m;
+            if (m === "atlas") return openAtlas();
+            if (m === "platform") return openPlatform();
             if (m === "map") return worldMap();
             if (m === "journal") return journal();
             if (m === "bag") return bag();
@@ -551,6 +555,58 @@ const RPG = (() => {
             openPanel(m === "practice" ? "p-play" : m === "book" ? "p-book" : "p-log");
           }),
       );
+  }
+  /* Region stories use the same map locks and learning entrypoints as the field. */
+  function openAtlas() {
+    if (typeof Atlas === "undefined") return worldMap();
+    closeSheet();
+    World.clearKeys();
+    World.paused = true;
+    const onClose = () => { syncPause(); refresh(); };
+    return Atlas.open({
+      onClose,
+      currentMapId: data.at,
+      getStatus: (region) => {
+        const complete = [];
+        if (NV.n01 && NV.field) complete.push("sound-first-word");
+        if (NV.n02 && NV.field2) complete.push("sound-path");
+        if (W.stage >= 2) complete.push("wind-arrival");
+        if (W.stage >= 3) complete.push("wind-baggage");
+        if (W.done) complete.push("wind-stay");
+        const regionMapIds = (region.maps || []).map((m) => m.id);
+        const legacyDone = regionMapIds.reduce((n, id) => n + ["word", "sent"].filter((k) => data.cleared.includes(id + ":" + k)).length, 0);
+        return {
+          unlockedMapIds: maps.filter((m) => unlocked(m.id)).map((m) => m.id),
+          completedStoryIds: complete,
+          progressLabel: region.id === "sound" ? (NV.track === "v1" ? `目前課程已教 ${NV.taught.length} / 41 音` : "保留舊課程進度，可回 Echo 學新版課程") : region.id === "wind" ? (W.done ? "旅行故事已完成" : `旅行主線 ${Math.min(W.stage, 4)} / 4 段`) : regionMapIds.some((id) => legacyIdx(id) >= 0) ? `原主題任務已完成 ${legacyDone} 項` : "此區場景仍在製作，可先練現有生活情境",
+        };
+      },
+      travel: (id) => { travel(id); },
+      openLife: (scene, opt = {}) => {
+        World.paused = true;
+        return Life.open({ scene, mode: opt.mode || "explore", onClose });
+      },
+      openDrive: (ctx) => { openDriveFrom(ctx); },
+      openPractice: (opt = {}) => {
+        const theme = opt.theme;
+        const pool = WORDS.filter((w) => (!theme || w.th === theme) && avail(w));
+        if (opt.kind === "word" && pool.length >= 4) {
+          RPG.launching = true;
+          RPG.active = { source: "atlas", theme };
+          try { start("word"); } finally { RPG.launching = false; }
+        } else {
+          openPanel("p-play");
+          status("已開啟練習頁，請選擇目前可用的題型。");
+        }
+      },
+    }).catch((error) => { onClose(); status("世界資料暫時無法載入，請稍後重試。"); console.warn(error); });
+  }
+  function openPlatform() {
+    if (typeof Platform === "undefined") return status("App 設定暫時無法開啟。");
+    closeSheet();
+    World.clearKeys();
+    World.paused = true;
+    Platform.open({ onClose: () => { syncPause(); refresh(); } });
   }
   function worldMap() {
     sheet(`<h3>🗺️ 世界地圖</h3><p class="fine">新的冒險從 KK 新手村開始，接著前往風之旅行群島。下方五個主題區域保留原本的任務與進度。</p><div class="map-list">${maps
@@ -1910,7 +1966,7 @@ const RPG = (() => {
     // Kept for index.html: the old in-page quests are now in-scene, so practice rounds are never "RPG" rounds.
     active: null,
     launching: false,
-    matches: () => true,
+    matches: (kind, item) => !RPG.active || RPG.active.source !== "atlas" || kind !== "w" || !RPG.active.theme || item.th === RPG.active.theme,
     complete() {},
     render() {
       if (mounted) refresh();

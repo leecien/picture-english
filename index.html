@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>英語小旅人 · Cute RPG</title>
+<meta name="theme-color" content="#426b49">
+<meta name="application-name" content="英語小旅人">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="英語小旅人">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="./assets/app/icon.svg">
+<link rel="stylesheet" href="./atlas.css">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
@@ -709,7 +716,7 @@ function makePlan(types){
 /* ===== Screens ===== */
 /* The learning pages (practice, card book, log, commute) open as a panel over the game; toField() returns. */
 function showScreen(id){['home','result','game','drive'].forEach(s=>$(s).hidden=s!==id);$('sheet').hidden=true;
-  $('panel').hidden=false;document.body.classList.remove('field');if(window.World)World.paused=true;$('panel').scrollTop=0;window.scrollTo(0,0)}
+  $('panel').hidden=false;document.body.classList.remove('field');if(typeof World!=='undefined'){World.clearKeys();World.paused=true;}$('panel').scrollTop=0;window.scrollTo(0,0)}
 function toField(){const back=!$('drive').hidden&&D.from==='field';if(D.on)stopDrive();$('panel').hidden=true;$('sheet').hidden=true;document.body.classList.add('field');RPG.resume();
   if(back&&D.lastRun&&D.lastRun.n)RPG.say(`開車模式練了 ${D.lastRun.n} 題${D.lastRun.seen?`（開口回答或自己念 ${D.lastRun.seen} 題，答對 ${D.lastRun.ok}）`:'（聆聽或跟讀練習，不列入答對）'}。接下來：${RPG.objective().text}`);D.lastRun=null}
 function showTab(pid){document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.p===pid)));
@@ -718,6 +725,7 @@ function showTab(pid){document.querySelectorAll('.tabs button').forEach(b=>b.set
 
 function start(mode,review){
   if(!RPG.launching)RPG.active=null;
+  $('back').textContent=RPG.active&&RPG.active.source==='atlas'?'← 回到冒險':'← 回首頁';
   S.mode=mode;S.review=!!review;S.forceLv=0;S.pl=null;
   if(mode==='place'){S.forceLv=2;S.pl={levels:[],oks:[]};S.plan=Array.from({length:PLACE_LEN},(_,i)=>TYPES.place[[0,1,0,2][i%4]])}
   else S.plan=makePlan(TYPES[mode]);S.i=0;S.score=0;S.streak=0;S.hist=[];S.gain=0;S.startTier=tierIdx(P.xp);
@@ -935,6 +943,7 @@ function finish(){
   $('r-msg').textContent=S.score>=9?'圖像記憶超強！':S.score>=7?'記得很穩，再挑戰一次':S.score>=4?'有印象了，多玩幾輪就會更熟':'剛開始都這樣，再來一回合';
   $('r-best').textContent=S.score>prev&&prev>0?`新紀錄！之前最佳 ${prev}/10`:`最佳紀錄 ${best}/10`;
   $('again').textContent='再玩一回合';$('swap').textContent=W?'換練句子':'換練單字';
+  $('home-btn').textContent=RPG.active&&RPG.active.source==='atlas'?'回到冒險':'回首頁';
   showScreen('result');
 }
 
@@ -1432,14 +1441,14 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>showTab(b.dat
 $('go-word').onclick=()=>start('word');
 $('go-sent').onclick=()=>start('sent');
 $('go-review').onclick=()=>start('word',true);
-$('back').onclick=()=>{RPG.active=null;clearTimeout(S.timer);showScreen('home');showTab('p-play')};
+$('back').onclick=()=>{const fromAtlas=RPG.active&&RPG.active.source==='atlas';RPG.active=null;clearTimeout(S.timer);if(fromAtlas)return toField();showScreen('home');showTab('p-play')};
 $('next').onclick=()=>{if(S.i>=S.plan.length-1){finish();return}S.i++;renderQ()};
 $('again').onclick=()=>S.mode==='place'?start('word'):start(S.mode,S.review&&fadedList().length>0);
 $('swap').onclick=()=>S.mode==='place'?start('sent'):start(S.mode==='word'?'sent':'word');
 $('place-go').onclick=()=>start('place');
 $('place-again').onclick=()=>start('place');
 $('place-skip').onclick=()=>{P.placeDismissed=true;saveP();updateHome()};
-$('home-btn').onclick=()=>{showScreen('home');showTab('p-play')};
+$('home-btn').onclick=()=>{if(RPG.active&&RPG.active.source==='atlas'){RPG.active=null;return toField();}showScreen('home');showTab('p-play')};
 ['mute-home','mute-game'].forEach(id=>$(id).onclick=()=>{SND.toggle();paintMute()});
 $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 </script>
@@ -1449,8 +1458,11 @@ $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 <script src="learn.js"></script>
 <script src="novice.js"></script>
 <script src="lifescene.js"></script>
+<script src="atlas.js"></script>
+<script src="platform.js"></script>
 <script src="rpg.js"></script>
 <script>boot();
+if(typeof Platform!=="undefined")Platform.init().catch(e=>console.warn("App 初始化：",e.message));
 /* Version label on the public HTTPS test copies (raw.githack / rawcdn.githack): the commit in the URL,
    or "開發分支最新版" on the branch URL. The claude.ai build adds its own label. */
 (function(){const m=location.hostname.match(/githack\.com$/)&&location.pathname.match(/^\/[^/]+\/[^/]+\/([^/]+(?:\/[^/]+)*?)\/index\.html$/);
