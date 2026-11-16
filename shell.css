@@ -326,6 +326,17 @@ button:disabled {
   font-size: 16px;
   font-weight: 700;
 }
+.qz-ask .qz-focus {
+  display: inline-block;
+  margin: 2px 3px;
+  padding: 1px 7px;
+  border-radius: 6px;
+  border-bottom: 2px solid #456f98;
+  background: #e7f1fb;
+  color: #174b79;
+  font-weight: 800;
+  white-space: nowrap;
+}
 .qz-hint,
 .qz-f small {
   font-size: 13px;

@@ -185,7 +185,7 @@ const Novice = (() => {
       choices = [sym, ...(others.includes(PARTNER[sym]) ? [PARTNER[sym], ...others.filter((x) => x !== PARTNER[sym])] : others)].slice(0, 3);
     return {
       kind: "snd", type: "listen-sound", recK: "w", item: it, sym, targetSound: sym, wordId: w, place,
-      prompt: `<p class="qz-ask">🎧 聽一個單字，選出它<b>${PLACES[place]}</b>的音</p><p class="qz-hint">播放的是整個單字的錄音（單音錄音還沒有）。聽完才會出現選項。</p>`,
+      prompt: `<p class="qz-ask">🎧 聽一個單字，選出它的<strong class="qz-focus">${PLACES[place]}${place === "vowel" ? "" : "的音"}</strong>。</p><p class="qz-hint">播放的是整個單字的錄音（單音錄音還沒有）。聽完才會出現選項。</p>`,
       audio: { text: it.w, file: it.au, label: "再聽一次" }, autoplay: true, noText: true, reveal: "right-only",
       options: shuf(choices).map((s) => ({ html: `<span class="qz-sym big">/${ESC(s)}/</span>`, ok: s === sym, label: `/${s}/` })),
       answer: { en: it.w, kk: it.kk, zh: it.z, file: it.au },
