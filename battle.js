@@ -540,16 +540,20 @@ const Battle = (() => {
       B.quota.asked++;
       if (ok && !q.assisted) B.quota.first++;
     }
+    let graded = null;
     if (kind === "timeout") Learn.timeout(q);
     else if (q.assisted && ok) Learn.assisted(q);
-    else Learn.grade(q, ok, "battle");
+    else graded = Learn.grade(q, ok, "battle");
     if (ok) heroHits();
     else foeHits(kind === "timeout");
     paintBattle();
     const a = q.answer || {};
     if (ok) {
       $("bt-feedback").innerHTML = `<b class="good">✓ 答對了！</b> ${Learn.answerHTML(a)} <span class="qz-zh">${esc(a.zh || "")}</span>`;
-      setTimeout(() => live(tok) && after(), 900);
+      const n = cardCount(q, graded);
+      // the first three independent right answers of a word show its memory card; the attack has already landed
+      if (n) setTimeout(() => live(tok) && memoryCard(q, n, tok).then((go) => go && live(tok) && after()), 450);
+      else setTimeout(() => live(tok) && after(), 900);
     } else {
       // The explanation is not timed: read it, then continue.
       if (hide)
@@ -597,6 +601,76 @@ const Battle = (() => {
       }
       go.focus({ preventScroll: true });
     }
+  }
+  /* Memory card (after a right answer): a word's first three independent right answers, counted by the card book
+     (pm-cards .c, which only grows on a fresh first-try right answer: not on wrong, timeout, assisted, a retry or the
+     same word again within the cool-down). Stays in the battle view for about 3 s or until "繼續戰鬥"; the countdown
+     waits while its sound plays, a word card is open, or the page is hidden (then it waits for the button).
+     Showing, replaying or closing it gives no XP and no attack. */
+  const CARD_SHOWS = 3,
+    CARD_MS = 3000;
+  function cardCount(q, graded) {
+    if (!graded || !graded.fresh || q.assisted || q.recK !== "w" || !q.item || !q.item.w || q.item.sup) return 0;
+    const c = typeof CARDS !== "undefined" && CARDS[q.item.w];
+    return c && c.c >= 1 && c.c <= CARD_SHOWS ? c.c : 0;
+  }
+  function memoryCard(q, n, tok) {
+    return new Promise((res) => {
+      const it = q.item,
+        host = $("bt-act").querySelector(".bt-q");
+      if (!host) return res(true);
+      const el = document.createElement("div");
+      el.className = "bt-card";
+      el.id = "bt-card";
+      el.setAttribute("role", "group");
+      el.setAttribute("aria-label", `記憶卡：${it.w}`);
+      el.innerHTML = `<div class="bt-card-pic">${pic(it)}</div>
+        <div class="bt-card-txt"><b class="bt-card-w">${esc(it.w)}</b>${it.kk ? `<span class="qz-kk">${esc(it.kk)}</span>` : ""}<span class="bt-card-z">${esc(it.z || "")}</span>
+        <small class="bt-card-n">記憶卡 ${n}/${CARD_SHOWS}・第 ${n} 次獨立答對</small></div>
+        <div class="bt-card-row"><button type="button" class="bt-mini" id="bt-card-say">🔊 發音</button><button type="button" class="qz-next" id="bt-card-go">繼續戰鬥 ▶</button></div>
+        <i class="bt-card-bar"><i id="bt-card-left"></i></i>`;
+      // at the top of the panel, right under pause / flee, and scrolled into view (the panel scrolls on a phone)
+      const top = host.querySelector(".bt-top");
+      host.insertBefore(el, top ? top.nextSibling : host.firstChild);
+      $("bt-act").scrollTop = 0;
+      B.card = { word: it.w, n, held: false };
+      let left = CARD_MS,
+        last = Date.now(),
+        playing = false,
+        closed = false;
+      const finish = (go) => {
+        if (closed) return;
+        closed = true;
+        clearInterval(iv);
+        if (B && B.tok === tok) B.card = null;
+        el.remove();
+        res(go);
+      };
+      const holdCard = (why) => {
+        if (!B || !B.card || B.card.held) return;
+        B.card.held = true;
+        el.querySelector(".bt-card-n").textContent = why;
+      };
+      const iv = setInterval(() => {
+        if (!live(tok)) return finish(false); // fled, ended or a new battle: never pull the player back
+        const now = Date.now(),
+          dt = now - last;
+        last = now;
+        if (document.hidden) return holdCard("已停住：按「繼續戰鬥」再回到戰鬥");
+        if (B.card.held || playing || B.hearing || B.paused) return;
+        left -= dt;
+        $("bt-card-left").style.width = `${Math.max(0, (100 * left) / CARD_MS)}%`;
+        if (left <= 0) finish(true);
+      }, 100);
+      el.querySelector("#bt-card-say").onclick = () => {
+        if (playing || !live(tok)) return; // no overlapping playback
+        playing = true;
+        playAwait({ text: it.w, file: it.au || "" }).then(() => (playing = false));
+      };
+      el.querySelector("#bt-card-go").onclick = () => finish(true);
+      // tapping the card itself keeps it open (reading it); the button continues
+      el.addEventListener("click", (e) => !e.target.closest("button") && holdCard("看完按「繼續戰鬥」"));
+    });
   }
   function heroHits() {
     const s = stats();
@@ -778,7 +852,7 @@ const Battle = (() => {
       persist();
     },
     get state() {
-      return B && { quota: B.quota ? { ...B.quota } : null, hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield, combo: B.combo, power: B.power, guard: B.guard, intent: B.intent, dist: B.dist, turn: B.turn, paused: B.paused, settled: B.settled, left: B.timer ? B.timer.left : null, phase: B.phase, energy: B.comp ? B.comp.energy : null, hint: B.comp ? B.comp.hintLeft : null };
+      return B && { card: B.card ? { ...B.card } : null, quota: B.quota ? { ...B.quota } : null, hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield, combo: B.combo, power: B.power, guard: B.guard, intent: B.intent, dist: B.dist, turn: B.turn, paused: B.paused, settled: B.settled, left: B.timer ? B.timer.left : null, phase: B.phase, energy: B.comp ? B.comp.energy : null, hint: B.comp ? B.comp.hintLeft : null };
     },
     get foe() {
       return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield };

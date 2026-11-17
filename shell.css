@@ -1785,3 +1785,81 @@ b.nv-hit {
 .wd-card .fine {
   color: #5c6450;
 }
+
+/* Battle memory card (after a right answer, a word's first three independent right answers). Stays inside the
+   battle panel; the panel keeps its light paper in dark mode, so the colours are explicit. */
+.bt-card {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 6px 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 2px solid #e2c27a;
+  border-radius: 16px;
+  background: #fffaf0;
+  color: #2f382b;
+  box-shadow: 0 4px 14px #0000001f;
+  animation: bt-card-in 0.25s ease-out;
+}
+.bt-card-pic {
+  font-family: var(--emoji);
+  font-size: 56px;
+  line-height: 1;
+  text-align: center;
+}
+.bt-card-pic img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+.bt-card-txt {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.bt-card-w {
+  font-size: 26px;
+  overflow-wrap: anywhere;
+}
+.bt-card-z {
+  font-size: 16px;
+}
+.bt-card-n {
+  color: #5d6455;
+}
+.bt-card-row {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 8px;
+}
+.bt-card-row .qz-next {
+  flex: 1;
+  margin: 0;
+}
+.bt-card-row .bt-mini {
+  min-height: 44px;
+}
+.bt-card-bar {
+  grid-column: 1 / -1;
+  height: 4px;
+  border-radius: 2px;
+  background: #efe6cf;
+  overflow: hidden;
+}
+.bt-card-bar i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #e2a93b;
+}
+@keyframes bt-card-in {
+  from {
+    transform: translateY(6px) scale(0.98);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bt-card {
+    animation: none;
+  }
+}
