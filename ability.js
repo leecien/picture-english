@@ -37,7 +37,7 @@ const Ability = (() => {
     return out;
   })();
   const save = () => {
-    if (ST.events.length > MAX) ST.events = ST.events.slice(-MAX);
+    ST.events = typeof LearningProfile !== "undefined" && LearningProfile.trimEvents ? LearningProfile.trimEvents(ST.events, MAX) : ST.events.slice(-MAX);
     ls.set(ST);
   };
 
@@ -51,8 +51,12 @@ const Ability = (() => {
           .catch((e) => (console.warn("learning profile data", e), null));
   /* Decision 2 (2026-11-17): negotiation lines belong to 職場 → 商務談判, counted once. */
   function decide(d) {
-    d.topicMap = { ...d.topicMap, work: { zh: "職場", sub: { negotiation: { zh: "商務談判", desc: "價格、條件、交期與讓步" } } } };
-    d.contexts = d.contexts.map((c) => (c.source === "work/negotiate" ? { ...c, topic: "work", sub: "negotiation" } : c));
+    // batch-03 carries 職場・商務談判 itself; the game-side override below is only for older data (batch-02)
+    d.legacyNegotiation = !d.topicMap.work;
+    if (d.legacyNegotiation) {
+      d.topicMap = { ...d.topicMap, work: { zh: "職場", sub: { negotiation: { zh: "商務談判", desc: "價格、條件、交期與讓步" } } } };
+      d.contexts = d.contexts.map((c) => (c.source === "work/negotiate" ? { ...c, topic: "work", sub: "negotiation" } : c));
+    }
     d.byId = Object.fromEntries(d.grammarItems.map((g) => [g.id, g]));
     return d;
   }
@@ -82,6 +86,9 @@ const Ability = (() => {
   }
   /* A question is on screen: nothing looked at yet. */
   const begin = () => (peeked = false);
+  // the entry point of the current round (npc:<task> / practice / battle / drive); does not affect scoring
+  let via = "";
+  const setVia = (v) => (via = v || "");
 
   /* ---------- recording ---------- */
   const textOf = (q) => (q.lp ? q.lp.en : q.item ? q.item.w || q.item.en || "" : "");
@@ -97,7 +104,9 @@ const Ability = (() => {
         id: `t-${at}-${Math.random().toString(36).slice(2, 7)}`,
         item: itemOf(q),
         qtype,
-        ctx: how.ctx || q.ctx || "practice",
+        // ctx is the situation, not the entry point (scene:<id> for a scene line); via is the entry point
+        ctx: q.scene && !/^(scene|companion):/.test(how.ctx || "") ? `scene:${q.scene}` : how.ctx || q.ctx || "practice",
+        via: how.via || via || "practice",
         at,
         result: how.result,
         ...(how.retries ? { retries: how.retries, final: how.final || "correct" } : {}),
@@ -130,7 +139,7 @@ const Ability = (() => {
   // the negotiation lines themselves (needs the scene data, which may arrive after the profile data)
   let negDone = false;
   function negotiation() {
-    if (negDone) return;
+    if (negDone || !D.legacyNegotiation) return;
     const items = typeof Learn !== "undefined" && Learn.scene("work", "negotiate") ? Learn.scene("work", "negotiate").items : sceneItems("work", "negotiate");
     if (!items.length) return;
     for (const x of items) if (D.tags["s:" + x.en]) D.tags["s:" + x.en] = { ...D.tags["s:" + x.en], topics: [{ topic: "work", sub: "negotiation" }] };
@@ -156,16 +165,9 @@ const Ability = (() => {
     return p;
   }
   /* One label per cell. No evidence: 尚待評估. Some evidence below the thresholds: 證據不足 (what is missing). */
-  function label(cell, reason) {
-    if (reason === "no-instrument" || reason === "no-sentence-material") return LearningProfile.describe(cell, reason);
-    if (!cell) return "尚待評估";
-    if (cell.status === "scored" || cell.status === "stale") return LearningProfile.describe(cell);
-    const b = cell.basis || {};
-    if (cell.needSubtopics != null) return cell.scoredSubtopics && cell.scoredSubtopics.length ? `證據不足：還需要 ${cell.needSubtopics} 個次主題達標` : "尚待評估";
-    if (!b.independentAttempts && !b.practiceAttempts && !Object.keys(b.excluded || {}).length) return "尚待評估";
-    return LearningProfile.describe(cell).replace(/^尚待評估：/, "證據不足：");
-  }
-  const cls = (cell, reason) => (reason ? "pend" : !cell || cell.status === "pending" ? "pend" : cell.status === "stale" ? "stale" : cell.pct < 70 ? "weak" : "ok");
+  // one wording for every cell: the external describe() (尚待評估 / 證據不足 / % / 需要重新確認)
+  const label = (cell, reason, detail) => LearningProfile.describe(cell, reason, detail ? { detail: true } : undefined);
+  const cls = (cell, reason) => (reason || !cell || cell.status !== "scored" ? (cell && cell.status === "stale" ? "stale" : "pend") : cell.rawPct < LearningProfile.RULES.weakBelow ? "weak" : "ok");
 
   /* ---------- grammar form-choice questions (60 items, external batch-02) ---------- */
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -260,7 +262,7 @@ const Ability = (() => {
     const block = (ch, c) => {
       const b = c.basis || {},
         ex = Object.entries(b.excluded || {}).map(([k, n]) => `${EXCL[k] || k} ${n}`).join("、");
-      return `<div class="ab-ch ${cls(c, reason)}"><b>${CHZ[ch]}</b><span>${esc(label(c, reason))}</span>
+      return `<div class="ab-ch ${cls(c, reason)}"><b>${esc(c.channelZh || CHZ[ch])}</b><span>${esc(label(c, reason, true))}</span>
         <ul class="ab-why"><li>獨立作答 ${b.independentAttempts || 0} 次：${b.items || 0} 個不同題目（答對 ${b.correctItems || 0}）、${b.contexts || 0} 種情境、${b.days || 0} 天</li>
         <li>不算獨立證據：${ex || "無"}</li><li>最新證據：${b.lastEvidence ? esc(b.lastEvidence.slice(0, 10)) : "—"}</li>
         ${c.recentErrors && c.recentErrors.length ? `<li>最近答錯：${c.recentErrors.slice(0, 5).map((x) => esc(textFor(x.item))).join("；")}</li>` : ""}</ul></div>`;
@@ -272,7 +274,7 @@ const Ability = (() => {
   }
 
   return {
-    ready, begin, log, markAssist, profile, label, panelHTML, detailHTML, grammarQuestion, grammarItems, textFor, sceneItems,
+    ready, begin, setVia, log, markAssist, profile, label, panelHTML, detailHTML, grammarQuestion, grammarItems, textFor, sceneItems,
     get data() { return D; },
     get events() { return ST.events.slice(); },
     get peeked() { return peeked; },

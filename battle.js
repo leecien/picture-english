@@ -561,7 +561,7 @@ const Battle = (() => {
     else if (q.assisted && ok) Learn.assisted(q);
     else graded = Learn.grade(q, ok, "battle");
     // ability log: one event; timeout apart from a wrong answer; a hint that left one option is assisted
-    if (typeof Ability !== "undefined") Ability.log(q, { result: kind === "timeout" ? "timeout" : ok ? "correct" : "wrong", assisted: !!q.assisted, ms: spent, ctx: q.ctx || "battle" });
+    if (typeof Ability !== "undefined") Ability.log(q, { result: kind === "timeout" ? "timeout" : ok ? "correct" : "wrong", assisted: !!q.assisted, ms: spent, ctx: q.ctx || "battle", via: "battle" });
     if (ok) heroHits();
     else foeHits(kind === "timeout");
     paintBattle();

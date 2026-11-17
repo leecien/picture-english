@@ -1,11 +1,11 @@
 {
  "schemaVersion": 1,
- "version": "lp-v1-batch01",
+ "version": "lp-v1-batch03",
  "task": "LEARNING-PROFILE-01",
  "reviewer": "external-ai",
  "status": "ai-edited-not-teacher-reviewed",
  "contentBase": "picture-english e079ef8f426e0f0f7e5794906bda952ea4af1fee",
- "note": "主題與次主題。general = 屬於該主題但不屬於任何次主題；unassigned = 3000 詞依 topic 歸入主題，尚未細分次主題。",
+ "note": "主題與次主題。general = 屬於該主題但不屬於任何次主題；unassigned = 3000 詞依 topic 歸入主題，尚未細分次主題。work（職場）本版只建立 negotiation（商務談判），依協調人 2026-11-18 決定；其餘職場次主題暫不擴充。題目的 topics 每個主題最多一個次主題；role=primary 是主分類，role=secondary 是確實也用在該情境的附加標籤。",
  "topics": {
   "food": {
    "zh": "食物",
@@ -50,6 +50,15 @@
     "transport": {
      "zh": "交通",
      "desc": "計程車、火車地鐵、公車、租車、自行車與機車"
+    }
+   }
+  },
+  "work": {
+   "zh": "職場",
+   "sub": {
+    "negotiation": {
+     "zh": "商務談判",
+     "desc": "議價、預算、交期、確認成交與後續（本版只建立這個次主題）"
     }
    }
   },
@@ -394,8 +403,8 @@
   },
   {
    "ctx": "scene:negotiate",
-   "topic": "meeting",
-   "sub": "general",
+   "topic": "work",
+   "sub": "negotiation",
    "source": "work/negotiate"
   },
   {
@@ -543,5 +552,5 @@
    "source": "companion/trip"
   }
  ],
- "contextNote": "ctx 與遊戲 Learn.grade 的 ctx 相同（scene:<場景 id>、life:<場景 id>）。生活情境的作答以重點字（w:）記錄，主題由 ctx 判定。"
+ "contextNote": "ctx 與遊戲 Learn.grade 的 ctx 相同（scene:<場景 id>、life:<場景 id>）；文法題用 grammar:<主題>/<次主題>。生活情境依決定 3 記成句子層級事件（item=s:句子，links.word=重點字）。"
 }

@@ -185,7 +185,9 @@ let CUR = null;
     return Learn.scene("work", "negotiate").items.map((x) => Ability.data.tags["s:" + x.en]).filter(Boolean);
   });
   assert(neg.length, "negotiation lines are tagged");
-  assert(neg.every((t) => t.topics.length === 1 && t.topics[0].topic === "work" && t.topics[0].sub === "negotiation"), "negotiation lines: 職場・商務談判 only");
+  // decision 2: primary 職場・商務談判; a meeting tag only as a secondary one (counted once per topic by the module)
+  assert(neg.every((t) => t.topics.some((x) => x.topic === "work" && x.sub === "negotiation" && x.role === "primary")), "negotiation lines: primary 職場・商務談判");
+  assert(neg.every((t) => t.topics.every((x) => x.role === "primary" || x.topic === "meeting")), "other tags are secondary meeting tags only");
 
   /* ---------- reload keeps the events; the store keeps the newest 4000 ---------- */
   const kept = await ev(() => Ability.events.length);
@@ -207,7 +209,7 @@ let CUR = null;
   assert.equal(await ev(() => JSON.parse(localStorage.getItem("pm-cards")).egg.c), 3, "old keys untouched");
 
   assert.deepEqual(errors, []);
-  console.log("PASS: old save → 尚待評估 (legacy listed, non-v1 tenses: no instrument, no %), NPC 時態小任務: situation + stem, no tense name before answering, sentence / Chinese / sound / explanation after, one event per answer (schema), 證據不足 with what is missing, will 6 items · 2 days · 2 contexts · 5/6 → 80%（熟悉）, weak only when scored < 70%, 練習弱項 in place asks that tense and updates the analysis (24-hour repeats listed apart), hint before answering, 31 days → 需要重新確認, negotiation under 職場 only, reload keeps events, 4000-event cap, card book untouched");
+  console.log("PASS: old save → 尚待評估 (legacy listed, non-v1 tenses: no instrument, no %), NPC 時態小任務: situation + stem, no tense name before answering, sentence / Chinese / sound / explanation after, one event per answer (schema), 證據不足 with what is missing, will 6 items · 2 days · 2 contexts · 5/6 → 80%（熟悉）, weak only when scored < 70%, 練習弱項 in place asks that tense and updates the analysis (24-hour repeats listed apart), hint before answering, 31 days → 需要重新確認, negotiation primary under 職場 (meeting only as a secondary tag), reload keeps events, 4000-event cap, card book untouched");
   await browser.close();
 })().catch(async (e) => {
   console.error(e);

@@ -1,4 +1,4 @@
-# 給內部（遊戲功能）的串接說明：LEARNING-PROFILE-01（batch-01＋batch-02）
+# 給內部（遊戲功能）的串接說明：LEARNING-PROFILE-01（batch-01～03，lp-rules-v1.1）
 
 外部只交內容和計算模組。面板、紀錄寫入和練習導向由內部實作。本文是建議，不改你的介面。
 
@@ -31,11 +31,17 @@ const p = LearningProfile.compute({
 LearningProfile.describe(p.topics.food.subtopics.ordering.channels.listening);  // 「80%（熟悉）· 6 題、3 種情境」
 ```
 
-面板文字請一律用 `describe()`，各狀態才會用同一套說法：
+面板文字請一律用 `describe()`，各狀態才會用同一套說法。狀態有五種（v1.1 起，原本的 pending 拆成 none 和 insufficient）：
 
-- 尚待評估
-- 需要重新確認
-- 目前沒有能測這個文法的題目
+| 狀態 | 面板文字 |
+| --- | --- |
+| `none` | 尚待評估 |
+| `insufficient` | 證據不足：還需要… |
+| `stale` | 需要重新確認（上次 NN%…） |
+| `scored` | NN%（等級）… |
+| `no-instrument` | 目前沒有能測… |
+
+- 百分比請顯示 `displayPct`；點開詳細時，用 `describe(cell, null, {detail:true})` 顯示 rawPct 和換算方式。
 
 ## 每題要寫一筆紀錄（event-schema.json）
 
@@ -75,6 +81,20 @@ LearningProfile.describe(p.topics.food.subtopics.ordering.channels.listening);  
 - 口說格旁邊固定顯示 `p.speakingNote`。
 - 舊存檔顯示 `p.legacy.note` 和舊答對數。
 
+## 協調人 2026-11-18 決定的串接重點
+
+1. **一次作答只寫一筆事件**：重試只更新同一筆的 `retries`、`final`。
+   - 生活情境填空記成 `item: "s:<句子>"`、`qtype: "life:context-blank"`、`links: { word: "w:<重點字>" }`。
+2. **保留筆數**：`pm-ability-v1` 每次寫入後執行 `LearningProfile.trimEvents(events)`，最多保留 4000 筆。
+3. **備份與還原**：
+   - 備份時把 `pm-ability-v1` 一起匯出。
+   - 還原時用 `LearningProfile.mergeEvents(目前裝置的事件, 備份的事件)` 合併，不要直接覆蓋。
+4. **入口與情境**：
+   - 事件要帶 `via`（`npc:<任務 id>`、`practice`、`battle`）。
+   - `ctx` 填情境；文法題用題目內附的 `ctx`。
+5. **文法欄**：只顯示 `channels.reading`（標題「文法辨識掌握度」）；其他通道顯示 `describe()` 傳回的「這個通道目前沒有題型」。
+6. **入口順序**：先串 NPC 任務和「練習弱項」的入口；已經學過的句型才放進戰鬥。作答前不顯示時態名稱。
+
 ## 練習弱項
 
 `p.weak` 只列已達門檻、但低於 70% 的「能力 × 通道」，附最近答錯的題目 ID。
@@ -106,5 +126,5 @@ LearningProfile.describe(p.topics.food.subtopics.ordering.channels.listening);  
 **面板的變化**
 
 - 尚未接上這個題型前，時態顯示「目前沒有能測這個文法的題目」，這是正確結果。
-- 載入 batch-02 的 `item-index.json` 後，v1 時態改為「尚待評估」（證據不足），玩家作答累積到門檻後才顯示百分比。
+- 載入 batch-02 之後的 `item-index.json`，v1 時態改為「尚待評估」；開始作答後會顯示「證據不足：還需要…」，累積到門檻才顯示百分比。
 - 非 v1 時態（例如現在完成式）仍維持「目前沒有能測這個文法的題目」。

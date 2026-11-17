@@ -646,12 +646,13 @@ const RPG = (() => {
     qs = qs.filter(Boolean).slice(0, 5);
     if (!qs.length) return status("這一項目前沒有可以練的題目。");
     closeSheet();
-    await quizRound("能力練習", qs, "練習弱項");
+    await quizRound("能力練習", qs, "練習弱項", "practice");
     abilityDetail(kind, id); // back where the player was, with the analysis updated
   }
   /* A short round of prepared questions in a dialog, in place (the hero does not move). */
-  async function quizRound(who, qs, title) {
+  async function quizRound(who, qs, title, via) {
     Talk.show({ name: who, look: LUMI });
+    Ability.setVia(via || "practice");
     let first = 0;
     try {
       await Talk.line("", `${title}：${qs.length} 題。作答後會顯示正確句子、中文、發音與簡短說明。`);
@@ -664,6 +665,7 @@ const RPG = (() => {
       await Talk.line("", `第一次就答對 ${first} / ${qs.length} 題。結果已記進「我的英語能力」。`);
     } finally {
       Talk.close();
+      Ability.setVia("");
     }
     return first;
   }
@@ -2109,7 +2111,7 @@ const RPG = (() => {
     if (items.length < 5) items = items.concat(Ability.grammarItems({}, 5 - items.length).filter((g) => !items.includes(g)));
     if (!items.length) return Talk.line("", "時態題目還在準備中。");
     await Talk.line("Which one sounds right?", `${esc(m.person || "居民")}：「先看情境和時間線索，再選正確的形式。答完我會告訴你為什麼。」`);
-    const first = await quizRound(m.person || "居民", items.map((g) => Ability.grammarQuestion(g, g.ctx)), "時態小任務");
+    const first = await quizRound(m.person || "居民", items.map((g) => Ability.grammarQuestion(g, g.ctx)), "時態小任務", `npc:grammar-${m.id}`);
     Talk.show(null);
     await Talk.line("Nice work!", first >= 4 ? "看得很準！之後在戰鬥裡也會遇到這些句型。" : "可以從☰「我的英語能力」看哪些形式要再練。");
     Talk.close();

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "version": "lp-v1-batch01",
+ "version": "lp-v1-batch03",
  "task": "LEARNING-PROFILE-01",
  "reviewer": "external-ai",
  "status": "ai-edited-not-teacher-reviewed",
@@ -101,9 +101,9 @@
   },
   "life:context-blank": {
    "channel": "reading",
-   "tests": "vocab-in-sentence",
+   "tests": "situational-vocab",
    "grammarEvidence": "none",
-   "zh": "生活情境句子填空（重點字），測情境字義"
+   "zh": "生活情境句子填空：依決定 3 記成一筆句子層級事件（item=s:句子，links.word=重點字），測情境中選對字；計入該次主題，不是文法證據"
   },
   "drive:speak": {
    "channel": "speaking",
