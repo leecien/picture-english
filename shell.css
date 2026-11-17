@@ -1893,15 +1893,14 @@ b.nv-hit {
 .zh-line[hidden] {
   display: none;
 }
-.qz-opt:has(.zh-btn) {
+.qz-opt:has(.qz-zhbox) {
   flex-wrap: wrap;
 }
-.qz-opt .zh-btn {
-  margin: 2px 0 0;
-}
-.qz-opt .zh-line {
+.qz-zhbox {
   flex-basis: 100%;
-  margin-top: 2px;
+}
+.qz-zhbox .zh-btn {
+  margin: 2px 0 0;
 }
 /* phrase card (shares the word card) */
 .wd-tag {

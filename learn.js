@@ -462,7 +462,8 @@ const Learn = (() => {
       const o = q.options[i],
         box = b.parentElement;
       if (!o || !o.zh || !box || box.querySelector(".zh-btn")) return;
-      box.insertAdjacentHTML("beforeend", `<button type="button" class="zh-btn" aria-expanded="false">看中文</button><span class="zh-line" hidden>${esc(o.zh)}</span>`);
+      // wrapped, so the option's own answer button stays the only button directly inside .qz-opt
+      box.insertAdjacentHTML("beforeend", `<span class="qz-zhbox"><button type="button" class="zh-btn" aria-expanded="false">看中文</button><span class="zh-line" hidden>${esc(o.zh)}</span></span>`);
     });
   }
   /* The revealed answer: tap the line to hear it again, tap a word for its KK. */
