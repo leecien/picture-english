@@ -602,17 +602,23 @@ const Battle = (() => {
       go.focus({ preventScroll: true });
     }
   }
-  /* Memory card (after a right answer): a word's first three independent right answers, counted by the card book
+  /* Memory card (after a right answer): a word's first 2–4 independent right answers (the number fixed per word), counted by the card book
      (pm-cards .c, which only grows on a fresh first-try right answer: not on wrong, timeout, assisted, a retry or the
      same word again within the cool-down). Stays in the battle view for about 3 s or until "繼續戰鬥"; the countdown
      waits while its sound plays, a word card is open, or the page is hidden (then it waits for the button).
      Showing, replaying or closing it gives no XP and no attack. */
-  const CARD_SHOWS = 3,
-    CARD_MS = 3000;
+  const CARD_MS = 3000;
+  // how many right answers show the card: 2, 3 or 4, picked per word from its spelling (so the same word always
+  // gets the same number, across reloads and devices, with nothing new saved)
+  function cardLimit(w) {
+    let h = 5381;
+    for (const ch of String(w)) h = ((h * 33) ^ ch.codePointAt(0)) >>> 0;
+    return 2 + (h % 3);
+  }
   function cardCount(q, graded) {
     if (!graded || !graded.fresh || q.assisted || q.recK !== "w" || !q.item || !q.item.w || q.item.sup) return 0;
     const c = typeof CARDS !== "undefined" && CARDS[q.item.w];
-    return c && c.c >= 1 && c.c <= CARD_SHOWS ? c.c : 0;
+    return c && c.c >= 1 && c.c <= cardLimit(q.item.w) ? c.c : 0;
   }
   function memoryCard(q, n, tok) {
     return new Promise((res) => {
@@ -626,7 +632,7 @@ const Battle = (() => {
       el.setAttribute("aria-label", `記憶卡：${it.w}`);
       el.innerHTML = `<div class="bt-card-pic">${pic(it)}</div>
         <div class="bt-card-txt"><b class="bt-card-w">${esc(it.w)}</b>${it.kk ? `<span class="qz-kk">${esc(it.kk)}</span>` : ""}<span class="bt-card-z">${esc(it.z || "")}</span>
-        <small class="bt-card-n">記憶卡 ${n}/${CARD_SHOWS}・第 ${n} 次獨立答對</small></div>
+        <small class="bt-card-n">記憶卡 ${n}/${cardLimit(it.w)}・第 ${n} 次獨立答對</small></div>
         <div class="bt-card-row"><button type="button" class="bt-mini" id="bt-card-say">🔊 發音</button><button type="button" class="qz-next" id="bt-card-go">繼續戰鬥 ▶</button></div>
         <i class="bt-card-bar"><i id="bt-card-left"></i></i>`;
       // at the top of the panel, right under pause / flee, and scrolled into view (the panel scrolls on a phone)
@@ -858,6 +864,7 @@ const Battle = (() => {
       return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield };
     },
     settleForTest: (k) => settle(k),
+    cardLimit,
     /* tests only: keep a fight alive long enough to check every rule, or end it quickly */
     setFoeHp(n) {
       if (B) B.hp = B.maxHp = Math.max(1, n);

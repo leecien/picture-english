@@ -1,5 +1,5 @@
-// Battle memory card: right answer → attack → card → continue. A word's first three independent right answers show
-// its card (count = the card book, pm-cards .c); from the fourth on only the short "答對了". Wrong, timeout, assisted
+// Battle memory card: right answer → attack → card → continue. A word's first 2–4 independent right answers show
+// its card (the number fixed per word; count = the card book, pm-cards .c); after that only the short "答對了". Wrong, timeout, assisted
 // and the same word again within the cool-down add nothing and show nothing. The card stays in the battle view about
 // 3 s or until "繼續戰鬥"; its countdown waits while its sound plays and holds when the page is hidden. Showing,
 // replaying or closing it gives no XP and no second attack. The last blow shows the card first, then the victory.
@@ -105,7 +105,8 @@ let CUR = null;
   assert(xpHit > xp0, "the right answer gave its XP once");
   const txt = await card().innerText();
   assert.match(txt, new RegExp(w));
-  assert.match(txt, /記憶卡 1\/3/);
+  const L1 = await ev((w) => Battle.cardLimit(w), w);
+  assert.match(txt, new RegExp(`記憶卡 1/${L1}`));
   const it = await ev((w) => WORDS.find((x) => x.w === w), w);
   if (it.z) assert(txt.includes(it.z), "Chinese");
   if (it.kk) assert(txt.includes(it.kk), "checked KK");
@@ -124,17 +125,20 @@ let CUR = null;
   w = await wordQ(1);
   await answer(true);
   await page.waitForSelector("#bt-card");
-  assert.match(await card().innerText(), /記憶卡 2\/3/);
+  assert.match(await card().innerText(), new RegExp(`記憶卡 2/${await ev((w) => Battle.cardLimit(w), w)}`));
   const t1 = Date.now();
   await page.locator("#bt-card-go").click();
   await ready();
   assert(Date.now() - t1 < 1500, "continue closes it at once");
 
-  /* 3rd: 🔊 plays once even when tapped twice; the card waits while it plays; replay gives no XP */
-  w = await wordQ(2);
+  /* the word's last card (n = its limit, 2–4): 🔊 plays once even when tapped twice; the card waits while it plays;
+     replay gives no XP */
+  w = await wordQ(0);
+  let L = await ev((w) => Battle.cardLimit(w), w);
+  await ev(([w, n]) => (CARDS[w].c = n), [w, L - 1]);
   await answer(true);
   await page.waitForSelector("#bt-card");
-  assert.match(await card().innerText(), /記憶卡 3\/3/);
+  assert.match(await card().innerText(), new RegExp(`記憶卡 ${L}/${L}`));
   const xp3 = await ev(() => P.xp),
     p0 = await ev(() => window.__plays);
   await ev(() => (window.__playMs = 4000));
@@ -148,13 +152,15 @@ let CUR = null;
   await ready();
   assert.equal(await ev(() => P.xp), xp3, "replaying gives no XP");
 
-  /* 4th: only the short "答對了" */
-  w = await wordQ(3);
+  /* one past the limit: only the short "答對了" */
+  w = await wordQ(0);
+  L = await ev((w) => Battle.cardLimit(w), w);
+  await ev(([w, n]) => (CARDS[w].c = n), [w, L]);
   await answer(true);
   await page.waitForSelector("#bt-feedback .good");
   await page.waitForTimeout(600);
-  assert.equal(await card().count(), 0, "no card from the fourth right answer");
-  assert.equal((await cardOf(w)).c, 4);
+  assert.equal(await card().count(), 0, "no card past the word's limit");
+  assert.equal((await cardOf(w)).c, L + 1);
   await ready();
 
   /* an old player's familiar word (c ≥ 3) never pops a card */
@@ -258,9 +264,15 @@ let CUR = null;
   await page.reload();
   await page.waitForSelector(".world-canvas");
   assert.equal(await ev((w) => CARDS[w].c, w), saved, "count kept after reload");
+  // the limit is 2, 3 or 4, fixed per word: all three occur across the word bank and a reload gives the same numbers
+  const limits = await ev(() => Object.fromEntries(WORDS.map((x) => [x.w, Battle.cardLimit(x.w)])));
+  assert.deepEqual([...new Set(Object.values(limits))].sort(), [2, 3, 4], "limits vary between words (2–4)");
+  await page.reload();
+  await page.waitForSelector(".world-canvas");
+  assert.deepEqual(await ev(() => Object.fromEntries(WORDS.map((x) => [x.w, Battle.cardLimit(x.w)]))), limits, "same limit for a word after reload");
 
   assert.deepEqual(errors, []);
-  console.log("PASS: memory card after the attack for a word's 1st–3rd independent right answers (picture, English, Chinese, KK, 🔊; in the battle view ~3 s, or 繼續戰鬥), none from the 4th or for familiar words, none for wrong / timeout / assisted / quick repeat, sound plays once and pauses the countdown, holds while the page is hidden, no XP or second attack from the card, last blow shows the card before the victory, fleeing never pulls back, counts survive reload");
+  console.log("PASS: memory card after the attack for a word's first 2–4 independent right answers (limit picked per word, 2/3/4 all occur, same after reload) (picture, English, Chinese, KK, 🔊; in the battle view ~3 s, or 繼續戰鬥), none past the limit or for familiar words, none for wrong / timeout / assisted / quick repeat, sound plays once and pauses the countdown, holds while the page is hidden, no XP or second attack from the card, last blow shows the card before the victory, fleeing never pulls back, counts survive reload");
   await browser.close();
 })().catch(async (e) => {
   console.error(e);
