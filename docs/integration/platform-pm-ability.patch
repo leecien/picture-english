@@ -1,0 +1,26 @@
+diff --git a/platform.js b/platform.js
+index 30f0860..5291389 100644
+--- a/platform.js
++++ b/platform.js
+@@ -7,7 +7,7 @@
+ })(typeof window !== "undefined" ? window : globalThis, function (root) {
+   "use strict";
+   const APP = "picture-english";
+-  const KEYS = Object.freeze(["pm-progress", "pm-cards", "pm-sents", "pm-days", "pm-log", "pm-sound", "pm-best-word", "pm-best-sent", "pm-best-place", "pm-rpg-v1", "pm-drive-pref", "pm-learn-v1", "pm-life-v1"]);
++  const KEYS = Object.freeze(["pm-progress", "pm-cards", "pm-sents", "pm-days", "pm-log", "pm-sound", "pm-best-word", "pm-best-sent", "pm-best-place", "pm-rpg-v1", "pm-drive-pref", "pm-learn-v1", "pm-life-v1", "pm-ability-v1"]);
+   const ALLOWED = new Set(KEYS), MAX_BYTES = 4 * 1024 * 1024, MAX_VALUE_BYTES = 2 * 1024 * 1024;
+   const doc = root.document;
+   const scriptBase = doc ? new URL(".", (doc.currentScript && doc.currentScript.src) || doc.baseURI).href : null;
+@@ -53,6 +53,12 @@
+         for (const field of ["badges", "modes"]) if (own(value, field) && (!Array.isArray(value[field]) || value[field].some((x) => typeof x !== "string"))) throw new Error("成就或模式格式錯誤。");
+       }
+       if (key === "pm-rpg-v1" && own(value, "version") && value.version !== 1) throw new Error("此版本尚不支援這份 RPG 存檔版本。");
++      if (key === "pm-ability-v1") {
++        // 我的英語能力: answer events (LEARNING-PROFILE-01 schema), newest 4000
++        if (value.v !== 2 || !Array.isArray(value.events) || value.events.length > 4000) throw new Error("能力紀錄格式錯誤。");
++        if (value.events.some((e) => !plain(e) || typeof e.item !== "string" || typeof e.qtype !== "string" || typeof e.at !== "number" || !["correct", "wrong", "timeout", "skipped"].includes(e.result))) throw new Error("能力紀錄的作答事件格式錯誤。");
++        if (own(value, "draft") && (!Array.isArray(value.draft) || value.draft.length > 500)) throw new Error("能力紀錄格式錯誤。");
++      }
+     }
+   }
+   function parseBackup(text) {
