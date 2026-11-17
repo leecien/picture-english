@@ -1347,6 +1347,61 @@ const World = (() => {
         ctx.lineTo(3, -6);
         ctx.stroke();
         break;
+      case "wisp":
+        // A floating spirit with a tapering trail and two orbiting lights.
+        // The silhouette stays distinct from the round bubble at phone size.
+        ctx.moveTo(-10, -7);
+        ctx.bezierCurveTo(-14, -16, -5, -25, 1, -28);
+        ctx.quadraticCurveTo(-1, -20, 7, -18);
+        ctx.bezierCurveTo(16, -12, 12, -3, 5, -2);
+        ctx.quadraticCurveTo(0, 0, -5, 4);
+        ctx.quadraticCurveTo(-3, -1, -10, -7);
+        ctx.fill();
+        ctx.fillStyle = c2;
+        [-1, 1].forEach((s) => {
+          ctx.beginPath();
+          ctx.arc(s * 15, -15 + Math.sin(e.t * 3 + s) * 3, 2.3, 0, 7);
+          ctx.fill();
+        });
+        ctx.fillStyle = "#ffffff90";
+        ctx.beginPath();
+        ctx.ellipse(-4, -17, 2.3, 4, 0.45, 0, 7);
+        ctx.fill();
+        break;
+      case "beetle":
+        // Six small legs, antennae and a split wing-case: an original woodland beetle.
+        ctx.strokeStyle = c2;
+        ctx.lineWidth = 2.3;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        [-1, 1].forEach((s) => {
+          [-14, -9, -4].forEach((dy) => {
+            ctx.moveTo(s * 8, dy);
+            ctx.lineTo(s * 14, dy + (dy + 9) * 0.35);
+          });
+          ctx.moveTo(s * 4, -21);
+          ctx.quadraticCurveTo(s * 7, -30, s * 11, -27);
+        });
+        ctx.stroke();
+        ctx.fillStyle = c2;
+        ctx.beginPath();
+        ctx.ellipse(0, -20, 7, 5.5, 0, 0, 7);
+        ctx.fill();
+        ctx.fillStyle = c1;
+        ctx.beginPath();
+        ctx.ellipse(0, -10, 10.5, 12, 0, 0, 7);
+        ctx.fill();
+        ctx.strokeStyle = c2;
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(0, -20);
+        ctx.lineTo(0, -2);
+        ctx.stroke();
+        ctx.fillStyle = "#ffffff70";
+        ctx.beginPath();
+        ctx.ellipse(-5, -14, 2, 4, 0.25, 0, 7);
+        ctx.fill();
+        break;
       case "guardian":
         // wind guardian: a cloud with a calm mask and a swirl
         [[-9, -12, 8], [9, -12, 8], [0, -18, 10], [0, -8, 11]].forEach(([dx, dy, r]) => {

@@ -11,7 +11,7 @@ const staging = path.join(root, `.web-build-${process.pid}`);
 const previous = path.join(root, `.web-backup-${process.pid}`);
 const marker = ".picture-english-build";
 const copied = [];
-const top = ["index.html", "offline.html", "manifest.webmanifest", "service-worker.js", "shell.css", "rpg.css", "atlas.css", "world.js", "battle.js", "learn.js", "novice.js", "lifescene.js", "pron.js", "speech.js", "rpg.js", "atlas.js", "platform.js"];
+const top = ["index.html", "offline.html", "manifest.webmanifest", "service-worker.js", "shell.css", "rpg.css", "atlas.css", "world.js", "battle.js", "learn.js", "novice.js", "lifescene.js", "pron.js", "speech.js", "rpg.js", "atlas.js", "platform.js", "audio-bus.js", "audio-session.js", "audio-session.css", "world-regions.js"];
 const assetRoots = ["sprites", "voice", "scenes", "app", "images", "sfx", "bgm", "video"];
 async function exists(p) { try { await fs.access(p); return true; } catch (_) { return false; } }
 async function copy(relative, destination = relative) {
@@ -63,6 +63,8 @@ try {
   await fs.mkdir(staging);
   for (const name of top) await copy(name);
   await tree("data");
+  for (const name of ["audio-practice.js", "audio-practice.css", "demo.html"]) await copy("modules/audio-practice/" + name);
+  await tree("modules/audio-practice/processed-audio");
   await copy("assets/manifest.json");
   for (const name of assetRoots) await tree(path.join("assets", name));
   await copy("content/core-3000/sources/ECDICT-LICENSE.txt", "THIRD_PARTY_LICENSES/ECDICT-LICENSE.txt");

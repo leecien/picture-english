@@ -73,6 +73,7 @@ const Pron = (() => {
     seq = 0;
   const busy = (on) => {
     busyN = Math.max(0, busyN + (on ? 1 : -1));
+    if (typeof AudioBus !== "undefined") return AudioBus.setHold("word-card", busyN > 0);
     try {
       window.dispatchEvent(new CustomEvent("pron:busy", { detail: busyN > 0 }));
     } catch (e) {}
@@ -87,6 +88,7 @@ const Pron = (() => {
   }
   /* Resolves true when the sound played to the end, false if it could not play (or a newer tap replaced it). */
   function play(text, file) {
+    if (typeof AudioBus !== "undefined") return AudioBus.play({ text, url: file || "", lang: "en-US", rate: 0.85 }).then((r) => r.status === "ended");
     let resolve;
     const result = new Promise((r) => (resolve = r));
     const my = ++seq;

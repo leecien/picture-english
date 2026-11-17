@@ -183,6 +183,13 @@ const Battle = (() => {
      MP pays for optional help (heal / shield / +5 s) and never blocks answering; right answers restore a little MP.
      ctx: { region, make(B) -> question, tutorial, phases:[{until, label}], chase:{start,max}, companion, onEnd(result, drops) } */
   let B = null;
+  const BOSS_PHASES = [
+    { until: 0.66, label: "第一階段：看清招式", intents: ["attack", "charge", "guard"], timeScale: 1, attackScale: 1 },
+    { until: 0.30, label: "第二階段：共鳴解放", intents: ["charge", "drain", "attack"], timeScale: 0.9, attackScale: 1.15 },
+    { until: -1, label: "最終階段：決勝時刻", intents: ["charge", "guard", "charge"], timeScale: 0.8, attackScale: 1.3 },
+  ];
+  const phaseConfig = () => B && B.ctx.phases && B.ctx.phases[B.phaseIdx || 0] || {};
+  const intentText = () => B.intent === "charge" ? "💨 蓄力衝刺：答對打斷，答錯受重擊" : B.intent === "drain" ? "🔮 汲取：答錯還會失去 2 MP，護盾可擋" : B.intent === "mend" ? "🌿 回復準備：答錯時怪物會補血，答對打斷" : B.foeShield ? "🛡️ 防禦中：答對先破盾，再找機會攻擊" : "⚔️ 抓準時機，答對就攻擊";
   const PREF = () => (st.pref = { practice: false, relaxed: false, ...(st.pref || {}) });
   const bar = (id, v, m) => {
     const el = $(id);
@@ -216,6 +223,7 @@ const Battle = (() => {
     const tags = [];
     if (B.foeShield) tags.push(`${(B.look.shield || {}).icon || "🛡️"} ${(B.look.shield || {}).name || "護盾"}：下一次答對只會破盾`);
     if (B.intent === "charge") tags.push("💨 準備衝刺：答錯會受到加倍傷害，答對就擋下");
+    if (B.intent === "drain" || B.intent === "mend") tags.push(intentText());
     if (B.phase) tags.push(B.phase);
     $("bt-foe-shield").textContent = tags.join("　");
     $("bt-foe-shield").hidden = !tags.length;
@@ -230,10 +238,12 @@ const Battle = (() => {
   function start(mob, ctx) {
     const s = stats();
     const tok = Math.random();
+    const boss = !ctx.chase && (mob.look.boss || mob.look.shape === "guardian");
+    if (boss) ctx = { ...ctx, phases: ctx.phases ? ctx.phases.map((p, i) => ({ ...BOSS_PHASES[Math.min(i, 2)], ...p })) : BOSS_PHASES };
     B = {
       tok, mob, look: mob.look, hp: mob.look.hp || 30, maxHp: mob.look.hp || 30, ctx, turn: 0, combo: 0, power: false, guard: 0,
       foeShield: !!mob.look.shield, intent: "", phase: "", q: null, settled: true, paused: false, timer: null,
-      chase: ctx.chase || null, dist: ctx.chase ? ctx.chase.start : 0,
+      boss, chase: ctx.chase || null, dist: ctx.chase ? ctx.chase.start : 0,
       comp: ctx.companion ? { ...ctx.companion, energy: 0, hintLeft: 1, healed: false } : null,
     };
     PREF();
@@ -242,6 +252,8 @@ const Battle = (() => {
     const el = $("battle");
     el.hidden = false;
     el.dataset.region = ctx.region || "";
+    el.dataset.boss = boss ? "true" : "false";
+    el.dataset.phase = "0";
     $("bt-foe-name").textContent = mob.look.name;
     $("bt-foe-lv").textContent = "Lv." + (mob.look.lv || 1);
     $("bt-me-lv").textContent = "Lv." + s.lv;
@@ -262,6 +274,7 @@ const Battle = (() => {
     if (q.options.some((o) => String(o.html).replace(/<[^>]+>/g, "").length > 28)) t += 4;
     if (B.ctx.tutorial && B.turn <= 3) t *= 1.5;
     if (st.pref.relaxed) t *= 1.5;
+    if (B.boss) t = Math.max(q.recK === "s" ? 10 : 7, t * (phaseConfig().timeScale || 1));
     return Math.round(t);
   }
   /* Three clear options at most: the right one plus up to two wrong ones. */
@@ -273,11 +286,11 @@ const Battle = (() => {
     return q;
   }
   function nextIntent() {
-    const seq = B.look.intents;
+    const seq = B.boss ? phaseConfig().intents || B.look.intents : B.look.intents;
     if (!seq || B.chase) return "";
     const it = seq[B.turn % seq.length];
     if (it === "guard") B.foeShield = true;
-    return it === "charge" ? "charge" : "";
+    return ["charge", "drain", "mend"].includes(it) ? it : "";
   }
   function ask() {
     if (!B) return;
@@ -289,6 +302,7 @@ const Battle = (() => {
         ph = B.ctx.phases.find((p) => f > p.until) || B.ctx.phases[B.ctx.phases.length - 1];
       B.phase = ph.label;
       B.phaseIdx = B.ctx.phases.indexOf(ph);
+      $("battle").dataset.phase = String(B.phaseIdx);
     }
     B.intent = nextIntent();
     const q = trim(B.ctx.make(B));
@@ -310,6 +324,7 @@ const Battle = (() => {
     ];
     $("bt-act").innerHTML = `<div class="bt-q">
       <div class="bt-top"><span class="bt-turn">第 ${B.turn} 題${B.chase ? " · 追海鷗" : ""}</span><button type="button" id="bt-mode" class="bt-mini">${practice ? "🌱 練習（不限時）" : "⏱ 限時"}</button><button type="button" id="bt-hold" class="bt-mini" aria-label="暫停">⏸</button><button type="button" id="bt-run" class="bt-mini">🏃 逃跑</button></div>
+      ${B.boss ? `<div class="bt-boss-phase"><b>⚔️ ${esc(B.phase)}</b><small>${esc(intentText())}</small></div>` : ""}
       <div class="bt-clock" ${practice ? "hidden" : ""}><i id="bt-clock-bar"></i><span id="bt-clock-n"></span></div>
       <div class="qz-p">${q.prompt}</div>
       ${q.audio ? `<button class="qz-say" type="button" id="bt-say">🔊 ${esc(q.audio.label || "再聽一次")}</button>` : ""}
@@ -329,6 +344,7 @@ const Battle = (() => {
     $("bt-act").querySelectorAll(".qz-o button").forEach((b) => (b.onclick = () => settle(q.options[+b.dataset.i].ok ? "right" : "wrong", +b.dataset.i)));
     if (B.ctx.tutorial && B.turn === 1) log(B.ctx.tutorial);
     else if (B.intent === "charge") log(`${B.look.name} 準備衝刺！答對就能擋下。`);
+    else if (B.intent === "drain" || B.intent === "mend") log(intentText());
     else if (B.foeShield) log(`${B.look.name} 展開了${(B.look.shield || {}).name || "護盾"}，答對可以破盾。`);
     else if (!B.chase) log(`${B.look.name} 等著你的答案……`);
     // Listening: clock starts only after the audio has really played and the options are usable.
@@ -357,6 +373,7 @@ const Battle = (() => {
   }
   /* Resolves true once the clip (or speech) has played to the end, false if it could not play. */
   function playAwait(a) {
+    if (typeof AudioBus !== "undefined") return a ? AudioBus.play({ text: a.text, url: a.file || "", lang: "en-US", rate: 0.85 }).then((r) => r.status === "ended") : Promise.resolve(true);
     return new Promise((res) => {
       if (!a) return res(true);
       let done = false;
@@ -605,7 +622,7 @@ const Battle = (() => {
       log(timeout ? "時間到，海鷗飛遠了一點。" : `海鷗飛遠了一點（距離 ${B.dist}）。`);
       return;
     }
-    let dmg = (B.look.atk || 4) * (0.8 + rnd() * 0.4) * (B.intent === "charge" ? 1.8 : 1);
+    let dmg = (B.look.atk || 4) * (0.8 + rnd() * 0.4) * (B.intent === "charge" ? 1.8 : 1) * (phaseConfig().attackScale || 1);
     if (B.ctx.tutorial && B.turn <= 3) dmg *= 0.5;
     dmg = Math.max(1, Math.round(dmg));
     if (B.guard) {
@@ -617,6 +634,8 @@ const Battle = (() => {
       shake("me");
       pop("me", dmg, "hurt");
       log(`${timeout ? "時間到。" : ""}${B.look.name} ${B.intent === "charge" ? "衝刺撞來" : "發動攻擊"}，你受到 ${dmg} 點傷害。`);
+      if (B.intent === "drain") { st.mp = Math.max(0, st.mp - 2); pop("me", "MP −2", "hurt"); log(`${B.look.name}汲取了 2 MP！下一次可以答對打斷，或使用護盾。`); }
+      if (B.intent === "mend") { const healed = Math.min(Math.ceil(B.maxHp * .10), B.maxHp - B.hp); B.hp += healed; pop("foe", "+" + healed, "heal"); log(`${B.look.name}趁機回復 ${healed} HP。答對可以打斷回復準備。`); }
     }
     B.intent = "";
     // Companion heal (bond 2+): once per battle when HP runs low.
@@ -672,6 +691,7 @@ const Battle = (() => {
     const b = B;
     stopClock();
     B = null; // invalidates every pending timer and audio callback of this battle
+    if (typeof AudioBus !== "undefined") AudioBus.stop();
     $("battle").hidden = true;
     $("bt-act").innerHTML = "";
     $("bt-pause").hidden = true;

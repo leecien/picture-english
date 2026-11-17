@@ -1,0 +1,107 @@
+/* AudioPractice demo / 元件樣式。所有類別都以 ap- 開頭，避免和根遊戲衝突。 */
+.ap-root {
+  --ap-bg: #f6f7fb;
+  --ap-card: #ffffff;
+  --ap-fg: #1d2333;
+  --ap-muted: #5a6275;
+  --ap-line: #d7dbe6;
+  --ap-accent: #1f5fd1;
+  --ap-accent-fg: #ffffff;
+  --ap-ok-bg: #dff3e4;
+  --ap-ok-fg: #14532d;
+  --ap-miss-bg: #fde4e1;
+  --ap-miss-fg: #8a1c12;
+  --ap-sub-bg: #fff1c7;
+  --ap-sub-fg: #6b4300;
+  --ap-extra-bg: #e7e2fb;
+  --ap-extra-fg: #3c2a85;
+  --ap-unsure-bg: #e8eaef;
+  --ap-unsure-fg: #3a4152;
+  --ap-info-bg: #e5efff;
+  --ap-warn-bg: #fff4d6;
+  --ap-rec: #c62828;
+  font: 16px/1.55 system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color: var(--ap-fg);
+  background: var(--ap-bg);
+}
+@media (prefers-color-scheme: dark) {
+  .ap-root {
+    --ap-bg: #12151d;
+    --ap-card: #1b2030;
+    --ap-fg: #eef1f7;
+    --ap-muted: #aab2c5;
+    --ap-line: #343b50;
+    --ap-accent: #7fb0ff;
+    --ap-accent-fg: #0b1220;
+    --ap-ok-bg: #173d25;
+    --ap-ok-fg: #c9f2d5;
+    --ap-miss-bg: #4a1d1a;
+    --ap-miss-fg: #ffd3cd;
+    --ap-sub-bg: #46380f;
+    --ap-sub-fg: #ffe7a6;
+    --ap-extra-bg: #2f2858;
+    --ap-extra-fg: #e1d9ff;
+    --ap-unsure-bg: #2c3243;
+    --ap-unsure-fg: #dde2ee;
+    --ap-info-bg: #1c2c4a;
+    --ap-warn-bg: #3d3214;
+    --ap-rec: #ff6b6b;
+  }
+}
+.ap-root * { box-sizing: border-box; }
+.ap-wrap { max-width: 640px; margin: 0 auto; padding: 12px 12px calc(32px + env(safe-area-inset-bottom)); }
+.ap-root h1 { font-size: 1.3rem; margin: 6px 0 2px; }
+.ap-root h2 { font-size: 1.08rem; margin: 0 0 8px; }
+.ap-sub { color: var(--ap-muted); font-size: 0.9rem; margin: 0 0 12px; }
+.ap-card { background: var(--ap-card); border: 1px solid var(--ap-line); border-radius: 14px; padding: 14px; margin: 0 0 14px; }
+.ap-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+.ap-root button,
+.ap-root select {
+  font: inherit;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--ap-line);
+  background: var(--ap-card);
+  color: var(--ap-fg);
+  cursor: pointer;
+}
+.ap-root button.ap-primary { background: var(--ap-accent); color: var(--ap-accent-fg); border-color: var(--ap-accent); font-weight: 600; }
+.ap-root button.ap-rec { border-color: var(--ap-rec); color: var(--ap-rec); font-weight: 600; }
+.ap-root button.ap-rec[aria-pressed="true"] { background: var(--ap-rec); color: #fff; }
+.ap-root button:disabled { opacity: 0.45; cursor: not-allowed; }
+.ap-root button:focus-visible, .ap-root select:focus-visible { outline: 3px solid var(--ap-accent); outline-offset: 2px; }
+.ap-target { font-size: 1.25rem; font-weight: 600; margin: 4px 0; }
+.ap-zh { color: var(--ap-muted); font-size: 0.95rem; }
+.ap-status { border-radius: 10px; padding: 10px 12px; margin: 8px 0; background: var(--ap-info-bg); }
+.ap-status[data-tone="warn"] { background: var(--ap-warn-bg); }
+.ap-status[data-tone="rec"] { background: var(--ap-miss-bg); color: var(--ap-miss-fg); font-weight: 600; }
+.ap-status[data-tone="ok"] { background: var(--ap-ok-bg); color: var(--ap-ok-fg); }
+.ap-status:empty { display: none; }
+.ap-meter { height: 10px; border-radius: 6px; background: var(--ap-line); overflow: hidden; flex: 1 1 120px; }
+.ap-meter i { display: block; height: 100%; width: 0; background: var(--ap-rec); transition: width 60ms linear; }
+.ap-log { font: 12.5px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--ap-muted); max-height: 130px; overflow: auto; margin: 6px 0 0; padding-left: 18px; }
+.ap-steps { display: flex; gap: 4px; list-style: none; padding: 0; margin: 4px 0 10px; font-size: 0.85rem; }
+.ap-steps li { flex: 1; text-align: center; padding: 6px 2px; border-radius: 8px; background: var(--ap-unsure-bg); color: var(--ap-unsure-fg); }
+.ap-steps li[aria-current="step"] { background: var(--ap-accent); color: var(--ap-accent-fg); font-weight: 600; }
+.ap-steps li.ap-done { background: var(--ap-ok-bg); color: var(--ap-ok-fg); }
+/* 逐字回饋：顏色＋文字標記，不只靠紅綠 */
+.ap-words { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.ap-w { display: inline-flex; flex-direction: column; align-items: center; padding: 4px 8px; border-radius: 8px; border: 1px solid transparent; }
+.ap-w b { font-size: 1.1rem; }
+.ap-w small { font-size: 0.72rem; }
+.ap-w-heard { background: var(--ap-ok-bg); color: var(--ap-ok-fg); }
+.ap-w-missing { background: var(--ap-miss-bg); color: var(--ap-miss-fg); border-style: dashed; border-color: currentColor; }
+.ap-w-missing b { text-decoration: line-through; }
+.ap-w-different { background: var(--ap-sub-bg); color: var(--ap-sub-fg); border-color: currentColor; }
+.ap-w-extra { background: var(--ap-extra-bg); color: var(--ap-extra-fg); font-style: italic; }
+.ap-w-unsure { background: var(--ap-unsure-bg); color: var(--ap-unsure-fg); }
+.ap-legend { display: flex; flex-wrap: wrap; gap: 6px; font-size: 0.8rem; margin: 4px 0; }
+.ap-legend span { padding: 2px 8px; border-radius: 6px; }
+.ap-fine { font-size: 0.82rem; color: var(--ap-muted); }
+.ap-root table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.ap-root th, .ap-root td { border-bottom: 1px solid var(--ap-line); padding: 4px; text-align: left; }
+.ap-tag { display: inline-block; font-size: 0.75rem; padding: 1px 8px; border-radius: 99px; background: var(--ap-unsure-bg); color: var(--ap-unsure-fg); }
+.ap-root audio { width: 100%; margin-top: 6px; }
+.ap-file { font-size: 0.9rem; }
+@media (prefers-reduced-motion: reduce) { .ap-meter i { transition: none; } }

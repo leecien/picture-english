@@ -837,19 +837,29 @@
       "element": "水",
       "icon": "💧",
       "tone": "#4c8799",
-      "maps": [],
+      "maps": [
+        {
+          "id": "water",
+          "label": "水之療癒鎮"
+        }
+      ],
       "tagline": "聽見身體與心情的訊息，練習尋求合適的幫助。",
       "story": "療癒鎮的服務指引弄丟了，來訪的人不知道該往哪裡走。旅人協助居民描述不適、找到服務窗口，也學著在朋友需要時好好回應。",
       "npcs": [
         {
           "name": "Iris",
-          "role": "診所接待與服務引導",
-          "status": "planned"
+          "role": "接待員",
+          "status": "existing"
         },
         {
           "name": "Neri",
-          "role": "療癒庭院的居民",
-          "status": "planned"
+          "role": "服務夥伴",
+          "status": "existing"
+        },
+        {
+          "name": "Mira",
+          "role": "庭院守望者",
+          "status": "existing"
         }
       ],
       "learningGoals": [
@@ -860,27 +870,30 @@
       "stages": [
         {
           "id": "water-morning",
-          "title": "今天感覺如何",
-          "plot": "從晨間盥洗和日常感受認識照護情境。",
-          "learningGoal": "辨認用品並說出簡單感受。",
-          "rewardIdea": "療癒手帳的日常照護頁",
-          "implementation": "planned"
+          "title": "說清楚身體的訊息",
+          "plot": "Iris 正在重新整理診所指引。先練習說出不舒服的地方，讓來訪的人知道怎麼求助。",
+          "learningGoal": "看醫生：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +24，補給道具",
+          "implementation": "existing",
+          "rewardImplemented": true
         },
         {
           "id": "water-help",
-          "title": "找到對的窗口",
-          "plot": "在診所與藥局描述需求，確認該向誰求助。",
-          "learningGoal": "練習症狀描述、位置與禮貌詢問。",
-          "rewardIdea": "清楚可讀的服務指引",
-          "implementation": "planned"
+          "title": "找到對的服務窗口",
+          "plot": "Neri 想把藥局常用問句整理成清楚的卡片。請練習詢問需求與確認資訊。",
+          "learningGoal": "藥局：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +28，補給道具",
+          "implementation": "existing",
+          "rewardImplemented": true
         },
         {
           "id": "water-company",
-          "title": "陪朋友走一段",
-          "plot": "聽朋友說明心情，用合適的句子回應與陪伴。",
-          "learningGoal": "理解感受、安慰和提供協助。",
-          "rewardIdea": "水之印記與庭院休息點",
-          "implementation": "planned"
+          "title": "讓關心傳出去",
+          "plot": "Mira 守著最後一盞庭院燈。先練習表達關心，再和澄波守衛完成共鳴試煉。",
+          "learningGoal": "道歉、安慰與祝賀：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +45，補給道具、水之印記",
+          "implementation": "existing",
+          "rewardImplemented": true
         }
       ],
       "contexts": [
@@ -991,7 +1004,7 @@
           ]
         }
       ],
-      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+      "storyNotice": "三段居民任務依序開放；每段五題至少四題獨立正確，最後還要通過守衛戰，才會獲得元素印記。"
     },
     {
       "id": "earth",
@@ -1219,19 +1232,29 @@
       "element": "光",
       "icon": "📖",
       "tone": "#9d8535",
-      "maps": [],
+      "maps": [
+        {
+          "id": "light",
+          "label": "光之學園"
+        }
+      ],
       "tagline": "問出不懂的地方，也把理解分享給別人。",
       "story": "學園的公共展覽需要一群合作夥伴。從課堂提問、借書，到一起整理資訊，旅人練習清楚表達自己的想法，幫展覽找到能讓每個人看懂的說法。",
       "npcs": [
         {
           "name": "Nora",
-          "role": "圖書館員",
-          "status": "planned"
+          "role": "課堂引導員",
+          "status": "existing"
         },
         {
           "name": "Theo",
-          "role": "學園展覽召集人",
-          "status": "planned"
+          "role": "圖書館員",
+          "status": "existing"
+        },
+        {
+          "name": "Luca",
+          "role": "展覽召集人",
+          "status": "existing"
         }
       ],
       "learningGoals": [
@@ -1243,26 +1266,29 @@
         {
           "id": "light-question",
           "title": "把問題問出來",
-          "plot": "在課堂上請對方再說一次，確認一個詞或指示的意思。",
-          "learningGoal": "提問、拼字、發音與確認理解。",
-          "rewardIdea": "提問手帳與學園新線索",
-          "implementation": "planned"
+          "plot": "Nora 邀你一起把課堂變成敢開口的地方。先練習提問、請對方重說與確認意思。",
+          "learningGoal": "上課發問：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +24，補給道具",
+          "implementation": "existing",
+          "rewardImplemented": true
         },
         {
           "id": "light-library",
           "title": "書頁裡的線索",
-          "plot": "向圖書館員詢問資料，找到展覽需要的內容。",
-          "learningGoal": "位置、借閱與主題查詢。",
-          "rewardIdea": "圖書館通行標記",
-          "implementation": "planned"
+          "plot": "Theo 正在準備學園展覽。用英文詢問書的位置、借閱與續借方式。",
+          "learningGoal": "圖書館：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +28，補給道具",
+          "implementation": "existing",
+          "rewardImplemented": true
         },
         {
           "id": "light-exhibit",
           "title": "一起完成展覽",
-          "plot": "協調組員的工作，向來訪的人介紹成果。",
-          "learningGoal": "分工、順序與簡單說明。",
-          "rewardIdea": "光之印記與展覽展示空間",
-          "implementation": "planned"
+          "plot": "Luca 需要大家分工。先練習合作句子，再和晨光守衛測試展覽的共鳴裝置。",
+          "learningGoal": "小組報告：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +45，補給道具、光之印記",
+          "implementation": "existing",
+          "rewardImplemented": true
         }
       ],
       "contexts": [
@@ -1361,7 +1387,7 @@
           ]
         }
       ],
-      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+      "storyNotice": "三段居民任務依序開放；每段五題至少四題獨立正確，最後還要通過守衛戰，才會獲得元素印記。"
     },
     {
       "id": "metal",
@@ -1369,19 +1395,29 @@
       "element": "金",
       "icon": "🏙️",
       "tone": "#677e93",
-      "maps": [],
+      "maps": [
+        {
+          "id": "metal",
+          "label": "金之商務都會"
+        }
+      ],
       "tagline": "把工作說清楚，讓合作有來有往。",
       "story": "城市的合作日即將開始，幾份重要訊息卻沒有傳到對的人手裡。旅人要整理會議、時間與服務需求，幫團隊把合作重新接上。",
       "npcs": [
         {
           "name": "Rowan",
-          "role": "合作日專案窗口",
-          "status": "planned"
+          "role": "團隊接待員",
+          "status": "existing"
         },
         {
           "name": "June",
-          "role": "都會服務接待員",
-          "status": "planned"
+          "role": "會議協調員",
+          "status": "existing"
+        },
+        {
+          "name": "Arden",
+          "role": "專案守望者",
+          "status": "existing"
         }
       ],
       "learningGoals": [
@@ -1393,26 +1429,29 @@
         {
           "id": "metal-team",
           "title": "第一次加入團隊",
-          "plot": "介紹自己的工作，確認今天需要完成什麼。",
-          "learningGoal": "角色、自我介紹與時間。",
-          "rewardIdea": "合作手帳的團隊頁",
-          "implementation": "planned"
+          "plot": "Rowan 歡迎你參加合作日。先介紹自己的工作，確認大家的角色與責任。",
+          "learningGoal": "自我介紹：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +24，補給道具",
+          "implementation": "existing",
+          "rewardImplemented": true
         },
         {
           "id": "metal-message",
-          "title": "沒有送達的訊息",
-          "plot": "聽懂電話與會議中的重點，補齊遺漏資訊。",
-          "learningGoal": "確認、重述、約時間與後續事項。",
-          "rewardIdea": "重新接通的城市消息站",
-          "implementation": "planned"
+          "title": "接上沒有送達的訊息",
+          "plot": "June 發現會議有些訊息沒有傳清楚。練習開始、重說、分享與表達意見。",
+          "learningGoal": "開會：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +28，補給道具",
+          "implementation": "existing",
+          "rewardImplemented": true
         },
         {
           "id": "metal-project",
           "title": "讓合作繼續前進",
-          "plot": "說明進度、處理變更，協助來訪的合作夥伴。",
-          "learningGoal": "進度、問題、接待與禮貌協調。",
-          "rewardIdea": "金之印記與合作日展示攤位",
-          "implementation": "planned"
+          "plot": "Arden 等你確認行程。先練習約時間與傳送資訊，再完成秩序守衛的專案試煉。",
+          "learningGoal": "約時間與 Email：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +45，補給道具、金之印記",
+          "implementation": "existing",
+          "rewardImplemented": true
         }
       ],
       "contexts": [
@@ -1546,7 +1585,7 @@
           ]
         }
       ],
-      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+      "storyNotice": "三段居民任務依序開放；每段五題至少四題獨立正確，最後還要通過守衛戰，才會獲得元素印記。"
     },
     {
       "id": "star",
@@ -1554,19 +1593,29 @@
       "element": "星",
       "icon": "🎨",
       "tone": "#8a6fa0",
-      "maps": [],
+      "maps": [
+        {
+          "id": "star",
+          "label": "星之文化樂園"
+        }
+      ],
       "tagline": "從興趣出發，用英文分享自己的生活。",
       "story": "一年一度的星光文化日需要居民一起完成。旅人聽大家介紹興趣，協調邀約與場地，最後把九地的故事帶回共鳴燈塔。",
       "npcs": [
         {
           "name": "Vega",
-          "role": "文化日嚮導",
-          "status": "planned"
+          "role": "興趣嚮導",
+          "status": "existing"
         },
         {
           "name": "Ari",
-          "role": "星光廣場的活動夥伴",
-          "status": "planned"
+          "role": "活動夥伴",
+          "status": "existing"
+        },
+        {
+          "name": "Nox",
+          "role": "文化日召集人",
+          "status": "existing"
         }
       ],
       "learningGoals": [
@@ -1578,26 +1627,29 @@
         {
           "id": "star-interests",
           "title": "找到共同的喜歡",
-          "plot": "和居民聊興趣，收集文化日的活動點子。",
-          "learningGoal": "喜好、頻率與休閒活動。",
-          "rewardIdea": "文化手帳的活動貼紙",
-          "implementation": "planned"
+          "plot": "Vega 正在收集文化日的活動點子。聊聊興趣、天氣與休閒，找到共同的話題。",
+          "learningGoal": "天氣與興趣：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +24，補給道具",
+          "implementation": "existing",
+          "rewardImplemented": true
         },
         {
           "id": "star-invitation",
           "title": "把邀請送到手上",
-          "plot": "邀請朋友參與並協調時間與集合地點。",
-          "learningGoal": "邀約、時間、地點與合適的回應。",
-          "rewardIdea": "星光廣場的活動布置",
-          "implementation": "planned"
+          "plot": "Ari 要邀朋友來文化日。確認時間、活動與地點，讓邀請真的能成行。",
+          "learningGoal": "邀約：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +28，補給道具",
+          "implementation": "existing",
+          "rewardImplemented": true
         },
         {
           "id": "star-festival",
-          "title": "九地的聲音一起亮起",
-          "plot": "用旅途學到的英文介紹一件喜歡的事，和旅伴回顧這段路。",
-          "learningGoal": "結合描述、敘事與交流。",
-          "rewardIdea": "星之印記與共鳴燈塔的結局篇章",
-          "implementation": "planned"
+          "title": "星光下的文化日",
+          "plot": "Nox 邀你練習聚會裡的禮貌交流，再和星穹守衛一起點亮文化日舞台。",
+          "learningGoal": "聚會派對：讀懂情境，選擇正確英文表達。",
+          "rewardIdea": "XP +45，補給道具、星之印記",
+          "implementation": "existing",
+          "rewardImplemented": true
         }
       ],
       "contexts": [
@@ -1731,7 +1783,7 @@
           ]
         }
       ],
-      "storyNotice": "篇章獎勵為世界主線構想；實際領取與通關以遊戲任務紀錄為準。"
+      "storyNotice": "三段居民任務依序開放；每段五題至少四題獨立正確，最後還要通過守衛戰，才會獲得元素印記。"
     }
   ]
 }

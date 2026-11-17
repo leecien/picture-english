@@ -161,7 +161,7 @@ const Atlas = (() => {
       <section class="atlas-section"><h2>居民與故事篇章</h2><div class="atlas-people">${region.npcs.map((n) => `<span><strong>${esc(n.name)}</strong><small>${esc(n.role)}${n.status === "planned" ? "・角色規劃中" : ""}</small></span>`).join("")}</div><ol class="atlas-stories">${region.stages.map((stage) => {
         const complete = stage.implementation !== "planned" && state.completed.has(stage.id);
         const label = complete ? "已完成" : stage.implementation === "planned" ? "故事藍圖" : stage.implementation === "partial" ? "部分內容已接入" : "已有主線任務";
-        return `<li><span class="atlas-stage-label">${esc(label)}</span><h3>${esc(stage.title)}</h3><p>${esc(stage.plot)}</p><p class="atlas-story-goal">練習：${esc(stage.learningGoal)}</p><small>獎勵構想：${esc(stage.rewardIdea)}</small></li>`;
+        return `<li><span class="atlas-stage-label">${esc(label)}</span><h3>${esc(stage.title)}</h3><p>${esc(stage.plot)}</p><p class="atlas-story-goal">練習：${esc(stage.learningGoal)}</p><small>${stage.rewardImplemented ? "任務獎勵" : "獎勵構想"}：${esc(stage.rewardIdea)}</small></li>`;
       }).join("")}</ol><p class="atlas-note">${esc(region.storyNotice)}</p></section>`;
     renderPractice(region);
   }
