@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "scenes": {
+    "restaurant": [
+      {
+        "situation": "口渴時向服務生要水",
+        "en": "Could I have a glass of water?",
+        "zh": "可以給我一杯水嗎？",
+        "word": "glass"
+      },
+      {
+        "situation": "午餐端上桌，準備用餐",
+        "en": "Please put the salad on my plate.",
+        "zh": "請把沙拉放在我的餐盤上。",
+        "word": "plate"
+      },
+      {
+        "situation": "喝湯時需要餐具",
+        "en": "I need a spoon for my soup.",
+        "zh": "我喝湯需要一支湯匙。",
+        "word": "spoon"
+      },
+      {
+        "situation": "想點一份熱湯",
+        "en": "I'd like a bowl of soup.",
+        "zh": "我想要一碗湯。",
+        "word": "bowl"
+      },
+      {
+        "situation": "坐下後準備點餐",
+        "en": "May I see the menu, please?",
+        "zh": "可以讓我看一下菜單嗎？",
+        "word": "menu"
+      },
+      {
+        "situation": "吃飯前把手機收好",
+        "en": "I'll put my phone in my bag.",
+        "zh": "我要把手機放進包包裡。",
+        "word": "phone"
+      }
+    ],
+    "supermarket": [
+      {
+        "situation": "替早餐挑一份水果",
+        "en": "I'll buy an apple for breakfast.",
+        "zh": "我要買一顆蘋果當早餐。",
+        "word": "apple"
+      },
+      {
+        "situation": "想帶方便吃的水果出門",
+        "en": "I'd like a banana for my snack.",
+        "zh": "我想要一根香蕉當點心。",
+        "word": "banana"
+      },
+      {
+        "situation": "準備做一份生菜沙拉",
+        "en": "We need a tomato for the salad.",
+        "zh": "我們做沙拉需要一顆番茄。",
+        "word": "tomato"
+      },
+      {
+        "situation": "明早要做三明治",
+        "en": "Let's buy some bread for sandwiches.",
+        "zh": "我們買些麵包來做三明治吧。",
+        "word": "bread"
+      },
+      {
+        "situation": "早餐想喝一杯牛奶",
+        "en": "We need some milk for breakfast.",
+        "zh": "我們早餐需要一些牛奶。",
+        "word": "milk"
+      },
+      {
+        "situation": "買的東西拿不下了",
+        "en": "Put the fruit in the basket.",
+        "zh": "把水果放進購物籃裡。",
+        "word": "basket"
+      }
+    ],
+    "bedroom": [
+      {
+        "situation": "鬧鐘響了，準備起床",
+        "en": "It's time to get out of bed.",
+        "zh": "該起床離開床鋪了。",
+        "word": "bed"
+      },
+      {
+        "situation": "睡醒後整理寢具",
+        "en": "Put the pillow at the head of the bed.",
+        "zh": "把枕頭放在床頭。",
+        "word": "pillow"
+      },
+      {
+        "situation": "晚上覺得有點冷",
+        "en": "Please give me another blanket.",
+        "zh": "請再給我一條毯子。",
+        "word": "blanket"
+      },
+      {
+        "situation": "睡前想看幾頁書",
+        "en": "Turn on the lamp so I can read.",
+        "zh": "打開檯燈，讓我看書。",
+        "word": "lamp"
+      },
+      {
+        "situation": "準備出門，確認時間",
+        "en": "Look at the clock. Are we late?",
+        "zh": "看看時鐘，我們遲到了嗎？",
+        "word": "clock"
+      },
+      {
+        "situation": "挑選今天要穿的衣服",
+        "en": "My jacket is in the wardrobe.",
+        "zh": "我的外套在衣櫃裡。",
+        "word": "wardrobe"
+      }
+    ],
+    "bathroom": [
+      {
+        "situation": "吃早餐前先洗手",
+        "en": "Wash your hands at the sink.",
+        "zh": "在洗手台洗手。",
+        "word": "sink"
+      },
+      {
+        "situation": "出門前整理頭髮",
+        "en": "Look in the mirror and brush your hair.",
+        "zh": "照照鏡子，梳一梳頭髮。",
+        "word": "mirror"
+      },
+      {
+        "situation": "洗完臉準備擦乾",
+        "en": "Dry your face with a towel.",
+        "zh": "用毛巾擦乾臉。",
+        "word": "towel"
+      },
+      {
+        "situation": "吃完早餐要刷牙",
+        "en": "Put some toothpaste on your toothbrush.",
+        "zh": "在牙刷上擠一些牙膏。",
+        "word": "toothbrush"
+      },
+      {
+        "situation": "洗手時要搓出泡泡",
+        "en": "Use soap to wash your hands.",
+        "zh": "用肥皂洗手。",
+        "word": "soap"
+      },
+      {
+        "situation": "離開廁所前確認沖水",
+        "en": "Please flush the toilet.",
+        "zh": "請沖馬桶。",
+        "word": "toilet"
+      }
+    ],
+    "office": [
+      {
+        "situation": "抵達辦公室開始工作",
+        "en": "I use my laptop to check my email.",
+        "zh": "我用筆記型電腦查看電子郵件。",
+        "word": "laptop"
+      },
+      {
+        "situation": "準備輸入一份報告",
+        "en": "Type your name on the keyboard.",
+        "zh": "用鍵盤輸入你的名字。",
+        "word": "keyboard"
+      },
+      {
+        "situation": "想打開螢幕上的檔案",
+        "en": "Use the mouse to open the file.",
+        "zh": "用滑鼠開啟檔案。",
+        "word": "mouse"
+      },
+      {
+        "situation": "開會時記下重要事項",
+        "en": "Write the meeting time in your notebook.",
+        "zh": "把會議時間寫在筆記本裡。",
+        "word": "notebook"
+      },
+      {
+        "situation": "收到一份需要簽名的表格",
+        "en": "Can I borrow your pen to sign this form?",
+        "zh": "我可以借你的原子筆簽這份表格嗎？",
+        "word": "pen"
+      },
+      {
+        "situation": "工作前先泡杯咖啡",
+        "en": "My coffee is in the mug.",
+        "zh": "我的咖啡在馬克杯裡。",
+        "word": "mug"
+      }
+    ],
+    "airport": [
+      {
+        "situation": "到報到櫃檯托運行李",
+        "en": "I'd like to check in this suitcase.",
+        "zh": "我想要托運這個行李箱。",
+        "word": "suitcase"
+      },
+      {
+        "situation": "上機時帶著隨身物品",
+        "en": "My backpack fits under the seat.",
+        "zh": "我的後背包放得進座位下方。",
+        "word": "backpack"
+      },
+      {
+        "situation": "向櫃檯出示身分證件",
+        "en": "Here is my passport.",
+        "zh": "這是我的護照。",
+        "word": "passport"
+      },
+      {
+        "situation": "確認機票上的日期",
+        "en": "Please check the date on your ticket.",
+        "zh": "請確認機票上的日期。",
+        "word": "ticket"
+      },
+      {
+        "situation": "等待登機時聯絡家人",
+        "en": "I'll call my family on my phone.",
+        "zh": "我要用手機打電話給家人。",
+        "word": "phone"
+      },
+      {
+        "situation": "找到登機門後坐下休息",
+        "en": "Is this seat taken?",
+        "zh": "這個座位有人坐嗎？",
+        "word": "seat"
+      }
+    ],
+    "kitchen": [
+      {
+        "situation": "買菜回家後收好食物",
+        "en": "Put the milk in the refrigerator.",
+        "zh": "把牛奶放進冰箱裡。",
+        "word": "refrigerator"
+      },
+      {
+        "situation": "準備開火煮晚餐",
+        "en": "Turn off the stove after cooking.",
+        "zh": "煮完飯後關掉瓦斯爐。",
+        "word": "stove"
+      },
+      {
+        "situation": "想把午餐重新加熱",
+        "en": "Heat the rice in the microwave.",
+        "zh": "用微波爐加熱白飯。",
+        "word": "microwave"
+      },
+      {
+        "situation": "下午想泡一壺茶",
+        "en": "Fill the kettle with water.",
+        "zh": "把熱水壺裝滿水。",
+        "word": "kettle"
+      },
+      {
+        "situation": "早餐想煎一顆蛋",
+        "en": "Cook the egg in the pan.",
+        "zh": "用平底鍋煎蛋。",
+        "word": "pan"
+      },
+      {
+        "situation": "晚餐準備煮一鍋湯",
+        "en": "Put the vegetables in the pot.",
+        "zh": "把蔬菜放進鍋子裡。",
+        "word": "pot"
+      }
+    ],
+    "laundry": [
+      {
+        "situation": "洗衣前整理髒衣服",
+        "en": "This shirt needs washing.",
+        "zh": "這件襯衫需要洗了。",
+        "word": "shirt"
+      },
+      {
+        "situation": "洗好的衣服準備晾乾",
+        "en": "Put the shirt on a hanger.",
+        "zh": "把襯衫掛在衣架上。",
+        "word": "hanger"
+      },
+      {
+        "situation": "整理衣物時少了一隻襪子",
+        "en": "I can't find my other sock.",
+        "zh": "我找不到另一隻襪子。",
+        "word": "sock"
+      },
+      {
+        "situation": "風太大，怕衣服被吹走",
+        "en": "Use a clothespin to hold the towel.",
+        "zh": "用曬衣夾夾住毛巾。",
+        "word": "clothespin"
+      },
+      {
+        "situation": "襯衫皺了，準備整理",
+        "en": "Use the iron to smooth the shirt.",
+        "zh": "用熨斗把襯衫燙平。",
+        "word": "iron"
+      },
+      {
+        "situation": "把髒衣服放進洗衣機",
+        "en": "Add a little detergent before washing.",
+        "zh": "洗衣前加入一點洗衣精。",
+        "word": "detergent"
+      }
+    ],
+    "living-room": [
+      {
+        "situation": "忙了一天，坐下休息",
+        "en": "Let's sit on the sofa.",
+        "zh": "我們坐在沙發上吧。",
+        "word": "sofa"
+      },
+      {
+        "situation": "坐著時想讓背部舒服一點",
+        "en": "Put a cushion behind your back.",
+        "zh": "在背後放一個靠墊。",
+        "word": "cushion"
+      },
+      {
+        "situation": "出門前整理客廳",
+        "en": "The rug needs cleaning.",
+        "zh": "小地毯需要清潔了。",
+        "word": "rug"
+      },
+      {
+        "situation": "晚餐後想看一部電影",
+        "en": "Let's watch a movie on the television.",
+        "zh": "我們用電視看一部電影吧。",
+        "word": "television"
+      },
+      {
+        "situation": "節目太大聲，想調小音量",
+        "en": "Pass me the remote, please.",
+        "zh": "請把遙控器遞給我。",
+        "word": "remote"
+      },
+      {
+        "situation": "讀完書後放回原處",
+        "en": "Put the book back on the shelf.",
+        "zh": "把書放回層架上。",
+        "word": "shelf"
+      }
+    ],
+    "street": [
+      {
+        "situation": "準備開車出門",
+        "en": "Our car is parked outside.",
+        "zh": "我們的汽車停在外面。",
+        "word": "car"
+      },
+      {
+        "situation": "到站牌等車",
+        "en": "Which bus goes to the station?",
+        "zh": "哪班公車會到車站？",
+        "word": "bus"
+      },
+      {
+        "situation": "今天想騎自行車通勤",
+        "en": "I ride my bicycle to work.",
+        "zh": "我騎腳踏車上班。",
+        "word": "bicycle"
+      },
+      {
+        "situation": "走到路口準備過馬路",
+        "en": "Use the crosswalk to cross the street.",
+        "zh": "利用行人穿越道過馬路。",
+        "word": "crosswalk"
+      },
+      {
+        "situation": "騎車前做好準備",
+        "en": "Put on your helmet before you ride.",
+        "zh": "騎車前戴上安全帽。",
+        "word": "helmet"
+      },
+      {
+        "situation": "想把速克達停在合法位置",
+        "en": "Where can I park my scooter?",
+        "zh": "我的速克達可以停在哪裡？",
+        "word": "scooter"
+      }
+    ],
+    "park": [
+      {
+        "situation": "散步時想找陰涼處",
+        "en": "Let's rest under that tree.",
+        "zh": "我們到那棵樹下休息吧。",
+        "word": "tree"
+      },
+      {
+        "situation": "看到花圃裡開著花",
+        "en": "This flower smells lovely.",
+        "zh": "這朵花聞起來很香。",
+        "word": "flower"
+      },
+      {
+        "situation": "走累了想坐一下",
+        "en": "Let's sit on the bench.",
+        "zh": "我們坐在長椅上吧。",
+        "word": "bench"
+      },
+      {
+        "situation": "想在公園裡約見朋友",
+        "en": "Meet me by the fountain.",
+        "zh": "在噴水池旁邊跟我見面。",
+        "word": "fountain"
+      },
+      {
+        "situation": "牽著動物夥伴散步",
+        "en": "Please keep your dog on a leash.",
+        "zh": "請替你的狗繫上牽繩。",
+        "word": "dog"
+      },
+      {
+        "situation": "風和日麗，適合戶外活動",
+        "en": "We can fly a kite today.",
+        "zh": "我們今天可以放風箏。",
+        "word": "kite"
+      }
+    ],
+    "clinic": [
+      {
+        "situation": "身體不舒服，到診所報到",
+        "en": "I'd like to see a doctor.",
+        "zh": "我想要看醫師。",
+        "word": "doctor"
+      },
+      {
+        "situation": "輪到量體溫，向護理師求助",
+        "en": "The nurse will help you.",
+        "zh": "護理師會協助你。",
+        "word": "nurse"
+      },
+      {
+        "situation": "咳嗽時進入候診區",
+        "en": "Please wear a mask in the clinic.",
+        "zh": "在診所內請戴口罩。",
+        "word": "mask"
+      },
+      {
+        "situation": "懷疑發燒，準備量體溫",
+        "en": "Use the thermometer to check your temperature.",
+        "zh": "用體溫計測量你的體溫。",
+        "word": "thermometer"
+      },
+      {
+        "situation": "手指有小傷口，需要包紮",
+        "en": "Put a bandage on the cut.",
+        "zh": "在傷口上貼敷料貼布。",
+        "word": "bandage"
+      },
+      {
+        "situation": "看診後確認用藥方式",
+        "en": "Take this medicine after meals.",
+        "zh": "飯後服用這個藥。",
+        "word": "medicine"
+      }
+    ]
+  }
+}

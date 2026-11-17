@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-asset-root="../../" data-processed-root="processed-audio/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AudioPractice 音訊與跟讀 demo</title>
+<link rel="stylesheet" href="audio-practice.css">
+<script src="audio-practice.js"></script>
+</head>
+<body class="ap-root" style="margin:0">
+<main class="ap-wrap">
+  <h1>🎧 音訊與跟讀模組 demo</h1>
+  <p class="ap-sub">英語小旅人 · B 組 AudioPractice <span id="ver"></span> · 基準 b646116 · 獨立頁面，不讀寫遊戲存檔</p>
+
+  <!-- 0. 環境 -->
+  <section class="ap-card" aria-labelledby="h-env">
+    <h2 id="h-env">0. 這台裝置能做什麼</h2>
+    <ul id="env" class="ap-fine" style="margin:0;padding-left:18px"></ul>
+    <div class="ap-row">
+      <button type="button" id="perm-btn">查詢麥克風權限</button>
+      <span id="perm" class="ap-fine"></span>
+    </div>
+    <div id="busy" class="ap-fine" aria-live="polite"></div>
+  </section>
+
+  <!-- 1. 示範播放 -->
+  <section class="ap-card" aria-labelledby="h-play">
+    <h2 id="h-play">1. 聽示範：播放、停止、重播</h2>
+    <div class="ap-row">
+      <label for="item" class="ap-fine">題目</label>
+      <select id="item" style="flex:1 1 220px"></select>
+    </div>
+    <div class="ap-target" id="target-en"></div>
+    <div class="ap-zh" id="target-zh"></div>
+    <div class="ap-row">
+      <label class="ap-fine"><input type="radio" name="src" value="processed" checked> 正規化音檔</label>
+      <label class="ap-fine"><input type="radio" name="src" value="original"> 原始音檔</label>
+      <label class="ap-fine"><input type="radio" name="src" value="tts"> 裝置朗讀</label>
+      <select id="rate" aria-label="播放速度"><option value="1">1×</option><option value="0.8">0.8×</option><option value="0.65">0.65×</option></select>
+    </div>
+    <div class="ap-row">
+      <button type="button" class="ap-primary" id="play">▶ 播放</button>
+      <button type="button" id="stop">■ 停止</button>
+      <button type="button" id="replay">↻ 重播</button>
+      <button type="button" id="spam" title="0.6 秒內連點 5 次，檢查只有最後一次在播">連點測試 ×5</button>
+    </div>
+    <ol class="ap-log" id="play-log" aria-label="播放紀錄"></ol>
+  </section>
+
+  <!-- 2. 錄音回放 -->
+  <section class="ap-card" aria-labelledby="h-rec">
+    <h2 id="h-rec">2. 錄音、播放自己的錄音、重錄</h2>
+    <div class="ap-row">
+      <button type="button" class="ap-rec" id="rec" aria-pressed="false">● 開始錄音</button>
+      <div class="ap-meter" aria-hidden="true"><i id="rec-meter"></i></div>
+      <span id="rec-time" class="ap-fine">0.0 秒</span>
+    </div>
+    <div class="ap-status" id="rec-status" role="status"></div>
+    <div class="ap-row">
+      <label class="ap-fine"><input type="checkbox" id="rec-norm" checked> 回放音量統一（自動調整自己錄音的大小）</label>
+    </div>
+    <div class="ap-row">
+      <button type="button" id="rec-play" disabled>▶ 播放我的錄音</button>
+      <button type="button" id="rec-again" disabled>🔁 重錄</button>
+    </div>
+    <div id="rec-info" class="ap-fine"></div>
+    <details class="ap-fine" id="file-fallback">
+      <summary>不能直接收音？用手機錄音 App 錄好再選檔</summary>
+      <p>在不允許麥克風的環境（例如 claude.ai 內嵌預覽）仍可回放自己的聲音：</p>
+      <input class="ap-file" type="file" id="rec-file" accept="audio/*" capture>
+    </details>
+  </section>
+
+  <!-- 3. 跟讀流程 -->
+  <section class="ap-card" aria-labelledby="h-shadow">
+    <h2 id="h-shadow">3. 跟讀：聽示範 → 跟讀 → 逐字回饋 → 獨立朗讀</h2>
+    <ol class="ap-steps" id="steps">
+      <li data-s="1">① 聽示範</li><li data-s="2">② 跟讀</li><li data-s="3">③ 回饋</li><li data-s="4">④ 獨立朗讀</li>
+    </ol>
+    <div class="ap-target" id="sh-target"></div>
+    <div class="ap-zh" id="sh-zh"></div>
+    <div class="ap-status" id="sh-status" role="status" aria-live="polite"></div>
+    <div class="ap-words" id="sh-words" aria-label="逐字回饋"></div>
+    <div class="ap-fine" id="sh-heard"></div>
+    <div class="ap-row" id="sh-actions"></div>
+    <div class="ap-legend" aria-label="圖例">
+      <span class="ap-w-heard">✓ 聽到</span><span class="ap-w-missing">漏 漏字</span><span class="ap-w-different">≠ 不同詞</span><span class="ap-w-extra">＋ 多說</span><span class="ap-w-unsure">? 不確定</span>
+    </div>
+    <p class="ap-fine">回饋只表示「語音辨識器聽到哪些字」，不是 KK 音素或口音評分。權限、沒收到聲音、辨識服務失敗會另外說明，不算答錯。</p>
+  </section>
+
+  <!-- 4. 聆聽模式 -->
+  <section class="ap-card" aria-labelledby="h-listen">
+    <h2 id="h-listen">4. 聆聽模式 <span class="ap-tag">只播放 · 不收音 · 不計分</span></h2>
+    <div class="ap-row">
+      <button type="button" class="ap-primary" id="lm-start">▶ 連續播放全部題目</button>
+      <button type="button" id="lm-stop">■ 停止</button>
+    </div>
+    <div class="ap-status" id="lm-status"></div>
+  </section>
+
+  <!-- 5. 響度 -->
+  <section class="ap-card" aria-labelledby="h-loud">
+    <h2 id="h-loud">5. 預錄素材響度：處理前後</h2>
+    <p class="ap-fine">連續播放「中文提示 → 英文句子 → 英文單字」，比較原始檔和正規化檔的音量落差。</p>
+    <div class="ap-row">
+      <button type="button" id="ab-orig">▶ 原始檔連播</button>
+      <button type="button" id="ab-proc" class="ap-primary">▶ 正規化檔連播</button>
+      <button type="button" id="ab-stop">■ 停止</button>
+    </div>
+    <div class="ap-status" id="ab-status"></div>
+    <table id="loud-table"></table>
+    <p class="ap-fine">裝置朗讀（TTS）的音量由手機系統與聲音引擎決定，網頁無法事先量測或離線正規化；不同手機、不同聲音的大小會不一樣。</p>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const AP = window.AudioPractice;
+  const $ = (id) => document.getElementById(id);
+  const ROOT = document.documentElement.dataset.assetRoot || "";
+  const PROC = document.documentElement.dataset.processedRoot || "processed-audio/";
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+  /* 題目：檔案路徑與根遊戲 data/*.json 相同（assets/voice/...）；正規化版在 processed-audio/ 下同名。 */
+  const ITEMS = [
+    { en: "apple", zh: "蘋果", f: "words/apple.mp3", zf: "zh/words/apple.mp3" },
+    { en: "banana", zh: "香蕉", f: "words/banana.mp3", zf: "zh/words/banana.mp3" },
+    { en: "squirrel", zh: "松鼠", f: "words/squirrel.mp3", zf: "zh/words/squirrel.mp3" },
+    { en: "The boy kicks the ball.", zh: "男孩踢球。", f: "sentences/the-boy-kicks-the-ball.mp3", zf: "zh/sentences/the-boy-kicks-the-ball.mp3" },
+    { en: "My phone battery is almost empty.", zh: "我的手機快沒電了。", f: "sentences/my-phone-battery-is-almost-empty.mp3", zf: "zh/sentences/my-phone-battery-is-almost-empty.mp3" },
+    { en: "I have lived here since 2020.", zh: "我從 2020 年就住在這裡。", f: "sentences/i-have-lived-here-since-2020.mp3", zf: "zh/sentences/i-have-lived-here-since-2020.mp3" },
+    { en: "Could you tell me where the station is?", zh: "你可以告訴我車站在哪裡嗎？", f: "sentences/could-you-tell-me-where-the-station-is.mp3", zf: "zh/sentences/could-you-tell-me-where-the-station-is.mp3" },
+    { en: "Where is the nearest bus stop?", zh: "最近的公車站在哪裡？（無預錄檔，只能用裝置朗讀）", f: "", zf: "" },
+  ];
+  const url = (rel, kind) => (!rel ? "" : kind === "original" ? ROOT + "assets/voice/" + rel : PROC + rel);
+  const srcKind = () => document.querySelector('input[name="src"]:checked').value;
+  const rate = () => +$("rate").value;
+  const item = () => ITEMS[+$("item").value];
+  function playOpts(it, kind) {
+    kind = kind || srcKind();
+    return { text: it.en, url: kind === "tts" ? "" : url(it.f, kind), lang: "en-US", rate: rate() };
+  }
+
+  /* ---------- 0. 環境 ---------- */
+  $("ver").textContent = "v" + AP.VERSION;
+  function paintEnv() {
+    const c = AP.capabilities();
+    const yes = (b) => (b ? "✅" : "❌");
+    const recog = { browser: "✅ 瀏覽器語音辨識", "claude-dictation": "✅ Claude 聽寫（claude.ai 檢視器）", "browser-maybe-blocked": "⚠️ 有瀏覽器辨識，但在內嵌預覽中可能被擋", none: "❌ 不支援（仍可示範、錄音、回放）" }[c.recognition];
+    $("env").innerHTML = [
+      `安全環境（HTTPS／localhost）：${yes(c.secure)}`,
+      `播放預錄音檔：${yes(c.playback)}　裝置朗讀：${yes(c.tts)}`,
+      `直接錄音：${yes(c.recording)}${c.recordingMime ? "（" + esc(c.recordingMime) + "）" : ""}${c.inClaudeViewer ? "　⚠️ claude.ai 內嵌預覽不允許麥克風，請用下方「選檔」替代" : ""}`,
+      `語音辨識：${recog}`,
+      `裝置類型：${{ ios: "iPhone／iPad", android: "Android", desktop: "電腦" }[c.platform]}　跟讀時同時錄音：${c.shadowRecord ? "✅" : "⚠️ 這台裝置不能同時辨識和錄音，跟讀只做辨識 <button type=\"button\" id=\"conflict-reset\">重新偵測</button>"}`,
+    ].map((x) => `<li>${x}</li>`).join("");
+  }
+  document.addEventListener("click", (e) => {
+    if (e.target && e.target.id === "conflict-reset") {
+      AP.resetRecordConflict();
+      paintEnv();
+    }
+  });
+  paintEnv();
+  setTimeout(paintEnv, 1500); // claude 聽寫是非同步取得
+  $("perm-btn").onclick = async () => {
+    const s = await AP.permissionState();
+    $("perm").textContent = { granted: "✅ 已允許", denied: "❌ 已拒絕：請到網址列左邊的網站設定改成允許", prompt: "❔ 尚未決定：開始錄音時瀏覽器會詢問", unknown: "這個瀏覽器不提供權限查詢，以實際按下錄音為準" }[s];
+  };
+  AP.onBusy((busy, s) => {
+    $("busy").textContent = s.busy ? `忙碌中：${{ play: "播放示範", record: "錄音", listen: "語音辨識" }[s.kind]}（遊戲整合時，這個訊號用來暫停倒數）` : "目前空閒";
+  });
+
+  /* ---------- 1. 播放 ---------- */
+  const sel = $("item");
+  ITEMS.forEach((it, i) => sel.insertAdjacentHTML("beforeend", `<option value="${i}">${esc(it.en)}</option>`));
+  const log = (ol, t) => {
+    const li = document.createElement("li");
+    li.textContent = new Date().toLocaleTimeString() + " " + t;
+    ol.prepend(li);
+    while (ol.children.length > 30) ol.lastChild.remove();
+  };
+  function paintItem() {
+    const it = item();
+    $("target-en").textContent = it.en;
+    $("target-zh").textContent = it.zh;
+    shadowReset();
+  }
+  sel.onchange = paintItem;
+  let n = 0;
+  function doPlay(tag) {
+    const k = ++n;
+    const it = item();
+    log($("play-log"), `#${k} ${tag || "播放"}：${it.en}`);
+    AP.play(playOpts(it)).then((r) => log($("play-log"), `#${k} → ${r.status}${r.source ? "（" + (r.source === "tts" ? "裝置朗讀" : "音檔") + "）" : ""}${r.reason ? "：" + (r.message || r.reason) : ""}`));
+  }
+  $("play").onclick = () => doPlay("播放");
+  $("replay").onclick = () => doPlay("重播");
+  $("stop").onclick = () => AP.stop();
+  $("spam").onclick = () => {
+    for (let i = 0; i < 5; i++) setTimeout(() => doPlay("連點 " + (i + 1)), i * 120);
+  };
+
+  /* ---------- 2. 錄音 ---------- */
+  const recBtn = $("rec");
+  let recTimer = 0, recT0 = 0, manualStop = false;
+  function recStatus(text, tone) {
+    const el = $("rec-status");
+    el.textContent = text || "";
+    el.dataset.tone = tone || "";
+  }
+  function showRecording(r) {
+    $("rec-play").disabled = !r || !r.url;
+    $("rec-again").disabled = !r;
+    if (!r || !r.url) return ($("rec-info").textContent = "");
+    const kb = (r.size / 1024).toFixed(1);
+    $("rec-info").textContent = `${r.fromFile ? "選取的檔案" : "錄音"}：${r.durationMs != null ? (r.durationMs / 1000).toFixed(1) + " 秒，" : ""}${kb} KB，${r.mimeType}${r.peakDb != null ? `，峰值 ${r.peakDb} dBFS，說話段 ${r.activeDb != null ? r.activeDb : "–"} dBFS（${r.levelMethod === "decoded" ? "錄完後解碼量測" : "即時量測"}）` : r.levelMeasured === false && !r.fromFile ? "，音量無法量測" : ""}${r.playbackGainDb ? `，回放調整 ${r.playbackGainDb > 0 ? "+" : ""}${r.playbackGainDb} dB` : ""}${r.playable === false ? "（⚠️ 這個瀏覽器可能無法播放此格式）" : ""}`;
+  }
+  async function toggleRec() {
+    if (recBtn.getAttribute("aria-pressed") === "true") {
+      clearInterval(recTimer);
+      recStatus("處理錄音中…");
+      manualStop = true;
+      const r = await AP.stopRecording();
+      manualStop = false;
+      recBtn.setAttribute("aria-pressed", "false");
+      recBtn.textContent = "● 開始錄音";
+      $("rec-meter").style.width = "0";
+      if (r.ok) recStatus(`✅ 錄好了（${(r.durationMs / 1000).toFixed(1)} 秒）。按「播放我的錄音」聽聽看。`, "ok");
+      else recStatus("⚠️ " + r.message, "warn");
+      showRecording(r.url ? r : AP.lastRecording());
+      return;
+    }
+    recStatus("正在請求麥克風…");
+    const s = await AP.startRecording({ maxMs: 20000, onLevel: (v) => ($("rec-meter").style.width = Math.round(v * 100) + "%") });
+    if (!s.ok) {
+      recStatus("⚠️ " + s.message, "warn");
+      if (s.error === "env-blocked" || s.error === "unsupported-recording") $("file-fallback").open = true;
+      return;
+    }
+    recBtn.setAttribute("aria-pressed", "true");
+    recBtn.textContent = "■ 停止錄音";
+    recT0 = Date.now();
+    recStatus(`🔴 錄音中（${s.mimeType || "預設格式"}）— 請說話，說完按「停止錄音」。最長 20 秒。`, "rec");
+    recTimer = setInterval(() => {
+      $("rec-time").textContent = ((Date.now() - recT0) / 1000).toFixed(1) + " 秒";
+    }, 100);
+  }
+  recBtn.onclick = toggleRec;
+  AP.onBusy((busy, s) => {
+    if (!s.recording && !manualStop && recBtn.getAttribute("aria-pressed") === "true") {
+      // 被自動停止（逾時、切背景、裝置拔除）
+      clearInterval(recTimer);
+      recBtn.setAttribute("aria-pressed", "false");
+      recBtn.textContent = "● 開始錄音";
+      $("rec-meter").style.width = "0";
+      const r = AP.lastRecording();
+      showRecording(r);
+      recStatus(r ? "錄音已自動停止（到達最長時間或切到背景）。" : "錄音已中止。", "warn");
+    }
+  });
+  $("rec-play").onclick = () => {
+    const r = AP.lastRecording();
+    if (r) playMine(r).then((x) => x.status === "error" && recStatus("⚠️ 無法播放這段錄音：" + (x.message || x.reason), "warn"));
+  };
+  $("rec-again").onclick = () => {
+    AP.stop();
+    recStatus("重錄：按「開始錄音」再錄一次，舊錄音會被取代。");
+    toggleRec();
+  };
+  $("rec-file").onchange = (e) => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    const r = AP.useFile(f);
+    showRecording(r);
+    recStatus("✅ 已載入你選的錄音檔，可以播放。", "ok");
+  };
+
+  // 播放自己的錄音：帶入錄音長度（webm 常沒有長度資訊）與回放增益
+  const playMine = (r) => AP.play({ url: r.url, rate: 1, durationMs: r.durationMs || undefined, gainDb: $("rec-norm").checked ? r.playbackGainDb || 0 : 0 });
+
+  /* ---------- 3. 跟讀 ---------- */
+  const SH = { step: 1, phase: "idle", tries: 0, rec: null, passed: false };
+  function steps(cur, done) {
+    document.querySelectorAll("#steps li").forEach((li) => {
+      const s = +li.dataset.s;
+      if (s === cur) li.setAttribute("aria-current", "step");
+      else li.removeAttribute("aria-current");
+      li.classList.toggle("ap-done", done.includes(s));
+    });
+  }
+  function shStatus(text, tone) {
+    const el = $("sh-status");
+    el.textContent = text || "";
+    el.dataset.tone = tone || "";
+  }
+  function actions(list) {
+    const box = $("sh-actions");
+    box.innerHTML = "";
+    list.forEach(([label, fn, primary, disabled]) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = label;
+      if (primary) b.className = "ap-primary";
+      b.disabled = !!disabled;
+      b.onclick = fn;
+      box.appendChild(b);
+    });
+  }
+  function words(cmp) {
+    $("sh-words").innerHTML = cmp
+      ? cmp.items.map((x) => `<span class="ap-w ap-w-${x.state}"><b>${esc(x.word)}</b><small>${x.mark ? esc(x.mark) + " " : ""}${esc(x.label)}${x.state === "different" && x.heard ? "：聽成 " + esc(x.heard) : ""}</small></span>`).join("")
+      : "";
+    $("sh-heard").textContent = cmp && cmp.basis ? "辨識器聽到：「" + cmp.basis + "」" : "";
+  }
+  function shadowReset() {
+    const it = item();
+    Object.assign(SH, { step: 1, phase: "idle", tries: 0, passed: false });
+    $("sh-target").textContent = it.en;
+    $("sh-zh").textContent = it.zh;
+    words(null);
+    steps(1, []);
+    shStatus("先聽一次示範。示範播完後才會開始收音。");
+    actions([["▶ 聽示範", shDemo, true]]);
+  }
+  async function shDemo() {
+    steps(1, []);
+    words(null);
+    shStatus("🔊 播放示範中…");
+    actions([["■ 停止", () => AP.stop()]]);
+    const r = await AP.play(playOpts(item()));
+    if (r.status === "ended") {
+      steps(2, [1]);
+      shStatus("換你說：按下「開始跟讀」，照著示範唸一次。");
+      actions([["🎤 開始跟讀", () => shListen("shadow"), true], ["↻ 再聽一次", shDemo]]);
+    } else if (r.status === "cancelled") {
+      shStatus("示範已停止。要跟讀前需要先完整聽一次示範。");
+      actions([["▶ 聽示範", shDemo, true]]);
+    } else {
+      shStatus("⚠️ 示範播放失敗：" + (r.message || r.reason) + "。可改選「裝置朗讀」再試。", "warn");
+      actions([["▶ 再試一次", shDemo, true]]);
+    }
+  }
+  async function shListen(mode) {
+    const it = item();
+    const indep = mode === "independent";
+    steps(indep ? 4 : 2, indep ? [1, 2, 3] : [1]);
+    words(null);
+    shStatus(indep ? "🎤 獨立朗讀：不播示範，請自己唸出上面的句子。說完按「說完了」。" : "🎤 收音中：請跟著唸，說完按「說完了」。", "rec");
+    actions([["✓ 說完了", () => AP.stopListen(), true], ["✕ 取消", () => AP.cancelListen()]]);
+    const maxMs = Math.max(5000, it.en.split(" ").length * 900 + 3000);
+    const res = await AP.listen({ lang: "en-US", maxMs, record: "auto", onPartial: (t) => ($("sh-heard").textContent = "辨識中：" + t) });
+    // 只用這一次跟讀的錄音（不拿第 2 區舊的錄音冒充）
+    SH.rec = !res.recordConflict && !res.recordSkipped && res.recording && !res.recording.silent && res.recording.error !== "no-sound" && res.recording.playable !== false && res.recording.url ? res.recording : null;
+    const recBtns = SH.rec ? [["▶ 播放我的錄音", () => playMine(SH.rec)]] : [];
+    const recProblem = res.recording && !res.recording.ok && res.recording.error && !/^(busy|too-short)$/.test(res.recording.error);
+    const recNote = res.recordSkipped
+      ? "（本次未保留錄音；這台裝置跟讀時只做辨識；可在第 2 區另外錄音回放。）"
+      : res.recordConflict && res.ok
+        ? "（本次未保留錄音；這台裝置不能同時辨識和錄音；下次跟讀只做辨識。）"
+        : recProblem && res.recording.error !== res.error
+          ? `（錄音：${res.recording.message}）`
+          : "";
+    if (res.recordConflict) paintEnv();
+    steps(indep ? 4 : 3, indep ? [1, 2, 3] : [1, 2]);
+    if (!res.ok) {
+      if (res.error === "cancelled") {
+        shStatus("已取消。");
+      } else {
+        // 權限、沒聲音、辨識失敗：說明原因，不當成英文答錯
+        const icon = { "record-conflict": "🔁", "permission-denied": "🔒", "env-blocked": "🔒", "no-sound": "🔇", "no-speech": "🔇", "recognition-failed": "📡", "unsupported-recognition": "ℹ️" }[res.error] || "⚠️";
+        shStatus(`${icon} ${res.message}${recNote}　這次不算對錯。`, "warn");
+      }
+      words(null);
+      actions([[indep ? "🎤 再試一次" : "🎤 再跟讀一次", () => shListen(mode), true], ["↻ 聽示範", shDemo]].concat(recBtns));
+      return;
+    }
+    const cmp = AP.compare(it.en, res, { allowHomophones: true });
+    words(cmp);
+    SH.tries++;
+    if (cmp.status === "match") {
+      if (indep) {
+        steps(0, [1, 2, 3, 4]);
+        shStatus("🎉 獨立朗讀完成：辨識器聽到每個字，順序也正確。" + recNote, "ok");
+        actions([["▶ 再聽示範比較", shDemo], ["🎤 再唸一次", () => shListen("independent")]].concat(recBtns));
+      } else {
+        SH.passed = true;
+        shStatus("✅ 跟讀完成：每個字都聽到了。接著試試不聽示範、自己唸。" + recNote, "ok");
+        actions([["④ 開始獨立朗讀", () => shListen("independent"), true], ["🎤 再跟讀一次", () => shListen("shadow")]].concat(recBtns));
+      }
+    } else if (cmp.status === "uncertain") {
+      shStatus("❔ " + cmp.note + " 請再說一次。" + recNote);
+      actions([["🎤 再試一次", () => shListen(mode), true], ["↻ 聽示範", shDemo]].concat(recBtns));
+    } else {
+      const probs = cmp.items.filter((x) => x.state === "missing" || x.state === "different").map((x) => x.word.replace(/[^A-Za-z0-9'’-]/g, ""));
+      const extra = cmp.items.filter((x) => x.state === "extra").map((x) => x.word);
+      shStatus(`再試一次：${probs.length ? "注意 " + probs.join("、") : ""}${extra.length ? "（多說了 " + extra.join(" ") + "）" : ""}。可以先聽示範再跟讀。${recNote}`);
+      actions([["↻ 聽示範", shDemo, true], ["🎤 " + (indep ? "再唸一次" : "再跟讀一次"), () => shListen(mode)]].concat(recBtns));
+    }
+  }
+
+  /* ---------- 4. 聆聽模式 ---------- */
+  let lmRun = 0;
+  $("lm-start").onclick = async () => {
+    const my = ++lmRun;
+    for (let i = 0; i < ITEMS.length && my === lmRun; i++) {
+      const it = ITEMS[i];
+      $("lm-status").textContent = `🔊 ${i + 1}/${ITEMS.length}：${it.en}（${it.zh}）`;
+      const r = await AP.play(playOpts(it));
+      if (r.status === "cancelled" || my !== lmRun) break;
+      await new Promise((ok) => setTimeout(ok, 700));
+    }
+    if (my === lmRun) $("lm-status").textContent = "聆聽模式結束（沒有收音、沒有計分）。";
+  };
+  $("lm-stop").onclick = () => {
+    lmRun++;
+    AP.stop();
+    $("lm-status").textContent = "已停止。";
+  };
+
+  /* ---------- 5. 響度 A/B ---------- */
+  const AB = ["zh/sentences/the-boy-kicks-the-ball.mp3", "sentences/the-boy-kicks-the-ball.mp3", "zh/words/apple.mp3", "words/apple.mp3", "zh/sentences/could-you-tell-me-where-the-station-is.mp3", "sentences/could-you-tell-me-where-the-station-is.mp3"];
+  let abRun = 0;
+  async function abPlay(kind) {
+    const my = ++abRun;
+    for (const rel of AB) {
+      if (my !== abRun) return;
+      $("ab-status").textContent = `${kind === "original" ? "原始" : "正規化"}：${rel}`;
+      const r = await AP.play({ url: url(rel, kind), fallbackTts: false });
+      if (r.status !== "ended") break;
+      await new Promise((ok) => setTimeout(ok, 350));
+    }
+    if (my === abRun) $("ab-status").textContent = "播放結束。原始檔的中文提示明顯比英文大聲；正規化後應接近。";
+  }
+  $("ab-orig").onclick = () => abPlay("original");
+  $("ab-proc").onclick = () => abPlay("processed");
+  $("ab-stop").onclick = () => {
+    abRun++;
+    AP.stop();
+  };
+  /* 數字來自 reports/loudness-table.md（tools/loudness.py 量測） */
+  const LOUD = [
+    ["英文句子", 42, "-22.1", "-18.1", "1.9", "0.7"],
+    ["英文單字", 80, "-20.3", "-18.0", "3.4", "0.4"],
+    ["中文句子提示", 42, "-15.8", "-18.0", "1.5", "0.4"],
+    ["中文 UI 提示", 10, "-15.7", "-18.0", "1.8", "0.2"],
+    ["中文單字提示", 80, "-15.4", "-18.0", "1.1", "0.3"],
+    ["全部", 254, "-18.1", "-18.0", "8.3", "0.8"],
+  ];
+  $("loud-table").innerHTML =
+    "<thead><tr><th>類別</th><th>檔數</th><th>平均 LUFS 前→後</th><th>最大差距 LU 前→後</th></tr></thead><tbody>" +
+    LOUD.map((r) => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]} → ${r[3]}</td><td>${r[4]} → ${r[5]}</td></tr>`).join("") +
+    "</tbody>";
+
+  paintItem();
+  window.addEventListener("pagehide", () => AP.destroy());
+  window.addEventListener("pageshow", (e) => e.persisted && AP.reset()); // 返回上一頁快取時重新啟用
+})();
+</script>
+</body>
+</html>

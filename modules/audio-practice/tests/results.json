@@ -1,0 +1,233 @@
+{
+ "date": "2026-11-17T14:23:17.290Z",
+ "results": [
+  [
+   "PASS",
+   "完全吻合（標點、大小寫）"
+  ],
+  [
+   "PASS",
+   "漏字"
+  ],
+  [
+   "PASS",
+   "不同詞會記錄聽成什麼"
+  ],
+  [
+   "PASS",
+   "多說的字放回原位置"
+  ],
+  [
+   "PASS",
+   "重複字按位置對齊"
+  ],
+  [
+   "PASS",
+   "數字與年份（2020 = twenty twenty）"
+  ],
+  [
+   "PASS",
+   "縮寫（I'm = I am）"
+  ],
+  [
+   "PASS",
+   "單字前的冠詞不算多說"
+  ],
+  [
+   "PASS",
+   "贅詞 um/uh 忽略"
+  ],
+  [
+   "PASS",
+   "低信心 → 不確定（中性）"
+  ],
+  [
+   "PASS",
+   "次佳候選吻合 → 不確定"
+  ],
+  [
+   "PASS",
+   "沒有結果（權限等錯誤）→ no-result，不算錯"
+  ],
+  [
+   "PASS",
+   "每個狀態都有文字標籤（不只顏色）"
+  ],
+  [
+   "PASS",
+   "句意/拼字嚴格路徑不接受同音字；read 不以時態猜同音"
+  ],
+  [
+   "PASS",
+   "權限仍在等待時取消：Promise 即時結束、晚到 stream 釋放"
+  ],
+  [
+   "PASS",
+   "清除單次錄音 URL 不拆掉共享 busy 訂閱"
+  ],
+  [
+   "PASS",
+   "播放預錄檔 → ended（音檔來源）"
+  ],
+  [
+   "PASS",
+   "快速連點 5 次：前 4 次 cancelled，只有最後一次播完"
+  ],
+  [
+   "PASS",
+   "快速連按播放 10 次：只有最後一次 ended，同時間只有一段在播"
+  ],
+  [
+   "PASS",
+   "stop() 讓等待中的 play 以 cancelled 結束，且不再忙碌"
+  ],
+  [
+   "PASS",
+   "音檔不存在 → 改用裝置朗讀"
+  ],
+  [
+   "PASS",
+   "音檔不存在且不允許改朗讀 → error load-failed"
+  ],
+  [
+   "PASS",
+   "裝置朗讀：新播放取消前一句"
+  ],
+  [
+   "PASS",
+   "onBusy：播放時通知 busy，結束後通知空閒；取消訂閱後不再通知"
+  ],
+  [
+   "PASS",
+   "開始 → 停止：取得 Blob、MIME、可播放、非靜音"
+  ],
+  [
+   "PASS",
+   "重錄：舊錄音 URL 被釋放，新錄音可播放"
+  ],
+  [
+   "PASS",
+   "播放中開始錄音：示範被停止（cancelled），錄音正常"
+  ],
+  [
+   "PASS",
+   "連續三輪 錄音 → 回放：每輪都有新錄音且可播放"
+  ],
+  [
+   "PASS",
+   "錄音中不能再開第二次錄音（busy）"
+  ],
+  [
+   "PASS",
+   "太短的錄音 → too-short，不當成錯誤答案"
+  ],
+  [
+   "PASS",
+   "切到背景：播放與錄音都停止，麥克風釋放"
+  ],
+  [
+   "PASS",
+   "成功：回傳候選文字，同時取得錄音"
+  ],
+  [
+   "PASS",
+   "權限被拒 → permission-denied"
+  ],
+  [
+   "PASS",
+   "沒說話 → no-speech（錄到聲音時）"
+  ],
+  [
+   "PASS",
+   "網路／服務失敗 → recognition-failed"
+  ],
+  [
+   "PASS",
+   "麥克風擷取失敗（沒有同時錄音）→ no-device"
+  ],
+  [
+   "PASS",
+   "Android 衝突 (a)：錄音開著時辨識拿不到麥克風 → record-conflict，下次 auto 只辨識"
+  ],
+  [
+   "PASS",
+   "同音詞（two／to）算聽到並標註同音"
+  ],
+  [
+   "PASS",
+   "回放音量統一：錄音附 playbackGainDb，帶增益播放可正常結束"
+  ],
+  [
+   "PASS",
+   "stopListen() 正常結束（等待最後結果）"
+  ],
+  [
+   "PASS",
+   "cancelListen() → cancelled 且錄音丟棄"
+  ],
+  [
+   "PASS",
+   "不支援辨識 → unsupported-recognition（錄音仍可用）"
+  ],
+  [
+   "PASS",
+   "destroy：釋放麥克風 track、臨時 URL；之後的呼叫回報 destroyed"
+  ],
+  [
+   "PASS",
+   "NotAllowedError → permission-denied"
+  ],
+  [
+   "PASS",
+   "NotFoundError → no-device"
+  ],
+  [
+   "PASS",
+   "NotReadableError → device-busy"
+  ],
+  [
+   "PASS",
+   "沒有 mediaDevices（非 HTTPS 等）→ env-blocked 或 unsupported-recording"
+  ],
+  [
+   "PASS",
+   "跟讀：示範播完前不能收音；播完後開始跟讀 → 逐字回饋 → 獨立朗讀 → 完成"
+  ],
+  [
+   "PASS",
+   "跟讀錯誤狀態：沒聽到說話／服務失敗顯示原因，且寫明不算對錯"
+  ],
+  [
+   "PASS",
+   "錄音區：錄音 → 播放 → 重錄 按鈕狀態正確"
+  ],
+  [
+   "PASS",
+   "聆聽模式：只播放、不啟動辨識或錄音"
+  ],
+  [
+   "PASS",
+   "錄音中離開頁面（返回）：麥克風 track 被釋放"
+  ],
+  [
+   "PASS",
+   "錄到完全無聲 → no-sound（仍保留錄音可回放）"
+  ],
+  [
+   "PASS",
+   "辨識 no-speech ＋ 錄音無聲 → 回報 no-sound（沒收到聲音）"
+  ],
+  [
+   "PASS",
+   "Android 衝突 (b)：辨識聽到話但錄音全無聲 → recordConflict，辨識結果仍保留"
+  ],
+  [
+   "PASS",
+   "iOS 模擬：音量計沒運作時改解碼錄音檔量測，不誤判沒聲音；錄成 audio/mp4 可回放"
+  ],
+  [
+   "PASS",
+   "整個過程沒有非預期的頁面錯誤"
+  ]
+ ]
+}

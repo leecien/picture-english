@@ -326,6 +326,17 @@ button:disabled {
   font-size: 16px;
   font-weight: 700;
 }
+.qz-ask .qz-focus {
+  display: inline-block;
+  margin: 2px 3px;
+  padding: 1px 7px;
+  border-radius: 6px;
+  border-bottom: 2px solid #456f98;
+  background: #e7f1fb;
+  color: #174b79;
+  font-weight: 800;
+  white-space: nowrap;
+}
 .qz-hint,
 .qz-f small {
   font-size: 13px;
@@ -514,6 +525,7 @@ button:disabled {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
   font-family: var(--body);
 }
+.vocab-open .wd-card { z-index:10060; }
 .wd-card[hidden] {
   display: none;
 }
@@ -803,6 +815,20 @@ canvas.hit {
   display: grid;
   gap: 6px;
 }
+.bt-boss-phase {
+  display: grid;
+  gap: 2px;
+  padding: 7px 10px;
+  border: 2px solid #b2763f;
+  border-radius: 10px;
+  background: #fff2db;
+  color: #6b3819;
+  font-size: 15px;
+}
+.bt-boss-phase small { color: #6b3819; font-size: 13px; }
+#battle[data-boss="true"][data-phase="2"] .bt-boss-phase { background: #ffe9e2; border-color: #b44c36; color: #752c20; }
+#battle[data-boss="true"][data-phase="2"] .bt-boss-phase small { color: #752c20; }
+#battle[data-boss="true"][data-phase="2"] .bt-foe { filter: drop-shadow(0 0 8px #e67b6570); }
 .bt-top {
   display: flex;
   gap: 6px;
@@ -2069,3 +2095,7 @@ b.nv-hit {
 .gq-stem {
   font-size: 20px;
 }
+
+body.vocab-open .audio-session{z-index:10070}
+
+.life-context-line{font-size:23px;line-height:1.6;color:inherit}.life-context-word{font-size:21px}.life-keyword{background:#fff0bb!important;color:#513800!important;padding:2px 4px;border-radius:4px}.life-context-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.life-context-choices button{min-height:48px;color:inherit}.life-context-choices button:disabled{opacity:.65}

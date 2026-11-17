@@ -1,0 +1,13 @@
+{
+  "id": "./",
+  "name": "英語小旅人",
+  "short_name": "英語小旅人",
+  "description": "用生活情境、聲音與 RPG 冒險練習英文",
+  "lang": "zh-TW",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f6eb",
+  "theme_color": "#436031",
+  "icons": [{ "src": "assets/app/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

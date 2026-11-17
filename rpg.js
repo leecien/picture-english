@@ -206,7 +206,7 @@ const RPG = (() => {
       "T.....=.....e..=....,..T",
       "T.m...=...,....=.......T",
       "T.....=...P....======@.T",
-      "T.....=........=.......T",
+      "T.....=........=...m...T",
       "T..,..==========...m...T",
       "T.........=............T",
       "T..HHH....=.L...HHH....T",
@@ -284,30 +284,31 @@ const RPG = (() => {
     slime: { name: "草地史萊姆", shape: "slime", colors: ["#9bd68f", "#4f9a5c"], lv: 2, hp: 40, atk: 4, aggressive: false, kind: "word" },
     bird: { name: "旋風雀", shape: "bird", colors: ["#eaf6ff", "#7fb4e6"], lv: 3, hp: 55, atk: 5, aggressive: false, intents: ["attack", "charge", "attack"], kind: "listen" },
     turtle: { name: "岩甲龜", shape: "turtle", colors: ["#b3b3c0", "#7a8a5a"], lv: 4, hp: 80, atk: 6, aggressive: false, intents: ["guard", "attack", "attack"], shield: { name: "岩甲", icon: "🪨" }, kind: "scene" },
+    wisp: { name: "晴空光靈", shape: "wisp", colors: ["#c8edff", "#6f9fca"], lv: 3, hp: 62, atk: 4, aggressive: false, intents: ["attack", "drain", "attack"], kind: "listen" },
+    beetle: { name: "琥珀甲蟲", shape: "beetle", colors: ["#d7bc7d", "#7f915c"], lv: 4, hp: 92, atk: 5, aggressive: false, intents: ["attack", "mend", "guard"], kind: "scene" },
   };
   WIND.mob = WIND_MOBS.slime;
   // No field monsters before anything is taught; after the first unit, only taught sounds are asked.
-  KK.mobAt = (p) => {
-    if (!NV.n01) return taughtUnits().length ? KK.mob : null;
-    const list = [ECHO_MOB, ...FIELD_MOBS.filter((m) => chDone(m.after)).map((m) => m.look)];
-    return list[(p.x + p.y) % list.length];
-  };
-  WIND.mobAt = (p) => (p.x < 12 ? WIND_MOBS.slime : p.x < 26 ? WIND_MOBS.bird : WIND_MOBS.turtle);
+  const spawnIndex = (m, p) => m.layout.flatMap((row, y) => [...row].flatMap((ch, x) => ch === "m" ? [{x,y}] : [])).findIndex((q) => q.x === p.x && q.y === p.y);
+  KK.mobAt = (p) => NV.n01 ? (chDone("N12") ? [...NOVICE_MOBS, STRESS_MOB] : NOVICE_MOBS)[Math.max(0, spawnIndex(KK, p)) % (chDone("N12") ? 6 : NV.taught.length >= 13 ? 5 : NV.taught.length >= 7 ? 3 : 1)] : taughtUnits().length ? KK.mob : null;
+  WIND.mobAt = (p) => Object.values(WIND_MOBS)[Math.max(0, spawnIndex(WIND, p)) % 5];
   /* Novice-village field monster (docs/NOVICE_VILLAGE_V1.md §8): only taught sounds, long time, low damage. */
   const ECHO_MOB = { name: "回音泡泡", shape: "bubble", colors: ["#bfe6ff", "#ffffff"], lv: 1, hp: 24, atk: 2, aggressive: false, kind: "sound" };
-  const FIELD_MOBS = [
-    { after: "N04", look: { name: "苔球精", shape: "slime", colors: ["#a8d98f", "#5e9a4c"], lv: 3, hp: 40, atk: 3, aggressive: false, kind: "sound" } },
-    { after: "N04", look: { name: "旋風雀", shape: "bird", colors: ["#eaf6ff", "#7fb4e6"], lv: 4, hp: 55, atk: 4, aggressive: false, intents: ["attack", "charge", "attack"], kind: "sound" } },
-    { after: "N07", look: { name: "岩甲龜", shape: "turtle", colors: ["#b3b3c0", "#7a8a5a"], lv: 5, hp: 80, atk: 5, aggressive: false, intents: ["guard", "attack", "attack"], shield: { name: "岩甲", icon: "🪨" }, kind: "sound" } },
-    { after: "N12", look: { name: "鼓點石靈", shape: "guardian", colors: ["#d8c9a8", "#8a7a5a"], lv: 6, hp: 100, atk: 5, aggressive: false, kind: "stress" } },
+  const NOVICE_MOBS = [ECHO_MOB,
+    { name: "拍翼音靈", shape: "bird", colors: ["#d9efff", "#7b9fc2"], lv: 2, hp: 32, atk: 3, aggressive: false, kind: "sound", intents: ["attack", "charge", "attack"] },
+    { name: "護字龜", shape: "turtle", colors: ["#acc7a2", "#779b74"], lv: 2, hp: 44, atk: 3, aggressive: false, kind: "sound", intents: ["attack", "guard", "attack"] },
+    { name: "流光音靈", shape: "wisp", colors: ["#d6c8fa", "#9291ce"], lv: 3, hp: 36, atk: 3, aggressive: false, kind: "sound", intents: ["attack", "drain", "attack"] },
+    { name: "晶甲音靈", shape: "beetle", colors: ["#a7d9cf", "#618f99"], lv: 3, hp: 52, atk: 3, aggressive: false, kind: "sound", intents: ["attack", "mend", "guard"] },
   ];
+  // after N12 (stress): one more field monster that asks "which syllable is stressed"
+  const STRESS_MOB = { name: "鼓點石靈", shape: "guardian", colors: ["#d8c9a8", "#8a7a5a"], lv: 6, hp: 100, atk: 5, aggressive: false, kind: "stress" };
   /* 失音魔王: three seals of 10 questions; a seal locks on 6 first-try answers, never on damage. */
   const SILENCE_BOSS = { name: "失音魔王", shape: "guardian", colors: ["#d9c8ff", "#5b4a8a"], lv: 10, hp: 40, atk: 6, intents: ["attack", "charge", "attack", "attack"] };
   const BOSS_PHASES = ["聲音封印", "幻影封印", "詞語封印"];
   const GUARDIAN = { name: "風之守衛", shape: "guardian", colors: ["#e3f5ff", "#7fb4e6"], lv: 6, hp: 120, atk: 6, intents: ["attack", "charge", "attack", "guard"], shield: { name: "風之盾", icon: "🌀" } };
   const GULL = { name: "搗蛋海鷗", shape: "bird", colors: ["#ffffff", "#9aa3b5"], lv: 4, hp: 1, atk: 0 };
   const LEVELS = { 1: "初級", 2: "中級", 3: "高級" };
-  const ELEMENTS = { wind: "風", kk: "音", fire: "火", wood: "木", water: "水", earth: "土" };
+  const ELEMENTS = { wind: "風", kk: "音", fire: "火", wood: "木", water: "水", earth: "土", light: "光", metal: "金", star: "星" };
   /* Wind story stages. cat/scene point into data/scenes.json and are shared with the commute mode. */
   const STAGES = [
     { id: "checkin", npc: "checkin", cat: "travel", scene: "airport", targets: [0, 1, 2, 3], title: "機場報到", learn: "聽懂並回答目的地、護照、托運行李、行李秤重", toeic: "多益準備目標：Part 2 應答問題（機場報到的常見問句與回應）" },
@@ -322,7 +323,7 @@ const RPG = (() => {
     { id: "word", npc: "word", title: "整字發音", type: "word", learn: "用學過的母音：聽單字選音標、看音標選單字" },
   ];
 
-  const maps = [KK, WIND, ...LEGACY];
+  const maps = [KK, WIND, ...LEGACY, ...(typeof WorldRegions !== "undefined" ? WorldRegions.maps : [])];
   const byId = (id) => maps.find((m) => m.id === id);
   const legacyIdx = (id) => LEGACY.findIndex((m) => m.id === id);
 
@@ -346,6 +347,7 @@ const RPG = (() => {
   data.kk = obj(data.kk);
   data.story = obj(data.story);
   data.story.wind = { stage: 0, ...obj(data.story.wind) };
+  data.regions = obj(data.regions);
   const save = () => LS.set("pm-rpg-v1", data);
   const legacyUnlocked = (i) => i === 0 || ["word", "sent"].every((k) => data.cleared.includes(LEGACY[i - 1].id + ":" + k));
   if (!Number.isInteger(data.map) || !LEGACY[data.map] || !legacyUnlocked(data.map)) data.map = 0;
@@ -358,6 +360,7 @@ const RPG = (() => {
   const unlocked = (id) => {
     if (id === "kk") return true;
     if (id === "wind") return kkDone();
+    if (typeof WorldRegions !== "undefined" && WorldRegions.has(id)) return kkDone();
     const i = legacyIdx(id);
     return i >= 0 && legacyUnlocked(i);
   };
@@ -450,7 +453,7 @@ const RPG = (() => {
     clearTimeout(statusTimer);
     if (t && !keep) statusTimer = setTimeout(() => (el.hidden = true), 4500);
   }
-  const busy = () => Battle.active || !$("dlg").hidden || !$("menu").hidden || !$("panel").hidden;
+  const busy = () => Battle.active || !$("dlg").hidden || !$("menu").hidden || !$("panel").hidden || (typeof Atlas !== "undefined" && Atlas.isOpen) || (typeof Platform !== "undefined" && Platform.isOpen) || (typeof AudioSession !== "undefined" && AudioSession.isOpen) || (typeof Vocab !== "undefined" && Vocab.isOpen);
   function syncPause() {
     World.paused = busy();
   }
@@ -549,17 +552,21 @@ const RPG = (() => {
   function openMenu() {
     const ctx = sceneContext();
     sheet(`<h3>☰ 選單</h3><div class="menu-grid">
+      <button data-m="atlas">🌏<b>九元素世界</b><small>故事、主題與生活情境</small></button>
       <button data-m="map">🗺️<b>世界地圖</b><small>${maps.filter((m) => unlocked(m.id)).length}/${maps.length} 區域</small></button>
       <button data-m="journal">📜<b>任務日誌</b><small>${esc(objective().short)}</small></button>
       <button data-m="drive">🚗<b>開車模式</b><small>${ctx ? "練這段：" + esc(ctx.label) : "聽中文、說英文"}</small></button>
+      <button data-m="record">🎙️<b>錄音跟讀</b><small>聽示範、逐字回饋、回放自己的聲音</small></button>
       ${C.claimed ? `<button data-m="buddy">🧚<b>旅伴</b><small>露米・默契 Lv.${bondLv()}</small></button>` : ""}
       <button data-m="bag">🎒<b>背包</b><small>道具與素材</small></button>
-      <button data-m="life">🛒<b>生活情境找物</b><small>餐廳、超市、機場…點物件學單字</small></button>
+      <button data-m="life">🛒<b>生活情境學英語</b><small>餐廳、超市、機場…從句子認識單字</small></button>
       <button data-m="practice">📚<b>練習與成就</b><small>單字、句子、分級</small></button>
+      <button data-m="vocab">📖<b>單字學習</b><small>${typeof Vocab !== "undefined" ? Vocab.count : 80} / 3000 可玩單字</small></button>
       <button data-m="book">🃏<b>卡冊</b><small>收集的單字卡</small></button>
       <button data-m="log">📈<b>學習紀錄</b><small>每天學了什麼</small></button>
       <button data-m="ability">📊<b>我的英語能力</b><small>文法、主題、四種能力</small></button>
       <button data-m="mic">🎤<b>麥克風檢查</b><small>收不到聲音時用</small></button>
+      <button data-m="platform">📱<b>App 與存檔</b><small>安裝、離線與備份</small></button>
       <button data-m="start">🧭<b>回到入口</b><small>卡住時回到地圖起點</small></button>
       <button data-m="sound">${SND.on ? "🔊" : "🔇"}<b>音效</b><small>${SND.on ? "開" : "關"}</small></button>
     </div>`);
@@ -569,6 +576,8 @@ const RPG = (() => {
         (b) =>
           (b.onclick = () => {
             const m = b.dataset.m;
+            if (m === "atlas") return openAtlas();
+            if (m === "platform") return openPlatform();
             if (m === "map") return worldMap();
             if (m === "journal") return journal();
             if (m === "bag") return bag();
@@ -592,6 +601,8 @@ const RPG = (() => {
             }
             closeSheet();
             if (m === "drive") return openDriveFrom(ctx);
+            if (m === "record") return openRecordingPractice(ctx);
+            if (m === "vocab") return openVocabulary();
             if (m === "mic") return openDriveFrom(ctx, true);
             openPanel(m === "practice" ? "p-play" : m === "book" ? "p-book" : "p-log");
           }),
@@ -669,11 +680,69 @@ const RPG = (() => {
     }
     return first;
   }
+  /* Region stories use the same map locks and learning entrypoints as the field. */
+  function openAtlas() {
+    if (typeof Atlas === "undefined") return worldMap();
+    closeSheet();
+    World.clearKeys();
+    World.paused = true;
+    const onClose = () => { syncPause(); refresh(); };
+    return Atlas.open({
+      onClose,
+      currentMapId: data.at,
+      getStatus: (region) => {
+        const complete = [];
+        if (NV.n01 && NV.field) complete.push("sound-first-word");
+        if (NV.n02 && NV.field2) complete.push("sound-path");
+        if (W.stage >= 2) complete.push("wind-arrival");
+        if (W.stage >= 3) complete.push("wind-baggage");
+        if (W.done) complete.push("wind-stay");
+        const regionMapIds = (region.maps || []).map((m) => m.id);
+        const addedMap = regionMapIds.find((id) => typeof WorldRegions !== "undefined" && WorldRegions.has(id));
+        const addedStatus = addedMap ? WorldRegions.status(addedMap, data.regions) : null;
+        if (addedMap) (data.regions.completed && data.regions.completed[addedMap] || []).forEach((id) => {
+          const i = WorldRegions.map(addedMap).quests.findIndex((q) => q.id === id);
+          if (i >= 0 && region.stages[i]) complete.push(region.stages[i].id);
+        });
+        const legacyDone = regionMapIds.reduce((n, id) => n + ["word", "sent"].filter((k) => data.cleared.includes(id + ":" + k)).length, 0);
+        return {
+          unlockedMapIds: maps.filter((m) => unlocked(m.id)).map((m) => m.id),
+          completedStoryIds: complete,
+          progressLabel: region.id === "sound" ? (NV.track === "v1" ? `目前課程已教 ${NV.taught.length} / 41 音` : "保留舊課程進度，可回 Echo 學新版課程") : region.id === "wind" ? (W.done ? "旅行故事已完成" : `旅行主線 ${Math.min(W.stage, 4)} / 4 段`) : addedStatus ? `居民任務 ${(data.regions.completed && data.regions.completed[addedMap] || []).length} / 3` : regionMapIds.some((id) => legacyIdx(id) >= 0) ? `原主題任務已完成 ${legacyDone} 項` : "此區場景仍在製作，可先練現有生活情境",
+        };
+      },
+      travel: (id) => { travel(id); },
+      openLife: (scene, opt = {}) => {
+        World.paused = true;
+        return Life.open({ scene, mode: opt.mode || "explore", onClose });
+      },
+      openDrive: (ctx) => { openDriveFrom(ctx); },
+      openPractice: (opt = {}) => {
+        const theme = opt.theme;
+        const pool = WORDS.filter((w) => (!theme || w.th === theme) && avail(w));
+        if (opt.kind === "word" && pool.length >= 4) {
+          RPG.launching = true;
+          RPG.active = { source: "atlas", theme };
+          try { start("word"); } finally { RPG.launching = false; }
+        } else {
+          openPanel("p-play");
+          status("已開啟練習頁，請選擇目前可用的題型。");
+        }
+      },
+    }).catch((error) => { onClose(); status("世界資料暫時無法載入，請稍後重試。"); console.warn(error); });
+  }
+  function openPlatform() {
+    if (typeof Platform === "undefined") return status("App 設定暫時無法開啟。");
+    closeSheet();
+    World.clearKeys();
+    World.paused = true;
+    Platform.open({ onClose: () => { syncPause(); refresh(); } });
+  }
   function worldMap() {
-    sheet(`<h3>🗺️ 世界地圖</h3><p class="fine">新的冒險從 KK 新手村開始，接著前往風之旅行群島。下方五個主題區域保留原本的任務與進度。</p><div class="map-list">${maps
+    sheet(`<h3>🗺️ 世界地圖</h3><p class="fine">新的冒險從 KK 新手村開始，接著前往風之旅行群島。主題區域保留原本進度；水、光、金、星各有三段居民任務與守衛試煉。</p><div class="map-list">${maps
       .map((m) => {
         const on = unlocked(m.id),
-          note = m.id === "kk" ? (kkDone() ? "已畢業" : `${KK_TASKS.filter((t) => data.kk[t.id]).length}/4 課`) : m.id === "wind" ? (W.done ? "故事完成" : on ? `${Math.min(W.stage, 4)}/4 段` : "完成新手村後開放") : `${["word", "sent"].filter((k) => data.cleared.includes(m.id + ":" + k)).length}/2 任務`;
+          note = m.id === "kk" ? (kkDone() ? "已畢業" : `${KK_TASKS.filter((t) => data.kk[t.id]).length}/4 課`) : m.id === "wind" ? (W.done ? "故事完成" : on ? `${Math.min(W.stage, 4)}/4 段` : "完成新手村後開放") : typeof WorldRegions !== "undefined" && WorldRegions.has(m.id) ? `${WorldRegions.status(m.id, data.regions).completedCount}/3 居民任務` : `${["word", "sent"].filter((k) => data.cleared.includes(m.id + ":" + k)).length}/2 任務`;
         return `<button data-go="${m.id}" ${on ? "" : "disabled"} aria-current="${m.id === data.at}">${on ? m.icon : "🔒"} <b>${esc(m.name)}</b><small>${note}</small></button>`;
       })
       .join("")}</div>`);
@@ -714,6 +783,7 @@ const RPG = (() => {
       <li class="${NV.reviews ? "done" : ""}"><b>${NV.grad ? (NV.reviews ? "✅" : "▶️") : "⬜"} 正式複習</b><small>畢業後開放：依首次答錯、重試、超時、夥伴補正排序</small></li></ul>
       <h4>🔤 KK 新手村 ${kkDone() ? "· 已畢業" : ""}</h4>${due.length ? `<p class="fine">需要多練的音：${due.map((x) => `/${esc(x)}/`).join(" ")}（找對應的老師選「練需要加強的音」）</p>` : ""}<ul class="journal">${kkRows}<li class="${data.kk.battle ? "done" : ""}"><b>${data.kk.battle ? "✅" : "⬜"} 教學戰鬥</b><small>答音標題打倒村口的音節泡泡</small></li></ul>
       <h4>🌬️ 風之旅行群島 ${W.done ? "· 故事完成" : ""}</h4><ul class="journal">${windRows}</ul>
+      ${typeof WorldRegions !== "undefined" ? `<h4>✨ 共鳴印記</h4><ul class="journal">${WorldRegions.maps.map((m) => { const s = WorldRegions.status(m.id, data.regions); return `<li class="${s.done ? "done" : ""}"><b>${s.seal ? "✨" : "⬜"} ${esc(m.name)} ${s.completedCount}/3</b><small>${s.seal ? esc(s.seal.name) + "已取得" : s.next ? esc(s.next.title) : "尚未開始"}</small></li>`; }).join("")}</ul>` : ""}
       <h4>🧚 旅伴</h4><ul class="journal"><li class="${C.claimed ? "done" : ""}"><b>${C.claimed ? `✅ 露米同行中・默契 Lv.${bondLv()}` : W.stage >= 3 ? "▶️ 露米在行李轉盤等你" : "⬜ 完成「找回行李」後相遇"}</b><small>戰鬥中提供提示與護盾，也能一起用英文聊天</small></li></ul>
       <p class="fine">多益準備目標只說明這段內容練的是哪一類題型，不代表考試分數，也不把遊戲等級換算成成績。</p>`);
   }
@@ -740,6 +810,10 @@ const RPG = (() => {
   /* ---------- objective / quest tracker ---------- */
   function objective() {
     const at = data.at;
+    if (typeof WorldRegions !== "undefined" && WorldRegions.has(at)) {
+      const q = WorldRegions.next(at, data.regions), m = WorldRegions.map(at);
+      return q ? { text: `${q.title}：找${m.npcs.find((n) => n.id === q.npcId).name}`, short: q.title, npc: q.npcId, map: at } : { text: `${m.name}的共鳴印記已取得，可以從世界圖鑑選下一站。`, short: "地區故事完成", map: at };
+    }
     if (NV.track === "v1" && !kkDone()) {
       if (!NV.n01) return { text: "找村長 Kai：學第一個字 cat（字母、聲音、KK）", short: "新手村：cat", npc: "word", map: "kk" };
       if (!NV.field) return { text: "到村子的回聲原野，用學過的 /k/ /æ/ /t/ 打倒一隻回音泡泡", short: "原野戰鬥", npc: null, map: "kk", mob: true };
@@ -808,6 +882,10 @@ const RPG = (() => {
   }
   /* The scene the player is working on, for the commute mode switch. */
   function sceneContext() {
+    if (typeof WorldRegions !== "undefined" && WorldRegions.has(data.at)) {
+      const m = WorldRegions.map(data.at), q = WorldRegions.next(data.at, data.regions) || m.quests.at(-1), ref = q.questionRefs[0];
+      return { cat: ref.cat, scene: ref.scene, label: `${m.name}・${q.title}`, cid: `regions/${q.id}` };
+    }
     if (data.at === "wind" && !W.done) {
       const s = STAGES[Math.min(W.stage, 3)],
         m = stageMeta(s);
@@ -896,6 +974,7 @@ const RPG = (() => {
     }
   }
   function portal() {
+    if (typeof WorldRegions !== "undefined" && WorldRegions.has(data.at)) return openAtlas();
     if (data.at === "kk") {
       if (!kkDone()) return status("傳送門還沒啟動：先完成新手村的課程和教學戰鬥。");
       toast("🌬️", "前往風之旅行群島", "初級旅遊英文：報到、海關、飯店");
@@ -945,6 +1024,7 @@ const RPG = (() => {
     try {
       if (m.id === "kk") await kkNpc(e);
       else if (m.id === "wind") await windNpc(e);
+      else if (typeof WorldRegions !== "undefined" && WorldRegions.has(m.id)) await regionNpc(e);
       else await legacyNpc(e);
     } finally {
       Talk.close();
@@ -956,6 +1036,82 @@ const RPG = (() => {
     }
   }
   let afterTalk = null;
+
+  /* New regions keep their quest state inside the existing RPG save. A passed
+     quiz and a real guardian victory are separate requirements. */
+  async function regionNpc(npc) {
+    const id = data.at, m = WorldRegions.map(id), q = WorldRegions.next(id, data.regions);
+    if (!q) return Talk.line(m.ending.en, `${esc(m.ending.zh)}<br>✅ ${esc(m.name)}的三段任務與印記已完成。`);
+    if (npc.id !== q.npcId) return Talk.line("One step at a time.", `先找${esc(m.npcs.find((n) => n.id === q.npcId).name)}完成「${esc(q.title)}」，再繼續這裡的故事。`);
+    const ctx = { ...q.questionRefs[0], label: `${m.name}・${q.title}` };
+    const pick = await Talk.choose(`<h3>${esc(q.title)}</h3><p>${esc(q.introZh)}</p><p class="fine">5 題至少 4 題獨立答對${q.battleRequired ? "，再通過守衛戰" : ""}。答題中途會保存，失敗可以再練。</p>`, [
+      { label: "▶ 繼續任務", value: "quest" },
+      { label: "🚗 練同一個情境", value: "drive" },
+      { label: "🎙️ 錄音跟讀", value: "record" },
+      { label: "先離開", value: "bye" },
+    ]);
+    if (pick === "drive" || pick === "record") { afterTalk = () => pick === "drive" ? openDriveFrom(ctx) : openRecordingPractice(ctx); return; }
+    if (pick !== "quest") return;
+    const begun = WorldRegions.start(id, data.regions, q.id);
+    if (!begun.ok) return Talk.line("Let's try again later.", "任務狀態需要重新確認，請再找老師一次。");
+    data.regions = begun.state; save();
+    let state = WorldRegions.status(id, data.regions);
+    while (state.active && state.active.index < q.questionRefs.length) {
+      const index = state.active.index, question = WorldRegions.question(id, data.regions, Learn);
+      if (!question) return Talk.line("Let's take a break.", "這道題目暫時沒有載入，進度已保留。");
+      $("dlg-name").dataset.step = `${q.title} ${index + 1}/${q.questionRefs.length}`;
+      const result = await Talk.quiz(question);
+      const updated = WorldRegions.answer(id, data.regions, { index, correct: result.ok && !result.tries, assisted: !!question.assisted });
+      if (!updated.ok) break;
+      data.regions = updated.state; save();
+      state = WorldRegions.status(id, data.regions);
+    }
+    delete $("dlg-name").dataset.step;
+    Learn.flush("quest", `${m.name}・${q.title}`);
+    if (state.result && state.result.passed && q.battleRequired && !state.result.battleWon) {
+      const go = await Talk.choose(`<p>✅ 情境題已通過！接下來挑戰${esc(q.boss.name)}。每次答對攻擊，答錯或超時受到傷害；離開後可直接回來挑戰守衛。</p>`, [
+        { label: "⚔️ 挑戰守衛", value: "battle" }, { label: "先補給，稍後再來", value: "bye" },
+      ]);
+      if (go === "battle") afterTalk = () => regionBoss(id, q);
+      return;
+    }
+    const completed = WorldRegions.complete(id, data.regions);
+    data.regions = completed.state; save();
+    if (!completed.ok) return Talk.line("You can try again.", `這一輪獨立答對 ${state.result ? state.result.independent : 0} / ${q.questionRefs.length}，目標是 ${q.requiredCorrect} 題。可以再試一輪，前面的任務不會重來。`);
+    grantRegionReward(completed);
+    await Talk.line(q.finishEn, `${esc(q.finishZh)}<br>✅ 任務完成，獎勵已領取。`);
+  }
+  function grantRegionReward(completed) {
+    if (!completed.reward) return;
+    const reward = completed.reward;
+    addXP(reward.xp);
+    Object.entries(reward.items || {}).forEach(([id, n]) => Battle.give(id, n));
+    if (reward.seal) toast("✨", `獲得${reward.seal.name}`, "故事完成；可以從世界圖鑑選下一站", "badge");
+    else toast("✅", "居民任務完成", `XP +${reward.xp}，補給已放入背包`);
+    save(); refresh();
+  }
+  function regionBoss(id, quest) {
+    if (data.at !== id || !WorldRegions.status(id, data.regions).result?.passed) return;
+    const region = WorldRegions.map(id);
+    Battle.start({ look: { ...quest.boss }, name: quest.boss.name }, {
+      region: id, companion: buddyCtx(),
+      intro: `${quest.boss.name}的共鳴試煉：答對英文就攻擊，答錯或超時會受擊。`,
+      make: (b) => { const r = quest.questionRefs[(b.turn - 1) % quest.questionRefs.length]; return Learn.sceneQuestion(r.cat, r.scene, r.index, {mode:r.mode,ctx:`region:${quest.id}:guardian`}); },
+      onEnd: async (result) => {
+        const recorded = WorldRegions.recordBattle(id, data.regions, { won: result === "win" });
+        data.regions = recorded.state; save();
+        if (result === "down") World.knockout();
+        if (result !== "win") { World.calm(3); refresh(); return status("情境題的進度已保留，補給後找守望者再挑戰。"); }
+        const completed = WorldRegions.complete(id, data.regions);
+        data.regions = completed.state; save();
+        if (!completed.ok) return refresh();
+        grantRegionReward(completed); winBond();
+        Talk.show({ name: region.name, look: region.npcs.at(-1).look });
+        try { await Talk.line(region.ending.en, `${esc(region.ending.zh)}<br>✨ ${esc(completed.reward?.seal?.name || "共鳴印記")}已放入冒險紀錄。`); }
+        finally { Talk.close(); refresh(); }
+      },
+    });
+  }
 
   /* KK village: micro-lessons. Each unit demonstrates two sounds (recorded demo words + mouth/tongue hints),
      then asks the learner to tell them apart. A wrong answer brings back that unit's demo and a fresh question,
@@ -1100,6 +1256,7 @@ const RPG = (() => {
   function slowWord(w) {
     const it = Novice.word(w);
     if (!it) return;
+    if (typeof AudioBus !== "undefined") return AudioBus.play({ text: it.w, url: it.au || "", lang: "en-US", rate: 0.6 });
     try {
       VOICE.pause();
       VOICE.src = it.au;
@@ -2174,6 +2331,9 @@ const RPG = (() => {
                 const t = done[Math.floor(Math.random() * done.length)];
                 return Learn.sceneQuestion(t.cat, t.scene, null, { mode: "listen", ctx: "battle" });
               };
+    } else if (typeof WorldRegions !== "undefined" && WorldRegions.has(m.id)) {
+      const quest = WorldRegions.next(m.id, data.regions) || m.quests.at(-1);
+      make = (b) => { const ref = quest.questionRefs[(b.turn - 1) % quest.questionRefs.length]; return Learn.sceneQuestion(ref.cat, ref.scene, ref.index, {mode:ref.mode,ctx:`region:${m.id}:field`}); };
     } else {
       const route = SENT.some((s) => s.route === m.route && s.lv <= maxLv()) ? m.route : "daily";
       make = (B) => (B.turn % 2 ? Learn.wordQuestion((w) => w.th === m.id, null, "battle") : Learn.sentQuestion((s) => s.route === route, "battle"));
@@ -2461,7 +2621,7 @@ const RPG = (() => {
     // Kept for index.html: the old in-page quests are now in-scene, so practice rounds are never "RPG" rounds.
     active: null,
     launching: false,
-    matches: () => true,
+    matches: (kind, item) => !RPG.active || RPG.active.source !== "atlas" || kind !== "w" || !RPG.active.theme || item.th === RPG.active.theme,
     complete() {},
     render() {
       if (mounted) refresh();
