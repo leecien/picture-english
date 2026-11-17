@@ -558,6 +558,7 @@ const RPG = (() => {
       <button data-m="practice">📚<b>練習與成就</b><small>單字、句子、分級</small></button>
       <button data-m="book">🃏<b>卡冊</b><small>收集的單字卡</small></button>
       <button data-m="log">📈<b>學習紀錄</b><small>每天學了什麼</small></button>
+      <button data-m="ability">📊<b>我的英語能力</b><small>文法、主題、四種能力</small></button>
       <button data-m="mic">🎤<b>麥克風檢查</b><small>收不到聲音時用</small></button>
       <button data-m="start">🧭<b>回到入口</b><small>卡住時回到地圖起點</small></button>
       <button data-m="sound">${SND.on ? "🔊" : "🔇"}<b>音效</b><small>${SND.on ? "開" : "關"}</small></button>
@@ -572,6 +573,7 @@ const RPG = (() => {
             if (m === "journal") return journal();
             if (m === "bag") return bag();
             if (m === "buddy") return buddy();
+            if (m === "ability") return abilityPanel();
             if (m === "life") {
               closeSheet();
               World.paused = true;
@@ -594,6 +596,58 @@ const RPG = (() => {
             openPanel(m === "practice" ? "p-play" : m === "book" ? "p-book" : "p-log");
           }),
       );
+  }
+  /* ---------- 我的英語能力: answer log → analysis → weak practice (in place) → analysis again ---------- */
+  function abilityPanel() {
+    sheet(Ability.panelHTML());
+    $("menu-body")
+      .querySelectorAll(".ab-row[data-k], .ab-sub")
+      .forEach((b) => (b.onclick = () => abilityDetail(b.dataset.k, b.dataset.id, b.dataset.sub || "")));
+  }
+  function abilityDetail(kind, id, sub) {
+    sheet(Ability.detailHTML(kind, id, sub));
+    $("menu-body").querySelector(".ab-back").onclick = abilityPanel;
+    const go = $("menu-body").querySelector(".ab-practice");
+    if (go) go.onclick = () => practiceWeak(kind, id, sub);
+  }
+  /* A question for one logged / material item (id "w:apple", "s:<sentence>"), in the skill asked for. */
+  function questionFor(item, skill) {
+    const text = item.id.slice(2),
+      listen = skill === "listen";
+    if (item.id.startsWith("w:")) return Learn.wordQuestion((w) => w.w === text, listen ? "listen" : "pic", "ability");
+    if (item.cat && item.scene) {
+      const sc = Learn.scene(item.cat, item.scene),
+        idx = sc ? sc.items.findIndex((x) => x.en === text) : -1;
+      if (idx >= 0) return Learn.sceneQuestion(item.cat, item.scene, idx, { mode: listen || skill !== "read" ? "listen" : "", ctx: "ability" });
+    }
+    if (SENT.some((x) => x.en === text)) return Learn.sentQuestion((x) => x.en === text, "ability");
+    return null;
+  }
+  async function practiceWeak(kind, id, sub) {
+    const ctx = sceneContext();
+    // speaking and sentence building have their own places; the world (and the hero's spot) stays as it is
+    if (kind === "skill" && id === "speak") return closeSheet(), openDriveFrom(ctx);
+    if (kind === "skill" && id === "build") return closeSheet(), start("sent", false, "order");
+    let items = Ability.weakItems(kind, id, sub, 5);
+    if (!items.length && kind === "skill") items = Ability.group(kind, id).slice(0, 5).map((r) => ({ id: r.id, cat: r.cat, scene: r.scene }));
+    const qs = items.map((it) => questionFor(it, kind === "skill" ? id : "")).filter(Boolean);
+    if (!qs.length) return status("這一項目前沒有可以練的題目。");
+    closeSheet();
+    Talk.show({ name: "能力練習", look: LUMI });
+    let first = 0;
+    try {
+      await Talk.line("", `練習弱項：${qs.length} 題。先練最近答錯、超時或需要協助的題目；練完回到能力總覽看更新。`);
+      for (let i = 0; i < qs.length; i++) {
+        $("dlg-name").dataset.step = `弱項練習 ${i + 1}/${qs.length}`;
+        const r = await Talk.quiz(qs[i]);
+        if (r.ok && !r.tries) first++;
+      }
+      delete $("dlg-name").dataset.step;
+      await Talk.line("", `第一次就答對 ${first} / ${qs.length} 題。`);
+    } finally {
+      Talk.close();
+    }
+    abilityDetail(kind, id, sub); // back where the player was, with the analysis updated
   }
   function worldMap() {
     sheet(`<h3>🗺️ 世界地圖</h3><p class="fine">新的冒險從 KK 新手村開始，接著前往風之旅行群島。下方五個主題區域保留原本的任務與進度。</p><div class="map-list">${maps
@@ -2272,7 +2326,8 @@ const RPG = (() => {
         const pick = opts[await wait],
           q = { kind: "s", recK: "s", item: { en: it.en, zh: it.zh, q: it.q }, ctx: `companion:${topic}` };
         Learn.track(q);
-        Learn.grade(q, pick.ok, "quest");
+        const g = Learn.grade(q, pick.ok, "quest");
+        if (typeof Ability !== "undefined") Ability.log({ ...q, cat: "companion", scene: topic, audio: { text: it.q }, autoplay: true }, { first: pick.ok ? "right" : "wrong", fresh: g.fresh });
         if (pick.ok) {
           ok++;
           SND.play("correct");

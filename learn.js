@@ -42,6 +42,7 @@ const Learn = (() => {
   store();
   const keyOf = (recK, item) => recK + ":" + (item.w || item.en);
   /* Prefer items not shown recently; fall back to the whole pool rather than run dry. */
+  const shownOpts = []; // option lines shown lately (this session), so wrong options rotate too
   function fresh(pool, recK) {
     const seen = new Set(ST.asked),
       f = pool.filter((x) => !seen.has(keyOf(recK, x)));
@@ -328,17 +329,33 @@ const Learn = (() => {
     const items = sc.items,
       ctx = opt.ctx || `scene:${sceneId}`;
     let it;
+    // field practice (ctx "…:field") or opt.rotate: a line asked recently gives way to the least recently asked
+    // line of the same scene, so fights in a row do not repeat the same sentences (ordered stories keep their idx)
+    const rotate = opt.rotate != null ? opt.rotate : /:field$/.test(ctx);
+    if (idx != null && rotate) {
+      const at = (x) => ST.asked.lastIndexOf(keyOf("s", x));
+      if (at(items[idx % items.length]) >= 0) idx = items.map((x, i) => [i, at(x)]).sort((a, b) => a[1] - b[1])[0][0];
+    }
     if (idx != null) it = items[idx % items.length];
     else {
       const due = dueItems("s", ctx, (r) => items.some((x) => x.en === r.id));
       it = due.length && Math.random() < 0.6 ? items.find((x) => x.en === pick(due).id) : pick(fresh(items, "s"));
     }
     const sameQ = (x) => it.q && x.q && x.q === it.q;
-    const wrong = shuf(items.filter((x) => x.en !== it.en && !sameQ(x))).slice(0, 2);
+    // wrong options: lines not shown as options lately first; a small scene borrows from its category's other scenes
+    const okWrong = (x) => x.en !== it.en && !sameQ(x) && x.zh !== it.zh && !(it.alt || []).some((a) => a.en === x.en);
+    const cat = SCN.find((c) => c.id === catId),
+      near = shuf(items.filter(okWrong)),
+      // borrowing only where the Chinese defines the one answer: a reply to a heard line could fit from another scene
+      far = opt.mode === "listen" && it.q ? [] : shuf(((cat && cat.scenes) || []).filter((o) => o !== sc).flatMap((o) => o.items).filter(okWrong)),
+      notShown = (x) => !shownOpts.includes(x.en);
+    const wrong = dedupe([...near.filter(notShown), ...far.filter(notShown), ...near, ...far], (x) => x.en).slice(0, 2);
+    shownOpts.push(it.en, ...wrong.map((x) => x.en));
+    if (shownOpts.length > 30) shownOpts.splice(0, shownOpts.length - 30);
     const item = { en: it.en, zh: it.zh, q: it.q || "" };
     const listen = opt.mode === "listen" && it.q;
     return {
-      kind: "s", recK: "s", item,
+      kind: "s", recK: "s", item, cat: catId, scene: sceneId,
       prompt: listen
         ? `<p class="qz-their">🗣️ ${sayHTML(it.q)}</p><p class="qz-ask">你要怎麼回答？</p><details class="qz-cue"><summary>中文提示</summary>${esc(it.zh)}</details>`
         : (it.q ? `<p class="qz-their">🗣️ ${sayHTML(it.q)}</p>` : "") + `<p class="qz-ask">${it.q ? "你想回答" : "你想說"}：「${esc(it.zh)}」</p>`,
@@ -485,6 +502,7 @@ const Learn = (() => {
       if (q.autoplay) setTimeout(() => play(q.audio), 250);
       const bs = [...el.querySelectorAll(".qz-o button")];
       let tries = 0;
+      const t0 = Date.now();
       bs.forEach(
         (b) =>
           (b.onclick = () => {
@@ -526,6 +544,8 @@ const Learn = (() => {
             if (!ok) b.classList.add("wrong");
             SND.play(ok ? "correct" : "wrong");
             const g = q.reveal === "right-only" && tries ? { fresh: true } : grade(q, ok, opt.src);
+            // ability log: the first answer decides (a later right answer after a miss is a retry, not independent)
+            if (typeof Ability !== "undefined") Ability.log(q, { first: tries ? "wrong" : ok ? "right" : "wrong", retry: tries > 0, fresh: g.fresh, ms: Date.now() - t0, ctx: q.ctx || opt.src || "" });
             const a = q.answer || {};
             el.querySelector(".qz-f").innerHTML = `<b class="${ok ? "good" : "bad"}">${ok ? (tries ? (q.reveal === "right-only" ? "✓ 這次對了（重試後答對，不算獨立答對）" : "答對了（第二次）") : "✓ 答對了！") : "正確答案"}</b> ${answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${ok && !g.fresh ? "<small>剛剛練過這題，這次不重複計分。</small>" : ""}`;
             if (q.after || !ok || q.kind === "kk") speak(a.en, a.file || "");

@@ -533,6 +533,7 @@ const Battle = (() => {
     const q = B.q,
       tok = B.tok;
     B.settled = true;
+    const spent = B.timer ? (B.timer.total - B.timer.left) * 1000 : 0;
     stopClock();
     const bs = [...$("bt-act").querySelectorAll(".qz-o button")];
     // Listen-first sound questions reveal nothing on a miss (no lit-up answer, no word, no recording of it).
@@ -558,6 +559,8 @@ const Battle = (() => {
     if (kind === "timeout") Learn.timeout(q);
     else if (q.assisted && ok) Learn.assisted(q);
     else graded = Learn.grade(q, ok, "battle");
+    // ability log: timeout apart from a wrong answer; a hinted answer is not independent
+    if (typeof Ability !== "undefined") Ability.log(q, { first: kind === "timeout" ? "timeout" : ok ? "right" : "wrong", hint: !!q.assisted, fresh: graded ? graded.fresh : undefined, ms: spent, ctx: q.ctx || "battle" });
     if (ok) heroHits();
     else foeHits(kind === "timeout");
     paintBattle();
@@ -604,6 +607,7 @@ const Battle = (() => {
               $("bt-feedback").innerHTML = `<b>🧚 ${esc(B.comp.name)}：</b>${right ? "對了，就是這個！" : "是這個。"}${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""}${q.explain ? `<small>${esc(q.explain)}</small>` : ""}<small>這題記為「夥伴補正」，不算獨立答對，也不會再造成傷害。</small>`;
               if (a.en) speak(a.en, a.file || "");
               if (B.ctx.onAssist) B.ctx.onAssist(q);
+              if (typeof Ability !== "undefined") Ability.markAssist(q);
               go.hidden = false;
               go.focus({ preventScroll: true });
             };
