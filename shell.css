@@ -525,6 +525,7 @@ button:disabled {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
   font-family: var(--body);
 }
+.vocab-open .wd-card { z-index:10060; }
 .wd-card[hidden] {
   display: none;
 }

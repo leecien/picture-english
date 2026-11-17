@@ -62,6 +62,7 @@ try {
   if (await exists(staging) || await exists(previous)) throw new Error("A build working directory already exists; inspect it before retrying.");
   await fs.mkdir(staging);
   for (const name of top) await copy(name);
+  for (const name of ["vocab.js", "vocab.css"]) await copy(name);
   await tree("data");
   for (const name of ["audio-practice.js", "audio-practice.css", "demo.html"]) await copy("modules/audio-practice/" + name);
   await tree("modules/audio-practice/processed-audio");

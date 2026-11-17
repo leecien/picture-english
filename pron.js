@@ -8,8 +8,8 @@
    Only render text that is already allowed to be visible: never use this to put a hidden answer into the page. */
 const Pron = (() => {
   const ESC = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-  const bank = () => (typeof WORDS !== "undefined" ? WORDS : []);
-  let index = null;
+  const bank = () => (typeof allWords !== "undefined" ? allWords() : typeof WORDS !== "undefined" ? WORDS : []);
+  let index = null, indexSize = -1;
   /* word bank lookup, tolerant of case, punctuation, plural -s/-es and possessive 's */
   /* Draft dictionary (data/dict-draft.json, PR #11): look-up only. Meanings still need teaching review, there
      is no checked KK, and nothing from it is graded. Common function words are not linked from the draft. */
@@ -27,9 +27,11 @@ const Pron = (() => {
     return e ? { w: base, z: e[0], pos: e[1], kk: null, au: "", draft: true, form: base !== t ? t : "" } : null;
   }
   function lookup(raw) {
-    if (!index) {
+    const available = bank();
+    if (!index || indexSize !== available.length) {
       index = new Map();
-      bank().forEach((w) => index.set(String(w.w).toLowerCase(), w));
+      available.forEach((w) => index.set(String(w.w).toLowerCase(), w));
+      indexSize = available.length;
     }
     const t = String(raw).toLowerCase().replace(/[’]/g, "'").replace(/^[^a-z]+|[^a-z]+$/g, "");
     if (!t) return null;

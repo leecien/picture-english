@@ -418,7 +418,7 @@ const RPG = (() => {
     clearTimeout(statusTimer);
     if (t && !keep) statusTimer = setTimeout(() => (el.hidden = true), 4500);
   }
-  const busy = () => Battle.active || !$("dlg").hidden || !$("menu").hidden || !$("panel").hidden || (typeof Atlas !== "undefined" && Atlas.isOpen) || (typeof Platform !== "undefined" && Platform.isOpen) || (typeof AudioSession !== "undefined" && AudioSession.isOpen);
+  const busy = () => Battle.active || !$("dlg").hidden || !$("menu").hidden || !$("panel").hidden || (typeof Atlas !== "undefined" && Atlas.isOpen) || (typeof Platform !== "undefined" && Platform.isOpen) || (typeof AudioSession !== "undefined" && AudioSession.isOpen) || (typeof Vocab !== "undefined" && Vocab.isOpen);
   function syncPause() {
     World.paused = busy();
   }
@@ -526,6 +526,7 @@ const RPG = (() => {
       <button data-m="bag">🎒<b>背包</b><small>道具與素材</small></button>
       <button data-m="life">🛒<b>生活情境找物</b><small>餐廳、超市、機場…點物件學單字</small></button>
       <button data-m="practice">📚<b>練習與成就</b><small>單字、句子、分級</small></button>
+      <button data-m="vocab">📖<b>單字學習</b><small>${typeof Vocab !== "undefined" ? Vocab.count : 80} / 3000 可玩單字</small></button>
       <button data-m="book">🃏<b>卡冊</b><small>收集的單字卡</small></button>
       <button data-m="log">📈<b>學習紀錄</b><small>每天學了什麼</small></button>
       <button data-m="mic">🎤<b>麥克風檢查</b><small>收不到聲音時用</small></button>
@@ -564,6 +565,7 @@ const RPG = (() => {
             closeSheet();
             if (m === "drive") return openDriveFrom(ctx);
             if (m === "record") return openRecordingPractice(ctx);
+            if (m === "vocab") return openVocabulary();
             if (m === "mic") return openDriveFrom(ctx, true);
             openPanel(m === "practice" ? "p-play" : m === "book" ? "p-book" : "p-log");
           }),

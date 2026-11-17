@@ -21,6 +21,9 @@ const rgb = (s) => s.match(/\d+(\.\d+)?/g).slice(0, 3).map(Number);
 async function run(browser, scheme) {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 760 }, colorScheme: scheme });
   const page = await ctx.newPage();
+  // This suite exercises the original bank and the explicitly labelled draft fallback.
+  // Production reviewed-word lookup is covered by vocab-integration.cjs.
+  await page.route("**/data/vocab-reviewed.json", route => route.fulfill({ status: 404, body: "fixture: original bank only" }));
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.addInitScript(() => {

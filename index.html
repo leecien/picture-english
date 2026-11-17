@@ -12,6 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="./assets/app/icon.svg">
 <link rel="stylesheet" href="./atlas.css">
 <link rel="stylesheet" href="./audio-session.css">
+<link rel="stylesheet" href="./vocab.css">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
@@ -669,7 +670,9 @@ function jumpTo(k,why){if(k<=tierIdx(P.xp)||!TIERS[k])return false;P.xp=TIERS[k]
   toast('⏩',`${why}：${TIERS[k].name}`,`程度方向 ${TIERS[k].tag}`,'levelup');award('skip');checkUnlocks();$('g-tier').textContent=TIERS[k].tag;return true}
 function cardTier(c){let k=-1;if(!c)return k;CARD_TIERS.forEach((t,i)=>{if(c.c>=t.min)k=i});return k}
 function isFaded(c){const k=cardTier(c);if(k<0)return false;if(c.miss)return true;return (Date.now()-(c.last||0))/864e5>CARD_TIERS[k].reviewDays}
-const owned=()=>WORDS.filter(w=>cardTier(CARDS[w.w])>=0);
+let lexicalSource=null,lexicalCount=-1,lexicalCache=[];
+const allWords=()=>{const n=typeof Vocab!=='undefined'?Vocab.count:0;if(lexicalSource!==WORDS||lexicalCount!==n){const map=new Map((typeof Vocab!=='undefined'?Vocab.words:[]).map(w=>[w.w.toLowerCase(),w]));WORDS.forEach(w=>map.set(w.w.toLowerCase(),w));lexicalCache=[...map.values()];lexicalSource=WORDS;lexicalCount=n;}return lexicalCache;};
+const owned=()=>allWords().filter(w=>cardTier(CARDS[w.w])>=0);
 const fadedList=()=>WORDS.filter(w=>isFaded(CARDS[w.w]));
 
 /* ===== Toasts ===== */
@@ -963,20 +966,21 @@ function updateHome(){
 }
 function renderBook(){
   const own=owned(),cnt=[0,0,0];own.forEach(w=>cnt[cardTier(CARDS[w.w])]++);const fd=fadedList().length;
-  $('book-sum').innerHTML=`<span class="big-n">${own.length} / ${WORDS.length}</span><span>已收集</span>
+  $('book-sum').innerHTML=`<span class="big-n">${own.length} / ${allWords().length}</span><span>已收集 · 全部單字可到「單字學習」搜尋</span>
    <span class="tiers">${CARD_TIERS.map((t,i)=>`<span><i class="dot-t" style="background:var(--${t.id})"></i>${t.name} ${cnt[i]}</span>`).join('')}<span>褪色 ${fd}</span></span>`;
   const th=Object.entries(THEMES);
   $('filters').innerHTML=`<button data-f="all" aria-pressed="${S.bookFilter==='all'}">全部</button>`+th.map(([k,t])=>{const e=ELEM[t.element]||{};
-    const n=WORDS.filter(w=>w.th===k),o=n.filter(w=>cardTier(CARDS[w.w])>=0).length;
+    const n=allWords().filter(w=>w.th===k),o=n.filter(w=>cardTier(CARDS[w.w])>=0).length;
     return `<button data-f="${k}" aria-pressed="${S.bookFilter===k}">${e.icon||''} ${esc(t.name)} ${o}/${n.length}</button>`}).join('');
   $('filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.bookFilter=b.dataset.f;renderBook()});
-  const list=WORDS.filter(w=>S.bookFilter==='all'||w.th===S.bookFilter);
+  const originals=new Set(WORDS.map(w=>w.w.toLowerCase()));
+  const list=allWords().filter(w=>(originals.has(w.w.toLowerCase())||cardTier(CARDS[w.w])>=0)&&(S.bookFilter==='all'||w.th===S.bookFilter));
   $('cards').innerHTML=list.map(w=>{const c=CARDS[w.w],k=cardTier(c),el=ELEM[(THEMES[w.th]||{}).element]||{};
    if(k<0){const locked=w.lv>maxLv(),ut=unlockTier(w.lv)||{};
     return `<div class="card none"><span class="el">${el.icon||''}</span><span class="ce">${pic(w)}</span><b>${locked?`${LV_NAMES[w.lv]} 解鎖`:'???'}</b><span class="cz">${locked?`升到${ut.tag||''}開放`:'還沒收集'}</span></div>`}
    const t=CARD_TIERS[k],fd=isFaded(c);
    return `<button class="card ${t.id}${fd?' faded':''}" data-w="${esc(w.w)}" aria-label="${esc(w.w)}，${t.name}"><span class="el" title="${el.name||''}">${el.icon||''}</span><span class="tl">${t.name}</span><span class="ce">${pic(w)}</span><b>${esc(w.w)}</b><span class="kk">${esc(w.kk||'')}</span><span class="cz">${esc(w.z)}</span>${fd?'<span class="fl">需要複習</span>':''}</button>`}).join('');
-  $('cards').querySelectorAll('button.card').forEach(b=>b.onclick=()=>{SND.unlock();sayItem(WORDS.find(w=>w.w===b.dataset.w))});
+  $('cards').querySelectorAll('button.card').forEach(b=>b.onclick=()=>{SND.unlock();sayItem(allWords().find(w=>w.w===b.dataset.w))});
 }
 function renderLog(){
   const sents=Object.values(SENTS).filter(c=>c.c>0).length;
@@ -1365,6 +1369,17 @@ function openRecordingPractice(ctx){
     Learn.note(w?'w':'s',w||s,true,'recorded-read');
   }});
 }
+function openVocabulary(){
+  if(typeof Vocab==='undefined')return RPG.say('單字學習尚未載入，請重新整理。');
+  const backToField=$('panel').hidden;
+  Pron.closeWord();World.clearKeys();World.paused=true;document.body.classList.add('vocab-open');
+  return Vocab.open({
+    getProgress:word=>{const c=CARDS[word]||{};return{correct:c.c||0,wrong:c.w||0,learned:cardTier(c)>=0};},
+    onWord:item=>Pron.openWord(item.w),
+    onAnswer:r=>{Learn.grade({kind:'w',recK:'w',item:r.item,ctx:'vocab:'+r.mode,assisted:!!r.assisted},!!r.correct,'vocab');},
+    onClose:()=>{document.body.classList.remove('vocab-open');Pron.closeWord();Learn.flush('quest','單字學習');if(backToField)RPG.resume();else World.paused=true;},
+  });
+}
 /* A failed recording pauses the drive and says why: retry, or knowingly switch to play-only 聆聽模式. */
 const SR_ERR={'not-allowed':'麥克風權限被拒絕。請在瀏覽器網址列左邊的設定把「麥克風」改成允許。','service-not-allowed':'瀏覽器不允許語音辨識服務（內嵌頁面、隱私模式或系統設定會擋）。','audio-capture':'抓不到麥克風的聲音：檢查是否有麥克風、是否被其他 App（通話、錄音）佔用。','network':'語音辨識需要網路，連線失敗。','no-speech':'沒有聽到說話聲。','aborted':'收音被中止。'};
 const DICT_ERR={not_granted:'聽寫權限沒有開放（或瀏覽器擋住麥克風）。可以在這個頁面的「權限」選單開啟。',dismissed:'沒有回應聽寫的詢問。',unavailable:'這個裝置或帳號目前不提供聽寫。',rate_limited:'聽寫使用太頻繁，稍等一下再試。',upstream_error:'麥克風或語音服務出錯。',hidden:'畫面被切走，聽寫停止了。',viewer_stopped:'聽寫被停止了。',time_limit:'聽寫超過時間上限。',no_gesture:'需要再按一次按鈕才能開始收音。'};
@@ -1462,6 +1477,7 @@ async function boot(){
     const [w,s,l,t,m]=await Promise.all(urls.map(u=>fetch(u).then(r=>{if(!r.ok)throw new Error(u);return r.json()})));
     const sj=await scenesP;SCENES=(sj&&Array.isArray(sj.categories))?sj.categories:[];
     WORDS=w.map(x=>({w:x.word,z:x.zh,e:x.emoji,kk:x.kk,th:x.theme,lv:x.level||1,img:x.image||'',au:x.audio||'',az:x.audioZh||''}));
+    if(typeof Vocab!=='undefined'){Vocab.setData({schemaVersion:1,words:w.map(x=>({...x,reviewStatus:'legacy-verified'}))});await Vocab.load();}
     SENT=s.map(x=>({en:x.en,zh:x.zh,sc:x.scene,b:x.blank,o:x.distractors,lv:x.level||1,route:x.route,img:x.image||'',au:x.audio||'',az:x.audioZh||''}));
     TIERS=l.tiers;CARD_TIERS=l.cardTiers;BADGES=l.badges;THEMES=t.themes;ELEM=t.elements;LV_NAMES=l.levelNames||{};
     SND.load(m);RPG.loadArt(m);
@@ -1488,6 +1504,7 @@ $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 <script src="audio-bus.js"></script>
 <script>AudioBus.init();</script>
 <script src="audio-session.js"></script>
+<script src="vocab.js"></script>
 <script src="pron.js"></script>
 <script src="world.js"></script>
 <script src="battle.js"></script>
