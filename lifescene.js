@@ -1,20 +1,13 @@
-/* 生活情境找物 (PR #10, data/life-scenes.json): six realistic everyday scenes, six target words each.
-   Four ways to use one picture:
-     explore  – tap an object: outline, word, meaning, KK (only when the word bank has it) and its sound
-     listen   – hear a word first (answering opens only after it played), then tap the object; nothing is named before
-     spell    – find the object from its Chinese name, then spell it with letter tiles (long words: find and hear only)
-     mission  – a small everyday task: find the 2–3 things it needs
-   Touch: drag pans, pinch / ＋ － zooms, a tap is a tap only when the finger did not move; small objects get a
-   44 px tolerance and an ambiguous tap zooms in instead of guessing. One sound at a time (Pron.play).
-   Records (pm-life-v1): first-try right, right after a retry, and wrong are kept apart; words that are in the
-   word bank also update the shared card book. Words without a KK entry say so; their sound is the device
-   voice reading the whole word (labelled), never a made-up KK. */
+/* Sentence-led everyday lessons: 12 scenes, 6 contextual sentences each.
+   Pictures illustrate a situation; no object-location answers. Legacy pm-life-v1 records are preserved.
+   Story → hear sentence/word → sentence gap practice; first attempts, retries and exposure stay separate. */
 const Life = (() => {
   const ESC = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const store = () => {
     const d = (typeof LS !== "undefined" && LS.get("pm-life-v1", null)) || {};
     return { v: 1, found: {}, res: {}, missions: {}, ...d };
   };
+  let CONTEXTS = null;
   let DATA = null,
     ST = store(),
     el = null,
@@ -24,11 +17,15 @@ const Life = (() => {
     round = null,
     onClose = null;
   const save = () => typeof LS !== "undefined" && LS.set("pm-life-v1", ST);
-  const bankWord = (w) => (typeof WORDS !== "undefined" ? WORDS.find((x) => x.w === w) : null);
+  const bankWord = (w) => (typeof Vocab !== "undefined" && Vocab.lookup(w)) || (typeof WORDS !== "undefined" ? WORDS.find((x) => x.w === w) : null);
   async function load() {
     if (DATA) return DATA;
     const r = await fetch("data/life-scenes.json");
-    DATA = await r.json();
+    const nextData = await r.json();
+    const contextResponse = await fetch("data/life-contexts.json");
+    if (!contextResponse.ok) throw Error("情境教材載入失敗");
+    CONTEXTS = (await contextResponse.json()).scenes;
+    DATA = nextData;
     return DATA;
   }
   /* result bookkeeping: kind = ind | retry | wrong | seen */
@@ -51,9 +48,9 @@ const Life = (() => {
     el.id = "life";
     el.hidden = true;
     el.setAttribute("role", "dialog");
-    el.setAttribute("aria-label", "生活情境找物");
+    el.setAttribute("aria-label", "生活情境學英語");
     el.innerHTML = `<div class="life-top"><button type="button" id="life-back">← 返回</button><b id="life-title">生活情境</b><span id="life-count"></span></div>
-      <div class="life-tabs" id="life-tabs" hidden>${[["explore", "👆 探索"], ["listen", "🎧 聽音找物"], ["spell", "🔤 找物拼字"], ["mission", "🧺 生活任務"]].map(([k, l]) => `<button type="button" data-mode="${k}">${l}</button>`).join("")}</div>
+      <div class="life-tabs" id="life-tabs" hidden>${[["story", "💬 情境故事"], ["practice", "✍️ 句子練習"]].map(([k, l]) => `<button type="button" data-mode="${k}">${l}</button>`).join("")}</div>
       <div class="life-stage" id="life-stage" hidden><div class="life-layer" id="life-layer"><img id="life-img" alt="" draggable="false"><svg id="life-svg" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"></svg></div>
         <div class="life-toast" id="life-toast" hidden></div></div>
       <div class="life-zoom" id="life-zoom" hidden><small>拖曳移動，雙指或按鈕縮放</small><button type="button" id="life-in" aria-label="放大">＋</button><button type="button" id="life-out" aria-label="縮小">－</button><button type="button" id="life-fit" aria-label="看整張">⤢</button></div>
@@ -73,11 +70,16 @@ const Life = (() => {
     onClose = opt.onClose || null;
     el.hidden = false;
     document.body.classList.add("life-open");
-    await load();
+    try { await load(); } catch (_) {
+      $l("life-panel").textContent = "情境教材暫時無法載入，請返回後重試。";
+      return;
+    }
     if (opt.scene) return openScene(opt.scene, opt.mode);
     pickScene();
   }
   function close() {
+    round = null;
+    if (typeof AudioBus !== "undefined") AudioBus.stop();
     if (typeof Pron !== "undefined") Pron.closeWord();
     if (scene && typeof Learn !== "undefined") Learn.flush("quest", "生活情境・" + scene.title);
     el.hidden = true;
@@ -86,16 +88,17 @@ const Life = (() => {
     if (onClose) onClose();
   }
   function pickScene() {
+    if (typeof AudioBus !== "undefined") AudioBus.stop();
     if (scene && typeof Learn !== "undefined") Learn.flush("quest", "生活情境・" + scene.title);
     scene = null;
     round = null;
-    $l("life-title").textContent = "生活情境找物";
+    $l("life-title").textContent = "生活情境學英語";
     $l("life-count").textContent = "";
     $l("life-tabs").hidden = true;
     $l("life-stage").hidden = true;
     $l("life-zoom").hidden = true;
-    $l("life-panel").innerHTML = `<p class="life-lead">每張圖固定 6 個單字。先點物件聽發音，再挑一種玩法：聽音找物、找物拼字或生活任務。</p><div class="life-scenes">${DATA.scenes
-      .map((s) => `<button type="button" data-scene="${s.id}"><img src="${ESC(s.image)}" alt="" loading="lazy"><b>${ESC(s.title)}</b><small>找到 ${(ST.found[s.id] || []).length} / ${s.targets.length}</small></button>`)
+    $l("life-panel").innerHTML = `<p class="life-lead">走進生活情境，先聽一句話，認識其中的重點單字，再用句子練習。每個情境帶入 6 個字。</p><div class="life-scenes">${DATA.scenes
+      .map((s) => `<button type="button" data-scene="${s.id}"><img src="${ESC(s.image)}" alt="" loading="lazy"><b>${ESC(s.title)}</b><small>已學 ${(ST.found[s.id] || []).length} / ${s.targets.length}</small></button>`)
       .join("")}</div>`;
     $l("life-panel").querySelectorAll("[data-scene]").forEach((b) => (b.onclick = () => openScene(b.dataset.scene)));
   }
@@ -111,11 +114,11 @@ const Life = (() => {
     img.src = scene.image;
     if (img.complete && img.naturalWidth) requestAnimationFrame(() => fit());
     paintOutlines();
-    setMode(m || "explore");
+    setMode(m || "story");
   }
   const found = () => (ST.found[scene.id] = ST.found[scene.id] || []);
   function count() {
-    $l("life-count").textContent = `找到 ${found().length} / ${scene.targets.length}`;
+    $l("life-count").textContent = `已學 ${found().length} / ${scene.targets.length}`;
   }
 
   /* ---------- view: pan / zoom ---------- */
@@ -301,34 +304,72 @@ const Life = (() => {
 
   /* ---------- modes ---------- */
   function setMode(m) {
-    mode = m;
-    el.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === m)));
+    mode = m === "practice" ? "practice" : "story";
+    if (typeof AudioBus !== "undefined") AudioBus.stop();
+    el.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === mode)));
     if (typeof Pron !== "undefined") Pron.closeWord();
     count();
-    ({ explore, listen, spell, mission })[m]();
+    contextLesson(mode === "practice");
   }
-  function explore() {
-    if (view.w) fit();
-    round = {
-      marks: Object.fromEntries(found().map((id) => [id, "found"])),
-      onTap(t) {
-        if (!t) return toast("這裡不是練習物件，換個地方點點看");
-        const first = !found().includes(t.id);
-        if (first) {
-          found().push(t.id);
-          note(t, "seen");
-          if (typeof addXP === "function") addXP(2);
-        }
-        round.marks[t.id] = "found";
+  function contextLesson(practice) {
+    const lessons = CONTEXTS[scene.id];
+    let index = 0;
+    const next = () => {
+      if (typeof AudioBus !== "undefined") AudioBus.stop();
+      if (index >= lessons.length) {
+        round = {locked:true, marks:{}, onTap() {}};
         paintOutlines();
-        count();
-        say(t);
-        panel(`${card(t, first ? '<small class="life-new">✨ 第一次找到</small>' : "")}<p class="life-hint">繼續點其他物件。找到 ${found().length} / ${scene.targets.length}${found().length === scene.targets.length ? "，六個都找到了！可以試試上面的其他玩法。" : ""}</p>`);
-      },
+        panel(`<div class="life-sum"><b>${practice ? "句子練習完成" : "情境故事讀完了"}</b><p>這次在「${ESC(scene.title)}」認識了 ${lessons.length} 個字。</p><button type="button" id="context-practice">${practice ? "再練一輪" : "試試句子練習"}</button></div>`);
+        $l("context-practice").onclick = () => setMode("practice");
+        return;
+      }
+      const item = lessons[index], t = scene.targets.find(t => t.word === item.word);
+      const cur = round = {locked:true, marks:{[t.id]:"found"}, onTap() {}};
+      // The image illustrates the story; there is no hotspot answer or penalty.
+      paintOutlines(); focus(t);
+      let heard = false, settled = false, missed = false;
+      const reveal = () => {
+        panel(`<p class="life-hint">${index+1} / ${lessons.length} · ${ESC(item.situation)}</p>
+          <p class="life-context-line">${Learn.sayHTML(item.en, "")}</p><p>${ESC(item.zh)}</p>
+          <p class="life-context-word"><b>${ESC(t.word)}</b>：${ESC(t.zh)}</p>
+          <button type="button" id="context-hear">🔊 聽整句</button> <button type="button" id="context-word">🔊 聽 ${ESC(t.word)}</button>
+          <p class="life-hint">${practice ? (missed ? "重試後答對，這次先記住這個用法。" : "✓ 答對了！") : "先在句子裡認識這個字，再練習怎麼使用。"}</p>
+          <button type="button" id="context-next">${index+1===lessons.length ? "完成這個情境" : "繼續故事"}</button>`);
+        $l("life-panel").querySelectorAll(".pw").forEach(n=>{if(n.dataset.w===t.word)n.classList.add("life-keyword");});
+        $l("context-hear").onclick = () => Pron.play(item.en, "");
+        $l("context-word").onclick = () => say(t);
+        $l("context-next").onclick = () => {
+          if (!found().includes(t.id)) {found().push(t.id); note(t,"seen");}
+          count(); index++; next();
+        };
+      };
+      if (!practice) return reveal();
+      const gap = item.en.replace(new RegExp(String.raw`\b${t.word}\b`, "i"), "＿＿＿");
+      const choices = shuffle([t,...shuffle(scene.targets.filter(x=>x!==t)).slice(0,3)]);
+      panel(`<p class="life-hint">${index+1} / ${lessons.length} · ${ESC(item.situation)}</p><p class="life-context-line">${ESC(gap)}</p><p>${ESC(item.zh)}</p>
+        <button type="button" id="context-hear">🔊 先聽情境句子</button><p id="context-status" role="status">聽完後，選字完成這句話。</p>
+        <div class="life-context-choices">${choices.map(x=>`<button type="button" data-context-word="${ESC(x.word)}" disabled>${ESC(x.word)}</button>`).join("")}</div>`);
+      $l("context-hear").onclick = async () => {
+        const ok = await Pron.play(item.en, "");
+        if (round !== cur || el.hidden) return;
+        heard = !!ok;
+        $l("context-status").textContent = heard ? "選字完成這句話。" : "聲音沒有播完，請再聽一次；這次不計錯。";
+        $l("life-panel").querySelectorAll("[data-context-word]").forEach(b=>b.disabled=!heard);
+      };
+      $l("life-panel").querySelectorAll("[data-context-word]").forEach(b=>b.onclick=()=>{
+        if (!heard || settled || round!==cur) return;
+        if (b.dataset.contextWord !== t.word) {
+          if (!missed) note(t,"wrong");
+          missed=true; b.disabled=true;
+          $l("context-status").textContent="再試一次：看看中文句意，想想這裡需要哪個字。";
+          return;
+        }
+        settled=true; note(t,missed?"retry":"ind"); reveal();
+      });
     };
-    paintOutlines();
-    panel(`<p class="life-hint">👆 點圖裡的物件，聽它的英文。拖曳可以移動，＋／－可以放大。已經找到 ${found().length} / ${scene.targets.length}。</p>`);
+    next();
   }
+
   const shuffle = (a) => {
     a = a.slice();
     for (let i = a.length - 1; i > 0; i--) {
@@ -337,205 +378,6 @@ const Life = (() => {
     }
     return a;
   };
-  const roundOf = (n, filter) => shuffle(scene.targets.filter(filter || (() => true))).slice(0, n);
-  function summary(title, rows, again) {
-    round = { marks: round ? round.marks : {}, locked: true, onTap() {} };
-    panel(`<div class="life-sum"><b>${title}</b><ul>${rows.join("")}</ul><span class="dlg-row"><button type="button" id="life-again">▶ 再來一輪</button></span></div>`);
-    $l("life-again").onclick = again;
-  }
-  const rowOf = (t, r) => `<li>${r === "ind" ? "✓" : r === "retry" ? "↻" : "✕"} ${ESC(t.word)} ${ESC(t.zh)}<small>${r === "ind" ? "一次就對" : r === "retry" ? "再試後找到" : "這次沒有完成"}</small></li>`;
-
-  /* listen: hear first; answering opens only after the word has played; nothing named before the answer */
-  function listen() {
-    const list = roundOf(3),
-      res = [];
-    let i = -1;
-    const next = () => {
-      i++;
-      if (i >= list.length) return summary("🎧 聽音找物：這一輪完成", list.map((t, k) => rowOf(t, res[k])), listen);
-      const t = list[i];
-      let tries = 0;
-      fit();
-      round = {
-        target: t.id, // test hook only: never rendered
-        marks: {},
-        locked: true,
-        onTap(x) {
-          if (!x) return toast("這裡沒有練習物件，再找找看");
-          if (x !== t) {
-            if (!tries) note(t, "wrong");
-            tries++;
-            round.marks = { [x.id]: "bad" };
-            paintOutlines();
-            setTimeout(() => {
-              if (round && round.marks[x.id] === "bad") (delete round.marks[x.id], paintOutlines());
-            }, 700);
-            if (typeof SND !== "undefined") SND.play("wrong");
-            $l("life-fb").innerHTML = `<b class="bad">✕ 不是這個</b><small>再聽一次，再找找看。</small>`;
-            return;
-          }
-          res[i] = tries ? "retry" : "ind";
-          if (!tries) note(t, "ind");
-          else note(t, "retry");
-          if (!found().includes(t.id)) found().push(t.id), save();
-          round.locked = true;
-          round.marks = { [t.id]: "good" };
-          paintOutlines();
-          count();
-          if (typeof SND !== "undefined") SND.play("correct");
-          say(t);
-          panel(`<p class="life-hint">第 ${i + 1} / ${list.length} 題 · <b class="good">✓ 找到了${tries ? "（再試後）" : ""}</b></p>${card(t)}<span class="dlg-row"><button type="button" id="life-next">▶ 下一題</button></span>`);
-          $l("life-next").onclick = next;
-        },
-      };
-      paintOutlines();
-      panel(`<p class="life-hint">第 ${i + 1} / ${list.length} 題 · 🎧 聽單字，點出這個物件</p><span class="dlg-row"><button type="button" id="life-replay">🔊 再聽一次</button></span><p class="life-wait" id="life-wait">播放中…聽完才可以點圖。</p><div class="qz-f" id="life-fb"></div>`);
-      const play = () => {
-        round.locked = true;
-        $l("life-wait").hidden = false;
-        $l("life-wait").textContent = "播放中…聽完才可以點圖。";
-        say(t).then((ok) => {
-          if (!round || round !== cur) return;
-          if (!ok) {
-            $l("life-wait").textContent = "聲音沒有播出來。按「🔊 再聽一次」重試；聽到之前不能作答。";
-            return;
-          }
-          $l("life-wait").hidden = true;
-          round.locked = false;
-        });
-      };
-      const cur = round;
-      $l("life-replay").onclick = play;
-      play();
-    };
-    next();
-  }
-
-  /* spell: find from the Chinese name, then spell with tiles (only short words; long ones are find + hear) */
-  const SPELL_MAX = 6;
-  function spell() {
-    const list = roundOf(3),
-      res = [];
-    let i = -1;
-    const next = () => {
-      i++;
-      if (i >= list.length) return summary("🔤 找物拼字：這一輪完成", list.map((t, k) => rowOf(t, res[k])), spell);
-      const t = list[i],
-        long = t.word.length > SPELL_MAX;
-      let tries = 0;
-      fit(); // each question starts from the whole picture
-      round = {
-        marks: {},
-        locked: false,
-        onTap(x) {
-          if (!x) return toast("這裡沒有練習物件，再找找看");
-          if (x !== t) {
-            tries++;
-            if (typeof SND !== "undefined") SND.play("wrong");
-            $l("life-fb").innerHTML = `<b class="bad">✕ 不是這個</b><small>找的是「${ESC(t.zh)}」。</small>`;
-            return;
-          }
-          round.locked = true;
-          round.marks = { [t.id]: "good" };
-          paintOutlines();
-          focus(t);
-          if (!found().includes(t.id)) found().push(t.id), save();
-          count();
-          if (long) {
-            res[i] = tries ? "retry" : "ind";
-            note(t, tries ? "retry" : "ind");
-            say(t);
-            panel(`<p class="life-hint">第 ${i + 1} / ${list.length} 題 · <b class="good">✓ 找到了</b></p><p class="life-hint">這個字比較長，這一輪先練辨識和發音，不考拼字。</p>${card(t)}<span class="dlg-row"><button type="button" id="life-next">▶ 下一題</button></span>`);
-            $l("life-next").onclick = next;
-            return;
-          }
-          tiles(t, (ok) => {
-            res[i] = ok ? (tries ? "retry" : "ind") : "wrong";
-            note(t, res[i]);
-          });
-        },
-      };
-      paintOutlines();
-      panel(`<p class="life-hint">第 ${i + 1} / ${list.length} 題 · 找到「<b>${ESC(t.zh)}</b>」${long ? "（這個字比較長：找到後聽發音）" : "，再拼出它的英文"}</p><div class="qz-f" id="life-fb"></div>`);
-    };
-    function tiles(t, done) {
-      const letters = t.word.split(""),
-        extra = shuffle("abcdefghijklmnopqrstuvwxyz".split("").filter((c) => !letters.includes(c))).slice(0, 2),
-        pool = shuffle([...letters, ...extra]).map((c, k) => ({ c, k })),
-        slots = letters.map(() => null);
-      const paint = () => {
-        panel(`<p class="life-hint">拼出「${ESC(t.zh)}」的英文：點字母放進格子，點格子拿回來。送出後才會顯示答案。</p>
-          <div class="life-slots">${slots.map((x, k) => `<button type="button" class="life-slot" data-slot="${k}" aria-label="第 ${k + 1} 格">${x ? ESC(x.c) : "＿"}</button>`).join("")}</div>
-          <div class="life-tiles">${pool.map((x) => `<button type="button" class="life-tile" data-tile="${x.k}" ${slots.includes(x) ? "disabled" : ""}>${ESC(x.c)}</button>`).join("")}</div>
-          <span class="dlg-row"><button type="button" id="life-submit" ${slots.every(Boolean) ? "" : "disabled"}>送出</button></span>`);
-        $l("life-panel").querySelectorAll("[data-tile]").forEach((b) => (b.onclick = () => {
-          const k = slots.indexOf(null);
-          if (k < 0) return;
-          slots[k] = pool.find((x) => x.k === +b.dataset.tile);
-          paint();
-        }));
-        $l("life-panel").querySelectorAll("[data-slot]").forEach((b) => (b.onclick = () => {
-          slots[+b.dataset.slot] = null;
-          paint();
-        }));
-        $l("life-submit").onclick = () => {
-          const got = slots.map((x) => x.c).join(""),
-            ok = got === t.word;
-          done(ok);
-          if (typeof SND !== "undefined") SND.play(ok ? "correct" : "wrong");
-          say(t);
-          panel(`<p class="life-hint">${ok ? '<b class="good">✓ 拼對了</b>' : `<b class="bad">✕ 還沒拼對</b>：你拼的是 <span class="life-mine">${letters.map((c, k) => `<span class="${slots[k].c === c ? "ok" : "no"}">${ESC(slots[k].c)}</span>`).join("")}</span>`}</p>${card(t)}<span class="dlg-row"><button type="button" id="life-next">▶ 下一題</button></span>`);
-          $l("life-next").onclick = next;
-        };
-      };
-      paint();
-    }
-    next();
-  }
-
-  /* mission: find what the task needs, in any order */
-  function mission(idx) {
-    const ms = scene.missions || [];
-    if (idx == null) {
-      fit();
-      round = { marks: {}, locked: true, onTap() {} };
-      paintOutlines();
-      const done = ST.missions[scene.id] || [];
-      if (!ms.length) return panel(`<p class="life-hint">🧺 這張圖還沒有生活任務（教材製作中）。可以先玩探索、聽音找物或找物拼字。</p>`);
-      panel(`<p class="life-hint">🧺 選一個生活任務：</p><div class="life-missions">${ms.map((m, k) => `<button type="button" data-mission="${k}"><b>${done.includes(k) ? "✅ " : ""}${ESC(m.title)}</b><small>${ESC(m.prompt)}</small></button>`).join("")}</div>`);
-      $l("life-panel").querySelectorAll("[data-mission]").forEach((b) => (b.onclick = () => mission(+b.dataset.mission)));
-      return;
-    }
-    const m = ms[idx],
-      need = m.targets.map((id) => scene.targets.find((t) => t.id === id)),
-      got = [];
-    fit();
-    const paint = (fb) => panel(`<p class="life-hint"><b>${ESC(m.title)}</b>：${ESC(m.prompt)}</p><ul class="life-check">${need.map((t) => `<li class="${got.includes(t) ? "done" : ""}">${got.includes(t) ? "✅" : "⬜"} ${ESC(t.zh)}${got.includes(t) ? ` <b>${ESC(t.word)}</b>` : ""}</li>`).join("")}</ul><div class="qz-f" id="life-fb">${fb || ""}</div>`);
-    round = {
-      marks: {},
-      locked: false,
-      onTap(x) {
-        if (!x) return toast("這裡沒有練習物件");
-        if (!need.includes(x)) return paint(`<b class="bad">✕ 這個任務用不到它</b><small>再看看任務需要什麼。</small>`);
-        if (got.includes(x)) return say(x);
-        got.push(x);
-        round.marks[x.id] = "good";
-        paintOutlines();
-        if (!found().includes(x.id)) found().push(x.id), save();
-        count();
-        say(x);
-        if (got.length < need.length) return paint(`<b class="good">✓ ${ESC(x.word)}</b> <span>${ESC(x.zh)}</span>`);
-        ST.missions[scene.id] = [...new Set([...(ST.missions[scene.id] || []), idx])];
-        save();
-        if (typeof addXP === "function") addXP(5);
-        round.locked = true;
-        panel(`<div class="life-sum"><b>🎉 任務完成：${ESC(m.title)}</b><ul>${need.map((t) => `<li>✓ ${ESC(t.word)} ${ESC(t.zh)} <button type="button" class="life-say" data-say-word="${ESC(t.id)}">🔊</button></li>`).join("")}</ul><span class="dlg-row"><button type="button" id="life-again">▶ 選其他任務</button></span></div>`);
-        $l("life-again").onclick = () => mission();
-      },
-    };
-    paintOutlines();
-    paint();
-  }
 
   return {
     open,

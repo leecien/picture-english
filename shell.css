@@ -1801,3 +1801,5 @@ b.nv-hit {
 }
 
 body.vocab-open .audio-session{z-index:10070}
+
+.life-context-line{font-size:23px;line-height:1.6;color:inherit}.life-context-word{font-size:21px}.life-keyword{background:#fff0bb!important;color:#513800!important;padding:2px 4px;border-radius:4px}.life-context-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.life-context-choices button{min-height:48px;color:inherit}.life-context-choices button:disabled{opacity:.65}
