@@ -524,7 +524,7 @@ const RPG = (() => {
       <button data-m="record">🎙️<b>錄音跟讀</b><small>聽示範、逐字回饋、回放自己的聲音</small></button>
       ${C.claimed ? `<button data-m="buddy">🧚<b>旅伴</b><small>露米・默契 Lv.${bondLv()}</small></button>` : ""}
       <button data-m="bag">🎒<b>背包</b><small>道具與素材</small></button>
-      <button data-m="life">🛒<b>生活情境找物</b><small>餐廳、超市、機場…點物件學單字</small></button>
+      <button data-m="life">🛒<b>生活情境學英語</b><small>餐廳、超市、機場…從句子認識單字</small></button>
       <button data-m="practice">📚<b>練習與成就</b><small>單字、句子、分級</small></button>
       <button data-m="vocab">📖<b>單字學習</b><small>${typeof Vocab !== "undefined" ? Vocab.count : 80} / 3000 可玩單字</small></button>
       <button data-m="book">🃏<b>卡冊</b><small>收集的單字卡</small></button>
