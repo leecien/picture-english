@@ -114,8 +114,8 @@ const h = (page) => {
   /* ---------- 1. Full-screen shell on a phone: one goal, one main action ---------- */
   const { ctx, page, errors } = await setup(browser);
   const t = h(page);
-  // The new novice unit (cat) and its field battle are covered by tests/novice.cjs; start right after them.
-  await t.ev(() => localStorage.setItem("pm-rpg-v1", JSON.stringify({ version: 1, at: "kk", nv: { track: "v1", step: "done", n01: true, field: true, n02: true, n02step: "done", field2: true, ch: { N03: { step: "done", done: true } }, field3: true, taught: ["k", "æ", "t", "m", "n", "s", "f", "p", "b", "d", "g", "h", "l"], passed: ["k", "æ", "t", "m", "n", "s", "f", "p", "b", "d", "g", "h", "l"], lv: 4 } })));
+  // The old four-lesson path is kept for legacy saves (the v1 main line N01–boss is covered by tests/novice.cjs and tests/kk41.cjs).
+  await t.ev(() => localStorage.setItem("pm-rpg-v1", JSON.stringify({ version: 1, at: "kk", nv: { track: "legacy", step: "done", n01: true, field: true, n02: true, n02step: "done", field2: true, ch: { N03: { step: "done", done: true } }, field3: true, taught: ["k", "æ", "t", "m", "n", "s", "f", "p", "b", "d", "g", "h", "l"], passed: ["k", "æ", "t", "m", "n", "s", "f", "p", "b", "d", "g", "h", "l"], lv: 4 } })));
   await page.reload();
   await page.waitForSelector(".world-canvas");
   const onScreen = (ids) =>

@@ -1308,6 +1308,7 @@ b.nv-hit {
 .nv-slots,
 .nv-chips {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
   margin: 10px 0;
@@ -1324,6 +1325,17 @@ b.nv-hit {
 }
 .nv-slot {
   border-style: dashed;
+}
+/* long words (6+ sounds) keep every tile on a 360px phone */
+.nv-slots.long,
+.nv-chips.long {
+  gap: 6px;
+}
+.nv-slots.long .nv-slot,
+.nv-chips.long .nv-chip {
+  min-width: 52px;
+  min-height: 52px;
+  font-size: 22px;
 }
 .nv-slot.good {
   background: #ddf4e8;

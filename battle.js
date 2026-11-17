@@ -235,6 +235,9 @@ const Battle = (() => {
       foeShield: !!mob.look.shield, intent: "", phase: "", q: null, settled: true, paused: false, timer: null,
       chase: ctx.chase || null, dist: ctx.chase ? ctx.chase.start : 0,
       comp: ctx.companion ? { ...ctx.companion, energy: 0, hintLeft: 1, healed: false } : null,
+      // quota (boss seals): the phase ends after n questions and passes on `need` first-try right answers;
+      // HP only shows seal progress, so strong attacks cannot end it early.
+      quota: ctx.quota ? { ...ctx.quota, asked: 0, first: 0 } : null,
     };
     PREF();
     World.paused = true;
@@ -281,7 +284,7 @@ const Battle = (() => {
   }
   function ask() {
     if (!B) return;
-    if (B.chase ? B.dist <= 0 : B.hp <= 0) return victory();
+    if (!B.quota && (B.chase ? B.dist <= 0 : B.hp <= 0)) return victory(); // a seal is decided by its question count
     if (st.hp <= 0) return defeat();
     B.turn++;
     if (B.ctx.phases) {
@@ -290,6 +293,7 @@ const Battle = (() => {
       B.phase = ph.label;
       B.phaseIdx = B.ctx.phases.indexOf(ph);
     }
+    if (B.quota) B.phase = `${B.quota.label}（第 ${B.quota.asked + 1}/${B.quota.n} 題，首次答對 ${B.quota.first}/${B.quota.need}）`;
     B.intent = nextIntent();
     const q = trim(B.ctx.make(B));
     B.q = q;
@@ -309,7 +313,7 @@ const Battle = (() => {
       ["time", "⏳ +5 秒", 4, practice],
     ];
     $("bt-act").innerHTML = `<div class="bt-q">
-      <div class="bt-top"><span class="bt-turn">第 ${B.turn} 題${B.chase ? " · 追海鷗" : ""}</span><button type="button" id="bt-mode" class="bt-mini">${practice ? "🌱 練習（不限時）" : "⏱ 限時"}</button><button type="button" id="bt-hold" class="bt-mini" aria-label="暫停">⏸</button><button type="button" id="bt-run" class="bt-mini">🏃 逃跑</button></div>
+      <div class="bt-top"><span class="bt-turn">第 ${B.turn} 題${B.chase ? " · 追海鷗" : ""}</span>${B.quota ? "" : `<button type="button" id="bt-mode" class="bt-mini">${practice ? "🌱 練習（不限時）" : "⏱ 限時"}</button>`}<button type="button" id="bt-hold" class="bt-mini" aria-label="暫停">⏸</button><button type="button" id="bt-run" class="bt-mini">🏃 逃跑</button></div>
       <div class="bt-clock" ${practice ? "hidden" : ""}><i id="bt-clock-bar"></i><span id="bt-clock-n"></span></div>
       <div class="qz-p">${q.prompt}</div>
       ${q.audio ? `<button class="qz-say" type="button" id="bt-say">🔊 ${esc(q.audio.label || "再聽一次")}</button>` : ""}
@@ -317,7 +321,7 @@ const Battle = (() => {
       <div class="qz-f" role="status" id="bt-feedback"></div>
       <div class="bt-help">${help.map(([k, label, mp, off]) => `<button type="button" data-help="${k}" ${st.mp < mp || off ? "disabled" : ""}>${label}<small>MP ${mp}</small></button>`).join("")}<button type="button" data-help="berry" ${count("berry") && st.hp < m.maxHp ? "" : "disabled"}>🍓<small>×${count("berry")}</small></button>${B.comp ? `<button type="button" data-help="hint" class="bt-buddy-hint" ${B.comp.hintLeft ? "" : "disabled"}>🧚 提示<small>每場 ${B.comp.hintLeft} 次</small></button>` : ""}</div>
     </div>`;
-    $("bt-mode").onclick = () => {
+    if ($("bt-mode")) $("bt-mode").onclick = () => {
       st.pref.practice = !st.pref.practice;
       persist();
       $("bt-mode").textContent = st.pref.practice ? "🌱 練習（不限時）" : "⏱ 限時（下一題起）";
@@ -532,6 +536,10 @@ const Battle = (() => {
     SND.play(ok ? "correct" : "wrong");
     // Records: answers through Learn; a timeout is metadata, not a language error; hinted-to-one is practice.
     if (B.ctx.onSettle) B.ctx.onSettle(q, kind);
+    if (B.quota) {
+      B.quota.asked++;
+      if (ok && !q.assisted) B.quota.first++;
+    }
     if (kind === "timeout") Learn.timeout(q);
     else if (q.assisted && ok) Learn.assisted(q);
     else Learn.grade(q, ok, "battle");
@@ -555,6 +563,24 @@ const Battle = (() => {
       go.textContent = "下一題";
       go.onclick = () => live(tok) && after();
       $("bt-act").querySelector(".bt-q").insertBefore(go, $("bt-act").querySelector(".bt-help"));
+      if (hide && B.comp && kind === "wrong") {
+        // the companion compares the sounds and shows the right one: a fix, not an independent answer
+        const fix = document.createElement("button");
+        fix.type = "button";
+        fix.className = "qz-say";
+        fix.id = "bt-buddy-fix";
+        fix.textContent = `🧚 請${B.comp.name}幫忙看看`;
+        fix.onclick = () => {
+          if (!live(tok)) return;
+          fix.remove();
+          bs.forEach((b, i) => q.options[i].ok && b.classList.add("right"));
+          Learn.revealKK(q, bs);
+          $("bt-feedback").innerHTML = `<b>🧚 ${esc(B.comp.name)}：</b>聽，是這個。${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""}${q.explain ? `<small>${esc(q.explain)}</small>` : ""}<small>這題記為「夥伴補正」，不算獨立答對，也不會再造成傷害。</small>`;
+          if (a.en) speak(a.en, a.file || "");
+          if (B.ctx.onAssist) B.ctx.onAssist(q);
+        };
+        $("bt-act").querySelector(".bt-q").insertBefore(fix, go);
+      }
       go.focus({ preventScroll: true });
     }
   }
@@ -566,6 +592,12 @@ const Battle = (() => {
       B.dist = Math.max(0, B.dist - 1);
       pop("foe", "拉近！", "crit");
       log(B.dist ? `追上了一點！還差 ${B.dist}。` : "抓到海鷗了！");
+    } else if (B.quota) {
+      // seal progress, not damage
+      B.hp = Math.round(B.maxHp * (1 - Math.min(1, B.quota.first / B.quota.need)));
+      shake("foe");
+      pop("foe", `封印 ${Math.min(B.quota.first, B.quota.need)}/${B.quota.need}`, "crit");
+      log(B.hp > 0 ? `封印前進！首次答對 ${B.quota.first}/${B.quota.need}。` : `封印條已滿，但本階段還要完成 ${B.quota.n - B.quota.asked} 題才能鎖上封印。`);
     } else if (B.foeShield) {
       B.foeShield = false;
       pop("foe", `${(B.look.shield || {}).icon || "🛡️"} 破盾！`, "crit");
@@ -631,6 +663,11 @@ const Battle = (() => {
   }
   function after() {
     if (!B) return;
+    if (B.quota) {
+      if (B.quota.asked >= B.quota.n) return quotaEnd();
+      if (st.hp <= 0) return defeat();
+      return ask();
+    }
     if (B.chase && B.dist >= B.chase.max) return escaped();
     if (B.chase ? B.dist <= 0 : B.hp <= 0) return victory();
     if (st.hp <= 0) return defeat();
@@ -646,6 +683,16 @@ const Battle = (() => {
     stopClock();
     $("bt-act").innerHTML = `<div class="bt-end"><h3>💨 海鷗飛走了</h3><p>牠飛遠了，等一下再去追。練到的英文都已經記錄。</p><button id="bt-claim" class="qz-next">回到原地</button></div>`;
     $("bt-claim").onclick = () => end("escape");
+  }
+  /* End of a quota phase: passes on enough first-try answers; otherwise the same phase is tried again later. */
+  function quotaEnd() {
+    stopClock();
+    const qt = B.quota,
+      pass = qt.first >= qt.need;
+    SND.play(pass ? "roundend" : "wrong");
+    $("bt-act").innerHTML = `<div class="bt-end"><h3>${pass ? "🔒 封印完成" : "🔓 封印沒有完成"}</h3><p>${esc(qt.label)}：${qt.n} 題中首次答對 <b>${qt.first}</b> 題（需要 ${qt.need} 題）。</p><p class="fine">${pass ? "這個階段已存檔，下次從下一個封印開始。" : "這個階段沒有過關，已完成的階段不受影響；回來時換新的題目重挑這一階段。"}</p><button id="bt-claim" class="qz-next">${pass ? "繼續" : "回到原地"}</button></div>`;
+    $("bt-claim").onclick = () => end(pass ? "win" : "fail");
+    $("bt-claim").focus({ preventScroll: true });
   }
   function victory() {
     stopClock();
@@ -717,7 +764,7 @@ const Battle = (() => {
       persist();
     },
     get state() {
-      return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield, combo: B.combo, power: B.power, guard: B.guard, intent: B.intent, dist: B.dist, turn: B.turn, paused: B.paused, settled: B.settled, left: B.timer ? B.timer.left : null, phase: B.phase, energy: B.comp ? B.comp.energy : null, hint: B.comp ? B.comp.hintLeft : null };
+      return B && { quota: B.quota ? { ...B.quota } : null, hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield, combo: B.combo, power: B.power, guard: B.guard, intent: B.intent, dist: B.dist, turn: B.turn, paused: B.paused, settled: B.settled, left: B.timer ? B.timer.left : null, phase: B.phase, energy: B.comp ? B.comp.energy : null, hint: B.comp ? B.comp.hintLeft : null };
     },
     get foe() {
       return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield };

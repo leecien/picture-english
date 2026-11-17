@@ -353,6 +353,13 @@ const Learn = (() => {
 
   /* ---------- grading ---------- */
   function grade(q, ok, src) {
+    // Supplement words (novice.js, KK pending review) are practised but never written to the card book or XP.
+    if (q.item && q.item.sup) {
+      tally.n++;
+      if (ok) tally.ok++;
+      tally.items.push({ en: q.item.w, ok, sym: q.sym });
+      return { fresh: false };
+    }
     const key = keyOf(q.recK, q.item),
       now = Date.now(),
       isFresh = !(ST.recent[key] > now - COOLDOWN),
