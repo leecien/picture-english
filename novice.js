@@ -208,6 +208,9 @@ const Novice = (() => {
     treasure: [["t", "t"], ["r", "r"], ["ea", "ɛ"], ["s", "ʒ"], ["ure", "ɚ"]],
     mother: [["m", "m"], ["o", "ʌ"], ["th", "ð"], ["er", "ɚ"]],
     bath: [["b", "b"], ["a", "æ"], ["th", "θ"]],
+    page: [["p", "p"], ["a", "e"], ["g", "dʒ"], ["e", ""]],
+    city: [["c", "s"], ["i", "ɪ"], ["t", "t"], ["y", "ɪ"]],
+    rice: [["r", "r"], ["i", "aɪ"], ["c", "s"], ["e", ""]],
   };
   /* Words the 80-word bank does not have, needed for sounds it has no (or too few) examples of (/ð ʒ ɔɪ w j θ ʊ/…).
      KK as in standard American KK dictionaries; every split above must rebuild it (tests/content.cjs).
@@ -221,6 +224,7 @@ const Novice = (() => {
     ["kite", "[kaɪt]", "風箏", "🪁"], ["sing", "[sɪŋ]", "唱歌", "🎤"], ["three", "[θri]", "三", "3️⃣"], ["five", "[faɪv]", "五", "5️⃣"],
     ["mouth", "[maʊθ]", "嘴巴", "👄"], ["sofa", "[ˋsofə]", "沙發", "🛋️"], ["saw", "[sɔ]", "鋸子", "🪚"], ["water", "[ˋwɔtɚ]", "水", "💧"],
     ["treasure", "[ˋtrɛʒɚ]", "寶藏", "💎"], ["mother", "[ˋmʌðɚ]", "媽媽", "👩"], ["bath", "[bæθ]", "洗澡", "🛁"],
+    ["page", "[pedʒ]", "頁", "📄"], ["city", "[ˋsɪtɪ]", "城市", "🏙️"], ["rice", "[raɪs]", "米飯", "🍚"],
   ].map(([w, kk, z, e]) => ({ w, kk, z, e, au: "", sup: true }));
   /* N02 spelling ↔ sound matching (each spelling has a recorded example with that spelling). */
   const MATCH = {
@@ -234,6 +238,12 @@ const Novice = (() => {
     N09: [["ng", "ŋ", "ring"], ["r", "r", "rain"], ["w", "w", "web"], ["y", "j", "yes"]],
     N10: [["i…e", "aɪ", "kite"], ["ou", "aʊ", "house"], ["ow", "aʊ", "flower"], ["oy", "ɔɪ", "boy"], ["oi", "ɔɪ", "coin"]],
     N11: [["a（sofa）", "ə", "sofa"], ["ir", "ɝ", "bird"], ["ur", "ɝ", "nurse"], ["er", "ɚ", "teacher"]],
+  };
+  /* N12 games. Magic E: a final silent e often makes the vowel say its letter name (not always: have, give).
+     Soft / hard C and G: before e, i, y they are often /s/ and /dʒ/; otherwise /k/ and /g/ (exceptions: get, give, girl). */
+  const N12_MATCH = {
+    magic: [["a（cat）", "æ", "cat"], ["a…e（cake）", "e", "cake"], ["i（milk）", "ɪ", "milk"], ["i…e（bike）", "aɪ", "bike"], ["o（clock）", "ɑ", "clock"], ["o…e（phone）", "o", "phone"]],
+    cg: [["c（cat）", "k", "cat"], ["c（city）", "s", "city"], ["ce（rice）", "s", "rice"], ["g（gift）", "g", "gift"], ["ge（page）", "dʒ", "page"], ["dge（bridge）", "dʒ", "bridge"]],
   };
   /* Chapters N04–N11 (one runner in rpg.js): who teaches them, sound groups (1–2 at a time), adventure level after. */
   const PLAN = {
@@ -378,6 +388,26 @@ const Novice = (() => {
       time: 15,
     };
   }
+  /* N12: words with a main (ˋ) and a secondary (ˏ) stress: listen, pick the syllable of the secondary one. */
+  function secondaryQuestion(opt = {}) {
+    const nuc = (k) => kkSounds(k).filter((x) => VOWELS.includes(x) || x === "ḷ" || x === "ṇ").length;
+    const pool = bank().filter((w) => w.kk && w.au && /ˋ/.test(w.kk) && /ˏ/.test(w.kk) && w.w !== opt.avoid).map((w) => {
+      const body = w.kk.replace(/[[\]]/g, "");
+      return { w, syl: nuc(body), at: nuc(body.slice(0, body.indexOf("ˏ"))) + 1 };
+    }).filter((x) => x.syl >= 2 && x.syl <= 4 && x.at <= x.syl);
+    if (!pool.length) return null;
+    const { w, syl, at } = pool[Math.floor(Math.random() * pool.length)];
+    return {
+      kind: "stress2", type: "listen-stress2", recK: "w", item: w, wordId: w.w, targetSound: "ˋ",
+      prompt: `<p class="qz-ask">🥁 聽一個單字（${syl} 個音節）：它有一個主重音和一個比較輕的<b class="qz-focus">次重音</b>。次重音在第幾個音節？</p><p class="qz-hint">最響的是主重音；次重音比它輕，但比弱讀的音節清楚。聽完才會出現選項；音標在答完後才顯示。</p>`,
+      audio: { text: w.w, file: w.au, label: "再聽一次" }, autoplay: true, noText: true, reveal: "right-only",
+      options: Array.from({ length: syl }, (_, i) => ({ html: `第 ${i + 1} 音節`, ok: i + 1 === at, label: `第 ${i + 1} 音節` })),
+      answer: { en: w.w, kk: w.kk, zh: w.z, file: w.au },
+      explain: `${w.w} ${w.kk}：ˏ 在第 ${at} 個音節前面（次重音），ˋ 是主重音。`,
+      ctx: opt.ctx || "novice",
+      time: 15,
+    };
+  }
   /* Boss phase 3: hear a word, pick its whole KK; the two wrong ones change one sound to its confusable partner. */
   function kkQuestion(opt = {}) {
     const pool = bank().filter((w) => w.kk && w.au && w.w !== opt.avoid && kkSounds(w.kk).length >= 3 && kkSounds(w.kk).every((x) => ALL41().includes(x)));
@@ -428,6 +458,6 @@ const Novice = (() => {
     return out;
   }
   const chapterOf = (sym) => CHAPTERS.find((c) => c.sounds.includes(sym));
-  return { CHAPTERS, VOWELS, SOUNDS, WORDS_SPLIT, POOL, PLACES, PLAN_EXAMPLES, MATCH, BUILDS, PLAN, SUPPLEMENT, PARTNER, soundQuestion, stressQuestion, kkQuestion, fullWords, autoPool, splitHTML, breakdownHTML, kkSounds, chapterOf, word, ALL41 };
+  return { CHAPTERS, VOWELS, SOUNDS, WORDS_SPLIT, POOL, PLACES, PLAN_EXAMPLES, MATCH, BUILDS, PLAN, SUPPLEMENT, PARTNER, N12_MATCH, soundQuestion, stressQuestion, secondaryQuestion, kkQuestion, fullWords, autoPool, splitHTML, breakdownHTML, kkSounds, chapterOf, word, ALL41 };
 })();
 if (typeof module !== "undefined") module.exports = Novice;

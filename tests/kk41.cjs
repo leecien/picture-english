@@ -8,7 +8,9 @@ const assert = require("node:assert/strict");
 const { chromium } = require("playwright");
 const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
 let CUR = null;
-const errors = [];
+const errors = [],
+  SEEN = new Set(),
+  MATCHED = [];
 const T13 = ["k", "æ", "t", "m", "n", "s", "f", "p", "b", "d", "g", "h", "l"];
 const AFTER_N03 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: true, field: true, n02: true, n02step: "done", field2: true, ch: { N03: { step: "done", done: true, full: ["map", "hat"] } }, field3: true, taught: T13, passed: T13, lv: 4 } };
 
@@ -59,6 +61,7 @@ const AFTER_N03 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: 
       if (!(await visible("#dlg"))) return;
       if (await visible(".qz-o > .qz-opt > button:not([disabled])")) {
         await noLeak("#dlg-body");
+        SEEN.add(await ev(() => Learn.last.kind));
         await page.locator(".qz-o > .qz-opt > button").nth(await ev(() => Learn.last.options.findIndex((o) => o.ok))).click();
         continue;
       }
@@ -67,11 +70,8 @@ const AFTER_N03 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: 
         continue;
       }
       if (await visible(".nv-match")) {
-        const pairs = await ev(() => {
-          const nv = RPG.data.nv,
-            id = ["N02", "N03", "N04", "N05", "N06", "N07", "N08", "N09", "N10", "N11"].find((k) => (k === "N02" ? nv.n02step : nv.ch[k] && nv.ch[k].step) === "match");
-          return Novice.MATCH[id];
-        });
+        const pairs = await ev(() => Novice.lastMatch);
+        MATCHED.push(pairs.map((p) => p[0]).join(","));
         for (const [sp, sd] of pairs) {
           const i = await ev((sp) => [...document.querySelectorAll("[data-l]")].findIndex((b) => b.firstChild.textContent.trim() === sp && !b.disabled), sp);
           if (i < 0) continue;
@@ -194,6 +194,9 @@ const AFTER_N03 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: 
   await talk();
   await drive();
   assert.equal(await ev(() => RPG.data.nv.ch.N12.done), true);
+  assert(SEEN.has("stress2"), "N12 asks secondary stress (listen first)");
+  const n12 = await ev(() => Novice.N12_MATCH);
+  for (const k of ["magic", "cg"]) assert(MATCHED.includes(n12[k].map((p) => p[0]).join(",")), "N12 matching game: " + k);
 
   /* ---------- N13: three seals with Kai, one per visit ---------- */
   for (const seal of ["sound", "build", "rhythm"]) {

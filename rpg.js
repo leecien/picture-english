@@ -1202,6 +1202,7 @@ const RPG = (() => {
   const N02_STEPS = ["intro", "mn", "check-mn", "sf", "check-sf", "match", "build", "done"];
   /* Spelling ↔ sound matching: tap a spelling, then its sound. ph and f both go to /f/. First tries are recorded. */
   function nvMatch(pairs) {
+    Novice.lastMatch = pairs; // test hook only: never rendered
     return new Promise((res) => {
       const left = pairs.slice().sort(() => Math.random() - 0.5),
         sounds = [...new Set(pairs.map((p) => p[1]))].sort(() => Math.random() - 0.5),
@@ -1444,12 +1445,66 @@ const RPG = (() => {
       delete $("dlg-name").dataset.step;
       save();
       if (first < 3 || !three) return finishSummary("音之新手村・N12 音節與重音", "需要 3 題第一次就答對（至少一題是三個音節的字）。回來找 Stella 再練。");
+      st.step = "second";
+      save();
+      if (!(await nvStepDone("主重音"))) return;
+    }
+    if (st.step === "second") {
+      await nvPanel(`<div class="nv-card"><p><b>次重音 ˏ</b>：長一點的字常有兩個比較用力的音節。最響的是<b>主重音 ˋ</b>，另一個比較輕的是<b>次重音 ˏ</b>。</p>
+        <p>suitcase [ˋsutˏkes]：suit 最響，case 第二。pineapple [ˋpaɪnˏæpḷ]：pine 最響，ap 第二。</p>
+        <div class="teach-demo">${exampleBtn("suitcase", "")}${exampleBtn("pineapple", "")}${exampleBtn("rainbow", "")}</div></div>`, "▶ 開始練習");
+      let first = 0,
+        asked = 0,
+        last = "";
+      while (first < 2 && asked < 8) {
+        const q = Novice.secondaryQuestion({ avoid: last });
+        last = q.wordId;
+        $("dlg-name").dataset.step = `次重音：首次答對 ${first}/2`;
+        const r = await Talk.quiz(q);
+        asked++;
+        nvRec("ˋ", r.tries ? "retry" : "ind", q);
+        if (!r.tries) first++;
+      }
+      delete $("dlg-name").dataset.step;
+      save();
+      if (first < 2) return finishSummary("音之新手村・N12 次重音", "次重音要 2 題第一次就答對。回來找 Stella 會從次重音接著練。");
+      st.step = "magic";
+      save();
+      if (!(await nvStepDone("次重音"))) return;
+    }
+    if (st.step === "magic") {
+      await nvPanel(`<div class="nv-card"><p><b>Magic E（字尾不發音的 e）</b>：母音＋子音＋e 的字，e 自己<b>不發音</b>，常常讓前面的母音念成<b>字母本身的名字</b>：cat /æ/ → cake /e/、kit → kite /aɪ/。</p>
+        <p><b>不是每個字都這樣</b>：have [hæv]、give [gɪv] 的 e 也不發音，但母音沒有變長。看到 e 結尾先想到這個規律，再用耳朵確認。</p>
+        <div class="teach-demo">${exampleBtn("cat", "æ")}${exampleBtn("cake", "e")}${exampleBtn("bike", "aɪ")}${exampleBtn("phone", "o")}</div></div>`, "▶ 開始配對");
+      await Talk.line("", "配對：同一個字母，有沒有 Magic E，聲音不一樣。");
+      await nvMatch(Novice.N12_MATCH.magic);
+      // then split and rebuild a Magic E word (all of its sounds taught): one has to be right on the first try
+      let ok = false;
+      for (const w of shuffle(["grape", "cake", "bike", "phone"]).slice(0, 3)) {
+        const r = await nvBuild(w);
+        if (!r.tries) {
+          ok = true;
+          break;
+        }
+      }
+      if (!ok) return finishSummary("音之新手村・Magic E", "Magic E 的字要有一個第一次就組對。回來找 Stella 會從 Magic E 接著練。");
+      st.step = "cg";
+      save();
+      if (!(await nvStepDone("Magic E"))) return;
+    }
+    if (st.step === "cg") {
+      await nvPanel(`<div class="nv-card"><p><b>軟硬 C／G</b>：c 和 g 後面接 <b>e、i、y</b> 時，常常念軟音 c→/s/（city、rice）、g→/dʒ/（page、bridge）；其他時候多半是硬音 c→/k/（cat）、g→/g/（gift）。</p>
+        <p><b>例外</b>：get [gɛt]、give [gɪv]、girl [gɝl] 的 g 後面雖然是 e、i，還是硬音。規律幫你猜，聽才是準的。</p>
+        <p class="fine">city、rice、page 目前沒有正式錄音，用裝置語音念整個字。</p>
+        <div class="teach-demo">${exampleBtn("cat", "k")}${exampleBtn("city", "s")}${exampleBtn("gift", "g")}${exampleBtn("page", "dʒ")}</div></div>`, "▶ 開始配對");
+      await Talk.line("", "配對：先點拼法（括號是例字），再點它在這個字裡的聲音。");
+      await nvMatch(Novice.N12_MATCH.cg);
       st.done = true;
       st.step = "done";
       save();
       addXP(15);
       toast("🥁", "N12 音節與重音完成", "下一步：找村長 Kai 拿三枚印記", "levelup");
-      await finishSummary("音之新手村・N12 音節與重音", "下一步：找村長 Kai，完成 N13 組音實戰的三枚印記。");
+      await finishSummary("音之新手村・N12 音節、重音與拼字規律", "主重音、次重音、Magic E、軟硬 C／G 都完成了。下一步：找村長 Kai，完成 N13 組音實戰的三枚印記。");
       afterTalk = mount;
     }
   }
