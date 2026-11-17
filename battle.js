@@ -415,12 +415,23 @@ const Battle = (() => {
     paintClock();
     B.timer.iv = setInterval(() => {
       if (!live(tok) || !B.timer) return;
-      if (B.paused || B.anim || B.hearing) return;
+      if (B.paused || B.anim || B.hearing || reading()) return;
       B.timer.left = Math.max(0, B.timer.left - 0.1);
       paintClock();
       if (B.timer.left <= 0) settle("timeout");
     }, 100);
   }
+  // a line's Chinese is open (「看中文」): reading is not answering, the clock waits
+  const reading = () => !!document.querySelector("#bt-act .zh-line:not([hidden])");
+  /* The chosen sentence option, played once as a whole line (right or wrong). Resolves when it has finished. */
+  function sayChoice(q, idx) {
+    const o = q.options[idx],
+      s = o && typeof Pron !== "undefined" && Pron.optionText(o);
+    if (!s || !/\s/.test(s.text)) return null; // single words and pictures: unchanged
+    return Pron.play(s.text, s.file || "");
+  }
+  // after a settled question: the next one waits until the chosen line has finished playing
+  const whenQuiet = (fn) => (B && B.voice ? B.voice.then(fn) : fn());
   function stopClock() {
     if (B && B.timer) {
       clearInterval(B.timer.iv);
@@ -530,10 +541,13 @@ const Battle = (() => {
       b.disabled = true;
       if (q.options[i].ok && !hide) b.classList.add("right");
     });
-    if (!hide) Learn.revealKK(q, bs);
+    if (!hide) Learn.revealKK(q, bs), Learn.revealZh(q, bs);
     if (kind === "wrong" && bs[idx]) bs[idx].classList.add("wrong");
     const ok = kind === "right";
     SND.play(ok ? "correct" : "wrong");
+    // a sentence option: the chosen line plays in full, right or wrong (one sound at a time, no second answer)
+    const voice = kind !== "timeout" ? sayChoice(q, idx) : null;
+    B.voice = voice ? voice.then(() => {}) : null;
     // Records: answers through Learn; a timeout is metadata, not a language error; hinted-to-one is practice.
     if (B.ctx.onSettle) B.ctx.onSettle(q, kind);
     if (B.quota) {
@@ -552,20 +566,24 @@ const Battle = (() => {
       $("bt-feedback").innerHTML = `<b class="good">✓ 答對了！</b> ${Learn.answerHTML(a)} <span class="qz-zh">${esc(a.zh || "")}</span>`;
       const n = cardCount(q, graded);
       // the first three independent right answers of a word show its memory card; the attack has already landed
-      if (n) setTimeout(() => live(tok) && memoryCard(q, n, tok).then((go) => go && live(tok) && after()), 450);
-      else setTimeout(() => live(tok) && after(), 900);
+      if (n) setTimeout(() => live(tok) && memoryCard(q, n, tok).then((go) => go && live(tok) && whenQuiet(() => live(tok) && after())), 450);
+      else setTimeout(() => live(tok) && whenQuiet(() => live(tok) && after()), 900);
     } else {
       // The explanation is not timed: read it, then continue.
       if (hide)
         $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "✕ 不是這個音"}</b><small>這題記下來了，之後換別的字再出現。答案不在這裡公布。</small>${kind === "timeout" ? "<small>時間到不算辨音答錯。</small>" : ""}`;
       else $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "正確答案"}</b> ${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${kind === "timeout" ? "<small>時間到不算英文答錯，這題會在之後的複習再出現。</small>" : ""}`;
-      if (a.en && !hide) speak(a.en, a.file || "");
+      if (a.en && !hide && !voice) speak(a.en, a.file || ""); // a chosen sentence is already playing: no overlap
       const go = document.createElement("button");
       go.type = "button";
       go.className = "qz-next";
       go.id = "bt-next";
       go.textContent = "下一題";
-      go.onclick = () => live(tok) && after();
+      go.onclick = () => {
+        if (!live(tok) || go.dataset.wait) return;
+        go.dataset.wait = "1"; // one tap is enough; the next question starts when the chosen line has finished
+        whenQuiet(() => live(tok) && after());
+      };
       $("bt-act").querySelector(".bt-q").insertBefore(go, $("bt-act").querySelector(".bt-help"));
       if (hide && B.comp && kind === "wrong") {
         // the companion corrects the wrong pick and lets the player choose again: an assisted answer, never an independent one

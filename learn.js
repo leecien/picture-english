@@ -304,7 +304,7 @@ const Learn = (() => {
     return {
       kind: "s", recK: "s", item: it,
       prompt: `<p class="qz-ask">「${esc(it.zh)}」英文怎麼說？</p>`,
-      options: shuf(opts).map((x) => ({ html: esc(x.en), ok: x === it, wide: true })),
+      options: shuf(opts).map((x) => ({ html: esc(x.en), ok: x === it, wide: true, zh: x.zh, say: { text: x.en, file: x.au || "" } })),
       answer: { en: it.en, zh: it.zh, file: it.au }, after: true,
     };
   }
@@ -344,7 +344,7 @@ const Learn = (() => {
         : (it.q ? `<p class="qz-their">🗣️ ${sayHTML(it.q)}</p>` : "") + `<p class="qz-ask">${it.q ? "你想回答" : "你想說"}：「${esc(it.zh)}」</p>`,
       audio: it.q ? { text: it.q, label: "再聽對方說" } : null,
       autoplay: !!it.q,
-      options: shuf(dedupe([it, ...wrong], (x) => x.en)).map((x) => ({ html: esc(x.en), ok: x.en === it.en, wide: true })),
+      options: shuf(dedupe([it, ...wrong], (x) => x.en)).map((x) => ({ html: esc(x.en), ok: x.en === it.en, wide: true, zh: x.zh })),
       answer: { en: it.en, zh: it.zh },
       after: true,
       ctx,
@@ -455,6 +455,16 @@ const Learn = (() => {
       if (kk && !b.querySelector(".qz-kk")) b.insertAdjacentHTML("beforeend", `<small class="qz-kk">${esc(kk)}</small>`);
     });
   }
+  /* After answering, each sentence option gets its own whole-line Chinese (the material's context translation),
+     folded behind 「看中文」. Never before answering: the Chinese would point at the right option. */
+  function revealZh(q, bs) {
+    bs.forEach((b, i) => {
+      const o = q.options[i],
+        box = b.parentElement;
+      if (!o || !o.zh || !box || box.querySelector(".zh-btn")) return;
+      box.insertAdjacentHTML("beforeend", `<button type="button" class="zh-btn" aria-expanded="false">看中文</button><span class="zh-line" hidden>${esc(o.zh)}</span>`);
+    });
+  }
   /* The revealed answer: tap the line to hear it again, tap a word for its KK. */
   const answerHTML = (a) => (a.en ? `<span class="qz-ans">${sayHTML(a.en, a.file || "")}</span>` : "");
   function play(a) {
@@ -511,6 +521,7 @@ const Learn = (() => {
               if (q.options[i].ok) x.classList.add("right");
             });
             revealKK(q, bs);
+            revealZh(q, bs);
             if (!ok) b.classList.add("wrong");
             SND.play(ok ? "correct" : "wrong");
             const g = q.reveal === "right-only" && tries ? { fresh: true } : grade(q, ok, opt.src);
@@ -534,7 +545,7 @@ const Learn = (() => {
   return {
     parseKK, stressSpan, SOUNDS, UNITS, wordBy, pairWords, unitQuestion, stressQuestion, wordKK, phonicsQuestion,
     soundDue, soundsDue, wordQuestion, sentQuestion, sceneQuestion, scene, contentId, setScenes,
-    grade, flush, ask, play, dueItems, optionsHTML, answerHTML, sayHTML, revealKK,
+    grade, flush, ask, play, dueItems, optionsHTML, answerHTML, sayHTML, revealKK, revealZh,
     /* A question shown outside Learn.ask (the timed battle) still counts as "recently asked". */
     track(q) {
       last = q;

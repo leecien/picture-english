@@ -1863,3 +1863,68 @@ b.nv-hit {
     animation: none;
   }
 }
+
+/* Fixed phrases inside a sentence ("Good evening"): one unit, a solid underline unlike the dotted single words. */
+.pw.pw-p {
+  text-decoration: underline solid #c27c1a;
+  text-decoration-thickness: 2px;
+}
+/* 「看中文」: the line's own context translation, folded until asked for. Reading is not answering. */
+.zh-btn {
+  margin-left: 6px;
+  min-height: 32px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid #c9cfba;
+  background: #fffdf6;
+  color: #2f382b;
+  font-size: 13px;
+  vertical-align: middle;
+}
+.zh-line {
+  display: block;
+  margin-top: 4px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: #f3efe0;
+  color: #2f382b;
+  font-size: 15px;
+}
+.zh-line[hidden] {
+  display: none;
+}
+.qz-opt:has(.zh-btn) {
+  flex-wrap: wrap;
+}
+.qz-opt .zh-btn {
+  margin: 2px 0 0;
+}
+.qz-opt .zh-line {
+  flex-basis: 100%;
+  margin-top: 2px;
+}
+/* phrase card (shares the word card) */
+.wd-tag {
+  font-size: 12px;
+  color: #8a5a12;
+}
+.wd-phrase {
+  font-size: 24px;
+}
+.wd-note {
+  font-size: 13px;
+  color: #5d6455;
+  text-align: center;
+}
+.wd-singles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 18px;
+}
+.wd-singles[hidden] {
+  display: none;
+}
+.wd-plain {
+  color: #6f6a5a;
+}
