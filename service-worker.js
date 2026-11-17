@@ -1,11 +1,13 @@
 /* Bump VERSION on every deployed shell change. No microphone, analytics or audio caching here. */
-const VERSION = "20261116-app2";
+const VERSION = "20261117-vocabulary3000";
 const BASE = new URL("./", self.location.href);
 const PREFIX = "picture-english-app-" + encodeURIComponent(BASE.pathname) + "-";
 const SHELL = PREFIX + VERSION + "-shell", MEDIA = PREFIX + VERSION + "-images";
-const CORE = ["index.html", "shell.css", "rpg.css", "world.js", "battle.js", "learn.js", "novice.js", "lifescene.js", "pron.js", "rpg.js", "speech.js", "platform.js", "manifest.webmanifest", "offline.html", "assets/app/icon.svg", "data/words.json", "data/sentences.json", "data/levels.json", "data/themes.json", "data/scenes.json", "assets/manifest.json"];
-const OPTIONAL = ["atlas.js", "atlas.css", "data/worlds.json", "data/life-scenes.json", "data/dict-draft.json"];
+const CORE = ["index.html", "shell.css", "rpg.css", "world.js", "battle.js", "learn.js", "novice.js", "lifescene.js", "pron.js", "rpg.js", "speech.js", "platform.js", "manifest.webmanifest", "offline.html", "assets/app/icon.svg", "data/words.json", "data/sentences.json", "data/levels.json", "data/themes.json", "data/scenes.json", "assets/manifest.json", "modules/audio-practice/audio-practice.js", "audio-bus.js", "audio-session.js", "audio-session.css", "world-regions.js"];
+const OPTIONAL = ["atlas.js", "atlas.css", "data/worlds.json", "data/life-scenes.json", "data/dict-draft.json", "data/world-regions.json", "modules/audio-practice/processed-audio/normalize-plan.json"];
 const MAX_IMAGES = 12, MAX_IMAGE_BYTES = 512 * 1024;
+CORE.push("vocab.js", "vocab.css");
+OPTIONAL.push("data/vocab-reviewed.json");
 const coreURLs = new Set([...CORE, ...OPTIONAL].map((p) => new URL(p, BASE).href));
 self.addEventListener("install", (event) => {
   event.waitUntil((async () => {

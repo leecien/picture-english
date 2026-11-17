@@ -1,0 +1,14 @@
+{
+ "count": 1,
+ "byType": {
+  "needs-review": 1
+ },
+ "issues": [
+  {
+   "type": "needs-review",
+   "word": "gay",
+   "detail": "常見生活與新聞用詞，但屬性別議題；是否放進可玩詞庫請協調人決定。舊義「快樂的」已過時，未教",
+   "where": "batch-06b.tsv:119"
+  }
+ ]
+}

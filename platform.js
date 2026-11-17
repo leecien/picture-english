@@ -101,6 +101,7 @@
   }
   function provider() {
     if (audioProvider) return audioProvider;
+    if (typeof AudioBus !== "undefined") return AudioBus;
     if (root.AudioPractice && typeof root.AudioPractice.play === "function") return root.AudioPractice;
     return null;
   }

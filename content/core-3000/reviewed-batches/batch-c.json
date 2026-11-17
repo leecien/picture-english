@@ -1,0 +1,5727 @@
+{
+  "schemaVersion": 1,
+  "words": [
+    {
+      "id": "word:soft",
+      "word": "soft",
+      "zh": "柔軟的；輕柔的",
+      "pos": "adjective",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "This blanket feels soft against my skin.",
+        "zh": "這條毯子貼著皮膚很柔軟。"
+      },
+      "selectionOrder": 1201
+    },
+    {
+      "id": "word:ignore",
+      "word": "ignore",
+      "zh": "忽略；不理會",
+      "pos": "verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please do not ignore the warning signs.",
+        "zh": "請不要忽略警告標誌。"
+      },
+      "selectionOrder": 1202
+    },
+    {
+      "id": "word:egg",
+      "word": "egg",
+      "zh": "蛋",
+      "pos": "noun",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": "[ɛg]",
+      "audio": "assets/voice/words/egg.mp3",
+      "image": "",
+      "example": {
+        "en": "I boiled an egg for breakfast.",
+        "zh": "我煮了一顆蛋當早餐。"
+      },
+      "selectionOrder": 1203,
+      "emoji": "🥚",
+      "theme": "food",
+      "level": 1,
+      "audioZh": "assets/voice/zh/words/egg.mp3"
+    },
+    {
+      "id": "word:belief",
+      "word": "belief",
+      "zh": "信念；相信",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Her belief in fairness guides her decisions.",
+        "zh": "她對公平的信念指引她做決定。"
+      },
+      "selectionOrder": 1204
+    },
+    {
+      "id": "word:demonstrate",
+      "word": "demonstrate",
+      "zh": "示範；證明；示威",
+      "pos": "verb",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The instructor will demonstrate how to use the machine.",
+        "zh": "老師會示範如何使用這台機器。"
+      },
+      "selectionOrder": 1205
+    },
+    {
+      "id": "word:anybody",
+      "word": "anybody",
+      "zh": "任何人；有人",
+      "pos": "pronoun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Does anybody know where the keys are?",
+        "zh": "有人知道鑰匙在哪裡嗎？"
+      },
+      "selectionOrder": 1206
+    },
+    {
+      "id": "word:murder",
+      "word": "murder",
+      "zh": "謀殺；謀殺案",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The police are investigating a murder.",
+        "zh": "警方正在調查一宗謀殺案。"
+      },
+      "selectionOrder": 1207
+    },
+    {
+      "id": "word:gift",
+      "word": "gift",
+      "zh": "禮物",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": "[gɪft]",
+      "audio": "assets/voice/words/gift.mp3",
+      "image": "",
+      "example": {
+        "en": "I brought a small gift for the host.",
+        "zh": "我帶了一份小禮物給主人。"
+      },
+      "selectionOrder": 1208,
+      "emoji": "🎁",
+      "theme": "things",
+      "level": 2,
+      "audioZh": "assets/voice/zh/words/gift.mp3"
+    },
+    {
+      "id": "word:religion",
+      "word": "religion",
+      "zh": "宗教；信仰",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "People of different religions live in this neighborhood.",
+        "zh": "不同宗教信仰的人住在這個社區。"
+      },
+      "selectionOrder": 1209
+    },
+    {
+      "id": "word:review",
+      "word": "review",
+      "zh": "複習；評論；檢視",
+      "pos": "noun, verb",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Let's review the key points before the test.",
+        "zh": "考試前我們來複習重點。"
+      },
+      "selectionOrder": 1210
+    },
+    {
+      "id": "word:editor",
+      "word": "editor",
+      "zh": "編輯；編輯器",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The editor suggested a clearer title.",
+        "zh": "編輯建議換一個更清楚的標題。"
+      },
+      "selectionOrder": 1211
+    },
+    {
+      "id": "word:engage",
+      "word": "engage",
+      "zh": "參與；吸引；聘用",
+      "pos": "verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The workshop encourages staff to engage in discussion.",
+        "zh": "這場工作坊鼓勵員工參與討論。"
+      },
+      "selectionOrder": 1212
+    },
+    {
+      "id": "word:coffee",
+      "word": "coffee",
+      "zh": "咖啡",
+      "pos": "noun",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Would you like milk in your coffee?",
+        "zh": "你的咖啡要加牛奶嗎？"
+      },
+      "selectionOrder": 1213
+    },
+    {
+      "id": "word:document",
+      "word": "document",
+      "zh": "文件；記錄",
+      "pos": "noun, verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please sign the document at the bottom.",
+        "zh": "請在文件下方簽名。"
+      },
+      "selectionOrder": 1214
+    },
+    {
+      "id": "word:speed",
+      "word": "speed",
+      "zh": "速度；加速",
+      "pos": "noun, verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Reduce your speed when the road is wet.",
+        "zh": "路面濕滑時請減速。"
+      },
+      "selectionOrder": 1215
+    },
+    {
+      "id": "word:cross",
+      "word": "cross",
+      "zh": "穿越；交叉；十字形",
+      "pos": "noun, verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Wait for the light before you cross the street.",
+        "zh": "等燈號變了再過馬路。"
+      },
+      "selectionOrder": 1216
+    },
+    {
+      "id": "word:influence",
+      "word": "influence",
+      "zh": "影響；影響力",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Friends can influence the choices we make.",
+        "zh": "朋友會影響我們做的選擇。"
+      },
+      "selectionOrder": 1217
+    },
+    {
+      "id": "word:anyway",
+      "word": "anyway",
+      "zh": "無論如何；反正",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "It was raining, but we went for a walk anyway.",
+        "zh": "雖然下雨，我們還是去散步了。"
+      },
+      "selectionOrder": 1218
+    },
+    {
+      "id": "word:commit",
+      "word": "commit",
+      "zh": "犯下；承諾投入",
+      "pos": "verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We cannot commit to a date until everyone replies.",
+        "zh": "等大家回覆後我們才能確定日期。"
+      },
+      "selectionOrder": 1219
+    },
+    {
+      "id": "word:threaten",
+      "word": "threaten",
+      "zh": "威脅；危及",
+      "pos": "verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Floods threaten homes near the river.",
+        "zh": "洪水威脅河邊的住家。"
+      },
+      "selectionOrder": 1220
+    },
+    {
+      "id": "word:female",
+      "word": "female",
+      "zh": "女性的；雌性的；女性",
+      "pos": "adjective, noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The study included both male and female participants.",
+        "zh": "這項研究包含男性與女性參與者。"
+      },
+      "selectionOrder": 1221
+    },
+    {
+      "id": "word:youth",
+      "word": "youth",
+      "zh": "青春時期；青年",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "He spent much of his youth in the countryside.",
+        "zh": "他年輕時大多住在鄉下。"
+      },
+      "selectionOrder": 1222
+    },
+    {
+      "id": "word:wave",
+      "word": "wave",
+      "zh": "揮手；波浪",
+      "pos": "noun, verb",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "She gave us a wave from the balcony.",
+        "zh": "她在陽台上向我們揮手。"
+      },
+      "selectionOrder": 1223
+    },
+    {
+      "id": "word:afraid",
+      "word": "afraid",
+      "zh": "害怕的；擔心的",
+      "pos": "adjective",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "My little brother is afraid of the dark.",
+        "zh": "我的弟弟怕黑。"
+      },
+      "selectionOrder": 1224
+    },
+    {
+      "id": "word:quarter",
+      "word": "quarter",
+      "zh": "四分之一；一季；十五分鐘",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Cut the sandwich into quarters.",
+        "zh": "把三明治切成四等分。"
+      },
+      "selectionOrder": 1225
+    },
+    {
+      "id": "word:background",
+      "word": "background",
+      "zh": "背景；經歷",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Her background in nursing helps her in this role.",
+        "zh": "她的護理背景對這份工作很有幫助。"
+      },
+      "selectionOrder": 1226
+    },
+    {
+      "id": "word:native",
+      "word": "native",
+      "zh": "本地的；原生的；當地人",
+      "pos": "adjective, noun",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "These plants are native to Taiwan.",
+        "zh": "這些植物原生於臺灣。"
+      },
+      "selectionOrder": 1227
+    },
+    {
+      "id": "word:broad",
+      "word": "broad",
+      "zh": "寬廣的；廣泛的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The course covers a broad range of topics.",
+        "zh": "這門課涵蓋的主題很廣。"
+      },
+      "selectionOrder": 1228
+    },
+    {
+      "id": "word:wonderful",
+      "word": "wonderful",
+      "zh": "很棒的；令人愉快的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We had a wonderful evening with friends.",
+        "zh": "我們和朋友度過了一個愉快的夜晚。"
+      },
+      "selectionOrder": 1229
+    },
+    {
+      "id": "word:deny",
+      "word": "deny",
+      "zh": "否認；拒絕給予",
+      "pos": "verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "He did not deny making the mistake.",
+        "zh": "他沒有否認犯了那個錯。"
+      },
+      "selectionOrder": 1230
+    },
+    {
+      "id": "word:apparently",
+      "word": "apparently",
+      "zh": "看來；據說",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Apparently, the shop has moved to a new address.",
+        "zh": "聽說這家店搬到新地址了。"
+      },
+      "selectionOrder": 1231
+    },
+    {
+      "id": "word:slightly",
+      "word": "slightly",
+      "zh": "稍微；略微",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "This jacket is slightly too big for me.",
+        "zh": "這件外套對我來說稍微大了一點。"
+      },
+      "selectionOrder": 1232
+    },
+    {
+      "id": "word:reaction",
+      "word": "reaction",
+      "zh": "反應",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "What was her reaction to the news?",
+        "zh": "她聽到消息後有什麼反應？"
+      },
+      "selectionOrder": 1233
+    },
+    {
+      "id": "word:twice",
+      "word": "twice",
+      "zh": "兩次；兩倍",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I brush my teeth twice a day.",
+        "zh": "我一天刷兩次牙。"
+      },
+      "selectionOrder": 1234
+    },
+    {
+      "id": "word:suit",
+      "word": "suit",
+      "zh": "西裝；適合",
+      "pos": "noun, verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "That meeting time does not suit me.",
+        "zh": "那個開會時間不適合我。"
+      },
+      "selectionOrder": 1235
+    },
+    {
+      "id": "word:perspective",
+      "word": "perspective",
+      "zh": "觀點；角度；透視法",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Try looking at the problem from her perspective.",
+        "zh": "試著從她的角度看這個問題。"
+      },
+      "selectionOrder": 1236
+    },
+    {
+      "id": "word:blow",
+      "word": "blow",
+      "zh": "吹；打擊",
+      "pos": "noun, verb",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Blow on the soup to cool it down.",
+        "zh": "吹一吹湯，讓它涼一點。"
+      },
+      "selectionOrder": 1237
+    },
+    {
+      "id": "word:construction",
+      "word": "construction",
+      "zh": "建造；施工；構造",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The road is closed during construction.",
+        "zh": "道路在施工期間封閉。"
+      },
+      "selectionOrder": 1238
+    },
+    {
+      "id": "word:intelligence",
+      "word": "intelligence",
+      "zh": "智力；情報",
+      "pos": "noun",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The puzzle tests memory and intelligence.",
+        "zh": "這個謎題考驗記憶力和智力。"
+      },
+      "selectionOrder": 1239
+    },
+    {
+      "id": "word:destroy",
+      "word": "destroy",
+      "zh": "摧毀；毀壞",
+      "pos": "verb",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The fire destroyed several houses.",
+        "zh": "那場火災燒毀了好幾棟房子。"
+      },
+      "selectionOrder": 1240
+    },
+    {
+      "id": "word:cook",
+      "word": "cook",
+      "zh": "煮；烹調；廚師",
+      "pos": "noun, verb",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I usually cook dinner after work.",
+        "zh": "我通常下班後煮晚餐。"
+      },
+      "selectionOrder": 1241
+    },
+    {
+      "id": "word:connection",
+      "word": "connection",
+      "zh": "連接；關聯；人脈",
+      "pos": "noun",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The internet connection is slow today.",
+        "zh": "今天的網路連線很慢。"
+      },
+      "selectionOrder": 1242
+    },
+    {
+      "id": "word:burn",
+      "word": "burn",
+      "zh": "燃燒；燒傷；燒傷處",
+      "pos": "noun, verb",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Be careful not to burn your hand on the pan.",
+        "zh": "小心別讓鍋子燙傷你的手。"
+      },
+      "selectionOrder": 1243
+    },
+    {
+      "id": "word:shoe",
+      "word": "shoe",
+      "zh": "鞋子",
+      "pos": "noun",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": "[ʃu]",
+      "audio": "assets/voice/words/shoe.mp3",
+      "image": "",
+      "example": {
+        "en": "There is a small stone in my shoe.",
+        "zh": "我的鞋子裡有一顆小石頭。"
+      },
+      "selectionOrder": 1244,
+      "emoji": "👟",
+      "theme": "things",
+      "level": 1,
+      "audioZh": "assets/voice/zh/words/shoe.mp3"
+    },
+    {
+      "id": "word:neighbor",
+      "word": "neighbor",
+      "zh": "鄰居",
+      "pos": "noun",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Our neighbor waters our plants when we travel.",
+        "zh": "我們旅行時鄰居會幫忙澆花。"
+      },
+      "selectionOrder": 1245
+    },
+    {
+      "id": "word:grade",
+      "word": "grade",
+      "zh": "年級；成績；評分",
+      "pos": "noun, verb",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "She received a good grade on her essay.",
+        "zh": "她的作文拿到了好成績。"
+      },
+      "selectionOrder": 1246
+    },
+    {
+      "id": "word:context",
+      "word": "context",
+      "zh": "上下文；情境；背景",
+      "pos": "noun",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Read the whole sentence to understand the word in context.",
+        "zh": "讀完整句，才能從上下文理解這個字。"
+      },
+      "selectionOrder": 1247
+    },
+    {
+      "id": "word:committee",
+      "word": "committee",
+      "zh": "委員會",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The committee will meet next Tuesday.",
+        "zh": "委員會將在下週二開會。"
+      },
+      "selectionOrder": 1248
+    },
+    {
+      "id": "word:hey",
+      "word": "hey",
+      "zh": "嘿；喂",
+      "pos": "interjection",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Hey, you left your bag on the chair!",
+        "zh": "嘿，你把包包忘在椅子上了！"
+      },
+      "selectionOrder": 1249
+    },
+    {
+      "id": "word:mistake",
+      "word": "mistake",
+      "zh": "錯誤；誤認",
+      "pos": "noun, verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I sent the message to the wrong person by mistake.",
+        "zh": "我不小心把訊息傳錯人了。"
+      },
+      "selectionOrder": 1250
+    },
+    {
+      "id": "word:location",
+      "word": "location",
+      "zh": "位置；地點",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Send me the location of the restaurant.",
+        "zh": "把餐廳的位置傳給我。"
+      },
+      "selectionOrder": 1251
+    },
+    {
+      "id": "word:clothes",
+      "word": "clothes",
+      "zh": "衣服",
+      "pos": "noun",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Hang your wet clothes outside.",
+        "zh": "把濕衣服晾在外面。"
+      },
+      "selectionOrder": 1252
+    },
+    {
+      "id": "word:quiet",
+      "word": "quiet",
+      "zh": "安靜的；平靜",
+      "pos": "adjective, noun",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please keep quiet while the baby is sleeping.",
+        "zh": "寶寶睡覺時請保持安靜。"
+      },
+      "selectionOrder": 1253
+    },
+    {
+      "id": "word:dress",
+      "word": "dress",
+      "zh": "洋裝；穿衣",
+      "pos": "noun, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "She wore a blue dress to the wedding.",
+        "zh": "她穿藍色洋裝參加婚禮。"
+      },
+      "selectionOrder": 1254
+    },
+    {
+      "id": "word:promise",
+      "word": "promise",
+      "zh": "承諾；答應",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I promise to call when I arrive.",
+        "zh": "我答應抵達後會打電話。"
+      },
+      "selectionOrder": 1255
+    },
+    {
+      "id": "word:aware",
+      "word": "aware",
+      "zh": "知道的；察覺的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Are you aware of the change in plans?",
+        "zh": "你知道計畫有變嗎？"
+      },
+      "selectionOrder": 1256
+    },
+    {
+      "id": "word:function",
+      "word": "function",
+      "zh": "功能；運作",
+      "pos": "noun, verb",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "This button has a different function on each screen.",
+        "zh": "這個按鈕在不同畫面有不同功能。"
+      },
+      "selectionOrder": 1257
+    },
+    {
+      "id": "word:bone",
+      "word": "bone",
+      "zh": "骨頭",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The doctor checked for a broken bone.",
+        "zh": "醫師檢查是否有骨折。"
+      },
+      "selectionOrder": 1258
+    },
+    {
+      "id": "word:active",
+      "word": "active",
+      "zh": "活躍的；積極的；有效的",
+      "pos": "adjective",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Walking every day helps me stay active.",
+        "zh": "每天走路幫助我保持活力。"
+      },
+      "selectionOrder": 1259
+    },
+    {
+      "id": "word:extend",
+      "word": "extend",
+      "zh": "延長；擴大；伸展",
+      "pos": "verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Could we extend the deadline by two days?",
+        "zh": "我們可以把截止日期延後兩天嗎？"
+      },
+      "selectionOrder": 1260
+    },
+    {
+      "id": "word:chief",
+      "word": "chief",
+      "zh": "主要的；首長",
+      "pos": "adjective, noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Our chief concern is the safety of the workers.",
+        "zh": "我們最關心的是工人的安全。"
+      },
+      "selectionOrder": 1261
+    },
+    {
+      "id": "word:combine",
+      "word": "combine",
+      "zh": "結合；混合",
+      "pos": "verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Combine the flour and sugar in a bowl.",
+        "zh": "把麵粉和糖混合在碗裡。"
+      },
+      "selectionOrder": 1262
+    },
+    {
+      "id": "word:wine",
+      "word": "wine",
+      "zh": "葡萄酒",
+      "pos": "noun",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "This dish goes well with white wine.",
+        "zh": "這道菜很適合搭配白葡萄酒。"
+      },
+      "selectionOrder": 1263
+    },
+    {
+      "id": "word:below",
+      "word": "below",
+      "zh": "在下方；低於",
+      "pos": "preposition",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The temperature fell below ten degrees last night.",
+        "zh": "昨晚氣溫降到十度以下。"
+      },
+      "selectionOrder": 1264
+    },
+    {
+      "id": "word:cool",
+      "word": "cool",
+      "zh": "涼爽的；酷的；使冷卻",
+      "pos": "adjective, verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Let the bread cool before slicing it.",
+        "zh": "等麵包冷卻後再切片。"
+      },
+      "selectionOrder": 1265
+    },
+    {
+      "id": "word:voter",
+      "word": "voter",
+      "zh": "選民；投票者",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Each voter receives one ballot.",
+        "zh": "每位選民領取一張選票。"
+      },
+      "selectionOrder": 1266
+    },
+    {
+      "id": "word:bus",
+      "word": "bus",
+      "zh": "公車",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": "[bʌs]",
+      "audio": "assets/voice/words/bus.mp3",
+      "image": "",
+      "example": {
+        "en": "The bus stops right outside the hospital.",
+        "zh": "公車就停在醫院外面。"
+      },
+      "selectionOrder": 1267,
+      "emoji": "🚌",
+      "theme": "transport",
+      "level": 1,
+      "audioZh": "assets/voice/zh/words/bus.mp3"
+    },
+    {
+      "id": "word:hell",
+      "word": "hell",
+      "zh": "地獄；極痛苦的處境",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The long wait in the heat was hell.",
+        "zh": "在酷熱中漫長等待十分難熬。"
+      },
+      "selectionOrder": 1268
+    },
+    {
+      "id": "word:dangerous",
+      "word": "dangerous",
+      "zh": "危險的",
+      "pos": "adjective",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "It is dangerous to swim here after heavy rain.",
+        "zh": "大雨後在這裡游泳很危險。"
+      },
+      "selectionOrder": 1269
+    },
+    {
+      "id": "word:remind",
+      "word": "remind",
+      "zh": "提醒；使想起",
+      "pos": "verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please remind me to bring an umbrella.",
+        "zh": "請提醒我帶雨傘。"
+      },
+      "selectionOrder": 1270
+    },
+    {
+      "id": "word:moral",
+      "word": "moral",
+      "zh": "道德的；寓意",
+      "pos": "adjective, noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The story raises a difficult moral question.",
+        "zh": "這個故事提出一個棘手的道德問題。"
+      },
+      "selectionOrder": 1271
+    },
+    {
+      "id": "word:united",
+      "word": "united",
+      "zh": "團結的；聯合的",
+      "pos": "adjective",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The team remained united despite the setback.",
+        "zh": "儘管遭遇挫折，團隊仍然團結一致。"
+      },
+      "selectionOrder": 1272
+    },
+    {
+      "id": "word:category",
+      "word": "category",
+      "zh": "類別",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Put each expense in the correct category.",
+        "zh": "把每筆支出歸入正確類別。"
+      },
+      "selectionOrder": 1273
+    },
+    {
+      "id": "word:relatively",
+      "word": "relatively",
+      "zh": "相對地；比較起來",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The apartment is relatively quiet at night.",
+        "zh": "這間公寓晚上比較安靜。"
+      },
+      "selectionOrder": 1274
+    },
+    {
+      "id": "word:victory",
+      "word": "victory",
+      "zh": "勝利",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The team celebrated its first victory of the season.",
+        "zh": "球隊慶祝本季首勝。"
+      },
+      "selectionOrder": 1275
+    },
+    {
+      "id": "word:academic",
+      "word": "academic",
+      "zh": "學術的；課業的；學者",
+      "pos": "adjective, noun",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "She needs more time for her academic work.",
+        "zh": "她需要更多時間處理課業。"
+      },
+      "selectionOrder": 1276
+    },
+    {
+      "id": "word:internet",
+      "word": "internet",
+      "zh": "網際網路",
+      "pos": "noun",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We booked our tickets on the internet.",
+        "zh": "我們在網路上訂了票。"
+      },
+      "selectionOrder": 1277
+    },
+    {
+      "id": "word:healthy",
+      "word": "healthy",
+      "zh": "健康的；有益健康的",
+      "pos": "adjective",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "A healthy breakfast helps me start the day.",
+        "zh": "健康的早餐幫助我展開一天。"
+      },
+      "selectionOrder": 1278
+    },
+    {
+      "id": "word:negative",
+      "word": "negative",
+      "zh": "負面的；陰性的；負數的",
+      "pos": "adjective",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The test result was negative.",
+        "zh": "檢驗結果是陰性。"
+      },
+      "selectionOrder": 1279
+    },
+    {
+      "id": "word:historical",
+      "word": "historical",
+      "zh": "歷史的；與歷史有關的",
+      "pos": "adjective",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We visited several historical sites during the trip.",
+        "zh": "旅途中我們參觀了幾處歷史古蹟。"
+      },
+      "selectionOrder": 1280
+    },
+    {
+      "id": "word:medicine",
+      "word": "medicine",
+      "zh": "藥；醫學",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Take this medicine after meals.",
+        "zh": "這個藥飯後服用。"
+      },
+      "selectionOrder": 1281
+    },
+    {
+      "id": "word:tour",
+      "word": "tour",
+      "zh": "導覽；旅行；巡迴",
+      "pos": "noun, verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We joined a walking tour of the old town.",
+        "zh": "我們參加了舊城區的步行導覽。"
+      },
+      "selectionOrder": 1282
+    },
+    {
+      "id": "word:depend",
+      "word": "depend",
+      "zh": "依靠；取決於",
+      "pos": "verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Our plans depend on the weather.",
+        "zh": "我們的計畫取決於天氣。"
+      },
+      "selectionOrder": 1283
+    },
+    {
+      "id": "word:grab",
+      "word": "grab",
+      "zh": "抓住；趕快拿取",
+      "pos": "verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Grab your coat before we leave.",
+        "zh": "出門前趕快拿上你的外套。"
+      },
+      "selectionOrder": 1284
+    },
+    {
+      "id": "word:direct",
+      "word": "direct",
+      "zh": "直接的；指引；導演",
+      "pos": "adjective, verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Is there a direct flight to the island?",
+        "zh": "有直飛那座島的班機嗎？"
+      },
+      "selectionOrder": 1285
+    },
+    {
+      "id": "word:classroom",
+      "word": "classroom",
+      "zh": "教室",
+      "pos": "noun",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The students returned to the classroom after lunch.",
+        "zh": "學生午餐後回到教室。"
+      },
+      "selectionOrder": 1286
+    },
+    {
+      "id": "word:contact",
+      "word": "contact",
+      "zh": "聯絡；接觸；聯絡人",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Contact the office if you need help.",
+        "zh": "需要幫忙時請聯絡辦公室。"
+      },
+      "selectionOrder": 1287
+    },
+    {
+      "id": "word:justice",
+      "word": "justice",
+      "zh": "正義；公正；司法",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The families are still seeking justice.",
+        "zh": "這些家庭仍在尋求公道。"
+      },
+      "selectionOrder": 1288
+    },
+    {
+      "id": "word:photograph",
+      "word": "photograph",
+      "zh": "照片；拍照",
+      "pos": "noun, verb",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "This photograph was taken on our first trip together.",
+        "zh": "這張照片是我們第一次一起旅行時拍的。"
+      },
+      "selectionOrder": 1289
+    },
+    {
+      "id": "word:participate",
+      "word": "participate",
+      "zh": "參加；參與",
+      "pos": "verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Everyone is welcome to participate in the discussion.",
+        "zh": "歡迎大家參與討論。"
+      },
+      "selectionOrder": 1290
+    },
+    {
+      "id": "word:daily",
+      "word": "daily",
+      "zh": "每日的；每天",
+      "pos": "adjective, adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I check my email daily.",
+        "zh": "我每天查看電子郵件。"
+      },
+      "selectionOrder": 1291
+    },
+    {
+      "id": "word:fair",
+      "word": "fair",
+      "zh": "公平的；尚可的；市集",
+      "pos": "adjective, noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We need a fair way to divide the work.",
+        "zh": "我們需要公平分配工作的方法。"
+      },
+      "selectionOrder": 1292
+    },
+    {
+      "id": "word:pair",
+      "word": "pair",
+      "zh": "一雙；一對；配對",
+      "pos": "noun, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I need a new pair of glasses.",
+        "zh": "我需要一副新眼鏡。"
+      },
+      "selectionOrder": 1293
+    },
+    {
+      "id": "word:famous",
+      "word": "famous",
+      "zh": "有名的",
+      "pos": "adjective",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The village is famous for its tea.",
+        "zh": "這座村莊以茶聞名。"
+      },
+      "selectionOrder": 1294
+    },
+    {
+      "id": "word:exercise",
+      "word": "exercise",
+      "zh": "運動；練習；運用",
+      "pos": "noun, verb",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Gentle exercise can improve your sleep.",
+        "zh": "溫和的運動能改善睡眠。"
+      },
+      "selectionOrder": 1295
+    },
+    {
+      "id": "word:knee",
+      "word": "knee",
+      "zh": "膝蓋",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "My knee hurts when I climb stairs.",
+        "zh": "我爬樓梯時膝蓋會痛。"
+      },
+      "selectionOrder": 1296
+    },
+    {
+      "id": "word:flower",
+      "word": "flower",
+      "zh": "花",
+      "pos": "noun, verb",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": "[ˋflaʊɚ]",
+      "audio": "assets/voice/words/flower.mp3",
+      "image": "",
+      "example": {
+        "en": "The flowers in the garden attract bees.",
+        "zh": "花園裡的花吸引蜜蜂。"
+      },
+      "selectionOrder": 1297,
+      "emoji": "🌸",
+      "theme": "nature",
+      "level": 1,
+      "audioZh": "assets/voice/zh/words/flower.mp3"
+    },
+    {
+      "id": "word:tape",
+      "word": "tape",
+      "zh": "膠帶；錄音帶；用膠帶黏貼",
+      "pos": "noun, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Use some tape to seal the box.",
+        "zh": "用膠帶把箱子封好。"
+      },
+      "selectionOrder": 1298
+    },
+    {
+      "id": "word:hire",
+      "word": "hire",
+      "zh": "僱用；租用",
+      "pos": "verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We plan to hire two more assistants.",
+        "zh": "我們打算再僱用兩名助理。"
+      },
+      "selectionOrder": 1299
+    },
+    {
+      "id": "word:familiar",
+      "word": "familiar",
+      "zh": "熟悉的；常見的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Her voice sounded familiar.",
+        "zh": "她的聲音聽起來很熟悉。"
+      },
+      "selectionOrder": 1300
+    },
+    {
+      "id": "word:appropriate",
+      "word": "appropriate",
+      "zh": "適當的；合宜的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Wear shoes that are appropriate for hiking.",
+        "zh": "穿適合健行的鞋子。"
+      },
+      "selectionOrder": 1301
+    },
+    {
+      "id": "word:supply",
+      "word": "supply",
+      "zh": "供應；供應品",
+      "pos": "noun, verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The storm disrupted the water supply.",
+        "zh": "暴風雨使供水中斷。"
+      },
+      "selectionOrder": 1302
+    },
+    {
+      "id": "word:fully",
+      "word": "fully",
+      "zh": "完全地；充分地",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Make sure the battery is fully charged.",
+        "zh": "確認電池已充滿電。"
+      },
+      "selectionOrder": 1303
+    },
+    {
+      "id": "word:actor",
+      "word": "actor",
+      "zh": "演員",
+      "pos": "noun",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The actor learned sign language for the role.",
+        "zh": "那位演員為了角色學習手語。"
+      },
+      "selectionOrder": 1304
+    },
+    {
+      "id": "word:birth",
+      "word": "birth",
+      "zh": "出生；誕生",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please write your date of birth here.",
+        "zh": "請在這裡填寫出生日期。"
+      },
+      "selectionOrder": 1305
+    },
+    {
+      "id": "word:search",
+      "word": "search",
+      "zh": "搜尋；尋找",
+      "pos": "noun, verb",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We searched the house for the missing keys.",
+        "zh": "我們在屋裡尋找不見的鑰匙。"
+      },
+      "selectionOrder": 1306
+    },
+    {
+      "id": "word:tie",
+      "word": "tie",
+      "zh": "繫；領帶；平手",
+      "pos": "noun, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Can you help me tie this ribbon?",
+        "zh": "你可以幫我綁這條緞帶嗎？"
+      },
+      "selectionOrder": 1307
+    },
+    {
+      "id": "word:democracy",
+      "word": "democracy",
+      "zh": "民主；民主制度",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Free elections are an important part of democracy.",
+        "zh": "自由選舉是民主制度的重要一環。"
+      },
+      "selectionOrder": 1308
+    },
+    {
+      "id": "word:eastern",
+      "word": "eastern",
+      "zh": "東方的；東部的",
+      "pos": "adjective",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Heavy rain is expected in the eastern part of the country.",
+        "zh": "預計這個國家的東部將有大雨。"
+      },
+      "selectionOrder": 1310
+    },
+    {
+      "id": "word:primary",
+      "word": "primary",
+      "zh": "主要的；初級的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Our primary goal is to finish the repairs safely.",
+        "zh": "我們的主要目標是安全完成維修。"
+      },
+      "selectionOrder": 1311
+    },
+    {
+      "id": "word:yesterday",
+      "word": "yesterday",
+      "zh": "昨天",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I left my umbrella here yesterday.",
+        "zh": "我昨天把雨傘忘在這裡。"
+      },
+      "selectionOrder": 1312
+    },
+    {
+      "id": "word:circle",
+      "word": "circle",
+      "zh": "圓；圈子；圈起來",
+      "pos": "noun, verb",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Draw a circle around the correct answer.",
+        "zh": "把正確答案圈起來。"
+      },
+      "selectionOrder": 1313
+    },
+    {
+      "id": "word:device",
+      "word": "device",
+      "zh": "裝置；設備",
+      "pos": "noun",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "This device measures your heart rate.",
+        "zh": "這個裝置可以測量心率。"
+      },
+      "selectionOrder": 1314
+    },
+    {
+      "id": "word:progress",
+      "word": "progress",
+      "zh": "進步；進展；前進",
+      "pos": "noun, verb",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "You have made good progress with your reading.",
+        "zh": "你的閱讀能力進步很多。"
+      },
+      "selectionOrder": 1315
+    },
+    {
+      "id": "word:bottom",
+      "word": "bottom",
+      "zh": "底部；最下方",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Your receipt is at the bottom of the bag.",
+        "zh": "你的收據在袋子底部。"
+      },
+      "selectionOrder": 1316
+    },
+    {
+      "id": "word:island",
+      "word": "island",
+      "zh": "島嶼",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We took a boat to a nearby island.",
+        "zh": "我們搭船到附近的一座島。"
+      },
+      "selectionOrder": 1317
+    },
+    {
+      "id": "word:exchange",
+      "word": "exchange",
+      "zh": "交換；兌換",
+      "pos": "noun, verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Where can I exchange money?",
+        "zh": "我可以在哪裡換錢？"
+      },
+      "selectionOrder": 1318
+    },
+    {
+      "id": "word:clean",
+      "word": "clean",
+      "zh": "乾淨的；打掃",
+      "pos": "adjective, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please clean the table after dinner.",
+        "zh": "晚餐後請把桌子擦乾淨。"
+      },
+      "selectionOrder": 1319
+    },
+    {
+      "id": "word:studio",
+      "word": "studio",
+      "zh": "工作室；錄音室；套房",
+      "pos": "noun",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "She rents a small studio to record music.",
+        "zh": "她租了一間小型錄音室錄音。"
+      },
+      "selectionOrder": 1320
+    },
+    {
+      "id": "word:county",
+      "word": "county",
+      "zh": "縣；郡",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The county operates a free shuttle bus.",
+        "zh": "這個縣提供免費接駁公車。"
+      },
+      "selectionOrder": 1321
+    },
+    {
+      "id": "word:train",
+      "word": "train",
+      "zh": "火車；訓練",
+      "pos": "noun, verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The last train leaves at eleven.",
+        "zh": "末班火車十一點開。"
+      },
+      "selectionOrder": 1322
+    },
+    {
+      "id": "word:lady",
+      "word": "lady",
+      "zh": "女士",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The lady at the front desk helped us check in.",
+        "zh": "櫃檯的女士幫我們辦理入住。"
+      },
+      "selectionOrder": 1323
+    },
+    {
+      "id": "word:colleague",
+      "word": "colleague",
+      "zh": "同事",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "A colleague offered to cover my shift.",
+        "zh": "一位同事主動提出幫我代班。"
+      },
+      "selectionOrder": 1324
+    },
+    {
+      "id": "word:application",
+      "word": "application",
+      "zh": "申請；應用；應用程式",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please submit your application by Friday.",
+        "zh": "請在星期五以前送出申請。"
+      },
+      "selectionOrder": 1325
+    },
+    {
+      "id": "word:lean",
+      "word": "lean",
+      "zh": "倚靠；傾斜；瘦的",
+      "pos": "adjective, verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Do not lean against the glass door.",
+        "zh": "不要靠在玻璃門上。"
+      },
+      "selectionOrder": 1326
+    },
+    {
+      "id": "word:neck",
+      "word": "neck",
+      "zh": "脖子；頸部",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "My neck feels stiff after sitting all day.",
+        "zh": "坐了一整天後，我的脖子很僵硬。"
+      },
+      "selectionOrder": 1327
+    },
+    {
+      "id": "word:damage",
+      "word": "damage",
+      "zh": "損壞；損害",
+      "pos": "noun, verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The leak caused damage to the ceiling.",
+        "zh": "漏水造成天花板損壞。"
+      },
+      "selectionOrder": 1328
+    },
+    {
+      "id": "word:plastic",
+      "word": "plastic",
+      "zh": "塑膠；塑膠製的",
+      "pos": "adjective, noun",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We are trying to use less plastic.",
+        "zh": "我們正在設法減少塑膠用量。"
+      },
+      "selectionOrder": 1329
+    },
+    {
+      "id": "word:tall",
+      "word": "tall",
+      "zh": "高的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The shelf is too tall for me to reach.",
+        "zh": "架子太高，我搆不到。"
+      },
+      "selectionOrder": 1330
+    },
+    {
+      "id": "word:plate",
+      "word": "plate",
+      "zh": "盤子；餐盤",
+      "pos": "noun",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Put the toast on a clean plate.",
+        "zh": "把吐司放在乾淨的盤子上。"
+      },
+      "selectionOrder": 1331
+    },
+    {
+      "id": "word:hate",
+      "word": "hate",
+      "zh": "討厭；憎恨",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I hate being late for appointments.",
+        "zh": "我討厭赴約遲到。"
+      },
+      "selectionOrder": 1332
+    },
+    {
+      "id": "word:otherwise",
+      "word": "otherwise",
+      "zh": "否則；在其他方面",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Leave now; otherwise, you will miss the bus.",
+        "zh": "現在就出門，否則會錯過公車。"
+      },
+      "selectionOrder": 1333
+    },
+    {
+      "id": "word:male",
+      "word": "male",
+      "zh": "男性的；雄性的；男性",
+      "pos": "adjective, noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The male bird has bright blue feathers.",
+        "zh": "這隻雄鳥有鮮藍色的羽毛。"
+      },
+      "selectionOrder": 1334
+    },
+    {
+      "id": "word:alive",
+      "word": "alive",
+      "zh": "活著的；充滿活力的",
+      "pos": "adjective",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The plant is still alive despite the dry soil.",
+        "zh": "雖然土壤乾燥，這株植物還活著。"
+      },
+      "selectionOrder": 1335
+    },
+    {
+      "id": "word:expression",
+      "word": "expression",
+      "zh": "表情；表達；用語",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The surprised expression on her face made us laugh.",
+        "zh": "她臉上驚訝的表情讓我們笑了。"
+      },
+      "selectionOrder": 1336
+    },
+    {
+      "id": "word:football",
+      "word": "football",
+      "zh": "足球；美式足球",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "They play football in the park on Sundays.",
+        "zh": "他們星期天在公園踢足球。"
+      },
+      "selectionOrder": 1337
+    },
+    {
+      "id": "word:theater",
+      "word": "theater",
+      "zh": "劇院；戲院；戲劇",
+      "pos": "noun",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The theater opens thirty minutes before the show.",
+        "zh": "劇院在演出前三十分鐘開放入場。"
+      },
+      "selectionOrder": 1338
+    },
+    {
+      "id": "word:intend",
+      "word": "intend",
+      "zh": "打算；意圖",
+      "pos": "verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I intend to finish the report tonight.",
+        "zh": "我打算今晚完成報告。"
+      },
+      "selectionOrder": 1339
+    },
+    {
+      "id": "word:chicken",
+      "word": "chicken",
+      "zh": "雞；雞肉",
+      "pos": "noun",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We had grilled chicken with rice.",
+        "zh": "我們吃了烤雞配飯。"
+      },
+      "selectionOrder": 1340
+    },
+    {
+      "id": "word:army",
+      "word": "army",
+      "zh": "陸軍；軍隊",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Her brother serves in the army.",
+        "zh": "她哥哥在陸軍服役。"
+      },
+      "selectionOrder": 1341
+    },
+    {
+      "id": "word:abuse",
+      "word": "abuse",
+      "zh": "虐待；濫用；辱罵",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The organization helps victims of abuse.",
+        "zh": "這個組織協助受虐者。"
+      },
+      "selectionOrder": 1342
+    },
+    {
+      "id": "word:shut",
+      "word": "shut",
+      "zh": "關上；關閉",
+      "pos": "verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please shut the window before you leave.",
+        "zh": "離開前請把窗戶關上。"
+      },
+      "selectionOrder": 1343
+    },
+    {
+      "id": "word:map",
+      "word": "map",
+      "zh": "地圖",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": "[mæp]",
+      "audio": "assets/voice/words/map.mp3",
+      "image": "",
+      "example": {
+        "en": "We used a map to find the hiking trail.",
+        "zh": "我們用地圖找到登山步道。"
+      },
+      "selectionOrder": 1344,
+      "emoji": "🗺️",
+      "theme": "transport",
+      "level": 2,
+      "audioZh": "assets/voice/zh/words/map.mp3"
+    },
+    {
+      "id": "word:extra",
+      "word": "extra",
+      "zh": "額外的；額外事物",
+      "pos": "adjective, noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Bring an extra shirt in case it rains.",
+        "zh": "多帶一件上衣，以防下雨。"
+      },
+      "selectionOrder": 1345
+    },
+    {
+      "id": "word:mile",
+      "word": "mile",
+      "zh": "英里",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The nearest gas station is a mile away.",
+        "zh": "最近的加油站在一英里外。"
+      },
+      "selectionOrder": 1346
+    },
+    {
+      "id": "word:session",
+      "word": "session",
+      "zh": "一段活動時間；會議；場次",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The training session lasts two hours.",
+        "zh": "這場訓練課程持續兩小時。"
+      },
+      "selectionOrder": 1347
+    },
+    {
+      "id": "word:welcome",
+      "word": "welcome",
+      "zh": "歡迎；受歡迎的",
+      "pos": "adjective, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We welcome suggestions from all members.",
+        "zh": "我們歡迎所有成員提供建議。"
+      },
+      "selectionOrder": 1348
+    },
+    {
+      "id": "word:danger",
+      "word": "danger",
+      "zh": "危險",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The firefighters brought everyone out of danger.",
+        "zh": "消防員讓所有人脫離險境。"
+      },
+      "selectionOrder": 1349
+    },
+    {
+      "id": "word:domestic",
+      "word": "domestic",
+      "zh": "國內的；家庭的；家養的",
+      "pos": "adjective",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Domestic flights leave from the smaller terminal.",
+        "zh": "國內班機從較小的航廈出發。"
+      },
+      "selectionOrder": 1350
+    },
+    {
+      "id": "word:earth",
+      "word": "earth",
+      "zh": "地球；泥土",
+      "pos": "noun",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The earth in the garden is still wet.",
+        "zh": "花園裡的泥土還是濕的。"
+      },
+      "selectionOrder": 1351
+    },
+    {
+      "id": "word:literature",
+      "word": "literature",
+      "zh": "文學；文獻",
+      "pos": "noun",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "She enjoys reading literature from different countries.",
+        "zh": "她喜歡閱讀各國文學。"
+      },
+      "selectionOrder": 1352
+    },
+    {
+      "id": "word:rain",
+      "word": "rain",
+      "zh": "雨",
+      "pos": "noun, verb",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": "[ren]",
+      "audio": "assets/voice/words/rain.mp3",
+      "image": "",
+      "example": {
+        "en": "Heavy rain delayed the outdoor concert.",
+        "zh": "大雨讓戶外音樂會延後了。"
+      },
+      "selectionOrder": 1353,
+      "emoji": "🌧️",
+      "theme": "nature",
+      "level": 1,
+      "audioZh": "assets/voice/zh/words/rain.mp3"
+    },
+    {
+      "id": "word:desire",
+      "word": "desire",
+      "zh": "渴望；想要",
+      "pos": "noun, verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "He has a strong desire to travel.",
+        "zh": "他很渴望去旅行。"
+      },
+      "selectionOrder": 1354
+    },
+    {
+      "id": "word:assessment",
+      "word": "assessment",
+      "zh": "評估；評量",
+      "pos": "noun",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The doctor carried out a full assessment of her health.",
+        "zh": "醫師對她的健康做了全面評估。"
+      },
+      "selectionOrder": 1355
+    },
+    {
+      "id": "word:injury",
+      "word": "injury",
+      "zh": "受傷；傷害",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "A knee injury kept him from running.",
+        "zh": "膝蓋受傷讓他無法跑步。"
+      },
+      "selectionOrder": 1356
+    },
+    {
+      "id": "word:respect",
+      "word": "respect",
+      "zh": "尊重；敬意",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please respect other people's privacy.",
+        "zh": "請尊重別人的隱私。"
+      },
+      "selectionOrder": 1357
+    },
+    {
+      "id": "word:paint",
+      "word": "paint",
+      "zh": "油漆；顏料；畫",
+      "pos": "noun, verb",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We plan to paint the kitchen walls white.",
+        "zh": "我們打算把廚房牆壁漆成白色。"
+      },
+      "selectionOrder": 1358
+    },
+    {
+      "id": "word:northern",
+      "word": "northern",
+      "zh": "北方的；北部的",
+      "pos": "adjective",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Snow is expected in the northern mountains.",
+        "zh": "預計北部山區會下雪。"
+      },
+      "selectionOrder": 1359
+    },
+    {
+      "id": "word:nod",
+      "word": "nod",
+      "zh": "點頭",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "She gave a small nod to show that she understood.",
+        "zh": "她輕輕點頭，表示她明白了。"
+      },
+      "selectionOrder": 1360
+    },
+    {
+      "id": "word:fuel",
+      "word": "fuel",
+      "zh": "燃料；助長",
+      "pos": "noun, verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The car uses less fuel on long trips.",
+        "zh": "這輛車長途行駛時比較省油。"
+      },
+      "selectionOrder": 1361
+    },
+    {
+      "id": "word:leaf",
+      "word": "leaf",
+      "zh": "葉子",
+      "pos": "noun",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "A yellow leaf floated down from the tree.",
+        "zh": "一片黃葉從樹上飄落。"
+      },
+      "selectionOrder": 1362
+    },
+    {
+      "id": "word:dry",
+      "word": "dry",
+      "zh": "乾的；弄乾",
+      "pos": "adjective, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Leave your shoes here until they are dry.",
+        "zh": "把鞋子放在這裡直到晾乾。"
+      },
+      "selectionOrder": 1363
+    },
+    {
+      "id": "word:instruction",
+      "word": "instruction",
+      "zh": "指示；說明；教導",
+      "pos": "noun",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Read the instructions before assembling the shelf.",
+        "zh": "組裝架子前請先閱讀說明。"
+      },
+      "selectionOrder": 1364
+    },
+    {
+      "id": "word:pool",
+      "word": "pool",
+      "zh": "游泳池；水池；集中共用",
+      "pos": "noun, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The hotel has a small outdoor pool.",
+        "zh": "這間旅館有一座小型戶外游泳池。"
+      },
+      "selectionOrder": 1365
+    },
+    {
+      "id": "word:climb",
+      "word": "climb",
+      "zh": "攀爬；上升",
+      "pos": "noun, verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We had to climb several steps to reach the entrance.",
+        "zh": "我們得爬幾階樓梯才能到入口。"
+      },
+      "selectionOrder": 1366
+    },
+    {
+      "id": "word:sweet",
+      "word": "sweet",
+      "zh": "甜的；貼心的；糖果",
+      "pos": "adjective, noun",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "These peaches are soft and sweet.",
+        "zh": "這些桃子又軟又甜。"
+      },
+      "selectionOrder": 1367
+    },
+    {
+      "id": "word:engine",
+      "word": "engine",
+      "zh": "引擎",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Turn off the engine while you wait.",
+        "zh": "等候時請把引擎關掉。"
+      },
+      "selectionOrder": 1368
+    },
+    {
+      "id": "word:fourth",
+      "word": "fourth",
+      "zh": "第四；四分之一",
+      "pos": "ordinal number",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Our office is on the fourth floor.",
+        "zh": "我們的辦公室在四樓。"
+      },
+      "selectionOrder": 1369
+    },
+    {
+      "id": "word:salt",
+      "word": "salt",
+      "zh": "鹽；加鹽",
+      "pos": "noun, verb",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Taste the soup before adding more salt.",
+        "zh": "加鹽前先嚐嚐湯。"
+      },
+      "selectionOrder": 1370
+    },
+    {
+      "id": "word:expand",
+      "word": "expand",
+      "zh": "擴大；擴充；膨脹",
+      "pos": "verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The company plans to expand its delivery service.",
+        "zh": "公司計畫擴大外送服務。"
+      },
+      "selectionOrder": 1371
+    },
+    {
+      "id": "word:importance",
+      "word": "importance",
+      "zh": "重要性",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The guide stressed the importance of drinking enough water.",
+        "zh": "嚮導強調補充足夠水分的重要性。"
+      },
+      "selectionOrder": 1372
+    },
+    {
+      "id": "word:metal",
+      "word": "metal",
+      "zh": "金屬；金屬的",
+      "pos": "adjective, noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "This table has a wooden top and metal legs.",
+        "zh": "這張桌子有木製桌面和金屬桌腳。"
+      },
+      "selectionOrder": 1373
+    },
+    {
+      "id": "word:fat",
+      "word": "fat",
+      "zh": "脂肪；胖的",
+      "pos": "adjective, noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Nuts contain fat as well as protein.",
+        "zh": "堅果除了蛋白質，也含有脂肪。"
+      },
+      "selectionOrder": 1374
+    },
+    {
+      "id": "word:ticket",
+      "word": "ticket",
+      "zh": "票；罰單",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Keep your ticket until you leave the station.",
+        "zh": "離開車站前請保留車票。"
+      },
+      "selectionOrder": 1375
+    },
+    {
+      "id": "word:software",
+      "word": "software",
+      "zh": "軟體",
+      "pos": "noun",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Update the software before using the new features.",
+        "zh": "使用新功能前請更新軟體。"
+      },
+      "selectionOrder": 1376
+    },
+    {
+      "id": "word:disappear",
+      "word": "disappear",
+      "zh": "消失；不見",
+      "pos": "verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The fog began to disappear as the sun rose.",
+        "zh": "隨著太陽升起，霧開始散去。"
+      },
+      "selectionOrder": 1377
+    },
+    {
+      "id": "word:corporate",
+      "word": "corporate",
+      "zh": "公司的；企業的",
+      "pos": "adjective",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The hotel offers special rates for corporate guests.",
+        "zh": "這間飯店為企業客戶提供特別房價。"
+      },
+      "selectionOrder": 1378
+    },
+    {
+      "id": "word:strange",
+      "word": "strange",
+      "zh": "奇怪的；陌生的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I heard a strange noise coming from the kitchen.",
+        "zh": "我聽見廚房傳來奇怪的聲音。"
+      },
+      "selectionOrder": 1379
+    },
+    {
+      "id": "word:lip",
+      "word": "lip",
+      "zh": "嘴唇",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The cold wind made my lips dry.",
+        "zh": "冷風吹得我的嘴唇乾燥。"
+      },
+      "selectionOrder": 1380
+    },
+    {
+      "id": "word:urban",
+      "word": "urban",
+      "zh": "都市的",
+      "pos": "adjective",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Urban parks give residents space to exercise.",
+        "zh": "都市公園提供居民運動的空間。"
+      },
+      "selectionOrder": 1381
+    },
+    {
+      "id": "word:mental",
+      "word": "mental",
+      "zh": "心理的；心智的",
+      "pos": "adjective",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Regular breaks are good for your mental health.",
+        "zh": "規律休息有益心理健康。"
+      },
+      "selectionOrder": 1382
+    },
+    {
+      "id": "word:increasingly",
+      "word": "increasingly",
+      "zh": "越來越；日益",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "More people are becoming increasingly interested in local food.",
+        "zh": "越來越多人對在地食物產生興趣。"
+      },
+      "selectionOrder": 1383
+    },
+    {
+      "id": "word:lunch",
+      "word": "lunch",
+      "zh": "午餐",
+      "pos": "noun",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Would you like to have lunch together tomorrow?",
+        "zh": "你明天要一起吃午餐嗎？"
+      },
+      "selectionOrder": 1384
+    },
+    {
+      "id": "word:educational",
+      "word": "educational",
+      "zh": "教育的；有教育意義的",
+      "pos": "adjective",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The museum offers educational activities for families.",
+        "zh": "博物館提供適合家庭參與的教育活動。"
+      },
+      "selectionOrder": 1385
+    },
+    {
+      "id": "word:somewhere",
+      "word": "somewhere",
+      "zh": "在某處；到某處",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I left my phone somewhere in the house.",
+        "zh": "我把手機放在屋裡的某個地方了。"
+      },
+      "selectionOrder": 1386
+    },
+    {
+      "id": "word:farmer",
+      "word": "farmer",
+      "zh": "農夫；農民",
+      "pos": "noun",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The farmer sells fresh vegetables at the market.",
+        "zh": "這位農夫在市場賣新鮮蔬菜。"
+      },
+      "selectionOrder": 1387
+    },
+    {
+      "id": "word:sugar",
+      "word": "sugar",
+      "zh": "糖",
+      "pos": "noun",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I prefer tea without sugar.",
+        "zh": "我比較喜歡不加糖的茶。"
+      },
+      "selectionOrder": 1388
+    },
+    {
+      "id": "word:planet",
+      "word": "planet",
+      "zh": "行星",
+      "pos": "noun",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The telescope lets us see several planets.",
+        "zh": "這具望遠鏡讓我們能看見幾顆行星。"
+      },
+      "selectionOrder": 1389
+    },
+    {
+      "id": "word:favorite",
+      "word": "favorite",
+      "zh": "最喜愛的；最喜愛的人或物",
+      "pos": "adjective, noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "This is my favorite place to read.",
+        "zh": "這是我最喜歡閱讀的地方。"
+      },
+      "selectionOrder": 1390
+    },
+    {
+      "id": "word:explore",
+      "word": "explore",
+      "zh": "探索；探討",
+      "pos": "verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We spent the morning exploring the old streets.",
+        "zh": "我們花了一個上午探索老街。"
+      },
+      "selectionOrder": 1391
+    },
+    {
+      "id": "word:obtain",
+      "word": "obtain",
+      "zh": "取得；獲得",
+      "pos": "verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "You can obtain a copy of the form at the front desk.",
+        "zh": "你可以在櫃檯取得表格。"
+      },
+      "selectionOrder": 1392
+    },
+    {
+      "id": "word:enemy",
+      "word": "enemy",
+      "zh": "敵人；敵方",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The two former enemies became close friends.",
+        "zh": "這兩個曾經的敵人成了好友。"
+      },
+      "selectionOrder": 1393
+    },
+    {
+      "id": "word:complex",
+      "word": "complex",
+      "zh": "複雜的；建築群",
+      "pos": "adjective, noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The instructions are too complex for beginners.",
+        "zh": "這些說明對初學者來說太複雜。"
+      },
+      "selectionOrder": 1394
+    },
+    {
+      "id": "word:surround",
+      "word": "surround",
+      "zh": "圍繞；包圍",
+      "pos": "verb",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Tall trees surround the small lake.",
+        "zh": "高大的樹木環繞著小湖。"
+      },
+      "selectionOrder": 1395
+    },
+    {
+      "id": "word:athlete",
+      "word": "athlete",
+      "zh": "運動員",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The athlete trains for two hours every morning.",
+        "zh": "這位運動員每天早上訓練兩小時。"
+      },
+      "selectionOrder": 1396
+    },
+    {
+      "id": "word:invite",
+      "word": "invite",
+      "zh": "邀請",
+      "pos": "verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We invited our neighbors over for dinner.",
+        "zh": "我們邀請鄰居來家裡吃晚餐。"
+      },
+      "selectionOrder": 1397
+    },
+    {
+      "id": "word:repeat",
+      "word": "repeat",
+      "zh": "重複；再說一次",
+      "pos": "verb",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Could you repeat the address more slowly?",
+        "zh": "你可以把地址再慢慢說一次嗎？"
+      },
+      "selectionOrder": 1398
+    },
+    {
+      "id": "word:carefully",
+      "word": "carefully",
+      "zh": "仔細地；小心地",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Read the contract carefully before signing.",
+        "zh": "簽約前請仔細閱讀合約。"
+      },
+      "selectionOrder": 1399
+    },
+    {
+      "id": "word:soul",
+      "word": "soul",
+      "zh": "靈魂；心靈",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Quiet walks by the sea are good for my soul.",
+        "zh": "在海邊安靜散步能讓我的心靈舒暢。"
+      },
+      "selectionOrder": 1400
+    },
+    {
+      "id": "word:scientific",
+      "word": "scientific",
+      "zh": "科學的",
+      "pos": "adjective",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The report includes scientific evidence for its claims.",
+        "zh": "這份報告附有支持其主張的科學證據。"
+      },
+      "selectionOrder": 1401
+    },
+    {
+      "id": "word:impossible",
+      "word": "impossible",
+      "zh": "不可能的；辦不到的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "It is impossible to finish all this work in one hour.",
+        "zh": "這些工作不可能在一小時內全部完成。"
+      },
+      "selectionOrder": 1402
+    },
+    {
+      "id": "word:panel",
+      "word": "panel",
+      "zh": "面板；專家小組；嵌板",
+      "pos": "noun",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The control panel shows the current temperature.",
+        "zh": "控制面板顯示目前溫度。"
+      },
+      "selectionOrder": 1403
+    },
+    {
+      "id": "word:mom",
+      "word": "mom",
+      "zh": "媽媽",
+      "pos": "noun",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "My mom taught me how to make soup.",
+        "zh": "我媽媽教我怎麼煮湯。"
+      },
+      "selectionOrder": 1404
+    },
+    {
+      "id": "word:instrument",
+      "word": "instrument",
+      "zh": "樂器；儀器；工具",
+      "pos": "noun",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Which musical instrument would you like to learn?",
+        "zh": "你想學哪種樂器？"
+      },
+      "selectionOrder": 1405
+    },
+    {
+      "id": "word:predict",
+      "word": "predict",
+      "zh": "預測",
+      "pos": "verb",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "It is difficult to predict the exact path of a storm.",
+        "zh": "很難預測暴風雨的確切路徑。"
+      },
+      "selectionOrder": 1406
+    },
+    {
+      "id": "word:weather",
+      "word": "weather",
+      "zh": "天氣",
+      "pos": "noun",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The weather should improve by the weekend.",
+        "zh": "天氣到週末應該會好轉。"
+      },
+      "selectionOrder": 1407
+    },
+    {
+      "id": "word:presidential",
+      "word": "presidential",
+      "zh": "總統的；總統選舉的",
+      "pos": "adjective",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The presidential debate will be broadcast tonight.",
+        "zh": "總統候選人辯論會將在今晚播出。"
+      },
+      "selectionOrder": 1408
+    },
+    {
+      "id": "word:commitment",
+      "word": "commitment",
+      "zh": "承諾；投入；已答應的事",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I cannot attend because of a family commitment.",
+        "zh": "因為有已答應的家庭活動，我無法出席。"
+      },
+      "selectionOrder": 1409
+    },
+    {
+      "id": "word:emotional",
+      "word": "emotional",
+      "zh": "情緒的；情緒激動的",
+      "pos": "adjective",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "She needs emotional support during this difficult time.",
+        "zh": "她在這段艱難時期需要情感支持。"
+      },
+      "selectionOrder": 1410
+    },
+    {
+      "id": "word:supreme",
+      "word": "supreme",
+      "zh": "最高的；至高的",
+      "pos": "adjective",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The constitution is the supreme law of the country.",
+        "zh": "憲法是這個國家的最高法律。"
+      },
+      "selectionOrder": 1411
+    },
+    {
+      "id": "word:bear",
+      "word": "bear",
+      "zh": "熊；忍受；承擔",
+      "pos": "noun, verb",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We saw a bear near the forest trail.",
+        "zh": "我們在森林步道附近看到一隻熊。"
+      },
+      "selectionOrder": 1412
+    },
+    {
+      "id": "word:pocket",
+      "word": "pocket",
+      "zh": "口袋；放入口袋",
+      "pos": "noun, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I keep my bus card in my coat pocket.",
+        "zh": "我把公車卡放在外套口袋裡。"
+      },
+      "selectionOrder": 1413
+    },
+    {
+      "id": "word:thin",
+      "word": "thin",
+      "zh": "薄的；瘦的；稀薄的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Cut the cucumber into thin slices.",
+        "zh": "把小黃瓜切成薄片。"
+      },
+      "selectionOrder": 1414
+    },
+    {
+      "id": "word:temperature",
+      "word": "temperature",
+      "zh": "溫度；體溫",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Check the water temperature before bathing the baby.",
+        "zh": "幫寶寶洗澡前先檢查水溫。"
+      },
+      "selectionOrder": 1415
+    },
+    {
+      "id": "word:poll",
+      "word": "poll",
+      "zh": "民意調查；投票；進行民調",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The poll asked residents about public transport.",
+        "zh": "這份民調詢問居民對大眾運輸的看法。"
+      },
+      "selectionOrder": 1416
+    },
+    {
+      "id": "word:surprise",
+      "word": "surprise",
+      "zh": "驚喜；驚訝；使驚訝",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The birthday cake was a lovely surprise.",
+        "zh": "那個生日蛋糕是個美好的驚喜。"
+      },
+      "selectionOrder": 1417
+    },
+    {
+      "id": "word:proposal",
+      "word": "proposal",
+      "zh": "提案；建議；求婚",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The manager approved our proposal for flexible hours.",
+        "zh": "經理核准了我們彈性工時的提案。"
+      },
+      "selectionOrder": 1418
+    },
+    {
+      "id": "word:consequence",
+      "word": "consequence",
+      "zh": "結果；後果",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Consider the possible consequences before you decide.",
+        "zh": "決定前先考慮可能的後果。"
+      },
+      "selectionOrder": 1419
+    },
+    {
+      "id": "word:breath",
+      "word": "breath",
+      "zh": "呼吸；一口氣",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Take a deep breath and relax your shoulders.",
+        "zh": "深呼吸，放鬆肩膀。"
+      },
+      "selectionOrder": 1420
+    },
+    {
+      "id": "word:sight",
+      "word": "sight",
+      "zh": "視力；看見；景象",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Regular eye exams help protect your sight.",
+        "zh": "定期眼睛檢查有助於保護視力。"
+      },
+      "selectionOrder": 1421
+    },
+    {
+      "id": "word:balance",
+      "word": "balance",
+      "zh": "平衡；餘額；使平衡",
+      "pos": "noun, verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Check your account balance before making a payment.",
+        "zh": "付款前先查看帳戶餘額。"
+      },
+      "selectionOrder": 1422
+    },
+    {
+      "id": "word:adopt",
+      "word": "adopt",
+      "zh": "採用；收養",
+      "pos": "verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "They decided to adopt a dog from a shelter.",
+        "zh": "他們決定從收容所認養一隻狗。"
+      },
+      "selectionOrder": 1423
+    },
+    {
+      "id": "word:minority",
+      "word": "minority",
+      "zh": "少數；少數族群",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Only a small minority opposed the new schedule.",
+        "zh": "只有少數人反對新時程。"
+      },
+      "selectionOrder": 1424
+    },
+    {
+      "id": "word:straight",
+      "word": "straight",
+      "zh": "直的；筆直地；直接地",
+      "pos": "adjective, adverb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Go straight until you reach the library.",
+        "zh": "一直往前走，直到圖書館。"
+      },
+      "selectionOrder": 1425
+    },
+    {
+      "id": "word:connect",
+      "word": "connect",
+      "zh": "連接；聯絡；轉乘",
+      "pos": "verb",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Connect the printer to your computer with this cable.",
+        "zh": "用這條線把印表機連到電腦。"
+      },
+      "selectionOrder": 1426
+    },
+    {
+      "id": "word:belong",
+      "word": "belong",
+      "zh": "屬於；有歸屬感",
+      "pos": "verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Does this bag belong to you?",
+        "zh": "這個包包是你的嗎？"
+      },
+      "selectionOrder": 1427
+    },
+    {
+      "id": "word:aid",
+      "word": "aid",
+      "zh": "援助；協助",
+      "pos": "noun, verb",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Volunteers delivered food aid to the village.",
+        "zh": "志工把糧食援助送到村裡。"
+      },
+      "selectionOrder": 1428
+    },
+    {
+      "id": "word:advice",
+      "word": "advice",
+      "zh": "建議；忠告",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I asked a friend for advice about the job offer.",
+        "zh": "我就這份工作邀約向朋友請教。"
+      },
+      "selectionOrder": 1429
+    },
+    {
+      "id": "word:okay",
+      "word": "okay",
+      "zh": "可以的；還好；好",
+      "pos": "adjective, adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Is it okay if I open the window?",
+        "zh": "我可以開窗嗎？"
+      },
+      "selectionOrder": 1430
+    },
+    {
+      "id": "word:organize",
+      "word": "organize",
+      "zh": "組織；安排；整理",
+      "pos": "verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We need to organize the files by date.",
+        "zh": "我們需要按日期整理檔案。"
+      },
+      "selectionOrder": 1431
+    },
+    {
+      "id": "word:empty",
+      "word": "empty",
+      "zh": "空的；清空",
+      "pos": "adjective, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please empty the trash before you leave.",
+        "zh": "離開前請把垃圾倒掉。"
+      },
+      "selectionOrder": 1432
+    },
+    {
+      "id": "word:regional",
+      "word": "regional",
+      "zh": "地區的；區域性的",
+      "pos": "adjective",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The regional train stops at every small station.",
+        "zh": "這班區間列車在每個小站都停。"
+      },
+      "selectionOrder": 1433
+    },
+    {
+      "id": "word:trail",
+      "word": "trail",
+      "zh": "步道；痕跡；跟隨",
+      "pos": "noun, verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The trail leads to a waterfall.",
+        "zh": "這條步道通往瀑布。"
+      },
+      "selectionOrder": 1434
+    },
+    {
+      "id": "word:novel",
+      "word": "novel",
+      "zh": "小說；新穎的",
+      "pos": "adjective, noun",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I borrowed a novel from the library.",
+        "zh": "我從圖書館借了一本小說。"
+      },
+      "selectionOrder": 1435
+    },
+    {
+      "id": "word:code",
+      "word": "code",
+      "zh": "程式碼；代碼；規範",
+      "pos": "noun, verb",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Enter the code sent to your phone.",
+        "zh": "輸入傳到手機的驗證碼。"
+      },
+      "selectionOrder": 1436
+    },
+    {
+      "id": "word:somehow",
+      "word": "somehow",
+      "zh": "不知為何；以某種方式",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Somehow, we managed to catch the last bus.",
+        "zh": "我們總算設法趕上末班公車。"
+      },
+      "selectionOrder": 1437
+    },
+    {
+      "id": "word:jury",
+      "word": "jury",
+      "zh": "陪審團；評審團",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The jury listened carefully to the evidence.",
+        "zh": "陪審團仔細聽取證據。"
+      },
+      "selectionOrder": 1438
+    },
+    {
+      "id": "word:breast",
+      "word": "breast",
+      "zh": "乳房；胸部；胸肉",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The clinic offers breast cancer screening.",
+        "zh": "這間診所提供乳癌篩檢。"
+      },
+      "selectionOrder": 1439
+    },
+    {
+      "id": "word:acknowledge",
+      "word": "acknowledge",
+      "zh": "承認；告知收到；致謝",
+      "pos": "verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please acknowledge receipt of this message.",
+        "zh": "收到這則訊息後請回覆確認。"
+      },
+      "selectionOrder": 1440
+    },
+    {
+      "id": "word:theme",
+      "word": "theme",
+      "zh": "主題",
+      "pos": "noun",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The theme of the exhibition is city life.",
+        "zh": "這場展覽的主題是城市生活。"
+      },
+      "selectionOrder": 1441
+    },
+    {
+      "id": "word:storm",
+      "word": "storm",
+      "zh": "暴風雨；風暴",
+      "pos": "noun",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The storm knocked down several trees.",
+        "zh": "暴風雨吹倒了好幾棵樹。"
+      },
+      "selectionOrder": 1442
+    },
+    {
+      "id": "word:union",
+      "word": "union",
+      "zh": "工會；聯盟；結合",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The union is negotiating better working conditions.",
+        "zh": "工會正在爭取更好的工作條件。"
+      },
+      "selectionOrder": 1443
+    },
+    {
+      "id": "word:desk",
+      "word": "desk",
+      "zh": "書桌；辦公桌；服務櫃檯",
+      "pos": "noun",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I keep a notebook on my desk.",
+        "zh": "我在書桌上放了一本筆記本。"
+      },
+      "selectionOrder": 1444
+    },
+    {
+      "id": "word:fruit",
+      "word": "fruit",
+      "zh": "水果；果實",
+      "pos": "noun",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We bought fresh fruit at the market.",
+        "zh": "我們在市場買了新鮮水果。"
+      },
+      "selectionOrder": 1445
+    },
+    {
+      "id": "word:expensive",
+      "word": "expensive",
+      "zh": "昂貴的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Train tickets are less expensive if you book early.",
+        "zh": "提早訂火車票比較便宜。"
+      },
+      "selectionOrder": 1446
+    },
+    {
+      "id": "word:yellow",
+      "word": "yellow",
+      "zh": "黃色；黃色的",
+      "pos": "adjective, noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "She tied a yellow ribbon around the box.",
+        "zh": "她在盒子上綁了黃色緞帶。"
+      },
+      "selectionOrder": 1447
+    },
+    {
+      "id": "word:conclusion",
+      "word": "conclusion",
+      "zh": "結論；結尾",
+      "pos": "noun",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The report reaches a different conclusion.",
+        "zh": "這份報告得出不同的結論。"
+      },
+      "selectionOrder": 1448
+    },
+    {
+      "id": "word:prime",
+      "word": "prime",
+      "zh": "主要的；最佳的；全盛時期",
+      "pos": "adjective, noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Location is the prime reason we chose this hotel.",
+        "zh": "地點是我們選這間飯店的主要原因。"
+      },
+      "selectionOrder": 1449
+    },
+    {
+      "id": "word:shadow",
+      "word": "shadow",
+      "zh": "影子；陰影",
+      "pos": "noun",
+      "topic": "nature",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The tree casts a long shadow across the path.",
+        "zh": "那棵樹的長長影子投在小路上。"
+      },
+      "selectionOrder": 1450
+    },
+    {
+      "id": "word:struggle",
+      "word": "struggle",
+      "zh": "努力；掙扎；苦戰",
+      "pos": "noun, verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Many students struggle to balance work and study.",
+        "zh": "許多學生努力兼顧工作和課業。"
+      },
+      "selectionOrder": 1451
+    },
+    {
+      "id": "word:conclude",
+      "word": "conclude",
+      "zh": "結束；下結論",
+      "pos": "verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We concluded the meeting with a short summary.",
+        "zh": "我們以簡短的摘要結束會議。"
+      },
+      "selectionOrder": 1452
+    },
+    {
+      "id": "word:dance",
+      "word": "dance",
+      "zh": "跳舞；舞蹈",
+      "pos": "noun, verb",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "They learned to dance at a community center.",
+        "zh": "他們在社區中心學跳舞。"
+      },
+      "selectionOrder": 1453
+    },
+    {
+      "id": "word:analyst",
+      "word": "analyst",
+      "zh": "分析師；分析人員",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The analyst examined the sales figures.",
+        "zh": "分析師檢視了銷售數據。"
+      },
+      "selectionOrder": 1454
+    },
+    {
+      "id": "word:regulation",
+      "word": "regulation",
+      "zh": "規定；法規；管理",
+      "pos": "noun",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "New safety regulations apply to all factories.",
+        "zh": "新的安全規定適用於所有工廠。"
+      },
+      "selectionOrder": 1455
+    },
+    {
+      "id": "word:ring",
+      "word": "ring",
+      "zh": "戒指；鈴聲；響鈴",
+      "pos": "noun, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I heard the phone ring in the next room.",
+        "zh": "我聽到隔壁房間的電話響了。"
+      },
+      "selectionOrder": 1456
+    },
+    {
+      "id": "word:largely",
+      "word": "largely",
+      "zh": "主要地；大多",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The project was largely funded by donations.",
+        "zh": "這項計畫的資金主要來自捐款。"
+      },
+      "selectionOrder": 1457
+    },
+    {
+      "id": "word:shift",
+      "word": "shift",
+      "zh": "輪班；轉變；移動",
+      "pos": "noun, verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "My night shift starts at ten.",
+        "zh": "我的夜班十點開始。"
+      },
+      "selectionOrder": 1458
+    },
+    {
+      "id": "word:revenue",
+      "word": "revenue",
+      "zh": "營收；收入",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The shop's revenue increased during the holidays.",
+        "zh": "這家店的營收在假期期間增加了。"
+      },
+      "selectionOrder": 1459
+    },
+    {
+      "id": "word:locate",
+      "word": "locate",
+      "zh": "找出位置；設置於",
+      "pos": "verb",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We used the address to locate the building.",
+        "zh": "我們根據地址找到那棟大樓。"
+      },
+      "selectionOrder": 1460
+    },
+    {
+      "id": "word:mark",
+      "word": "mark",
+      "zh": "記號；痕跡；標示",
+      "pos": "noun, verb",
+      "topic": "school",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Mark the correct answer with a tick.",
+        "zh": "在正確答案旁打勾。"
+      },
+      "selectionOrder": 1461
+    },
+    {
+      "id": "word:appearance",
+      "word": "appearance",
+      "zh": "外表；出現",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The building's appearance has changed after the renovation.",
+        "zh": "整修後，這棟建築的外觀改變了。"
+      },
+      "selectionOrder": 1462
+    },
+    {
+      "id": "word:package",
+      "word": "package",
+      "zh": "包裹；包裝；套裝方案",
+      "pos": "noun, verb",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "A package arrived for you this morning.",
+        "zh": "今天早上有你的包裹送到。"
+      },
+      "selectionOrder": 1463
+    },
+    {
+      "id": "word:difficulty",
+      "word": "difficulty",
+      "zh": "困難",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Please tell us if you have difficulty using the app.",
+        "zh": "使用應用程式有困難時請告訴我們。"
+      },
+      "selectionOrder": 1464
+    },
+    {
+      "id": "word:bridge",
+      "word": "bridge",
+      "zh": "橋",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": "[brɪdʒ]",
+      "audio": "assets/voice/words/bridge.mp3",
+      "image": "",
+      "example": {
+        "en": "The bridge is closed to cars during repairs.",
+        "zh": "這座橋維修期間禁止汽車通行。"
+      },
+      "selectionOrder": 1465,
+      "emoji": "🌉",
+      "theme": "transport",
+      "level": 2,
+      "audioZh": "assets/voice/zh/words/bridge.mp3"
+    },
+    {
+      "id": "word:recommend",
+      "word": "recommend",
+      "zh": "推薦；建議",
+      "pos": "verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Can you recommend a quiet restaurant nearby?",
+        "zh": "你可以推薦附近安靜的餐廳嗎？"
+      },
+      "selectionOrder": 1466
+    },
+    {
+      "id": "word:obvious",
+      "word": "obvious",
+      "zh": "明顯的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "There is no obvious solution to this problem.",
+        "zh": "這個問題沒有明顯的解決辦法。"
+      },
+      "selectionOrder": 1467
+    },
+    {
+      "id": "word:basically",
+      "word": "basically",
+      "zh": "基本上；大致上",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The two plans are basically the same.",
+        "zh": "這兩個計畫基本上相同。"
+      },
+      "selectionOrder": 1468
+    },
+    {
+      "id": "word:generate",
+      "word": "generate",
+      "zh": "產生；創造",
+      "pos": "verb",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The solar panels generate electricity for the building.",
+        "zh": "太陽能板為這棟建築發電。"
+      },
+      "selectionOrder": 1469
+    },
+    {
+      "id": "word:anymore",
+      "word": "anymore",
+      "zh": "不再",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I do not live at that address anymore.",
+        "zh": "我已經不住在那個地址了。"
+      },
+      "selectionOrder": 1470
+    },
+    {
+      "id": "word:propose",
+      "word": "propose",
+      "zh": "提議；求婚",
+      "pos": "verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I propose that we meet again next week.",
+        "zh": "我提議我們下週再開一次會。"
+      },
+      "selectionOrder": 1471
+    },
+    {
+      "id": "word:possibly",
+      "word": "possibly",
+      "zh": "可能；也許",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Could you possibly give me a ride to the station?",
+        "zh": "可以麻煩你載我到車站嗎？"
+      },
+      "selectionOrder": 1472
+    },
+    {
+      "id": "word:trend",
+      "word": "trend",
+      "zh": "趨勢；潮流",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The report shows a trend toward smaller homes.",
+        "zh": "報告顯示住宅有變小的趨勢。"
+      },
+      "selectionOrder": 1473
+    },
+    {
+      "id": "word:visitor",
+      "word": "visitor",
+      "zh": "訪客；遊客",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Visitors must sign in at the front desk.",
+        "zh": "訪客必須先在櫃檯登記。"
+      },
+      "selectionOrder": 1474
+    },
+    {
+      "id": "word:loan",
+      "word": "loan",
+      "zh": "貸款；借出；借款",
+      "pos": "noun, verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We took out a loan to repair the house.",
+        "zh": "我們申請貸款來修繕房子。"
+      },
+      "selectionOrder": 1475
+    },
+    {
+      "id": "word:currently",
+      "word": "currently",
+      "zh": "目前；現在",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The library is currently closed for repairs.",
+        "zh": "圖書館目前因維修而關閉。"
+      },
+      "selectionOrder": 1476
+    },
+    {
+      "id": "word:comfortable",
+      "word": "comfortable",
+      "zh": "舒適的；自在的",
+      "pos": "adjective",
+      "topic": "home",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "These shoes are comfortable enough for a long walk.",
+        "zh": "這雙鞋很舒服，適合走長路。"
+      },
+      "selectionOrder": 1477
+    },
+    {
+      "id": "word:investor",
+      "word": "investor",
+      "zh": "投資人",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The investor asked about the company's long-term plans.",
+        "zh": "投資人詢問公司的長期計畫。"
+      },
+      "selectionOrder": 1478
+    },
+    {
+      "id": "word:profit",
+      "word": "profit",
+      "zh": "利潤；獲利",
+      "pos": "noun, verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The bakery made a small profit last month.",
+        "zh": "這家麵包店上個月有小幅獲利。"
+      },
+      "selectionOrder": 1479
+    },
+    {
+      "id": "word:angry",
+      "word": "angry",
+      "zh": "生氣的；憤怒的",
+      "pos": "adjective",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "He was angry about the unexpected charge.",
+        "zh": "他對那筆意外收費很生氣。"
+      },
+      "selectionOrder": 1480
+    },
+    {
+      "id": "word:crew",
+      "word": "crew",
+      "zh": "工作團隊；機組人員；船員",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The crew checked the aircraft before takeoff.",
+        "zh": "機組人員在起飛前檢查飛機。"
+      },
+      "selectionOrder": 1481
+    },
+    {
+      "id": "word:accident",
+      "word": "accident",
+      "zh": "事故；意外",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "An accident caused a long delay on the highway.",
+        "zh": "一起事故造成高速公路長時間延誤。"
+      },
+      "selectionOrder": 1482
+    },
+    {
+      "id": "word:meal",
+      "word": "meal",
+      "zh": "一餐；餐點",
+      "pos": "noun",
+      "topic": "food",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "This meal includes soup and a drink.",
+        "zh": "這份餐點包含湯和飲料。"
+      },
+      "selectionOrder": 1483
+    },
+    {
+      "id": "word:traffic",
+      "word": "traffic",
+      "zh": "交通；車流；流量",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We left early to avoid heavy traffic.",
+        "zh": "我們提早出門以避開塞車。"
+      },
+      "selectionOrder": 1484
+    },
+    {
+      "id": "word:muscle",
+      "word": "muscle",
+      "zh": "肌肉",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Swimming helps strengthen your back muscles.",
+        "zh": "游泳有助於強化背部肌肉。"
+      },
+      "selectionOrder": 1485
+    },
+    {
+      "id": "word:notion",
+      "word": "notion",
+      "zh": "想法；概念",
+      "pos": "noun",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I had no notion of how much the repairs would cost.",
+        "zh": "我完全不知道維修要花多少錢。"
+      },
+      "selectionOrder": 1486
+    },
+    {
+      "id": "word:capture",
+      "word": "capture",
+      "zh": "捕捉；擷取；呈現",
+      "pos": "verb",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The photo captures the excitement of the festival.",
+        "zh": "這張照片捕捉了節慶的熱鬧氣氛。"
+      },
+      "selectionOrder": 1487
+    },
+    {
+      "id": "word:prefer",
+      "word": "prefer",
+      "zh": "較喜歡；偏好",
+      "pos": "verb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I prefer walking to taking the bus on sunny days.",
+        "zh": "晴天時，比起搭公車，我更喜歡走路。"
+      },
+      "selectionOrder": 1488
+    },
+    {
+      "id": "word:chest",
+      "word": "chest",
+      "zh": "胸部；箱子",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "He felt a sharp pain in his chest.",
+        "zh": "他覺得胸口一陣刺痛。"
+      },
+      "selectionOrder": 1489
+    },
+    {
+      "id": "word:truly",
+      "word": "truly",
+      "zh": "真正地；確實",
+      "pos": "adverb",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "I truly appreciate your help.",
+        "zh": "我真心感謝你的幫忙。"
+      },
+      "selectionOrder": 1490
+    },
+    {
+      "id": "word:thick",
+      "word": "thick",
+      "zh": "厚的；濃的；密集的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The book has a thick cover.",
+        "zh": "這本書有厚厚的封面。"
+      },
+      "selectionOrder": 1491
+    },
+    {
+      "id": "word:cash",
+      "word": "cash",
+      "zh": "現金；兌現",
+      "pos": "noun, verb",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Do you accept cash only?",
+        "zh": "你們只收現金嗎？"
+      },
+      "selectionOrder": 1492
+    },
+    {
+      "id": "word:museum",
+      "word": "museum",
+      "zh": "博物館",
+      "pos": "noun",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The museum is free on the first Sunday of each month.",
+        "zh": "博物館每月第一個星期日免費入場。"
+      },
+      "selectionOrder": 1493
+    },
+    {
+      "id": "word:beauty",
+      "word": "beauty",
+      "zh": "美；美麗",
+      "pos": "noun",
+      "topic": "arts",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "We stopped to enjoy the beauty of the sunset.",
+        "zh": "我們停下來欣賞夕陽之美。"
+      },
+      "selectionOrder": 1494
+    },
+    {
+      "id": "word:emergency",
+      "word": "emergency",
+      "zh": "緊急狀況；急難事件",
+      "pos": "noun",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Keep this number handy in case of an emergency.",
+        "zh": "把這個號碼留在手邊，以備緊急時使用。"
+      },
+      "selectionOrder": 1495
+    },
+    {
+      "id": "word:unique",
+      "word": "unique",
+      "zh": "獨特的；獨一無二的",
+      "pos": "adjective",
+      "topic": "core",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Each handmade bowl has a unique pattern.",
+        "zh": "每個手工碗都有獨特的花紋。"
+      },
+      "selectionOrder": 1496
+    },
+    {
+      "id": "word:internal",
+      "word": "internal",
+      "zh": "內部的；體內的",
+      "pos": "adjective",
+      "topic": "work",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "This report is for internal use only.",
+        "zh": "這份報告僅供內部使用。"
+      },
+      "selectionOrder": 1497
+    },
+    {
+      "id": "word:ethnic",
+      "word": "ethnic",
+      "zh": "族群的；民族的",
+      "pos": "adjective",
+      "topic": "social",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "The festival celebrates the traditions of different ethnic groups.",
+        "zh": "這個節慶展現不同族群的傳統。"
+      },
+      "selectionOrder": 1498
+    },
+    {
+      "id": "word:link",
+      "word": "link",
+      "zh": "連結；關聯；連接",
+      "pos": "noun, verb",
+      "topic": "technology",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Click the link in the confirmation email.",
+        "zh": "點選確認信中的連結。"
+      },
+      "selectionOrder": 1499
+    },
+    {
+      "id": "word:stress",
+      "word": "stress",
+      "zh": "壓力；強調；重音",
+      "pos": "noun, verb",
+      "topic": "health",
+      "learningBand": 2,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai-c",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Regular exercise helps me manage stress.",
+        "zh": "規律運動幫助我調適壓力。"
+      },
+      "selectionOrder": 1500
+    }
+  ],
+  "issues": [
+    {
+      "id": "word:organisation",
+      "reason": "英式拼字，與organization為同一詞，單獨計數會重複。",
+      "suggestion": "保留organization主詞條，將organisation列為拼字變體。"
+    }
+  ],
+  "reviewer": "coordinator-ai-c",
+  "count": 299
+}

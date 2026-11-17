@@ -1,0 +1,50 @@
+{
+ "seedWords": 3000,
+ "reviewedRows": 3000,
+ "entriesBuilt": 3000,
+ "usableReviewed": 2999,
+ "needsReview": 1,
+ "dropped": 0,
+ "replaced": 58,
+ "uniqueLemmas": true,
+ "legacyIncluded": 80,
+ "legacyPreserved": true,
+ "topics": {
+  "core": 978,
+  "social": 350,
+  "work": 416,
+  "nature": 146,
+  "school": 157,
+  "health": 204,
+  "travel": 188,
+  "technology": 93,
+  "arts": 154,
+  "home": 183,
+  "food": 130
+ },
+ "bands": {
+  "1": 762,
+  "2": 498,
+  "3": 634,
+  "4": 1105
+ },
+ "pos": {
+  "article": 3,
+  "verb": 745,
+  "conjunction": 26,
+  "preposition": 57,
+  "adverb": 232,
+  "auxiliary": 2,
+  "pronoun": 59,
+  "determiner": 38,
+  "modal": 10,
+  "number": 22,
+  "noun": 1865,
+  "adjective": 513,
+  "interjection": 7
+ },
+ "failuresByRule": {},
+ "templateExampleFlags": 0,
+ "duplicateExamples": 0,
+ "remainingUnreviewed": 0
+}

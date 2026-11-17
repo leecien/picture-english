@@ -7,7 +7,7 @@
 1. 在 index.html head 加相對路徑 manifest.webmanifest 與 theme-color。
 2. 於 rpg.js 前載入 platform.js。boot 後呼叫 Platform.init()；不等待它才進遊戲。
 3. RPG 選單新增「App 與存檔」，呼叫 Platform.open({onClose})；將 Platform.isOpen 納入世界 busy／暫停判定，開啟後暫停，onClose 恢復原位置。
-4. 外部 AudioPractice 尚未交件；不要因為有平台介面就把錄音或原生功能標成已完成。
+4. 外部 AudioPractice r2 已接入 AudioBus；AudioSession 提供遊戲內錄音跟讀。瀏覽器錄音／回放與模擬辨識已測，原生插件與實體手機收音仍待驗。
 
 ## 存檔
 
@@ -37,9 +37,9 @@ worker 快取名稱包含本 App 的路徑，更新只清除同一路徑的本 A
 
 Platform.setAudioProvider(provider) 可接外部模組（至少 play／stop），或偵測 window.AudioPractice。Platform.play({text,url,lang,rate}) 優先委派該模組，否則委派原 Pron.play。startRecording／stopRecording 缺實作時明確回傳 unsupported，不自動啟動麥克風，也不新增另一套錄音引擎。
 
-此 bridge 不會自動攔截原遊戲的 Pron 呼叫；外部成果驗收後，由協調人將原入口接到同一個音訊管理者，並驗證取消、busy、倒數暫停與資源釋放。僅有介面不代表已做完全遊戲音訊整合。
+目前 Pron、一般 speak、開車 clip、Battle.playAwait、KK 慢速例字都委派 AudioBus／AudioPractice。AudioBus 合併 provider busy 與單字小卡 hold，再送一次 pron:busy；關閉其中一項不會提早恢復其他播放的倒數。
 
-目前舊 Pron 沒有公開 stop，所以在只有舊 Pron 的情況，Platform.stopAudio() 會明確回報 unsupported，不假裝已取消播放或私自操作其隱藏狀態。外部 provider 的 stop 介面接妥後才可回報 stopped。
+Platform 優先使用 AudioBus；stopAudio 可停止共享播放。沒有新 provider 的舊版才維持 unsupported 的保守回報，不假裝已停止。
 
 偵測到 Capacitor 僅回報 native-shell，不會呼叫尚未安裝的插件。未來封裝應在這層接原生錄音、檔案匯出與生命週期，再做 Android／iOS 權限、背景／前景、真機與商店測試。
 

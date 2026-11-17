@@ -1,0 +1,29 @@
+{
+  "actualUniqueWords": 3000,
+  "target": 3000,
+  "examples": 3000,
+  "originalWordsPreserved": 80,
+  "newKKInferred": false,
+  "humanTeacherReviewed": false,
+  "topics": {
+    "core": 978,
+    "social": 350,
+    "work": 415,
+    "nature": 146,
+    "school": 154,
+    "health": 199,
+    "travel": 190,
+    "technology": 88,
+    "arts": 153,
+    "home": 197,
+    "food": 130
+  },
+  "bands": {
+    "1": 762,
+    "2": 498,
+    "3": 634,
+    "4": 1106
+  },
+  "errors": [],
+  "warnings": []
+}

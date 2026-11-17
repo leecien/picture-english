@@ -525,6 +525,7 @@ button:disabled {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
   font-family: var(--body);
 }
+.vocab-open .wd-card { z-index:10060; }
 .wd-card[hidden] {
   display: none;
 }
@@ -814,6 +815,20 @@ canvas.hit {
   display: grid;
   gap: 6px;
 }
+.bt-boss-phase {
+  display: grid;
+  gap: 2px;
+  padding: 7px 10px;
+  border: 2px solid #b2763f;
+  border-radius: 10px;
+  background: #fff2db;
+  color: #6b3819;
+  font-size: 15px;
+}
+.bt-boss-phase small { color: #6b3819; font-size: 13px; }
+#battle[data-boss="true"][data-phase="2"] .bt-boss-phase { background: #ffe9e2; border-color: #b44c36; color: #752c20; }
+#battle[data-boss="true"][data-phase="2"] .bt-boss-phase small { color: #752c20; }
+#battle[data-boss="true"][data-phase="2"] .bt-foe { filter: drop-shadow(0 0 8px #e67b6570); }
 .bt-top {
   display: flex;
   gap: 6px;
@@ -1784,3 +1799,5 @@ b.nv-hit {
 .wd-card .fine {
   color: #5c6450;
 }
+
+body.vocab-open .audio-session{z-index:10070}

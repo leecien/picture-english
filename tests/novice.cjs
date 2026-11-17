@@ -440,7 +440,7 @@ async function noLeak(ev, where) {
     await yp.locator("#nv-done").click();
   }
   for (let k = 0; k < 5 && (await y.visible("#dlg")); k++) await yp.locator(".dlg-next").click();
-  assert.deepEqual(await yev(() => RPG.data.nv.ch.N03), { step: "done", done: true });
+  assert.deepEqual(await yev(() => RPG.data.nv.ch.N03), { step: "done", done: true, full: ["map", "hat"] });
   assert.match(await yp.locator("#quest-text").innerText(), /13 個音/);
   // field: 13 sounds, N03 sounds come up, win -> field3, Lv.4
   await yev(() => {
@@ -471,7 +471,101 @@ async function noLeak(ev, where) {
   assert.deepEqual(y.errors, []);
   await y.ctx.close();
 
-  console.log("PASS: N03 /p b d g h l/ (three pairs of cards, recognition only from taught sounds, resume at the second pair after reload, 8-pair matching incl. pp / ll with a voiced/voiceless miss recorded, full builds map + hat with no given slots, 13-sound field battle asking N03 sounds, Lv.4, journal); N02 /m n s f/ (cards incl. ph, recognition only from taught sounds, no pass on retries only, resume after reload, spelling ↔ sound matching with a recorded miss, fill-the-slots build with untaught sounds locked, field battle asking N02 sounds, Lv.3, journal); new player starts with Kai and no monsters, N00 letters / sound / KK, /k/ /æ/ /t/ cards (recording vs device voice vs slowed word labelled), listen-first recognition with no leak and no reveal on a miss, retry not counted as independent, stop and resume at the same step, picture → assemble with wrong slots left open, reveal with breakdown and word card, adventure Lv.2, field monsters appear, 回音泡泡 battle (taught sounds, long time, no reveal on a miss, timeout recorded apart), Echo (41 sounds, previews, cat breakdown), audio failure = replay only and no clock, legacy players keep the old lessons");
+  /* ---------- 11. A-N03-02: the N03 full-build threshold (two different full words, each right first time) ---------- */
+  const T13 = ["k", "æ", "t", "m", "n", "s", "f", "p", "b", "d", "g", "h", "l"];
+  const AT_BUILD = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: true, field: true, n02: true, n02step: "done", field2: true, ch: { N03: { step: "build" } }, taught: T13, passed: T13, lv: 3 } };
+  /* fill a build: right = the word's sounds in order; wrong = swap the first two */
+  const fillBuild = async (pg, ev2, ok) => {
+    await pg.waitForSelector(".nv-slots");
+    const w = await ev2(() => {
+      const cand = ["map", "hat", "cat"];
+      return cand.find((x) => document.querySelector(".nv-pic").textContent.includes(Novice.word(x).e));
+    });
+    assert(w, "a full-build word is on screen");
+    assert.equal(await pg.locator(".nv-slot.given").count(), 0, `${w}: nothing pre-placed`);
+    const snd = await ev2((w) => Novice.kkSounds(Novice.word(w).kk), w);
+    const order = ok ? snd : [snd[1], snd[0], ...snd.slice(2)];
+    for (const c of order) await pg.locator(`[data-chip="${c}"]`).click();
+    await pg.locator("#nv-ok").click();
+    if (!ok) {
+      // wrong slots cleared: put the right sounds back
+      const left = await ev2(() => [...document.querySelectorAll(".nv-slot")].map((b) => b.classList.contains("good")));
+      for (let i = 0; i < snd.length; i++) if (!left[i]) await pg.locator(`[data-chip="${snd[i]}"]`).click();
+      await pg.locator("#nv-ok").click();
+    }
+    await pg.waitForSelector(".nv-reveal");
+    await pg.locator("#nv-done").click();
+    return w;
+  };
+  const openBuild = async (pg) => {
+    await pg.locator("#act-talk").click();
+    await pg.waitForSelector("#dlg:not([hidden])", { timeout: 30000 });
+    assert.match(await pg.locator("#dlg-body").innerText(), /兩個不同的字，各自第一次送出就組對/);
+    await pg.locator(".dlg-next").click();
+  };
+  const closeAll = async (t) => {
+    for (let k = 0; k < 6 && (await t.visible("#dlg")); k++) await t.page.locator(".dlg-next").click();
+  };
+  {
+    // (a) only one word right first time -> not complete; (b) a reload keeps it, the next visit skips that word
+    const t = await setup(browser, AT_BUILD);
+    await openBuild(t.page);
+    assert.equal(await fillBuild(t.page, t.ev, true), "map");
+    assert.equal(await fillBuild(t.page, t.ev, false), "hat");
+    assert.equal(await fillBuild(t.page, t.ev, false), "cat");
+    assert.match(await t.page.locator("#dlg-body").innerText(), /已完成：map/);
+    await closeAll(t);
+    assert.deepEqual(await t.ev(() => [RPG.data.nv.ch.N03.step, !!RPG.data.nv.ch.N03.done, RPG.data.nv.ch.N03.full]), ["build", false, ["map"]], "one first-try word is not enough");
+    assert.match(await t.page.locator("#quest-text").innerText(), /Cody：N03/, "still on N03");
+    await t.page.reload();
+    await t.page.waitForSelector(".world-canvas");
+    assert.deepEqual(await t.ev(() => RPG.data.nv.ch.N03.full), ["map"], "kept after a reload");
+    const xp0 = await t.ev(() => P.xp);
+    await openBuild(t.page);
+    assert.equal(await fillBuild(t.page, t.ev, true), "hat", "map is not asked again");
+    await closeAll(t);
+    assert.deepEqual(await t.ev(() => [RPG.data.nv.ch.N03.step, RPG.data.nv.ch.N03.done, RPG.data.nv.ch.N03.full]), ["done", true, ["map", "hat"]], "two different words, each right first time");
+    const xp1 = await t.ev(() => P.xp);
+    assert(xp1 > xp0, "the chapter reward is given");
+    // (e) no repeat reward: back to Cody after completion does not run N03 again
+    await t.page.reload();
+    await t.page.waitForSelector(".world-canvas");
+    await t.ev(() => World.approach(World.npc("consonant")));
+    await t.page.waitForSelector("#dlg:not([hidden])", { timeout: 30000 });
+    assert.doesNotMatch(await t.page.locator("#dlg-body").innerText(), /N03 子音工具箱|兩個不同的字/, "N03 does not start again");
+    assert.equal(await t.ev(() => P.xp), xp1, "no second chapter reward");
+    assert.deepEqual(t.errors, []);
+    await t.ctx.close();
+  }
+  {
+    // (c) every word needed a retry -> not complete, nothing counted
+    const t = await setup(browser, AT_BUILD);
+    await openBuild(t.page);
+    for (const w of ["map", "hat", "cat"]) assert.equal(await fillBuild(t.page, t.ev, false), w);
+    await closeAll(t);
+    assert.deepEqual(await t.ev(() => [RPG.data.nv.ch.N03.step, !!RPG.data.nv.ch.N03.done, RPG.data.nv.ch.N03.full || []]), ["build", false, []], "retries only: not complete");
+    assert(await t.ev(() => !RPG.data.nv.field3 && RPG.data.nv.lv === 3), "no field / level progress either");
+    await t.ctx.close();
+  }
+  {
+    // (d) leaving in the middle of a build (reload before submitting) cannot skip it
+    const t = await setup(browser, AT_BUILD);
+    await openBuild(t.page);
+    assert.equal(await fillBuild(t.page, t.ev, true), "map");
+    await t.page.waitForSelector(".nv-slots");
+    await t.page.locator(`[data-chip="h"]`).click(); // half-built hat, not submitted
+    await t.page.reload();
+    await t.page.waitForSelector(".world-canvas");
+    assert.deepEqual(await t.ev(() => [RPG.data.nv.ch.N03.step, !!RPG.data.nv.ch.N03.done, RPG.data.nv.ch.N03.full]), ["build", false, ["map"]], "an unsubmitted build counts for nothing");
+    await openBuild(t.page);
+    assert.equal(await fillBuild(t.page, t.ev, false), "hat", "hat comes back as a fresh first attempt");
+    assert.equal(await fillBuild(t.page, t.ev, true), "cat");
+    await closeAll(t);
+    assert.deepEqual(await t.ev(() => [RPG.data.nv.ch.N03.done, RPG.data.nv.ch.N03.full]), [true, ["map", "cat"]], "two different first-try words (map, cat)");
+    await t.ctx.close();
+  }
+
+  console.log("PASS: A-N03-02 threshold (one first-try word is not enough; retries only are not enough; two different full words each right first time complete N03; passed words survive a reload and are not asked again; an unsubmitted build counts for nothing; no second chapter reward); N03 /p b d g h l/ (three pairs of cards, recognition only from taught sounds, resume at the second pair after reload, 8-pair matching incl. pp / ll with a voiced/voiceless miss recorded, full builds map + hat with no given slots, 13-sound field battle asking N03 sounds, Lv.4, journal); N02 /m n s f/ (cards incl. ph, recognition only from taught sounds, no pass on retries only, resume after reload, spelling ↔ sound matching with a recorded miss, fill-the-slots build with untaught sounds locked, field battle asking N02 sounds, Lv.3, journal); new player starts with Kai and no monsters, N00 letters / sound / KK, /k/ /æ/ /t/ cards (recording vs device voice vs slowed word labelled), listen-first recognition with no leak and no reveal on a miss, retry not counted as independent, stop and resume at the same step, picture → assemble with wrong slots left open, reveal with breakdown and word card, adventure Lv.2, field monsters appear, 回音泡泡 battle (taught sounds, long time, no reveal on a miss, timeout recorded apart), Echo (41 sounds, previews, cat breakdown), audio failure = replay only and no clock, legacy players keep the old lessons");
   await browser.close();
 })().catch(async (e) => {
   console.error(e);

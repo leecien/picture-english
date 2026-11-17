@@ -11,6 +11,8 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="./assets/app/icon.svg">
 <link rel="stylesheet" href="./atlas.css">
+<link rel="stylesheet" href="./audio-session.css">
+<link rel="stylesheet" href="./vocab.css">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
@@ -496,6 +498,7 @@ h3.sec span{font-family:var(--body);font-size:13px;color:var(--muted);font-weigh
       <div class="drv-pace" id="drive-pace-setup"></div>
       <fieldset class="drv-opts" id="drive-modes">
         <legend>怎麼練</legend>
+        <label><input type="radio" name="drive-mode" value="record" id="dm-record"> 🎙️ 錄音跟讀：先聽示範、逐字回饋，並回放自己的聲音</label>
         <label><input type="radio" name="drive-mode" value="shadow" id="dm-shadow"> 🗣️ 跟讀練習：先聽示範，再跟著念，逐字告訴你哪裡要修正（不限時）</label>
         <label><input type="radio" name="drive-mode" value="answer" id="dm-answer" checked> 💬 開口回答：聽中文提示，自己用英文說（情境回想）</label>
         <label><input type="radio" name="drive-mode" value="listen" id="drive-listen"> 🎧 聆聽模式：只播放、不收音、不計分</label>
@@ -636,6 +639,7 @@ const SILENT='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAAC
 function unlockVoice(){if(voiceUnlocked)return;voiceUnlocked=true;try{VOICE.src=SILENT;const p=VOICE.play();if(p)p.catch(()=>{})}catch(e){}
   try{if(window.speechSynthesis){speechSynthesis.getVoices()}}catch(e){}}
 function speak(t,file){
+  if(typeof AudioBus!=='undefined'){AudioBus.play({text:t,url:file||'',lang:'en-US',rate:.85});return;}
   try{VOICE.pause()}catch(e){}
   try{if(window.speechSynthesis)speechSynthesis.cancel()}catch(e){}
   if(!file){tts(t);return}
@@ -666,7 +670,11 @@ function jumpTo(k,why){if(k<=tierIdx(P.xp)||!TIERS[k])return false;P.xp=TIERS[k]
   toast('⏩',`${why}：${TIERS[k].name}`,`程度方向 ${TIERS[k].tag}`,'levelup');award('skip');checkUnlocks();$('g-tier').textContent=TIERS[k].tag;return true}
 function cardTier(c){let k=-1;if(!c)return k;CARD_TIERS.forEach((t,i)=>{if(c.c>=t.min)k=i});return k}
 function isFaded(c){const k=cardTier(c);if(k<0)return false;if(c.miss)return true;return (Date.now()-(c.last||0))/864e5>CARD_TIERS[k].reviewDays}
-const owned=()=>WORDS.filter(w=>cardTier(CARDS[w.w])>=0);
+let lexicalSource=null,lexicalCount=-1,lexicalCache=[];
+const allWords=()=>{const n=typeof Vocab!=='undefined'?Vocab.count:0;if(lexicalSource!==WORDS||lexicalCount!==n){const map=new Map((typeof Vocab!=='undefined'?Vocab.words:[]).map(w=>[w.w.toLowerCase(),w]));WORDS.forEach(w=>map.set(w.w.toLowerCase(),w));lexicalCache=[...map.values()];lexicalSource=WORDS;lexicalCount=n;}return lexicalCache;};
+let exampleSource=null,exampleCount=-1,exampleCache=[];
+const allSentences=()=>{const n=typeof Vocab!=='undefined'?Vocab.count:0;if(exampleSource!==SENT||exampleCount!==n){const map=new Map(SENT.map(s=>[s.en.toLowerCase(),s]));if(typeof Vocab!=='undefined')Vocab.words.forEach(w=>{if(w.example&&!map.has(w.example.en.toLowerCase()))map.set(w.example.en.toLowerCase(),{en:w.example.en,zh:w.example.zh,lv:w.lv,au:'',az:'',sourceWord:w.w});});exampleCache=[...map.values()];exampleSource=SENT;exampleCount=n;}return exampleCache;};
+const owned=()=>allWords().filter(w=>cardTier(CARDS[w.w])>=0);
 const fadedList=()=>WORDS.filter(w=>isFaded(CARDS[w.w]));
 
 /* ===== Toasts ===== */
@@ -692,8 +700,8 @@ function levelHTML(gain){
 function badgesHTML(){return Object.entries(BADGES).map(([id,b])=>`<div class="badge${P.badges.includes(id)?'':' locked'}"><span class="bi">${b.icon}</span>${esc(b.name)}</div>`).join('')}
 
 /* ===== Question picking (faded cards get priority) ===== */
-function take(kind,filter){
-  const arr=kind==='w'?WORDS:SENT, used=kind==='w'?S.usedW:S.usedS, key=kind==='w'?'w':'en';
+function take(kind,filter,source){
+  const arr=source||(kind==='w'?WORDS:SENT), used=kind==='w'?S.usedW:S.usedS, key=kind==='w'?'w':'en';
   const lvOk=x=>S.forceLv?x.lv===S.forceLv:x.lv<=maxLv();
   const ok=x=>(!filter||filter(x))&&lvOk(x)&&RPG.matches(kind,x);
   let pool=arr.filter(x=>!used.has(x[key])&&ok(x));
@@ -960,20 +968,21 @@ function updateHome(){
 }
 function renderBook(){
   const own=owned(),cnt=[0,0,0];own.forEach(w=>cnt[cardTier(CARDS[w.w])]++);const fd=fadedList().length;
-  $('book-sum').innerHTML=`<span class="big-n">${own.length} / ${WORDS.length}</span><span>已收集</span>
+  $('book-sum').innerHTML=`<span class="big-n">${own.length} / ${allWords().length}</span><span>已收集 · 全部單字可到「單字學習」搜尋</span>
    <span class="tiers">${CARD_TIERS.map((t,i)=>`<span><i class="dot-t" style="background:var(--${t.id})"></i>${t.name} ${cnt[i]}</span>`).join('')}<span>褪色 ${fd}</span></span>`;
   const th=Object.entries(THEMES);
   $('filters').innerHTML=`<button data-f="all" aria-pressed="${S.bookFilter==='all'}">全部</button>`+th.map(([k,t])=>{const e=ELEM[t.element]||{};
-    const n=WORDS.filter(w=>w.th===k),o=n.filter(w=>cardTier(CARDS[w.w])>=0).length;
+    const n=allWords().filter(w=>w.th===k),o=n.filter(w=>cardTier(CARDS[w.w])>=0).length;
     return `<button data-f="${k}" aria-pressed="${S.bookFilter===k}">${e.icon||''} ${esc(t.name)} ${o}/${n.length}</button>`}).join('');
   $('filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.bookFilter=b.dataset.f;renderBook()});
-  const list=WORDS.filter(w=>S.bookFilter==='all'||w.th===S.bookFilter);
+  const originals=new Set(WORDS.map(w=>w.w.toLowerCase()));
+  const list=allWords().filter(w=>(originals.has(w.w.toLowerCase())||cardTier(CARDS[w.w])>=0)&&(S.bookFilter==='all'||w.th===S.bookFilter));
   $('cards').innerHTML=list.map(w=>{const c=CARDS[w.w],k=cardTier(c),el=ELEM[(THEMES[w.th]||{}).element]||{};
    if(k<0){const locked=w.lv>maxLv(),ut=unlockTier(w.lv)||{};
     return `<div class="card none"><span class="el">${el.icon||''}</span><span class="ce">${pic(w)}</span><b>${locked?`${LV_NAMES[w.lv]} 解鎖`:'???'}</b><span class="cz">${locked?`升到${ut.tag||''}開放`:'還沒收集'}</span></div>`}
    const t=CARD_TIERS[k],fd=isFaded(c);
    return `<button class="card ${t.id}${fd?' faded':''}" data-w="${esc(w.w)}" aria-label="${esc(w.w)}，${t.name}"><span class="el" title="${el.name||''}">${el.icon||''}</span><span class="tl">${t.name}</span><span class="ce">${pic(w)}</span><b>${esc(w.w)}</b><span class="kk">${esc(w.kk||'')}</span><span class="cz">${esc(w.z)}</span>${fd?'<span class="fl">需要複習</span>':''}</button>`}).join('');
-  $('cards').querySelectorAll('button.card').forEach(b=>b.onclick=()=>{SND.unlock();sayItem(WORDS.find(w=>w.w===b.dataset.w))});
+  $('cards').querySelectorAll('button.card').forEach(b=>b.onclick=()=>{SND.unlock();sayItem(allWords().find(w=>w.w===b.dataset.w))});
 }
 function renderLog(){
   const sents=Object.values(SENTS).filter(c=>c.c>0).length;
@@ -995,7 +1004,7 @@ function renderLog(){
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
 const D={on:false,run:0,kind:'mix',listen:false,n:0,seen:0,ok:0,segSeen:0,segOk:0,rec:null,micDenied:false,wake:null,paused:false,cur:null,queue:[]};
 /* Commute preferences (playback speed, think time, last topic). New key; older pm-* keys are untouched. */
-const DP=Object.assign({rate:.9,think:5,kind:'mix',cat:'travel',scene:'',mode:'answer',voice:'brief'},LS.get('pm-drive-pref',{})||{});
+const DP=Object.assign({rate:.9,think:5,kind:'mix',cat:'travel',scene:'',mode:'answer',voice:'brief',balanced:true},LS.get('pm-drive-pref',{})||{});
 const saveDP=()=>LS.set('pm-drive-pref',DP);
 let SCENES=[];
 /* Inside the claude.ai viewer the browser's own speech recognition is blocked, so the page uses the
@@ -1011,6 +1020,7 @@ const UIV=k=>`assets/voice/zh/ui/${k}.mp3`;
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 function clip(src,fbText,lang,force){return new Promise(res=>{
   if(!D.on&&!force)return res();
+  if(typeof AudioBus!=='undefined'){AudioBus.play({text:fbText||'',url:src||'',lang:lang||'zh-TW',rate:!src&&lang==='en-US'?DP.rate*.85:DP.rate}).then(res,()=>res());return;}
   let fin=false;const end=()=>{if(fin)return;fin=true;clearTimeout(t);if(VOICE.onended===end)VOICE.onended=null;if(VOICE.onerror===onErr)VOICE.onerror=null;res()};
   const onErr=()=>{if(VOICE.onerror===onErr)VOICE.onerror=null;fb()};
   const t=setTimeout(end,15000);
@@ -1103,11 +1113,13 @@ function paintScenes(){
 function paceHTML(){
   return `<div class="pace-row"><span>播放速度</span>${[[.75,'慢'],[.9,'稍慢'],[1,'正常']].map(([v,l])=>`<button data-rate="${v}" aria-pressed="${DP.rate===v}">${l}</button>`).join('')}</div>`+
    `<div class="pace-row"><span>回答等待時間</span>${[3,5,8].map(v=>`<button data-think="${v}" aria-pressed="${DP.think===v}">${v} 秒</button>`).join('')}</div>`+
-   `<div class="pace-row"><span>語音提示</span>${[['brief','精簡'],['guided','引導']].map(([v,l])=>`<button data-voice="${v}" aria-pressed="${DP.voice===v}">${l}</button>`).join('')}</div>`}
+   `<div class="pace-row"><span>語音提示</span>${[['brief','精簡'],['guided','引導']].map(([v,l])=>`<button data-voice="${v}" aria-pressed="${DP.voice===v}">${l}</button>`).join('')}</div>`+
+   `<div class="pace-row"><span>錄音音量</span>${[[true,'平衡'],[false,'原音']].map(([v,l])=>`<button data-balance="${v}" aria-pressed="${DP.balanced===v}">${l}</button>`).join('')}</div>`}
 function paintPace(){['drive-pace-setup','drive-pace-run'].forEach(id=>{const el=$(id);el.innerHTML=paceHTML();
   el.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{DP.rate=+b.dataset.rate;saveDP();try{VOICE.playbackRate=DP.rate}catch(e){}paintPace()});
   el.querySelectorAll('[data-think]').forEach(b=>b.onclick=()=>{DP.think=+b.dataset.think;saveDP();paintPace()});
-  el.querySelectorAll('[data-voice]').forEach(b=>b.onclick=()=>{DP.voice=b.dataset.voice;saveDP();paintPace()})})}
+  el.querySelectorAll('[data-voice]').forEach(b=>b.onclick=()=>{DP.voice=b.dataset.voice;saveDP();paintPace()});
+  el.querySelectorAll('[data-balance]').forEach(b=>b.onclick=()=>{DP.balanced=b.dataset.balance==='true';saveDP();paintPace()})})}
 const gap=ms=>wait(ms/DP.rate);
 /* Modes: listen (play only), shadow (demo → you repeat → word feedback, untimed), read (no demo first; offered
    after a shadow round), answer (Chinese cue → you say it: recall, a different skill from reading aloud). */
@@ -1129,7 +1141,7 @@ async function driveLoop(resume){
     if(resume&&D.cur){({it,kind}=D.cur);resume=false}
     else{
       if(D.kind==='scene'){if(!D.queue.length){const all=sceneItems(),due=Learn.reviewIn(all),rest=all.filter(x=>!due.includes(x));D.queue=[...due,...(sceneOrdered()?rest:shuffle(rest))]}it=D.queue.shift();kind='scene';if(!it){stopDrive();return}}
-      else{const useS=D.kind==='sent'||(D.kind==='mix'&&D.n%3===2);it=take(useS?'s':'w');kind=useS?'s':'w'}
+      else{const useS=D.kind==='sent'||(D.kind==='mix'&&D.n%3===2);it=take(useS?'s':'w',null,useS?allSentences():allWords());kind=useS?'s':'w'}
       D.n++;D.cur={it,kind};
       if(D.mode==='shadow')D.round.push({it,kind,st:'try'});
     }
@@ -1274,6 +1286,7 @@ async function readStep(alive){
 function startDrive(){
   // Dictation must be opened synchronously inside this tap, before anything else is awaited.
   const pick=(document.querySelector('input[name="drive-mode"]:checked')||{}).value||'answer';
+  if(pick==='record'){DP.kind=(document.querySelector('input[name="drive-kind"]:checked')||{}).value||'mix';DP.mode='record';saveDP();return openRecordingPractice();}
   const want=pick!=='listen';
   MIC.use=false;MIC.lost='';
   if(want&&MIC.d){MIC.use=true;MIC.d.start({language:'en'}).catch(e=>{MIC.lost=(e&&e.code)||'upstream_error'})}
@@ -1289,7 +1302,7 @@ function startDrive(){
   $('drive-pause').textContent='⏸ 暫停';paintPace();
   driveLoop();
 }
-function hush(){try{if(D.rec)D.rec.abort()}catch(e){}MIC.win=false;MIC.onPart=null;D.tap=null;try{VOICE.pause()}catch(e){}try{if(window.speechSynthesis)speechSynthesis.cancel()}catch(e){}}
+function hush(){try{if(D.rec)D.rec.abort()}catch(e){}MIC.win=false;MIC.onPart=null;D.tap=null;if(typeof AudioBus!=='undefined')AudioBus.stopAll();try{VOICE.pause()}catch(e){}try{if(window.speechSynthesis)speechSynthesis.cancel()}catch(e){}}
 /* Pause stops all sound at once; resume replays the current question from the start. */
 function pauseDrive(){
   if(!D.on)return;
@@ -1311,6 +1324,7 @@ function stopDrive(){
 }
 function micNote(){
   const note=$('drive-mic-note');note.className='drv-note';
+  if(DP.mode==='record'){note.textContent='錄音跟讀會先播放示範，之後才開啟麥克風。沒有語音辨識時仍可錄音、回放，並顯示未判分。';return;}
   if(INV){note.textContent=MIC.d?'開口回答使用 Claude 的聽寫：第一次開始時會詢問是否允許，請按允許。聽寫中畫面會出現「Listening」提示。':'這個測試頁在目前的瀏覽器或 App 裡不能使用麥克風，會改成聆聽模式（只播放、不收音）。想測開口回答或跟讀，請用電腦或 Android 手機的 Chrome 瀏覽器開啟。';if(!MIC.d)note.className='drv-note warn'}
   else if(!SR){note.textContent='這個瀏覽器不支援語音辨識，會自動使用聆聽模式（只播放、不收音）。想要開口回答或跟讀，建議用 Android 手機的 Chrome 開啟。';note.className='drv-note warn'}
   else note.textContent='第一次開始時，瀏覽器會詢問是否允許使用麥克風，請按「允許」。';
@@ -1332,6 +1346,47 @@ function openDrive(opt){
   $('drive-setup').hidden=false;$('drive-run').hidden=true;
   showScreen('drive');
   if(opt.check)openMicCheck();
+}
+/* A quest and commute picker hand the same content to in-game recorded practice. */
+function openRecordingPractice(ctx){
+  if(typeof AudioSession==='undefined'){RPG.say('錄音練習暫時未載入，請重新整理。');return;}
+  const source=ctx&&ctx.cat?ctx:null;
+  let items,label=source?source.label:'錄音跟讀';
+  if(ctx&&Array.isArray(ctx.words)){
+    const wanted=new Set(ctx.words.map(w=>String(w).toLowerCase()));
+    items=allWords().filter(w=>wanted.has(w.w.toLowerCase())).map(w=>({id:w.w,en:w.w,zh:w.z,audio:w.au||'',kind:'w'}));
+    label='單字跟讀';
+  }else if(source||DP.kind==='scene'){
+    const cat=SCENES.find(c=>c.id===(source?source.cat:DP.cat)),sceneId=source?source.scene:DP.scene;
+    const scenes=cat?(sceneId?cat.scenes.filter(s=>s.id===sceneId):cat.scenes):[];
+    items=scenes.flatMap(s=>s.items.map((it,i)=>({id:`${cat.id}/${s.id}/${i}`,en:it.en,zh:it.zh,audio:it.audio||it.au||''})));
+    if(!source)label=sceneLabel();
+  }else{
+    const words=allWords().filter(w=>w.lv<=maxLv()).map(w=>({id:w.w,en:w.w,zh:w.z,audio:w.au||'',kind:'w'}));
+    const sents=allSentences().filter(s=>s.lv<=maxLv()).map(s=>({id:s.en,en:s.en,zh:s.zh,audio:s.au||'',kind:'s'}));
+    // A bounded round samples the full eligible bank, rather than always exposing its first 100 entries.
+    items=shuffle(DP.kind==='word'?words:DP.kind==='sent'?sents:[...words,...sents]).slice(0,20);
+  }
+  if(!items||!items.length){RPG.say('這個情境還沒有可練內容，請選擇另一個情境。');return;}
+  const backToField=$('panel').hidden;
+  World.clearKeys();World.paused=true;
+  return AudioSession.open({items,label,onClose:()=>{if(typeof Vocab!=='undefined'&&Vocab.isOpen)World.paused=true;else if(backToField)RPG.resume();else World.paused=true;},onResult:r=>{
+    if(!r||r.status!=='match'||!r.item)return;
+    const text=r.item.en,w=r.item.kind==='s'?null:allWords().find(w=>w.w===text),s=allSentences().find(s=>s.en===text)||{en:text,zh:r.item.zh||''};
+    Learn.note(w?'w':'s',w||s,true,'recorded-read');
+  }});
+}
+function openVocabulary(){
+  if(typeof Vocab==='undefined')return RPG.say('單字學習尚未載入，請重新整理。');
+  const backToField=$('panel').hidden;
+  Pron.closeWord();World.clearKeys();World.paused=true;document.body.classList.add('vocab-open');
+  return Vocab.open({
+    getProgress:word=>{const c=CARDS[word]||{};return{correct:c.c||0,wrong:c.w||0,learned:cardTier(c)>=0};},
+    onWord:item=>Pron.openWord(item.w),
+    onPractice:item=>{Pron.closeWord();openRecordingPractice({words:[item.w]});},
+    onAnswer:r=>{Learn.grade({kind:'w',recK:'w',item:r.item,ctx:'vocab:'+r.mode,assisted:!!r.assisted},!!r.correct,'vocab');},
+    onClose:()=>{document.body.classList.remove('vocab-open');Pron.closeWord();Learn.flush('quest','單字學習');if(backToField)RPG.resume();else World.paused=true;},
+  });
 }
 /* A failed recording pauses the drive and says why: retry, or knowingly switch to play-only 聆聽模式. */
 const SR_ERR={'not-allowed':'麥克風權限被拒絕。請在瀏覽器網址列左邊的設定把「麥克風」改成允許。','service-not-allowed':'瀏覽器不允許語音辨識服務（內嵌頁面、隱私模式或系統設定會擋）。','audio-capture':'抓不到麥克風的聲音：檢查是否有麥克風、是否被其他 App（通話、錄音）佔用。','network':'語音辨識需要網路，連線失敗。','no-speech':'沒有聽到說話聲。','aborted':'收音被中止。'};
@@ -1412,7 +1467,7 @@ $('drv-demo').onclick=()=>{if(!D.on)return;D.paused=false;hush();$('drive-pause'
 $('drv-again').onclick=()=>tapNow('again');
 $('drv-skip').onclick=()=>{if(!D.on)return;if(D.mode==='read'&&D.readQ.length){D.readQ.shift();D.readDone.push({ok:false,skip:true})}D.cur=null;D.paused=false;hush();$('drive-pause').textContent='⏸ 暫停';driveLoop(true)};
 $('drive-mic').onclick=()=>$('mic-check').hidden?openMicCheck():($('mic-check').hidden=true);
-document.querySelectorAll('input[name="drive-mode"]').forEach(r=>r.onchange=()=>{DP.mode=r.value;saveDP()});
+document.querySelectorAll('input[name="drive-mode"]').forEach(r=>r.onchange=()=>{DP.mode=r.value;saveDP();micNote()});
 document.querySelectorAll('input[name="drive-kind"]').forEach(r=>r.onchange=()=>{DP.kind=r.value;saveDP();paintScenes()});
 $('drive-back').onclick=()=>{stopDrive();if(D.from==='field')toField();else{showScreen('home');showTab('p-play')}};
 
@@ -1430,6 +1485,7 @@ async function boot(){
     const [w,s,l,t,m]=await Promise.all(urls.map(u=>fetch(u).then(r=>{if(!r.ok)throw new Error(u);return r.json()})));
     const sj=await scenesP;SCENES=(sj&&Array.isArray(sj.categories))?sj.categories:[];
     WORDS=w.map(x=>({w:x.word,z:x.zh,e:x.emoji,kk:x.kk,th:x.theme,lv:x.level||1,img:x.image||'',au:x.audio||'',az:x.audioZh||''}));
+    if(typeof Vocab!=='undefined'){Vocab.setData({schemaVersion:1,words:w.map(x=>({...x,reviewStatus:'legacy-verified'}))});await Vocab.load();}
     SENT=s.map(x=>({en:x.en,zh:x.zh,sc:x.scene,b:x.blank,o:x.distractors,lv:x.level||1,route:x.route,img:x.image||'',au:x.audio||'',az:x.audioZh||''}));
     TIERS=l.tiers;CARD_TIERS=l.cardTiers;BADGES=l.badges;THEMES=t.themes;ELEM=t.elements;LV_NAMES=l.levelNames||{};
     SND.load(m);RPG.loadArt(m);
@@ -1452,6 +1508,11 @@ $('home-btn').onclick=()=>{if(RPG.active&&RPG.active.source==='atlas'){RPG.activ
 ['mute-home','mute-game'].forEach(id=>$(id).onclick=()=>{SND.toggle();paintMute()});
 $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 </script>
+<script src="modules/audio-practice/audio-practice.js"></script>
+<script src="audio-bus.js"></script>
+<script>AudioBus.init();</script>
+<script src="audio-session.js"></script>
+<script src="vocab.js"></script>
 <script src="pron.js"></script>
 <script src="world.js"></script>
 <script src="battle.js"></script>
@@ -1460,6 +1521,7 @@ $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 <script src="lifescene.js"></script>
 <script src="atlas.js"></script>
 <script src="platform.js"></script>
+<script src="world-regions.js"></script>
 <script src="rpg.js"></script>
 <script>boot();
 if(typeof Platform!=="undefined")Platform.init().catch(e=>console.warn("App 初始化：",e.message));
