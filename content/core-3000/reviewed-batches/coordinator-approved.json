@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "coordinator-ai",
+  "count": 1,
+  "words": [
+    {
+      "id": "word:gay",
+      "word": "gay",
+      "zh": "同性戀的",
+      "pos": "adjective",
+      "topic": "social",
+      "learningBand": 4,
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "kk": null,
+      "audio": "",
+      "image": "",
+      "example": {
+        "en": "Taiwan was the first place in Asia to allow gay marriage.",
+        "zh": "台灣是亞洲第一個允許同性婚姻的地方。"
+      },
+      "selectionOrder": 1768,
+      "phoneticSource": {
+        "text": "gei",
+        "system": "ECDICT source notation, primarily British; NOT verified KK"
+      },
+      "forms": {
+        "s": "gays"
+      },
+      "draftZh": "歡快的, 豔麗的, 快樂的, 放蕩的",
+      "reviewNote": "本詞以形容詞用法教學，常用義為同性戀的；例句中的gay marriage指同性婚姻。已核對詞義、詞性與英中例句，保留中性生活及新聞用語。"
+    }
+  ]
+}

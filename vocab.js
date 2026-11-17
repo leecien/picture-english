@@ -80,6 +80,7 @@
     host.append(button('🔊 '+item.w,()=>play(item.w,item.au),'vc-word'),node('p',item.z),node('p',(item.pos?item.pos+' · ':'')+TOPICS[item.topic]+' · '+BANDS[item.lv],'vc-muted'),node('p',item.kk?'KK '+item.kk:'未提供經核對的 KK 音標，不推測。','vc-muted'),node('p',item.au?'播放整字錄音；失敗時可由裝置朗讀。':'未提供錄音：使用裝置整字朗讀，音色依裝置而異。','vc-muted'));
     if(item.img){const image=node('img');image.src=item.img;image.alt=item.z;image.loading='lazy';image.className='vc-image';host.append(image);}
     sentence(host,item);
+    if(typeof session.onPractice==='function')host.append(button('🎙️ 跟讀這個單字',()=>{stop();session.onPractice(item);}));
   }
   function startRound(){
     stop();const pool=filtered();if(!pool.length)return;
@@ -148,6 +149,6 @@
     document.addEventListener('keydown',e=>{if(session&&e.key==='Escape'){e.preventDefault();e.stopPropagation();close();}});
     document.addEventListener('visibilitychange',()=>{if(session&&document.hidden){stop();session.note='切換畫面已停止播放，回來後可自行重聽。';render();}});
   }
-  function open(opt={}){if(session)close();build();session={view:'dictionary',page:0,search:'',topic:'',band:'',progress:'',getProgress:opt.getProgress,detail:null,round:null,note:'',playing:false,onClose:opt.onClose,onAnswer:opt.onAnswer,onWord:opt.onWord,previous:document.activeElement};q('vc-search').value='';q('vc-topic').value='';q('vc-band').value='';q('vc-progress').value='';q('vc-progress-label').hidden=typeof opt.getProgress!=='function';panel.hidden=false;render();q('vc-close').focus();return true;}
+  function open(opt={}){if(session)close();build();session={view:'dictionary',page:0,search:'',topic:'',band:'',progress:'',getProgress:opt.getProgress,detail:null,round:null,note:'',playing:false,onClose:opt.onClose,onAnswer:opt.onAnswer,onWord:opt.onWord,onPractice:opt.onPractice,previous:document.activeElement};q('vc-search').value='';q('vc-topic').value='';q('vc-band').value='';q('vc-progress').value='';q('vc-progress-label').hidden=typeof opt.getProgress!=='function';panel.hidden=false;render();q('vc-close').focus();return true;}
   return{open,close,load,setData,lookup,get words(){return bank.slice();},get count(){return bank.length;},get isOpen(){return!!session&&!!panel&&!panel.hidden;}};
 });

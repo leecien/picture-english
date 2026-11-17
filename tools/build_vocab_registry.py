@@ -15,10 +15,23 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("batches", nargs="*", type=Path)
     args = parser.parse_args()
+    if not args.batches:
+        supplement = ROOT / "content/core-3000/reviewed-batches/coordinator-approved.json"
+        candidates = [ROOT / "content/core-3000/reviewed/words-reviewed.json", supplement,
+                      ROOT / "content/core-3000/audit/reviewed-first300.json",
+                      *sorted((ROOT / "content/core-3000/reviewed-batches").glob("batch-*.json"))]
+        args.batches = [p for p in candidates if p.exists()]
+        delivery_report = candidates[0].with_name("validation.json")
+        complete_delivery = delivery_report.exists() and json.loads(delivery_report.read_text()).get("remainingUnreviewed") == 0
+        if candidates[0].exists() and (complete_delivery or len(json.loads(candidates[0].read_text()).get("words", [])) >= 3000):
+            # A complete editorial delivery supersedes the provisional parallel batches.
+            args.batches = [p for p in [candidates[0], supplement] if p.exists()]
+        if not args.batches:
+            parser.error("No reviewed batches found; existing production registry was not changed.")
     legacy = json.loads((ROOT / "data/words.json").read_text())
     source = json.loads((ROOT / "content/core-3000/words-3000.draft.json").read_text())
     orders = {w["word"].lower(): w["selectionOrder"] for w in source["words"]}
-    words, rejected, conflicts = {}, [], []
+    words, rejected, conflicts, replacements = {}, [], [], set()
     for path in args.batches:
         pack = json.loads(path.read_text())
         if pack.get("schemaVersion") != 1 or not isinstance(pack.get("words"), list):
@@ -61,8 +74,28 @@ def main():
                 continue
             if row.get("displayWord") == "I":
                 row["word"] = "I"
+            if isinstance(row.get("replaces"), str):
+                old = row["replaces"].strip().lower()
+                if old in orders and old not in {w["word"].lower() for w in legacy}:
+                    replacements.add(old)
             row.setdefault("selectionOrder", orders.get(key))
             words[key] = row
+    # Editorial replacements are not extra words on top of the obsolete seed entries.
+    # This also removes a replaced headword from an older partial batch.
+    for old in replacements:
+        words.pop(old, None)
+    correction_file = ROOT / "content/core-3000/editorial-corrections.json"
+    applied_corrections = []
+    if correction_file.exists():
+        for correction in json.loads(correction_file.read_text())["corrections"]:
+            row = words.get(correction["word"].lower())
+            if row:
+                for field, value in correction["set"].items():
+                    if field not in {"zh", "example", "pos", "reviewNote"}:
+                        raise ValueError(f"Unsupported editorial correction field: {field}")
+                    row[field] = value
+                row["coordinatorReview"] = correction["reason"]
+                applied_corrections.append(correction["word"])
     topic_map = {"food": "food", "animal": "nature", "nature": "nature", "transport": "travel", "things": "home"}
     for original in legacy:
         key = original["word"].lower()
@@ -72,7 +105,7 @@ def main():
         row.update(id="word:" + key, reviewStatus="legacy-verified", reviewer="original-80", source="data/words.json",
                    topic=topic_map[original["theme"]], learningBand=original["level"])
         words[key] = row
-    ordered = sorted(words.values(), key=lambda x: (orders.get(x["word"].lower(), 100000), x["word"].lower()))
+    ordered = sorted(words.values(), key=lambda x: (x.get("selectionOrder") or orders.get(x["word"].lower(), 100000), x["word"].lower()))
     output = {"schemaVersion": 1, "count": len(ordered), "target": 3000, "status": "partial-reviewed" if len(ordered) < 3000 else "reviewed",
               "reviewNote": "AI editorial review plus original project records; not a human-teacher certification. No unverified KK is inferred.", "words": ordered}
     destination = ROOT / "data/vocab-reviewed.json"
@@ -80,7 +113,7 @@ def main():
     temporary.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
     temporary.replace(destination)
     report = {"acceptedUnique": len(ordered), "legacyPreserved": len(legacy), "remainingTo3000": max(0, 3000-len(ordered)),
-              "rejected": rejected, "duplicates": conflicts, "humanTeacherReviewed": False}
+              "rejected": rejected, "duplicates": conflicts, "replacedSeedWords": sorted(replacements), "coordinatorCorrections": applied_corrections, "humanTeacherReviewed": False}
     (ROOT / "content/core-3000/registry-checks.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps({k: v for k, v in report.items() if k not in ["rejected", "duplicates"]}, ensure_ascii=False))
     if rejected:

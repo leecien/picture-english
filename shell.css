@@ -1799,3 +1799,5 @@ b.nv-hit {
 .wd-card .fine {
   color: #5c6450;
 }
+
+body.vocab-open .audio-session{z-index:10070}

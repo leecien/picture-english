@@ -672,6 +672,8 @@ function cardTier(c){let k=-1;if(!c)return k;CARD_TIERS.forEach((t,i)=>{if(c.c>=
 function isFaded(c){const k=cardTier(c);if(k<0)return false;if(c.miss)return true;return (Date.now()-(c.last||0))/864e5>CARD_TIERS[k].reviewDays}
 let lexicalSource=null,lexicalCount=-1,lexicalCache=[];
 const allWords=()=>{const n=typeof Vocab!=='undefined'?Vocab.count:0;if(lexicalSource!==WORDS||lexicalCount!==n){const map=new Map((typeof Vocab!=='undefined'?Vocab.words:[]).map(w=>[w.w.toLowerCase(),w]));WORDS.forEach(w=>map.set(w.w.toLowerCase(),w));lexicalCache=[...map.values()];lexicalSource=WORDS;lexicalCount=n;}return lexicalCache;};
+let exampleSource=null,exampleCount=-1,exampleCache=[];
+const allSentences=()=>{const n=typeof Vocab!=='undefined'?Vocab.count:0;if(exampleSource!==SENT||exampleCount!==n){const map=new Map(SENT.map(s=>[s.en.toLowerCase(),s]));if(typeof Vocab!=='undefined')Vocab.words.forEach(w=>{if(w.example&&!map.has(w.example.en.toLowerCase()))map.set(w.example.en.toLowerCase(),{en:w.example.en,zh:w.example.zh,lv:w.lv,au:'',az:'',sourceWord:w.w});});exampleCache=[...map.values()];exampleSource=SENT;exampleCount=n;}return exampleCache;};
 const owned=()=>allWords().filter(w=>cardTier(CARDS[w.w])>=0);
 const fadedList=()=>WORDS.filter(w=>isFaded(CARDS[w.w]));
 
@@ -698,8 +700,8 @@ function levelHTML(gain){
 function badgesHTML(){return Object.entries(BADGES).map(([id,b])=>`<div class="badge${P.badges.includes(id)?'':' locked'}"><span class="bi">${b.icon}</span>${esc(b.name)}</div>`).join('')}
 
 /* ===== Question picking (faded cards get priority) ===== */
-function take(kind,filter){
-  const arr=kind==='w'?WORDS:SENT, used=kind==='w'?S.usedW:S.usedS, key=kind==='w'?'w':'en';
+function take(kind,filter,source){
+  const arr=source||(kind==='w'?WORDS:SENT), used=kind==='w'?S.usedW:S.usedS, key=kind==='w'?'w':'en';
   const lvOk=x=>S.forceLv?x.lv===S.forceLv:x.lv<=maxLv();
   const ok=x=>(!filter||filter(x))&&lvOk(x)&&RPG.matches(kind,x);
   let pool=arr.filter(x=>!used.has(x[key])&&ok(x));
@@ -1139,7 +1141,7 @@ async function driveLoop(resume){
     if(resume&&D.cur){({it,kind}=D.cur);resume=false}
     else{
       if(D.kind==='scene'){if(!D.queue.length){const all=sceneItems(),due=Learn.reviewIn(all),rest=all.filter(x=>!due.includes(x));D.queue=[...due,...(sceneOrdered()?rest:shuffle(rest))]}it=D.queue.shift();kind='scene';if(!it){stopDrive();return}}
-      else{const useS=D.kind==='sent'||(D.kind==='mix'&&D.n%3===2);it=take(useS?'s':'w');kind=useS?'s':'w'}
+      else{const useS=D.kind==='sent'||(D.kind==='mix'&&D.n%3===2);it=take(useS?'s':'w',null,useS?allSentences():allWords());kind=useS?'s':'w'}
       D.n++;D.cur={it,kind};
       if(D.mode==='shadow')D.round.push({it,kind,st:'try'});
     }
@@ -1350,22 +1352,27 @@ function openRecordingPractice(ctx){
   if(typeof AudioSession==='undefined'){RPG.say('錄音練習暫時未載入，請重新整理。');return;}
   const source=ctx&&ctx.cat?ctx:null;
   let items,label=source?source.label:'錄音跟讀';
-  if(source||DP.kind==='scene'){
+  if(ctx&&Array.isArray(ctx.words)){
+    const wanted=new Set(ctx.words.map(w=>String(w).toLowerCase()));
+    items=allWords().filter(w=>wanted.has(w.w.toLowerCase())).map(w=>({id:w.w,en:w.w,zh:w.z,audio:w.au||'',kind:'w'}));
+    label='單字跟讀';
+  }else if(source||DP.kind==='scene'){
     const cat=SCENES.find(c=>c.id===(source?source.cat:DP.cat)),sceneId=source?source.scene:DP.scene;
     const scenes=cat?(sceneId?cat.scenes.filter(s=>s.id===sceneId):cat.scenes):[];
     items=scenes.flatMap(s=>s.items.map((it,i)=>({id:`${cat.id}/${s.id}/${i}`,en:it.en,zh:it.zh,audio:it.audio||it.au||''})));
     if(!source)label=sceneLabel();
   }else{
-    const words=WORDS.filter(w=>w.lv<=maxLv()).map(w=>({id:w.w,en:w.w,zh:w.z,audio:w.au||'',kind:'w'}));
-    const sents=SENT.filter(s=>s.lv<=maxLv()).map(s=>({id:s.en,en:s.en,zh:s.zh,audio:s.au||'',kind:'s'}));
-    items=DP.kind==='word'?words:DP.kind==='sent'?sents:[...words,...sents];
+    const words=allWords().filter(w=>w.lv<=maxLv()).map(w=>({id:w.w,en:w.w,zh:w.z,audio:w.au||'',kind:'w'}));
+    const sents=allSentences().filter(s=>s.lv<=maxLv()).map(s=>({id:s.en,en:s.en,zh:s.zh,audio:s.au||'',kind:'s'}));
+    // A bounded round samples the full eligible bank, rather than always exposing its first 100 entries.
+    items=shuffle(DP.kind==='word'?words:DP.kind==='sent'?sents:[...words,...sents]).slice(0,20);
   }
   if(!items||!items.length){RPG.say('這個情境還沒有可練內容，請選擇另一個情境。');return;}
   const backToField=$('panel').hidden;
   World.clearKeys();World.paused=true;
-  return AudioSession.open({items,label,onClose:()=>{if(backToField)RPG.resume();else World.paused=true;},onResult:r=>{
+  return AudioSession.open({items,label,onClose:()=>{if(typeof Vocab!=='undefined'&&Vocab.isOpen)World.paused=true;else if(backToField)RPG.resume();else World.paused=true;},onResult:r=>{
     if(!r||r.status!=='match'||!r.item)return;
-    const text=r.item.en,w=WORDS.find(w=>w.w===text),s=SENT.find(s=>s.en===text)||{en:text,zh:r.item.zh||''};
+    const text=r.item.en,w=r.item.kind==='s'?null:allWords().find(w=>w.w===text),s=allSentences().find(s=>s.en===text)||{en:text,zh:r.item.zh||''};
     Learn.note(w?'w':'s',w||s,true,'recorded-read');
   }});
 }
@@ -1376,6 +1383,7 @@ function openVocabulary(){
   return Vocab.open({
     getProgress:word=>{const c=CARDS[word]||{};return{correct:c.c||0,wrong:c.w||0,learned:cardTier(c)>=0};},
     onWord:item=>Pron.openWord(item.w),
+    onPractice:item=>{Pron.closeWord();openRecordingPractice({words:[item.w]});},
     onAnswer:r=>{Learn.grade({kind:'w',recK:'w',item:r.item,ctx:'vocab:'+r.mode,assisted:!!r.assisted},!!r.correct,'vocab');},
     onClose:()=>{document.body.classList.remove('vocab-open');Pron.closeWord();Learn.flush('quest','單字學習');if(backToField)RPG.resume();else World.paused=true;},
   });

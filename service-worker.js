@@ -1,5 +1,5 @@
 /* Bump VERSION on every deployed shell change. No microphone, analytics or audio caching here. */
-const VERSION = "20261117-vocabulary1";
+const VERSION = "20261117-vocabulary3000";
 const BASE = new URL("./", self.location.href);
 const PREFIX = "picture-english-app-" + encodeURIComponent(BASE.pathname) + "-";
 const SHELL = PREFIX + VERSION + "-shell", MEDIA = PREFIX + VERSION + "-images";

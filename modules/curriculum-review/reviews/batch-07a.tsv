@@ -1,0 +1,151 @@
+# batch-07a：selectionOrder 1801–1950（外部 AI 校對，2026-11-17）
+musical	adjective,noun	音樂的；音樂劇	arts	3	We saw a musical in London.	我們在倫敦看了一齣音樂劇。	reviewed
+prayer	noun	祈禱；禱告	social	4	Many people say a prayer at the temple.	很多人在廟裡祈禱。	reviewed
+journalist	noun	記者	work	3	She works as a journalist for a newspaper.	她在報社當記者。	reviewed
+suspect	verb,noun	懷疑；嫌疑犯	social	4	I suspect he forgot about the meeting.	我懷疑他忘了開會的事。	reviewed	作名詞「嫌疑犯」時重音不同，本例用動詞
+scholar	noun	學者	school	4	He is a scholar of Chinese history.	他是研究中國歷史的學者。	reviewed
+subway<michael	noun	地鐵	travel	1	We took the subway to the museum.	我們搭地鐵去博物館。	reviewed	michael 是人名（專有名詞），不能當一般單字；換成清單中沒有的生活常用詞 subway（台灣多稱 MRT）
+climate	noun	氣候	nature	3	Taiwan has a warm climate.	台灣氣候溫暖。	reviewed
+cheese	noun	起司	food	2	Would you like extra cheese on your pizza?	你的披薩要多加起司嗎？	reviewed
+observation	noun	觀察	school	4	The doctor kept him in the hospital for observation.	醫生讓他住院觀察。	reviewed
+payment	noun	付款；款項	work	3	We accept payment by card or cash.	我們接受刷卡或現金付款。	reviewed
+childhood	noun	童年	social	3	I spent my childhood in the countryside.	我的童年是在鄉下度過的。	reviewed
+sir	noun	先生（尊稱）	social	2	Excuse me, sir, is this your bag?	先生不好意思，這是您的包包嗎？	reviewed
+permit	noun,verb	許可證；允許	work	4	You need a permit to park here.	在這裡停車需要許可證。	reviewed	名詞與動詞重音不同，本例用名詞
+definition	noun	定義	school	4	Look up the definition in a dictionary.	在字典裡查這個詞的定義。	reviewed
+cigarette	noun	香菸	health	3	Smoking cigarettes is not allowed here.	這裡禁止抽菸。	reviewed
+priority	noun	優先事項	work	4	Safety is our top priority.	安全是我們的首要考量。	reviewed
+bread	noun	麵包	food	1	I buy fresh bread every morning.	我每天早上買新鮮麵包。	reviewed
+creation	noun	創造；作品	arts	4	This dish is the chef's own creation.	這道菜是主廚的獨創。	reviewed
+graduate	verb,noun	畢業；畢業生	school	3	She graduated from college last year.	她去年大學畢業。	reviewed
+request	noun,verb	要求；請求	work	3	Can I make a special request?	我可以提出一個特別要求嗎？	reviewed
+emotion	noun	情緒；情感	social	4	It's okay to show your emotions.	表達自己的情緒是可以的。	reviewed
+scream	verb,noun	尖叫	core	3	The kids screamed on the roller coaster.	孩子們在雲霄飛車上尖叫。	reviewed
+dramatic	adjective	戲劇性的；巨大的	arts	4	There was a dramatic change in the weather.	天氣發生了劇烈變化。	reviewed
+universe	noun	宇宙	nature	4	How big is the universe?	宇宙有多大？	reviewed
+gap	noun	空隙；差距	core	4	Mind the gap between the train and the platform.	請注意列車與月台間的空隙。	reviewed
+deeply	adverb	深深地	core	4	I'm deeply sorry for your loss.	我對你的失去深感遺憾。	reviewed
+excellent	adjective	極好的	core	2	The food here is excellent.	這裡的食物非常棒。	reviewed
+prosecutor	noun	檢察官	social	4	The prosecutor asked the witness some questions.	檢察官問了證人一些問題。	reviewed
+lucky	adjective	幸運的	core	1	You're so lucky to win the prize!	你真幸運贏得獎品！	reviewed
+drag	verb	拖；拉	core	4	Drag the file into this folder.	把檔案拖進這個資料夾。	reviewed
+airline	noun	航空公司	travel	2	Which airline are you flying with?	你搭哪家航空公司？	reviewed
+library	noun	圖書館	school	1	I borrowed this book from the library.	這本書是我從圖書館借來的。	reviewed
+agenda	noun	議程	work	4	What's on the agenda for today's meeting?	今天會議的議程是什麼？	reviewed
+recover	verb	康復；恢復	health	3	She recovered quickly from the flu.	她很快就從流感中康復了。	reviewed
+factory	noun	工廠	work	2	My uncle works in a shoe factory.	我叔叔在一家鞋廠工作。	reviewed
+selection	noun	選擇；精選	food	4	The shop has a good selection of wines.	這家店的葡萄酒選擇很多。	reviewed
+primarily	adverb	主要地	core	4	This bus is primarily for students.	這班公車主要是給學生搭的。	reviewed
+roof	noun	屋頂	home	2	We had dinner on the roof of the building.	我們在大樓的頂樓吃晚餐。	reviewed
+unable	adjective	不能的	core	3	I'm unable to come to the meeting.	我無法參加會議。	reviewed
+expense	noun	費用；支出	work	4	The company pays for travel expenses.	公司支付差旅費。	reviewed
+initiative	noun	主動性；計畫	work	4	She took the initiative to clean the office.	她主動打掃辦公室。	reviewed
+diet	noun	飲食；節食	health	3	I'm on a diet, so no dessert for me.	我在節食，所以不吃甜點。	reviewed
+arrest	verb,noun	逮捕	social	4	The police arrested the driver.	警方逮捕了那名駕駛。	reviewed
+therapy	noun	治療	health	4	She goes to physical therapy twice a week.	她每週做兩次物理治療。	reviewed
+wash	verb	洗	home	1	Please wash the dishes after dinner.	晚餐後請洗碗。	reviewed
+schedule	noun,verb	時間表；行程；安排	work	2	What's your schedule for tomorrow?	你明天的行程是什麼？	reviewed
+sad	adjective	難過的	core	1	I felt sad when my friend moved away.	我朋友搬走時我很難過。	reviewed
+brief	adjective	簡短的	core	4	Please keep your answer brief.	請簡短回答。	reviewed
+post	noun,verb	貼文；郵件；張貼	technology	3	She posted a photo of her lunch.	她發了一張午餐的照片。	reviewed
+purchase	noun,verb	購買；購買的東西	work	4	Please keep your receipt after purchase.	購買後請保留收據。	reviewed
+steel	noun	鋼鐵	work	4	The bridge is made of steel.	這座橋是用鋼鐵建的。	reviewed
+balcony<recognise	noun	陽台	home	1	We dry our clothes on the balcony.	我們在陽台曬衣服。	reviewed	recognise 是 recognize 的英式拼法，清單已有 recognize，屬重複詞條；換成清單中沒有的生活常用詞 balcony
+shout	verb,noun	大喊	core	2	Please don't shout. I can hear you.	請不要大叫，我聽得到。	reviewed
+visual	adjective	視覺的	arts	4	He is a visual artist.	他是一位視覺藝術家。	reviewed
+fairly	adverb	相當；公平地	core	3	The test was fairly easy.	考試相當簡單。	reviewed
+violent	adjective	暴力的；猛烈的	social	4	This movie is too violent for children.	這部電影對小孩來說太暴力了。	reviewed
+chip	noun	洋芋片；晶片；碎片	food	2	Let's buy some chips for the party.	我們買些洋芋片去派對吧。	reviewed	美式 chips 指洋芋片
+silent	adjective	沉默的；安靜的	core	3	Please keep your phone on silent.	請把手機調成靜音。	reviewed
+suppose	verb	猜想；認為	core	3	I suppose you're right.	我想你是對的。	reviewed
+self	noun	自我；自己	core	4	She's back to her old self after the holiday.	放完假她又恢復成原本的樣子了。	reviewed
+bike	noun	腳踏車	travel	1	I ride my bike to work on sunny days.	天氣好的時候我騎腳踏車上班。	reviewed
+tea	noun	茶	food	1	Would you like some green tea?	你想喝點綠茶嗎？	reviewed
+perceive	verb	察覺；認為	core	4	Many people perceive the city as safe.	很多人認為這座城市很安全。	reviewed
+comparison	noun	比較	core	4	In comparison to Taipei, Tainan is quieter.	和台北相比，台南比較安靜。	reviewed
+settlement	noun	解決；聚落	social	4	They reached a settlement after a long talk.	他們經過長談後達成和解。	reviewed
+layer	noun	層	home	3	Wear layers in the mountains.	在山上要多層穿搭。	reviewed
+description	noun	描述	school	3	The description of the hotel was not accurate.	對那家飯店的描述不太準確。	reviewed
+slide	verb,noun	滑；溜滑梯；投影片	school	3	Please look at the next slide.	請看下一張投影片。	reviewed
+widely	adverb	廣泛地	core	4	English is widely used in business.	英文在商業上廣泛使用。	reviewed
+wedding	noun	婚禮	social	2	We're going to my cousin's wedding on Sunday.	我們星期天要參加表姊的婚禮。	reviewed
+inform	verb	通知	work	4	Please inform us if you change your plans.	如果計畫有變請通知我們。	reviewed
+portion	noun	一份；部分	food	4	The portions at this restaurant are huge.	這家餐廳的份量很大。	reviewed
+territory	noun	領土；地盤	social	4	The cat guards its territory in the garden.	那隻貓在花園裡守護自己的地盤。	reviewed
+immediate	adjective	立即的	core	4	We need an immediate answer.	我們需要立即的答覆。	reviewed
+opponent	noun	對手	health	4	She beat her opponent in the final.	她在決賽中打敗了對手。	reviewed
+abandon	verb	拋棄；放棄	social	4	Please don't abandon your pets.	請不要棄養寵物。	reviewed
+transform	verb	改變；轉變	core	4	The old factory was transformed into a café.	那間舊工廠被改造成咖啡館。	reviewed
+tension	noun	緊張；張力	health	4	A massage can relieve the tension in your neck.	按摩可以舒緩脖子的緊繃。	reviewed
+bother	verb	打擾；煩惱	social	3	Sorry to bother you, but where is the bathroom?	抱歉打擾，請問廁所在哪裡？	reviewed
+consist	verb	由……組成（consist of）	core	4	The meal consists of rice, soup and two dishes.	這份餐包含飯、湯和兩道菜。	reviewed
+alcohol	noun	酒；酒精	health	3	Don't drink alcohol before driving.	開車前不要喝酒。	reviewed
+enable	verb	使能夠	technology	4	This app enables you to pay with your phone.	這個應用程式讓你可以用手機付款。	reviewed
+bend	verb	彎曲；彎腰	health	3	Bend your knees when you lift something heavy.	搬重物時要彎曲膝蓋。	reviewed
+desert	noun	沙漠	nature	3	It almost never rains in the desert.	沙漠裡幾乎不下雨。	reviewed	作動詞「拋棄」時重音不同，本詞條只教名詞
+shall	modal	（用於提議）……好嗎；將	core	3	Shall we go for a walk?	我們去散步好嗎？	reviewed
+error	noun	錯誤	technology	3	The screen shows an error message.	螢幕顯示錯誤訊息。	reviewed
+cop	noun	警察（口語）	social	3	A cop stopped us for speeding.	一名警察因為超速攔下我們。	reviewed	口語詞
+double	adjective,noun,verb	兩倍的；雙人的；加倍	travel	2	I'd like a double room, please.	我要一間雙人房。	reviewed
+sand	noun	沙子	nature	2	The kids built a castle in the sand.	孩子們在沙灘上堆城堡。	reviewed
+print	verb,noun	列印；印刷	technology	2	Can you print this for me?	你可以幫我印這個嗎？	reviewed
+preserve	verb	保存；保護	nature	4	We must preserve this old forest.	我們必須保護這片古老的森林。	reviewed
+ceo	noun	執行長（CEO）	work	4	The CEO of the company gave a speech.	公司執行長發表了演說。	reviewed	縮寫詞，寫作時用大寫 CEO
+passage	noun	通道；（文章的）一段	school	4	Read the passage and answer the questions.	閱讀這段文章並回答問題。	reviewed
+formal	adjective	正式的	social	4	Please wear formal clothes to the dinner.	參加晚宴請穿正式服裝。	reviewed
+transition	noun	轉變；過渡	work	4	The transition to the new system was smooth.	轉換到新系統的過程很順利。	reviewed
+existence	noun	存在	core	4	This shop has been in existence for fifty years.	這家店已經開了五十年。	reviewed
+participation	noun	參與	work	4	Your participation in the survey is optional.	是否參與這份問卷由您自行決定。	reviewed
+album	noun	專輯；相簿	arts	3	Her new album comes out next week.	她的新專輯下週推出。	reviewed
+arrange	verb	安排；整理	work	3	Can you arrange a meeting for Friday?	你可以安排星期五開會嗎？	reviewed
+atmosphere	noun	氣氛；大氣	social	4	The café has a relaxing atmosphere.	這家咖啡館的氣氛很放鬆。	reviewed
+joint	noun,adjective	關節；共同的	health	4	My joints hurt when it's cold.	天冷的時候我的關節會痛。	reviewed
+reply	verb,noun	回覆	technology	2	Please reply to my message.	請回覆我的訊息。	reviewed
+cycle	noun,verb	循環；騎腳踏車	health	3	We cycled around Sun Moon Lake.	我們騎腳踏車環日月潭。	reviewed
+lock	verb,noun	鎖；鎖上	home	1	Did you lock the door?	你鎖門了嗎？	reviewed
+opposite	preposition,adjective,noun	在……對面；相反的	travel	2	The bank is opposite the post office.	銀行在郵局對面。	reviewed
+deserve	verb	應得；值得	core	4	You deserve a break.	你應該好好休息一下。	reviewed
+consistent	adjective	一致的；穩定的	work	4	Her work is always consistent.	她的工作表現一直很穩定。	reviewed
+resistance	noun	抵抗；阻力	health	4	Exercise builds your resistance to illness.	運動能增強你的抵抗力。	reviewed
+discovery	noun	發現	school	4	The discovery of the old map was exciting.	發現那張古地圖令人興奮。	reviewed
+exposure	noun	暴露；接觸	health	4	Too much exposure to the sun is bad for your skin.	過度曬太陽對皮膚不好。	reviewed
+pose	verb,noun	擺姿勢；姿勢	arts	4	Let's pose for a group photo.	我們一起擺姿勢拍團體照吧。	reviewed
+stream	noun,verb	小溪；串流	nature	3	A small stream runs behind the village.	村子後面有一條小溪。	reviewed
+sale	noun	出售；特價	core	2	These shoes are on sale.	這雙鞋在特價。	reviewed
+pot	noun	鍋子；壺	food	2	Put the noodles in a pot of boiling water.	把麵放進一鍋滾水裡。	reviewed
+mine	pronoun	我的（東西）	core	1	Is this pen yours or mine?	這支筆是你的還是我的？	reviewed	作名詞「礦」時另有意思，本詞條只教代名詞
+grand	adjective	宏偉的；盛大的	arts	4	The hotel has a grand lobby.	這家飯店有個富麗堂皇的大廳。	reviewed
+hello	interjection	你好；（電話）喂	social	1	Hello, may I speak to Mr. Lin?	喂，請問林先生在嗎？	reviewed
+tale	noun	故事	arts	4	My grandmother told us old tales.	奶奶給我們講老故事。	reviewed
+knife	noun	刀	food	1	Can I have a knife and fork?	可以給我一副刀叉嗎？	reviewed
+coalition	noun	聯盟	social	4	Several groups formed a coalition to protect the river.	幾個團體組成聯盟來保護這條河。	reviewed
+resolve	verb	解決；決心	work	4	We need to resolve this problem quickly.	我們需要盡快解決這個問題。	reviewed
+racial	adjective	種族的	social	4	The school has students from many racial backgrounds.	這所學校的學生來自各種族背景。	reviewed
+phase	noun	階段	work	4	The first phase of the project is done.	專案的第一階段完成了。	reviewed
+joke	noun,verb	笑話；開玩笑	social	1	He told a funny joke.	他講了一個好笑的笑話。	reviewed
+coat	noun	外套	home	1	Take your coat. It's cold outside.	帶上外套，外面很冷。	reviewed
+symptom	noun	症狀	health	3	What are your symptoms?	你有什麼症狀？	reviewed
+manufacturer	noun	製造商	work	4	The manufacturer will replace the broken part.	製造商會更換壞掉的零件。	reviewed
+philosophy	noun	哲學；理念	school	4	Their philosophy is to put customers first.	他們的理念是顧客至上。	reviewed
+potato	noun	馬鈴薯	food	1	I'd like a baked potato with my steak.	我的牛排要配烤馬鈴薯。	reviewed
+quote	noun,verb	報價；引用	work	4	Can you give me a quote for the repairs?	你可以給我修理的報價嗎？	reviewed
+foundation	noun	基礎；基金會；粉底	work	4	A good diet is the foundation of good health.	良好的飲食是健康的基礎。	reviewed
+online	adjective,adverb	線上的；在網路上	technology	1	I bought these shoes online.	這雙鞋是我在網路上買的。	reviewed
+negotiation	noun	談判；協商	work	4	The negotiations went on for weeks.	協商持續了好幾週。	reviewed
+alarm<ii	noun	鬧鐘；警報	home	1	I set my alarm for six thirty.	我把鬧鐘設在六點半。	reviewed	ii 不是英文單字（詞典條目為縮寫），屬錯誤詞條；換成清單中沒有的生活常用詞 alarm
+urge	verb,noun	催促；強烈慾望	core	4	The doctor urged him to stop smoking.	醫生勸他戒菸。	reviewed
+occasion	noun	場合；時機	social	4	This dress is for special occasions.	這件洋裝是在特別場合穿的。	reviewed
+dust	noun,verb	灰塵；除塵	home	3	The shelves are covered in dust.	架子上積滿了灰塵。	reviewed
+breathe	verb	呼吸	health	2	Breathe in slowly through your nose.	用鼻子慢慢吸氣。	reviewed
+elect	verb	選舉；選出	social	4	The town elected a new mayor.	鎮上選出了新鎮長。	reviewed
+investigator	noun	調查員	social	4	An investigator came to check the accident.	一名調查員來檢查這起事故。	reviewed
+jacket	noun	夾克；外套	home	1	I left my jacket in the restaurant.	我把外套忘在餐廳了。	reviewed
+ordinary	adjective	普通的	core	4	It was just an ordinary day.	那只是平凡的一天。	reviewed
+glad	adjective	高興的	core	2	I'm glad you could come.	很高興你能來。	reviewed
+reduction	noun	減少；降價	work	4	There is a price reduction on all winter clothes.	所有冬季服飾都降價了。	reviewed
+rarely	adverb	很少	core	3	I rarely eat fast food.	我很少吃速食。	reviewed
+pack	verb,noun	打包；一包	travel	2	Have you packed your suitcase yet?	你的行李打包好了嗎？	reviewed
+scarf<suicide	noun	圍巾	home	1	She wore a warm scarf in winter.	她冬天圍了一條溫暖的圍巾。	reviewed	suicide 屬自傷相關的敏感詞，不適合放在大眾化的遊戲詞庫；換成清單中沒有的生活常用詞 scarf
+numerous	adjective	許多的	core	4	There are numerous cafés on this street.	這條街上有很多咖啡館。	reviewed
+substance	noun	物質	health	4	This cleaner contains harmful substances.	這種清潔劑含有有害物質。	reviewed
+discipline	noun	紀律；訓練	school	4	Learning a language needs discipline.	學語言需要自律。	reviewed
