@@ -1235,9 +1235,12 @@ const RPG = (() => {
       intro: ["Six more sounds, two at a time!", "N03 子音工具箱：這一章學 6 個子音 <b>/p/ /b/ /d/ /g/ /h/ /l/</b>，一次兩個。/p/ 和 /b/、/t/ 和 /d/、/k/ 和 /g/ 嘴形一樣，差在喉嚨有沒有振動。"],
       groups: [{ sounds: ["p", "b"], card: "pb", check: "check-pb" }, { sounds: ["d", "g"], card: "dg", check: "check-dg" }, { sounds: ["h", "l"], card: "hl", check: "check-hl" }],
       matchLine: "配對：同一個聲音可能有兩種寫法，<b>p</b> 和 <b>pp</b>、<b>l</b> 和 <b>ll</b>。",
-      buildLine: "最後：<b>看圖，用學過的音組出整個字</b>。這兩個字的每個音你都學過了，沒有先放好的格子。",
-      builds: ["map", "hat"], fallback: ["dog", "gift"],
+      buildLine: "最後：<b>看圖，用學過的音組出整個字</b>。每個音你都學過了，沒有先放好的格子。要有<b>兩個不同的字，各自第一次送出就組對</b>才算完成。",
+      // A-N03-02: full builds only (every sound taught, no slot given); two different words, each right on its
+      // first submit. Passed words are saved, so leaving or reloading cannot skip the requirement.
+      full: { need: 2, words: ["map", "hat", "cat"] },
       get: () => (NV.ch.N03 && NV.ch.N03.step) || "intro", set: (x) => (NV.ch.N03 = { ...(NV.ch.N03 || {}), step: x }),
+      state: () => NV.ch.N03 || {}, saveState: (x) => ((NV.ch.N03 = { ...(NV.ch.N03 || {}), ...x }), save()),
       finish: () => (NV.ch.N03 = { ...(NV.ch.N03 || {}), done: true }),
       toast: ["🧰", "N03 子音工具箱完成", "回聲原野：13 個音的戰鬥"],
       next: "下一步：到回聲原野，用 13 個學過的音打倒一隻回音泡泡。",
@@ -1277,7 +1280,31 @@ const RPG = (() => {
       go("build");
       if (!(await nvStepDone("字母組合配對"))) return rest();
     }
-    if (step() === "build") {
+    if (step() === "build" && C.full) {
+      await Talk.line("", C.buildLine);
+      const st = C.state(),
+        got = new Set(st.full || []),
+        // a word only counts when every one of its sounds has been taught (nothing pre-placed)
+        pool = C.full.words.filter((w) => Novice.kkSounds(Novice.word(w).kk).every((x) => NV.taught.includes(x)));
+      for (const w of pool) {
+        if (got.size >= C.full.need) break;
+        if (got.has(w)) continue;
+        const r = await nvBuild(w);
+        if (!r.tries) {
+          got.add(w);
+          C.saveState({ full: [...got] });
+        }
+      }
+      if (got.size < C.full.need) {
+        const done = [...got];
+        return finishSummary(label, `完整組音要兩個不同的字各自第一次就組對。${done.length ? `已完成：${done.join("、")}。` : "這次還沒有字一次組對。"}回來找 Cody 再試（已完成的字不會再考）。`);
+      }
+      C.finish();
+      go("done");
+      addXP(15);
+      toast(C.toast[0], C.toast[1], C.toast[2], "levelup");
+      await finishSummary(label, C.next);
+    } else if (step() === "build") {
       await Talk.line("", C.buildLine);
       let independent = 0;
       for (const w of C.builds) {
