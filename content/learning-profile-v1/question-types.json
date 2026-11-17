@@ -1,0 +1,145 @@
+{
+ "schemaVersion": 1,
+ "version": "lp-v1-batch01",
+ "task": "LEARNING-PROFILE-01",
+ "reviewer": "external-ai",
+ "status": "ai-edited-not-teacher-reviewed",
+ "contentBase": "picture-english e079ef8f426e0f0f7e5794906bda952ea4af1fee",
+ "note": "每種題型真正測到的能力。grammarEvidence：none＝不是文法證據；form-only＝只證明語序（問句倒裝、否定位置），不證明時態；target＝證明該題標記的目標文法。",
+ "channels": {
+  "reading": "閱讀辨識",
+  "listening": "聽力理解",
+  "building": "句子組合",
+  "speaking": "獨立口說",
+  "speaking-shadow": "跟讀（不列入獨立口說）",
+  "none": "不列入評估"
+ },
+ "types": {
+  "word:pic2word": {
+   "channel": "reading",
+   "tests": "vocab-meaning",
+   "grammarEvidence": "none",
+   "zh": "看圖選字：單字意思"
+  },
+  "word:word2pic": {
+   "channel": "reading",
+   "tests": "vocab-meaning",
+   "grammarEvidence": "none",
+   "zh": "看字選圖：單字意思"
+  },
+  "word:match": {
+   "channel": "reading",
+   "tests": "vocab-meaning",
+   "grammarEvidence": "none",
+   "zh": "圖字配對：單字意思"
+  },
+  "word:zh": {
+   "channel": "reading",
+   "tests": "vocab-meaning",
+   "grammarEvidence": "none",
+   "zh": "中文選英文單字"
+  },
+  "word:listen": {
+   "channel": "listening",
+   "tests": "vocab-meaning",
+   "grammarEvidence": "none",
+   "zh": "聽單字選圖"
+  },
+  "word:spell": {
+   "channel": "building",
+   "tests": "vocab-spelling",
+   "grammarEvidence": "none",
+   "zh": "看圖拼字（單字層級的組合，不是句子組合）"
+  },
+  "vocab:listen-spelling": {
+   "channel": "building",
+   "tests": "vocab-spelling",
+   "grammarEvidence": "none",
+   "zh": "3000 詞：聽單字＋中文線索拼字"
+  },
+  "vocab:example-spelling": {
+   "channel": "building",
+   "tests": "vocab-spelling",
+   "grammarEvidence": "none",
+   "zh": "3000 詞：例句挖空拼字"
+  },
+  "sent:scene2sent": {
+   "channel": "reading",
+   "tests": "sentence-meaning",
+   "grammarEvidence": "none",
+   "zh": "看圖選句：選項意思不同，不是文法對比"
+  },
+  "sent:sent2scene": {
+   "channel": "reading",
+   "tests": "sentence-meaning",
+   "grammarEvidence": "none",
+   "zh": "看句選圖"
+  },
+  "sent:blank": {
+   "channel": "reading",
+   "tests": "vocab-in-sentence",
+   "grammarEvidence": "none",
+   "zh": "看圖填空：干擾選項是不同動詞（kicks／eats），測字義不是時態"
+  },
+  "sent:order": {
+   "channel": "building",
+   "tests": "word-order",
+   "grammarEvidence": "form-only",
+   "zh": "句子排序：單字都給了，只能證明語序（問句倒裝、否定位置），不能證明時態"
+  },
+  "scene:listen": {
+   "channel": "listening",
+   "tests": "situational-response",
+   "grammarEvidence": "none",
+   "zh": "聽對方說話後選合適回答（未開中文提示）"
+  },
+  "scene:zh": {
+   "channel": "reading",
+   "tests": "situational-response",
+   "grammarEvidence": "none",
+   "zh": "看中文選英文回答"
+  },
+  "life:context-blank": {
+   "channel": "reading",
+   "tests": "vocab-in-sentence",
+   "grammarEvidence": "none",
+   "zh": "生活情境句子填空（重點字），測情境字義"
+  },
+  "drive:speak": {
+   "channel": "speaking",
+   "tests": "spoken-production",
+   "grammarEvidence": "none",
+   "zh": "看中文自己說英文；語音辨識吻合只代表說出的字被辨識到，不代表文法或發音正確"
+  },
+  "drive:shadow": {
+   "channel": "speaking-shadow",
+   "tests": "repetition",
+   "grammarEvidence": "none",
+   "zh": "跟讀：先聽英文再念，不算獨立口說"
+  },
+  "drive:listen": {
+   "channel": "none",
+   "tests": "exposure",
+   "grammarEvidence": "none",
+   "zh": "聆聽模式：不收音、不計分"
+  },
+  "life:tap-meaning": {
+   "channel": "none",
+   "tests": "lookup",
+   "grammarEvidence": "none",
+   "zh": "點字查義：查詢，不是作答"
+  },
+  "grammar:form-choice": {
+   "channel": "reading",
+   "tests": "grammar-form",
+   "grammarEvidence": "target",
+   "zh": "文法形式選擇題（新題型）：干擾選項只差在文法形式。題目內容 batch-02 已交（grammar-items.json），遊戲尚未實作介面"
+  },
+  "grammar:form-build": {
+   "channel": "building",
+   "tests": "grammar-form",
+   "grammarEvidence": "target",
+   "zh": "（提案）排序題混入錯誤形式的字塊，必須選對形式並排序"
+  }
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "title": "LEARNING-PROFILE-01 作答事件（每次作答一筆，append-only）",
+ "description": "內部遊戲在每題第一次作答定案時寫一筆；同一題後續重試只更新同一筆的 retries/final，不另寫新筆。建議存放鍵 pm-ability-v1（新鍵，不改舊 pm-* 形狀），保留最近 4000 筆；計算只看最近 90 天。",
+ "type": "object",
+ "required": ["v", "id", "item", "qtype", "ctx", "at", "result"],
+ "properties": {
+  "v": {"const": 1},
+  "id": {"type": "string", "description": "事件唯一 id，例如 t-<epoch ms>-<亂數>；重播或重算時用來去重"},
+  "item": {"type": "string", "pattern": "^[swg]:.+", "description": "題目 ID：s:<英文句子>、w:<單字>（與 Learn 的紀錄 key 相同）、g:<文法題 id>"},
+  "qtype": {"type": "string", "description": "題型 ID，必須是 question-types.json 的 key，例如 scene:listen、sent:order、word:pic2word、drive:speak、grammar:form-choice"},
+  "ctx": {"type": "string", "description": "情境：與 Learn.grade 的 ctx 相同（scene:<id>、life:<id>、battle、quest:<id>、vocab、drive:<contentId>）"},
+  "at": {"type": "number", "description": "第一次作答的時間（epoch ms）"},
+  "result": {"enum": ["correct", "wrong", "timeout", "skipped"], "description": "第一次送出的結果；限時到了沒作答是 timeout，不是 wrong"},
+  "final": {"enum": ["correct", "wrong", "gave-up"], "description": "重試後的最終結果（沒有重試可省略）"},
+  "retries": {"type": "integer", "minimum": 0, "description": "第一次答錯後又試了幾次"},
+  "hint": {"type": "boolean", "description": "作答前用過任何提示：打開中文提示、點字查義、看 KK、刪去選項、夥伴提示"},
+  "assisted": {"type": "boolean", "description": "輔助作答：只剩一個選項、答案已顯示後照著做"},
+  "revealed": {"type": "boolean", "description": "作答前已看到或聽到目標英文（例如跟讀先播示範）"},
+  "sr": {"type": "object", "description": "只有口說題：語音辨識結果", "properties": {"matched": {"type": "boolean"}, "confidence": {"type": "number"}, "heard": {"type": "string"}}},
+  "ms": {"type": "number", "description": "作答耗時（毫秒），可省略"}
+ }
+}

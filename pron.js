@@ -179,6 +179,7 @@ const Pron = (() => {
   function openWord(name) {
     const w = lookup(name);
     if (!w) return;
+    look();
     if (!card) {
       card = document.createElement("div");
       card.className = "wd-card";
@@ -196,9 +197,16 @@ const Pron = (() => {
     say();
   }
   /* A fixed phrase: its meaning as one unit and the whole phrase played first; its single words on request. */
+  // something was looked up (Chinese, a word, a phrase): before answering, the ability log counts it as a hint
+  const look = () => {
+    try {
+      window.dispatchEvent(new Event("pron:look"));
+    } catch (e) {}
+  };
   function openPhrase(key, shown) {
     const ph = phrase(key);
     if (!ph) return;
+    look();
     const text = shown || ph.p;
     if (!card) {
       card = document.createElement("div");
@@ -242,6 +250,7 @@ const Pron = (() => {
         const line = zb.nextElementSibling;
         if (line && line.classList.contains("zh-line")) {
           line.hidden = !line.hidden;
+          if (!line.hidden) look();
           zb.setAttribute("aria-expanded", String(!line.hidden));
           zb.textContent = line.hidden ? "看中文" : "收起中文";
         }

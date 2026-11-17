@@ -1,0 +1,547 @@
+{
+ "schemaVersion": 1,
+ "version": "lp-v1-batch01",
+ "task": "LEARNING-PROFILE-01",
+ "reviewer": "external-ai",
+ "status": "ai-edited-not-teacher-reviewed",
+ "contentBase": "picture-english e079ef8f426e0f0f7e5794906bda952ea4af1fee",
+ "note": "主題與次主題。general = 屬於該主題但不屬於任何次主題；unassigned = 3000 詞依 topic 歸入主題，尚未細分次主題。",
+ "topics": {
+  "food": {
+   "zh": "食物",
+   "sub": {
+    "ingredients": {
+     "zh": "食材",
+     "desc": "食物、食材與飲料名稱；採買食材"
+    },
+    "ordering": {
+     "zh": "點餐",
+     "desc": "訂位、點餐、用餐中的請求、結帳、外帶"
+    },
+    "cooking": {
+     "zh": "烹飪",
+     "desc": "廚房器具、加熱與烹調動作、保存食物"
+    },
+    "dietary": {
+     "zh": "飲食需求",
+     "desc": "過敏、素食、忌口、辣度甜度與份量調整"
+    }
+   }
+  },
+  "travel": {
+   "zh": "旅遊",
+   "sub": {
+    "airport": {
+     "zh": "機場",
+     "desc": "報到、托運、安檢、登機、機上、領行李"
+    },
+    "customs": {
+     "zh": "海關",
+     "desc": "入境目的、停留天數、住宿地點、申報"
+    },
+    "lodging": {
+     "zh": "住宿",
+     "desc": "飯店入住退房、訂房、客房問題"
+    },
+    "directions": {
+     "zh": "問路",
+     "desc": "問地點、方向、距離與步行"
+    },
+    "transport": {
+     "zh": "交通",
+     "desc": "計程車、火車地鐵、公車、租車、自行車與機車"
+    }
+   }
+  },
+  "meeting": {
+   "zh": "會議",
+   "sub": {
+    "scheduling": {
+     "zh": "安排時間",
+     "desc": "約時間、改期、確認是否有空"
+    },
+    "opening": {
+     "zh": "開場",
+     "desc": "開始會議、確認聽得到、分享畫面、介紹主題與進行議程"
+    },
+    "opinions": {
+     "zh": "表達意見",
+     "desc": "同意、不同意、提出看法與提案"
+    },
+    "confirming": {
+     "zh": "確認事項",
+     "desc": "請對方重複、確認細節、提問與確認共識"
+    },
+    "actions": {
+     "zh": "會後行動",
+     "desc": "收尾、寄送資料、回覆期限、後續確認"
+    }
+   }
+  }
+ },
+ "contexts": [
+  {
+   "ctx": "life:airport",
+   "topic": "travel",
+   "sub": "airport",
+   "source": "life/airport"
+  },
+  {
+   "ctx": "life:bathroom",
+   "topic": null,
+   "sub": null,
+   "source": "life/bathroom"
+  },
+  {
+   "ctx": "life:bedroom",
+   "topic": null,
+   "sub": null,
+   "source": "life/bedroom"
+  },
+  {
+   "ctx": "life:clinic",
+   "topic": null,
+   "sub": null,
+   "source": "life/clinic"
+  },
+  {
+   "ctx": "life:kitchen",
+   "topic": "food",
+   "sub": "cooking",
+   "source": "life/kitchen"
+  },
+  {
+   "ctx": "life:laundry",
+   "topic": null,
+   "sub": null,
+   "source": "life/laundry"
+  },
+  {
+   "ctx": "life:living-room",
+   "topic": null,
+   "sub": null,
+   "source": "life/living-room"
+  },
+  {
+   "ctx": "life:office",
+   "topic": null,
+   "sub": null,
+   "source": "life/office"
+  },
+  {
+   "ctx": "life:park",
+   "topic": null,
+   "sub": null,
+   "source": "life/park"
+  },
+  {
+   "ctx": "life:restaurant",
+   "topic": "food",
+   "sub": "ordering",
+   "source": "life/restaurant"
+  },
+  {
+   "ctx": "life:street",
+   "topic": "travel",
+   "sub": "transport",
+   "source": "life/street"
+  },
+  {
+   "ctx": "life:supermarket",
+   "topic": "food",
+   "sub": "ingredients",
+   "source": "life/supermarket"
+  },
+  {
+   "ctx": "scene:accident",
+   "topic": null,
+   "sub": null,
+   "source": "emergency/accident"
+  },
+  {
+   "ctx": "scene:airport",
+   "topic": "travel",
+   "sub": "airport",
+   "source": "travel/airport"
+  },
+  {
+   "ctx": "scene:baggage",
+   "topic": "travel",
+   "sub": "airport",
+   "source": "travel/baggage"
+  },
+  {
+   "ctx": "scene:bank",
+   "topic": null,
+   "sub": null,
+   "source": "life/bank"
+  },
+  {
+   "ctx": "scene:bar",
+   "topic": "food",
+   "sub": "ordering",
+   "source": "dining/bar"
+  },
+  {
+   "ctx": "scene:bill",
+   "topic": "food",
+   "sub": "ordering",
+   "source": "dining/bill"
+  },
+  {
+   "ctx": "scene:cafe",
+   "topic": "food",
+   "sub": "ordering",
+   "source": "dining/cafe"
+  },
+  {
+   "ctx": "scene:checkout",
+   "topic": null,
+   "sub": null,
+   "source": "shopping/checkout"
+  },
+  {
+   "ctx": "scene:class",
+   "topic": null,
+   "sub": null,
+   "source": "school/class"
+  },
+  {
+   "ctx": "scene:clients",
+   "topic": null,
+   "sub": null,
+   "source": "work/clients"
+  },
+  {
+   "ctx": "scene:clothes",
+   "topic": null,
+   "sub": null,
+   "source": "shopping/clothes"
+  },
+  {
+   "ctx": "scene:customs",
+   "topic": "travel",
+   "sub": "customs",
+   "source": "travel/customs"
+  },
+  {
+   "ctx": "scene:diet",
+   "topic": "food",
+   "sub": "dietary",
+   "source": "dining/diet"
+  },
+  {
+   "ctx": "scene:directions",
+   "topic": "travel",
+   "sub": "directions",
+   "source": "travel/directions"
+  },
+  {
+   "ctx": "scene:doctor",
+   "topic": null,
+   "sub": null,
+   "source": "life/doctor"
+  },
+  {
+   "ctx": "scene:drugstore",
+   "topic": null,
+   "sub": null,
+   "source": "shopping/drugstore"
+  },
+  {
+   "ctx": "scene:electronics",
+   "topic": null,
+   "sub": null,
+   "source": "shopping/electronics"
+  },
+  {
+   "ctx": "scene:fastfood",
+   "topic": "food",
+   "sub": "ordering",
+   "source": "dining/fastfood"
+  },
+  {
+   "ctx": "scene:feelings",
+   "topic": null,
+   "sub": null,
+   "source": "social/feelings"
+  },
+  {
+   "ctx": "scene:food",
+   "topic": "food",
+   "sub": "general",
+   "source": "companion/food"
+  },
+  {
+   "ctx": "scene:greet",
+   "topic": null,
+   "sub": null,
+   "source": "companion/greet"
+  },
+  {
+   "ctx": "scene:group",
+   "topic": null,
+   "sub": null,
+   "source": "school/group"
+  },
+  {
+   "ctx": "scene:gym",
+   "topic": null,
+   "sub": null,
+   "source": "life/gym"
+  },
+  {
+   "ctx": "scene:haircut",
+   "topic": null,
+   "sub": null,
+   "source": "life/haircut"
+  },
+  {
+   "ctx": "scene:hobbies",
+   "topic": null,
+   "sub": null,
+   "source": "social/hobbies"
+  },
+  {
+   "ctx": "scene:hotel",
+   "topic": "travel",
+   "sub": "lodging",
+   "source": "travel/hotel"
+  },
+  {
+   "ctx": "scene:inflight",
+   "topic": "travel",
+   "sub": "airport",
+   "source": "travel/inflight"
+  },
+  {
+   "ctx": "scene:interview",
+   "topic": null,
+   "sub": null,
+   "source": "work/interview"
+  },
+  {
+   "ctx": "scene:intro",
+   "topic": null,
+   "sub": null,
+   "source": "work/intro"
+  },
+  {
+   "ctx": "scene:invite",
+   "topic": null,
+   "sub": null,
+   "source": "social/invite"
+  },
+  {
+   "ctx": "scene:leave",
+   "topic": null,
+   "sub": null,
+   "source": "work/leave"
+  },
+  {
+   "ctx": "scene:library",
+   "topic": null,
+   "sub": null,
+   "source": "school/library"
+  },
+  {
+   "ctx": "scene:lost",
+   "topic": null,
+   "sub": null,
+   "source": "emergency/lost"
+  },
+  {
+   "ctx": "scene:lostbag",
+   "topic": "travel",
+   "sub": "airport",
+   "source": "travel/lostbag"
+  },
+  {
+   "ctx": "scene:market",
+   "topic": null,
+   "sub": null,
+   "source": "shopping/market"
+  },
+  {
+   "ctx": "scene:medical",
+   "topic": null,
+   "sub": null,
+   "source": "emergency/medical"
+  },
+  {
+   "ctx": "scene:meet",
+   "topic": null,
+   "sub": null,
+   "source": "social/meet"
+  },
+  {
+   "ctx": "scene:meeting",
+   "topic": "meeting",
+   "sub": "general",
+   "source": "work/meeting"
+  },
+  {
+   "ctx": "scene:money",
+   "topic": "travel",
+   "sub": "general",
+   "source": "travel/money"
+  },
+  {
+   "ctx": "scene:mood",
+   "topic": null,
+   "sub": null,
+   "source": "companion/mood"
+  },
+  {
+   "ctx": "scene:negotiate",
+   "topic": "meeting",
+   "sub": "general",
+   "source": "work/negotiate"
+  },
+  {
+   "ctx": "scene:neighbor",
+   "topic": null,
+   "sub": null,
+   "source": "life/neighbor"
+  },
+  {
+   "ctx": "scene:online",
+   "topic": null,
+   "sub": null,
+   "source": "shopping/online"
+  },
+  {
+   "ctx": "scene:order",
+   "topic": "food",
+   "sub": "ordering",
+   "source": "dining/order"
+  },
+  {
+   "ctx": "scene:party",
+   "topic": null,
+   "sub": null,
+   "source": "social/party"
+  },
+  {
+   "ctx": "scene:pharmacy",
+   "topic": null,
+   "sub": null,
+   "source": "life/pharmacy"
+  },
+  {
+   "ctx": "scene:phone",
+   "topic": null,
+   "sub": null,
+   "source": "work/phone"
+  },
+  {
+   "ctx": "scene:police",
+   "topic": null,
+   "sub": null,
+   "source": "emergency/police"
+  },
+  {
+   "ctx": "scene:post",
+   "topic": null,
+   "sub": null,
+   "source": "life/post"
+  },
+  {
+   "ctx": "scene:presentation",
+   "topic": "meeting",
+   "sub": "general",
+   "source": "work/presentation"
+  },
+  {
+   "ctx": "scene:problems",
+   "topic": "food",
+   "sub": "ordering",
+   "source": "dining/problems"
+  },
+  {
+   "ctx": "scene:rent",
+   "topic": null,
+   "sub": null,
+   "source": "life/rent"
+  },
+  {
+   "ctx": "scene:rentcar",
+   "topic": "travel",
+   "sub": "transport",
+   "source": "travel/rentcar"
+  },
+  {
+   "ctx": "scene:repair",
+   "topic": null,
+   "sub": null,
+   "source": "life/repair"
+  },
+  {
+   "ctx": "scene:reserve",
+   "topic": "food",
+   "sub": "ordering",
+   "source": "dining/reserve"
+  },
+  {
+   "ctx": "scene:roomservice",
+   "topic": "travel",
+   "sub": "lodging",
+   "source": "travel/roomservice"
+  },
+  {
+   "ctx": "scene:schedule",
+   "topic": "meeting",
+   "sub": "general",
+   "source": "work/schedule"
+  },
+  {
+   "ctx": "scene:security",
+   "topic": "travel",
+   "sub": "airport",
+   "source": "travel/security"
+  },
+  {
+   "ctx": "scene:shopping",
+   "topic": null,
+   "sub": null,
+   "source": "companion/shopping"
+  },
+  {
+   "ctx": "scene:sights",
+   "topic": "travel",
+   "sub": "general",
+   "source": "travel/sights"
+  },
+  {
+   "ctx": "scene:smalltalk",
+   "topic": null,
+   "sub": null,
+   "source": "work/smalltalk"
+  },
+  {
+   "ctx": "scene:supermarket",
+   "topic": null,
+   "sub": null,
+   "source": "shopping/supermarket"
+  },
+  {
+   "ctx": "scene:taxi",
+   "topic": "travel",
+   "sub": "transport",
+   "source": "travel/taxi"
+  },
+  {
+   "ctx": "scene:train",
+   "topic": "travel",
+   "sub": "transport",
+   "source": "travel/train"
+  },
+  {
+   "ctx": "scene:trip",
+   "topic": "travel",
+   "sub": "general",
+   "source": "companion/trip"
+  }
+ ],
+ "contextNote": "ctx 與遊戲 Learn.grade 的 ctx 相同（scene:<場景 id>、life:<場景 id>）。生活情境的作答以重點字（w:）記錄，主題由 ctx 判定。"
+}

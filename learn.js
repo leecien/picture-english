@@ -267,7 +267,7 @@ const Learn = (() => {
     mode = mode || pick(["pic", "pic", "listen", "zh"]);
     if (mode === "listen")
       return {
-        kind: "w", recK: "w", item: w,
+        kind: "w", recK: "w", item: w, qtype: "word:listen",
         prompt: `<p class="qz-ask">聽英文，選出對的圖</p>`,
         audio: { text: w.w, file: w.au, label: "再聽一次" }, autoplay: true,
         options: shuf(opts).map((x) => ({ html: `<span class="qz-e big">${pic(x)}</span>`, ok: x === w, label: x.w })),
@@ -275,13 +275,13 @@ const Learn = (() => {
       };
     if (mode === "zh")
       return {
-        kind: "w", recK: "w", item: w,
+        kind: "w", recK: "w", item: w, qtype: "word:zh",
         prompt: `<p class="qz-ask">「${esc(w.z)}」的英文是？</p>`,
         options: shuf(opts).map((x) => ({ html: `<b>${esc(x.w)}</b>`, ok: x === w })),
         answer: wordAns(w), after: true,
       };
     return {
-      kind: "w", recK: "w", item: w,
+      kind: "w", recK: "w", item: w, qtype: "word:pic2word",
       prompt: `<div class="qz-big">${pic(w)}</div><p class="qz-ask">這是哪個英文單字？</p>`,
       options: shuf(opts).map((x) => ({ html: `<b>${esc(x.w)}</b>`, ok: x === w })),
       answer: wordAns(w), after: true,
@@ -295,7 +295,7 @@ const Learn = (() => {
     if (it.b && Math.random() < 0.6) {
       const html = esc(it.en).replace(new RegExp("\\b" + it.b + "\\b"), '<span class="qz-gap">＿＿＿</span>');
       return {
-        kind: "s", recK: "s", item: it,
+        kind: "s", recK: "s", item: it, qtype: "sent:blank",
         prompt: `<div class="qz-big small">${pic(it)}</div><p class="qz-sent">${html}</p><p class="qz-hint">${esc(it.zh)}</p>`,
         options: shuf(dedupe([it.b, ...it.o], (x) => x.toLowerCase())).map((o) => ({ html: `<b>${esc(o)}</b>`, ok: o === it.b })),
         answer: { en: it.en, zh: it.zh, file: it.au }, after: true,
@@ -303,7 +303,7 @@ const Learn = (() => {
     }
     const opts = dedupe([it, ...shuf(SENT.filter((x) => x !== it && lvOk(x)))], (x) => x.en).slice(0, 3);
     return {
-      kind: "s", recK: "s", item: it,
+      kind: "s", recK: "s", item: it, qtype: "scene:zh", // Chinese → choose the English line
       prompt: `<p class="qz-ask">「${esc(it.zh)}」英文怎麼說？</p>`,
       options: shuf(opts).map((x) => ({ html: esc(x.en), ok: x === it, wide: true, zh: x.zh, say: { text: x.en, file: x.au || "" } })),
       answer: { en: it.en, zh: it.zh, file: it.au }, after: true,
@@ -355,7 +355,7 @@ const Learn = (() => {
     const item = { en: it.en, zh: it.zh, q: it.q || "" };
     const listen = opt.mode === "listen" && it.q;
     return {
-      kind: "s", recK: "s", item, cat: catId, scene: sceneId,
+      kind: "s", recK: "s", item, cat: catId, scene: sceneId, qtype: listen ? "scene:listen" : "scene:zh",
       prompt: listen
         ? `<p class="qz-their">🗣️ ${sayHTML(it.q)}</p><p class="qz-ask">你要怎麼回答？</p><details class="qz-cue"><summary>中文提示</summary>${esc(it.zh)}</details>`
         : (it.q ? `<p class="qz-their">🗣️ ${sayHTML(it.q)}</p>` : "") + `<p class="qz-ask">${it.q ? "你想回答" : "你想說"}：「${esc(it.zh)}」</p>`,
@@ -371,7 +371,7 @@ const Learn = (() => {
   /* ---------- grading ---------- */
   function grade(q, ok, src) {
     // Supplement words (novice.js, KK pending review) are practised but never written to the card book or XP.
-    if (q.item && q.item.sup) {
+    if ((q.item && q.item.sup) || q.recK === "g") {
       tally.n++;
       if (ok) tally.ok++;
       tally.items.push({ en: q.item.w, ok, sym: q.sym });
@@ -503,6 +503,7 @@ const Learn = (() => {
       const bs = [...el.querySelectorAll(".qz-o button")];
       let tries = 0;
       const t0 = Date.now();
+      if (typeof Ability !== "undefined") Ability.begin();
       bs.forEach(
         (b) =>
           (b.onclick = () => {
@@ -545,7 +546,7 @@ const Learn = (() => {
             SND.play(ok ? "correct" : "wrong");
             const g = q.reveal === "right-only" && tries ? { fresh: true } : grade(q, ok, opt.src);
             // ability log: the first answer decides (a later right answer after a miss is a retry, not independent)
-            if (typeof Ability !== "undefined") Ability.log(q, { first: tries ? "wrong" : ok ? "right" : "wrong", retry: tries > 0, fresh: g.fresh, ms: Date.now() - t0, ctx: q.ctx || opt.src || "" });
+            if (typeof Ability !== "undefined") Ability.log(q, { result: tries ? "wrong" : ok ? "correct" : "wrong", retries: tries, final: ok ? "correct" : "wrong", ms: Date.now() - t0, ctx: q.ctx || opt.src || "quest" });
             const a = q.answer || {};
             el.querySelector(".qz-f").innerHTML = `<b class="${ok ? "good" : "bad"}">${ok ? (tries ? (q.reveal === "right-only" ? "✓ 這次對了（重試後答對，不算獨立答對）" : "答對了（第二次）") : "✓ 答對了！") : "正確答案"}</b> ${answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${ok && !g.fresh ? "<small>剛剛練過這題，這次不重複計分。</small>" : ""}`;
             if (q.after || !ok || q.kind === "kk") speak(a.en, a.file || "");

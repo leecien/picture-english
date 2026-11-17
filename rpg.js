@@ -597,57 +597,75 @@ const RPG = (() => {
           }),
       );
   }
-  /* ---------- 我的英語能力: answer log → analysis → weak practice (in place) → analysis again ---------- */
-  function abilityPanel() {
+  /* ---------- 我的英語能力: answer → event → analysis → weak practice (in place) → analysis again ---------- */
+  async function abilityPanel() {
     sheet(Ability.panelHTML());
+    if (!Ability.data) await Ability.ready, $("menu").hidden || sheet(Ability.panelHTML());
     $("menu-body")
-      .querySelectorAll(".ab-row[data-k], .ab-sub")
-      .forEach((b) => (b.onclick = () => abilityDetail(b.dataset.k, b.dataset.id, b.dataset.sub || "")));
+      .querySelectorAll(".ab-row[data-k], .ab-sub[data-k]")
+      .forEach((b) => (b.onclick = () => abilityDetail(b.dataset.k, b.dataset.id)));
   }
-  function abilityDetail(kind, id, sub) {
-    sheet(Ability.detailHTML(kind, id, sub));
+  function abilityDetail(kind, id) {
+    sheet(Ability.detailHTML(kind, id));
     $("menu-body").querySelector(".ab-back").onclick = abilityPanel;
     const go = $("menu-body").querySelector(".ab-practice");
-    if (go) go.onclick = () => practiceWeak(kind, id, sub);
+    if (go) go.onclick = () => practiceWeak(kind, id);
   }
-  /* A question for one logged / material item (id "w:apple", "s:<sentence>"), in the skill asked for. */
-  function questionFor(item, skill) {
-    const text = item.id.slice(2),
-      listen = skill === "listen";
-    if (item.id.startsWith("w:")) return Learn.wordQuestion((w) => w.w === text, listen ? "listen" : "pic", "ability");
-    if (item.cat && item.scene) {
-      const sc = Learn.scene(item.cat, item.scene),
-        idx = sc ? sc.items.findIndex((x) => x.en === text) : -1;
-      if (idx >= 0) return Learn.sceneQuestion(item.cat, item.scene, idx, { mode: listen || skill !== "read" ? "listen" : "", ctx: "ability" });
+  /* A question for a logged item id ("g:…", "s:<line>", "w:<word>") inside a sub-topic's scenes. */
+  function questionFor(id, scenes) {
+    const D = Ability.data;
+    if (id.startsWith("g:")) return D && D.byId[id] ? Ability.grammarQuestion(D.byId[id]) : null;
+    const text = id.slice(2);
+    if (id.startsWith("w:")) return Learn.wordQuestion((w) => w.w === text, "pic", "ability");
+    for (const [cat, scene] of scenes) {
+      const sc = Learn.scene(cat, scene),
+        i = sc ? sc.items.findIndex((x) => x.en === text) : -1;
+      if (i >= 0) return Learn.sceneQuestion(cat, scene, i, { mode: "listen", ctx: `scene:${scene}` });
     }
-    if (SENT.some((x) => x.en === text)) return Learn.sentQuestion((x) => x.en === text, "ability");
-    return null;
+    return SENT.some((x) => x.en === text) ? Learn.sentQuestion((x) => x.en === text, "ability") : null;
   }
-  async function practiceWeak(kind, id, sub) {
-    const ctx = sceneContext();
-    // speaking and sentence building have their own places; the world (and the hero's spot) stays as it is
-    if (kind === "skill" && id === "speak") return closeSheet(), openDriveFrom(ctx);
-    if (kind === "skill" && id === "build") return closeSheet(), start("sent", false, "order");
-    let items = Ability.weakItems(kind, id, sub, 5);
-    if (!items.length && kind === "skill") items = Ability.group(kind, id).slice(0, 5).map((r) => ({ id: r.id, cat: r.cat, scene: r.scene }));
-    const qs = items.map((it) => questionFor(it, kind === "skill" ? id : "")).filter(Boolean);
+  /* 練習弱項: grammar → its form-choice items; a sub-topic → its recent errors, its scenes and its grammar items. */
+  async function practiceWeak(kind, id) {
+    await Ability.ready;
+    const p = Ability.profile(),
+      D = Ability.data;
+    let qs = [];
+    if (kind === "grammar") qs = Ability.grammarItems({ target: id }, 5).map((g) => Ability.grammarQuestion(g));
+    else {
+      const [topic, sub] = id.split("/"),
+        scenes = D.contexts.filter((c) => c.topic === topic && c.sub === sub && /^scene:/.test(c.ctx)).map((c) => c.source.split("/"));
+      const errs = [...new Set((p.weak.find((w) => w.kind === "topic" && w.id === id) || { items: [] }).items)];
+      qs = errs.map((x) => questionFor(x, scenes)).filter(Boolean);
+      for (const [cat, scene] of shuffle(scenes.slice())) {
+        if (qs.length >= 3) break;
+        const sc = Learn.scene(cat, scene);
+        if (sc) qs.push(Learn.sceneQuestion(cat, scene, Math.floor(Math.random() * sc.items.length), { mode: "listen", ctx: `scene:${scene}` }));
+      }
+      qs.push(...Ability.grammarItems({ topic, sub }, 5 - qs.length).map((g) => Ability.grammarQuestion(g)));
+    }
+    qs = qs.filter(Boolean).slice(0, 5);
     if (!qs.length) return status("這一項目前沒有可以練的題目。");
     closeSheet();
-    Talk.show({ name: "能力練習", look: LUMI });
+    await quizRound("能力練習", qs, "練習弱項");
+    abilityDetail(kind, id); // back where the player was, with the analysis updated
+  }
+  /* A short round of prepared questions in a dialog, in place (the hero does not move). */
+  async function quizRound(who, qs, title) {
+    Talk.show({ name: who, look: LUMI });
     let first = 0;
     try {
-      await Talk.line("", `練習弱項：${qs.length} 題。先練最近答錯、超時或需要協助的題目；練完回到能力總覽看更新。`);
+      await Talk.line("", `${title}：${qs.length} 題。作答後會顯示正確句子、中文、發音與簡短說明。`);
       for (let i = 0; i < qs.length; i++) {
-        $("dlg-name").dataset.step = `弱項練習 ${i + 1}/${qs.length}`;
+        $("dlg-name").dataset.step = `${title} ${i + 1}/${qs.length}`;
         const r = await Talk.quiz(qs[i]);
         if (r.ok && !r.tries) first++;
       }
       delete $("dlg-name").dataset.step;
-      await Talk.line("", `第一次就答對 ${first} / ${qs.length} 題。`);
+      await Talk.line("", `第一次就答對 ${first} / ${qs.length} 題。結果已記進「我的英語能力」。`);
     } finally {
       Talk.close();
     }
-    abilityDetail(kind, id, sub); // back where the player was, with the analysis updated
+    return first;
   }
   function worldMap() {
     sheet(`<h3>🗺️ 世界地圖</h3><p class="fine">新的冒險從 KK 新手村開始，接著前往風之旅行群島。下方五個主題區域保留原本的任務與進度。</p><div class="map-list">${maps
@@ -2059,10 +2077,12 @@ const RPG = (() => {
     await Talk.line(m.line, esc(m.zh));
     const pick = await Talk.choose("每項任務 10 題，答對 7 題完成，首次完成獎勵 30 XP。", [
       ...["word", "sent"].map((k, i) => ({ label: `${data.cleared.includes(m.id + ":" + k) ? "✅" : "📜"} ${i ? "句子交流" : "主題單字"}`, value: k })),
+      { label: "📝 時態小任務", value: "grammar", sub: "5 題：看情境選正確的形式" },
       { label: "🧺 補給交換", value: "trade" },
       { label: "稍後再聊", value: "bye" },
     ]);
     if (pick === "trade") return tradeDialog();
+    if (pick === "grammar") return grammarQuest(m);
     if (pick !== "word" && pick !== "sent") return;
     const route = SENT.some((s) => s.route === m.route && s.lv <= maxLv()) ? m.route : "daily";
     const make = pick === "word" ? () => Learn.wordQuestion((w) => w.th === m.id) : () => Learn.sentQuestion((s) => s.route === route);
@@ -2079,6 +2099,20 @@ const RPG = (() => {
     const i = legacyIdx(m.id);
     if (i < 4 && legacyUnlocked(i + 1)) toast(LEGACY[i + 1].icon, "新地圖解鎖", LEGACY[i + 1].name, "badge");
     await Talk.line("Thank you so much!", `答對 ${ok}/10 題，任務完成！`);
+  }
+  /* NPC task (teaching first; battles use what was learned later): five grammar form-choice items, from this
+     map's topic when there are some. The tense name is never shown before answering. */
+  async function grammarQuest(m) {
+    await Ability.ready;
+    const topic = { food: "food", transport: "travel" }[m.id];
+    let items = Ability.grammarItems(topic ? { topic } : {}, 5);
+    if (items.length < 5) items = items.concat(Ability.grammarItems({}, 5 - items.length).filter((g) => !items.includes(g)));
+    if (!items.length) return Talk.line("", "時態題目還在準備中。");
+    await Talk.line("Which one sounds right?", `${esc(m.person || "居民")}：「先看情境和時間線索，再選正確的形式。答完我會告訴你為什麼。」`);
+    const first = await quizRound(m.person || "居民", items.map((g) => Ability.grammarQuestion(g, g.ctx)), "時態小任務");
+    Talk.show(null);
+    await Talk.line("Nice work!", first >= 4 ? "看得很準！之後在戰鬥裡也會遇到這些句型。" : "可以從☰「我的英語能力」看哪些形式要再練。");
+    Talk.close();
   }
   async function tradeDialog() {
     for (;;) {
@@ -2326,8 +2360,8 @@ const RPG = (() => {
         const pick = opts[await wait],
           q = { kind: "s", recK: "s", item: { en: it.en, zh: it.zh, q: it.q }, ctx: `companion:${topic}` };
         Learn.track(q);
-        const g = Learn.grade(q, pick.ok, "quest");
-        if (typeof Ability !== "undefined") Ability.log({ ...q, cat: "companion", scene: topic, audio: { text: it.q }, autoplay: true }, { first: pick.ok ? "right" : "wrong", fresh: g.fresh });
+        Learn.grade(q, pick.ok, "quest");
+        if (typeof Ability !== "undefined") Ability.log(q, { result: pick.ok ? "correct" : "wrong", qtype: "scene:listen", ctx: `companion:${topic}` });
         if (pick.ok) {
           ok++;
           SND.play("correct");

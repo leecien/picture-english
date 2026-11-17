@@ -1,0 +1,399 @@
+{
+ "schemaVersion": 1,
+ "version": "lp-v1-batch01",
+ "task": "LEARNING-PROFILE-01",
+ "reviewer": "external-ai",
+ "status": "ai-edited-not-teacher-reviewed",
+ "contentBase": "picture-english e079ef8f426e0f0f7e5794906bda952ea4af1fee",
+ "note": "文法學習地圖：涵蓋現在、過去、未來。v1=true 是第一版優先標記的五個時態；order 是建議學習順序，prereq 是先備。forms 是同一時態的肯定、否定、是非問句、疑問詞問句。",
+ "nodes": [
+  {
+   "id": "tense:present-simple",
+   "zh": "現在簡單式",
+   "time": "present",
+   "order": 1,
+   "v1": true,
+   "prereq": [],
+   "use": "習慣、事實、時刻表、喜好與狀態",
+   "forms": {
+    "affirmative": "S + V / V-s（be：am/is/are）",
+    "negative": "S + don't/doesn't + V",
+    "yes-no-question": "Do/Does + S + V?",
+    "wh-question": "Wh + do/does + S + V?",
+    "examples": [
+     "I need a spoon.",
+     "She doesn't eat meat.",
+     "Does this train go downtown?",
+     "What do you recommend?"
+    ]
+   },
+   "errors": [
+    "第三人稱單數漏 -s",
+    "doesn't 後面又加 -s",
+    "be 動詞和一般動詞並用（I am agree）"
+   ]
+  },
+  {
+   "id": "tense:present-continuous",
+   "zh": "現在進行式",
+   "time": "present",
+   "order": 2,
+   "v1": true,
+   "prereq": [
+    "tense:present-simple"
+   ],
+   "use": "說話當下或這段期間正在做的事",
+   "forms": {
+    "affirmative": "S + am/is/are + V-ing",
+    "negative": "S + am/is/are + not + V-ing",
+    "yes-no-question": "Am/Is/Are + S + V-ing?",
+    "wh-question": "Wh + am/is/are + S + V-ing?",
+    "examples": [
+     "We're still waiting for our food.",
+     "The air conditioner isn't working.",
+     "Are you traveling alone?",
+     "Where are you staying?"
+    ]
+   },
+   "errors": [
+    "漏 be 動詞（I waiting）",
+    "狀態動詞用進行式（I am knowing）"
+   ]
+  },
+  {
+   "id": "tense:present-perfect",
+   "zh": "現在完成式",
+   "time": "present",
+   "order": 7,
+   "v1": false,
+   "prereq": [
+    "tense:past-simple"
+   ],
+   "use": "過去發生、與現在有關；到目前為止的經驗或持續",
+   "forms": {
+    "affirmative": "S + have/has + p.p.",
+    "negative": "S + haven't/hasn't + p.p.",
+    "yes-no-question": "Have/Has + S + p.p.?",
+    "wh-question": "Wh + have/has + S + p.p.?",
+    "examples": [
+     "My suitcase hasn't arrived.",
+     "I've worked here for three years."
+    ]
+   },
+   "errors": [
+    "和明確過去時間連用（I have seen it yesterday）"
+   ]
+  },
+  {
+   "id": "tense:present-perfect-continuous",
+   "zh": "現在完成進行式",
+   "time": "present",
+   "order": 11,
+   "v1": false,
+   "prereq": [
+    "tense:present-perfect",
+    "tense:present-continuous"
+   ],
+   "use": "從過去持續到現在、仍在進行的動作",
+   "forms": {
+    "affirmative": "S + have/has been + V-ing",
+    "negative": "S + haven't/hasn't been + V-ing",
+    "yes-no-question": "Have/Has + S + been + V-ing?",
+    "wh-question": "How long have/has + S + been + V-ing?",
+    "examples": [
+     "She has been working here for ten years."
+    ]
+   },
+   "errors": []
+  },
+  {
+   "id": "tense:past-simple",
+   "zh": "過去簡單式",
+   "time": "past",
+   "order": 3,
+   "v1": true,
+   "prereq": [
+    "tense:present-simple"
+   ],
+   "use": "過去某時間已完成的事",
+   "forms": {
+    "affirmative": "S + V-ed / 不規則過去式（be：was/were）",
+    "negative": "S + didn't + V（原形）",
+    "yes-no-question": "Did + S + V（原形）?",
+    "wh-question": "Wh + did + S + V?",
+    "examples": [
+     "Sales went up last quarter.",
+     "I didn't order this.",
+     "Did you find us easily?",
+     "How was your weekend?"
+    ]
+   },
+   "errors": [
+    "didn't 後面用過去式（didn't went）",
+    "不規則動詞加 -ed（goed）",
+    "漏掉過去式"
+   ]
+  },
+  {
+   "id": "tense:past-continuous",
+   "zh": "過去進行式",
+   "time": "past",
+   "order": 6,
+   "v1": false,
+   "prereq": [
+    "tense:past-simple",
+    "tense:present-continuous"
+   ],
+   "use": "過去某時刻正在進行；被另一件事打斷",
+   "forms": {
+    "affirmative": "S + was/were + V-ing",
+    "negative": "S + wasn't/weren't + V-ing",
+    "yes-no-question": "Was/Were + S + V-ing?",
+    "wh-question": "Wh + was/were + S + V-ing?",
+    "examples": [
+     "I was waiting when the bus came."
+    ]
+   },
+   "errors": []
+  },
+  {
+   "id": "tense:past-perfect",
+   "zh": "過去完成式",
+   "time": "past",
+   "order": 12,
+   "v1": false,
+   "prereq": [
+    "tense:past-simple",
+    "tense:present-perfect"
+   ],
+   "use": "比另一個過去時間更早發生",
+   "forms": {
+    "affirmative": "S + had + p.p.",
+    "negative": "S + hadn't + p.p.",
+    "yes-no-question": "Had + S + p.p.?",
+    "wh-question": "Wh + had + S + p.p.?",
+    "examples": [
+     "The train had already left when we arrived."
+    ]
+   },
+   "errors": []
+  },
+  {
+   "id": "tense:used-to",
+   "zh": "used to（過去習慣）",
+   "time": "past",
+   "order": 10,
+   "v1": false,
+   "prereq": [
+    "tense:past-simple"
+   ],
+   "use": "過去的習慣或狀態，現在已不是",
+   "forms": {
+    "affirmative": "S + used to + V",
+    "negative": "S + didn't use to + V",
+    "yes-no-question": "Did + S + use to + V?",
+    "wh-question": "Wh + did + S + use to + V?",
+    "examples": [
+     "I used to live in Tainan."
+    ]
+   },
+   "errors": [
+    "didn't used to"
+   ]
+  },
+  {
+   "id": "tense:going-to",
+   "zh": "be going to（計畫、跡象）",
+   "time": "future",
+   "order": 4,
+   "v1": true,
+   "prereq": [
+    "tense:present-continuous"
+   ],
+   "use": "已有的計畫；從眼前跡象推測",
+   "forms": {
+    "affirmative": "S + am/is/are going to + V",
+    "negative": "S + am/is/are not going to + V",
+    "yes-no-question": "Am/Is/Are + S + going to + V?",
+    "wh-question": "Wh + am/is/are + S + going to + V?",
+    "examples": [
+     "We are going to fly to Japan tomorrow.",
+     "It looks like it's going to rain."
+    ]
+   },
+   "errors": [
+    "漏 be 動詞（I going to）",
+    "going to 後面用 V-ing",
+    "和現在進行式『going to the airport（去機場）』混淆"
+   ]
+  },
+  {
+   "id": "tense:will",
+   "zh": "will（決定、承諾、預測）",
+   "time": "future",
+   "order": 5,
+   "v1": true,
+   "prereq": [
+    "tense:present-simple"
+   ],
+   "use": "當下決定、承諾、提議與一般預測",
+   "forms": {
+    "affirmative": "S + will ('ll) + V",
+    "negative": "S + won't + V",
+    "yes-no-question": "Will + S + V?",
+    "wh-question": "Wh + will + S + V?",
+    "examples": [
+     "I'll have the same.",
+     "I'll get back to you by Friday.",
+     "How long will it take?"
+    ]
+   },
+   "errors": [
+    "will 後面加 to 或 -s（will to go / will goes）"
+   ]
+  },
+  {
+   "id": "tense:present-continuous-future",
+   "zh": "現在進行式表未來（已安排）",
+   "time": "future",
+   "order": 8,
+   "v1": false,
+   "prereq": [
+    "tense:present-continuous",
+    "tense:going-to"
+   ],
+   "use": "已排定的個人安排",
+   "forms": {
+    "affirmative": "S + am/is/are + V-ing + 未來時間",
+    "negative": "S + am/is/are not + V-ing",
+    "yes-no-question": "Am/Is/Are + S + V-ing?",
+    "wh-question": "Wh + am/is/are + S + V-ing?",
+    "examples": [
+     "I'm flying to Tokyo.",
+     "We're meeting the client on Monday."
+    ]
+   },
+   "errors": []
+  },
+  {
+   "id": "tense:present-simple-timetable",
+   "zh": "現在簡單式表時刻表未來",
+   "time": "future",
+   "order": 9,
+   "v1": false,
+   "prereq": [
+    "tense:present-simple"
+   ],
+   "use": "班表、時刻表上的未來事件",
+   "forms": {
+    "affirmative": "S + V-s + 未來時間",
+    "negative": "S + doesn't + V",
+    "yes-no-question": "Does/Do + S + V?",
+    "wh-question": "What time does + S + V?",
+    "examples": [
+     "The train leaves at seven."
+    ]
+   },
+   "errors": []
+  },
+  {
+   "id": "tense:future-continuous",
+   "zh": "未來進行式",
+   "time": "future",
+   "order": 13,
+   "v1": false,
+   "prereq": [
+    "tense:will",
+    "tense:present-continuous"
+   ],
+   "use": "未來某時刻正在進行",
+   "forms": {
+    "affirmative": "S + will be + V-ing",
+    "negative": "S + won't be + V-ing",
+    "yes-no-question": "Will + S + be + V-ing?",
+    "wh-question": "Wh + will + S + be + V-ing?",
+    "examples": [
+     "I'll be waiting at the gate."
+    ]
+   },
+   "errors": []
+  },
+  {
+   "id": "tense:future-perfect",
+   "zh": "未來完成式",
+   "time": "future",
+   "order": 14,
+   "v1": false,
+   "prereq": [
+    "tense:will",
+    "tense:present-perfect"
+   ],
+   "use": "未來某時間之前會完成",
+   "forms": {
+    "affirmative": "S + will have + p.p.",
+    "negative": "S + won't have + p.p.",
+    "yes-no-question": "Will + S + have + p.p.?",
+    "wh-question": "Wh + will + S + have + p.p.?",
+    "examples": [
+     "I'll have finished the report by Friday."
+    ]
+   },
+   "errors": []
+  }
+ ],
+ "forms": [
+  {
+   "id": "form:negative",
+   "zh": "否定句",
+   "applies": "每個時態都有自己的否定寫法（見各時態 forms.negative）"
+  },
+  {
+   "id": "form:yes-no-question",
+   "zh": "是非問句",
+   "applies": "助動詞／be 移到主詞前"
+  },
+  {
+   "id": "form:wh-question",
+   "zh": "疑問詞問句",
+   "applies": "疑問詞＋助動詞／be＋主詞"
+  }
+ ],
+ "support": [
+  {
+   "id": "support:modal",
+   "zh": "情態助動詞（can / could / may / should / must）"
+  },
+  {
+   "id": "support:would-like",
+   "zh": "would like（禮貌請求）"
+  },
+  {
+   "id": "support:would",
+   "zh": "would（條件、轉述）"
+  },
+  {
+   "id": "support:lets",
+   "zh": "Let's（提議）"
+  },
+  {
+   "id": "support:imperative",
+   "zh": "祈使句"
+  },
+  {
+   "id": "support:there-be",
+   "zh": "there is / are"
+  },
+  {
+   "id": "support:passive",
+   "zh": "被動語態"
+  },
+  {
+   "id": "support:conditional",
+   "zh": "條件句"
+  },
+  {
+   "id": "support:fragment",
+   "zh": "省略句／短回答（沒有完整動詞）"
+  }
+ ]
+}

@@ -779,7 +779,7 @@ function done(ok,info){
   }
   if(info.rec)record(info.rec);
   // ability log: sentence ordering is 句子組合, the other practice kinds are 閱讀辨識
-  if(info.rec&&info.rec[0]&&typeof Ability!=='undefined'){const t=S.plan[S.i]||{},r0=info.rec[0];Ability.log({recK:r0.k,item:r0.it},{first:ok?'right':'wrong',skill:t.id==='order'?'build':'read',type:t.id||'',ctx:'practice'})}
+  if(info.rec&&info.rec[0]&&typeof Ability!=='undefined'){const t=S.plan[S.i]||{},r0=info.rec[0],kind=TYPES.word.some(x=>x.id===t.id)&&!TYPES.sent.some(x=>x.id===t.id)?'word':r0.k==='w'?'word':'sent';Ability.log({recK:r0.k,item:r0.it},{result:ok?'correct':'wrong',qtype:kind+':'+t.id,ctx:'practice:'+(S.mode||'')})}
   if(S.i===4&&!S.pl)toast('🎯','過一半了',`這回合前 5 題答對 ${S.score} 題，已累積 ${S.gain} 分`);
   const sh=$('sheet');sh.classList.toggle('no',!ok);
   $('verdict').textContent=ok?(S.streak>=3?`答對了！連對 ${S.streak} 題`:'答對了！'):'再記一下這個';
@@ -1190,7 +1190,7 @@ async function answerItem(it,kind,alive){
     record([{k:useS?'s':'w',it,ok}]);
     Learn.note(useS?'s':'w',it,ok,'commute');
     // 獨立口說: only whether the speech-to-text matched the target, never grammar or pronunciation
-    if(typeof Ability!=='undefined')Ability.log({recK:useS?'s':'w',item:it},{first:ok?'right':'wrong',skill:'speak',type:'answer',speech:ok?'文字吻合':'文字不吻合',ctx:'commute'});
+    if(typeof Ability!=='undefined')Ability.log({recK:useS?'s':'w',item:it},{result:ok?'correct':'wrong',qtype:'drive:speak',sr:{matched:!!ok},ctx:'drive:commute'});
   }
   return ok?'pass':'done'}
 /* 跟讀練習: demo → you repeat → word-by-word feedback. Correction first, no countdown: a miss replays the demo,
@@ -1264,7 +1264,8 @@ async function readStep(alive){
   if(ok!==null){
     D.seen++;D.segSeen++;if(ok){D.ok++;D.segOk++;P.correct++;P[useS?'s':'w']++;addXP(10);award('first')}
     record([{k:useS?'s':'w',it,ok}]);Learn.note(useS?'s':'w',it,ok,'read');
-    if(typeof Ability!=='undefined')Ability.log({recK:useS?'s':'w',item:it},{first:ok?'right':'wrong',skill:'speak',type:'read-aloud',speech:ok?'文字吻合':'文字不吻合',ctx:'read'});
+    // reading aloud: the English was on screen before speaking (revealed), so it is practice, not independent evidence
+    if(typeof Ability!=='undefined')Ability.log({recK:useS?'s':'w',item:it},{result:ok?'correct':'wrong',qtype:'drive:speak',sr:{matched:!!ok},revealed:true,ctx:'drive:read'});
   }
   D.readQ.shift();D.readDone.push({ok:!!ok});D.cur=null;driveStats();
   await gap(900);return'done'}
@@ -1453,6 +1454,7 @@ $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 <script src="world.js"></script>
 <script src="battle.js"></script>
 <script src="learn.js"></script>
+<script src="modules/learning-profile/profile.js"></script>
 <script src="ability.js"></script>
 <script src="novice.js"></script>
 <script src="lifescene.js"></script>
