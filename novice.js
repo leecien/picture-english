@@ -340,9 +340,10 @@ const Novice = (() => {
       it = word(w),
       inWord = new Set(kkSounds(it.kk)),
       // a distractor must be wrong: for "has", it may not be in the word at all
-      ok = (x) => x !== sym && (place !== "has" || !inWord.has(x)),
+      merged = mergerAvoid(it.kk),
+      ok = (x) => x !== sym && (place !== "has" || !inWord.has(x)) && !merged.has(x),
       others = shuf(taught.filter(ok)),
-      partner = opt.partnerOnly || PARTNER[sym],
+      partner = opt.partnerOnly && !merged.has(opt.partnerOnly) ? opt.partnerOnly : PARTNER[sym],
       choices = [sym, ...(others.includes(partner) ? [partner, ...others.filter((x) => x !== partner)] : others)].slice(0, 3);
     if (choices.length < 2) return null;
     return {
@@ -365,6 +366,16 @@ const Novice = (() => {
         return ks.length >= 2 && ks.every((x) => T.has(x)) && (!need || ks.some((x) => need.includes(x)));
       })
       .map((w) => w.w);
+  }
+  /* cot–caught merger (B-KK-DATA-01): many Americans say /ɔ/ (not before r: dog, ball, saw, water) close to /ɑ/.
+     Such a word never gets /ɑ/ as a wrong option, and a word with /ɑ/ never gets /ɔ/ (a merged voice could
+     make both sound right). /ɔ/ before r (horse, passport) is stable and unaffected. */
+  function mergerAvoid(kk) {
+    const k = String(kk || "").replace(/[\[\]ˋˏ]/g, ""),
+      out = new Set();
+    if (/ɔ(?!r|ɪ)/.test(k)) out.add("ɑ");
+    if (/ɑ/.test(k)) out.add("ɔ");
+    return out;
   }
   /* Listen to a word, pick its stressed syllable (N12): the KK is shown only after answering. */
   function stressQuestion(opt = {}) {
@@ -458,6 +469,6 @@ const Novice = (() => {
     return out;
   }
   const chapterOf = (sym) => CHAPTERS.find((c) => c.sounds.includes(sym));
-  return { CHAPTERS, VOWELS, SOUNDS, WORDS_SPLIT, POOL, PLACES, PLAN_EXAMPLES, MATCH, BUILDS, PLAN, SUPPLEMENT, PARTNER, N12_MATCH, soundQuestion, stressQuestion, secondaryQuestion, kkQuestion, fullWords, autoPool, splitHTML, breakdownHTML, kkSounds, chapterOf, word, ALL41 };
+  return { CHAPTERS, VOWELS, SOUNDS, WORDS_SPLIT, POOL, PLACES, PLAN_EXAMPLES, MATCH, BUILDS, PLAN, SUPPLEMENT, PARTNER, N12_MATCH, mergerAvoid, soundQuestion, stressQuestion, secondaryQuestion, kkQuestion, fullWords, autoPool, splitHTML, breakdownHTML, kkSounds, chapterOf, word, ALL41 };
 })();
 if (typeof module !== "undefined") module.exports = Novice;

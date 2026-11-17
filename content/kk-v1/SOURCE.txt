@@ -1,0 +1,1 @@
+kk-data-batch-01.zip (returns/external/B-KK-DATA-01/batch-01, 2026-11-17) sha256 14b2db05b015102ade8197306b60c35858e994a19a2052a17cb3d824e7f638a3 — trial integration (revision 9: approved for trial; formal teaching use needs the validator and content evidence below)

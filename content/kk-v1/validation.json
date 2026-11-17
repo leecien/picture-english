@@ -1,0 +1,41 @@
+{
+ "validator": "kk-validate.cjs (B-KK-DATA-01)",
+ "checkedAt": "2026-11-17T15:54:00.668Z",
+ "crossChecked": [
+  "novice.js CHAPTERS / VOWELS",
+  "data/words.json (original 80)",
+  "assets/voice/words"
+ ],
+ "pass": true,
+ "counts": {
+  "sounds": 41,
+  "vowels": 17,
+  "consonants": 24,
+  "soundsAccepted": 41,
+  "soundsNeedsReview": 0,
+  "words": 189,
+  "wordsReviewed": 187,
+  "wordsNeedsReview": [
+   "with",
+   "usually"
+  ],
+  "wordsWithRecording": 52,
+  "matches": 108,
+  "fullBuildsPerChapter": {
+   "N01": 2,
+   "N02": 4,
+   "N03": 8,
+   "N04": 10,
+   "N05": 8,
+   "N06": 10,
+   "N07": 10,
+   "N08": 10,
+   "N09": 15,
+   "N10": 10,
+   "N11": 11
+  },
+  "positionQuestions": 520
+ },
+ "errors": [],
+ "warnings": []
+}

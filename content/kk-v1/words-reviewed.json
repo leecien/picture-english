@@ -1,0 +1,12137 @@
+{
+ "schemaVersion": 1,
+ "task": "B-KK-DATA-01",
+ "baseRef": "fbfb7f958ad5eb3762a43a7777d60c0645f09f47",
+ "reviewer": "external-ai",
+ "status": "ai-edited-not-teacher-reviewed",
+ "note": "AI 教材編輯，非真人教師審核、非真人錄音。KK 為本遊戲傳統美式 KK（/e/、/o/ 記法；字尾 -y 記 /ɪ/），不從 ECDICT 英式音標轉換。",
+ "places": {
+  "first": "開頭",
+  "last": "結尾",
+  "vowel": "母音（只用在只有一個母音的字）"
+ },
+ "counts": {
+  "words": 189,
+  "reviewed": 187,
+  "needsReview": 2,
+  "recorded": 52
+ },
+ "words": [
+  {
+   "id": "kk-word:cat",
+   "word": "cat",
+   "zh": "貓",
+   "kk": "[kæt]",
+   "sounds": [
+    "k",
+    "æ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "cat"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "t",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "k",
+    "æ",
+    "t"
+   ],
+   "readyChapter": "N01",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/cat.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:key",
+   "word": "key",
+   "zh": "鑰匙",
+   "kk": "[ki]",
+   "sounds": [
+    "k",
+    "i"
+   ],
+   "chunks": [
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "ey",
+     "soundTokens": [
+      "i"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "key"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "i",
+    "vowel": "i"
+   },
+   "uniqueSounds": [
+    "k",
+    "i"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/key.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:cake",
+   "word": "cake",
+   "zh": "蛋糕",
+   "kk": "[kek]",
+   "sounds": [
+    "k",
+    "e",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "cake"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "k",
+    "vowel": "e"
+   },
+   "uniqueSounds": [
+    "e"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/cake.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:map",
+   "word": "map",
+   "zh": "地圖",
+   "kk": "[mæp]",
+   "sounds": [
+    "m",
+    "æ",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "map"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "p",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "m",
+    "æ",
+    "p"
+   ],
+   "readyChapter": "N03",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/map.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:hat",
+   "word": "hat",
+   "zh": "帽子",
+   "kk": "[hæt]",
+   "sounds": [
+    "h",
+    "æ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "hat"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "t",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "h",
+    "æ",
+    "t"
+   ],
+   "readyChapter": "N03",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/hat.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:tree",
+   "word": "tree",
+   "zh": "樹",
+   "kk": "[tri]",
+   "sounds": [
+    "t",
+    "r",
+    "i"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "ee",
+     "soundTokens": [
+      "i"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "tree"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "i",
+    "vowel": "i"
+   },
+   "uniqueSounds": [
+    "t",
+    "r",
+    "i"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/tree.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:moon",
+   "word": "moon",
+   "zh": "月亮",
+   "kk": "[mun]",
+   "sounds": [
+    "m",
+    "u",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "oo",
+     "soundTokens": [
+      "u"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "moon"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "n",
+    "vowel": "u"
+   },
+   "uniqueSounds": [
+    "m",
+    "u",
+    "n"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/moon.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:milk",
+   "word": "milk",
+   "zh": "牛奶",
+   "kk": "[mɪlk]",
+   "sounds": [
+    "m",
+    "ɪ",
+    "l",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "milk"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "k",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "m",
+    "ɪ",
+    "l",
+    "k"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/milk.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:sun",
+   "word": "sun",
+   "zh": "太陽",
+   "kk": "[sʌn]",
+   "sounds": [
+    "s",
+    "ʌ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "sun"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "n",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "s",
+    "ʌ",
+    "n"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/sun.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:rain",
+   "word": "rain",
+   "zh": "雨",
+   "kk": "[ren]",
+   "sounds": [
+    "r",
+    "e",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "ai",
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "rain"
+    ]
+   },
+   "positions": {
+    "first": "r",
+    "last": "n",
+    "vowel": "e"
+   },
+   "uniqueSounds": [
+    "r",
+    "e",
+    "n"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/rain.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:bus",
+   "word": "bus",
+   "zh": "公車",
+   "kk": "[bʌs]",
+   "sounds": [
+    "b",
+    "ʌ",
+    "s"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "bus"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "s",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "b",
+    "ʌ",
+    "s"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/bus.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:star",
+   "word": "star",
+   "zh": "星星",
+   "kk": "[stɑr]",
+   "sounds": [
+    "s",
+    "t",
+    "ɑ",
+    "r"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "star"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "r",
+    "vowel": "ɑ"
+   },
+   "uniqueSounds": [
+    "s",
+    "t",
+    "ɑ",
+    "r"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/star.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:fish",
+   "word": "fish",
+   "zh": "魚",
+   "kk": "[fɪʃ]",
+   "sounds": [
+    "f",
+    "ɪ",
+    "ʃ"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "sh",
+     "soundTokens": [
+      "ʃ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "fish"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "ʃ",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "f",
+    "ɪ",
+    "ʃ"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/fish.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:phone",
+   "word": "phone",
+   "zh": "手機",
+   "kk": "[fon]",
+   "sounds": [
+    "f",
+    "o",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "ph",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "phone"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "n",
+    "vowel": "o"
+   },
+   "uniqueSounds": [
+    "f",
+    "o",
+    "n"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/phone.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:frog",
+   "word": "frog",
+   "zh": "青蛙",
+   "kk": "[frɑg]",
+   "sounds": [
+    "f",
+    "r",
+    "ɑ",
+    "g"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "frog"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "g",
+    "vowel": "ɑ"
+   },
+   "uniqueSounds": [
+    "f",
+    "r",
+    "ɑ",
+    "g"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/frog.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:book",
+   "word": "book",
+   "zh": "書",
+   "kk": "[bʊk]",
+   "sounds": [
+    "b",
+    "ʊ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "oo",
+     "soundTokens": [
+      "ʊ"
+     ]
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "book"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "k",
+    "vowel": "ʊ"
+   },
+   "uniqueSounds": [
+    "b",
+    "ʊ",
+    "k"
+   ],
+   "readyChapter": "N05",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/book.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:dog",
+   "word": "dog",
+   "zh": "狗",
+   "kk": "[dɔg]",
+   "sounds": [
+    "d",
+    "ɔ",
+    "g"
+   ],
+   "chunks": [
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɔ"
+     ]
+    },
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "dog"
+    ]
+   },
+   "positions": {
+    "first": "d",
+    "last": "g",
+    "vowel": "ɔ"
+   },
+   "uniqueSounds": [
+    "d",
+    "ɔ",
+    "g"
+   ],
+   "readyChapter": "N05",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/dog.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)",
+   "avoidDistractors": [
+    "ɑ"
+   ],
+   "accentNote": "美式口音差異：不少美國人（cot–caught 合流）把這個字的 /ɔ/ 念成接近 /ɑ/。本遊戲 KK 依傳統記為 /ɔ/；裝置整字朗讀若聽起來像 /ɑ/ 屬口音差異，題目不要把 /ɑ/ 當成干擾選項，也不要判玩家錯。"
+  },
+  {
+   "id": "kk-word:bird",
+   "word": "bird",
+   "zh": "鳥",
+   "kk": "[bɝd]",
+   "sounds": [
+    "b",
+    "ɝ",
+    "d"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "ir",
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "bird"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "d",
+    "vowel": "ɝ"
+   },
+   "uniqueSounds": [
+    "b",
+    "ɝ",
+    "d"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/bird.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:gift",
+   "word": "gift",
+   "zh": "禮物",
+   "kk": "[gɪft]",
+   "sounds": [
+    "g",
+    "ɪ",
+    "f",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "gift"
+    ]
+   },
+   "positions": {
+    "first": "g",
+    "last": "t",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "g",
+    "ɪ",
+    "f",
+    "t"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/gift.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:house",
+   "word": "house",
+   "zh": "房子",
+   "kk": "[haʊs]",
+   "sounds": [
+    "h",
+    "aʊ",
+    "s"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "ou",
+     "soundTokens": [
+      "aʊ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "house"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "s",
+    "vowel": "aʊ"
+   },
+   "uniqueSounds": [
+    "h",
+    "aʊ",
+    "s"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/house.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:lemon",
+   "word": "lemon",
+   "zh": "檸檬",
+   "kk": "[ˋlɛmən]",
+   "sounds": [
+    "l",
+    "ɛ",
+    "m",
+    "ə",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "lem",
+     "on"
+    ]
+   },
+   "positions": {
+    "first": "l",
+    "last": "n",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "l",
+    "ɛ",
+    "m",
+    "ə",
+    "n"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/lemon.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:ball",
+   "word": "ball",
+   "zh": "球",
+   "kk": "[bɔl]",
+   "sounds": [
+    "b",
+    "ɔ",
+    "l"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ɔ"
+     ]
+    },
+    {
+     "text": "ll",
+     "soundTokens": [
+      "l"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "ball"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "l",
+    "vowel": "ɔ"
+   },
+   "uniqueSounds": [
+    "b",
+    "ɔ",
+    "l"
+   ],
+   "readyChapter": "N05",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/ball.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)",
+   "avoidDistractors": [
+    "ɑ"
+   ],
+   "accentNote": "美式口音差異：不少美國人（cot–caught 合流）把這個字的 /ɔ/ 念成接近 /ɑ/。本遊戲 KK 依傳統記為 /ɔ/；裝置整字朗讀若聽起來像 /ɑ/ 屬口音差異，題目不要把 /ɑ/ 當成干擾選項，也不要判玩家錯。"
+  },
+  {
+   "id": "kk-word:egg",
+   "word": "egg",
+   "zh": "蛋",
+   "kk": "[ɛg]",
+   "sounds": [
+    "ɛ",
+    "g"
+   ],
+   "chunks": [
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "gg",
+     "soundTokens": [
+      "g"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "egg"
+    ]
+   },
+   "positions": {
+    "first": "ɛ",
+    "last": "g",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "ɛ",
+    "g"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/egg.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:bread",
+   "word": "bread",
+   "zh": "麵包",
+   "kk": "[brɛd]",
+   "sounds": [
+    "b",
+    "r",
+    "ɛ",
+    "d"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "ea",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "bread"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "d",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "b",
+    "r",
+    "ɛ",
+    "d"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/bread.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:clock",
+   "word": "clock",
+   "zh": "時鐘",
+   "kk": "[klɑk]",
+   "sounds": [
+    "k",
+    "l",
+    "ɑ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "ck",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "clock"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "k",
+    "vowel": "ɑ"
+   },
+   "uniqueSounds": [
+    "l",
+    "ɑ"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/clock.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:car",
+   "word": "car",
+   "zh": "汽車",
+   "kk": "[kɑr]",
+   "sounds": [
+    "k",
+    "ɑ",
+    "r"
+   ],
+   "chunks": [
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "car"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "r",
+    "vowel": "ɑ"
+   },
+   "uniqueSounds": [
+    "k",
+    "ɑ",
+    "r"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/car.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:horse",
+   "word": "horse",
+   "zh": "馬",
+   "kk": "[hɔrs]",
+   "sounds": [
+    "h",
+    "ɔ",
+    "r",
+    "s"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɔ"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "horse"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "s",
+    "vowel": "ɔ"
+   },
+   "uniqueSounds": [
+    "h",
+    "ɔ",
+    "r",
+    "s"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/horse.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)",
+   "note": "/ɔr/ 在 r 前，美式不受 /ɑ/–/ɔ/ 合流影響。"
+  },
+  {
+   "id": "kk-word:shoe",
+   "word": "shoe",
+   "zh": "鞋子",
+   "kk": "[ʃu]",
+   "sounds": [
+    "ʃ",
+    "u"
+   ],
+   "chunks": [
+    {
+     "text": "sh",
+     "soundTokens": [
+      "ʃ"
+     ]
+    },
+    {
+     "text": "oe",
+     "soundTokens": [
+      "u"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "shoe"
+    ]
+   },
+   "positions": {
+    "first": "ʃ",
+    "last": "u",
+    "vowel": "u"
+   },
+   "uniqueSounds": [
+    "ʃ",
+    "u"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/shoe.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:grape",
+   "word": "grape",
+   "zh": "葡萄",
+   "kk": "[grep]",
+   "sounds": [
+    "g",
+    "r",
+    "e",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "grape"
+    ]
+   },
+   "positions": {
+    "first": "g",
+    "last": "p",
+    "vowel": "e"
+   },
+   "uniqueSounds": [
+    "g",
+    "r",
+    "e",
+    "p"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/grape.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:cheese",
+   "word": "cheese",
+   "zh": "起司",
+   "kk": "[tʃiz]",
+   "sounds": [
+    "tʃ",
+    "i",
+    "z"
+   ],
+   "chunks": [
+    {
+     "text": "ch",
+     "soundTokens": [
+      "tʃ"
+     ]
+    },
+    {
+     "text": "ee",
+     "soundTokens": [
+      "i"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "z"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "cheese"
+    ]
+   },
+   "positions": {
+    "first": "tʃ",
+    "last": "z",
+    "vowel": "i"
+   },
+   "uniqueSounds": [
+    "tʃ",
+    "i",
+    "z"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/cheese.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:chair",
+   "word": "chair",
+   "zh": "椅子",
+   "kk": "[tʃɛr]",
+   "sounds": [
+    "tʃ",
+    "ɛ",
+    "r"
+   ],
+   "chunks": [
+    {
+     "text": "ch",
+     "soundTokens": [
+      "tʃ"
+     ]
+    },
+    {
+     "text": "ai",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "chair"
+    ]
+   },
+   "positions": {
+    "first": "tʃ",
+    "last": "r",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "tʃ",
+    "ɛ",
+    "r"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/chair.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)",
+   "note": "/ɛr/ 帶 r 音色，不拿來當 /ɛ/ 的辨認題。"
+  },
+  {
+   "id": "kk-word:bridge",
+   "word": "bridge",
+   "zh": "橋",
+   "kk": "[brɪdʒ]",
+   "sounds": [
+    "b",
+    "r",
+    "ɪ",
+    "dʒ"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "dge",
+     "soundTokens": [
+      "dʒ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "bridge"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "dʒ",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "b",
+    "r",
+    "ɪ",
+    "dʒ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/bridge.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:bank",
+   "word": "bank",
+   "zh": "銀行",
+   "kk": "[bæŋk]",
+   "sounds": [
+    "b",
+    "æ",
+    "ŋ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "ŋ"
+     ]
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "bank"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "k",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "b",
+    "æ",
+    "ŋ",
+    "k"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/bank.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:cucumber",
+   "word": "cucumber",
+   "zh": "小黃瓜",
+   "kk": "[ˋkjukʌmbɚ]",
+   "sounds": [
+    "k",
+    "j",
+    "u",
+    "k",
+    "ʌ",
+    "m",
+    "b",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "j",
+      "u"
+     ]
+    },
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 3,
+    "stress": 1,
+    "spelling": [
+     "cu",
+     "cum",
+     "ber"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "j",
+    "u",
+    "ʌ",
+    "m",
+    "b",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/cucumber.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:bike",
+   "word": "bike",
+   "zh": "腳踏車",
+   "kk": "[baɪk]",
+   "sounds": [
+    "b",
+    "aɪ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "aɪ"
+     ]
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "bike"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "k",
+    "vowel": "aɪ"
+   },
+   "uniqueSounds": [
+    "b",
+    "aɪ",
+    "k"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/bike.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:tiger",
+   "word": "tiger",
+   "zh": "老虎",
+   "kk": "[ˋtaɪgɚ]",
+   "sounds": [
+    "t",
+    "aɪ",
+    "g",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "aɪ"
+     ]
+    },
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "ti",
+     "ger"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "t",
+    "aɪ",
+    "g",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/tiger.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:flower",
+   "word": "flower",
+   "zh": "花",
+   "kk": "[ˋflaʊɚ]",
+   "sounds": [
+    "f",
+    "l",
+    "aʊ",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "ow",
+     "soundTokens": [
+      "aʊ"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "flow",
+     "er"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "f",
+    "l",
+    "aʊ",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/flower.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:banana",
+   "word": "banana",
+   "zh": "香蕉",
+   "kk": "[bəˋnænə]",
+   "sounds": [
+    "b",
+    "ə",
+    "n",
+    "æ",
+    "n",
+    "ə"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ə"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 3,
+    "stress": 2,
+    "spelling": [
+     "ba",
+     "nan",
+     "a"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "ə",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "b",
+    "æ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/banana.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:elephant",
+   "word": "elephant",
+   "zh": "大象",
+   "kk": "[ˋɛləfənt]",
+   "sounds": [
+    "ɛ",
+    "l",
+    "ə",
+    "f",
+    "ə",
+    "n",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "ph",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 3,
+    "stress": 1,
+    "spelling": [
+     "el",
+     "e",
+     "phant"
+    ]
+   },
+   "positions": {
+    "first": "ɛ",
+    "last": "t",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "ɛ",
+    "l",
+    "f",
+    "n",
+    "t"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/elephant.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:doctor",
+   "word": "doctor",
+   "zh": "醫生",
+   "kk": "[ˋdɑktɚ]",
+   "sounds": [
+    "d",
+    "ɑ",
+    "k",
+    "t",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "or",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "doc",
+     "tor"
+    ]
+   },
+   "positions": {
+    "first": "d",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "d",
+    "ɑ",
+    "k",
+    "t",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/doctor.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:ladder",
+   "word": "ladder",
+   "zh": "梯子",
+   "kk": "[ˋlædɚ]",
+   "sounds": [
+    "l",
+    "æ",
+    "d",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "dd",
+     "soundTokens": [
+      "d"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "lad",
+     "der"
+    ]
+   },
+   "positions": {
+    "first": "l",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "l",
+    "æ",
+    "d",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/ladder.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:passport",
+   "word": "passport",
+   "zh": "護照",
+   "kk": "[ˋpæsˏpɔrt]",
+   "sounds": [
+    "p",
+    "æ",
+    "s",
+    "p",
+    "ɔ",
+    "r",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "ss",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɔ"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "pass",
+     "port"
+    ]
+   },
+   "positions": {
+    "first": "p",
+    "last": "t",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "æ",
+    "s",
+    "ɔ",
+    "r",
+    "t"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/passport.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:volcano",
+   "word": "volcano",
+   "zh": "火山",
+   "kk": "[vɑlˋkeno]",
+   "sounds": [
+    "v",
+    "ɑ",
+    "l",
+    "k",
+    "e",
+    "n",
+    "o"
+   ],
+   "chunks": [
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 3,
+    "stress": 2,
+    "spelling": [
+     "vol",
+     "ca",
+     "no"
+    ]
+   },
+   "positions": {
+    "first": "v",
+    "last": "o",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "v",
+    "ɑ",
+    "l",
+    "k",
+    "e",
+    "n",
+    "o"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/volcano.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:thermometer",
+   "word": "thermometer",
+   "zh": "溫度計",
+   "kk": "[θɚˋmɑmətɚ]",
+   "sounds": [
+    "θ",
+    "ɚ",
+    "m",
+    "ɑ",
+    "m",
+    "ə",
+    "t",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "th",
+     "soundTokens": [
+      "θ"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 4,
+    "stress": 2,
+    "spelling": [
+     "ther",
+     "mom",
+     "e",
+     "ter"
+    ]
+   },
+   "positions": {
+    "first": "θ",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "θ",
+    "ɑ",
+    "ə",
+    "t"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/thermometer.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:stethoscope",
+   "word": "stethoscope",
+   "zh": "聽診器",
+   "kk": "[ˋstɛθəˏskop]",
+   "sounds": [
+    "s",
+    "t",
+    "ɛ",
+    "θ",
+    "ə",
+    "s",
+    "k",
+    "o",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "th",
+     "soundTokens": [
+      "θ"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 3,
+    "stress": 1,
+    "spelling": [
+     "steth",
+     "o",
+     "scope"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "p",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "t",
+    "ɛ",
+    "θ",
+    "ə",
+    "k",
+    "o",
+    "p"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/stethoscope.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:squirrel",
+   "word": "squirrel",
+   "zh": "松鼠",
+   "kk": "[ˋskwɝəl]",
+   "sounds": [
+    "s",
+    "k",
+    "w",
+    "ɝ",
+    "ə",
+    "l"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "qu",
+     "soundTokens": [
+      "k",
+      "w"
+     ]
+    },
+    {
+     "text": "irr",
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "squir",
+     "rel"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "l",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "s",
+    "k",
+    "w",
+    "ɝ",
+    "ə",
+    "l"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/squirrel.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)",
+   "note": "qu 是 /k w/ 兩個音；irr 合起來念 /ɝ/。"
+  },
+  {
+   "id": "kk-word:mushroom",
+   "word": "mushroom",
+   "zh": "蘑菇",
+   "kk": "[ˋmʌʃrʊm]",
+   "sounds": [
+    "m",
+    "ʌ",
+    "ʃ",
+    "r",
+    "ʊ",
+    "m"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "sh",
+     "soundTokens": [
+      "ʃ"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "oo",
+     "soundTokens": [
+      "ʊ"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "mush",
+     "room"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "m",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "ʌ",
+    "ʃ",
+    "r",
+    "ʊ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/mushroom.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:headphones",
+   "word": "headphones",
+   "zh": "耳機",
+   "kk": "[ˋhɛdˏfonz]",
+   "sounds": [
+    "h",
+    "ɛ",
+    "d",
+    "f",
+    "o",
+    "n",
+    "z"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "ea",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    },
+    {
+     "text": "ph",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "z"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "head",
+     "phones"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "z",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "h",
+    "ɛ",
+    "d",
+    "f",
+    "o",
+    "n",
+    "z"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/headphones.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:hedgehog",
+   "word": "hedgehog",
+   "zh": "刺蝟",
+   "kk": "[ˋhɛdʒˏhɑg]",
+   "sounds": [
+    "h",
+    "ɛ",
+    "dʒ",
+    "h",
+    "ɑ",
+    "g"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "dge",
+     "soundTokens": [
+      "dʒ"
+     ]
+    },
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "hedge",
+     "hog"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "g",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "ɛ",
+    "dʒ",
+    "ɑ",
+    "g"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/hedgehog.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:flamingo",
+   "word": "flamingo",
+   "zh": "紅鶴",
+   "kk": "[fləˋmɪŋgo]",
+   "sounds": [
+    "f",
+    "l",
+    "ə",
+    "m",
+    "ɪ",
+    "ŋ",
+    "g",
+    "o"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "ŋ"
+     ]
+    },
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 3,
+    "stress": 2,
+    "spelling": [
+     "fla",
+     "min",
+     "go"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "o",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "f",
+    "l",
+    "ə",
+    "m",
+    "ɪ",
+    "ŋ",
+    "g",
+    "o"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/flamingo.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)",
+   "note": "n 在 g 前念 /ŋ/，後面的 g 仍念 /g/。"
+  },
+  {
+   "id": "kk-word:envelope",
+   "word": "envelope",
+   "zh": "信封",
+   "kk": "[ˋɛnvəˏlop]",
+   "sounds": [
+    "ɛ",
+    "n",
+    "v",
+    "ə",
+    "l",
+    "o",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 3,
+    "stress": 1,
+    "spelling": [
+     "en",
+     "ve",
+     "lope"
+    ]
+   },
+   "positions": {
+    "first": "ɛ",
+    "last": "p",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "ɛ",
+    "n",
+    "v",
+    "ə",
+    "l",
+    "o",
+    "p"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/envelope.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)"
+  },
+  {
+   "id": "kk-word:ambulance",
+   "word": "ambulance",
+   "zh": "救護車",
+   "kk": "[ˋæmbjələns]",
+   "sounds": [
+    "æ",
+    "m",
+    "b",
+    "j",
+    "ə",
+    "l",
+    "ə",
+    "n",
+    "s"
+   ],
+   "chunks": [
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "j",
+      "ə"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "c",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 3,
+    "stress": 1,
+    "spelling": [
+     "am",
+     "bu",
+     "lance"
+    ]
+   },
+   "positions": {
+    "first": "æ",
+    "last": "s",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "æ",
+    "m",
+    "b",
+    "j",
+    "l",
+    "n",
+    "s"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "recording",
+    "file": "assets/voice/words/ambulance.mp3"
+   },
+   "inVocab3000": true,
+   "legacy": true,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "data/words.json (original 80; KK/zh/audio unchanged, re-checked)",
+   "note": "u 在這裡念 /j ə/ 兩個音。"
+  },
+  {
+   "id": "kk-word:act",
+   "word": "act",
+   "zh": "行動；表演；行為",
+   "kk": "[ækt]",
+   "sounds": [
+    "æ",
+    "k",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "act"
+    ]
+   },
+   "positions": {
+    "first": "æ",
+    "last": "t",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "æ",
+    "k",
+    "t"
+   ],
+   "readyChapter": "N01",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:man",
+   "word": "man",
+   "zh": "男人；人",
+   "kk": "[mæn]",
+   "sounds": [
+    "m",
+    "æ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "man"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "n",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "m",
+    "æ",
+    "n"
+   ],
+   "readyChapter": "N02",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:fast",
+   "word": "fast",
+   "zh": "快的；快地",
+   "kk": "[fæst]",
+   "sounds": [
+    "f",
+    "æ",
+    "s",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "fast"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "t",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "f",
+    "æ",
+    "s",
+    "t"
+   ],
+   "readyChapter": "N02",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:snack",
+   "word": "snack",
+   "zh": "點心；零食",
+   "kk": "[snæk]",
+   "sounds": [
+    "s",
+    "n",
+    "æ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "ck",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "snack"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "k",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "s",
+    "n",
+    "æ",
+    "k"
+   ],
+   "readyChapter": "N02",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:fact",
+   "word": "fact",
+   "zh": "事實",
+   "kk": "[fækt]",
+   "sounds": [
+    "f",
+    "æ",
+    "k",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "fact"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "t",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "f",
+    "æ",
+    "k",
+    "t"
+   ],
+   "readyChapter": "N02",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:bag",
+   "word": "bag",
+   "zh": "袋子；包包",
+   "kk": "[bæg]",
+   "sounds": [
+    "b",
+    "æ",
+    "g"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "bag"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "g",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "b",
+    "æ",
+    "g"
+   ],
+   "readyChapter": "N03",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:hand",
+   "word": "hand",
+   "zh": "手；遞給",
+   "kk": "[hænd]",
+   "sounds": [
+    "h",
+    "æ",
+    "n",
+    "d"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "hand"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "d",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "h",
+    "æ",
+    "n",
+    "d"
+   ],
+   "readyChapter": "N03",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:lamp",
+   "word": "lamp",
+   "zh": "檯燈；燈",
+   "kk": "[læmp]",
+   "sounds": [
+    "l",
+    "æ",
+    "m",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "lamp"
+    ]
+   },
+   "positions": {
+    "first": "l",
+    "last": "p",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "l",
+    "æ",
+    "m",
+    "p"
+   ],
+   "readyChapter": "N03",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:black",
+   "word": "black",
+   "zh": "黑色的；黑色",
+   "kk": "[blæk]",
+   "sounds": [
+    "b",
+    "l",
+    "æ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "ck",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "black"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "k",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "b",
+    "l",
+    "æ",
+    "k"
+   ],
+   "readyChapter": "N03",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:plan",
+   "word": "plan",
+   "zh": "計畫；打算",
+   "kk": "[plæn]",
+   "sounds": [
+    "p",
+    "l",
+    "æ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "plan"
+    ]
+   },
+   "positions": {
+    "first": "p",
+    "last": "n",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "p",
+    "l",
+    "æ",
+    "n"
+   ],
+   "readyChapter": "N03",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:glad",
+   "word": "glad",
+   "zh": "高興的",
+   "kk": "[glæd]",
+   "sounds": [
+    "g",
+    "l",
+    "æ",
+    "d"
+   ],
+   "chunks": [
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "glad"
+    ]
+   },
+   "positions": {
+    "first": "g",
+    "last": "d",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "g",
+    "l",
+    "æ",
+    "d"
+   ],
+   "readyChapter": "N03",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:bed",
+   "word": "bed",
+   "zh": "床",
+   "kk": "[bɛd]",
+   "sounds": [
+    "b",
+    "ɛ",
+    "d"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "bed"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "d",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "b",
+    "ɛ",
+    "d"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:pen",
+   "word": "pen",
+   "zh": "筆",
+   "kk": "[pɛn]",
+   "sounds": [
+    "p",
+    "ɛ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "pen"
+    ]
+   },
+   "positions": {
+    "first": "p",
+    "last": "n",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "p",
+    "ɛ",
+    "n"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:ten",
+   "word": "ten",
+   "zh": "十",
+   "kk": "[tɛn]",
+   "sounds": [
+    "t",
+    "ɛ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "ten"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "n",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "t",
+    "ɛ",
+    "n"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:red",
+   "word": "red",
+   "zh": "紅色的；紅色",
+   "kk": "[rɛd]",
+   "sounds": [
+    "r",
+    "ɛ",
+    "d"
+   ],
+   "chunks": [
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "red"
+    ]
+   },
+   "positions": {
+    "first": "r",
+    "last": "d",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "r",
+    "ɛ",
+    "d"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:sit",
+   "word": "sit",
+   "zh": "坐",
+   "kk": "[sɪt]",
+   "sounds": [
+    "s",
+    "ɪ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "sit"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "t",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "s",
+    "ɪ",
+    "t"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:big",
+   "word": "big",
+   "zh": "大的",
+   "kk": "[bɪg]",
+   "sounds": [
+    "b",
+    "ɪ",
+    "g"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "big"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "g",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "b",
+    "ɪ",
+    "g"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:six",
+   "word": "six",
+   "zh": "六",
+   "kk": "[sɪks]",
+   "sounds": [
+    "s",
+    "ɪ",
+    "k",
+    "s"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "x",
+     "soundTokens": [
+      "k",
+      "s"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "six"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "s",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "ɪ",
+    "k"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:box",
+   "word": "box",
+   "zh": "箱子；盒子",
+   "kk": "[bɑks]",
+   "sounds": [
+    "b",
+    "ɑ",
+    "k",
+    "s"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "x",
+     "soundTokens": [
+      "k",
+      "s"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "box"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "s",
+    "vowel": "ɑ"
+   },
+   "uniqueSounds": [
+    "b",
+    "ɑ",
+    "k",
+    "s"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:hot",
+   "word": "hot",
+   "zh": "熱的；辣的",
+   "kk": "[hɑt]",
+   "sounds": [
+    "h",
+    "ɑ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "hot"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "t",
+    "vowel": "ɑ"
+   },
+   "uniqueSounds": [
+    "h",
+    "ɑ",
+    "t"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:top",
+   "word": "top",
+   "zh": "頂部；最高的",
+   "kk": "[tɑp]",
+   "sounds": [
+    "t",
+    "ɑ",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "top"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "p",
+    "vowel": "ɑ"
+   },
+   "uniqueSounds": [
+    "t",
+    "ɑ",
+    "p"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:mom",
+   "word": "mom",
+   "zh": "媽媽",
+   "kk": "[mɑm]",
+   "sounds": [
+    "m",
+    "ɑ",
+    "m"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "mom"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "m",
+    "vowel": "ɑ"
+   },
+   "uniqueSounds": [
+    "ɑ"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:cup",
+   "word": "cup",
+   "zh": "杯子",
+   "kk": "[kʌp]",
+   "sounds": [
+    "k",
+    "ʌ",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "cup"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "p",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "k",
+    "ʌ",
+    "p"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:fun",
+   "word": "fun",
+   "zh": "樂趣；好玩的",
+   "kk": "[fʌn]",
+   "sounds": [
+    "f",
+    "ʌ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "fun"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "n",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "f",
+    "ʌ",
+    "n"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:run",
+   "word": "run",
+   "zh": "跑；經營；運行",
+   "kk": "[rʌn]",
+   "sounds": [
+    "r",
+    "ʌ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "run"
+    ]
+   },
+   "positions": {
+    "first": "r",
+    "last": "n",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "r",
+    "ʌ",
+    "n"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:love",
+   "word": "love",
+   "zh": "愛；喜愛",
+   "kk": "[lʌv]",
+   "sounds": [
+    "l",
+    "ʌ",
+    "v"
+   ],
+   "chunks": [
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "love"
+    ]
+   },
+   "positions": {
+    "first": "l",
+    "last": "v",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "l",
+    "ʌ",
+    "v"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:foot",
+   "word": "foot",
+   "zh": "腳；英尺",
+   "kk": "[fʊt]",
+   "sounds": [
+    "f",
+    "ʊ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "oo",
+     "soundTokens": [
+      "ʊ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "foot"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "t",
+    "vowel": "ʊ"
+   },
+   "uniqueSounds": [
+    "f",
+    "ʊ",
+    "t"
+   ],
+   "readyChapter": "N05",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:cook",
+   "word": "cook",
+   "zh": "煮；做菜；廚師",
+   "kk": "[kʊk]",
+   "sounds": [
+    "k",
+    "ʊ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "oo",
+     "soundTokens": [
+      "ʊ"
+     ]
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "cook"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "k",
+    "vowel": "ʊ"
+   },
+   "uniqueSounds": [
+    "ʊ"
+   ],
+   "readyChapter": "N05",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:good",
+   "word": "good",
+   "zh": "好的",
+   "kk": "[gʊd]",
+   "sounds": [
+    "g",
+    "ʊ",
+    "d"
+   ],
+   "chunks": [
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "oo",
+     "soundTokens": [
+      "ʊ"
+     ]
+    },
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "good"
+    ]
+   },
+   "positions": {
+    "first": "g",
+    "last": "d",
+    "vowel": "ʊ"
+   },
+   "uniqueSounds": [
+    "g",
+    "ʊ",
+    "d"
+   ],
+   "readyChapter": "N05",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:put",
+   "word": "put",
+   "zh": "放；擺",
+   "kk": "[pʊt]",
+   "sounds": [
+    "p",
+    "ʊ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʊ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "put"
+    ]
+   },
+   "positions": {
+    "first": "p",
+    "last": "t",
+    "vowel": "ʊ"
+   },
+   "uniqueSounds": [
+    "p",
+    "ʊ",
+    "t"
+   ],
+   "readyChapter": "N05",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:push",
+   "word": "push",
+   "zh": "推；按",
+   "kk": "[pʊʃ]",
+   "sounds": [
+    "p",
+    "ʊ",
+    "ʃ"
+   ],
+   "chunks": [
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʊ"
+     ]
+    },
+    {
+     "text": "sh",
+     "soundTokens": [
+      "ʃ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "push"
+    ]
+   },
+   "positions": {
+    "first": "p",
+    "last": "ʃ",
+    "vowel": "ʊ"
+   },
+   "uniqueSounds": [
+    "p",
+    "ʊ",
+    "ʃ"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:sugar",
+   "word": "sugar",
+   "zh": "糖",
+   "kk": "[ˋʃʊgɚ]",
+   "sounds": [
+    "ʃ",
+    "ʊ",
+    "g",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "ʃ"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʊ"
+     ]
+    },
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "ar",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "sug",
+     "ar"
+    ]
+   },
+   "positions": {
+    "first": "ʃ",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "ʃ",
+    "ʊ",
+    "g",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:talk",
+   "word": "talk",
+   "zh": "說話；談話",
+   "kk": "[tɔk]",
+   "sounds": [
+    "t",
+    "ɔ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ɔ"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [],
+     "silent": true
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "talk"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "k",
+    "vowel": "ɔ"
+   },
+   "uniqueSounds": [
+    "t",
+    "ɔ",
+    "k"
+   ],
+   "readyChapter": "N05",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "avoidDistractors": [
+    "ɑ"
+   ],
+   "accentNote": "美式口音差異：不少美國人（cot–caught 合流）把這個字的 /ɔ/ 念成接近 /ɑ/。本遊戲 KK 依傳統記為 /ɔ/；裝置整字朗讀若聽起來像 /ɑ/ 屬口音差異，題目不要把 /ɑ/ 當成干擾選項，也不要判玩家錯。"
+  },
+  {
+   "id": "kk-word:walk",
+   "word": "walk",
+   "zh": "走路；散步",
+   "kk": "[wɔk]",
+   "sounds": [
+    "w",
+    "ɔ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "w",
+     "soundTokens": [
+      "w"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ɔ"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [],
+     "silent": true
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "walk"
+    ]
+   },
+   "positions": {
+    "first": "w",
+    "last": "k",
+    "vowel": "ɔ"
+   },
+   "uniqueSounds": [
+    "w",
+    "ɔ",
+    "k"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "avoidDistractors": [
+    "ɑ"
+   ],
+   "accentNote": "美式口音差異：不少美國人（cot–caught 合流）把這個字的 /ɔ/ 念成接近 /ɑ/。本遊戲 KK 依傳統記為 /ɔ/；裝置整字朗讀若聽起來像 /ɑ/ 屬口音差異，題目不要把 /ɑ/ 當成干擾選項，也不要判玩家錯。"
+  },
+  {
+   "id": "kk-word:tall",
+   "word": "tall",
+   "zh": "高的",
+   "kk": "[tɔl]",
+   "sounds": [
+    "t",
+    "ɔ",
+    "l"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ɔ"
+     ]
+    },
+    {
+     "text": "ll",
+     "soundTokens": [
+      "l"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "tall"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "l",
+    "vowel": "ɔ"
+   },
+   "uniqueSounds": [
+    "t",
+    "ɔ",
+    "l"
+   ],
+   "readyChapter": "N05",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "avoidDistractors": [
+    "ɑ"
+   ],
+   "accentNote": "美式口音差異：不少美國人（cot–caught 合流）把這個字的 /ɔ/ 念成接近 /ɑ/。本遊戲 KK 依傳統記為 /ɔ/；裝置整字朗讀若聽起來像 /ɑ/ 屬口音差異，題目不要把 /ɑ/ 當成干擾選項，也不要判玩家錯。"
+  },
+  {
+   "id": "kk-word:law",
+   "word": "law",
+   "zh": "法律",
+   "kk": "[lɔ]",
+   "sounds": [
+    "l",
+    "ɔ"
+   ],
+   "chunks": [
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "aw",
+     "soundTokens": [
+      "ɔ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "law"
+    ]
+   },
+   "positions": {
+    "first": "l",
+    "last": "ɔ",
+    "vowel": "ɔ"
+   },
+   "uniqueSounds": [
+    "l",
+    "ɔ"
+   ],
+   "readyChapter": "N05",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "avoidDistractors": [
+    "ɑ"
+   ],
+   "accentNote": "美式口音差異：不少美國人（cot–caught 合流）把這個字的 /ɔ/ 念成接近 /ɑ/。本遊戲 KK 依傳統記為 /ɔ/；裝置整字朗讀若聽起來像 /ɑ/ 屬口音差異，題目不要把 /ɑ/ 當成干擾選項，也不要判玩家錯。"
+  },
+  {
+   "id": "kk-word:song",
+   "word": "song",
+   "zh": "歌",
+   "kk": "[sɔŋ]",
+   "sounds": [
+    "s",
+    "ɔ",
+    "ŋ"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɔ"
+     ]
+    },
+    {
+     "text": "ng",
+     "soundTokens": [
+      "ŋ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "song"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "ŋ",
+    "vowel": "ɔ"
+   },
+   "uniqueSounds": [
+    "s",
+    "ɔ",
+    "ŋ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "avoidDistractors": [
+    "ɑ"
+   ],
+   "accentNote": "美式口音差異：不少美國人（cot–caught 合流）把這個字的 /ɔ/ 念成接近 /ɑ/。本遊戲 KK 依傳統記為 /ɔ/；裝置整字朗讀若聽起來像 /ɑ/ 屬口音差異，題目不要把 /ɑ/ 當成干擾選項，也不要判玩家錯。"
+  },
+  {
+   "id": "kk-word:tea",
+   "word": "tea",
+   "zh": "茶",
+   "kk": "[ti]",
+   "sounds": [
+    "t",
+    "i"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "ea",
+     "soundTokens": [
+      "i"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "tea"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "i",
+    "vowel": "i"
+   },
+   "uniqueSounds": [
+    "t",
+    "i"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:eat",
+   "word": "eat",
+   "zh": "吃",
+   "kk": "[it]",
+   "sounds": [
+    "i",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "ea",
+     "soundTokens": [
+      "i"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "eat"
+    ]
+   },
+   "positions": {
+    "first": "i",
+    "last": "t",
+    "vowel": "i"
+   },
+   "uniqueSounds": [
+    "i",
+    "t"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:see",
+   "word": "see",
+   "zh": "看見；見面；明白",
+   "kk": "[si]",
+   "sounds": [
+    "s",
+    "i"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "ee",
+     "soundTokens": [
+      "i"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "see"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "i",
+    "vowel": "i"
+   },
+   "uniqueSounds": [
+    "s",
+    "i"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:teacher",
+   "word": "teacher",
+   "zh": "老師",
+   "kk": "[ˋtitʃɚ]",
+   "sounds": [
+    "t",
+    "i",
+    "tʃ",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "ea",
+     "soundTokens": [
+      "i"
+     ]
+    },
+    {
+     "text": "ch",
+     "soundTokens": [
+      "tʃ"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "teach",
+     "er"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "t",
+    "i",
+    "tʃ",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:blue",
+   "word": "blue",
+   "zh": "藍色的；藍色",
+   "kk": "[blu]",
+   "sounds": [
+    "b",
+    "l",
+    "u"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "ue",
+     "soundTokens": [
+      "u"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "blue"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "u",
+    "vowel": "u"
+   },
+   "uniqueSounds": [
+    "b",
+    "l",
+    "u"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:food",
+   "word": "food",
+   "zh": "食物",
+   "kk": "[fud]",
+   "sounds": [
+    "f",
+    "u",
+    "d"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "oo",
+     "soundTokens": [
+      "u"
+     ]
+    },
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "food"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "d",
+    "vowel": "u"
+   },
+   "uniqueSounds": [
+    "f",
+    "u",
+    "d"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:two",
+   "word": "two",
+   "zh": "二；兩個",
+   "kk": "[tu]",
+   "sounds": [
+    "t",
+    "u"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "wo",
+     "soundTokens": [
+      "u"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "two"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "u",
+    "vowel": "u"
+   },
+   "uniqueSounds": [
+    "t",
+    "u"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "two 的 w 不發音，wo 合起來念 /u/，是例外拼法。"
+  },
+  {
+   "id": "kk-word:smooth",
+   "word": "smooth",
+   "zh": "光滑的；順利的",
+   "kk": "[smuð]",
+   "sounds": [
+    "s",
+    "m",
+    "u",
+    "ð"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "oo",
+     "soundTokens": [
+      "u"
+     ]
+    },
+    {
+     "text": "th",
+     "soundTokens": [
+      "ð"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "smooth"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "ð",
+    "vowel": "u"
+   },
+   "uniqueSounds": [
+    "s",
+    "m",
+    "u",
+    "ð"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:day",
+   "word": "day",
+   "zh": "天；白天",
+   "kk": "[de]",
+   "sounds": [
+    "d",
+    "e"
+   ],
+   "chunks": [
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    },
+    {
+     "text": "ay",
+     "soundTokens": [
+      "e"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "day"
+    ]
+   },
+   "positions": {
+    "first": "d",
+    "last": "e",
+    "vowel": "e"
+   },
+   "uniqueSounds": [
+    "d",
+    "e"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:game",
+   "word": "game",
+   "zh": "遊戲；比賽",
+   "kk": "[gem]",
+   "sounds": [
+    "g",
+    "e",
+    "m"
+   ],
+   "chunks": [
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "game"
+    ]
+   },
+   "positions": {
+    "first": "g",
+    "last": "m",
+    "vowel": "e"
+   },
+   "uniqueSounds": [
+    "g",
+    "e",
+    "m"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:lake",
+   "word": "lake",
+   "zh": "湖",
+   "kk": "[lek]",
+   "sounds": [
+    "l",
+    "e",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "lake"
+    ]
+   },
+   "positions": {
+    "first": "l",
+    "last": "k",
+    "vowel": "e"
+   },
+   "uniqueSounds": [
+    "l",
+    "e",
+    "k"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:play",
+   "word": "play",
+   "zh": "玩；演奏；比賽",
+   "kk": "[ple]",
+   "sounds": [
+    "p",
+    "l",
+    "e"
+   ],
+   "chunks": [
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "ay",
+     "soundTokens": [
+      "e"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "play"
+    ]
+   },
+   "positions": {
+    "first": "p",
+    "last": "e",
+    "vowel": "e"
+   },
+   "uniqueSounds": [
+    "p",
+    "l",
+    "e"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:paper",
+   "word": "paper",
+   "zh": "紙；報紙；報告",
+   "kk": "[ˋpepɚ]",
+   "sounds": [
+    "p",
+    "e",
+    "p",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "pa",
+     "per"
+    ]
+   },
+   "positions": {
+    "first": "p",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "e",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:page",
+   "word": "page",
+   "zh": "頁",
+   "kk": "[pedʒ]",
+   "sounds": [
+    "p",
+    "e",
+    "dʒ"
+   ],
+   "chunks": [
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "text": "g",
+     "soundTokens": [
+      "dʒ"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "page"
+    ]
+   },
+   "positions": {
+    "first": "p",
+    "last": "dʒ",
+    "vowel": "e"
+   },
+   "uniqueSounds": [
+    "p",
+    "e",
+    "dʒ"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:go",
+   "word": "go",
+   "zh": "去；走",
+   "kk": "[go]",
+   "sounds": [
+    "g",
+    "o"
+   ],
+   "chunks": [
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "go"
+    ]
+   },
+   "positions": {
+    "first": "g",
+    "last": "o",
+    "vowel": "o"
+   },
+   "uniqueSounds": [
+    "g",
+    "o"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:boat",
+   "word": "boat",
+   "zh": "船",
+   "kk": "[bot]",
+   "sounds": [
+    "b",
+    "o",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "oa",
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "boat"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "t",
+    "vowel": "o"
+   },
+   "uniqueSounds": [
+    "b",
+    "o",
+    "t"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:soap",
+   "word": "soap",
+   "zh": "肥皂",
+   "kk": "[sop]",
+   "sounds": [
+    "s",
+    "o",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "oa",
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "soap"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "p",
+    "vowel": "o"
+   },
+   "uniqueSounds": [
+    "s",
+    "o",
+    "p"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:snow",
+   "word": "snow",
+   "zh": "雪；下雪",
+   "kk": "[sno]",
+   "sounds": [
+    "s",
+    "n",
+    "o"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "ow",
+     "soundTokens": [
+      "o"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "snow"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "o",
+    "vowel": "o"
+   },
+   "uniqueSounds": [
+    "s",
+    "n",
+    "o"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:home",
+   "word": "home",
+   "zh": "家；回家",
+   "kk": "[hom]",
+   "sounds": [
+    "h",
+    "o",
+    "m"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "home"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "m",
+    "vowel": "o"
+   },
+   "uniqueSounds": [
+    "h",
+    "o",
+    "m"
+   ],
+   "readyChapter": "N06",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:nose",
+   "word": "nose",
+   "zh": "鼻子",
+   "kk": "[noz]",
+   "sounds": [
+    "n",
+    "o",
+    "z"
+   ],
+   "chunks": [
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "z"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "nose"
+    ]
+   },
+   "positions": {
+    "first": "n",
+    "last": "z",
+    "vowel": "o"
+   },
+   "uniqueSounds": [
+    "n",
+    "o",
+    "z"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:both",
+   "word": "both",
+   "zh": "兩者都",
+   "kk": "[boθ]",
+   "sounds": [
+    "b",
+    "o",
+    "θ"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "text": "th",
+     "soundTokens": [
+      "θ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "both"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "θ",
+    "vowel": "o"
+   },
+   "uniqueSounds": [
+    "b",
+    "o",
+    "θ"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:window",
+   "word": "window",
+   "zh": "窗戶",
+   "kk": "[ˋwɪndo]",
+   "sounds": [
+    "w",
+    "ɪ",
+    "n",
+    "d",
+    "o"
+   ],
+   "chunks": [
+    {
+     "text": "w",
+     "soundTokens": [
+      "w"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "d",
+     "soundTokens": [
+      "d"
+     ]
+    },
+    {
+     "text": "ow",
+     "soundTokens": [
+      "o"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "win",
+     "dow"
+    ]
+   },
+   "positions": {
+    "first": "w",
+    "last": "o",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "w",
+    "ɪ",
+    "n",
+    "d",
+    "o"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:yellow",
+   "word": "yellow",
+   "zh": "黃色的；黃色",
+   "kk": "[ˋjɛlo]",
+   "sounds": [
+    "j",
+    "ɛ",
+    "l",
+    "o"
+   ],
+   "chunks": [
+    {
+     "text": "y",
+     "soundTokens": [
+      "j"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "ll",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "ow",
+     "soundTokens": [
+      "o"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "yel",
+     "low"
+    ]
+   },
+   "positions": {
+    "first": "j",
+    "last": "o",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "j",
+    "ɛ",
+    "l",
+    "o"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:van",
+   "word": "van",
+   "zh": "廂型車；貨車",
+   "kk": "[væn]",
+   "sounds": [
+    "v",
+    "æ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "van"
+    ]
+   },
+   "positions": {
+    "first": "v",
+    "last": "n",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "v",
+    "æ",
+    "n"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:five",
+   "word": "five",
+   "zh": "五",
+   "kk": "[faɪv]",
+   "sounds": [
+    "f",
+    "aɪ",
+    "v"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "aɪ"
+     ]
+    },
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "five"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "v",
+    "vowel": "aɪ"
+   },
+   "uniqueSounds": [
+    "f",
+    "aɪ",
+    "v"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:have",
+   "word": "have",
+   "zh": "有；吃（喝）；（完成式助動詞）",
+   "kk": "[hæv]",
+   "sounds": [
+    "h",
+    "æ",
+    "v"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "have"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "v",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "h",
+    "æ",
+    "v"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:give",
+   "word": "give",
+   "zh": "給",
+   "kk": "[gɪv]",
+   "sounds": [
+    "g",
+    "ɪ",
+    "v"
+   ],
+   "chunks": [
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "give"
+    ]
+   },
+   "positions": {
+    "first": "g",
+    "last": "v",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "g",
+    "ɪ",
+    "v"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:seven",
+   "word": "seven",
+   "zh": "七",
+   "kk": "[ˋsɛvən]",
+   "sounds": [
+    "s",
+    "ɛ",
+    "v",
+    "ə",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "sev",
+     "en"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "n",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "s",
+    "ɛ",
+    "v",
+    "ə",
+    "n"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:very",
+   "word": "very",
+   "zh": "非常；很",
+   "kk": "[ˋvɛrɪ]",
+   "sounds": [
+    "v",
+    "ɛ",
+    "r",
+    "ɪ"
+   ],
+   "chunks": [
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "y",
+     "soundTokens": [
+      "ɪ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "ver",
+     "y"
+    ]
+   },
+   "positions": {
+    "first": "v",
+    "last": "ɪ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "v",
+    "ɛ",
+    "r",
+    "ɪ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:his",
+   "word": "his",
+   "zh": "他的",
+   "kk": "[hɪz]",
+   "sounds": [
+    "h",
+    "ɪ",
+    "z"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "z"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "his"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "z",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "h",
+    "ɪ",
+    "z"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:size",
+   "word": "size",
+   "zh": "大小；尺寸",
+   "kk": "[saɪz]",
+   "sounds": [
+    "s",
+    "aɪ",
+    "z"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "aɪ"
+     ]
+    },
+    {
+     "text": "z",
+     "soundTokens": [
+      "z"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "size"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "z",
+    "vowel": "aɪ"
+   },
+   "uniqueSounds": [
+    "s",
+    "aɪ",
+    "z"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:busy",
+   "word": "busy",
+   "zh": "忙碌的；熱鬧的",
+   "kk": "[ˋbɪzɪ]",
+   "sounds": [
+    "b",
+    "ɪ",
+    "z",
+    "ɪ"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "z"
+     ]
+    },
+    {
+     "text": "y",
+     "soundTokens": [
+      "ɪ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "bus",
+     "y"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "ɪ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "b",
+    "z"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "busy 的 u 念 /ɪ/，是少見的例外拼法。"
+  },
+  {
+   "id": "kk-word:music",
+   "word": "music",
+   "zh": "音樂",
+   "kk": "[ˋmjuzɪk]",
+   "sounds": [
+    "m",
+    "j",
+    "u",
+    "z",
+    "ɪ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "j",
+      "u"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "z"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "mu",
+     "sic"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "k",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "m",
+    "j",
+    "u",
+    "z",
+    "ɪ",
+    "k"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:thin",
+   "word": "thin",
+   "zh": "薄的；瘦的",
+   "kk": "[θɪn]",
+   "sounds": [
+    "θ",
+    "ɪ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "th",
+     "soundTokens": [
+      "θ"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "thin"
+    ]
+   },
+   "positions": {
+    "first": "θ",
+    "last": "n",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "θ",
+    "ɪ",
+    "n"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:think",
+   "word": "think",
+   "zh": "想；認為",
+   "kk": "[θɪŋk]",
+   "sounds": [
+    "θ",
+    "ɪ",
+    "ŋ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "th",
+     "soundTokens": [
+      "θ"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "ŋ"
+     ]
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "think"
+    ]
+   },
+   "positions": {
+    "first": "θ",
+    "last": "k",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "θ",
+    "ɪ",
+    "ŋ",
+    "k"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:math",
+   "word": "math",
+   "zh": "數學",
+   "kk": "[mæθ]",
+   "sounds": [
+    "m",
+    "æ",
+    "θ"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "th",
+     "soundTokens": [
+      "θ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "math"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "θ",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "m",
+    "æ",
+    "θ"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:three",
+   "word": "three",
+   "zh": "三",
+   "kk": "[θri]",
+   "sounds": [
+    "θ",
+    "r",
+    "i"
+   ],
+   "chunks": [
+    {
+     "text": "th",
+     "soundTokens": [
+      "θ"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "ee",
+     "soundTokens": [
+      "i"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "three"
+    ]
+   },
+   "positions": {
+    "first": "θ",
+    "last": "i",
+    "vowel": "i"
+   },
+   "uniqueSounds": [
+    "θ",
+    "r",
+    "i"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:with",
+   "word": "with",
+   "zh": "和……一起；用；帶有",
+   "kk": "[wɪθ]",
+   "sounds": [
+    "w",
+    "ɪ",
+    "θ"
+   ],
+   "chunks": [
+    {
+     "text": "w",
+     "soundTokens": [
+      "w"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "th",
+     "soundTokens": [
+      "θ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "with"
+    ]
+   },
+   "positions": {
+    "first": "w",
+    "last": "θ",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "w",
+    "ɪ",
+    "θ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "needs-review",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "avoidDistractors": [
+    "ð"
+   ],
+   "reviewNote": "with 的 th 美式多念 /θ/，也常聽到 /ð/；兩種都對，暫不作 /θ/ 考題，待協調人確認。"
+  },
+  {
+   "id": "kk-word:this",
+   "word": "this",
+   "zh": "這；這個",
+   "kk": "[ðɪs]",
+   "sounds": [
+    "ð",
+    "ɪ",
+    "s"
+   ],
+   "chunks": [
+    {
+     "text": "th",
+     "soundTokens": [
+      "ð"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "this"
+    ]
+   },
+   "positions": {
+    "first": "ð",
+    "last": "s",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "ð",
+    "ɪ",
+    "s"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:that",
+   "word": "that",
+   "zh": "那；那個；（引導子句）",
+   "kk": "[ðæt]",
+   "sounds": [
+    "ð",
+    "æ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "th",
+     "soundTokens": [
+      "ð"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "that"
+    ]
+   },
+   "positions": {
+    "first": "ð",
+    "last": "t",
+    "vowel": "æ"
+   },
+   "uniqueSounds": [
+    "ð",
+    "æ",
+    "t"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "單字單獨念的形式；句中常弱讀。"
+  },
+  {
+   "id": "kk-word:them",
+   "word": "them",
+   "zh": "他們；她們；它們（受格）",
+   "kk": "[ðɛm]",
+   "sounds": [
+    "ð",
+    "ɛ",
+    "m"
+   ],
+   "chunks": [
+    {
+     "text": "th",
+     "soundTokens": [
+      "ð"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "them"
+    ]
+   },
+   "positions": {
+    "first": "ð",
+    "last": "m",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "ð",
+    "ɛ",
+    "m"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "單字單獨念的形式；句中常弱讀 [ðəm]。"
+  },
+  {
+   "id": "kk-word:then",
+   "word": "then",
+   "zh": "然後；那時",
+   "kk": "[ðɛn]",
+   "sounds": [
+    "ð",
+    "ɛ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "th",
+     "soundTokens": [
+      "ð"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "then"
+    ]
+   },
+   "positions": {
+    "first": "ð",
+    "last": "n",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "ð",
+    "ɛ",
+    "n"
+   ],
+   "readyChapter": "N07",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:mother",
+   "word": "mother",
+   "zh": "母親",
+   "kk": "[ˋmʌðɚ]",
+   "sounds": [
+    "m",
+    "ʌ",
+    "ð",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "th",
+     "soundTokens": [
+      "ð"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "moth",
+     "er"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "m",
+    "ʌ",
+    "ð",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "o 念 /ʌ/ 是常見例外（mother、love、son）。"
+  },
+  {
+   "id": "kk-word:father",
+   "word": "father",
+   "zh": "父親",
+   "kk": "[ˋfɑðɚ]",
+   "sounds": [
+    "f",
+    "ɑ",
+    "ð",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "th",
+     "soundTokens": [
+      "ð"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "fa",
+     "ther"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "f",
+    "ɑ",
+    "ð",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:weather",
+   "word": "weather",
+   "zh": "天氣",
+   "kk": "[ˋwɛðɚ]",
+   "sounds": [
+    "w",
+    "ɛ",
+    "ð",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "w",
+     "soundTokens": [
+      "w"
+     ]
+    },
+    {
+     "text": "ea",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "th",
+     "soundTokens": [
+      "ð"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "weath",
+     "er"
+    ]
+   },
+   "positions": {
+    "first": "w",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "w",
+    "ɛ",
+    "ð",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:ship",
+   "word": "ship",
+   "zh": "船；運送",
+   "kk": "[ʃɪp]",
+   "sounds": [
+    "ʃ",
+    "ɪ",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "sh",
+     "soundTokens": [
+      "ʃ"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "ship"
+    ]
+   },
+   "positions": {
+    "first": "ʃ",
+    "last": "p",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "ʃ",
+    "ɪ",
+    "p"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:shop",
+   "word": "shop",
+   "zh": "商店；購物",
+   "kk": "[ʃɑp]",
+   "sounds": [
+    "ʃ",
+    "ɑ",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "sh",
+     "soundTokens": [
+      "ʃ"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "shop"
+    ]
+   },
+   "positions": {
+    "first": "ʃ",
+    "last": "p",
+    "vowel": "ɑ"
+   },
+   "uniqueSounds": [
+    "ʃ",
+    "ɑ",
+    "p"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:shut",
+   "word": "shut",
+   "zh": "關上",
+   "kk": "[ʃʌt]",
+   "sounds": [
+    "ʃ",
+    "ʌ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "sh",
+     "soundTokens": [
+      "ʃ"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "shut"
+    ]
+   },
+   "positions": {
+    "first": "ʃ",
+    "last": "t",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "ʃ",
+    "ʌ",
+    "t"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:wish",
+   "word": "wish",
+   "zh": "希望；祝福；願望",
+   "kk": "[wɪʃ]",
+   "sounds": [
+    "w",
+    "ɪ",
+    "ʃ"
+   ],
+   "chunks": [
+    {
+     "text": "w",
+     "soundTokens": [
+      "w"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "sh",
+     "soundTokens": [
+      "ʃ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "wish"
+    ]
+   },
+   "positions": {
+    "first": "w",
+    "last": "ʃ",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "w",
+    "ɪ",
+    "ʃ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:fresh",
+   "word": "fresh",
+   "zh": "新鮮的",
+   "kk": "[frɛʃ]",
+   "sounds": [
+    "f",
+    "r",
+    "ɛ",
+    "ʃ"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "sh",
+     "soundTokens": [
+      "ʃ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "fresh"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "ʃ",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "f",
+    "r",
+    "ɛ",
+    "ʃ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:measure",
+   "word": "measure",
+   "zh": "測量；措施",
+   "kk": "[ˋmɛʒɚ]",
+   "sounds": [
+    "m",
+    "ɛ",
+    "ʒ",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "ea",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "ʒ"
+     ]
+    },
+    {
+     "text": "ure",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "meas",
+     "ure"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "m",
+    "ɛ",
+    "ʒ",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:television",
+   "word": "television",
+   "zh": "電視",
+   "kk": "[ˋtɛləˏvɪʒən]",
+   "sounds": [
+    "t",
+    "ɛ",
+    "l",
+    "ə",
+    "v",
+    "ɪ",
+    "ʒ",
+    "ə",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "ʒ"
+     ]
+    },
+    {
+     "text": "io",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 4,
+    "stress": 1,
+    "spelling": [
+     "tel",
+     "e",
+     "vi",
+     "sion"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "n",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "t",
+    "ɛ",
+    "l",
+    "v",
+    "ɪ",
+    "ʒ",
+    "n"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:usually",
+   "word": "usually",
+   "zh": "通常",
+   "kk": "[ˋjuʒʊəlɪ]",
+   "sounds": [
+    "j",
+    "u",
+    "ʒ",
+    "ʊ",
+    "ə",
+    "l",
+    "ɪ"
+   ],
+   "chunks": [
+    {
+     "text": "u",
+     "soundTokens": [
+      "j",
+      "u"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "ʒ"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʊ"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "ll",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "y",
+     "soundTokens": [
+      "ɪ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 4,
+    "stress": 1,
+    "spelling": [
+     "u",
+     "su",
+     "al",
+     "ly"
+    ]
+   },
+   "positions": {
+    "first": "j",
+    "last": "ɪ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "j",
+    "u",
+    "ʒ",
+    "ʊ",
+    "ə",
+    "l",
+    "ɪ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "needs-review",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "reviewNote": "辭典 KK 記為四音節 [ˋjuʒʊəlɪ]，美式口語常縮成三音節 [ˋjuʒəlɪ]；音節數與 /ʊ/ 是否保留待協調人確認，暫不出音節或拆字題。"
+  },
+  {
+   "id": "kk-word:lunch",
+   "word": "lunch",
+   "zh": "午餐",
+   "kk": "[lʌntʃ]",
+   "sounds": [
+    "l",
+    "ʌ",
+    "n",
+    "tʃ"
+   ],
+   "chunks": [
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "ch",
+     "soundTokens": [
+      "tʃ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "lunch"
+    ]
+   },
+   "positions": {
+    "first": "l",
+    "last": "tʃ",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "l",
+    "ʌ",
+    "n",
+    "tʃ"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:much",
+   "word": "much",
+   "zh": "許多（不可數）；很",
+   "kk": "[mʌtʃ]",
+   "sounds": [
+    "m",
+    "ʌ",
+    "tʃ"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "ch",
+     "soundTokens": [
+      "tʃ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "much"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "tʃ",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "m",
+    "ʌ",
+    "tʃ"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:chip",
+   "word": "chip",
+   "zh": "洋芋片；晶片；碎片",
+   "kk": "[tʃɪp]",
+   "sounds": [
+    "tʃ",
+    "ɪ",
+    "p"
+   ],
+   "chunks": [
+    {
+     "text": "ch",
+     "soundTokens": [
+      "tʃ"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "chip"
+    ]
+   },
+   "positions": {
+    "first": "tʃ",
+    "last": "p",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "tʃ",
+    "ɪ",
+    "p"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:check",
+   "word": "check",
+   "zh": "檢查；確認；帳單",
+   "kk": "[tʃɛk]",
+   "sounds": [
+    "tʃ",
+    "ɛ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "ch",
+     "soundTokens": [
+      "tʃ"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "ck",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "check"
+    ]
+   },
+   "positions": {
+    "first": "tʃ",
+    "last": "k",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "tʃ",
+    "ɛ",
+    "k"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:job",
+   "word": "job",
+   "zh": "工作；職業",
+   "kk": "[dʒɑb]",
+   "sounds": [
+    "dʒ",
+    "ɑ",
+    "b"
+   ],
+   "chunks": [
+    {
+     "text": "j",
+     "soundTokens": [
+      "dʒ"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "ɑ"
+     ]
+    },
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "job"
+    ]
+   },
+   "positions": {
+    "first": "dʒ",
+    "last": "b",
+    "vowel": "ɑ"
+   },
+   "uniqueSounds": [
+    "dʒ",
+    "ɑ",
+    "b"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:just",
+   "word": "just",
+   "zh": "剛剛；只是；正好",
+   "kk": "[dʒʌst]",
+   "sounds": [
+    "dʒ",
+    "ʌ",
+    "s",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "j",
+     "soundTokens": [
+      "dʒ"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "just"
+    ]
+   },
+   "positions": {
+    "first": "dʒ",
+    "last": "t",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "dʒ",
+    "ʌ",
+    "s",
+    "t"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:gym",
+   "word": "gym",
+   "zh": "健身房；體育館",
+   "kk": "[dʒɪm]",
+   "sounds": [
+    "dʒ",
+    "ɪ",
+    "m"
+   ],
+   "chunks": [
+    {
+     "text": "g",
+     "soundTokens": [
+      "dʒ"
+     ]
+    },
+    {
+     "text": "y",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "gym"
+    ]
+   },
+   "positions": {
+    "first": "dʒ",
+    "last": "m",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "dʒ",
+    "ɪ",
+    "m"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "g 在 e、i、y 前常念 /dʒ/（gym、page），但也有例外（gift、give 念 /g/）。y 在這裡念 /ɪ/。"
+  },
+  {
+   "id": "kk-word:judge",
+   "word": "judge",
+   "zh": "法官；評審；判斷",
+   "kk": "[dʒʌdʒ]",
+   "sounds": [
+    "dʒ",
+    "ʌ",
+    "dʒ"
+   ],
+   "chunks": [
+    {
+     "text": "j",
+     "soundTokens": [
+      "dʒ"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "dge",
+     "soundTokens": [
+      "dʒ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "judge"
+    ]
+   },
+   "positions": {
+    "first": "dʒ",
+    "last": "dʒ",
+    "vowel": "ʌ"
+   },
+   "uniqueSounds": [
+    "ʌ"
+   ],
+   "readyChapter": "N08",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:sing",
+   "word": "sing",
+   "zh": "唱歌",
+   "kk": "[sɪŋ]",
+   "sounds": [
+    "s",
+    "ɪ",
+    "ŋ"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "ng",
+     "soundTokens": [
+      "ŋ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "sing"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "ŋ",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "s",
+    "ɪ",
+    "ŋ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:king",
+   "word": "king",
+   "zh": "國王",
+   "kk": "[kɪŋ]",
+   "sounds": [
+    "k",
+    "ɪ",
+    "ŋ"
+   ],
+   "chunks": [
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "ng",
+     "soundTokens": [
+      "ŋ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "king"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "ŋ",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "k",
+    "ɪ",
+    "ŋ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:ring",
+   "word": "ring",
+   "zh": "戒指；（鈴）響",
+   "kk": "[rɪŋ]",
+   "sounds": [
+    "r",
+    "ɪ",
+    "ŋ"
+   ],
+   "chunks": [
+    {
+     "text": "r",
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "ng",
+     "soundTokens": [
+      "ŋ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "ring"
+    ]
+   },
+   "positions": {
+    "first": "r",
+    "last": "ŋ",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "r",
+    "ɪ",
+    "ŋ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:wing",
+   "word": "wing",
+   "zh": "翅膀；機翼",
+   "kk": "[wɪŋ]",
+   "sounds": [
+    "w",
+    "ɪ",
+    "ŋ"
+   ],
+   "chunks": [
+    {
+     "text": "w",
+     "soundTokens": [
+      "w"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "ng",
+     "soundTokens": [
+      "ŋ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "wing"
+    ]
+   },
+   "positions": {
+    "first": "w",
+    "last": "ŋ",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "w",
+    "ɪ",
+    "ŋ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:wet",
+   "word": "wet",
+   "zh": "濕的",
+   "kk": "[wɛt]",
+   "sounds": [
+    "w",
+    "ɛ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "w",
+     "soundTokens": [
+      "w"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "wet"
+    ]
+   },
+   "positions": {
+    "first": "w",
+    "last": "t",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "w",
+    "ɛ",
+    "t"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:quit",
+   "word": "quit",
+   "zh": "辭職；戒掉；放棄",
+   "kk": "[kwɪt]",
+   "sounds": [
+    "k",
+    "w",
+    "ɪ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "qu",
+     "soundTokens": [
+      "k",
+      "w"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "quit"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "t",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "k",
+    "w",
+    "ɪ",
+    "t"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "qu 是兩個音 /k w/，不是只有 /k/。"
+  },
+  {
+   "id": "kk-word:quick",
+   "word": "quick",
+   "zh": "快的；迅速的",
+   "kk": "[kwɪk]",
+   "sounds": [
+    "k",
+    "w",
+    "ɪ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "qu",
+     "soundTokens": [
+      "k",
+      "w"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "ck",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "quick"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "k",
+    "vowel": "ɪ"
+   },
+   "uniqueSounds": [
+    "w",
+    "ɪ"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "qu 是兩個音 /k w/，不是只有 /k/。"
+  },
+  {
+   "id": "kk-word:yes",
+   "word": "yes",
+   "zh": "是；對",
+   "kk": "[jɛs]",
+   "sounds": [
+    "j",
+    "ɛ",
+    "s"
+   ],
+   "chunks": [
+    {
+     "text": "y",
+     "soundTokens": [
+      "j"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "yes"
+    ]
+   },
+   "positions": {
+    "first": "j",
+    "last": "s",
+    "vowel": "ɛ"
+   },
+   "uniqueSounds": [
+    "j",
+    "ɛ",
+    "s"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:you",
+   "word": "you",
+   "zh": "你；你們",
+   "kk": "[ju]",
+   "sounds": [
+    "j",
+    "u"
+   ],
+   "chunks": [
+    {
+     "text": "y",
+     "soundTokens": [
+      "j"
+     ]
+    },
+    {
+     "text": "ou",
+     "soundTokens": [
+      "u"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "you"
+    ]
+   },
+   "positions": {
+    "first": "j",
+    "last": "u",
+    "vowel": "u"
+   },
+   "uniqueSounds": [
+    "j",
+    "u"
+   ],
+   "readyChapter": "N09",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:kite",
+   "word": "kite",
+   "zh": "風箏",
+   "kk": "[kaɪt]",
+   "sounds": [
+    "k",
+    "aɪ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "aɪ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "kite"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "t",
+    "vowel": "aɪ"
+   },
+   "uniqueSounds": [
+    "k",
+    "aɪ",
+    "t"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:my",
+   "word": "my",
+   "zh": "我的",
+   "kk": "[maɪ]",
+   "sounds": [
+    "m",
+    "aɪ"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "y",
+     "soundTokens": [
+      "aɪ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "my"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "aɪ",
+    "vowel": "aɪ"
+   },
+   "uniqueSounds": [
+    "m",
+    "aɪ"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:sky",
+   "word": "sky",
+   "zh": "天空",
+   "kk": "[skaɪ]",
+   "sounds": [
+    "s",
+    "k",
+    "aɪ"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "y",
+     "soundTokens": [
+      "aɪ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "sky"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "aɪ",
+    "vowel": "aɪ"
+   },
+   "uniqueSounds": [
+    "s",
+    "k",
+    "aɪ"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:night",
+   "word": "night",
+   "zh": "晚上；夜晚",
+   "kk": "[naɪt]",
+   "sounds": [
+    "n",
+    "aɪ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "igh",
+     "soundTokens": [
+      "aɪ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "night"
+    ]
+   },
+   "positions": {
+    "first": "n",
+    "last": "t",
+    "vowel": "aɪ"
+   },
+   "uniqueSounds": [
+    "n",
+    "aɪ",
+    "t"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:cow",
+   "word": "cow",
+   "zh": "母牛；乳牛",
+   "kk": "[kaʊ]",
+   "sounds": [
+    "k",
+    "aʊ"
+   ],
+   "chunks": [
+    {
+     "text": "c",
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "text": "ow",
+     "soundTokens": [
+      "aʊ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "cow"
+    ]
+   },
+   "positions": {
+    "first": "k",
+    "last": "aʊ",
+    "vowel": "aʊ"
+   },
+   "uniqueSounds": [
+    "k",
+    "aʊ"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:now",
+   "word": "now",
+   "zh": "現在",
+   "kk": "[naʊ]",
+   "sounds": [
+    "n",
+    "aʊ"
+   ],
+   "chunks": [
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "ow",
+     "soundTokens": [
+      "aʊ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "now"
+    ]
+   },
+   "positions": {
+    "first": "n",
+    "last": "aʊ",
+    "vowel": "aʊ"
+   },
+   "uniqueSounds": [
+    "n",
+    "aʊ"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:town",
+   "word": "town",
+   "zh": "城鎮",
+   "kk": "[taʊn]",
+   "sounds": [
+    "t",
+    "aʊ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "ow",
+     "soundTokens": [
+      "aʊ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "town"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "n",
+    "vowel": "aʊ"
+   },
+   "uniqueSounds": [
+    "t",
+    "aʊ",
+    "n"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:mouth",
+   "word": "mouth",
+   "zh": "嘴巴",
+   "kk": "[maʊθ]",
+   "sounds": [
+    "m",
+    "aʊ",
+    "θ"
+   ],
+   "chunks": [
+    {
+     "text": "m",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "ou",
+     "soundTokens": [
+      "aʊ"
+     ]
+    },
+    {
+     "text": "th",
+     "soundTokens": [
+      "θ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "mouth"
+    ]
+   },
+   "positions": {
+    "first": "m",
+    "last": "θ",
+    "vowel": "aʊ"
+   },
+   "uniqueSounds": [
+    "m",
+    "aʊ",
+    "θ"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:out",
+   "word": "out",
+   "zh": "在外面；出去",
+   "kk": "[aʊt]",
+   "sounds": [
+    "aʊ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "ou",
+     "soundTokens": [
+      "aʊ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "out"
+    ]
+   },
+   "positions": {
+    "first": "aʊ",
+    "last": "t",
+    "vowel": "aʊ"
+   },
+   "uniqueSounds": [
+    "aʊ",
+    "t"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:boy",
+   "word": "boy",
+   "zh": "男孩",
+   "kk": "[bɔɪ]",
+   "sounds": [
+    "b",
+    "ɔɪ"
+   ],
+   "chunks": [
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "oy",
+     "soundTokens": [
+      "ɔɪ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "boy"
+    ]
+   },
+   "positions": {
+    "first": "b",
+    "last": "ɔɪ",
+    "vowel": "ɔɪ"
+   },
+   "uniqueSounds": [
+    "b",
+    "ɔɪ"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:toy",
+   "word": "toy",
+   "zh": "玩具",
+   "kk": "[tɔɪ]",
+   "sounds": [
+    "t",
+    "ɔɪ"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "oy",
+     "soundTokens": [
+      "ɔɪ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "toy"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "ɔɪ",
+    "vowel": "ɔɪ"
+   },
+   "uniqueSounds": [
+    "t",
+    "ɔɪ"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:oil",
+   "word": "oil",
+   "zh": "油",
+   "kk": "[ɔɪl]",
+   "sounds": [
+    "ɔɪ",
+    "l"
+   ],
+   "chunks": [
+    {
+     "text": "oi",
+     "soundTokens": [
+      "ɔɪ"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "oil"
+    ]
+   },
+   "positions": {
+    "first": "ɔɪ",
+    "last": "l",
+    "vowel": "ɔɪ"
+   },
+   "uniqueSounds": [
+    "ɔɪ",
+    "l"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:point",
+   "word": "point",
+   "zh": "重點；分數；指",
+   "kk": "[pɔɪnt]",
+   "sounds": [
+    "p",
+    "ɔɪ",
+    "n",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "p",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "oi",
+     "soundTokens": [
+      "ɔɪ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "point"
+    ]
+   },
+   "positions": {
+    "first": "p",
+    "last": "t",
+    "vowel": "ɔɪ"
+   },
+   "uniqueSounds": [
+    "p",
+    "ɔɪ",
+    "n",
+    "t"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:voice",
+   "word": "voice",
+   "zh": "聲音；嗓音",
+   "kk": "[vɔɪs]",
+   "sounds": [
+    "v",
+    "ɔɪ",
+    "s"
+   ],
+   "chunks": [
+    {
+     "text": "v",
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "text": "oi",
+     "soundTokens": [
+      "ɔɪ"
+     ]
+    },
+    {
+     "text": "c",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "voice"
+    ]
+   },
+   "positions": {
+    "first": "v",
+    "last": "s",
+    "vowel": "ɔɪ"
+   },
+   "uniqueSounds": [
+    "v",
+    "ɔɪ",
+    "s"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:join",
+   "word": "join",
+   "zh": "加入；參加",
+   "kk": "[dʒɔɪn]",
+   "sounds": [
+    "dʒ",
+    "ɔɪ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "j",
+     "soundTokens": [
+      "dʒ"
+     ]
+    },
+    {
+     "text": "oi",
+     "soundTokens": [
+      "ɔɪ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "join"
+    ]
+   },
+   "positions": {
+    "first": "dʒ",
+    "last": "n",
+    "vowel": "ɔɪ"
+   },
+   "uniqueSounds": [
+    "dʒ",
+    "ɔɪ",
+    "n"
+   ],
+   "readyChapter": "N10",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:sofa",
+   "word": "sofa",
+   "zh": "沙發",
+   "kk": "[ˋsofə]",
+   "sounds": [
+    "s",
+    "o",
+    "f",
+    "ə"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "ə"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "so",
+     "fa"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "ə",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "s",
+    "o",
+    "f",
+    "ə"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:ago",
+   "word": "ago",
+   "zh": "……以前",
+   "kk": "[əˋgo]",
+   "sounds": [
+    "ə",
+    "g",
+    "o"
+   ],
+   "chunks": [
+    {
+     "text": "a",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "o",
+     "soundTokens": [
+      "o"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 2,
+    "spelling": [
+     "a",
+     "go"
+    ]
+   },
+   "positions": {
+    "first": "ə",
+    "last": "o",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "ə",
+    "g",
+    "o"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:about",
+   "word": "about",
+   "zh": "關於；大約",
+   "kk": "[əˋbaʊt]",
+   "sounds": [
+    "ə",
+    "b",
+    "aʊ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "a",
+     "soundTokens": [
+      "ə"
+     ]
+    },
+    {
+     "text": "b",
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "text": "ou",
+     "soundTokens": [
+      "aʊ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 2,
+    "spelling": [
+     "a",
+     "bout"
+    ]
+   },
+   "positions": {
+    "first": "ə",
+    "last": "t",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "ə",
+    "b",
+    "aʊ",
+    "t"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:nurse",
+   "word": "nurse",
+   "zh": "護理師",
+   "kk": "[nɝs]",
+   "sounds": [
+    "n",
+    "ɝ",
+    "s"
+   ],
+   "chunks": [
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    },
+    {
+     "text": "ur",
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "e",
+     "soundTokens": [],
+     "silent": true
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "nurse"
+    ]
+   },
+   "positions": {
+    "first": "n",
+    "last": "s",
+    "vowel": "ɝ"
+   },
+   "uniqueSounds": [
+    "n",
+    "ɝ",
+    "s"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:girl",
+   "word": "girl",
+   "zh": "女孩",
+   "kk": "[gɝl]",
+   "sounds": [
+    "g",
+    "ɝ",
+    "l"
+   ],
+   "chunks": [
+    {
+     "text": "g",
+     "soundTokens": [
+      "g"
+     ]
+    },
+    {
+     "text": "ir",
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "text": "l",
+     "soundTokens": [
+      "l"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "girl"
+    ]
+   },
+   "positions": {
+    "first": "g",
+    "last": "l",
+    "vowel": "ɝ"
+   },
+   "uniqueSounds": [
+    "g",
+    "ɝ",
+    "l"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:turn",
+   "word": "turn",
+   "zh": "轉彎；轉動；輪到",
+   "kk": "[tɝn]",
+   "sounds": [
+    "t",
+    "ɝ",
+    "n"
+   ],
+   "chunks": [
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "ur",
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "text": "n",
+     "soundTokens": [
+      "n"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "turn"
+    ]
+   },
+   "positions": {
+    "first": "t",
+    "last": "n",
+    "vowel": "ɝ"
+   },
+   "uniqueSounds": [
+    "t",
+    "ɝ",
+    "n"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:hurt",
+   "word": "hurt",
+   "zh": "受傷；疼痛；傷害",
+   "kk": "[hɝt]",
+   "sounds": [
+    "h",
+    "ɝ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "ur",
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "hurt"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "t",
+    "vowel": "ɝ"
+   },
+   "uniqueSounds": [
+    "h",
+    "ɝ",
+    "t"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:her",
+   "word": "her",
+   "zh": "她的；她（受格）",
+   "kk": "[hɝ]",
+   "sounds": [
+    "h",
+    "ɝ"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɝ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "her"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "ɝ",
+    "vowel": "ɝ"
+   },
+   "uniqueSounds": [
+    "h",
+    "ɝ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "單字單獨念的形式；句中常弱讀。"
+  },
+  {
+   "id": "kk-word:first",
+   "word": "first",
+   "zh": "第一；首先",
+   "kk": "[fɝst]",
+   "sounds": [
+    "f",
+    "ɝ",
+    "s",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "ir",
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "first"
+    ]
+   },
+   "positions": {
+    "first": "f",
+    "last": "t",
+    "vowel": "ɝ"
+   },
+   "uniqueSounds": [
+    "f",
+    "ɝ",
+    "s",
+    "t"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:shirt",
+   "word": "shirt",
+   "zh": "襯衫",
+   "kk": "[ʃɝt]",
+   "sounds": [
+    "ʃ",
+    "ɝ",
+    "t"
+   ],
+   "chunks": [
+    {
+     "text": "sh",
+     "soundTokens": [
+      "ʃ"
+     ]
+    },
+    {
+     "text": "ir",
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "shirt"
+    ]
+   },
+   "positions": {
+    "first": "ʃ",
+    "last": "t",
+    "vowel": "ɝ"
+   },
+   "uniqueSounds": [
+    "ʃ",
+    "ɝ",
+    "t"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:work",
+   "word": "work",
+   "zh": "工作；運作",
+   "kk": "[wɝk]",
+   "sounds": [
+    "w",
+    "ɝ",
+    "k"
+   ],
+   "chunks": [
+    {
+     "text": "w",
+     "soundTokens": [
+      "w"
+     ]
+    },
+    {
+     "text": "or",
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "text": "k",
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 1,
+    "stress": 1,
+    "spelling": [
+     "work"
+    ]
+   },
+   "positions": {
+    "first": "w",
+    "last": "k",
+    "vowel": "ɝ"
+   },
+   "uniqueSounds": [
+    "w",
+    "ɝ",
+    "k"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "w 後面的 or 常念 /ɝ/（work、word）。"
+  },
+  {
+   "id": "kk-word:summer",
+   "word": "summer",
+   "zh": "夏天",
+   "kk": "[ˋsʌmɚ]",
+   "sounds": [
+    "s",
+    "ʌ",
+    "m",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "s",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "u",
+     "soundTokens": [
+      "ʌ"
+     ]
+    },
+    {
+     "text": "mm",
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "sum",
+     "mer"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "s",
+    "ʌ",
+    "m",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:after",
+   "word": "after",
+   "zh": "在……之後",
+   "kk": "[ˋæftɚ]",
+   "sounds": [
+    "æ",
+    "f",
+    "t",
+    "ɚ"
+   ],
+   "chunks": [
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "f",
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "er",
+     "soundTokens": [
+      "ɚ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "af",
+     "ter"
+    ]
+   },
+   "positions": {
+    "first": "æ",
+    "last": "ɚ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "æ",
+    "f",
+    "t",
+    "ɚ"
+   ],
+   "readyChapter": "N11",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  },
+  {
+   "id": "kk-word:city",
+   "word": "city",
+   "zh": "城市",
+   "kk": "[ˋsɪtɪ]",
+   "sounds": [
+    "s",
+    "ɪ",
+    "t",
+    "ɪ"
+   ],
+   "chunks": [
+    {
+     "text": "c",
+     "soundTokens": [
+      "s"
+     ]
+    },
+    {
+     "text": "i",
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "text": "t",
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "text": "y",
+     "soundTokens": [
+      "ɪ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "cit",
+     "y"
+    ]
+   },
+   "positions": {
+    "first": "s",
+    "last": "ɪ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "s",
+    "t"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)",
+   "note": "c 在 e、i、y 前常念 /s/。美式口語 t 常閃音化，KK 仍記 /t/。"
+  },
+  {
+   "id": "kk-word:happy",
+   "word": "happy",
+   "zh": "快樂的；高興的",
+   "kk": "[ˋhæpɪ]",
+   "sounds": [
+    "h",
+    "æ",
+    "p",
+    "ɪ"
+   ],
+   "chunks": [
+    {
+     "text": "h",
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "text": "a",
+     "soundTokens": [
+      "æ"
+     ]
+    },
+    {
+     "text": "pp",
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "text": "y",
+     "soundTokens": [
+      "ɪ"
+     ]
+    }
+   ],
+   "syllables": {
+    "count": 2,
+    "stress": 1,
+    "spelling": [
+     "hap",
+     "py"
+    ]
+   },
+   "positions": {
+    "first": "h",
+    "last": "ɪ",
+    "vowel": null
+   },
+   "uniqueSounds": [
+    "h",
+    "æ",
+    "p",
+    "ɪ"
+   ],
+   "readyChapter": "N04",
+   "audio": {
+    "mode": "device-whole-word",
+    "file": null,
+    "note": "來源包沒有這個字的錄音；只能用裝置整字朗讀，不是單音示範，也不可用 TTS 念 KK 符號。"
+   },
+   "inVocab3000": true,
+   "legacy": false,
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai hand-checked American KK (not converted from ECDICT)"
+  }
+ ]
+}
