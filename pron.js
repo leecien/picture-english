@@ -84,7 +84,7 @@ const Pron = (() => {
       .join("");
     if (opt.wordsOnly) return words; // e.g. a fill-in-the-blank: words can be looked up, the line is not played
     const zh = opt.noZh ? "" : opt.zh || lineZh(text),
-      zhHTML = zh ? `<button type="button" class="zh-btn" aria-expanded="false">看中文</button><span class="zh-line" hidden>${ESC(zh)}</span>` : "";
+      zhHTML = zh ? `<span class="zh-btn" role="button" tabindex="0" aria-expanded="false">看中文</span><span class="zh-line" hidden>${ESC(zh)}</span>` : ""; // a span: never mistaken for an answer button
     if (opt.noBtn) return `<span class="say-s" data-say="${ESC(text)}"${file ? ` data-file="${ESC(file)}"` : ""}>${words}</span>${zhHTML}`;
     return `<span class="say-s" data-say="${ESC(text)}"${file ? ` data-file="${ESC(file)}"` : ""} role="button" tabindex="0">${words}</span><span class="say-btn" data-say="${ESC(text)}"${file ? ` data-file="${ESC(file)}"` : ""} role="button" tabindex="0" aria-label="播放整句">🔊</span>${zhHTML}`;
   }
@@ -270,7 +270,7 @@ const Pron = (() => {
     document.addEventListener(
       "keydown",
       (e) => {
-        if ((e.key === "Enter" || e.key === " ") && e.target.matches && e.target.matches(".pw, .say-s, .say-btn, .qz-hear")) act(e); // .zh-btn is a real button: Enter clicks it already
+        if ((e.key === "Enter" || e.key === " ") && e.target.matches && e.target.matches(".pw, .say-s, .say-btn, .qz-hear, .zh-btn")) act(e);
         if (e.key === "Escape") closeWord();
       },
       true,

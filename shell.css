@@ -1871,6 +1871,9 @@ b.nv-hit {
 }
 /* 「看中文」: the line's own context translation, folded until asked for. Reading is not answering. */
 .zh-btn {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
   margin-left: 6px;
   min-height: 32px;
   padding: 2px 10px;
