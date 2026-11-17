@@ -297,8 +297,8 @@ const RPG = (() => {
   const ECHO_MOB = { name: "回音泡泡", shape: "bubble", colors: ["#bfe6ff", "#ffffff"], lv: 1, hp: 24, atk: 2, aggressive: false, kind: "sound" };
   const FIELD_MOBS = [
     { after: "N04", look: { name: "苔球精", shape: "slime", colors: ["#a8d98f", "#5e9a4c"], lv: 3, hp: 40, atk: 3, aggressive: false, kind: "sound" } },
-    { after: "N06", look: { name: "旋風雀", shape: "bird", colors: ["#eaf6ff", "#7fb4e6"], lv: 4, hp: 55, atk: 4, aggressive: false, intents: ["attack", "charge", "attack"], kind: "sound" } },
-    { after: "N09", look: { name: "岩甲龜", shape: "turtle", colors: ["#b3b3c0", "#7a8a5a"], lv: 5, hp: 80, atk: 5, aggressive: false, intents: ["guard", "attack", "attack"], shield: { name: "岩甲", icon: "🪨" }, kind: "sound" } },
+    { after: "N04", look: { name: "旋風雀", shape: "bird", colors: ["#eaf6ff", "#7fb4e6"], lv: 4, hp: 55, atk: 4, aggressive: false, intents: ["attack", "charge", "attack"], kind: "sound" } },
+    { after: "N07", look: { name: "岩甲龜", shape: "turtle", colors: ["#b3b3c0", "#7a8a5a"], lv: 5, hp: 80, atk: 5, aggressive: false, intents: ["guard", "attack", "attack"], shield: { name: "岩甲", icon: "🪨" }, kind: "sound" } },
     { after: "N12", look: { name: "鼓點石靈", shape: "guardian", colors: ["#d8c9a8", "#8a7a5a"], lv: 6, hp: 100, atk: 5, aggressive: false, kind: "stress" } },
   ];
   /* 失音魔王: three seals of 10 questions; a seal locks on 6 first-try answers, never on damage. */
@@ -393,9 +393,18 @@ const RPG = (() => {
   const sealsDone = () => !!(NV.ch.seals && NV.ch.seals.sound && NV.ch.seals.build && NV.ch.seals.rhythm);
   const bossReady = () => NV.track === "v1" && chField("N11") && chDone("N12") && sealsDone() && C.claimed;
   if (!NV.track) NV.track = data.kk.done || ["vowel", "consonant", "stress", "word"].some((k) => data.kk[k]) || Object.keys(obj(data.kk.units)).length ? "legacy" : "v1";
-  function nvRec(sym, kind) {
+  function nvRec(sym, kind, ref) {
     const r = (NV.rec[sym] = { ind: 0, retry: 0, wrong: 0, timeout: 0, assist: 0, ...obj(NV.rec[sym]) });
     r[kind]++;
+    // per word / spelling as well (nv.wrec.{sound,stress,spell,build}[key]); ref is the question or { cat, key }
+    const cat = ref && (ref.cat || (sym === "ˋ" ? "stress" : "sound")),
+      key = ref && (ref.key || ref.wordId);
+    if (sym && key) nvWord(cat, key, kind);
+  }
+  function nvWord(cat, key, kind) {
+    NV.wrec = obj(NV.wrec);
+    const c = (NV.wrec[cat] = obj(NV.wrec[cat]));
+    (c[key] = { ind: 0, retry: 0, wrong: 0, timeout: 0, assist: 0, ...obj(c[key]) })[kind]++;
   }
   /* Companion (pm-rpg-v1 .companion): earned in the find-luggage stage, never given at the start.
      bond grows from chats, wins and story; no feeding, no daily chores. */
@@ -674,7 +683,7 @@ const RPG = (() => {
       if (!chDone("N12")) return { text: "找重音老師 Stella：N12 音節與重音", short: "N12 音節與重音", npc: "stress", map: "kk" };
       if (!sealsDone()) return { text: "找村長 Kai：N13 組音實戰，拿到辨音、組音、節奏三枚印記", short: "N13 三枚印記", npc: "word", map: "kk" };
       if (!C.claimed) return { text: "找風之小精靈露米：幫牠修好聲音徽章，邀請牠一起冒險", short: "夥伴任務", npc: "lumi", map: "kk" };
-      return { text: `挑戰村口的失音魔王：三個封印各 10 題（已完成 ${NV.boss.phase || 0}/3）`, short: "失音魔王", npc: null, map: "kk", boss: true };
+      return { text: `挑戰村口的失音魔王：三個封印各 10 題，每個封印第一次答對 6 題才鎖上（已完成 ${NV.boss.phase || 0}/3）`, short: "失音魔王", npc: null, map: "kk", boss: true };
     }
     if ((at === "kk" || !kkDone()) && !(NV.track === "v1" && kkDone())) {
       // the old four-lesson path (legacy saves); a v1 graduate skips it
@@ -1068,7 +1077,7 @@ const RPG = (() => {
       $("dlg-name").dataset.step = `${label}：還要 ${need.length} 個音`;
       const r = await Talk.quiz(q);
       asked++;
-      nvRec(target, r.tries ? "retry" : "ind");
+      nvRec(target, r.tries ? "retry" : "ind", q);
       if (!r.tries) {
         NV.passed.push(target);
         need.splice(need.indexOf(target), 1);
@@ -1125,7 +1134,12 @@ const RPG = (() => {
             <div class="dlg-row"><button type="button" class="dlg-next" id="nv-done">▶ 繼續</button></div>`;
           $("dlg-body").querySelectorAll("[data-say]").forEach((b) => (b.onclick = () => speak(it.w, it.au)));
           bindNv();
-          $("nv-done").onclick = () => res({ ok: true, tries });
+          $("nv-done").onclick = () => {
+            nvWord("build", w, tries ? "retry" : "ind");
+            for (let k = 0; k < tries; k++) nvWord("build", w, "wrong");
+            save();
+            res({ ok: true, tries });
+          };
         };
       };
       paint();
@@ -1205,7 +1219,7 @@ const RPG = (() => {
           const p = left[pick];
           if (p[1] === b.dataset.s) {
             done.add(pick);
-            nvRec(p[1], missed.has(pick) ? "retry" : "ind");
+            nvRec(p[1], missed.has(pick) ? "retry" : "ind", { cat: "spell", key: `${p[0]}|${p[1]}|${p[2]}` });
             const w = Novice.word(p[2]);
             if (w) speak(w.w, w.au);
             SND.play("correct");
@@ -1297,18 +1311,28 @@ const RPG = (() => {
         got = new Set(st.full || []),
         // a word only counts when every one of its sounds has been taught (nothing pre-placed)
         pool = (typeof C.full.words === "function" ? C.full.words() : C.full.words).filter((w) => Novice.kkSounds(Novice.word(w).kk).every((x) => NV.taught.includes(x)));
-      for (const w of pool) {
-        if (got.size >= C.full.need) break;
-        if (got.has(w)) continue;
+      // N04+: the counted words must also cover at least two different new sounds of the chapter (not two /ɪ/ words)
+      const cover = C.full.cover || [],
+        needCover = Math.min(2, cover.length),
+        newIn = (w) => Novice.kkSounds(Novice.word(w).kk).filter((x) => cover.includes(x)),
+        covered = () => new Set([...got].flatMap(newIn)),
+        ok = () => got.size >= C.full.need && covered().size >= needCover,
+        tried = new Set();
+      while (!ok()) {
+        const left = pool.filter((w) => !got.has(w) && !tried.has(w)),
+          // while coverage is short, only a word with an uncovered new sound can help
+          w = covered().size < needCover ? left.find((w) => newIn(w).some((x) => !covered().has(x))) : left[0];
+        if (!w) break;
+        tried.add(w);
         const r = await nvBuild(w);
         if (!r.tries) {
           got.add(w);
           C.saveState({ full: [...got] });
         }
       }
-      if (got.size < C.full.need) {
+      if (!ok()) {
         const done = [...got];
-        return finishSummary(label, `完整組音要兩個不同的字各自第一次就組對。${done.length ? `已完成：${done.join("、")}。` : "這次還沒有字一次組對。"}回來找${who}再試（已完成的字不會再考）。`);
+        return finishSummary(label, `完整組音要兩個不同的字各自第一次就組對${needCover > 1 ? `，而且要用到至少兩個不同的新音（${cover.map((x) => `/${x}/`).join(" ")}）` : ""}。${done.length ? `已完成：${done.join("、")}${needCover > 1 ? `（用到 ${[...covered()].map((x) => `/${x}/`).join(" ") || "—"}）` : ""}。` : "這次還沒有字一次組對。"}回來找${who}再試（已完成的字不會再考）。`);
       }
       C.finish();
       go("done");
@@ -1352,8 +1376,8 @@ const RPG = (() => {
       intro: ["Let's learn new sounds!", `<b>${P.title}</b>：${P.line}`],
       groups: P.groups.map((g, i) => ({ sounds: g, card: "c" + i, check: "k" + i })),
       matchLine: "配對：拼字和聲音不是一對一。先點拼法，再點它發的聲音。",
-      buildLine: "最後：<b>看圖，用學過的音組出整個字</b>。每個音都學過了，沒有先放好的格子。要有<b>兩個不同的字，各自第一次送出就組對</b>才算完成。",
-      full: { need: 2, words: () => Novice.fullWords(NV.taught, sounds).slice(0, 6) },
+      buildLine: `最後：<b>看圖，用學過的音組出整個字</b>。每個音都學過了，沒有先放好的格子。要有<b>兩個不同的字，各自第一次送出就組對</b>，而且兩個字<b>用到至少兩個不同的新音</b>（${sounds.map((x) => `/${x}/`).join(" ")}）才算完成。`,
+      full: { need: 2, cover: sounds, words: () => Novice.fullWords(NV.taught, sounds) },
       get: () => (NV.ch[id] && NV.ch[id].step) || "intro",
       set: (x) => (NV.ch[id] = { ...(NV.ch[id] || {}), step: x }),
       state: () => NV.ch[id] || {},
@@ -1411,7 +1435,7 @@ const RPG = (() => {
         $("dlg-name").dataset.step = `重音：首次答對 ${first}/3`;
         const r = await Talk.quiz(q);
         asked++;
-        nvRec("ˋ", r.tries ? "retry" : "ind");
+        nvRec("ˋ", r.tries ? "retry" : "ind", q);
         if (!r.tries) {
           first++;
           if (q.options.length >= 3) three = true;
@@ -1450,7 +1474,7 @@ const RPG = (() => {
         last = q.wordId;
         $("dlg-name").dataset.step = `辨音印記 ${i + 1}/10（首次答對 ${first}）`;
         const r = await Talk.quiz(q);
-        nvRec(q.targetSound, r.tries ? "retry" : "ind");
+        nvRec(q.targetSound, r.tries ? "retry" : "ind", q);
         if (!r.tries) first++;
       }
       delete $("dlg-name").dataset.step;
@@ -1479,7 +1503,7 @@ const RPG = (() => {
         last = q.wordId;
         $("dlg-name").dataset.step = `節奏印記 ${i + 1}/6（首次答對 ${first}）`;
         const r = await Talk.quiz(q);
-        nvRec("ˋ", r.tries ? "retry" : "ind");
+        nvRec("ˋ", r.tries ? "retry" : "ind", q);
         if (!r.tries) first++;
       }
       delete $("dlg-name").dataset.step;
@@ -1527,8 +1551,8 @@ const RPG = (() => {
       quota: { n: 10, need: 6, label: `第 ${phase + 1}/3 封印・${BOSS_PHASES[phase]}` },
       make,
       companion: buddyCtx(),
-      onSettle: (q, kind) => (nvRec(q.targetSound, kind === "right" ? (q.assisted ? "assist" : "ind") : kind), save()),
-      onAssist: (q) => (nvRec(q.targetSound, "assist"), save()),
+      onSettle: (q, kind) => (nvRec(q.targetSound, kind === "right" ? (q.assisted ? "assist" : "ind") : kind, q), save()),
+      onAssist: (q) => (nvRec(q.targetSound, "assist", q), save()),
       async onEnd(result) {
         NV.boss.tries = (NV.boss.tries || 0) + 1;
         if (result === "win") {
@@ -1563,28 +1587,55 @@ const RPG = (() => {
   }
 
   /* ---------- 正式複習（畢業後）: first wrong / retry / timeout / assisted sounds first, new words each time ---------- */
+  /* Formal review (after graduation only): four kinds, each starting from the player's own misses, retries,
+     timeouts and companion fixes (nv.rec per sound, nv.wrec per word / spelling). Not a memory card game. */
+  const missScore = (r) => 2 * (r.wrong || 0) + (r.retry || 0) + (r.timeout || 0) + 2 * (r.assist || 0);
+  const ranked = (o) => Object.entries(obj(o)).map(([k, r]) => [k, missScore(r)]).filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]).map(([k]) => k);
   async function review() {
-    const scored = Object.entries(NV.rec)
-      .filter(([sym]) => Novice.ALL41().includes(sym))
-      .map(([sym, r]) => [sym, 2 * (r.wrong || 0) + (r.retry || 0) + (r.timeout || 0) + 2 * (r.assist || 0)])
-      .filter(([, n]) => n > 0)
-      .sort((a, b) => b[1] - a[1]);
-    const v = await Talk.choose(`📝 正式複習：從你第一次答錯、重試、超時或夥伴補正過的音開始。${scored.length ? `目前最需要練：${scored.slice(0, 5).map(([x]) => `/${x}/`).join(" ")}` : "目前沒有需要複習的音。"}`, [
-      { label: "▶ 開始 10 題", value: "go", disabled: !scored.length },
+    const W = obj(NV.wrec),
+      snd = ranked(NV.rec).filter((x) => Novice.ALL41().includes(x)),
+      spell = ranked(W.spell).filter((k) => k.split("|").length === 3),
+      build = ranked(W.build).filter((w) => Novice.word(w)),
+      stress = ranked(W.stress),
+      sym = (xs) => xs.slice(0, 4).map((x) => `/${x}/`).join(" "),
+      sp = (xs) => xs.slice(0, 3).map((k) => { const [l, x] = k.split("|"); return `${l}→/${x}/`; }).join("、");
+    const v = await Talk.choose(`📝 正式複習：從你答錯、重試、超時或夥伴補正過的地方開始。${snd.length ? `目前最需要練的音：${sym(snd)}` : ""}`, [
+      { label: "🔤 音標：聽字選音（10 題）", value: "snd", sub: snd.length ? `最需要練：${sym(snd)}` : "目前沒有需要複習的音", disabled: !snd.length },
+      { label: "🔡 拼字：拼法配聲音", value: "spell", sub: spell.length ? `曾配錯：${sp(spell)}` : "配對都一次就對", disabled: !spell.length },
+      { label: "🧩 組音：看圖組整個字", value: "build", sub: build.length ? `曾重試：${build.slice(0, 4).join("、")}` : "組音都一次就對", disabled: !build.length },
+      { label: "🥁 重音：聽字選重讀音節（6 題）", value: "stress", sub: stress.length || missScore(obj(NV.rec["ˋ"])) ? `曾答錯或重試 ${stress.length || 1} 個字` : "重音都一次就對", disabled: !(stress.length || missScore(obj(NV.rec["ˋ"]))) },
       { label: "稍後再來", value: "bye" },
     ]);
-    if (v !== "go") return;
-    const targets = scored.slice(0, 5).map(([x]) => x),
-      res = { ind: 0, retry: 0 };
+    if (v === "bye" || !v) return;
+    const res = { ind: 0, retry: 0 };
     let last = "";
-    for (let i = 0; i < 10; i++) {
-      const q = Novice.soundQuestion(Novice.ALL41(), { target: targets[i % targets.length], avoid: last, ctx: "review" });
-      if (!q) continue;
-      last = q.wordId;
-      $("dlg-name").dataset.step = `正式複習 ${i + 1}/10`;
-      const r = await Talk.quiz(q);
-      res[r.tries ? "retry" : "ind"]++;
-      nvRec(q.targetSound, r.tries ? "retry" : "ind");
+    if (v === "snd" || v === "stress") {
+      const n = v === "snd" ? 10 : 6,
+        targets = snd.slice(0, 5);
+      for (let i = 0; i < n; i++) {
+        const q = v === "snd" ? Novice.soundQuestion(Novice.ALL41(), { target: targets[i % targets.length], avoid: last, ctx: "review" }) : Novice.stressQuestion({ avoid: last, ctx: "review" });
+        if (!q) continue;
+        last = q.wordId;
+        $("dlg-name").dataset.step = `正式複習 ${i + 1}/${n}`;
+        const r = await Talk.quiz(q);
+        res[r.tries ? "retry" : "ind"]++;
+        nvRec(v === "snd" ? q.targetSound : "ˋ", r.tries ? "retry" : "ind", q);
+      }
+    } else if (v === "spell") {
+      // the missed spellings plus others from the same matching sets, so there is still something to choose between
+      const want = spell.slice(0, 4).map((k) => k.split("|")),
+        pairs = want.slice();
+      for (const [l, x] of want) {
+        const set = Object.values(Novice.MATCH).find((m) => m.some((p) => p[0] === l && p[1] === x)) || [];
+        for (const p of set) if (pairs.length < 6 && !pairs.some((q) => q[0] === p[0] && q[1] === p[1])) pairs.push(p);
+      }
+      const r = await nvMatch(pairs);
+      res[r.missed ? "retry" : "ind"]++;
+    } else if (v === "build") {
+      for (const w of build.slice(0, 3)) {
+        const r = await nvBuild(w);
+        res[r.tries ? "retry" : "ind"]++;
+      }
     }
     delete $("dlg-name").dataset.step;
     NV.reviews = (NV.reviews || 0) + 1;
@@ -1639,7 +1690,7 @@ const RPG = (() => {
               const q = Novice.soundQuestion(NV.taught, { target: i === 1 ? null : sym, avoid: last, ctx: "echo" });
               last = q.wordId;
               const res = await Talk.quiz(q);
-              nvRec(q.targetSound, res.tries ? "retry" : "ind");
+              nvRec(q.targetSound, res.tries ? "retry" : "ind", q);
             }
             save();
             await finishSummary(`Echo・/${sym}/ 練習`, "可以再查其他的音或字。");
@@ -1987,8 +2038,8 @@ const RPG = (() => {
       make,
       tutorial,
       companion: buddyCtx(),
-      onSettle: look.kind === "sound" || look.kind === "stress" ? (q, kind) => (nvRec(q.targetSound, kind === "right" ? (q.assisted ? "assist" : "ind") : kind), save()) : null,
-      onAssist: (q) => (nvRec(q.targetSound, "assist"), save()),
+      onSettle: look.kind === "sound" || look.kind === "stress" ? (q, kind) => (nvRec(q.targetSound, kind === "right" ? (q.assisted ? "assist" : "ind") : kind, q), save()) : null,
+      onAssist: (q) => (nvRec(q.targetSound, "assist", q), save()),
       onEnd(result) {
         if (result === "win") {
           World.defeat(mob);

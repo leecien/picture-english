@@ -44,7 +44,9 @@ const AFTER_N03 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: 
   const noLeak = async (root) => {
     const bad = await ev((root) => {
       const q = Learn.last,
-        html = document.querySelector(root).innerHTML.replace(/\s(class|id)="[^"]*"/g, "");
+        el = document.querySelector(root).cloneNode(true);
+      if (q.kind === "kkword") el.querySelectorAll(".qz-o .qz-kk").forEach((k) => k.remove()); // KK options (a distractor can read like the spelling, e.g. [dog])
+      const html = el.innerHTML.replace(/\s(class|id)="[^"]*"/g, "");
       return [q.item.w, q.kind === "kkword" ? "" : q.item.kk].filter((x) => x && new RegExp("(^|[^a-z])" + x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z]|$)").test(html));
     }, root);
     assert.deepEqual(bad, [], "nothing gives the answer away before answering");
@@ -139,10 +141,16 @@ const AFTER_N03 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: 
     await drive();
     assert.equal(await ev((id) => !!(RPG.data.nv.ch[id] && RPG.data.nv.ch[id].done), id), true, id + " done");
     assert(await ev((id) => RPG.data.nv.ch[id].full.length >= 2, id), id + ": two full words right first time");
+    const cov = await ev(([id, g]) => new Set(RPG.data.nv.ch[id].full.flatMap((w) => Novice.kkSounds(Novice.word(w).kk)).filter((x) => g.flat().includes(x))).size, [id, plan[id].groups]);
+    assert(cov >= 2, id + ": the two words use at least two different new sounds");
     assert(await ev((g) => g.flat().every((x) => RPG.data.nv.taught.includes(x) && RPG.data.nv.passed.includes(x)), plan[id].groups), id + ": every new sound right on a first try");
     await fieldWin();
     assert.equal(await ev((id) => RPG.data.nv.ch[id].field, id), true, id + " field battle");
     assert.equal(await ev(() => RPG.data.nv.lv), plan[id].lv, id + " adventure level");
+    if (id === "N04") {
+      const kinds = await ev(() => [...new Set(World.entities.filter((e) => e.kind === "mob").map((e) => e.look && e.look.name))]);
+      assert(kinds.length >= 3, "three or more kinds of field monsters after N04: " + kinds);
+    }
     if (id === "N06") {
       assert.match(await quest(), /露米/, "the companion quest comes after N06");
       assert.equal(await ev(() => World.entities.some((e) => e.kind === "pet")), false, "not given before the quest");
@@ -170,7 +178,11 @@ const AFTER_N03 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: 
   await page.locator("#bt-act .qz-o > .qz-opt > button").nth(await ev(() => Learn.last.options.findIndex((o) => !o.ok))).click();
   assert.equal(await page.locator("#bt-act .qz-o button.right").count(), 0, "nothing lit up before asking");
   await page.locator("#bt-buddy-fix").click();
-  assert.equal(await page.locator("#bt-act .qz-o button.right").count(), 1, "the companion shows the right one");
+  assert.equal(await page.locator("#bt-act .qz-o button.right").count(), 0, "the companion corrects the pick but does not give the answer");
+  assert.match(await page.locator("#bt-feedback").innerText(), /換一個選/);
+  assert.equal(await page.locator("#bt-next").isHidden(), true);
+  await page.locator("#bt-act .qz-o > .qz-opt > button").nth(await ev(() => Learn.last.options.findIndex((o) => o.ok))).click();
+  assert.equal(await page.locator("#bt-act .qz-o button.right").count(), 1, "the player chose again");
   assert.match(await page.locator("#bt-feedback").innerText(), /夥伴補正」，不算獨立答對/);
   assert.equal(await ev((s) => RPG.data.nv.rec[s].assist, sym), a0 + 1, "recorded as assisted");
   assert.equal(await ev(() => Battle.foe.hp), foe0, "no damage from the fix");
@@ -255,7 +267,8 @@ const AFTER_N03 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: 
   await page.waitForSelector("#dlg:not([hidden])", { timeout: 30000 });
   const intro = await page.locator("#dlg-body").innerText();
   assert.match(intro, /正式複習[\s\S]*最需要練/);
-  await drive([/開始 10 題/, /▶/]);
+  for (const c of ["音標", "拼字", "組音", "重音"]) assert(await page.locator(".dlg-choices button", { hasText: c }).count(), "review kind: " + c);
+  await drive([/音標/, /▶/]);
   assert.equal(await ev(() => RPG.data.nv.reviews), 1);
   await page.locator("#hud-quest").click();
   const j = await page.locator("#menu-body").innerText();
@@ -267,7 +280,7 @@ const AFTER_N03 = { version: 1, at: "kk", nv: { track: "v1", step: "done", n01: 
   console.error(e);
   if (errors.length) console.error("PAGE ERRORS", errors);
   if (CUR) {
-    const why = await CUR.evaluate(() => ({ dlg: document.getElementById("dlg-body").innerText.slice(0, 300), quest: document.getElementById("quest-text").textContent, nv: { ch: RPG.data.nv.ch, taught: RPG.data.nv.taught.length, lv: RPG.data.nv.lv, boss: RPG.data.nv.boss }, battle: Battle.state })).catch(() => null);
+    const why = await CUR.evaluate(() => ({ act: (document.getElementById("bt-act") || {}).innerHTML, dlg: document.getElementById("dlg-body").innerText.slice(0, 300), quest: document.getElementById("quest-text").textContent, nv: { ch: RPG.data.nv.ch, taught: RPG.data.nv.taught.length, lv: RPG.data.nv.lv, boss: RPG.data.nv.boss }, battle: Battle.state })).catch(() => null);
     console.error("STATE", JSON.stringify(why));
     await CUR.screenshot({ path: "/tmp/picture-kk41-fail.png" }).catch(() => {});
   }

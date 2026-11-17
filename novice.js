@@ -337,7 +337,7 @@ const Novice = (() => {
     if (choices.length < 2) return null;
     return {
       kind: "snd", type: "listen-sound", recK: "w", item: it, sym, targetSound: sym, wordId: w, place,
-      prompt: `<p class="qz-ask">🎧 聽一個單字，選出它<b>${PLACE_ASK[place]}</b></p><p class="qz-hint">播放的是整個單字的${it.au ? "錄音" : "裝置語音（正式錄音待補）"}，不是單音。聽完才會出現選項。</p>`,
+      prompt: `<p class="qz-ask">🎧 聽一個單字，選出它<b class="qz-focus">${PLACE_ASK[place]}</b></p><p class="qz-hint">播放的是整個單字的${it.au ? "錄音" : "裝置語音（正式錄音待補）"}，不是單音。聽完才會出現選項。</p>`,
       audio: { text: it.w, file: it.au, label: "再聽一次" }, autoplay: true, noText: true, reveal: "right-only",
       options: shuf(choices).map((s) => ({ html: `<span class="qz-sym big">/${ESC(s)}/</span>`, ok: s === sym, label: `/${s}/` })),
       answer: { en: it.w, kk: it.kk, zh: it.z, file: it.au },
@@ -390,7 +390,7 @@ const Novice = (() => {
       const p = PARTNER[x];
       if (!p || wrong.length >= 2) continue;
       const v = kk.replace(x, p);
-      if (!seen.has(v)) (seen.add(v), wrong.push(v));
+      if (!seen.has(v) && v.replace(/[[\]ˋˏ]/g, "") !== w.w) (seen.add(v), wrong.push(v)); // never a variant that reads like the spelling
     }
     if (wrong.length < 2) return null;
     return {

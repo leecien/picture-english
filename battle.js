@@ -564,7 +564,7 @@ const Battle = (() => {
       go.onclick = () => live(tok) && after();
       $("bt-act").querySelector(".bt-q").insertBefore(go, $("bt-act").querySelector(".bt-help"));
       if (hide && B.comp && kind === "wrong") {
-        // the companion compares the sounds and shows the right one: a fix, not an independent answer
+        // the companion corrects the wrong pick and lets the player choose again: an assisted answer, never an independent one
         const fix = document.createElement("button");
         fix.type = "button";
         fix.className = "qz-say";
@@ -573,11 +573,25 @@ const Battle = (() => {
         fix.onclick = () => {
           if (!live(tok)) return;
           fix.remove();
-          bs.forEach((b, i) => q.options[i].ok && b.classList.add("right"));
-          Learn.revealKK(q, bs);
-          $("bt-feedback").innerHTML = `<b>🧚 ${esc(B.comp.name)}：</b>聽，是這個。${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""}${q.explain ? `<small>${esc(q.explain)}</small>` : ""}<small>這題記為「夥伴補正」，不算獨立答對，也不會再造成傷害。</small>`;
-          if (a.en) speak(a.en, a.file || "");
-          if (B.ctx.onAssist) B.ctx.onAssist(q);
+          go.hidden = true;
+          const picked = q.options[idx] || {},
+            done = (right) => {
+              bs.forEach((b) => (b.disabled = true));
+              bs.forEach((b, i) => q.options[i].ok && b.classList.add("right"));
+              Learn.revealKK(q, bs);
+              $("bt-feedback").innerHTML = `<b>🧚 ${esc(B.comp.name)}：</b>${right ? "對了，就是這個！" : "是這個。"}${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""}${q.explain ? `<small>${esc(q.explain)}</small>` : ""}<small>這題記為「夥伴補正」，不算獨立答對，也不會再造成傷害。</small>`;
+              if (a.en) speak(a.en, a.file || "");
+              if (B.ctx.onAssist) B.ctx.onAssist(q);
+              go.hidden = false;
+              go.focus({ preventScroll: true });
+            };
+          $("bt-feedback").innerHTML = `<b>🧚 ${esc(B.comp.name)}：</b>你選的 ${esc(picked.label || "")} 不是這個字裡的音。再聽一次，換一個選。<small>這次選對也算「夥伴補正」，不算獨立答對。</small>`;
+          bs.forEach((b, i) => {
+            if (i === idx) return;
+            b.disabled = false;
+            b.onclick = () => live(tok) && done(!!q.options[i].ok);
+          });
+          if (q.audio) playAwait(q.audio);
         };
         $("bt-act").querySelector(".bt-q").insertBefore(fix, go);
       }
