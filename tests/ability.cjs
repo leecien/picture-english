@@ -100,7 +100,8 @@ let CUR = null;
 
   /* ---------- quick repeat is not new evidence; independent = first-try, no help ---------- */
   const rep = await ev(() => {
-    const q = { recK: "w", item: WORDS.find((w) => w.w === "milk"), kind: "w" };
+    const used = new Set(Ability.records.map((r) => r.id)),
+      q = { recK: "w", item: WORDS.find((w) => !used.has("w:" + w.w)), kind: "w" }; // a word not answered yet
     const a = Ability.log(q, { first: "right" }),
       b = Ability.log(q, { first: "right" });
     return [Ability.independent(a), Ability.independent(b), b.fresh];
