@@ -42,13 +42,25 @@ const AudioSession = (() => {
     if (!result) return;
     for (const word of result.items || []) {
       const node = document.createElement("span");
-      node.className = "aus-token aus-token-" + (["heard", "missing", "different", "extra", "unsure"].includes(word.state) ? word.state : "unsure");
+      node.className = "aus-token aus-token-" + (["heard", "missing", "different", "extra", "unsure", "pending"].includes(word.state) ? word.state : "unsure");
       const strong = document.createElement("b"); strong.textContent = word.word;
       const label = document.createElement("small"); label.textContent = (word.mark || "") + " " + (word.label || "不確定");
       node.append(strong, label);
       if (word.state === "different" && word.heard) { const heard = document.createElement("small"); heard.textContent = "聽成：" + word.heard; node.appendChild(heard); }
       host.appendChild(node);
     }
+  }
+  /* 診斷摘要: what this round got, for the player to read out or screenshot. Stays on screen; never uploaded. */
+  function diagText(d) {
+    const r = d.recording;
+    return [
+      "時間 " + d.at + "・引擎 " + d.engine + "・辨識支援 " + d.recognition + "・錄音支援 " + (d.recordingSupported ? "有" : "沒有"),
+      "模式 " + d.mode + (d.recognitionOnlyRetry ? "（只辨識重試）" : ""),
+      "辨識結果 " + (d.ok ? "有文字" : "沒有文字") + (d.error ? "・錯誤 " + d.error : "") + (d.detail ? "・細節 " + d.detail : "") + (d.heardSound == null ? "" : "・辨識器聽到聲音 " + (d.heardSound ? "是" : "否")),
+      "部分文字 " + d.partialChars + " 字元・最後文字 " + d.finalChars + " 字元",
+      r ? "錄音 " + (r.ok ? "有" : "失敗" + (r.error ? "（" + r.error + "）" : "")) + "・" + r.bytes + " bytes" + (r.durationMs ? "・" + Math.round(r.durationMs) + " ms" : "") + "・音量" + (r.levelMeasured ? (r.silent ? "量到無聲" : "量到有聲") : "無法量測") + "・可回放 " + (r.playable ? "是" : "否") : "錄音：這次沒有錄音",
+      (d.recordSkipped ? "已知衝突：只辨識。" : "") + (d.recordConflict ? "偵測到收音衝突。" : ""),
+    ].filter(Boolean).join("\n");
   }
   function render() {
     if (!session || !el || el.hidden) return;
@@ -72,6 +84,8 @@ const AudioSession = (() => {
     q("as-paused").hidden = !s.paused;
     text("as-partial", s.partial ? "辨識中（尚未判讀）：" + s.partial : "");
     feedback(s.comparison);
+    const d = q("as-diag"); d.hidden = !s.diag;
+    if (s.diag) text("as-diag-body", diagText(s.diag));
     q("as-demo").hidden = finished || (!s.listenOnly && st.phase === "independent");
     q("as-demo").disabled = busy || s.paused || !a;
     q("as-start").hidden = finished || s.listenOnly;
@@ -112,14 +126,17 @@ const AudioSession = (() => {
   function begin(recordOnly) {
     const s = session, st = state(), item = current(), a = api();
     if (!s || !st || !item || !a || s.listenOnly || !st.demoHeard || s.pending || s.playing || releasing || s.paused) return;
-    releaseRecording(); s.comparison = null; s.partial = ""; s.pending = true; s.capture = recordOnly ? "record" : "listen";
+    releaseRecording(); s.comparison = null; s.partial = ""; s.diag = null; s.pending = true; s.capture = recordOnly ? "record" : "listen";
     st.attempts++; const my = ++serial;
-    message(recordOnly ? "正在錄音；說完按「說完了」。只錄音不判對錯。" : "請開口，說完按「說完了」。");
+    // each round owns its own recording, result, partial text and flags; nothing carries over from the last one
+    const srOnly = !recordOnly && !!s.srOnlyNext; s.srOnlyNext = false; if (srOnly) st.srOnlyUsed = true;
+    let heardPartial = "";
+    message(recordOnly ? "正在錄音；說完按「說完了」。只錄音不判對錯。" : srOnly ? "這次只做辨識，本次未保留錄音。請開口，說完按「說完了」。" : "請開口，說完按「說完了」。");
     const onLevel = (level) => { if (session === s && my === serial) q("as-meter").value = Math.max(0, Math.min(1, Number(level) || 0)); };
     // Keep capture calls directly inside the user's click; no awaited playback before getUserMedia/SR.
     let pending;
     try {
-      pending = recordOnly ? a.startRecording({ maxMs: 16000, onLevel }) : a.listen({ lang: "en-US", maxMs: 12000, record: q("as-record-copy").checked ? "auto" : false, onLevel, onPartial: (value) => { if (session === s && my === serial) { s.partial = value; text("as-partial", "辨識中（尚未判讀）：" + value); } } });
+      pending = recordOnly ? a.startRecording({ maxMs: 16000, onLevel }) : a.listen({ lang: "en-US", maxMs: 12000, record: !srOnly && q("as-record-copy").checked ? "auto" : false, onLevel, onPartial: (value) => { if (session === s && my === serial) { s.partial = value; heardPartial = value || heardPartial; text("as-partial", "辨識中（尚未判讀）：" + value); } } });
     } catch (_) { s.pending = false; s.capture = ""; message("目前無法開始收音，請確認權限與裝置後重試。"); render(); return; }
     render();
     Promise.resolve(pending).then((result) => {
@@ -130,15 +147,49 @@ const AudioSession = (() => {
         // startRecording resolves when recording starts; completion is handled by the stop button.
         render(); return;
       }
-      finishAttempt(s, st, item, result); s.pending = false; s.capture = ""; s.partial = ""; render();
+      finishAttempt(s, st, item, result, { srOnly, partial: heardPartial, mode: srOnly ? "recognition-only" : q("as-record-copy").checked ? "recognition+recording" : "recognition" });
+      if (srOnly && !result.ok) message(s.message + " 本次未保留錄音。");
+      s.pending = false; s.capture = ""; s.partial = ""; render();
     }).catch(() => { if (session === s && my === serial) { s.pending = false; s.capture = ""; message("收音或辨識失敗，這次不計分。可以再試一次。"); render(); } });
   }
-  function finishAttempt(s, st, item, result) {
+  /* AUDIO-INCIDENT-01: a recording the player can hear back, but no recognised text. The engine labels every
+     recognition ending without a final result 「沒有聽到說話」; when the round's own recording holds sound that is
+     not evidence of silence. Classified here so the message, the word marks and the next try are right. */
+  const RECOG_EMPTY = new Set(["no-speech", "recognition-failed"]);
+  function heardRecording(r) {
+    return !!(r && r.ok !== false && !r.silent && r.error !== "no-sound" && r.playable !== false && r.blob && r.blob.size);
+  }
+  function diagnose(s, result, extra) {
+    const a = api(), caps = a && a.capabilities ? a.capabilities() : {}, r = result && result.recording;
+    const alts = result && result.ok && result.alts ? result.alts : [];
+    s.diag = {
+      at: new Date().toISOString(), engine: a && a.VERSION ? a.VERSION : "?", recognition: caps.recognition || "?", recordingSupported: !!caps.recording,
+      mode: extra.mode, ok: !!(result && result.ok), error: result && result.error || "", detail: result && result.detail || "", heardSound: result && result.heardSound,
+      partialChars: (extra.partial || "").length, finalChars: alts.length ? String(alts[0] || "").length : 0,
+      recording: r ? { ok: r.ok !== false, error: r.error || "", silent: !!r.silent, bytes: r.blob ? r.blob.size : 0, durationMs: r.durationMs || null, levelMeasured: r.levelMeasured !== false, playable: r.playable !== false } : null,
+      recordSkipped: !!(result && result.recordSkipped), recordConflict: !!(result && result.recordConflict), recognitionOnlyRetry: !!extra.srOnly,
+    };
+  }
+  const notScored = (en) => ({ status: "not-scored", items: String(en).split(/\s+/).filter(Boolean).map((w) => ({ word: w, state: "pending", label: "尚未評分" })) });
+  function finishAttempt(s, st, item, result, extra = {}) {
     const a = api();
+    diagnose(s, result, extra);
+    // clear recording + no recognised text: a technical state, never a wrong answer or a silence verdict
+    if (!result.ok && RECOG_EMPTY.has(result.error) && heardRecording(result.recording)) {
+      keepRecording(result.recording);
+      s.comparison = notScored(item.en);
+      const partial = extra.partial ? " 辨識只收到部分文字，沒有最後結果。" : "";
+      // bounded: one recognition-only retry per item, said out loud, never automatic
+      const offer = !extra.srOnly && !st.srOnlyUsed && !result.recordSkipped;
+      if (offer) s.srOnlyNext = true;
+      message("錄音已保留，但未辨識到文字；可重播或重試，這次不計分。" + partial + (offer ? " 下一次會改成只做辨識（不同時錄音）：按「開始跟讀」後再說一次，那一次不會保留錄音。" : ""));
+      return;
+    }
     const notice = result.recordSkipped || result.recordConflict ? " 本次未保留錄音；裝置收音衝突時改為只辨識，可另外使用「只錄音回放」。" : result.recording && result.recording.levelMeasured === false ? " 無法確認音量；可以回放自行確認，不會判為沒聲音。" : "";
     keepRecording(result.recordSkipped || result.recordConflict ? null : result.recording);
     // This panel practices reading a target aloud, not sentence meaning or spelling.
-    const comparison = a.compare(item.en, result, { allowHomophones: true }); s.comparison = comparison;
+    // no recognised text: every word is 「尚未評分」, not 「不確定」 (nothing was judged)
+    const comparison = result.ok ? a.compare(item.en, result, { allowHomophones: true }) : notScored(item.en); s.comparison = comparison;
     try {
     if (!result.ok) { message((result.message || "沒有取得可判讀的語音。") + (s.recordingUrl ? " 可以播放自己的錄音。" : "") + " 這次不計分。"); return; }
     if (comparison.status === "uncertain" || comparison.status === "no-result") { message(comparison.note || "辨識不確定，請再試一次，這次不判對錯。"); return; }
@@ -177,7 +228,7 @@ const AudioSession = (() => {
   }
   function next() {
     if (!session || session.pending || session.playing || releasing || session.paused) return;
-    const s = session; stopWork(s); releaseRecording(s); s.index++; s.comparison = null; s.partial = ""; s.message = ""; render();
+    const s = session; stopWork(s); releaseRecording(s); s.index++; s.comparison = null; s.partial = ""; s.diag = null; s.srOnlyNext = false; s.message = ""; render();
   }
   function close() {
     const s = session; if (!s) return;
@@ -188,7 +239,7 @@ const AudioSession = (() => {
   function build() {
     if (el) return;
     el = document.createElement("section"); el.id = "audio-session"; el.className = "audio-session"; el.hidden = true; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", "錄音與跟讀練習");
-    el.innerHTML = '<div class="aus-inner"><header><button id="as-close" type="button">← 返回</button><h1 id="as-label">錄音與跟讀</h1><span id="as-count"></span></header><label class="aus-choice"><input id="as-listen-only" type="checkbox">聆聽模式（不收音、不計分）</label><p id="as-steps" class="aus-steps"></p><div id="as-paused" class="aus-pause" hidden><p>已停止播放與收音。回來後請自行繼續。</p><button id="as-resume" type="button">我準備好了</button></div><article class="aus-card"><h2 id="as-phase"></h2><p id="as-english" class="aus-english"></p><p id="as-chinese"></p><p id="as-partial" class="aus-partial" aria-live="polite"></p><div id="as-feedback" class="aus-feedback"></div><p id="as-message" class="aus-message" role="status"></p><div id="as-meter-wrap" hidden><label>收音音量 <meter id="as-meter" min="0" max="1" value="0"></meter></label></div><div class="aus-actions"><button id="as-demo" type="button">🔊 聽示範</button><button id="as-start" class="aus-primary" type="button">🎤 開始跟讀</button><button id="as-stop" class="aus-primary" type="button" hidden>說完了</button><button id="as-cancel" type="button" hidden>取消本次</button><button id="as-replay" type="button" hidden>▶ 播放我的錄音</button><button id="as-record-only" type="button">只錄音回放（不判讀）</button></div><label class="aus-choice"><input id="as-record-copy" type="checkbox" checked>跟讀時同時保留錄音（收音衝突時可關閉）</label><label class="aus-choice"><input id="as-replay-gain" type="checkbox" checked>回放音量平衡（裝置支援時）</label><p id="as-capability" class="aus-small"></p><div class="aus-actions"><button id="as-independent" type="button" hidden>試著自己念</button><button id="as-help" type="button" hidden>需要示範，回到跟讀</button><button id="as-next" class="aus-primary" type="button" hidden>下一項</button><button id="as-skip" type="button">略過這項（不計完成）</button></div></article><p class="aus-small">綠色表示語音辨識聽到這個字。漏字、不同詞和不確定都有文字提示；這不是精準音素、口音或句意評分；跟讀允許辨識器以同音字轉寫。錄音只保留在本次瀏覽器畫面，離開即釋放，不會自動上傳。</p></div>';
+    el.innerHTML = '<div class="aus-inner"><header><button id="as-close" type="button">← 返回</button><h1 id="as-label">錄音與跟讀</h1><span id="as-count"></span></header><label class="aus-choice"><input id="as-listen-only" type="checkbox">聆聽模式（不收音、不計分）</label><p id="as-steps" class="aus-steps"></p><div id="as-paused" class="aus-pause" hidden><p>已停止播放與收音。回來後請自行繼續。</p><button id="as-resume" type="button">我準備好了</button></div><article class="aus-card"><h2 id="as-phase"></h2><p id="as-english" class="aus-english"></p><p id="as-chinese"></p><p id="as-partial" class="aus-partial" aria-live="polite"></p><div id="as-feedback" class="aus-feedback"></div><p id="as-message" class="aus-message" role="status"></p><details id="as-diag" class="aus-diag" hidden><summary>診斷摘要（這次收音的技術狀態）</summary><pre id="as-diag-body"></pre></details><div id="as-meter-wrap" hidden><label>收音音量 <meter id="as-meter" min="0" max="1" value="0"></meter></label></div><div class="aus-actions"><button id="as-demo" type="button">🔊 聽示範</button><button id="as-start" class="aus-primary" type="button">🎤 開始跟讀</button><button id="as-stop" class="aus-primary" type="button" hidden>說完了</button><button id="as-cancel" type="button" hidden>取消本次</button><button id="as-replay" type="button" hidden>▶ 播放我的錄音</button><button id="as-record-only" type="button">只錄音回放（不判讀）</button></div><label class="aus-choice"><input id="as-record-copy" type="checkbox" checked>跟讀時同時保留錄音（收音衝突時可關閉）</label><label class="aus-choice"><input id="as-replay-gain" type="checkbox" checked>回放音量平衡（裝置支援時）</label><p id="as-capability" class="aus-small"></p><div class="aus-actions"><button id="as-independent" type="button" hidden>試著自己念</button><button id="as-help" type="button" hidden>需要示範，回到跟讀</button><button id="as-next" class="aus-primary" type="button" hidden>下一項</button><button id="as-skip" type="button">略過這項（不計完成）</button></div></article><p class="aus-small">綠色表示語音辨識聽到這個字。漏字、不同詞和不確定都有文字提示；這不是精準音素、口音或句意評分；跟讀允許辨識器以同音字轉寫。錄音只保留在本次瀏覽器畫面，離開即釋放，不會自動上傳。</p></div>';
     document.body.appendChild(el);
     q("as-close").onclick = close; q("as-demo").onclick = playDemo; q("as-start").onclick = () => begin(false); q("as-record-only").onclick = () => begin(true); q("as-stop").onclick = stopCapture; q("as-replay").onclick = replay; q("as-next").onclick = next; q("as-skip").onclick = next;
     q("as-cancel").onclick = () => { stopWork(); releaseRecording(); message("這次已取消，沒有計入完成。可以準備好再試。"); render(); };
@@ -213,7 +264,7 @@ const AudioSession = (() => {
   function open(opt = {}) {
     if (session) close(); build(); const a = api(); if (a && a.reset) a.reset();
     const items = (Array.isArray(opt.items) ? opt.items : []).filter((x) => x && typeof x.en === "string" && x.en.trim() && x.en.length <= 600).slice(0, 100).map((x, i) => ({ id: x.id == null ? String(i) : String(x.id), en: x.en.trim(), zh: typeof x.zh === "string" ? x.zh.slice(0, 1500) : "", audio: typeof x.audio === "string" ? x.audio : "", original: x }));
-    session = { items, index: 0, label: String(opt.label || "錄音與跟讀"), states: items.map(() => ({ phase: "demo", demoHeard: false, shadowPassed: false, independentPassed: false, attempts: 0 })), completed: new Set(), pending: false, capture: "", playing: false, paused: false, listenOnly: false, comparison: null, partial: "", message: items.length ? "先聽示範，跟著念；辨識吻合後再試著自己念。" : "目前沒有可練習的內容。", recording: null, recordingUrl: "", onClose: opt.onClose, onResult: opt.onResult, previousFocus: document.activeElement };
+    session = { items, index: 0, label: String(opt.label || "錄音與跟讀"), states: items.map(() => ({ phase: "demo", demoHeard: false, shadowPassed: false, independentPassed: false, attempts: 0 })), completed: new Set(), pending: false, capture: "", playing: false, paused: false, listenOnly: false, comparison: null, partial: "", diag: null, srOnlyNext: false, message: items.length ? "先聽示範，跟著念；辨識吻合後再試著自己念。" : "目前沒有可練習的內容。", recording: null, recordingUrl: "", onClose: opt.onClose, onResult: opt.onResult, previousFocus: document.activeElement };
     q("as-record-copy").checked = true; el.hidden = false; render(); q("as-close").focus();
     return true;
   }
