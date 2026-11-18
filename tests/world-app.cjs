@@ -48,7 +48,9 @@ const { chromium } = require('playwright');
       await page.waitForSelector('#life-img');
       await page.waitForFunction(() => document.getElementById('life-img').complete && document.getElementById('life-img').naturalWidth > 0);
       assert.equal(await page.locator('#life-title').innerText(),'診所看診');
-      assert.match(await page.locator('#life-panel').innerText(),/聽單字/);
+      // PR15: the old listen entry opens the sentence-led story (no hotspot quiz)
+      assert.equal(await ev(() => Life.mode),'story');
+      assert.match(await page.locator('#life-panel').innerText(),/聽整句/);
       assert.equal(await ev(() => World.paused),true);
       await ev(() => Life.close());
       await sameSpot();

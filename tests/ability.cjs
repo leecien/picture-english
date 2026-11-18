@@ -192,6 +192,22 @@ let CUR = null;
   assert(neg.every((t) => t.topics.some((x) => x.topic === "work" && x.sub === "negotiation" && x.role === "primary")), "negotiation lines: primary 職場・商務談判");
   assert(neg.every((t) => t.topics.every((x) => x.role === "primary" || x.topic === "meeting")), "other tags are secondary meeting tags only");
 
+  // anonymous export (ABILITY_EXPORT=<file>): the events this run answered through the UI and the profile they give
+  if (process.env.ABILITY_EXPORT) {
+    const out = await ev(() => {
+      const p = Ability.profile(Date.now()),
+        cell = (c) => c && { status: c.status, pct: c.pct, rawPct: c.rawPct, weak: c.weak, text: LearningProfile.describe(c), basis: c.basis && { items: c.basis.items, contexts: c.basis.contexts, days: c.basis.days, lastEvidenceDay: c.basis.lastEvidenceDay, excluded: c.basis.excluded } };
+      return {
+        note: "Anonymous test-session export from tests/ability.cjs (headless, clock skewed across days). No player data.",
+        rules: LearningProfile.RULES,
+        events: Ability.events,
+        grammar: Object.fromEntries(Object.entries(p.grammar).filter(([, g]) => g.v1 || g.partial).map(([id, g]) => [id, cell(g.channels.reading)])),
+        weak: p.weak,
+        totals: p.totals,
+      };
+    });
+    require("fs").writeFileSync(process.env.ABILITY_EXPORT, JSON.stringify(out, null, 1));
+  }
   /* ---------- reload keeps the events; the store keeps the newest 4000 ---------- */
   const kept = await ev(() => Ability.events.length);
   await page.reload();

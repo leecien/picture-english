@@ -76,13 +76,13 @@ const SWEEP = () => {
     await p.locator('[data-v=""]').click();
     await p.locator(".dlg-choices button", { hasText: "再見" }).click();
     await p.evaluate(() => Life.open({ scene: "kitchen" })); await p.waitForTimeout(600);
-    const q = await p.evaluate(() => Life.pointOf("kettle")); const r = await p.locator("#life-stage").boundingBox();
-    await p.mouse.click(r.x + q.x, r.y + q.y); await p.waitForTimeout(150); shots.life = await p.evaluate(SWEEP);
-    await p.locator('[data-mode="mission"]').click(); shots.lifeMission = await p.evaluate(SWEEP);
+    // PR15: sentence-led story and 句子練習 (the old hotspot / mission modes are gone)
+    shots.life = await p.evaluate(SWEEP);
+    await p.locator('[data-mode="practice"]').click(); await p.waitForTimeout(150); shots.lifePractice = await p.evaluate(SWEEP);
     for (const [k, v] of Object.entries(shots)) assert.deepEqual([...new Set(v)], [], `${scheme} / ${k}: text below 4.5:1 (3:1 for large text)`);
   }
   await b.close();
-  console.log("PASS: computed-colour contrast sweep in light and dark mode over the field, menu, practice home, all 8 practice question types before and after answering (answer sheet included), a dialog question answered, the word card, the N02 matching screen, Echo\'s 41-sound grid, a life scene card and its mission list: all text >= 4.5:1 (large text >= 3:1)");
+  console.log("PASS: computed-colour contrast sweep in light and dark mode over the field, menu, practice home, all 8 practice question types before and after answering (answer sheet included), a dialog question answered, the word card, the N02 matching screen, Echo\'s 41-sound grid, a life scene story and its sentence practice: all text >= 4.5:1 (large text >= 3:1)");
 })().catch((e) => {
   console.error(e);
   process.exit(1);
