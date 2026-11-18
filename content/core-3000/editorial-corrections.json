@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "coordinator-ai",
+  "corrections": [
+    {
+      "word": "an",
+      "set": {
+        "zh": "一個（放在母音發音開頭的詞前）",
+        "reviewNote": "a／an依後接的發音選擇，不是只看字母；例如an hour、a university。"
+      },
+      "reason": "Clarify sound versus letter: an hour but a university."
+    },
+    {
+      "word": "sentence",
+      "set": {
+        "pos": "noun,verb"
+      },
+      "reason": "The reviewed gloss includes the verb sense 判刑 as well as the noun 句子; retain both parts of speech."
+    }
+  ]
+}

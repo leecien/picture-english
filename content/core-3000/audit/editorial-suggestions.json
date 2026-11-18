@@ -1,0 +1,6322 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "coordinator-ai",
+  "scope": "selectionOrder 1–300; 299 accepted selected senses and one excluded entry",
+  "entries": [
+    {
+      "wordId": "word:the",
+      "word": "the",
+      "selectionOrder": 1,
+      "original": {
+        "zh": "這個；那個（定冠詞）",
+        "pos": "article"
+      },
+      "proposed": {
+        "zh": "這個；那個（指特定事物）",
+        "pos": "article",
+        "example": {
+          "en": "Please close the door.",
+          "zh": "請把門關上。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:be",
+      "word": "be",
+      "selectionOrder": 2,
+      "original": {
+        "zh": "是；在；處於某種狀態",
+        "pos": "verb"
+      },
+      "proposed": {
+        "zh": "是；處於某種狀態",
+        "pos": "verb",
+        "example": {
+          "en": "I want to be a teacher.",
+          "zh": "我想成為老師。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:and",
+      "word": "and",
+      "selectionOrder": 3,
+      "original": {
+        "zh": "和；而且",
+        "pos": "conjunction"
+      },
+      "proposed": {
+        "zh": "和；而且",
+        "pos": "conjunction",
+        "example": {
+          "en": "I like tea and coffee.",
+          "zh": "我喜歡茶和咖啡。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:of",
+      "word": "of",
+      "selectionOrder": 4,
+      "original": {
+        "zh": "……的；屬於",
+        "pos": "preposition"
+      },
+      "proposed": {
+        "zh": "……的；屬於",
+        "pos": "preposition",
+        "example": {
+          "en": "This is a photo of my family.",
+          "zh": "這是我家人的照片。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:a",
+      "word": "a",
+      "selectionOrder": 5,
+      "original": {
+        "zh": "一個；一種（不定冠詞）",
+        "pos": "article"
+      },
+      "proposed": {
+        "zh": "一個；一種",
+        "pos": "article",
+        "example": {
+          "en": "I need a pen.",
+          "zh": "我需要一支筆。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:in",
+      "word": "in",
+      "selectionOrder": 6,
+      "original": {
+        "zh": "在...期間, 在...之內, 處於...之中, 從事於, 按照, 穿著；進入, 朝裡, 在裡面, 在屋裡",
+        "pos": "prep,adv,a,n"
+      },
+      "proposed": {
+        "zh": "在……裡面",
+        "pos": "preposition",
+        "example": {
+          "en": "The keys are in my bag.",
+          "zh": "鑰匙在我的包包裡。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:to",
+      "word": "to",
+      "selectionOrder": 7,
+      "original": {
+        "zh": "向；到（也作不定詞標記）",
+        "pos": "preposition,particle"
+      },
+      "proposed": {
+        "zh": "到；向",
+        "pos": "preposition",
+        "example": {
+          "en": "We walk to school.",
+          "zh": "我們走路去學校。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:have",
+      "word": "have",
+      "selectionOrder": 8,
+      "original": {
+        "zh": "有；擁有（也作助動詞）",
+        "pos": "verb,auxiliary"
+      },
+      "proposed": {
+        "zh": "有；擁有",
+        "pos": "verb",
+        "example": {
+          "en": "I have a question.",
+          "zh": "我有一個問題。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:it",
+      "word": "it",
+      "selectionOrder": 9,
+      "original": {
+        "zh": "它",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "它；這件事",
+        "pos": "pronoun",
+        "example": {
+          "en": "It is on the table.",
+          "zh": "它在桌上。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:i",
+      "word": "i",
+      "selectionOrder": 10,
+      "original": {
+        "zh": "我",
+        "pos": "pronoun"
+      },
+      "proposed": {
+        "zh": "我",
+        "pos": "pronoun",
+        "example": {
+          "en": "I live near the station.",
+          "zh": "我住在車站附近。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:that",
+      "word": "that",
+      "selectionOrder": 11,
+      "original": {
+        "zh": "那, 那個；以致, 因為",
+        "pos": "a,conj,pron,adv"
+      },
+      "proposed": {
+        "zh": "那個；那件事",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "That bag is mine.",
+          "zh": "那個包包是我的。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:for",
+      "word": "for",
+      "selectionOrder": 12,
+      "original": {
+        "zh": "為了；給；對於",
+        "pos": "preposition"
+      },
+      "proposed": {
+        "zh": "給；為了",
+        "pos": "preposition",
+        "example": {
+          "en": "This gift is for you.",
+          "zh": "這份禮物是給你的。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:you",
+      "word": "you",
+      "selectionOrder": 13,
+      "original": {
+        "zh": "你, 你們",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "你；你們",
+        "pos": "pronoun",
+        "example": {
+          "en": "You can sit here.",
+          "zh": "你可以坐這裡。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:he",
+      "word": "he",
+      "selectionOrder": 14,
+      "original": {
+        "zh": "他；男孩, 男人, 雄性動物",
+        "pos": "pron,n"
+      },
+      "proposed": {
+        "zh": "他",
+        "pos": "pronoun",
+        "example": {
+          "en": "He works at a hospital.",
+          "zh": "他在醫院工作。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:with",
+      "word": "with",
+      "selectionOrder": 15,
+      "original": {
+        "zh": "和...在一起, 以, 由於",
+        "pos": "prep"
+      },
+      "proposed": {
+        "zh": "和……一起；帶著",
+        "pos": "preposition",
+        "example": {
+          "en": "I live with my sister.",
+          "zh": "我和姊姊住在一起。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:on",
+      "word": "on",
+      "selectionOrder": 16,
+      "original": {
+        "zh": "在...之上；...上去",
+        "pos": "prep,adv,a"
+      },
+      "proposed": {
+        "zh": "在……上面",
+        "pos": "preposition",
+        "example": {
+          "en": "The book is on the desk.",
+          "zh": "書在書桌上。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:do",
+      "word": "do",
+      "selectionOrder": 17,
+      "original": {
+        "zh": "做（也作助動詞）",
+        "pos": "verb,auxiliary"
+      },
+      "proposed": {
+        "zh": "做",
+        "pos": "verb",
+        "example": {
+          "en": "What do you do after work?",
+          "zh": "你下班後做什麼？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:say",
+      "word": "say",
+      "selectionOrder": 18,
+      "original": {
+        "zh": "說, 講, 念, 說明, 指明；說, 講",
+        "pos": "vt,vi,n"
+      },
+      "proposed": {
+        "zh": "說",
+        "pos": "verb",
+        "example": {
+          "en": "Please say your name.",
+          "zh": "請說出你的名字。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:this",
+      "word": "this",
+      "selectionOrder": 19,
+      "original": {
+        "zh": "這, 本；這, 本",
+        "pos": "pron,a,adv"
+      },
+      "proposed": {
+        "zh": "這個；這件事",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "This room is clean.",
+          "zh": "這個房間很乾淨。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:they",
+      "word": "they",
+      "selectionOrder": 20,
+      "original": {
+        "zh": "他們, 它們",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "他們；她們；它們",
+        "pos": "pronoun",
+        "example": {
+          "en": "They are waiting outside.",
+          "zh": "他們正在外面等。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:at",
+      "word": "at",
+      "selectionOrder": 21,
+      "original": {
+        "zh": "在（某地或某時）",
+        "pos": "preposition"
+      },
+      "proposed": {
+        "zh": "在（某地或某時）",
+        "pos": "preposition",
+        "example": {
+          "en": "Meet me at the station.",
+          "zh": "在車站和我見面。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:but",
+      "word": "but",
+      "selectionOrder": 22,
+      "original": {
+        "zh": "但是；不過",
+        "pos": "conjunction"
+      },
+      "proposed": {
+        "zh": "但是",
+        "pos": "conjunction",
+        "example": {
+          "en": "The room is small but comfortable.",
+          "zh": "房間很小，但是很舒適。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:we",
+      "word": "we",
+      "selectionOrder": 23,
+      "original": {
+        "zh": "我們",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "我們",
+        "pos": "pronoun",
+        "example": {
+          "en": "We are ready to go.",
+          "zh": "我們準備好出發了。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:his",
+      "word": "his",
+      "selectionOrder": 24,
+      "original": {
+        "zh": "他的",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "他的",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "His phone is on the table.",
+          "zh": "他的手機在桌上。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:from",
+      "word": "from",
+      "selectionOrder": 25,
+      "original": {
+        "zh": "從, 來自, 根據",
+        "pos": "prep"
+      },
+      "proposed": {
+        "zh": "從；來自",
+        "pos": "preposition",
+        "example": {
+          "en": "This train comes from Taipei.",
+          "zh": "這班火車從台北開來。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:not",
+      "word": "not",
+      "selectionOrder": 26,
+      "original": {
+        "zh": "不, 非, 未",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "不；不是",
+        "pos": "adverb",
+        "example": {
+          "en": "This seat is not free.",
+          "zh": "這個座位不是空的。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:by",
+      "word": "by",
+      "selectionOrder": 27,
+      "original": {
+        "zh": "在……旁邊；藉由；被",
+        "pos": "preposition"
+      },
+      "proposed": {
+        "zh": "在……旁邊；藉由",
+        "pos": "preposition",
+        "example": {
+          "en": "We travel by train.",
+          "zh": "我們搭火車旅行。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:she",
+      "word": "she",
+      "selectionOrder": 28,
+      "original": {
+        "zh": "她",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "她",
+        "pos": "pronoun",
+        "example": {
+          "en": "She is my new teacher.",
+          "zh": "她是我的新老師。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:or",
+      "word": "or",
+      "selectionOrder": 29,
+      "original": {
+        "zh": "或；或者",
+        "pos": "conjunction"
+      },
+      "proposed": {
+        "zh": "或；或者",
+        "pos": "conjunction",
+        "example": {
+          "en": "Would you like tea or water?",
+          "zh": "你想喝茶還是水？"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:as",
+      "word": "as",
+      "selectionOrder": 30,
+      "original": {
+        "zh": "作為；如同；當……時",
+        "pos": "preposition,conjunction"
+      },
+      "proposed": {
+        "zh": "作為；當……時",
+        "pos": "preposition,conjunction",
+        "example": {
+          "en": "She works as a nurse.",
+          "zh": "她擔任護理師。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:what",
+      "word": "what",
+      "selectionOrder": 31,
+      "original": {
+        "zh": "什麼；怎麼, 多麼",
+        "pos": "pron,interj,a,adv"
+      },
+      "proposed": {
+        "zh": "什麼",
+        "pos": "pronoun",
+        "example": {
+          "en": "What is your name?",
+          "zh": "你叫什麼名字？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:go",
+      "word": "go",
+      "selectionOrder": 32,
+      "original": {
+        "zh": "去, 走, 達到, 運轉, 查閱, 消失, 結束, 放棄, 花費, 流傳, 趨於, 打算, 剩下；以...打賭, 對付, 忍受, 出產, 為被捕者出(保釋金)",
+        "pos": "vi,vt,n"
+      },
+      "proposed": {
+        "zh": "去；前往",
+        "pos": "verb",
+        "example": {
+          "en": "We go to the park on Sundays.",
+          "zh": "我們星期天去公園。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:their",
+      "word": "their",
+      "selectionOrder": 33,
+      "original": {
+        "zh": "他們的",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "他們的；她們的；它們的",
+        "pos": "determiner",
+        "example": {
+          "en": "Their house is near the river.",
+          "zh": "他們的房子在河邊附近。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:can",
+      "word": "can",
+      "selectionOrder": 34,
+      "original": {
+        "zh": "能；可以",
+        "pos": "modal"
+      },
+      "proposed": {
+        "zh": "能；可以",
+        "pos": "modal",
+        "example": {
+          "en": "I can help you.",
+          "zh": "我可以幫你。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:who",
+      "word": "who",
+      "selectionOrder": 35,
+      "original": {
+        "zh": "誰",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "誰",
+        "pos": "pronoun",
+        "example": {
+          "en": "Who is at the door?",
+          "zh": "誰在門口？"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:get",
+      "word": "get",
+      "selectionOrder": 36,
+      "original": {
+        "zh": "得到；到達；變得",
+        "pos": "verb"
+      },
+      "proposed": {
+        "zh": "得到；取得",
+        "pos": "verb",
+        "example": {
+          "en": "Where can I get a ticket?",
+          "zh": "我可以在哪裡買到票？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:if",
+      "word": "if",
+      "selectionOrder": 37,
+      "original": {
+        "zh": "如果, 是否, 無論何時, 假設, 即使；條件",
+        "pos": "conj,n"
+      },
+      "proposed": {
+        "zh": "如果",
+        "pos": "conjunction",
+        "example": {
+          "en": "Call me if you need help.",
+          "zh": "如果你需要幫忙，請打給我。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:would",
+      "word": "would",
+      "selectionOrder": 38,
+      "original": {
+        "zh": "會；願意（也用於委婉請求）",
+        "pos": "modal"
+      },
+      "proposed": {
+        "zh": "會；願意（用於假設或委婉說法）",
+        "pos": "modal",
+        "example": {
+          "en": "Would you like some tea?",
+          "zh": "你想喝點茶嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:her",
+      "word": "her",
+      "selectionOrder": 39,
+      "original": {
+        "zh": "她的, 她",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "她；她的",
+        "pos": "pronoun,determiner",
+        "example": {
+          "en": "I know her sister.",
+          "zh": "我認識她的姊姊。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:all",
+      "word": "all",
+      "selectionOrder": 40,
+      "original": {
+        "zh": "所有的, 全部的, 一切的；全部, 全然",
+        "pos": "a,adv,pron,n"
+      },
+      "proposed": {
+        "zh": "全部；所有的",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "All the shops are closed.",
+          "zh": "所有商店都關門了。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:my",
+      "word": "my",
+      "selectionOrder": 41,
+      "original": {
+        "zh": "我的",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "我的",
+        "pos": "determiner",
+        "example": {
+          "en": "My bag is blue.",
+          "zh": "我的包包是藍色的。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:make",
+      "word": "make",
+      "selectionOrder": 42,
+      "original": {
+        "zh": "製造, 安排, 創造, 構成, 使得, 產生, 造成, 整理, 佈置, 引起, 到達, 進行；開始, 前進, 增大, 被製造, 被處理",
+        "pos": "vt,vi,n"
+      },
+      "proposed": {
+        "zh": "製作；做出",
+        "pos": "verb",
+        "example": {
+          "en": "I can make dinner tonight.",
+          "zh": "我今晚可以做晚餐。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:about",
+      "word": "about",
+      "selectionOrder": 43,
+      "original": {
+        "zh": "在...周圍, 大約, 有關, 關於；大約, 四處, 在附近, 周圍",
+        "pos": "prep,adv"
+      },
+      "proposed": {
+        "zh": "關於；大約",
+        "pos": "preposition,adverb",
+        "example": {
+          "en": "Tell me about your trip.",
+          "zh": "跟我說說你的旅行。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:know",
+      "word": "know",
+      "selectionOrder": 44,
+      "original": {
+        "zh": "知道, 瞭解, 認識, 確信",
+        "pos": "v"
+      },
+      "proposed": {
+        "zh": "知道；認識",
+        "pos": "verb",
+        "example": {
+          "en": "I know the answer.",
+          "zh": "我知道答案。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:will",
+      "word": "will",
+      "selectionOrder": 45,
+      "original": {
+        "zh": "將會；願意",
+        "pos": "modal"
+      },
+      "proposed": {
+        "zh": "將會；願意",
+        "pos": "modal",
+        "example": {
+          "en": "I will call you tomorrow.",
+          "zh": "我明天會打給你。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:up",
+      "word": "up",
+      "selectionOrder": 46,
+      "original": {
+        "zh": "向上的, 起床的, 漲的；向上, 上漲",
+        "pos": "a,adv,prep"
+      },
+      "proposed": {
+        "zh": "向上；往上",
+        "pos": "adverb",
+        "example": {
+          "en": "Please look up.",
+          "zh": "請往上看。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:one",
+      "word": "one",
+      "selectionOrder": 47,
+      "original": {
+        "zh": "一(個)；一, 任何人",
+        "pos": "n,pron,num,a"
+      },
+      "proposed": {
+        "zh": "一；一個",
+        "pos": "number",
+        "example": {
+          "en": "I need one ticket.",
+          "zh": "我需要一張票。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:time",
+      "word": "time",
+      "selectionOrder": 48,
+      "original": {
+        "zh": "時間, 時侯, 時機, 時期, 期限, 次數, 節拍, 暫停, 規定時間；測定...的時間, 記錄...的時間, 計時, 定時",
+        "pos": "n,vt,a"
+      },
+      "proposed": {
+        "zh": "時間；次數",
+        "pos": "noun",
+        "example": {
+          "en": "Do you have time for lunch?",
+          "zh": "你有時間吃午餐嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:there",
+      "word": "there",
+      "selectionOrder": 49,
+      "original": {
+        "zh": "在那裡",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "在那裡",
+        "pos": "adverb",
+        "example": {
+          "en": "Your bag is over there.",
+          "zh": "你的包包在那裡。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:year",
+      "word": "year",
+      "selectionOrder": 50,
+      "original": {
+        "zh": "年, 年度, 年齡",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "年",
+        "pos": "noun",
+        "example": {
+          "en": "We moved here last year.",
+          "zh": "我們去年搬來這裡。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:so",
+      "word": "so",
+      "selectionOrder": 51,
+      "original": {
+        "zh": "如此, 如是, 如...那樣；所以, 因此",
+        "pos": "adv,conj,pron"
+      },
+      "proposed": {
+        "zh": "所以；如此",
+        "pos": "conjunction,adverb",
+        "example": {
+          "en": "It is raining, so we will stay home.",
+          "zh": "正在下雨，所以我們會待在家。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:think",
+      "word": "think",
+      "selectionOrder": 52,
+      "original": {
+        "zh": "想, 考慮, 想起, 想像, 打算, 認為；思考, 料想",
+        "pos": "vt,vi,n,a"
+      },
+      "proposed": {
+        "zh": "想；認為",
+        "pos": "verb",
+        "example": {
+          "en": "I think this is your bag.",
+          "zh": "我想這是你的包包。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:when",
+      "word": "when",
+      "selectionOrder": 53,
+      "original": {
+        "zh": "當...的時候；何時, 什麼時候",
+        "pos": "conj,adv,pron,n"
+      },
+      "proposed": {
+        "zh": "何時；當……的時候",
+        "pos": "adverb,conjunction",
+        "example": {
+          "en": "When does the shop open?",
+          "zh": "這家店幾點開門？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:which",
+      "word": "which",
+      "selectionOrder": 54,
+      "original": {
+        "zh": "哪一個, 那一個",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "哪一個",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "Which bus goes to the station?",
+          "zh": "哪一班公車會到車站？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:them",
+      "word": "them",
+      "selectionOrder": 55,
+      "original": {
+        "zh": "他們, 她們, 它們",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "他們；她們；它們（受詞）",
+        "pos": "pronoun",
+        "example": {
+          "en": "I will call them tonight.",
+          "zh": "我今晚會打給他們。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:an",
+      "word": "an",
+      "selectionOrder": 56,
+      "original": {
+        "zh": "一",
+        "pos": "art"
+      },
+      "proposed": {
+        "zh": "一個；一種（用於母音發音前）",
+        "pos": "article",
+        "example": {
+          "en": "She ate an apple.",
+          "zh": "她吃了一顆蘋果。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:an:pronunciation-rule"
+      ]
+    },
+    {
+      "wordId": "word:some",
+      "word": "some",
+      "selectionOrder": 57,
+      "original": {
+        "zh": "一些, 一部分, 若干；大約",
+        "pos": "pron,adv,a"
+      },
+      "proposed": {
+        "zh": "一些",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "I need some water.",
+          "zh": "我需要一些水。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:me",
+      "word": "me",
+      "selectionOrder": 58,
+      "original": {
+        "zh": "我",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "我（受詞）",
+        "pos": "pronoun",
+        "example": {
+          "en": "Please help me.",
+          "zh": "請幫幫我。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:people",
+      "word": "people",
+      "selectionOrder": 59,
+      "original": {
+        "zh": "人, 人民, 民族, 平民；使住滿人, 居住於",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "人；人們",
+        "pos": "noun",
+        "example": {
+          "en": "Many people take this bus.",
+          "zh": "很多人搭這班公車。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:take",
+      "word": "take",
+      "selectionOrder": 60,
+      "original": {
+        "zh": "拿, 取, 抓, 帶領, 獲得, 就座, 接受, 吃, 吸引, 採取, 乘, 需要, 花費；吃掉對方棋子, 抓住, 起作用, 依法獲得財產",
+        "pos": "vt,vi,n"
+      },
+      "proposed": {
+        "zh": "拿；帶；搭乘",
+        "pos": "verb",
+        "example": {
+          "en": "Take your bag with you.",
+          "zh": "把你的包包帶著。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:out",
+      "word": "out",
+      "selectionOrder": 61,
+      "original": {
+        "zh": "外面的, 熄滅的, 結束的；在外, 熄滅, 出現",
+        "pos": "a,adv,prep"
+      },
+      "proposed": {
+        "zh": "在外面；出去",
+        "pos": "adverb",
+        "example": {
+          "en": "Let's go out for dinner.",
+          "zh": "我們出去吃晚餐吧。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:into",
+      "word": "into",
+      "selectionOrder": 62,
+      "original": {
+        "zh": "進入...之內, 朝..., 深入...之中, 成為...狀況",
+        "pos": "prep"
+      },
+      "proposed": {
+        "zh": "進入……裡面",
+        "pos": "preposition",
+        "example": {
+          "en": "She walked into the room.",
+          "zh": "她走進房間。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:just",
+      "word": "just",
+      "selectionOrder": 63,
+      "original": {
+        "zh": "剛剛；只是；正好",
+        "pos": "adverb"
+      },
+      "proposed": {
+        "zh": "剛剛；只是",
+        "pos": "adverb",
+        "example": {
+          "en": "I just got home.",
+          "zh": "我剛剛到家。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:see",
+      "word": "see",
+      "selectionOrder": 64,
+      "original": {
+        "zh": "看見, 檢視, 參觀, 遊覽, 理解, 知道, 同意；看, 觀看, 注意, 知道, 考慮",
+        "pos": "vt,vi,n"
+      },
+      "proposed": {
+        "zh": "看見",
+        "pos": "verb",
+        "example": {
+          "en": "I can see the station from here.",
+          "zh": "我從這裡看得到車站。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:him",
+      "word": "him",
+      "selectionOrder": 65,
+      "original": {
+        "zh": "他",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "他（受詞）",
+        "pos": "pronoun",
+        "example": {
+          "en": "Please give him the key.",
+          "zh": "請把鑰匙交給他。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:your",
+      "word": "your",
+      "selectionOrder": 66,
+      "original": {
+        "zh": "你的, 你們的",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "你的；你們的",
+        "pos": "determiner",
+        "example": {
+          "en": "Is this your phone?",
+          "zh": "這是你的手機嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:come",
+      "word": "come",
+      "selectionOrder": 67,
+      "original": {
+        "zh": "過來, 來, 到達, 出現, 開始；喂",
+        "pos": "vi,interj"
+      },
+      "proposed": {
+        "zh": "來；過來",
+        "pos": "verb",
+        "example": {
+          "en": "Please come here.",
+          "zh": "請過來這裡。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:could",
+      "word": "could",
+      "selectionOrder": 68,
+      "original": {
+        "zh": "能；可以（也用於委婉請求）",
+        "pos": "modal"
+      },
+      "proposed": {
+        "zh": "能；可以（也用於委婉請求）",
+        "pos": "modal",
+        "example": {
+          "en": "Could you open the window?",
+          "zh": "可以請你打開窗戶嗎？"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:now",
+      "word": "now",
+      "selectionOrder": 69,
+      "original": {
+        "zh": "現在, 剛才, 目前；現在",
+        "pos": "adv,n,a,conj"
+      },
+      "proposed": {
+        "zh": "現在",
+        "pos": "adverb",
+        "example": {
+          "en": "We can leave now.",
+          "zh": "我們現在可以離開了。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:than",
+      "word": "than",
+      "selectionOrder": 70,
+      "original": {
+        "zh": "比, 除...外；比",
+        "pos": "conj,prep"
+      },
+      "proposed": {
+        "zh": "比",
+        "pos": "conjunction,preposition",
+        "example": {
+          "en": "This bag is smaller than mine.",
+          "zh": "這個包包比我的小。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:like",
+      "word": "like",
+      "selectionOrder": 71,
+      "original": {
+        "zh": "喜歡；像",
+        "pos": "verb,preposition"
+      },
+      "proposed": {
+        "zh": "喜歡",
+        "pos": "verb",
+        "example": {
+          "en": "I like this song.",
+          "zh": "我喜歡這首歌。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:other",
+      "word": "other",
+      "selectionOrder": 72,
+      "original": {
+        "zh": "其他的, 另外的, 從前的；其他的, 他人, 另外一個",
+        "pos": "a,pron"
+      },
+      "proposed": {
+        "zh": "其他的",
+        "pos": "determiner,adjective",
+        "example": {
+          "en": "Do you have any other questions?",
+          "zh": "你還有其他問題嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:how",
+      "word": "how",
+      "selectionOrder": 73,
+      "original": {
+        "zh": "如何, 怎樣, 多少, 多麼；方式",
+        "pos": "adv,n"
+      },
+      "proposed": {
+        "zh": "如何；怎麼",
+        "pos": "adverb",
+        "example": {
+          "en": "How do I get to the station?",
+          "zh": "我要怎麼去車站？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:then",
+      "word": "then",
+      "selectionOrder": 74,
+      "original": {
+        "zh": "然後, 當時；然後, 當時",
+        "pos": "adv,conj,n"
+      },
+      "proposed": {
+        "zh": "然後；當時",
+        "pos": "adverb",
+        "example": {
+          "en": "Wash your hands, then eat.",
+          "zh": "先洗手，然後吃飯。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:its",
+      "word": "its",
+      "selectionOrder": 75,
+      "original": {
+        "zh": "它的",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "它的",
+        "pos": "determiner",
+        "example": {
+          "en": "The dog is eating its food.",
+          "zh": "那隻狗正在吃牠的食物。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:our",
+      "word": "our",
+      "selectionOrder": 76,
+      "original": {
+        "zh": "我們的",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "我們的",
+        "pos": "determiner",
+        "example": {
+          "en": "Our class starts at nine.",
+          "zh": "我們九點開始上課。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:two",
+      "word": "two",
+      "selectionOrder": 77,
+      "original": {
+        "zh": "二, 二個",
+        "pos": "num"
+      },
+      "proposed": {
+        "zh": "二；兩個",
+        "pos": "number",
+        "example": {
+          "en": "I bought two tickets.",
+          "zh": "我買了兩張票。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:more",
+      "word": "more",
+      "selectionOrder": 78,
+      "original": {
+        "zh": "更多；多的, 程度較大的, 更大的",
+        "pos": "n,a,adv"
+      },
+      "proposed": {
+        "zh": "更多；更",
+        "pos": "determiner,adverb",
+        "example": {
+          "en": "We need more chairs.",
+          "zh": "我們需要更多椅子。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:these",
+      "word": "these",
+      "selectionOrder": 79,
+      "original": {
+        "zh": "這些",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "這些",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "These shoes are comfortable.",
+          "zh": "這雙鞋很舒服。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:want",
+      "word": "want",
+      "selectionOrder": 80,
+      "original": {
+        "zh": "想要；需要",
+        "pos": "verb"
+      },
+      "proposed": {
+        "zh": "想要",
+        "pos": "verb",
+        "example": {
+          "en": "I want a glass of water.",
+          "zh": "我想要一杯水。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:way",
+      "word": "way",
+      "selectionOrder": 81,
+      "original": {
+        "zh": "路, 路線, 路途, 方法, 道路, 情形, 規模, 習慣, 行業, 方面；遠遠地, 非常",
+        "pos": "n,adv"
+      },
+      "proposed": {
+        "zh": "方法；路線",
+        "pos": "noun",
+        "example": {
+          "en": "Is this the right way to the station?",
+          "zh": "這是去車站的正確方向嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:look",
+      "word": "look",
+      "selectionOrder": 82,
+      "original": {
+        "zh": "一看, 神色, 樣子, 面容；看, 注意, 朝著, 顯得",
+        "pos": "n,vi,vt"
+      },
+      "proposed": {
+        "zh": "看；看起來",
+        "pos": "verb",
+        "example": {
+          "en": "Look at this photo.",
+          "zh": "看看這張照片。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:first",
+      "word": "first",
+      "selectionOrder": 83,
+      "original": {
+        "zh": "首先, 第一, 優先；第一的",
+        "pos": "adv,a,num,n"
+      },
+      "proposed": {
+        "zh": "第一；首先",
+        "pos": "number,adverb",
+        "example": {
+          "en": "This is my first visit to Taiwan.",
+          "zh": "這是我第一次來台灣。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:also",
+      "word": "also",
+      "selectionOrder": 84,
+      "original": {
+        "zh": "也, 並且, 同樣地",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "也",
+        "pos": "adverb",
+        "example": {
+          "en": "My sister also likes music.",
+          "zh": "我的姊姊也喜歡音樂。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:new",
+      "word": "new",
+      "selectionOrder": 85,
+      "original": {
+        "zh": "新的, 陌生的, 最近的, 不熟悉的",
+        "pos": "a"
+      },
+      "proposed": {
+        "zh": "新的",
+        "pos": "adjective",
+        "example": {
+          "en": "I need a new phone.",
+          "zh": "我需要一支新手機。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:because",
+      "word": "because",
+      "selectionOrder": 86,
+      "original": {
+        "zh": "因為",
+        "pos": "conj"
+      },
+      "proposed": {
+        "zh": "因為",
+        "pos": "conjunction",
+        "example": {
+          "en": "I stayed home because I was tired.",
+          "zh": "我因為很累而待在家。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:day",
+      "word": "day",
+      "selectionOrder": 87,
+      "original": {
+        "zh": "天, 日子, 白天, 工作日",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "一天；白天",
+        "pos": "noun",
+        "example": {
+          "en": "Have a nice day.",
+          "zh": "祝你有美好的一天。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:use",
+      "word": "use",
+      "selectionOrder": 88,
+      "original": {
+        "zh": "使用, 習慣, 使用價值, 用法, 使用權；使用, 利用, 運用, 耗費",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "使用",
+        "pos": "verb",
+        "example": {
+          "en": "Can I use your pen?",
+          "zh": "我可以用你的筆嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:no",
+      "word": "no",
+      "selectionOrder": 89,
+      "original": {
+        "zh": "不, 拒絕, 否決票；沒有, 不是, 絕非",
+        "pos": "n,a,adv"
+      },
+      "proposed": {
+        "zh": "沒有；不",
+        "pos": "determiner,adverb",
+        "example": {
+          "en": "There is no milk in the fridge.",
+          "zh": "冰箱裡沒有牛奶。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:man",
+      "word": "man",
+      "selectionOrder": 90,
+      "original": {
+        "zh": "男人, 人類, 人；為...配備人手, 操縱, 使振奮",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "男人；成年男性",
+        "pos": "noun",
+        "example": {
+          "en": "That man is my teacher.",
+          "zh": "那個男人是我的老師。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:find",
+      "word": "find",
+      "selectionOrder": 91,
+      "original": {
+        "zh": "發現, 感到, 找到, 認為, 得到；裁決",
+        "pos": "vt,vi,n"
+      },
+      "proposed": {
+        "zh": "找到；發現",
+        "pos": "verb",
+        "example": {
+          "en": "I cannot find my keys.",
+          "zh": "我找不到我的鑰匙。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:here",
+      "word": "here",
+      "selectionOrder": 92,
+      "original": {
+        "zh": "在這裡, 此時, 這裡；這裡",
+        "pos": "adv,n"
+      },
+      "proposed": {
+        "zh": "在這裡",
+        "pos": "adverb",
+        "example": {
+          "en": "Please wait here.",
+          "zh": "請在這裡等。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:thing",
+      "word": "thing",
+      "selectionOrder": 93,
+      "original": {
+        "zh": "事物, 東西, 物, 用品, 事, 事件, 情況, 行為, 特徵",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "東西；事情",
+        "pos": "noun",
+        "example": {
+          "en": "What is that thing on the table?",
+          "zh": "桌上那個東西是什麼？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:give",
+      "word": "give",
+      "selectionOrder": 94,
+      "original": {
+        "zh": "彈性, 適應性；給, 授予, 供給, 產生, 發表, 付出, 獻出, 讓出",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "給",
+        "pos": "verb",
+        "example": {
+          "en": "Please give me a minute.",
+          "zh": "請給我一分鐘。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:give:sense-priority"
+      ]
+    },
+    {
+      "wordId": "word:many",
+      "word": "many",
+      "selectionOrder": 95,
+      "original": {
+        "zh": "多數, 多數人；許多的",
+        "pos": "n,a,pron"
+      },
+      "proposed": {
+        "zh": "許多（用於可數名詞）",
+        "pos": "determiner",
+        "example": {
+          "en": "There are many books here.",
+          "zh": "這裡有很多書。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:well",
+      "word": "well",
+      "selectionOrder": 96,
+      "original": {
+        "zh": "好地；健康的",
+        "pos": "adverb,adjective"
+      },
+      "proposed": {
+        "zh": "好地；健康的",
+        "pos": "adverb,adjective",
+        "example": {
+          "en": "I slept well last night.",
+          "zh": "我昨晚睡得很好。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:only",
+      "word": "only",
+      "selectionOrder": 97,
+      "original": {
+        "zh": "唯一的, 僅有的, 最佳的；只有, 僅僅, 只能",
+        "pos": "a,adv,conj"
+      },
+      "proposed": {
+        "zh": "只有；僅僅",
+        "pos": "adverb",
+        "example": {
+          "en": "I only need one ticket.",
+          "zh": "我只需要一張票。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:those",
+      "word": "those",
+      "selectionOrder": 98,
+      "original": {
+        "zh": "那些",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "那些",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "Those bags are heavy.",
+          "zh": "那些包包很重。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:tell",
+      "word": "tell",
+      "selectionOrder": 99,
+      "original": {
+        "zh": "告訴, 說, 吩咐, 斷定, 知道；講述, 洩密, 告發, 表明",
+        "pos": "vt,vi"
+      },
+      "proposed": {
+        "zh": "告訴；說出",
+        "pos": "verb",
+        "example": {
+          "en": "Please tell me your name.",
+          "zh": "請告訴我你的名字。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:very",
+      "word": "very",
+      "selectionOrder": 100,
+      "original": {
+        "zh": "真正的, 恰好的, 十足的, 特有的；非常, 完全",
+        "pos": "a,adv"
+      },
+      "proposed": {
+        "zh": "非常",
+        "pos": "adverb",
+        "example": {
+          "en": "This room is very quiet.",
+          "zh": "這個房間非常安靜。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:even",
+      "word": "even",
+      "selectionOrder": 101,
+      "original": {
+        "zh": "平坦的, 相等的, 連貫的, 均等的, 公平的, 偶數的, 平均的, 平衡的, 恰好的；使平坦, 使相等",
+        "pos": "a,vt,vi,adv,n"
+      },
+      "proposed": {
+        "zh": "甚至；連……都",
+        "pos": "adverb",
+        "example": {
+          "en": "Even my brother can cook this dish.",
+          "zh": "連我的弟弟都會做這道菜。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:even:missing-common-sense"
+      ]
+    },
+    {
+      "wordId": "word:back",
+      "word": "back",
+      "selectionOrder": 102,
+      "original": {
+        "zh": "後面的；使後退, 支援",
+        "pos": "a,vt,vi,adv,n"
+      },
+      "proposed": {
+        "zh": "回去；回來",
+        "pos": "adverb",
+        "example": {
+          "en": "I will be back at six.",
+          "zh": "我六點會回來。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:any",
+      "word": "any",
+      "selectionOrder": 103,
+      "original": {
+        "zh": "任何的；任何",
+        "pos": "a,pron"
+      },
+      "proposed": {
+        "zh": "任何；一些（常用於問句或否定句）",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "Do you have any questions?",
+          "zh": "你有任何問題嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:good",
+      "word": "good",
+      "selectionOrder": 104,
+      "original": {
+        "zh": "善行, 好處, 利益；好的, 優良的, 上等的, 愉快的, 有益的, 好心的, 慈善的, 虔誠的",
+        "pos": "n,a"
+      },
+      "proposed": {
+        "zh": "好的",
+        "pos": "adjective",
+        "example": {
+          "en": "This is a good idea.",
+          "zh": "這是個好主意。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:good:sense-priority"
+      ]
+    },
+    {
+      "wordId": "word:woman",
+      "word": "woman",
+      "selectionOrder": 105,
+      "original": {
+        "zh": "女人, 婦女, 女僕；女用的, 女性的, 婦女的",
+        "pos": "n,a,vt"
+      },
+      "proposed": {
+        "zh": "女人；成年女性",
+        "pos": "noun",
+        "example": {
+          "en": "The woman by the door is my aunt.",
+          "zh": "門邊那位女士是我的阿姨。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:through",
+      "word": "through",
+      "selectionOrder": 106,
+      "original": {
+        "zh": "穿越, 從頭至尾, 到底, 因為；經過, 穿過",
+        "pos": "adv,prep,a"
+      },
+      "proposed": {
+        "zh": "穿過；經由",
+        "pos": "preposition",
+        "example": {
+          "en": "We walked through the park.",
+          "zh": "我們步行穿過公園。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:us",
+      "word": "us",
+      "selectionOrder": 107,
+      "original": {
+        "zh": "我們",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "我們（受詞）",
+        "pos": "pronoun",
+        "example": {
+          "en": "Please come with us.",
+          "zh": "請和我們一起來。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:life",
+      "word": "life",
+      "selectionOrder": 108,
+      "original": {
+        "zh": "生活, 生命, 人生, 世事, 生物, 壽命, 一生, 生命力, 靈魂, 無期徒刑",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "生活；生命",
+        "pos": "noun",
+        "example": {
+          "en": "Life is busy in the city.",
+          "zh": "城市生活很忙碌。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:child",
+      "word": "child",
+      "selectionOrder": 109,
+      "original": {
+        "zh": "孩子, 產物, 追隨者",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "孩子",
+        "pos": "noun",
+        "example": {
+          "en": "The child is reading a book.",
+          "zh": "那個孩子正在看書。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:work",
+      "word": "work",
+      "selectionOrder": 110,
+      "original": {
+        "zh": "工作, 勞動, 職業, 行為, 功, 作品, 成果, 產品, 工程；工作, 勞動, 做, 運轉, 起作用, 被加工",
+        "pos": "n,vi,vt"
+      },
+      "proposed": {
+        "zh": "工作",
+        "pos": "verb,noun",
+        "example": {
+          "en": "I work near the station.",
+          "zh": "我在車站附近工作。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:down",
+      "word": "down",
+      "selectionOrder": 111,
+      "original": {
+        "zh": "向下的；下, 下去, 降下",
+        "pos": "a,adv,prep,n"
+      },
+      "proposed": {
+        "zh": "向下；往下",
+        "pos": "adverb",
+        "example": {
+          "en": "Please walk down the stairs.",
+          "zh": "請走下樓梯。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:may",
+      "word": "may",
+      "selectionOrder": 112,
+      "original": {
+        "zh": "可以；可能",
+        "pos": "modal"
+      },
+      "proposed": {
+        "zh": "可能；可以",
+        "pos": "modal",
+        "example": {
+          "en": "It may rain this afternoon.",
+          "zh": "今天下午可能會下雨。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:after",
+      "word": "after",
+      "selectionOrder": 113,
+      "original": {
+        "zh": "在...之後, 由於；在...之後",
+        "pos": "prep,conj,adv"
+      },
+      "proposed": {
+        "zh": "在……之後",
+        "pos": "preposition,conjunction",
+        "example": {
+          "en": "We can talk after lunch.",
+          "zh": "我們可以午餐後再聊。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:should",
+      "word": "should",
+      "selectionOrder": 114,
+      "original": {
+        "zh": "應該",
+        "pos": "modal"
+      },
+      "proposed": {
+        "zh": "應該",
+        "pos": "modal",
+        "example": {
+          "en": "You should get some rest.",
+          "zh": "你應該休息一下。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:call",
+      "word": "call",
+      "selectionOrder": 115,
+      "original": {
+        "zh": "呼叫, 訪問, 打電話, 號召, 召集, 要求；呼叫, 召集, 打電話",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "打電話；呼叫",
+        "pos": "verb",
+        "example": {
+          "en": "Please call me tonight.",
+          "zh": "請今晚打給我。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:world",
+      "word": "world",
+      "selectionOrder": 116,
+      "original": {
+        "zh": "世界, 地球, 宇宙, 萬物, 世人, 人間, 領域, 世事, 世故, 社會生活, 大量",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "世界",
+        "pos": "noun",
+        "example": {
+          "en": "I want to travel around the world.",
+          "zh": "我想環遊世界。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:over",
+      "word": "over",
+      "selectionOrder": 117,
+      "original": {
+        "zh": "結束, 越過, 從頭到尾；在...之上, 遍於...之上, 越過",
+        "pos": "adv,prep,a,vt"
+      },
+      "proposed": {
+        "zh": "在……上方；越過",
+        "pos": "preposition",
+        "example": {
+          "en": "The plane flew over the city.",
+          "zh": "飛機飛過城市上空。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:school",
+      "word": "school",
+      "selectionOrder": 118,
+      "original": {
+        "zh": "學校, 魚群, 門派, 學派；教育, 訓練, 培養",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "學校",
+        "pos": "noun",
+        "example": {
+          "en": "The school is near my house.",
+          "zh": "學校在我家附近。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:still",
+      "word": "still",
+      "selectionOrder": 119,
+      "original": {
+        "zh": "蒸餾室, 寂靜, 劇照；蒸餾, (使)平靜, (使)靜止",
+        "pos": "n,v,a,adv,conj"
+      },
+      "proposed": {
+        "zh": "仍然；還是",
+        "pos": "adverb",
+        "example": {
+          "en": "She is still at work.",
+          "zh": "她還在上班。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:still:missing-common-sense"
+      ]
+    },
+    {
+      "wordId": "word:try",
+      "word": "try",
+      "selectionOrder": 120,
+      "original": {
+        "zh": "嘗試, 試驗, 審理, 審判；試, 嘗試, 試驗, 考驗, 審問, 提煉",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "嘗試",
+        "pos": "verb",
+        "example": {
+          "en": "I want to try this dish.",
+          "zh": "我想試試這道菜。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:last",
+      "word": "last",
+      "selectionOrder": 121,
+      "original": {
+        "zh": "最後的, 末尾的, 最近的；持續, 支援, 維持",
+        "pos": "a,vi,vt,adv,n"
+      },
+      "proposed": {
+        "zh": "上一個的；最後的",
+        "pos": "adjective",
+        "example": {
+          "en": "I saw her last week.",
+          "zh": "我上星期見過她。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:ask",
+      "word": "ask",
+      "selectionOrder": 122,
+      "original": {
+        "zh": "問, 要求；問, 要求, 邀請, 需要",
+        "pos": "vi,vt"
+      },
+      "proposed": {
+        "zh": "問；請求",
+        "pos": "verb",
+        "example": {
+          "en": "Can I ask a question?",
+          "zh": "我可以問個問題嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:need",
+      "word": "need",
+      "selectionOrder": 123,
+      "original": {
+        "zh": "需要, 必須, 缺乏；需要, 必需",
+        "pos": "n,vt,vi,aux"
+      },
+      "proposed": {
+        "zh": "需要",
+        "pos": "verb",
+        "example": {
+          "en": "I need some help.",
+          "zh": "我需要幫忙。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:too",
+      "word": "too",
+      "selectionOrder": 124,
+      "original": {
+        "zh": "也, 非常, 太",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "也；太",
+        "pos": "adverb",
+        "example": {
+          "en": "This bag is too heavy.",
+          "zh": "這個包包太重了。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:feel",
+      "word": "feel",
+      "selectionOrder": 125,
+      "original": {
+        "zh": "感覺, 覺得, 觸控, 以為；有知覺, 摸索, 同情",
+        "pos": "vt,vi,n"
+      },
+      "proposed": {
+        "zh": "感覺；覺得",
+        "pos": "verb",
+        "example": {
+          "en": "I feel better today.",
+          "zh": "我今天覺得好多了。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:three",
+      "word": "three",
+      "selectionOrder": 126,
+      "original": {
+        "zh": "三, 三個",
+        "pos": "num"
+      },
+      "proposed": {
+        "zh": "三；三個",
+        "pos": "number",
+        "example": {
+          "en": "The room has three windows.",
+          "zh": "房間有三扇窗戶。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:state",
+      "word": "state",
+      "selectionOrder": 127,
+      "original": {
+        "zh": "州, 狀態, 情形, 國家, 政府, 領土, 國務, 社會地位；國家的, 正式的, 禮儀用的, 州的",
+        "pos": "n,a,vt"
+      },
+      "proposed": {
+        "zh": "狀態；州",
+        "pos": "noun",
+        "example": {
+          "en": "The car is in a good state.",
+          "zh": "這輛車的狀況很好。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:never",
+      "word": "never",
+      "selectionOrder": 128,
+      "original": {
+        "zh": "從不, 決不, 不曾",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "從不",
+        "pos": "adverb",
+        "example": {
+          "en": "I never drink coffee at night.",
+          "zh": "我晚上從不喝咖啡。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:become",
+      "word": "become",
+      "selectionOrder": 129,
+      "original": {
+        "zh": "變成, 變得；適合",
+        "pos": "vi,vt"
+      },
+      "proposed": {
+        "zh": "變成；變得",
+        "pos": "verb",
+        "example": {
+          "en": "The weather will become warmer.",
+          "zh": "天氣會變得比較暖。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:between",
+      "word": "between",
+      "selectionOrder": 130,
+      "original": {
+        "zh": "在...之間",
+        "pos": "prep"
+      },
+      "proposed": {
+        "zh": "在……之間",
+        "pos": "preposition",
+        "example": {
+          "en": "The bank is between the school and the park.",
+          "zh": "銀行在學校和公園之間。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:high",
+      "word": "high",
+      "selectionOrder": 131,
+      "original": {
+        "zh": "高度, 高處；高的, 高階的, 主要的, 高尚的, 高原的, 高音的, 昂貴的, 傲慢的",
+        "pos": "n,a,adv"
+      },
+      "proposed": {
+        "zh": "高的",
+        "pos": "adjective",
+        "example": {
+          "en": "The shelf is too high for me.",
+          "zh": "這個架子對我來說太高了。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:something",
+      "word": "something",
+      "selectionOrder": 132,
+      "original": {
+        "zh": "某事, 某物",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "某事；某物",
+        "pos": "pronoun",
+        "example": {
+          "en": "I need something to drink.",
+          "zh": "我需要喝點東西。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:really",
+      "word": "really",
+      "selectionOrder": 133,
+      "original": {
+        "zh": "實際上, 真實地, 實在",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "真的；非常",
+        "pos": "adverb",
+        "example": {
+          "en": "I really like this book.",
+          "zh": "我真的很喜歡這本書。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:most",
+      "word": "most",
+      "selectionOrder": 134,
+      "original": {
+        "zh": "最多, 最大；大多數的, 幾乎全部的, 最多的",
+        "pos": "n,a,adv"
+      },
+      "proposed": {
+        "zh": "大多數的；最多的",
+        "pos": "determiner",
+        "example": {
+          "en": "Most shops open at ten.",
+          "zh": "大多數商店十點開門。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:another",
+      "word": "another",
+      "selectionOrder": 135,
+      "original": {
+        "zh": "另外的, 再一的, 不同的；又一個, 另一個, 類似的另一個",
+        "pos": "a,pron"
+      },
+      "proposed": {
+        "zh": "另一個；再一個",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "Would you like another cup of tea?",
+          "zh": "你想再喝一杯茶嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:much",
+      "word": "much",
+      "selectionOrder": 136,
+      "original": {
+        "zh": "大量, 許多, 重要的事；很多的, 重要的",
+        "pos": "n,a,adv"
+      },
+      "proposed": {
+        "zh": "許多（用於不可數名詞）",
+        "pos": "determiner,adverb",
+        "example": {
+          "en": "I do not have much time.",
+          "zh": "我沒有很多時間。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:family",
+      "word": "family",
+      "selectionOrder": 137,
+      "original": {
+        "zh": "家庭, 家人, 族；家庭的",
+        "pos": "n,a"
+      },
+      "proposed": {
+        "zh": "家人；家庭",
+        "pos": "noun",
+        "example": {
+          "en": "My family lives in Taipei.",
+          "zh": "我的家人住在台北。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:own",
+      "word": "own",
+      "selectionOrder": 138,
+      "original": {
+        "zh": "自己的；自己的, 嫡親的, 同胞的",
+        "pos": "n,a,vt,vi"
+      },
+      "proposed": {
+        "zh": "自己的",
+        "pos": "adjective",
+        "example": {
+          "en": "I have my own room.",
+          "zh": "我有自己的房間。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:leave",
+      "word": "leave",
+      "selectionOrder": 139,
+      "original": {
+        "zh": "許可, 告別, 請假, 休假；離開, 剩下, 遺忘, 委託, 丟棄",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "離開；留下",
+        "pos": "verb",
+        "example": {
+          "en": "We leave at eight tomorrow.",
+          "zh": "我們明天八點出發。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:put",
+      "word": "put",
+      "selectionOrder": 140,
+      "original": {
+        "zh": "放, 擺, 安置, 移動, 發射, 投擲, 寫上, 表達, 使從事, 使受到, 驅使, 賦予；出發, 航行, 發芽",
+        "pos": "vt,vi,n,a"
+      },
+      "proposed": {
+        "zh": "放；擺",
+        "pos": "verb",
+        "example": {
+          "en": "Please put the cup on the table.",
+          "zh": "請把杯子放在桌上。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:old",
+      "word": "old",
+      "selectionOrder": 141,
+      "original": {
+        "zh": "以前, 往昔；老的, 舊的, 古老的, 年長的, 老練的",
+        "pos": "n,a"
+      },
+      "proposed": {
+        "zh": "舊的；年老的",
+        "pos": "adjective",
+        "example": {
+          "en": "This is an old photo of my family.",
+          "zh": "這是我家人的一張舊照片。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:while",
+      "word": "while",
+      "selectionOrder": 142,
+      "original": {
+        "zh": "一會兒, (一段)時間；當...的時候, 雖然",
+        "pos": "n,conj,vt"
+      },
+      "proposed": {
+        "zh": "當……的時候",
+        "pos": "conjunction",
+        "example": {
+          "en": "I listen to music while I cook.",
+          "zh": "我做飯時會聽音樂。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:mean",
+      "word": "mean",
+      "selectionOrder": 143,
+      "original": {
+        "zh": "意思是；意指",
+        "pos": "verb"
+      },
+      "proposed": {
+        "zh": "意思是",
+        "pos": "verb",
+        "example": {
+          "en": "What does this word mean?",
+          "zh": "這個字是什麼意思？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:keep",
+      "word": "keep",
+      "selectionOrder": 144,
+      "original": {
+        "zh": "生計, 維持, 保持；保持, 儲存, 遵守, 看守, 整理, 維持, 履行, 經營, 拘留, 記帳",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "保留；保持",
+        "pos": "verb",
+        "example": {
+          "en": "Please keep the door closed.",
+          "zh": "請讓門保持關著。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:student",
+      "word": "student",
+      "selectionOrder": 145,
+      "original": {
+        "zh": "學生, 研究者, 學者",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "學生",
+        "pos": "noun",
+        "example": {
+          "en": "She is a university student.",
+          "zh": "她是大學生。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:why",
+      "word": "why",
+      "selectionOrder": 146,
+      "original": {
+        "zh": "為什麼；原因, 理由",
+        "pos": "adv,n"
+      },
+      "proposed": {
+        "zh": "為什麼",
+        "pos": "adverb",
+        "example": {
+          "en": "Why are you late?",
+          "zh": "你為什麼遲到？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:let",
+      "word": "let",
+      "selectionOrder": 147,
+      "original": {
+        "zh": "讓, 假設, 出租, 排放, 妨礙；出租, 被承包",
+        "pos": "vt,vi,n"
+      },
+      "proposed": {
+        "zh": "讓；允許",
+        "pos": "verb",
+        "example": {
+          "en": "Please let me help you.",
+          "zh": "請讓我幫你。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:great",
+      "word": "great",
+      "selectionOrder": 148,
+      "original": {
+        "zh": "大的, 非常的, 主要的, 重大的, 崇高的, 偉大的；順利地, 得意地",
+        "pos": "a,adv,n"
+      },
+      "proposed": {
+        "zh": "很棒的；極好的",
+        "pos": "adjective",
+        "example": {
+          "en": "We had a great time.",
+          "zh": "我們玩得很開心。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:same",
+      "word": "same",
+      "selectionOrder": 149,
+      "original": {
+        "zh": "相同的, 同樣的；相同的人(或事物)",
+        "pos": "a,pron,adv"
+      },
+      "proposed": {
+        "zh": "相同的",
+        "pos": "adjective",
+        "example": {
+          "en": "We take the same bus.",
+          "zh": "我們搭同一班公車。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:big",
+      "word": "big",
+      "selectionOrder": 150,
+      "original": {
+        "zh": "大的, 重要的；大量地",
+        "pos": "a,adv"
+      },
+      "proposed": {
+        "zh": "大的",
+        "pos": "adjective",
+        "example": {
+          "en": "They live in a big house.",
+          "zh": "他們住在一棟大房子裡。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:group",
+      "word": "group",
+      "selectionOrder": 151,
+      "original": {
+        "zh": "團體, 組, 團, 群；聚合, 成群",
+        "pos": "n,v"
+      },
+      "proposed": {
+        "zh": "一群；小組",
+        "pos": "noun",
+        "example": {
+          "en": "Our group has five people.",
+          "zh": "我們這一組有五個人。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:begin",
+      "word": "begin",
+      "selectionOrder": 152,
+      "original": {
+        "zh": "開始",
+        "pos": "v"
+      },
+      "proposed": {
+        "zh": "開始",
+        "pos": "verb",
+        "example": {
+          "en": "The class will begin soon.",
+          "zh": "課程很快就要開始了。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:seem",
+      "word": "seem",
+      "selectionOrder": 153,
+      "original": {
+        "zh": "象是, 似乎",
+        "pos": "vi"
+      },
+      "proposed": {
+        "zh": "似乎；好像",
+        "pos": "verb",
+        "example": {
+          "en": "You seem tired today.",
+          "zh": "你今天看起來很累。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:country",
+      "word": "country",
+      "selectionOrder": 154,
+      "original": {
+        "zh": "國家, 鄉村, 地區, 故鄉；鄉下的, 農村的",
+        "pos": "n,a"
+      },
+      "proposed": {
+        "zh": "國家；鄉村",
+        "pos": "noun",
+        "example": {
+          "en": "Which country are you from?",
+          "zh": "你來自哪個國家？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:help",
+      "word": "help",
+      "selectionOrder": 155,
+      "original": {
+        "zh": "幫忙, 幫助者, 補救辦法, 有益的東西；幫助, 幫忙, 接濟, 治療, 款待",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "幫忙；幫助",
+        "pos": "verb,noun",
+        "example": {
+          "en": "Can you help me with this bag?",
+          "zh": "你可以幫我拿這個包包嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:talk",
+      "word": "talk",
+      "selectionOrder": 156,
+      "original": {
+        "zh": "談話, 交談, 會談, 講話, 演講, 空談, 謠言, 方言, 語言；講話, 演講, 說話, 談話, 交流, 閒聊, 說閒話",
+        "pos": "n,vi,vt"
+      },
+      "proposed": {
+        "zh": "交談；談話",
+        "pos": "verb",
+        "example": {
+          "en": "We need to talk about the plan.",
+          "zh": "我們需要談談這個計畫。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:where",
+      "word": "where",
+      "selectionOrder": 157,
+      "original": {
+        "zh": "在哪裡；哪裡",
+        "pos": "adv,pron,n"
+      },
+      "proposed": {
+        "zh": "在哪裡",
+        "pos": "adverb",
+        "example": {
+          "en": "Where is the nearest station?",
+          "zh": "最近的車站在哪裡？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:turn",
+      "word": "turn",
+      "selectionOrder": 158,
+      "original": {
+        "zh": "轉彎, 轉動, 旋轉, 翻轉, 一圈, 順次, 改動, 變化, 性格, 特色, 形狀, 轉折；使旋轉, 轉彎, 轉動, 使轉向, 驅趕, 阻擋, 兌換, 改寫, 使作對, 繞過, 使流通",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "轉彎；轉動",
+        "pos": "verb",
+        "example": {
+          "en": "Turn left at the next street.",
+          "zh": "在下一條街左轉。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:problem",
+      "word": "problem",
+      "selectionOrder": 159,
+      "original": {
+        "zh": "問題, 難題；成問題的, 難處理的",
+        "pos": "n,a"
+      },
+      "proposed": {
+        "zh": "問題；難題",
+        "pos": "noun",
+        "example": {
+          "en": "There is a problem with my phone.",
+          "zh": "我的手機有問題。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:every",
+      "word": "every",
+      "selectionOrder": 160,
+      "original": {
+        "zh": "每一, 所有的",
+        "pos": "a"
+      },
+      "proposed": {
+        "zh": "每一個的",
+        "pos": "determiner",
+        "example": {
+          "en": "I walk to work every day.",
+          "zh": "我每天走路上班。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:start",
+      "word": "start",
+      "selectionOrder": 161,
+      "original": {
+        "zh": "驚起, 出發, 開端, 起點, 吃驚, 有利條件；開始, 出發, 啟動, 跳起, 吃驚, 出現, 鬆動, 脫落, 起價, 參賽",
+        "pos": "n,vi,vt"
+      },
+      "proposed": {
+        "zh": "開始；啟動",
+        "pos": "verb",
+        "example": {
+          "en": "The movie will start at seven.",
+          "zh": "電影七點開始。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:hand",
+      "word": "hand",
+      "selectionOrder": 162,
+      "original": {
+        "zh": "手, 爪, 指標, 掌握, 協助, 人手, 手藝, 手跡, 支配, 插手；交給, 支援, 攙扶",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "手",
+        "pos": "noun",
+        "example": {
+          "en": "Please raise your hand.",
+          "zh": "請舉手。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:might",
+      "word": "might",
+      "selectionOrder": 163,
+      "original": {
+        "zh": "可能",
+        "pos": "modal"
+      },
+      "proposed": {
+        "zh": "可能",
+        "pos": "modal",
+        "example": {
+          "en": "We might be late.",
+          "zh": "我們可能會遲到。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:show",
+      "word": "show",
+      "selectionOrder": 164,
+      "original": {
+        "zh": "顯示, 表現, 展覽, 賣弄, 炫耀, 外觀, 演出, 洋相；表示, 顯示, 展現, 陳列, 演出, 表明, 指出, 帶領",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "展示；給……看",
+        "pos": "verb",
+        "example": {
+          "en": "Can you show me the photo?",
+          "zh": "你可以把照片給我看嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:part",
+      "word": "part",
+      "selectionOrder": 165,
+      "original": {
+        "zh": "部分, 區域性, 零件, 要素, 等分, 職責, 角色, 部位；分開, 分離, 斷絕, 區別, 分配",
+        "pos": "n,vt,vi,a,adv"
+      },
+      "proposed": {
+        "zh": "部分",
+        "pos": "noun",
+        "example": {
+          "en": "This is my favorite part of the story.",
+          "zh": "這是故事中我最喜歡的部分。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:against",
+      "word": "against",
+      "selectionOrder": 166,
+      "original": {
+        "zh": "反對, 對著, 倚靠",
+        "pos": "prep"
+      },
+      "proposed": {
+        "zh": "靠著；反對",
+        "pos": "preposition",
+        "example": {
+          "en": "The bike is against the wall.",
+          "zh": "腳踏車靠在牆邊。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:place",
+      "word": "place",
+      "selectionOrder": 167,
+      "original": {
+        "zh": "地方, 地點, 位置, 住所, 座位, 地位, 處境, 特權, 空間, 餘地, 職務, 位；放置, 寄予, 認出, 評定, 任命",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "地方；地點",
+        "pos": "noun",
+        "example": {
+          "en": "This is a good place to eat.",
+          "zh": "這是個吃飯的好地方。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:such",
+      "word": "such",
+      "selectionOrder": 168,
+      "original": {
+        "zh": "如此的, 這樣的",
+        "pos": "a"
+      },
+      "proposed": {
+        "zh": "這樣的；如此的",
+        "pos": "determiner",
+        "example": {
+          "en": "It is such a nice day.",
+          "zh": "今天天氣真好。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:again",
+      "word": "again",
+      "selectionOrder": 169,
+      "original": {
+        "zh": "再一次, 又, 到原處",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "再一次；又",
+        "pos": "adverb",
+        "example": {
+          "en": "Please say that again.",
+          "zh": "請再說一次。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:few",
+      "word": "few",
+      "selectionOrder": 170,
+      "original": {
+        "zh": "很少的, 不多的, 少數的；少數",
+        "pos": "a,n"
+      },
+      "proposed": {
+        "zh": "少數的；幾乎沒有的",
+        "pos": "determiner",
+        "example": {
+          "en": "Few shops are open this early.",
+          "zh": "這麼早營業的商店很少。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:few:grammar-distinction"
+      ]
+    },
+    {
+      "wordId": "word:case",
+      "word": "case",
+      "selectionOrder": 171,
+      "original": {
+        "zh": "情形, 情況, 箱, 容器, 事實, 病例, 案例, 框子；裝箱, 包蓋",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "情況；案例",
+        "pos": "noun",
+        "example": {
+          "en": "In that case, let's take a taxi.",
+          "zh": "那樣的話，我們搭計程車吧。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:week",
+      "word": "week",
+      "selectionOrder": 172,
+      "original": {
+        "zh": "星期, 周",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "星期；一週",
+        "pos": "noun",
+        "example": {
+          "en": "I have a meeting next week.",
+          "zh": "我下星期有個會議。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:company",
+      "word": "company",
+      "selectionOrder": 173,
+      "original": {
+        "zh": "公司, 友伴, 交往, 連隊, 朋友, 一群；陪伴",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "公司",
+        "pos": "noun",
+        "example": {
+          "en": "She works for a small company.",
+          "zh": "她在一家小公司上班。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:system",
+      "word": "system",
+      "selectionOrder": 174,
+      "original": {
+        "zh": "系統, 體系, 制度, 方式, 秩序, 分類原則",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "系統；制度",
+        "pos": "noun",
+        "example": {
+          "en": "The new ticket system is easy to use.",
+          "zh": "新的售票系統很容易使用。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:each",
+      "word": "each",
+      "selectionOrder": 175,
+      "original": {
+        "zh": "每個, 每一；每個",
+        "pos": "a,adv,pron"
+      },
+      "proposed": {
+        "zh": "每一個",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "Each student needs a pen.",
+          "zh": "每個學生都需要一支筆。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:right",
+      "word": "right",
+      "selectionOrder": 176,
+      "original": {
+        "zh": "右邊；正確的",
+        "pos": "noun,adjective"
+      },
+      "proposed": {
+        "zh": "右邊；正確的",
+        "pos": "noun,adjective",
+        "example": {
+          "en": "The shop is on your right.",
+          "zh": "商店在你的右邊。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:program",
+      "word": "program",
+      "selectionOrder": 177,
+      "original": {
+        "zh": "節目, 節目單, 程式, 綱要, 大綱, 計劃；規劃, 擬...計劃",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "節目；程式",
+        "pos": "noun",
+        "example": {
+          "en": "This program helps me learn English.",
+          "zh": "這個程式幫助我學英文。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:hear",
+      "word": "hear",
+      "selectionOrder": 178,
+      "original": {
+        "zh": "聽到, 傾聽, 聽說, 審理；聽見, 聽",
+        "pos": "vt,vi"
+      },
+      "proposed": {
+        "zh": "聽見；聽到",
+        "pos": "verb",
+        "example": {
+          "en": "I can hear the rain.",
+          "zh": "我聽得見雨聲。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:question",
+      "word": "question",
+      "selectionOrder": 179,
+      "original": {
+        "zh": "問題, 詢問；詢問, 審問, 懷疑",
+        "pos": "n,v"
+      },
+      "proposed": {
+        "zh": "問題；疑問",
+        "pos": "noun",
+        "example": {
+          "en": "I have a question about this word.",
+          "zh": "我對這個字有個問題。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:during",
+      "word": "during",
+      "selectionOrder": 180,
+      "original": {
+        "zh": "在...的時候",
+        "pos": "prep"
+      },
+      "proposed": {
+        "zh": "在……期間",
+        "pos": "preposition",
+        "example": {
+          "en": "Please turn off your phone during class.",
+          "zh": "上課期間請關閉手機。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:play",
+      "word": "play",
+      "selectionOrder": 181,
+      "original": {
+        "zh": "遊戲, 遊玩, 玩笑, 運動, 比賽, 賭博, 跳動, 表演, 劇本；玩, 遊戲, 假裝, 開玩笑, 比賽, 扮演, 演奏, 演戲, 傳搖曳, (使)跳動",
+        "pos": "n,v"
+      },
+      "proposed": {
+        "zh": "玩；演奏",
+        "pos": "verb",
+        "example": {
+          "en": "We play games after dinner.",
+          "zh": "我們晚餐後玩遊戲。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:government",
+      "word": "government",
+      "selectionOrder": 182,
+      "original": {
+        "zh": "政府, 內閣",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "政府",
+        "pos": "noun",
+        "example": {
+          "en": "The government built a new hospital.",
+          "zh": "政府蓋了一座新醫院。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:run",
+      "word": "run",
+      "selectionOrder": 183,
+      "original": {
+        "zh": "跑, 賽跑, 奔跑, 奔跑的路程, 趨向, 流出, 運轉時間, 連續；跑, 奔跑, 跑步, 賽跑, 競賽, 行駛, 運轉, 進行, 蔓延",
+        "pos": "n,vi,vt,a"
+      },
+      "proposed": {
+        "zh": "跑步；跑",
+        "pos": "verb",
+        "example": {
+          "en": "I run in the park every morning.",
+          "zh": "我每天早上在公園跑步。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:small",
+      "word": "small",
+      "selectionOrder": 184,
+      "original": {
+        "zh": "小的, 少的, 小型的, 低微的, 小氣的, 細微的；些微地",
+        "pos": "a,adv,n"
+      },
+      "proposed": {
+        "zh": "小的",
+        "pos": "adjective",
+        "example": {
+          "en": "I need a small bag.",
+          "zh": "我需要一個小包包。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:off",
+      "word": "off",
+      "selectionOrder": 185,
+      "original": {
+        "zh": "關著的, 不再生效的, 處於...境況的, 休假的, 空閒的；走開, ...掉, ...下, 休息, 出發, 隔斷",
+        "pos": "a,adv,prep,vi,vt,n"
+      },
+      "proposed": {
+        "zh": "關閉；離開",
+        "pos": "adverb",
+        "example": {
+          "en": "Please turn off the light.",
+          "zh": "請把燈關掉。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:always",
+      "word": "always",
+      "selectionOrder": 186,
+      "original": {
+        "zh": "總是, 始終",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "總是",
+        "pos": "adverb",
+        "example": {
+          "en": "I always carry a bottle of water.",
+          "zh": "我總是帶著一瓶水。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:move",
+      "word": "move",
+      "selectionOrder": 187,
+      "original": {
+        "zh": "移動, 遷居, 步驟；移動, 開動, 感動, 搬(家)",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "移動；搬家",
+        "pos": "verb",
+        "example": {
+          "en": "We plan to move next month.",
+          "zh": "我們計畫下個月搬家。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:night",
+      "word": "night",
+      "selectionOrder": 188,
+      "original": {
+        "zh": "夜, 夜晚, 晚上, 黑暗, 夜晚的工作",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "晚上；夜晚",
+        "pos": "noun",
+        "example": {
+          "en": "The streets are quiet at night.",
+          "zh": "街道在晚上很安靜。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:live",
+      "word": "live",
+      "selectionOrder": 189,
+      "original": {
+        "zh": "活的, 生動的, 精力充沛的, 實況轉播的；活, 生存, 居住",
+        "pos": "a,vi,vt,adv"
+      },
+      "proposed": {
+        "zh": "居住；生活",
+        "pos": "verb",
+        "example": {
+          "en": "I live near a park.",
+          "zh": "我住在公園附近。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:live:heteronym"
+      ]
+    },
+    {
+      "wordId": "word:point",
+      "word": "point",
+      "selectionOrder": 190,
+      "original": {
+        "zh": "點, 小數點, 標點, 地點, 要點, 特點, 尖端, 分數, 得分, 穴位；弄尖, 強調, 指出, 加標點於, 瞄準",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "重點；點",
+        "pos": "noun",
+        "example": {
+          "en": "I understand your point.",
+          "zh": "我了解你的意思。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:believe",
+      "word": "believe",
+      "selectionOrder": 191,
+      "original": {
+        "zh": "相信",
+        "pos": "v"
+      },
+      "proposed": {
+        "zh": "相信",
+        "pos": "verb",
+        "example": {
+          "en": "I believe you.",
+          "zh": "我相信你。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:hold",
+      "word": "hold",
+      "selectionOrder": 192,
+      "original": {
+        "zh": "把握, 把持力, 柄, 控制, 掌握, 監禁；儲存, 握住, 拿住, 佔據, 持有, 擁有",
+        "pos": "n,vt,vi,n"
+      },
+      "proposed": {
+        "zh": "握住；拿著",
+        "pos": "verb",
+        "example": {
+          "en": "Please hold my hand.",
+          "zh": "請握住我的手。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:today",
+      "word": "today",
+      "selectionOrder": 193,
+      "original": {
+        "zh": "今天, 當今, 現在；今天, 當今",
+        "pos": "n,adv"
+      },
+      "proposed": {
+        "zh": "今天",
+        "pos": "noun,adverb",
+        "example": {
+          "en": "I am working from home today.",
+          "zh": "我今天在家工作。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:bring",
+      "word": "bring",
+      "selectionOrder": 194,
+      "original": {
+        "zh": "帶來, 產生, 促使, 提出；生產",
+        "pos": "vt,vi"
+      },
+      "proposed": {
+        "zh": "帶來",
+        "pos": "verb",
+        "example": {
+          "en": "Please bring your own cup.",
+          "zh": "請自備杯子。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:happen",
+      "word": "happen",
+      "selectionOrder": 195,
+      "original": {
+        "zh": "發生, 發生, 恰巧",
+        "pos": "vi"
+      },
+      "proposed": {
+        "zh": "發生",
+        "pos": "verb",
+        "example": {
+          "en": "What will happen next?",
+          "zh": "接下來會發生什麼事？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:next",
+      "word": "next",
+      "selectionOrder": 196,
+      "original": {
+        "zh": "下一個；下一個的, 其次的, 貼近的",
+        "pos": "n,a,adv"
+      },
+      "proposed": {
+        "zh": "下一個的；接下來",
+        "pos": "adjective,adverb",
+        "example": {
+          "en": "The next bus comes at ten.",
+          "zh": "下一班公車十點到。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:without",
+      "word": "without",
+      "selectionOrder": 197,
+      "original": {
+        "zh": "沒有, 不, 在...之外；在外面, 戶外",
+        "pos": "prep,adv,n"
+      },
+      "proposed": {
+        "zh": "沒有；不帶",
+        "pos": "preposition",
+        "example": {
+          "en": "I drink coffee without sugar.",
+          "zh": "我喝咖啡不加糖。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:before",
+      "word": "before",
+      "selectionOrder": 198,
+      "original": {
+        "zh": "在...之前；在...之前",
+        "pos": "prep,conj,adv"
+      },
+      "proposed": {
+        "zh": "在……之前",
+        "pos": "preposition,conjunction",
+        "example": {
+          "en": "Wash your hands before dinner.",
+          "zh": "晚餐前先洗手。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:large",
+      "word": "large",
+      "selectionOrder": 199,
+      "original": {
+        "zh": "大的, 大量的, 寬大的, 廣博的；大大地, 誇大地",
+        "pos": "a,adv"
+      },
+      "proposed": {
+        "zh": "大的；大規模的",
+        "pos": "adjective",
+        "example": {
+          "en": "The hotel has a large garden.",
+          "zh": "這家飯店有一座大花園。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:million",
+      "word": "million",
+      "selectionOrder": 200,
+      "original": {
+        "zh": "百萬, 無數；百萬",
+        "pos": "n,num"
+      },
+      "proposed": {
+        "zh": "一百萬",
+        "pos": "number",
+        "example": {
+          "en": "The city has one million people.",
+          "zh": "這座城市有一百萬人。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:must",
+      "word": "must",
+      "selectionOrder": 201,
+      "original": {
+        "zh": "必須；一定",
+        "pos": "modal"
+      },
+      "proposed": {
+        "zh": "必須；一定",
+        "pos": "modal",
+        "example": {
+          "en": "You must wear a seat belt.",
+          "zh": "你必須繫安全帶。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:home",
+      "word": "home",
+      "selectionOrder": 202,
+      "original": {
+        "zh": "家, 避難所, 故鄉；家庭的, 國內的, 打中目標的",
+        "pos": "n,a,adv"
+      },
+      "proposed": {
+        "zh": "家；在家",
+        "pos": "noun,adverb",
+        "example": {
+          "en": "I will be home at six.",
+          "zh": "我六點會到家。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:under",
+      "word": "under",
+      "selectionOrder": 203,
+      "original": {
+        "zh": "在...之下, 低於；下面的, 從屬的",
+        "pos": "prep,a,adv"
+      },
+      "proposed": {
+        "zh": "在……下面",
+        "pos": "preposition",
+        "example": {
+          "en": "The cat is under the chair.",
+          "zh": "貓在椅子下面。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:water",
+      "word": "water",
+      "selectionOrder": 204,
+      "original": {
+        "zh": "水, 雨水, 海水, 水位, 水面, 流水；給...澆水, 供以水, 注入水, 使溼",
+        "pos": "n,vt,vi,a"
+      },
+      "proposed": {
+        "zh": "水",
+        "pos": "noun",
+        "example": {
+          "en": "Can I have some water?",
+          "zh": "可以給我一些水嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:room",
+      "word": "room",
+      "selectionOrder": 205,
+      "original": {
+        "zh": "房間, 空位, 場所；住宿, 居住",
+        "pos": "n,vi,vt"
+      },
+      "proposed": {
+        "zh": "房間；空間",
+        "pos": "noun",
+        "example": {
+          "en": "This room has two beds.",
+          "zh": "這個房間有兩張床。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:write",
+      "word": "write",
+      "selectionOrder": 206,
+      "original": {
+        "zh": "書寫, 著述, 寫, 寫滿, 寫信給；寫, 寫字, 寫信, 寫作, 作曲",
+        "pos": "vt,vi"
+      },
+      "proposed": {
+        "zh": "寫；書寫",
+        "pos": "verb",
+        "example": {
+          "en": "Please write your name here.",
+          "zh": "請在這裡寫下你的名字。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:mother",
+      "word": "mother",
+      "selectionOrder": 207,
+      "original": {
+        "zh": "母親, 修女院長；產生, 照看, 收養",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "母親；媽媽",
+        "pos": "noun",
+        "example": {
+          "en": "My mother is a teacher.",
+          "zh": "我媽媽是老師。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:area",
+      "word": "area",
+      "selectionOrder": 208,
+      "original": {
+        "zh": "區域, 面積, 範圍, 空地",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "區域；地區",
+        "pos": "noun",
+        "example": {
+          "en": "This area is very quiet.",
+          "zh": "這個地區很安靜。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:national",
+      "word": "national",
+      "selectionOrder": 209,
+      "original": {
+        "zh": "國家的, 國立的, 全國性的, 民族的",
+        "pos": "a"
+      },
+      "proposed": {
+        "zh": "全國的；國家的",
+        "pos": "adjective",
+        "example": {
+          "en": "It is a national holiday.",
+          "zh": "今天是國定假日。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:money",
+      "word": "money",
+      "selectionOrder": 210,
+      "original": {
+        "zh": "金錢, 一筆款, 財富, 貨幣, 金額",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "錢；金錢",
+        "pos": "noun",
+        "example": {
+          "en": "I need to save some money.",
+          "zh": "我需要存一些錢。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:story",
+      "word": "story",
+      "selectionOrder": 211,
+      "original": {
+        "zh": "故事, 小說, 傳奇, 描述, 閱歷, 經歷, 層",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "故事",
+        "pos": "noun",
+        "example": {
+          "en": "Tell me a story.",
+          "zh": "講個故事給我聽。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:young",
+      "word": "young",
+      "selectionOrder": 212,
+      "original": {
+        "zh": "年輕的, 無經驗的, 朝氣蓬勃的；青年們, 幼小動物, 崽",
+        "pos": "a,n"
+      },
+      "proposed": {
+        "zh": "年輕的",
+        "pos": "adjective",
+        "example": {
+          "en": "The young woman is my teacher.",
+          "zh": "那位年輕女士是我的老師。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:fact",
+      "word": "fact",
+      "selectionOrder": 213,
+      "original": {
+        "zh": "事實, 真實性, 真相, 細節, 論據",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "事實",
+        "pos": "noun",
+        "example": {
+          "en": "That is a fact, not a guess.",
+          "zh": "那是事實，不是猜測。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:month",
+      "word": "month",
+      "selectionOrder": 214,
+      "original": {
+        "zh": "月",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "月；月份",
+        "pos": "noun",
+        "example": {
+          "en": "I will visit you next month.",
+          "zh": "我下個月會去看你。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:different",
+      "word": "different",
+      "selectionOrder": 215,
+      "original": {
+        "zh": "不同的",
+        "pos": "a"
+      },
+      "proposed": {
+        "zh": "不同的",
+        "pos": "adjective",
+        "example": {
+          "en": "We have different ideas.",
+          "zh": "我們有不同的想法。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:lot",
+      "word": "lot",
+      "selectionOrder": 216,
+      "original": {
+        "zh": "運氣, 籤, 抽籤, 份額, 許多, 一堆；劃分",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "許多（常見於 a lot of）",
+        "pos": "noun",
+        "example": {
+          "en": "We have a lot of time.",
+          "zh": "我們有很多時間。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:study",
+      "word": "study",
+      "selectionOrder": 217,
+      "original": {
+        "zh": "學習, 研究, 學科, 論文, 求學, 書房, 試作；學習, 讀書, 研究, 考慮, 計劃",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "學習；讀書",
+        "pos": "verb",
+        "example": {
+          "en": "I study English every day.",
+          "zh": "我每天學英文。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:book",
+      "word": "book",
+      "selectionOrder": 218,
+      "original": {
+        "zh": "書；預訂",
+        "pos": "noun,verb"
+      },
+      "proposed": {
+        "zh": "書",
+        "pos": "noun",
+        "example": {
+          "en": "This book is easy to read.",
+          "zh": "這本書很容易讀。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:book:legacy-meaning-conflict"
+      ]
+    },
+    {
+      "wordId": "word:eye",
+      "word": "eye",
+      "selectionOrder": 219,
+      "original": {
+        "zh": "眼睛, 視力, 看；看, 注視",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "眼睛",
+        "pos": "noun",
+        "example": {
+          "en": "My left eye hurts.",
+          "zh": "我的左眼會痛。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:job",
+      "word": "job",
+      "selectionOrder": 220,
+      "original": {
+        "zh": "工作, 零活, 職業, 事情；做零工, 打雜, 做股票經紀, 假公濟私",
+        "pos": "n,vi,vt"
+      },
+      "proposed": {
+        "zh": "工作；職業",
+        "pos": "noun",
+        "example": {
+          "en": "I am looking for a new job.",
+          "zh": "我正在找新工作。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:word",
+      "word": "word",
+      "selectionOrder": 221,
+      "original": {
+        "zh": "話, 訊息, 詞, 諾言, 命令；用言辭表達",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "字；單字",
+        "pos": "noun",
+        "example": {
+          "en": "How do you spell this word?",
+          "zh": "這個字要怎麼拼？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:though",
+      "word": "though",
+      "selectionOrder": 222,
+      "original": {
+        "zh": "然而, 可是；雖然, 縱然",
+        "pos": "adv,conj"
+      },
+      "proposed": {
+        "zh": "雖然；儘管",
+        "pos": "conjunction",
+        "example": {
+          "en": "Though it is raining, we can still go.",
+          "zh": "雖然正在下雨，我們還是可以去。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:business",
+      "word": "business",
+      "selectionOrder": 223,
+      "original": {
+        "zh": "生意, 事情, 業務, 商業, 商行, 職責",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "生意；商業",
+        "pos": "noun",
+        "example": {
+          "en": "My sister runs a small business.",
+          "zh": "我的姊姊經營一家小公司。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:four",
+      "word": "four",
+      "selectionOrder": 224,
+      "original": {
+        "zh": "四, 四個",
+        "pos": "num"
+      },
+      "proposed": {
+        "zh": "四；四個",
+        "pos": "number",
+        "example": {
+          "en": "There are four chairs in the room.",
+          "zh": "房間裡有四張椅子。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:issue",
+      "word": "issue",
+      "selectionOrder": 225,
+      "original": {
+        "zh": "發行, 問題, 後果, 流出, 出口, 爭端；發行, 流出, 造成...結果, 傳下",
+        "pos": "n,vi,vt"
+      },
+      "proposed": {
+        "zh": "問題；議題",
+        "pos": "noun",
+        "example": {
+          "en": "We need to discuss this issue.",
+          "zh": "我們需要討論這個問題。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:side",
+      "word": "side",
+      "selectionOrder": 226,
+      "original": {
+        "zh": "旁邊, 側, 方面, 脅, 側邊, 血統；旁的, 側的, 次要的",
+        "pos": "n,a,vt,vi"
+      },
+      "proposed": {
+        "zh": "邊；旁邊",
+        "pos": "noun",
+        "example": {
+          "en": "The shop is on the other side of the street.",
+          "zh": "商店在街道另一邊。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:kind",
+      "word": "kind",
+      "selectionOrder": 227,
+      "original": {
+        "zh": "種類, 性質, 方式；親切的, 仁慈的, 和藹的",
+        "pos": "n,a"
+      },
+      "proposed": {
+        "zh": "種類；親切的",
+        "pos": "noun,adjective",
+        "example": {
+          "en": "What kind of food do you like?",
+          "zh": "你喜歡哪一種食物？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:head",
+      "word": "head",
+      "selectionOrder": 228,
+      "original": {
+        "zh": "頭, 頭腦, 領袖, 腦袋, 最前的部分；為首, 朝向, 前進, 用頭頂",
+        "pos": "n,vt,vi,a"
+      },
+      "proposed": {
+        "zh": "頭；頭部",
+        "pos": "noun",
+        "example": {
+          "en": "My head hurts.",
+          "zh": "我的頭會痛。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:far",
+      "word": "far",
+      "selectionOrder": 229,
+      "original": {
+        "zh": "遠的, 久遠的, 遙遠的；甚遠地, 很, 到很深的程度, 到很遠的距離",
+        "pos": "a,adv"
+      },
+      "proposed": {
+        "zh": "遠；遙遠的",
+        "pos": "adverb,adjective",
+        "example": {
+          "en": "How far is the station?",
+          "zh": "車站有多遠？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:black",
+      "word": "black",
+      "selectionOrder": 230,
+      "original": {
+        "zh": "黑色, 黑顏料；黑色的",
+        "pos": "n,a"
+      },
+      "proposed": {
+        "zh": "黑色的；黑色",
+        "pos": "adjective,noun",
+        "example": {
+          "en": "I have a black bag.",
+          "zh": "我有一個黑色包包。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:long",
+      "word": "long",
+      "selectionOrder": 231,
+      "original": {
+        "zh": "長的, 長久的, 冗長的, 做多頭的；渴望, 熱望, 極想",
+        "pos": "a,vi,adv,n"
+      },
+      "proposed": {
+        "zh": "長的；長時間的",
+        "pos": "adjective",
+        "example": {
+          "en": "It was a long trip.",
+          "zh": "那是一趟漫長的旅程。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:both",
+      "word": "both",
+      "selectionOrder": 232,
+      "original": {
+        "zh": "兩者的；兩者都",
+        "pos": "a,adv,pron"
+      },
+      "proposed": {
+        "zh": "兩者都；兩個都",
+        "pos": "determiner,pronoun",
+        "example": {
+          "en": "Both shops are open today.",
+          "zh": "兩家店今天都有營業。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:little",
+      "word": "little",
+      "selectionOrder": 233,
+      "original": {
+        "zh": "一點點, 少許, 一會兒, 短時間；小的, 很少的, 幼小的, 瑣碎的, 短暫的, 矮小的",
+        "pos": "n,a,adv"
+      },
+      "proposed": {
+        "zh": "少量的；小的",
+        "pos": "determiner,adjective",
+        "example": {
+          "en": "There is little time left.",
+          "zh": "剩下的時間不多了。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:little:grammar-distinction"
+      ]
+    },
+    {
+      "wordId": "word:house",
+      "word": "house",
+      "selectionOrder": 234,
+      "original": {
+        "zh": "房子",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "房子",
+        "pos": "noun",
+        "example": {
+          "en": "Their house has a small garden.",
+          "zh": "他們的房子有一座小花園。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:yes",
+      "word": "yes",
+      "selectionOrder": 235,
+      "original": {
+        "zh": "是；是, 同意",
+        "pos": "adv,n,v"
+      },
+      "proposed": {
+        "zh": "是；好",
+        "pos": "adverb",
+        "example": {
+          "en": "Yes, I can help you.",
+          "zh": "好，我可以幫你。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:since",
+      "word": "since",
+      "selectionOrder": 236,
+      "original": {
+        "zh": "自...以後, 自...以來；自那時以後",
+        "pos": "prep,adv,conj"
+      },
+      "proposed": {
+        "zh": "自從；自……以來",
+        "pos": "preposition,conjunction",
+        "example": {
+          "en": "I have lived here since May.",
+          "zh": "我從五月起就住在這裡。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:provide",
+      "word": "provide",
+      "selectionOrder": 237,
+      "original": {
+        "zh": "提供, 供應, 規定, 預備；作準備, 撫養, 規定",
+        "pos": "vt,vi"
+      },
+      "proposed": {
+        "zh": "提供",
+        "pos": "verb",
+        "example": {
+          "en": "The hotel will provide breakfast.",
+          "zh": "飯店會提供早餐。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:service",
+      "word": "service",
+      "selectionOrder": 238,
+      "original": {
+        "zh": "服務, 貢獻, 僱傭, 公職, 服役, 功勞, 儀式, 送達, 行政部門；保養, 維修",
+        "pos": "n,vt,a"
+      },
+      "proposed": {
+        "zh": "服務",
+        "pos": "noun",
+        "example": {
+          "en": "The service here is very good.",
+          "zh": "這裡的服務很好。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:around",
+      "word": "around",
+      "selectionOrder": 239,
+      "original": {
+        "zh": "包圍, 在...周圍, 四處；兜著圈子, 在附近, 到處",
+        "pos": "prep,adv"
+      },
+      "proposed": {
+        "zh": "在……周圍；大約",
+        "pos": "preposition,adverb",
+        "example": {
+          "en": "We walked around the lake.",
+          "zh": "我們繞著湖散步。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:friend",
+      "word": "friend",
+      "selectionOrder": 240,
+      "original": {
+        "zh": "朋友, 支持者, 贊助者",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "朋友",
+        "pos": "noun",
+        "example": {
+          "en": "I am meeting a friend for lunch.",
+          "zh": "我要和一位朋友一起吃午餐。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:erm",
+      "word": "erm",
+      "selectionOrder": 241,
+      "decision": "exclude-pending-correction",
+      "reviewer": "coordinator-ai",
+      "reason": "Medical acronym expansion is not the discourse filler. No reviewed example or verified audio supplied."
+    },
+    {
+      "wordId": "word:important",
+      "word": "important",
+      "selectionOrder": 242,
+      "original": {
+        "zh": "重要的, 有地位的, 大量的, 顯要的, 自負的",
+        "pos": "a"
+      },
+      "proposed": {
+        "zh": "重要的",
+        "pos": "adjective",
+        "example": {
+          "en": "This is an important question.",
+          "zh": "這是個重要的問題。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:father",
+      "word": "father",
+      "selectionOrder": 243,
+      "original": {
+        "zh": "父親, 祖先, 長輩, 神父, 創始者；當...的父親, 保護, 創作, 發明, 培養",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "父親；爸爸",
+        "pos": "noun",
+        "example": {
+          "en": "My father likes to cook.",
+          "zh": "我爸爸喜歡做飯。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:sit",
+      "word": "sit",
+      "selectionOrder": 244,
+      "original": {
+        "zh": "坐, 就座, 坐落；使就座, 騎",
+        "pos": "vi,vt,n"
+      },
+      "proposed": {
+        "zh": "坐",
+        "pos": "verb",
+        "example": {
+          "en": "Please sit next to me.",
+          "zh": "請坐在我旁邊。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:away",
+      "word": "away",
+      "selectionOrder": 245,
+      "original": {
+        "zh": "離去",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "離開；遠離",
+        "pos": "adverb",
+        "example": {
+          "en": "The station is ten minutes away.",
+          "zh": "車站離這裡有十分鐘的路程。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:until",
+      "word": "until",
+      "selectionOrder": 246,
+      "original": {
+        "zh": "直到, 在...以前；直到...時, 在...以前",
+        "pos": "prep,conj"
+      },
+      "proposed": {
+        "zh": "直到……為止",
+        "pos": "preposition,conjunction",
+        "example": {
+          "en": "The shop is open until nine.",
+          "zh": "這家店營業到九點。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:power",
+      "word": "power",
+      "selectionOrder": 247,
+      "original": {
+        "zh": "力, 體力, 力量, 勢力, 動力, 權力, 強國, 乘方, 強度, 冪, 功率；使...有力量, 供以動力, 激勵",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "力量；電力",
+        "pos": "noun",
+        "example": {
+          "en": "The storm cut off the power.",
+          "zh": "暴風雨造成停電。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:hour",
+      "word": "hour",
+      "selectionOrder": 248,
+      "original": {
+        "zh": "小時, 鐘頭, 時間, ...點鐘, 課時",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "小時",
+        "pos": "noun",
+        "example": {
+          "en": "The trip takes one hour.",
+          "zh": "這趟行程需要一小時。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:game",
+      "word": "game",
+      "selectionOrder": 249,
+      "original": {
+        "zh": "比賽, 玩耍, 比分, 得勝, 比賽規則, 策略, 遊戲, 野味；賭博",
+        "pos": "n,vi,a"
+      },
+      "proposed": {
+        "zh": "遊戲；比賽",
+        "pos": "noun",
+        "example": {
+          "en": "Let's play a game.",
+          "zh": "我們來玩個遊戲吧。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:often",
+      "word": "often",
+      "selectionOrder": 250,
+      "original": {
+        "zh": "時常, 常常",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "經常；常常",
+        "pos": "adverb",
+        "example": {
+          "en": "I often walk to work.",
+          "zh": "我經常走路上班。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:yet",
+      "word": "yet",
+      "selectionOrder": 251,
+      "original": {
+        "zh": "還, 尚, 仍然, 已經, 然而；然而",
+        "pos": "adv,conj"
+      },
+      "proposed": {
+        "zh": "還；尚未",
+        "pos": "adverb",
+        "example": {
+          "en": "The bus is not here yet.",
+          "zh": "公車還沒來。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:line",
+      "word": "line",
+      "selectionOrder": 252,
+      "original": {
+        "zh": "列, 線, 繩, 電線, 線路, 路線, 航線, 作業線, 界線, 戰線, 外形, 排, 家系；排成一行, 順...排列, 劃線於, 加襯裡, 使有線條, 使起皺紋",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "隊伍；線",
+        "pos": "noun",
+        "example": {
+          "en": "Please wait in line.",
+          "zh": "請排隊等候。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:political",
+      "word": "political",
+      "selectionOrder": 253,
+      "original": {
+        "zh": "政治的, 政治上的, 政黨的, 從事政治的",
+        "pos": "a"
+      },
+      "proposed": {
+        "zh": "政治的",
+        "pos": "adjective",
+        "example": {
+          "en": "They discussed a political issue.",
+          "zh": "他們討論了一個政治議題。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:end",
+      "word": "end",
+      "selectionOrder": 254,
+      "original": {
+        "zh": "結束, 終點, 目標, 末端, 梢, 死亡, 殘餘；結束, 終結, 終止",
+        "pos": "n,v"
+      },
+      "proposed": {
+        "zh": "結束；末端",
+        "pos": "noun,verb",
+        "example": {
+          "en": "The meeting will end at five.",
+          "zh": "會議五點結束。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:among",
+      "word": "among",
+      "selectionOrder": 255,
+      "original": {
+        "zh": "在...之中",
+        "pos": "prep"
+      },
+      "proposed": {
+        "zh": "在……之中",
+        "pos": "preposition",
+        "example": {
+          "en": "I found my keys among the books.",
+          "zh": "我在那些書裡找到了鑰匙。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:ever",
+      "word": "ever",
+      "selectionOrder": 256,
+      "original": {
+        "zh": "曾經, 究竟, 永遠",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "曾經（常用於問句）",
+        "pos": "adverb",
+        "example": {
+          "en": "Have you ever been to Taiwan?",
+          "zh": "你曾經去過台灣嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:stand",
+      "word": "stand",
+      "selectionOrder": 257,
+      "original": {
+        "zh": "站立, 站住, 停頓, 講臺, 看臺, 立場, 法院證人席；站, 立, 坐落, 停滯, 位於, 堅持, 維持原狀",
+        "pos": "n,vi,vt"
+      },
+      "proposed": {
+        "zh": "站；站立",
+        "pos": "verb",
+        "example": {
+          "en": "Please stand behind the line.",
+          "zh": "請站在線後面。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:bad",
+      "word": "bad",
+      "selectionOrder": 258,
+      "original": {
+        "zh": "壞的；壞",
+        "pos": "a,n,adv"
+      },
+      "proposed": {
+        "zh": "壞的；不好的",
+        "pos": "adjective",
+        "example": {
+          "en": "That is a bad idea.",
+          "zh": "那不是個好主意。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:lose",
+      "word": "lose",
+      "selectionOrder": 259,
+      "original": {
+        "zh": "遺失, 損失, 丟失, 使失去, 錯過, 浪費, 迷失, 使迷路, 輸去, 使沉溺於；受損失, 失敗",
+        "pos": "vt,vi"
+      },
+      "proposed": {
+        "zh": "遺失；失去",
+        "pos": "verb",
+        "example": {
+          "en": "Try not to lose your ticket.",
+          "zh": "盡量不要弄丟你的票。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:however",
+      "word": "however",
+      "selectionOrder": 260,
+      "original": {
+        "zh": "然而, 無論如何, 究竟怎樣；然而, 可是",
+        "pos": "adv,conj"
+      },
+      "proposed": {
+        "zh": "然而；不過",
+        "pos": "adverb",
+        "example": {
+          "en": "It is expensive. However, it is very useful.",
+          "zh": "它很貴，不過非常實用。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:member",
+      "word": "member",
+      "selectionOrder": 261,
+      "original": {
+        "zh": "成員, 會員",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "成員；會員",
+        "pos": "noun",
+        "example": {
+          "en": "I am a member of this club.",
+          "zh": "我是這個社團的成員。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:pay",
+      "word": "pay",
+      "selectionOrder": 262,
+      "original": {
+        "zh": "薪資, 付款, 補償；支付, 付清, 補償, 償還, 對...有利, 為...塗防水物",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "付款；支付",
+        "pos": "verb",
+        "example": {
+          "en": "Can I pay by card?",
+          "zh": "我可以刷卡付款嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:law",
+      "word": "law",
+      "selectionOrder": 263,
+      "original": {
+        "zh": "法律, 法則, 定律, 法律的制約, 法學, 司法界, 訴訟；起訴",
+        "pos": "n,v"
+      },
+      "proposed": {
+        "zh": "法律",
+        "pos": "noun",
+        "example": {
+          "en": "The new law starts next month.",
+          "zh": "新法律下個月開始實施。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:meet",
+      "word": "meet",
+      "selectionOrder": 264,
+      "original": {
+        "zh": "會, 集會；適宜的, 合適的",
+        "pos": "n,a,vt,vi"
+      },
+      "proposed": {
+        "zh": "見面；遇見",
+        "pos": "verb",
+        "example": {
+          "en": "Let's meet at the station.",
+          "zh": "我們在車站見面吧。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:meet:pos-sense-mismatch"
+      ]
+    },
+    {
+      "wordId": "word:car",
+      "word": "car",
+      "selectionOrder": 265,
+      "original": {
+        "zh": "汽車",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "汽車",
+        "pos": "noun",
+        "example": {
+          "en": "My car is outside.",
+          "zh": "我的車在外面。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:city",
+      "word": "city",
+      "selectionOrder": 266,
+      "original": {
+        "zh": "城市, 市",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "城市",
+        "pos": "noun",
+        "example": {
+          "en": "This city has many parks.",
+          "zh": "這座城市有很多公園。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:almost",
+      "word": "almost",
+      "selectionOrder": 267,
+      "original": {
+        "zh": "幾乎；差不多",
+        "pos": "adverb"
+      },
+      "proposed": {
+        "zh": "幾乎；差不多",
+        "pos": "adverb",
+        "example": {
+          "en": "My phone battery is almost empty.",
+          "zh": "我的手機快沒電了。"
+        }
+      },
+      "decision": "retain-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:include",
+      "word": "include",
+      "selectionOrder": 268,
+      "original": {
+        "zh": "包括, 把...算入, 包住",
+        "pos": "vt"
+      },
+      "proposed": {
+        "zh": "包括；包含",
+        "pos": "verb",
+        "example": {
+          "en": "Does the price include breakfast?",
+          "zh": "這個價格包含早餐嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:continue",
+      "word": "continue",
+      "selectionOrder": 269,
+      "original": {
+        "zh": "繼續, 延續, 延長；使繼續, 使延長",
+        "pos": "vi,vt"
+      },
+      "proposed": {
+        "zh": "繼續",
+        "pos": "verb",
+        "example": {
+          "en": "We can continue after lunch.",
+          "zh": "我們可以午餐後繼續。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:set",
+      "word": "set",
+      "selectionOrder": 270,
+      "original": {
+        "zh": "日落, 同夥, 組合, 集合, 裝置；放, 安置, 放置, 設定, 使凝結, 點燃, 確定, 點綴, 使就位, 樹立, 分配, 調整",
+        "pos": "n,vt,vi,a"
+      },
+      "proposed": {
+        "zh": "設定；設置",
+        "pos": "verb",
+        "example": {
+          "en": "Please set the alarm for seven.",
+          "zh": "請把鬧鐘設在七點。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:community",
+      "word": "community",
+      "selectionOrder": 271,
+      "original": {
+        "zh": "社群, 公眾, 共有, 共同體",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "社區；社群",
+        "pos": "noun",
+        "example": {
+          "en": "Our community has a small library.",
+          "zh": "我們的社區有一間小圖書館。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:name",
+      "word": "name",
+      "selectionOrder": 272,
+      "original": {
+        "zh": "名字, 名稱, 姓名, 名義, 名譽, 檔名；命名, 稱呼, 任命, 提名, 列舉",
+        "pos": "n,vt,a"
+      },
+      "proposed": {
+        "zh": "名字；名稱",
+        "pos": "noun",
+        "example": {
+          "en": "Please write your name here.",
+          "zh": "請在這裡寫下你的名字。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:five",
+      "word": "five",
+      "selectionOrder": 273,
+      "original": {
+        "zh": "五, 五個",
+        "pos": "num"
+      },
+      "proposed": {
+        "zh": "五；五個",
+        "pos": "number",
+        "example": {
+          "en": "I need five minutes.",
+          "zh": "我需要五分鐘。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:once",
+      "word": "once",
+      "selectionOrder": 274,
+      "original": {
+        "zh": "一次, 曾經, 一旦；一旦, 一經",
+        "pos": "adv,conj,n,a"
+      },
+      "proposed": {
+        "zh": "一次；曾經",
+        "pos": "adverb",
+        "example": {
+          "en": "I go swimming once a week.",
+          "zh": "我每星期游泳一次。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:white",
+      "word": "white",
+      "selectionOrder": 275,
+      "original": {
+        "zh": "白色, 潔白, 眼白, 白種人, 蛋白；白色的, 純潔的, 白種的, 蒼白的, 空白的, 幸運的",
+        "pos": "n,a"
+      },
+      "proposed": {
+        "zh": "白色的；白色",
+        "pos": "adjective,noun",
+        "example": {
+          "en": "She is wearing a white shirt.",
+          "zh": "她穿著一件白色襯衫。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:least",
+      "word": "least",
+      "selectionOrder": 276,
+      "original": {
+        "zh": "最少, 最小, 最小限度；最少的, 最小的",
+        "pos": "n,a,adv"
+      },
+      "proposed": {
+        "zh": "最少（常見於 at least）",
+        "pos": "determiner,adverb",
+        "example": {
+          "en": "We need at least two chairs.",
+          "zh": "我們至少需要兩張椅子。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:president",
+      "word": "president",
+      "selectionOrder": 277,
+      "original": {
+        "zh": "總統, 總裁, 董事長, (學院)院長, (大學)校長, 主管人, 主持人",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "總統；會長",
+        "pos": "noun",
+        "example": {
+          "en": "She is the president of our club.",
+          "zh": "她是我們社團的會長。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:learn",
+      "word": "learn",
+      "selectionOrder": 278,
+      "original": {
+        "zh": "學習；認識到；得知",
+        "pos": "vt"
+      },
+      "proposed": {
+        "zh": "學習；學會",
+        "pos": "verb",
+        "example": {
+          "en": "I want to learn English.",
+          "zh": "我想學英文。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:real",
+      "word": "real",
+      "selectionOrder": 279,
+      "original": {
+        "zh": "真的, 真實的, 實際的, 實在的, 不動(產)的, 實數的；實數, 現實",
+        "pos": "a,n,adv"
+      },
+      "proposed": {
+        "zh": "真正的；真實的",
+        "pos": "adjective",
+        "example": {
+          "en": "This is a real problem.",
+          "zh": "這是個實際存在的問題。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:change",
+      "word": "change",
+      "selectionOrder": 280,
+      "original": {
+        "zh": "變化, 找回的零錢, 找頭, 更換；改變, 更換, 兌換",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "改變；更換",
+        "pos": "verb",
+        "example": {
+          "en": "I need to change my travel plans.",
+          "zh": "我需要更改我的旅行計畫。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:team",
+      "word": "team",
+      "selectionOrder": 281,
+      "original": {
+        "zh": "隊, 組；把馬(牛)套在同一輛車上, 把...編成一組",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "團隊；隊伍",
+        "pos": "noun",
+        "example": {
+          "en": "Our team has six members.",
+          "zh": "我們的團隊有六位成員。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:minute",
+      "word": "minute",
+      "selectionOrder": 282,
+      "original": {
+        "zh": "分, 分鐘, 片刻, 備忘錄, 筆記；記錄, 摘錄, 測定時間",
+        "pos": "n,vt,a"
+      },
+      "proposed": {
+        "zh": "分鐘",
+        "pos": "noun",
+        "example": {
+          "en": "Please wait a minute.",
+          "zh": "請等一分鐘。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:minute:heteronym"
+      ]
+    },
+    {
+      "wordId": "word:several",
+      "word": "several",
+      "selectionOrder": 283,
+      "original": {
+        "zh": "幾個的, 一些的, 各自的；幾個",
+        "pos": "a,pron"
+      },
+      "proposed": {
+        "zh": "幾個；數個",
+        "pos": "determiner",
+        "example": {
+          "en": "I have several questions.",
+          "zh": "我有幾個問題。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:idea",
+      "word": "idea",
+      "selectionOrder": 284,
+      "original": {
+        "zh": "主意, 辦法, 理想, 思想, 概念, 意見",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "主意；想法",
+        "pos": "noun",
+        "example": {
+          "en": "That is a good idea.",
+          "zh": "那是個好主意。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:kid",
+      "word": "kid",
+      "selectionOrder": 285,
+      "original": {
+        "zh": "小山羊, 小山羊肉, 小孩, 欺騙；小山羊皮製的",
+        "pos": "n,a,v"
+      },
+      "proposed": {
+        "zh": "小孩（口語）",
+        "pos": "noun",
+        "example": {
+          "en": "The kid is playing in the park.",
+          "zh": "那個小孩正在公園裡玩。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:kid:sense-priority"
+      ]
+    },
+    {
+      "wordId": "word:body",
+      "word": "body",
+      "selectionOrder": 286,
+      "original": {
+        "zh": "身體, 人, 屍體, 主要部分, 團體；賦以形體",
+        "pos": "n,vt"
+      },
+      "proposed": {
+        "zh": "身體",
+        "pos": "noun",
+        "example": {
+          "en": "Exercise is good for your body.",
+          "zh": "運動對你的身體有益。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:information",
+      "word": "information",
+      "selectionOrder": 287,
+      "original": {
+        "zh": "訊息, 知識, 通知, 情報, 資訊, 問訊處, 起訴",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "資訊；資料",
+        "pos": "noun",
+        "example": {
+          "en": "Where can I get more information?",
+          "zh": "我可以在哪裡取得更多資訊？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:nothing",
+      "word": "nothing",
+      "selectionOrder": 288,
+      "original": {
+        "zh": "無, 不關緊要之事, 零；毫不, 決不",
+        "pos": "n,adv,interj"
+      },
+      "proposed": {
+        "zh": "沒有任何事物",
+        "pos": "pronoun",
+        "example": {
+          "en": "There is nothing in this bag.",
+          "zh": "這個包包裡沒有任何東西。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:ago",
+      "word": "ago",
+      "selectionOrder": 289,
+      "original": {
+        "zh": "以前",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "……以前",
+        "pos": "adverb",
+        "example": {
+          "en": "I moved here two years ago.",
+          "zh": "我兩年前搬來這裡。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:lead",
+      "word": "lead",
+      "selectionOrder": 290,
+      "original": {
+        "zh": "鉛, 鉛條, 領導, 超前量, 領引, 榜樣, 主角, 導線；引導, 帶領, 領導, 指揮, 致使, 加鉛於, 用鉛包",
+        "pos": "n,vt,vi,a"
+      },
+      "proposed": {
+        "zh": "帶領；引導",
+        "pos": "verb",
+        "example": {
+          "en": "This path will lead you to the lake.",
+          "zh": "這條小路會帶你到湖邊。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:lead:heteronym"
+      ]
+    },
+    {
+      "wordId": "word:social",
+      "word": "social",
+      "selectionOrder": 291,
+      "original": {
+        "zh": "社會的, 群居的, 社交的；聯歡會",
+        "pos": "a,n"
+      },
+      "proposed": {
+        "zh": "社交的；社會的",
+        "pos": "adjective",
+        "example": {
+          "en": "The club has many social events.",
+          "zh": "這個社團有很多社交活動。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:understand",
+      "word": "understand",
+      "selectionOrder": 292,
+      "original": {
+        "zh": "理解, 瞭解, 領會, 聽說, 懂；懂得, 認為",
+        "pos": "vt,vi"
+      },
+      "proposed": {
+        "zh": "理解；了解",
+        "pos": "verb",
+        "example": {
+          "en": "I understand this sentence.",
+          "zh": "我理解這個句子。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:whether",
+      "word": "whether",
+      "selectionOrder": 293,
+      "original": {
+        "zh": "是否, 不論；兩個中的哪一個",
+        "pos": "conj,pron"
+      },
+      "proposed": {
+        "zh": "是否",
+        "pos": "conjunction",
+        "example": {
+          "en": "I do not know whether the shop is open.",
+          "zh": "我不知道這家店是否有營業。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:watch",
+      "word": "watch",
+      "selectionOrder": 294,
+      "original": {
+        "zh": "觀察, 手錶, 看守, 守護, 監視, 值班人；看, 注視, 照顧, 看守, 守護, 監視",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "看；觀看",
+        "pos": "verb",
+        "example": {
+          "en": "We watch a movie every Friday.",
+          "zh": "我們每星期五看一部電影。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:together",
+      "word": "together",
+      "selectionOrder": 295,
+      "original": {
+        "zh": "一起, 共同, 彼此",
+        "pos": "adv"
+      },
+      "proposed": {
+        "zh": "一起",
+        "pos": "adverb",
+        "example": {
+          "en": "Let's study together.",
+          "zh": "我們一起讀書吧。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:follow",
+      "word": "follow",
+      "selectionOrder": 296,
+      "original": {
+        "zh": "跟隨, 沿行, 遵循, 追求；跟隨, 接著",
+        "pos": "vt,vi,n"
+      },
+      "proposed": {
+        "zh": "跟隨；遵循",
+        "pos": "verb",
+        "example": {
+          "en": "Please follow me.",
+          "zh": "請跟我來。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:parent",
+      "word": "parent",
+      "selectionOrder": 297,
+      "original": {
+        "zh": "父母, 父母親, 根源",
+        "pos": "n"
+      },
+      "proposed": {
+        "zh": "父親或母親",
+        "pos": "noun",
+        "example": {
+          "en": "Each child can bring a parent.",
+          "zh": "每個孩子可以帶一位家長。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": [
+        "word:parent:singular-plural"
+      ]
+    },
+    {
+      "wordId": "word:stop",
+      "word": "stop",
+      "selectionOrder": 298,
+      "original": {
+        "zh": "停止, 車站, 逗留, 填塞, 障礙, (風琴的)音栓；停止, 被塞住",
+        "pos": "n,vi,vt"
+      },
+      "proposed": {
+        "zh": "停止",
+        "pos": "verb",
+        "example": {
+          "en": "Please stop here.",
+          "zh": "請在這裡停下來。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:face",
+      "word": "face",
+      "selectionOrder": 299,
+      "original": {
+        "zh": "臉, 面容, 正面, 外觀；面對, 朝, 正視, 面臨",
+        "pos": "n,vt,vi"
+      },
+      "proposed": {
+        "zh": "臉；臉部",
+        "pos": "noun",
+        "example": {
+          "en": "Wash your face before bed.",
+          "zh": "睡前洗臉。"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    },
+    {
+      "wordId": "word:anything",
+      "word": "anything",
+      "selectionOrder": 300,
+      "original": {
+        "zh": "任何事",
+        "pos": "pron"
+      },
+      "proposed": {
+        "zh": "任何事物",
+        "pos": "pronoun",
+        "example": {
+          "en": "Do you need anything else?",
+          "zh": "你還需要其他東西嗎？"
+        }
+      },
+      "decision": "use-selected-common-sense",
+      "reviewer": "coordinator-ai",
+      "reviewScope": "specific word, selected sense, POS and example; not all dictionary senses",
+      "relatedIssues": []
+    }
+  ]
+}

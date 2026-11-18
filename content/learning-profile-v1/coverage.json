@@ -1,0 +1,464 @@
+{
+ "schemaVersion": 1,
+ "version": "lp-v1-batch04",
+ "task": "LEARNING-PROFILE-01",
+ "reviewer": "external-ai",
+ "status": "ai-edited-not-teacher-reviewed",
+ "contentBase": "picture-english e079ef8f426e0f0f7e5794906bda952ea4af1fee",
+ "note": "現有教材對文法與主題的覆蓋。testedByExistingQuestionTypes＝no 表示遊戲現有題型都不能當作該時態的掌握證據；grammarItems 是 batch-02 文法形式選擇題中以此為目標或句型的題數（遊戲接上新題型後才會產生證據）。",
+ "grammar": {
+  "tense:present-simple": {
+   "reviewedSentences": 106,
+   "inTopics": {
+    "travel": 65,
+    "food": 23,
+    "meeting": 9,
+    "work": 4
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 12,
+   "examples": [
+    "Here is my passport.",
+    "Yes, I have one suitcase.",
+    "Is it overweight?",
+    "What time does boarding start?",
+    "Is this the line for boarding?"
+   ]
+  },
+  "tense:present-continuous": {
+   "reviewedSentences": 13,
+   "inTopics": {
+    "travel": 4,
+    "food": 1,
+    "meeting": 1
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 12,
+   "examples": [
+    "I'm staying at a hotel downtown.",
+    "No, I'm traveling with my family.",
+    "I'm staying at a hotel near the beach.",
+    "The air conditioner isn't working.",
+    "Excuse me, we're still waiting for our food."
+   ]
+  },
+  "tense:present-perfect": {
+   "reviewedSentences": 9,
+   "inTopics": {
+    "travel": 1
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "My suitcase hasn't arrived.",
+    "My order hasn't arrived yet.",
+    "I've been here for two weeks.",
+    "I've worked here for three years.",
+    "Has anyone turned in a black bag?"
+   ]
+  },
+  "tense:present-perfect-continuous": {
+   "reviewedSentences": 1,
+   "inTopics": {},
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "She has been working here for ten years."
+   ]
+  },
+  "tense:past-simple": {
+   "reviewedSentences": 33,
+   "inTopics": {
+    "travel": 2,
+    "food": 2,
+    "meeting": 1
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 12,
+   "examples": [
+    "The machine kept my card.",
+    "I locked myself out.",
+    "This is not what I ordered.",
+    "I received the wrong item.",
+    "The package was damaged."
+   ]
+  },
+  "tense:past-continuous": {
+   "reviewedSentences": 0,
+   "inTopics": {},
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": []
+  },
+  "tense:past-perfect": {
+   "reviewedSentences": 1,
+   "inTopics": {},
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "The train had already left when we arrived."
+   ]
+  },
+  "tense:used-to": {
+   "reviewedSentences": 0,
+   "inTopics": {},
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": []
+  },
+  "tense:going-to": {
+   "reviewedSentences": 2,
+   "inTopics": {},
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 12,
+   "examples": [
+    "It looks like it's going to rain.",
+    "We are going to fly to Japan tomorrow."
+   ]
+  },
+  "tense:will": {
+   "reviewedSentences": 21,
+   "inTopics": {
+    "travel": 3,
+    "food": 4,
+    "meeting": 1
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 12,
+   "examples": [
+    "Will I miss my connecting flight?",
+    "I will stay for five days.",
+    "I'll have the same.",
+    "I'll have a glass of red wine.",
+    "I'll take it."
+   ]
+  },
+  "tense:present-continuous-future": {
+   "reviewedSentences": 1,
+   "inTopics": {
+    "travel": 1
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "I'm flying to Tokyo."
+   ]
+  },
+  "tense:present-simple-timetable": {
+   "reviewedSentences": 0,
+   "inTopics": {},
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": []
+  },
+  "tense:future-continuous": {
+   "reviewedSentences": 0,
+   "inTopics": {},
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": []
+  },
+  "tense:future-perfect": {
+   "reviewedSentences": 0,
+   "inTopics": {},
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": []
+  },
+  "form:negative": {
+   "reviewedSentences": 7,
+   "inTopics": {
+    "travel": 3,
+    "food": 2
+   },
+   "testedByExistingQuestionTypes": "form-only via sent:order",
+   "grammarItems": 15,
+   "examples": [
+    "My suitcase hasn't arrived.",
+    "My bag is not here.",
+    "The air conditioner isn't working.",
+    "I can't eat seafood.",
+    "This is not what I ordered."
+   ]
+  },
+  "form:yes-no-question": {
+   "reviewedSentences": 84,
+   "inTopics": {
+    "travel": 42,
+    "food": 30,
+    "meeting": 7,
+    "work": 2
+   },
+   "testedByExistingQuestionTypes": "form-only via sent:order",
+   "grammarItems": 15,
+   "examples": [
+    "Is it overweight?",
+    "Can I have a window seat?",
+    "Can I have an aisle seat, please?",
+    "Could we sit together?",
+    "Will I miss my connecting flight?"
+   ]
+  },
+  "form:wh-question": {
+   "reviewedSentences": 34,
+   "inTopics": {
+    "travel": 26,
+    "food": 4,
+    "work": 1
+   },
+   "testedByExistingQuestionTypes": "form-only via sent:order",
+   "grammarItems": 10,
+   "examples": [
+    "What time does boarding start?",
+    "Which gate should I go to?",
+    "How long is the flight?",
+    "Where is the baggage claim?",
+    "Which belt is for my flight?"
+   ]
+  },
+  "support:modal": {
+   "reviewedSentences": 66,
+   "inTopics": {
+    "travel": 34,
+    "food": 25,
+    "meeting": 4,
+    "work": 2
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "Can I have a window seat?",
+    "Can I have an aisle seat, please?",
+    "Could we sit together?",
+    "Which gate should I go to?",
+    "Should I take off my shoes too?"
+   ]
+  },
+  "support:would-like": {
+   "reviewedSentences": 12,
+   "inTopics": {
+    "travel": 5,
+    "food": 6,
+    "meeting": 1
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "I'd like to change three hundred dollars.",
+    "I'd like to check in, please.",
+    "I'd like to check out, please.",
+    "I'd like to rent a car for three days.",
+    "I'd like to make a reservation."
+   ]
+  },
+  "support:would": {
+   "reviewedSentences": 3,
+   "inTopics": {},
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "If I were rich, I would buy a boat.",
+    "He said that he would call me later.",
+    "Had I known, I would have helped you."
+   ]
+  },
+  "support:lets": {
+   "reviewedSentences": 11,
+   "inTopics": {
+    "meeting": 5,
+    "work": 1,
+    "food": 2,
+    "travel": 3
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "Let's get started.",
+    "Let's schedule another meeting.",
+    "Let's wrap up for today.",
+    "Let's look at this chart.",
+    "Let's meet on Thursday afternoon."
+   ]
+  },
+  "support:imperative": {
+   "reviewedSentences": 19,
+   "inTopics": {
+    "travel": 6,
+    "food": 10,
+    "meeting": 3
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "Please send it to my hotel.",
+    "Please take me to this address.",
+    "Please stop here.",
+    "Keep the change.",
+    "Let me share my screen."
+   ]
+  },
+  "support:there-be": {
+   "reviewedSentences": 9,
+   "inTopics": {
+    "travel": 7,
+    "food": 1
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "Is there a service fee?",
+    "Is there an ATM near here?",
+    "There's no hot water.",
+    "Is there a convenience store near here?",
+    "Is there a gas station near here?"
+   ]
+  },
+  "support:passive": {
+   "reviewedSentences": 10,
+   "inTopics": {
+    "travel": 4,
+    "food": 1
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "Is breakfast included?",
+    "Is this seat taken?",
+    "Is insurance included?",
+    "Is the service charge included?",
+    "The package was damaged."
+   ]
+  },
+  "support:conditional": {
+   "reviewedSentences": 4,
+   "inTopics": {},
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "I'll take three if it's cheaper.",
+    "If it rains, we will stay at home.",
+    "If I were rich, I would buy a boat.",
+    "Had I known, I would have helped you."
+   ]
+  },
+  "support:fragment": {
+   "reviewedSentences": 32,
+   "inTopics": {
+    "travel": 13,
+    "food": 17,
+    "meeting": 2
+   },
+   "testedByExistingQuestionTypes": "no",
+   "grammarItems": 0,
+   "examples": [
+    "Just a small bottle of lotion.",
+    "Okay, no problem.",
+    "Chicken, please.",
+    "Orange juice, please.",
+    "About five hundred dollars."
+   ]
+  }
+ },
+ "topics": {
+  "food": {
+   "ingredients": {
+    "sentences": 8,
+    "words": 17
+   },
+   "ordering": {
+    "sentences": 57,
+    "words": 5
+   },
+   "cooking": {
+    "sentences": 6,
+    "words": 6
+   },
+   "dietary": {
+    "sentences": 15,
+    "words": 0
+   },
+   "general": {
+    "sentences": 3,
+    "words": 0
+   },
+   "unassigned": {
+    "sentences": 0,
+    "words": 108
+   }
+  },
+  "travel": {
+   "airport": {
+    "sentences": 43,
+    "words": 5
+   },
+   "customs": {
+    "sentences": 10,
+    "words": 0
+   },
+   "lodging": {
+    "sentences": 20,
+    "words": 0
+   },
+   "directions": {
+    "sentences": 11,
+    "words": 1
+   },
+   "transport": {
+    "sentences": 31,
+    "words": 5
+   },
+   "general": {
+    "sentences": 22,
+    "words": 0
+   },
+   "unassigned": {
+    "sentences": 0,
+    "words": 179
+   }
+  },
+  "work": {
+   "negotiation": {
+    "sentences": 7,
+    "words": 0
+   },
+   "general": {
+    "sentences": 0,
+    "words": 0
+   },
+   "unassigned": {
+    "sentences": 0,
+    "words": 0
+   }
+  },
+  "meeting": {
+   "scheduling": {
+    "sentences": 7,
+    "words": 1
+   },
+   "opening": {
+    "sentences": 6,
+    "words": 0
+   },
+   "opinions": {
+    "sentences": 4,
+    "words": 0
+   },
+   "confirming": {
+    "sentences": 4,
+    "words": 0
+   },
+   "actions": {
+    "sentences": 5,
+    "words": 0
+   },
+   "general": {
+    "sentences": 3,
+    "words": 0
+   },
+   "unassigned": {
+    "sentences": 0,
+    "words": 0
+   }
+  }
+ }
+}

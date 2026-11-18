@@ -1,0 +1,151 @@
+# batch-01a：selectionOrder 1–150（外部 AI 校對，2026-11-17）
+the	article	這個；那個（定冠詞）	core	1	Please close the door when you leave.	你離開時請把門關上。	reviewed
+be	verb	是；在；成為	core	1	I will be home by seven tonight.	我今晚七點前會到家。	reviewed
+and	conjunction	和；而且	core	1	I bought bread and milk on the way home.	我回家路上買了麵包和牛奶。	reviewed
+of	preposition	……的；屬於	core	1	She drank a cup of coffee before work.	她上班前喝了一杯咖啡。	reviewed
+a	article	一個；一種（不定冠詞）	core	1	I need a pen to sign this form.	我需要一支筆來簽這份表格。	reviewed
+in	preposition,adverb	在……裡面；在（某段時間）內	core	1	My keys are in my bag.	我的鑰匙在包包裡。	reviewed
+to	preposition	向；到；（不定詞標記）	core	1	We walked to the station together.	我們一起走到車站。	reviewed
+have	verb,auxiliary	有；吃（喝）；（完成式助動詞）	core	1	Do you have time for lunch today?	你今天有空吃午餐嗎？	reviewed
+it	pronoun	它；這件事	core	1	I lost my umbrella, but I found it in the car.	我弄丟了雨傘，但在車裡找到了。	reviewed
+I	pronoun	我	core	1	I usually get up at six thirty.	我通常六點半起床。	reviewed
+that	determiner,pronoun,conjunction	那；那個；（引導子句）	core	1	Who is that man at the door?	門口那個男人是誰？	reviewed
+for	preposition	為了；給；（表示時間長度）	core	1	This gift is for my mother.	這份禮物是要給我媽媽的。	reviewed
+you	pronoun	你；你們	core	1	Can you help me carry this box?	你可以幫我搬這個箱子嗎？	reviewed
+he	pronoun	他	core	1	He works at a hospital near my house.	他在我家附近的醫院工作。	reviewed
+with	preposition	和……一起；用；帶有	core	1	I had dinner with my friends last night.	我昨晚和朋友一起吃晚餐。	reviewed
+on	preposition,adverb	在……上面；在（某天）；開著	core	1	Your phone is on the table.	你的手機在桌上。	reviewed
+do	verb,auxiliary	做；（構成疑問或否定的助動詞）	core	1	What do you do on weekends?	你週末都做什麼？	reviewed
+say	verb	說；講	core	1	What did the doctor say about your knee?	醫生怎麼說你的膝蓋？	reviewed
+this	determiner,pronoun	這；這個	core	1	This bus goes to the airport.	這班公車開往機場。	reviewed
+they	pronoun	他們；她們；它們	core	1	They moved to a new apartment last month.	他們上個月搬到新公寓。	reviewed
+at	preposition	在（某地點或時間）	core	1	Let's meet at the coffee shop at three.	我們三點在咖啡店碰面吧。	reviewed
+but	conjunction	但是；不過	core	1	The hotel is small, but it is very clean.	這間飯店很小，但非常乾淨。	reviewed
+we	pronoun	我們	core	1	We are going to the beach on Saturday.	我們星期六要去海邊。	reviewed
+his	determiner,pronoun	他的	core	1	He left his wallet in the taxi.	他把皮夾忘在計程車上。	reviewed
+from	preposition	從；來自	core	1	I got a message from my sister.	我收到妹妹傳來的訊息。	reviewed
+not	adverb	不；沒有	core	1	I am not ready to order yet.	我還沒準備好要點餐。	reviewed
+by	preposition	在……旁邊；搭乘（交通工具）；被	core	1	I go to work by bus.	我搭公車上班。	reviewed
+she	pronoun	她	core	1	She speaks English and Japanese.	她會說英文和日文。	reviewed
+or	conjunction	或；或者	core	1	Would you like tea or coffee?	你要茶還是咖啡？	reviewed
+as	preposition,conjunction	作為；如同；當……時	core	2	She works as a nurse in Taipei.	她在台北當護理師。	reviewed
+what	pronoun,determiner	什麼	core	1	What time does the store open?	這家店幾點開門？	reviewed
+go	verb	去；走	core	1	I go to the gym after work.	我下班後去健身房。	reviewed
+their	determiner	他們的	core	1	Their house has a small garden.	他們的房子有個小花園。	reviewed
+can	modal	能；可以	core	1	Can I pay by credit card?	我可以用信用卡付款嗎？	reviewed
+who	pronoun	誰	core	1	Who is your English teacher?	你的英文老師是誰？	reviewed
+get	verb	得到；到達；變得	core	1	What time did you get home last night?	你昨晚幾點到家？	reviewed
+if	conjunction	如果；是否	core	1	If it rains, we will stay inside.	如果下雨，我們就待在室內。	reviewed
+would	modal	會；願意（也用於委婉請求）	core	1	Would you like some water?	你想喝點水嗎？	reviewed
+her	determiner,pronoun	她的；她（受格）	core	1	I called her this morning.	我今天早上打電話給她。	reviewed
+all	determiner,pronoun	所有；全部	core	1	All the seats on the train were taken.	火車上所有的座位都坐滿了。	reviewed
+my	determiner	我的	core	1	My brother lives in Kaohsiung.	我哥哥住在高雄。	reviewed
+make	verb	做；製作；使得	core	1	I will make some tea for you.	我來幫你泡點茶。	reviewed
+about	preposition,adverb	關於；大約	core	1	The movie is about a lost dog.	這部電影講的是一隻走失的狗。	reviewed
+know	verb	知道；認識	core	1	Do you know where the bathroom is?	你知道廁所在哪裡嗎？	reviewed
+will	modal	將會；願意	core	1	I will call you when I arrive.	我到了會打電話給你。	reviewed
+up	adverb,preposition	向上；起來	core	1	Please pick up your toys.	請把你的玩具撿起來。	reviewed
+one	number,pronoun	一；一個	core	1	I only have one question.	我只有一個問題。	reviewed
+time	noun	時間；次數	core	1	I don't have much time this morning.	我今天早上時間不多。	reviewed
+there	adverb	在那裡；（there is 表示「有」）	core	1	Is there a pharmacy near here?	這附近有藥局嗎？	reviewed
+year	noun	年；年紀	core	1	We visit my grandparents every year.	我們每年都去看祖父母。	reviewed
+so	adverb,conjunction	如此；所以	core	1	I was tired, so I went to bed early.	我很累，所以早早就上床睡覺。	reviewed
+think	verb	想；認為	core	1	I think the store is closed today.	我想這家店今天沒開。	reviewed
+when	adverb,conjunction	什麼時候；當……時	core	1	When does your flight leave?	你的班機什麼時候起飛？	reviewed
+which	pronoun,determiner	哪一個；（引導子句）	core	1	Which color do you like better?	你比較喜歡哪個顏色？	reviewed
+them	pronoun	他們；她們；它們（受格）	core	1	I gave them my phone number.	我把電話號碼給了他們。	reviewed
+an	article	一個（用在母音開頭的字前）	core	1	She ate an apple after lunch.	她午餐後吃了一顆蘋果。	reviewed
+some	determiner,pronoun	一些	core	1	Can I have some more rice?	我可以再多要一些飯嗎？	reviewed
+me	pronoun	我（受格）	core	1	Please send me the photos.	請把照片傳給我。	reviewed
+people	noun	人們；人	social	1	Many people were waiting for the bus.	很多人在等公車。	reviewed
+take	verb	拿；搭乘；花（時間）	core	1	It takes ten minutes to walk there.	走路到那裡要十分鐘。	reviewed
+out	adverb	在外面；出去	core	1	Let's go out for dinner tonight.	我們今晚出去吃晚餐吧。	reviewed
+into	preposition	進入；到……裡面	core	1	She put the milk into the fridge.	她把牛奶放進冰箱。	reviewed
+just	adverb	剛剛；只是；正好	core	1	I just finished my homework.	我剛寫完功課。	reviewed
+see	verb	看見；見面；明白	core	1	I can see the mountains from my window.	我從窗戶可以看到山。	reviewed
+him	pronoun	他（受格）	core	1	I met him at a friend's party.	我在朋友的派對上認識他。	reviewed
+your	determiner	你的；你們的	core	1	Is this your umbrella?	這是你的雨傘嗎？	reviewed
+come	verb	來；過來	core	1	Can you come to my birthday party?	你可以來我的生日派對嗎？	reviewed
+could	modal	能（can 的過去式）；可以（委婉請求）	core	1	Could you speak a little slower?	你可以說慢一點嗎？	reviewed
+now	adverb	現在	core	1	I'm busy now. Can I call you later?	我現在在忙，可以晚點打給你嗎？	reviewed
+than	conjunction,preposition	比	core	1	The train is faster than the bus.	火車比公車快。	reviewed
+like	verb,preposition	喜歡；像	core	1	I like spicy food.	我喜歡吃辣。	reviewed
+other	adjective,pronoun	其他的；另一個	core	1	Do you have this shirt in other colors?	這件襯衫有其他顏色嗎？	reviewed
+how	adverb	如何；怎樣；多麼	core	1	How do I get to the museum?	我要怎麼去博物館？	reviewed
+then	adverb	然後；那時	core	1	Finish your dinner, then you can watch TV.	吃完晚餐，然後你就可以看電視。	reviewed
+its	determiner	它的	core	1	The cat is playing with its tail.	那隻貓在玩自己的尾巴。	reviewed
+our	determiner	我們的	core	1	Our teacher gave us a lot of homework.	我們老師出了很多功課。	reviewed
+two	number	二；兩個	core	1	I have two sisters.	我有兩個姊妹。	reviewed
+more	determiner,adverb	更多；更	core	1	Could I have more time to decide?	可以給我多一點時間決定嗎？	reviewed
+these	determiner,pronoun	這些	core	1	These shoes are too small for me.	這雙鞋對我來說太小了。	reviewed
+want	verb	想要	core	1	I want to learn how to swim.	我想學游泳。	reviewed
+way	noun	路；方法	core	1	Is this the right way to the station?	這是去車站的正確方向嗎？	reviewed
+look	verb,noun	看；看起來	core	1	Look at that beautiful sunset!	看那美麗的夕陽！	reviewed
+first	adjective,adverb	第一；首先	core	1	This is my first time in Japan.	這是我第一次來日本。	reviewed
+also	adverb	也	core	1	She plays the piano and also sings.	她會彈鋼琴，也會唱歌。	reviewed
+new	adjective	新的	core	1	I just bought a new phone.	我剛買了一支新手機。	reviewed
+because	conjunction	因為	core	1	I stayed home because I was sick.	我因為生病待在家。	reviewed
+day	noun	天；白天	core	1	Have a nice day!	祝你有美好的一天！	reviewed
+use	verb,noun	使用；用途	core	1	Can I use your charger?	我可以用你的充電器嗎？	reviewed
+no	determiner,adverb	沒有；不	core	1	There is no milk in the fridge.	冰箱裡沒有牛奶了。	reviewed
+man	noun	男人；人	social	1	A man asked me for directions.	有個男人向我問路。	reviewed
+find	verb	找到；發現；覺得	core	1	I can't find my glasses.	我找不到我的眼鏡。	reviewed
+here	adverb	在這裡	core	1	Please wait here for a moment.	請在這裡稍等一下。	reviewed
+thing	noun	東西；事情	core	1	I have a few things to buy at the store.	我有幾樣東西要去店裡買。	reviewed
+give	verb	給	core	1	Please give this letter to your father.	請把這封信交給你爸爸。	reviewed
+many	determiner,pronoun	許多（可數）	core	1	How many people are coming tonight?	今晚有多少人要來？	reviewed
+well	adverb,adjective	好地；健康的	core	1	She sings very well.	她唱歌唱得很好。	reviewed
+only	adverb,adjective	只；唯一的	core	1	I only need five minutes.	我只需要五分鐘。	reviewed
+those	determiner,pronoun	那些	core	1	Are those your bags?	那些是你的包包嗎？	reviewed
+tell	verb	告訴；講	core	1	Can you tell me the way to the bank?	你可以告訴我去銀行的路嗎？	reviewed
+very	adverb	非常；很	core	1	The soup is very hot, so be careful.	湯很燙，要小心。	reviewed
+even	adverb	甚至；即使	core	2	He works even on Sundays.	他連星期天都在工作。	reviewed
+back	adverb,noun	回來；背部；後面	core	1	I'll be back in ten minutes.	我十分鐘後回來。	reviewed
+any	determiner,pronoun	任何；一些（用於疑問、否定）	core	1	Do you have any questions?	你有任何問題嗎？	reviewed
+good	adjective	好的	core	1	This restaurant has good noodles.	這家餐廳的麵很好吃。	reviewed
+woman	noun	女人；女性	social	1	The woman at the front desk was very kind.	櫃檯那位女士非常親切。	reviewed
+through	preposition,adverb	穿過；通過	core	2	We drove through a long tunnel.	我們開車穿過一條長隧道。	reviewed
+us	pronoun	我們（受格）	core	1	Our neighbor invited us to dinner.	我們的鄰居邀請我們吃晚餐。	reviewed
+life	noun	生活；生命	social	1	City life is busy but exciting.	城市生活很忙碌，但很精彩。	reviewed
+child	noun	孩子；兒童	social	1	The child is sleeping in the back seat.	那個孩子在後座睡覺。	reviewed
+work	verb,noun	工作；運作	work	1	My computer doesn't work.	我的電腦壞了，不能用。	reviewed
+down	adverb,preposition	向下；下去	core	1	Please sit down and relax.	請坐下來放輕鬆。	reviewed
+may	modal	可以；可能	core	2	It may rain this afternoon.	今天下午可能會下雨。	reviewed
+after	preposition,conjunction	在……之後	core	1	Let's go for a walk after dinner.	晚餐後我們去散步吧。	reviewed
+should	modal	應該	core	1	You should drink more water.	你應該多喝水。	reviewed
+call	verb,noun	打電話；叫；通話	core	1	Please call me when you get home.	你到家時請打給我。	reviewed
+world	noun	世界	nature	1	She wants to travel around the world.	她想環遊世界。	reviewed
+over	preposition,adverb	在……上方；越過；結束	core	1	The meeting is over.	會議結束了。	reviewed
+school	noun	學校	school	1	My son walks to school every day.	我兒子每天走路上學。	reviewed
+still	adverb	仍然；還	core	1	Are you still at the office?	你還在辦公室嗎？	reviewed
+try	verb,noun	嘗試；試穿	core	1	Can I try on this jacket?	我可以試穿這件外套嗎？	reviewed
+last	adjective,verb	最後的；上一個；持續	core	1	I saw her last week.	我上星期見過她。	reviewed
+ask	verb	問；要求	core	1	Can I ask you a question?	我可以問你一個問題嗎？	reviewed
+need	verb,noun	需要	core	1	I need a bigger suitcase.	我需要一個大一點的行李箱。	reviewed
+too	adverb	也；太	core	1	This coffee is too sweet.	這杯咖啡太甜了。	reviewed
+feel	verb	覺得；感覺	health	1	I don't feel well today.	我今天覺得不太舒服。	reviewed
+three	number	三	core	1	We stayed in Tainan for three days.	我們在台南待了三天。	reviewed
+state	noun,verb	狀態；州；陳述	core	3	The old house is in a bad state.	那棟老房子的狀況很差。	reviewed	「州」義另見地理用法
+never	adverb	從不；從來沒有	core	1	I have never been to Europe.	我從來沒去過歐洲。	reviewed
+become	verb	變成；成為	core	2	She wants to become a doctor.	她想成為醫生。	reviewed
+between	preposition	在……之間	core	1	The bank is between the post office and the park.	銀行在郵局和公園之間。	reviewed
+high	adjective,adverb	高的	core	1	The prices here are very high.	這裡的價格很高。	reviewed
+something	pronoun	某事；某物	core	1	I want something cold to drink.	我想喝點冰的東西。	reviewed
+really	adverb	真的；非常	core	1	I really enjoyed the concert.	我真的很喜歡那場音樂會。	reviewed
+most	determiner,adverb	大多數；最	core	2	Most of my friends live in Taipei.	我大部分的朋友住在台北。	reviewed
+another	determiner,pronoun	另一個；再一個	core	1	Can I have another cup of tea?	我可以再要一杯茶嗎？	reviewed
+much	determiner,adverb	許多（不可數）；很	core	1	How much is this bag?	這個包包多少錢？	reviewed
+family	noun	家庭；家人	social	1	I spend Sundays with my family.	我星期天都和家人一起過。	reviewed
+own	adjective,verb	自己的；擁有	core	2	I want my own room.	我想要自己的房間。	reviewed
+leave	verb	離開；留下	core	1	The train leaves at nine.	火車九點開。	reviewed
+put	verb	放；擺	core	1	Where did you put the scissors?	你把剪刀放在哪裡？	reviewed
+old	adjective	老的；舊的	core	1	My grandfather is ninety years old.	我爺爺九十歲了。	reviewed
+while	conjunction,noun	當……的時候；一會兒	core	2	I listen to music while I cook.	我煮飯的時候會聽音樂。	reviewed
+mean	verb	意思是；意指	core	1	What does this word mean?	這個字是什麼意思？	reviewed
+keep	verb	保持；保留	core	1	Please keep the door closed.	請保持門關著。	reviewed
+student	noun	學生	school	1	She is a college student.	她是大學生。	reviewed
+why	adverb	為什麼	core	1	Why are you late today?	你今天為什麼遲到？	reviewed
+let	verb	讓	core	1	Let me carry that for you.	讓我幫你拿那個。	reviewed
+great	adjective	很棒的；巨大的	core	1	We had a great time at the party.	我們在派對上玩得很開心。	reviewed
+same	adjective,pronoun	相同的	core	1	We go to the same gym.	我們去同一間健身房。	reviewed
+big	adjective	大的	core	1	They live in a big apartment downtown.	他們住在市中心的一間大公寓。	reviewed

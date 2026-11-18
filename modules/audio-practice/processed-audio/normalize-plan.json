@@ -1,0 +1,2555 @@
+{
+ "target_lufs": -18.0,
+ "ceiling_dbtp": -1.5,
+ "max_limiter_db": 4.0,
+ "codec": "mp3 libmp3lame 64k mono 24 kHz",
+ "short_clip_offset": {
+  "en/sentences": -0.46000000000000263,
+  "zh/sentences": -0.5900000000000007,
+  "zh/ui": -0.4400000000000004,
+  "en/words": -0.1850000000000005,
+  "zh/words": -0.35499999999999954
+ },
+ "files": [
+  {
+   "file": "sentences/a-bird-sings-in-the-tree.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.0,
+   "estimated": false,
+   "gain_db": 4.6,
+   "wanted_db": 4.0,
+   "peak_limited": true,
+   "limiter_db": 3.3
+  },
+  {
+   "file": "sentences/could-you-tell-me-where-the-station-is.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.1,
+   "estimated": false,
+   "gain_db": 4.5,
+   "wanted_db": 4.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/despite-the-rain-the-concert-continued.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.9,
+   "estimated": false,
+   "gain_db": 4.1,
+   "wanted_db": 3.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/grandma-drinks-hot-tea.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.6,
+   "estimated": false,
+   "gain_db": 4.1,
+   "wanted_db": 3.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/had-i-known-i-would-have-helped-you.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.1,
+   "estimated": false,
+   "gain_db": 4.5,
+   "wanted_db": 4.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/he-ran-because-he-was-late.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.1,
+   "estimated": false,
+   "gain_db": 4.6,
+   "wanted_db": 4.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/he-said-that-he-would-call-me-later.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.1,
+   "estimated": false,
+   "gain_db": 4.6,
+   "wanted_db": 4.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/i-am-looking-forward-to-the-trip.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.4,
+   "estimated": false,
+   "gain_db": 4.8,
+   "wanted_db": 4.4,
+   "peak_limited": true,
+   "limiter_db": 3.4
+  },
+  {
+   "file": "sentences/i-am-not-used-to-getting-up-early.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.4,
+   "estimated": false,
+   "gain_db": 5.0,
+   "wanted_db": 4.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/i-have-lived-here-since-2020.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.5,
+   "estimated": false,
+   "gain_db": 5.0,
+   "wanted_db": 4.5,
+   "peak_limited": true,
+   "limiter_db": 2.2
+  },
+  {
+   "file": "sentences/i-have-studied-english-for-two-years.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.4,
+   "estimated": false,
+   "gain_db": 4.3,
+   "wanted_db": 4.4,
+   "peak_limited": true,
+   "limiter_db": 4.0
+  },
+  {
+   "file": "sentences/i-see-the-moon-and-stars-at-night.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.3,
+   "estimated": false,
+   "gain_db": 4.3,
+   "wanted_db": 4.3,
+   "peak_limited": true,
+   "limiter_db": 4.0
+  },
+  {
+   "file": "sentences/if-i-were-rich-i-would-buy-a-boat.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.7,
+   "estimated": false,
+   "gain_db": 5.2,
+   "wanted_db": 4.7,
+   "peak_limited": true,
+   "limiter_db": 1.4
+  },
+  {
+   "file": "sentences/if-it-rains-we-will-stay-at-home.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.4,
+   "estimated": false,
+   "gain_db": 4.6,
+   "wanted_db": 4.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/it-is-raining-so-i-take-an-umbrella.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.6,
+   "estimated": false,
+   "gain_db": 5.2,
+   "wanted_db": 4.6,
+   "peak_limited": true,
+   "limiter_db": 1.3
+  },
+  {
+   "file": "sentences/it-is-sunny-at-the-beach.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.5,
+   "estimated": false,
+   "gain_db": 4.0,
+   "wanted_db": 3.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/my-dad-drives-a-car.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.2,
+   "estimated": false,
+   "gain_db": 4.7,
+   "wanted_db": 4.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/my-family-usually-eats-pizza-on-friday.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.7,
+   "estimated": false,
+   "gain_db": 5.2,
+   "wanted_db": 4.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/my-phone-battery-is-almost-empty.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.1,
+   "estimated": false,
+   "gain_db": 4.5,
+   "wanted_db": 4.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/not-only-is-it-cheap-but-it-is-also-fast.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.2,
+   "estimated": false,
+   "gain_db": 4.6,
+   "wanted_db": 4.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/she-had-a-fever-so-she-went-to-the-hospital.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.4,
+   "estimated": false,
+   "gain_db": 4.9,
+   "wanted_db": 4.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/she-has-been-working-here-for-ten-years.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.1,
+   "estimated": false,
+   "gain_db": 4.7,
+   "wanted_db": 4.1,
+   "peak_limited": true,
+   "limiter_db": 1.2
+  },
+  {
+   "file": "sentences/she-is-the-girl-who-won-the-race.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.3,
+   "estimated": false,
+   "gain_db": 4.8,
+   "wanted_db": 4.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-baby-drinks-milk.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.1,
+   "estimated": false,
+   "gain_db": 4.5,
+   "wanted_db": 4.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-boy-kicks-the-ball.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.5,
+   "estimated": false,
+   "gain_db": 4.1,
+   "wanted_db": 3.5,
+   "peak_limited": true,
+   "limiter_db": 0.7
+  },
+  {
+   "file": "sentences/the-bus-was-late-because-of-the-rain.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.5,
+   "estimated": false,
+   "gain_db": 5.1,
+   "wanted_db": 4.5,
+   "peak_limited": true,
+   "limiter_db": 1.0
+  },
+  {
+   "file": "sentences/the-car-needs-to-be-repaired.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.2,
+   "estimated": false,
+   "gain_db": 3.7,
+   "wanted_db": 3.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-cat-sleeps-on-the-bed.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.9,
+   "estimated": false,
+   "gain_db": 4.4,
+   "wanted_db": 3.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-cook-fries-an-egg.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.8,
+   "estimated": false,
+   "gain_db": 4.3,
+   "wanted_db": 3.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-dog-eats-a-bone.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.3,
+   "estimated": false,
+   "gain_db": 3.9,
+   "wanted_db": 3.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-fish-swims-in-the-sea.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.1,
+   "estimated": false,
+   "gain_db": 4.7,
+   "wanted_db": 4.1,
+   "peak_limited": true,
+   "limiter_db": 1.3
+  },
+  {
+   "file": "sentences/the-girl-reads-a-book.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.2,
+   "estimated": false,
+   "gain_db": 3.3,
+   "wanted_db": 3.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-meeting-has-been-postponed-until-next-week.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.8,
+   "estimated": false,
+   "gain_db": 5.4,
+   "wanted_db": 4.8,
+   "peak_limited": true,
+   "limiter_db": 2.3
+  },
+  {
+   "file": "sentences/the-monkey-eats-a-banana.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.5,
+   "estimated": false,
+   "gain_db": 4.7,
+   "wanted_db": 4.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-museum-was-built-in-1900.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.7,
+   "estimated": false,
+   "gain_db": 5.2,
+   "wanted_db": 4.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-rabbit-eats-a-carrot.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.1,
+   "estimated": false,
+   "gain_db": 4.5,
+   "wanted_db": 4.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-report-must-be-finished-by-friday.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.4,
+   "estimated": false,
+   "gain_db": 4.9,
+   "wanted_db": 4.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-student-walks-to-school.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.3,
+   "estimated": false,
+   "gain_db": 3.8,
+   "wanted_db": 3.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/the-train-had-already-left-when-we-arrived.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -23.1,
+   "estimated": false,
+   "gain_db": 5.5,
+   "wanted_db": 5.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/today-is-my-birthday.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.1,
+   "estimated": false,
+   "gain_db": 4.6,
+   "wanted_db": 4.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "sentences/we-are-going-to-fly-to-japan-tomorrow.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -22.6,
+   "estimated": false,
+   "gain_db": 5.1,
+   "wanted_db": 4.6,
+   "peak_limited": true,
+   "limiter_db": 1.2
+  },
+  {
+   "file": "sentences/we-build-a-snowman-in-winter.mp3",
+   "cat": "en/sentences",
+   "est_lufs": -21.9,
+   "estimated": false,
+   "gain_db": 4.4,
+   "wanted_db": 3.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/ambulance.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.5,
+   "estimated": false,
+   "gain_db": 2.9,
+   "wanted_db": 2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/anchor.mp3",
+   "cat": "en/words",
+   "est_lufs": -21.5,
+   "estimated": false,
+   "gain_db": 4.0,
+   "wanted_db": 3.5,
+   "peak_limited": true,
+   "limiter_db": 3.1
+  },
+  {
+   "file": "words/apple.mp3",
+   "cat": "en/words",
+   "est_lufs": -21.3,
+   "estimated": false,
+   "gain_db": 3.8,
+   "wanted_db": 3.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/avocado.mp3",
+   "cat": "en/words",
+   "est_lufs": -22.2,
+   "estimated": false,
+   "gain_db": 4.7,
+   "wanted_db": 4.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/ball.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.8,
+   "estimated": false,
+   "gain_db": 2.2,
+   "wanted_db": 1.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/banana.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.6,
+   "estimated": false,
+   "gain_db": 3.1,
+   "wanted_db": 2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/bank.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.4,
+   "estimated": false,
+   "gain_db": 2.8,
+   "wanted_db": 2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/battery.mp3",
+   "cat": "en/words",
+   "est_lufs": -21.1,
+   "estimated": false,
+   "gain_db": 3.5,
+   "wanted_db": 3.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/bike.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.3,
+   "estimated": false,
+   "gain_db": 2.7,
+   "wanted_db": 2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/bird.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.3,
+   "estimated": false,
+   "gain_db": 2.8,
+   "wanted_db": 2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/book.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.3,
+   "estimated": false,
+   "gain_db": 1.8,
+   "wanted_db": 1.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/bread.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.0,
+   "estimated": false,
+   "gain_db": 2.5,
+   "wanted_db": 2.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/bridge.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.1,
+   "estimated": false,
+   "gain_db": 2.5,
+   "wanted_db": 2.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/broccoli.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.8,
+   "estimated": false,
+   "gain_db": 3.3,
+   "wanted_db": 2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/bus.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.2,
+   "estimated": false,
+   "gain_db": 1.7,
+   "wanted_db": 1.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/cake.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.7,
+   "estimated": false,
+   "gain_db": 2.1,
+   "wanted_db": 1.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/car.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.7,
+   "estimated": false,
+   "gain_db": 2.1,
+   "wanted_db": 1.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/cat.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.5,
+   "estimated": false,
+   "gain_db": 2.9,
+   "wanted_db": 2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/chair.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.0,
+   "estimated": false,
+   "gain_db": 2.6,
+   "wanted_db": 2.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/cheese.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.9,
+   "estimated": false,
+   "gain_db": 3.4,
+   "wanted_db": 2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/clock.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.0,
+   "estimated": false,
+   "gain_db": 2.5,
+   "wanted_db": 2.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/comet.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.1,
+   "estimated": false,
+   "gain_db": 1.6,
+   "wanted_db": 1.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/compass.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.7,
+   "estimated": false,
+   "gain_db": 2.2,
+   "wanted_db": 1.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/cucumber.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.6,
+   "estimated": false,
+   "gain_db": 2.0,
+   "wanted_db": 1.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/desert.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.3,
+   "estimated": false,
+   "gain_db": 2.8,
+   "wanted_db": 2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/doctor.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.8,
+   "estimated": false,
+   "gain_db": 3.2,
+   "wanted_db": 2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/dog.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.1,
+   "estimated": false,
+   "gain_db": 2.6,
+   "wanted_db": 2.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/dolphin.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.4,
+   "estimated": false,
+   "gain_db": 2.8,
+   "wanted_db": 2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/egg.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.8,
+   "estimated": false,
+   "gain_db": 3.3,
+   "wanted_db": 2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/elephant.mp3",
+   "cat": "en/words",
+   "est_lufs": -21.0,
+   "estimated": false,
+   "gain_db": 3.5,
+   "wanted_db": 3.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/envelope.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.9,
+   "estimated": false,
+   "gain_db": 3.3,
+   "wanted_db": 2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/fish.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.4,
+   "estimated": false,
+   "gain_db": 2.8,
+   "wanted_db": 2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/flamingo.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.2,
+   "estimated": false,
+   "gain_db": 2.6,
+   "wanted_db": 2.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/flower.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.4,
+   "estimated": false,
+   "gain_db": 1.9,
+   "wanted_db": 1.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/frog.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.2,
+   "estimated": false,
+   "gain_db": 2.7,
+   "wanted_db": 2.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/garlic.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.4,
+   "estimated": false,
+   "gain_db": 1.8,
+   "wanted_db": 1.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/gift.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.9,
+   "estimated": false,
+   "gain_db": 2.4,
+   "wanted_db": 1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/grape.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.9,
+   "estimated": false,
+   "gain_db": 2.4,
+   "wanted_db": 1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/hat.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.4,
+   "estimated": false,
+   "gain_db": 2.8,
+   "wanted_db": 2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/headphones.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.7,
+   "estimated": false,
+   "gain_db": 3.2,
+   "wanted_db": 2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/hedgehog.mp3",
+   "cat": "en/words",
+   "est_lufs": -21.2,
+   "estimated": false,
+   "gain_db": 3.7,
+   "wanted_db": 3.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/helicopter.mp3",
+   "cat": "en/words",
+   "est_lufs": -22.0,
+   "estimated": false,
+   "gain_db": 4.4,
+   "wanted_db": 4.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/horse.mp3",
+   "cat": "en/words",
+   "est_lufs": -18.8,
+   "estimated": false,
+   "gain_db": 1.2,
+   "wanted_db": 0.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/hospital.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.8,
+   "estimated": false,
+   "gain_db": 3.4,
+   "wanted_db": 2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/hourglass.mp3",
+   "cat": "en/words",
+   "est_lufs": -21.3,
+   "estimated": false,
+   "gain_db": 3.9,
+   "wanted_db": 3.3,
+   "peak_limited": true,
+   "limiter_db": 3.7
+  },
+  {
+   "file": "words/house.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.9,
+   "estimated": false,
+   "gain_db": 2.4,
+   "wanted_db": 1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/key.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.5,
+   "estimated": false,
+   "gain_db": 2.9,
+   "wanted_db": 2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/ladder.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.7,
+   "estimated": false,
+   "gain_db": 3.1,
+   "wanted_db": 2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/lemon.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.9,
+   "estimated": false,
+   "gain_db": 2.4,
+   "wanted_db": 1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/magnet.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.9,
+   "estimated": false,
+   "gain_db": 3.4,
+   "wanted_db": 2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/map.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.8,
+   "estimated": false,
+   "gain_db": 2.2,
+   "wanted_db": 1.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/microscope.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.6,
+   "estimated": false,
+   "gain_db": 3.1,
+   "wanted_db": 2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/milk.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.7,
+   "estimated": false,
+   "gain_db": 2.2,
+   "wanted_db": 1.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/moon.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.9,
+   "estimated": false,
+   "gain_db": 3.4,
+   "wanted_db": 2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/mountain.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.2,
+   "estimated": false,
+   "gain_db": 1.7,
+   "wanted_db": 1.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/mushroom.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.7,
+   "estimated": false,
+   "gain_db": 3.3,
+   "wanted_db": 2.7,
+   "peak_limited": true,
+   "limiter_db": 0.7
+  },
+  {
+   "file": "words/octopus.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.8,
+   "estimated": false,
+   "gain_db": 3.3,
+   "wanted_db": 2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/passport.mp3",
+   "cat": "en/words",
+   "est_lufs": -21.0,
+   "estimated": false,
+   "gain_db": 3.5,
+   "wanted_db": 3.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/peacock.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.6,
+   "estimated": false,
+   "gain_db": 3.0,
+   "wanted_db": 2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/phone.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.3,
+   "estimated": false,
+   "gain_db": 1.7,
+   "wanted_db": 1.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/pineapple.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.3,
+   "estimated": false,
+   "gain_db": 2.7,
+   "wanted_db": 2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/rabbit.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.7,
+   "estimated": false,
+   "gain_db": 3.2,
+   "wanted_db": 2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/rain.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.5,
+   "estimated": false,
+   "gain_db": 3.0,
+   "wanted_db": 2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/rainbow.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.0,
+   "estimated": false,
+   "gain_db": 2.4,
+   "wanted_db": 2.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/receipt.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.4,
+   "estimated": false,
+   "gain_db": 3.0,
+   "wanted_db": 2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/satellite.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.9,
+   "estimated": false,
+   "gain_db": 2.4,
+   "wanted_db": 1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/shoe.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.5,
+   "estimated": false,
+   "gain_db": 1.8,
+   "wanted_db": 1.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/squirrel.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.0,
+   "estimated": false,
+   "gain_db": 1.4,
+   "wanted_db": 1.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/star.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.3,
+   "estimated": false,
+   "gain_db": 1.8,
+   "wanted_db": 1.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/stethoscope.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.4,
+   "estimated": false,
+   "gain_db": 2.8,
+   "wanted_db": 2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/suitcase.mp3",
+   "cat": "en/words",
+   "est_lufs": -21.6,
+   "estimated": false,
+   "gain_db": 4.1,
+   "wanted_db": 3.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/sun.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.6,
+   "estimated": false,
+   "gain_db": 2.1,
+   "wanted_db": 1.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/telescope.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.3,
+   "estimated": false,
+   "gain_db": 2.8,
+   "wanted_db": 2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/thermometer.mp3",
+   "cat": "en/words",
+   "est_lufs": -19.7,
+   "estimated": false,
+   "gain_db": 2.2,
+   "wanted_db": 1.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/tiger.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.6,
+   "estimated": false,
+   "gain_db": 3.0,
+   "wanted_db": 2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/tornado.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.4,
+   "estimated": false,
+   "gain_db": 2.9,
+   "wanted_db": 2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/tractor.mp3",
+   "cat": "en/words",
+   "est_lufs": -21.2,
+   "estimated": false,
+   "gain_db": 3.7,
+   "wanted_db": 3.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/tree.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.3,
+   "estimated": false,
+   "gain_db": 2.7,
+   "wanted_db": 2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/umbrella.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.7,
+   "estimated": false,
+   "gain_db": 3.1,
+   "wanted_db": 2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "words/volcano.mp3",
+   "cat": "en/words",
+   "est_lufs": -20.9,
+   "estimated": false,
+   "gain_db": 3.1,
+   "wanted_db": 2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/a-bird-sings-in-the-tree.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/could-you-tell-me-where-the-station-is.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.4,
+   "estimated": false,
+   "gain_db": -1.2,
+   "wanted_db": -1.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/despite-the-rain-the-concert-continued.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.5,
+   "estimated": false,
+   "gain_db": -1.1,
+   "wanted_db": -1.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/grandma-drinks-hot-tea.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.9,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/had-i-known-i-would-have-helped-you.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.0,
+   "estimated": false,
+   "gain_db": -1.5,
+   "wanted_db": -2.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/he-ran-because-he-was-late.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.6,
+   "estimated": false,
+   "gain_db": -1.0,
+   "wanted_db": -1.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/he-said-that-he-would-call-me-later.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.4,
+   "estimated": false,
+   "gain_db": -1.2,
+   "wanted_db": -1.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/i-am-looking-forward-to-the-trip.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/i-am-not-used-to-getting-up-early.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.6,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/i-have-lived-here-since-2020.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.1,
+   "estimated": false,
+   "gain_db": -1.5,
+   "wanted_db": -1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/i-have-studied-english-for-two-years.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.2,
+   "estimated": false,
+   "gain_db": -1.3,
+   "wanted_db": -1.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/i-see-the-moon-and-stars-at-night.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.2,
+   "estimated": false,
+   "gain_db": -1.3,
+   "wanted_db": -1.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/if-i-were-rich-i-would-buy-a-boat.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.8,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/if-it-rains-we-will-stay-at-home.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.0,
+   "estimated": false,
+   "gain_db": -1.6,
+   "wanted_db": -2.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/it-is-raining-so-i-take-an-umbrella.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/it-is-sunny-at-the-beach.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/my-dad-drives-a-car.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.8,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/my-family-usually-eats-pizza-on-friday.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.3,
+   "estimated": false,
+   "gain_db": -1.5,
+   "wanted_db": -1.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/my-phone-battery-is-almost-empty.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/not-only-is-it-cheap-but-it-is-also-fast.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/she-had-a-fever-so-she-went-to-the-hospital.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.9,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/she-has-been-working-here-for-ten-years.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.9,
+   "estimated": false,
+   "gain_db": -1.6,
+   "wanted_db": -2.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/she-is-the-girl-who-won-the-race.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -1.9,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-baby-drinks-milk.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-boy-kicks-the-ball.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.9,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-bus-was-late-because-of-the-rain.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.0,
+   "estimated": false,
+   "gain_db": -1.6,
+   "wanted_db": -2.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-car-needs-to-be-repaired.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.8,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-cat-sleeps-on-the-bed.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-cook-fries-an-egg.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.1,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-dog-eats-a-bone.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-fish-swims-in-the-sea.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-girl-reads-a-book.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-meeting-has-been-postponed-until-next-week.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.3,
+   "estimated": false,
+   "gain_db": -1.3,
+   "wanted_db": -1.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-monkey-eats-a-banana.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-museum-was-built-in-1900.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.4,
+   "estimated": false,
+   "gain_db": -1.1,
+   "wanted_db": -1.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-rabbit-eats-a-carrot.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-report-must-be-finished-by-friday.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.5,
+   "estimated": false,
+   "gain_db": -1.1,
+   "wanted_db": -1.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-student-walks-to-school.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.9,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/the-train-had-already-left-when-we-arrived.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.1,
+   "estimated": false,
+   "gain_db": -1.4,
+   "wanted_db": -1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/today-is-my-birthday.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/we-are-going-to-fly-to-japan-tomorrow.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -16.1,
+   "estimated": false,
+   "gain_db": -1.5,
+   "wanted_db": -1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/sentences/we-build-a-snowman-in-winter.mp3",
+   "cat": "zh/sentences",
+   "est_lufs": -15.8,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/ui/answer_is.mp3",
+   "cat": "zh/ui",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/ui/correct.mp3",
+   "cat": "zh/ui",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/ui/no_hear.mp3",
+   "cat": "zh/ui",
+   "est_lufs": -16.0,
+   "estimated": false,
+   "gain_db": -1.6,
+   "wanted_db": -2.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/ui/repeat.mp3",
+   "cat": "zh/ui",
+   "est_lufs": -15.1,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/ui/round_end.mp3",
+   "cat": "zh/ui",
+   "est_lufs": -16.6,
+   "estimated": false,
+   "gain_db": -0.9,
+   "wanted_db": -1.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/ui/say_sentence.mp3",
+   "cat": "zh/ui",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/ui/start.mp3",
+   "cat": "zh/ui",
+   "est_lufs": -16.1,
+   "estimated": false,
+   "gain_db": -1.4,
+   "wanted_db": -1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/ui/start_listen.mp3",
+   "cat": "zh/ui",
+   "est_lufs": -16.5,
+   "estimated": false,
+   "gain_db": -1.0,
+   "wanted_db": -1.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/ui/stop.mp3",
+   "cat": "zh/ui",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/ui/think.mp3",
+   "cat": "zh/ui",
+   "est_lufs": -14.8,
+   "estimated": false,
+   "gain_db": -2.8,
+   "wanted_db": -3.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/ambulance.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.9,
+   "estimated": false,
+   "gain_db": -1.6,
+   "wanted_db": -2.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/anchor.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/apple.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.1,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/avocado.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.9,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/ball.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.0,
+   "estimated": false,
+   "gain_db": -2.5,
+   "wanted_db": -3.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/banana.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/bank.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/battery.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.6,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/bike.mp3",
+   "cat": "zh/words",
+   "est_lufs": -16.1,
+   "estimated": false,
+   "gain_db": -1.5,
+   "wanted_db": -1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/bird.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/book.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.1,
+   "estimated": false,
+   "gain_db": -2.5,
+   "wanted_db": -2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/bread.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.6,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/bridge.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.0,
+   "estimated": false,
+   "gain_db": -2.5,
+   "wanted_db": -3.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/broccoli.mp3",
+   "cat": "zh/words",
+   "est_lufs": -16.0,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/bus.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.6,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/cake.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.6,
+   "estimated": false,
+   "gain_db": -1.9,
+   "wanted_db": -2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/car.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/cat.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/chair.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/cheese.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/clock.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/comet.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -1.9,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/compass.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.8,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/cucumber.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/desert.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/doctor.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/dog.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/dolphin.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/egg.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.1,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/elephant.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/envelope.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/fish.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.1,
+   "estimated": false,
+   "gain_db": -2.5,
+   "wanted_db": -2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/flamingo.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/flower.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.0,
+   "estimated": false,
+   "gain_db": -2.5,
+   "wanted_db": -3.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/frog.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/garlic.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/gift.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/grape.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/hat.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/headphones.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/hedgehog.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/helicopter.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.8,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.2,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/horse.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.1,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/hospital.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/hourglass.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/house.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/key.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/ladder.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/lemon.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/magnet.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/map.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/microscope.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/milk.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.9,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/moon.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/mountain.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.1,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/mushroom.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/octopus.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/passport.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/peacock.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/phone.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/pineapple.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/rabbit.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.1,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/rain.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.0,
+   "estimated": false,
+   "gain_db": -2.5,
+   "wanted_db": -3.0,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/rainbow.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.2,
+   "estimated": false,
+   "gain_db": -2.3,
+   "wanted_db": -2.8,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/receipt.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.6,
+   "estimated": false,
+   "gain_db": -1.9,
+   "wanted_db": -2.4,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/satellite.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.9,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/shoe.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/squirrel.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/star.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/stethoscope.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/suitcase.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.7,
+   "estimated": false,
+   "gain_db": -1.8,
+   "wanted_db": -2.3,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/sun.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/telescope.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.9,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/thermometer.mp3",
+   "cat": "zh/words",
+   "est_lufs": -16.1,
+   "estimated": false,
+   "gain_db": -1.5,
+   "wanted_db": -1.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/tiger.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.5,
+   "estimated": false,
+   "gain_db": -2.0,
+   "wanted_db": -2.5,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/tornado.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.9,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/tractor.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.9,
+   "estimated": false,
+   "gain_db": -1.7,
+   "wanted_db": -2.1,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/tree.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.1,
+   "estimated": false,
+   "gain_db": -2.4,
+   "wanted_db": -2.9,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/umbrella.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.3,
+   "estimated": false,
+   "gain_db": -2.2,
+   "wanted_db": -2.7,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  },
+  {
+   "file": "zh/words/volcano.mp3",
+   "cat": "zh/words",
+   "est_lufs": -15.4,
+   "estimated": false,
+   "gain_db": -2.1,
+   "wanted_db": -2.6,
+   "peak_limited": false,
+   "limiter_db": 0.0
+  }
+ ]
+}

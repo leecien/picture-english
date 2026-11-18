@@ -1,0 +1,18 @@
+{
+  "wordCount": 3000,
+  "legacyWordsPreserved": 80,
+  "distinctWords": 3000,
+  "sentenceCount": 222,
+  "newAuthoredSentenceCount": 180,
+  "imageQueueCount": 1000,
+  "currentIllustratedCount": 35,
+  "newRowsWithUnverifiedKK": 2920,
+  "sourceSha256": "d1ecbdf9ee2b920afb6f430ca6b6bb9f559588cf0dff86e04bd255f9390843cc",
+  "openccMode": "s2twp",
+  "allRuntimeFilesUnmodified": true,
+  "newSourceScenes": 6,
+  "newSourceImageWords": 36,
+  "totalDistinctSourceImageWords": 71,
+  "interactiveImageWords": 35,
+  "remainingImageWordsToInteractiveTarget": 965
+}

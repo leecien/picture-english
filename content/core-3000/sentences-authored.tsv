@@ -1,0 +1,181 @@
+topic	en	zh	targets
+introductions	Hello, my name is Amy.	你好，我叫 Amy。	name
+introductions	What is your name?	你叫什麼名字？	name
+introductions	Nice to meet you.	很高興認識你。	meet
+introductions	I live in a small town.	我住在一個小鎮。	live,town
+introductions	I work at a bookstore.	我在書店工作。	work,bookstore
+introductions	Are you new here?	你是新來的嗎？	new,here
+introductions	Please speak a little more slowly.	請說慢一點。	speak,slowly
+introductions	Could you say that again?	可以再說一次嗎？	say,again
+introductions	I do not understand this word.	我不懂這個字。	understand,word
+introductions	How do you spell your name?	你的名字怎麼拼？	spell,name
+family	My sister lives near the station.	我姊姊住在車站附近。	sister,station
+family	There are four people in my family.	我家有四個人。	family,people
+family	My brother is making breakfast.	我哥哥正在做早餐。	brother,breakfast
+family	Our parents are coming tomorrow.	我們的父母明天會來。	parent,tomorrow
+family	Is this your grandmother?	這位是你的祖母嗎？	grandmother
+family	The children are playing outside.	孩子們正在外面玩。	child,outside
+family	I usually call my mother on Sunday.	我通常在星期日打電話給媽媽。	call,mother
+family	Who takes care of the baby?	誰照顧寶寶？	baby,care
+family	We eat dinner together every evening.	我們每天晚上一起吃晚餐。	dinner,together
+family	This is a photo of my family.	這是我家人的照片。	photo,family
+home	Please leave your shoes by the door.	請把鞋子放在門旁邊。	shoe,door
+home	The keys are on the kitchen counter.	鑰匙在廚房流理台上。	key,kitchen,counter
+home	Could you open the window?	你可以打開窗戶嗎？	open,window
+home	I need a clean towel.	我需要一條乾淨的毛巾。	clean,towel
+home	There is a lamp beside the bed.	床旁邊有一盞燈。	lamp,bed
+home	Please turn off the television.	請關掉電視。	television,turn
+home	The washing machine is in the bathroom.	洗衣機在浴室裡。	washing,machine,bathroom
+home	We keep the milk in the refrigerator.	我們把牛奶放在冰箱裡。	milk,refrigerator
+home	The room is too dark to read in.	這個房間太暗，沒辦法看書。	room,dark,read
+home	I cannot find the remote.	我找不到遙控器。	find,remote
+food	I would like a glass of water.	我想要一杯水。	glass,water
+food	May I see the menu, please?	可以給我看菜單嗎？	menu
+food	Does this soup contain milk?	這道湯含牛奶嗎？	soup,contain,milk
+food	I am allergic to peanuts.	我對花生過敏。	allergic,peanut
+food	Could we have two spoons?	可以給我們兩支湯匙嗎？	spoon
+food	The bread is still warm.	麵包還是溫熱的。	bread,warm
+food	Please put the rice in this bowl.	請把飯放進這個碗裡。	rice,bowl
+food	I would like my coffee without sugar.	我的咖啡不要加糖。	coffee,sugar
+food	Could we have the bill, please?	可以幫我們結帳嗎？	bill
+food	Can I take the rest home?	剩下的可以讓我打包帶走嗎？	rest,home
+shopping	How much does this shirt cost?	這件襯衫多少錢？	shirt,cost
+shopping	Do you have this in a smaller size?	這個有小一點的尺寸嗎？	size,small
+shopping	May I try these shoes on?	我可以試穿這雙鞋嗎？	try,shoe
+shopping	I am just looking, thank you.	我先看看，謝謝。	look,thank
+shopping	Where can I find a shopping basket?	我在哪裡可以拿到購物籃？	basket,shopping
+shopping	These tomatoes look fresh.	這些番茄看起來很新鮮。	tomato,fresh
+shopping	Can I pay by card?	我可以刷卡嗎？	pay,card
+shopping	Could I have a receipt?	可以給我收據嗎？	receipt
+shopping	I bought the wrong size.	我買錯尺寸了。	buy,wrong,size
+shopping	Is it possible to return this item?	這件商品可以退貨嗎？	return,item
+travel	Where is the check-in counter?	報到櫃檯在哪裡？	counter
+travel	Here is my passport.	這是我的護照。	passport
+travel	I have one suitcase to check.	我有一件行李箱要托運。	suitcase,check
+travel	Is this the line for security?	這是安檢的隊伍嗎？	line,security
+travel	Which gate should I go to?	我應該去哪一個登機門？	gate
+travel	My flight has been delayed.	我的航班延誤了。	flight,delay
+travel	I am visiting for a week.	我來拜訪一個星期。	visit,week
+travel	I will stay at a hotel near the airport.	我會住在機場附近的飯店。	hotel,airport
+travel	I have nothing to declare.	我沒有需要申報的物品。	declare
+travel	My suitcase did not arrive.	我的行李箱沒有送達。	suitcase,arrive
+transport	Does this bus go to the station?	這班公車會到車站嗎？	bus,station
+transport	Where can I buy a train ticket?	我在哪裡可以買火車票？	train,ticket
+transport	How often does the bus come?	公車多久來一班？	often,bus
+transport	Please let me know when we arrive.	到站時請告訴我。	know,arrive
+transport	Is this seat taken?	這個位子有人坐嗎？	seat
+transport	I missed the last train.	我錯過了最後一班火車。	miss,last,train
+transport	Could you take me to this address?	可以載我到這個地址嗎？	address
+transport	Please stop at the next corner.	請在下一個轉角停車。	stop,corner
+transport	You need to wear a helmet.	你需要戴安全帽。	wear,helmet
+transport	The traffic is heavy this morning.	今天早上的交通很壅塞。	traffic,morning
+hotel	I have a reservation for two nights.	我訂了兩個晚上的住宿。	reservation,night
+hotel	Could I check in now?	我現在可以辦理入住嗎？	check,now
+hotel	What time is breakfast served?	早餐幾點供應？	breakfast,time
+hotel	Does the room have a private bathroom?	房間有獨立浴室嗎？	private,bathroom
+hotel	Could I have an extra pillow?	可以再給我一個枕頭嗎？	extra,pillow
+hotel	The air conditioner is not working.	冷氣壞了。	air,conditioner,work
+hotel	There is no hot water in the shower.	淋浴沒有熱水。	hot,water,shower
+hotel	Could someone clean the room?	可以請人清理房間嗎？	clean,room
+hotel	What time do we need to check out?	我們需要幾點退房？	time,check
+hotel	May I leave my bags here for a few hours?	我可以把行李寄放在這裡幾個小時嗎？	bag,hour
+office	I need to charge my laptop.	我需要替筆記型電腦充電。	charge,laptop
+office	The keyboard is not connected.	鍵盤沒有連接上。	keyboard,connect
+office	Could you send me the file?	你可以把檔案寄給我嗎？	send,file
+office	Let us discuss this after lunch.	我們午餐後再討論這件事。	discuss,lunch
+office	When is the next meeting?	下一場會議是什麼時候？	meeting,next
+office	I wrote the details in my notebook.	我把細節寫在筆記本裡。	detail,notebook
+office	Could I borrow your pen?	我可以借你的筆嗎？	borrow,pen
+office	Please reply by Friday.	請在星期五以前回覆。	reply
+office	I have finished the first part.	我已經完成第一部分。	finish,part
+office	Could you explain the problem again?	你可以再解釋一次問題嗎？	explain,problem
+study	What does this sentence mean?	這個句子是什麼意思？	sentence,mean
+study	How do you pronounce this word?	這個字怎麼唸？	pronounce,word
+study	Please listen before you answer.	請先聽，再回答。	listen,answer
+study	Can you give me an example?	你可以舉個例子嗎？	example
+study	I made a spelling mistake.	我拼錯字了。	spelling,mistake
+study	Let us practice one more time.	我們再練習一次。	practice,time
+study	Please write your answer here.	請把答案寫在這裡。	write,answer
+study	I remember the sound but not the spelling.	我記得發音，但不記得拼法。	remember,sound,spelling
+study	This question is easier than the last one.	這一題比上一題容易。	question,easy
+study	I can understand more than before.	我比以前能聽懂更多了。	understand,before
+health	I do not feel well today.	我今天身體不太舒服。	feel,today
+health	I have a sore throat.	我的喉嚨痛。	sore,throat
+health	How long have you had this cough?	你咳嗽多久了？	cough,long
+health	I need to see a doctor.	我需要看醫生。	doctor
+health	Where is the nearest pharmacy?	最近的藥局在哪裡？	pharmacy,near
+health	How often should I take this medicine?	這個藥應該多久吃一次？	medicine,often
+health	Should I take it with food?	這個藥需要隨餐服用嗎？	food
+health	I am allergic to this medicine.	我對這個藥過敏。	allergic,medicine
+health	Could you call an ambulance?	可以幫忙叫救護車嗎？	ambulance,call
+health	Please wash your hands with soap.	請用肥皂洗手。	wash,hand,soap
+weather	It looks like rain this afternoon.	今天下午看起來會下雨。	rain,afternoon
+weather	Do not forget your umbrella.	不要忘記帶傘。	forget,umbrella
+weather	It is much colder outside.	外面冷多了。	cold,outside
+weather	The sun is coming out.	太陽出來了。	sun
+weather	It is too windy to fly a kite.	風太大，不能放風箏。	windy,kite
+weather	The weather is nice enough for a walk.	天氣不錯，適合散步。	weather,walk
+weather	There may be a storm tonight.	今晚可能有暴風雨。	storm,tonight
+weather	The ground is still wet.	地面還是濕的。	ground,wet
+weather	Remember to drink water when it is hot.	天熱時記得喝水。	drink,hot
+weather	The rain stopped a few minutes ago.	雨在幾分鐘前停了。	rain,minute
+hobbies	What do you like to do on weekends?	你週末喜歡做什麼？	weekend,like
+hobbies	I enjoy taking photos.	我喜歡拍照。	enjoy,photo
+hobbies	Would you like to go for a walk?	你想去散步嗎？	walk
+hobbies	There is a park near my house.	我家附近有一座公園。	park,house
+hobbies	I am learning to play the guitar.	我正在學彈吉他。	learn,guitar
+hobbies	Do you want to watch a movie tonight?	你今晚想看電影嗎？	watch,movie
+hobbies	I usually read before bed.	我通常睡前看書。	read,bed
+hobbies	We are going swimming tomorrow.	我們明天要去游泳。	swimming,tomorrow
+hobbies	Could you take a picture of us?	可以幫我們拍照嗎？	picture
+hobbies	Let us meet at the entrance.	我們在入口見。	meet,entrance
+directions	Excuse me, where is the restroom?	不好意思，洗手間在哪裡？	restroom
+directions	Go straight and turn left.	直走，再左轉。	straight,left
+directions	The bank is across from the station.	銀行在車站對面。	bank,station
+directions	Is it within walking distance?	走路到得了嗎？	distance
+directions	You can cross at the next crosswalk.	你可以在下一個行人穿越道過馬路。	cross,crosswalk
+directions	The elevator is beside the stairs.	電梯在樓梯旁邊。	elevator,stair
+directions	I think we are going the wrong way.	我想我們走錯方向了。	wrong,way
+directions	Could you show me on the map?	你可以在地圖上指給我看嗎？	show,map
+directions	The shop is between the bank and the cafe.	那家店在銀行和咖啡廳之間。	shop,between,cafe
+directions	How long does it take to get there?	到那裡要多久？	long,there
+technology	My phone is almost out of battery.	我的手機快沒電了。	phone,almost,battery
+technology	Do you have a charger I can borrow?	你有充電器可以借我嗎？	charger,borrow
+technology	Could you turn down the volume?	你可以把音量調小一點嗎？	volume
+technology	I cannot hear you clearly.	我聽不清楚你說的話。	hear,clearly
+technology	The screen is too bright.	螢幕太亮了。	screen,bright
+technology	Please connect to the wireless network.	請連上無線網路。	connect,wireless,network
+technology	I forgot my password.	我忘記密碼了。	forget,password
+technology	The message did not go through.	訊息沒有傳送成功。	message
+technology	Try closing the app and opening it again.	試著關閉應用程式後再重新開啟。	app,try
+technology	Could you send me the photo?	你可以把照片傳給我嗎？	send,photo
+plans	What are you doing this weekend?	你這個週末打算做什麼？	weekend
+plans	I am going to visit a friend.	我打算去拜訪朋友。	visit,friend
+plans	Let us leave a little earlier.	我們提早一點出發吧。	leave,early
+plans	We need to book the tickets in advance.	我們需要事先訂票。	book,ticket,advance
+plans	I will call you when I arrive.	我到了會打電話給你。	call,arrive
+plans	Can we change the time?	我們可以改時間嗎？	change,time
+plans	I am free after three.	我三點以後有空。	free,after
+plans	Something came up at work.	工作上臨時有事。	work
+plans	Could we meet another day?	我們可以改天見面嗎？	another,meet
+plans	Please let me know if your plans change.	如果你的計畫有變，請告訴我。	plan,change
+feelings	I am a little nervous.	我有一點緊張。	nervous
+feelings	You look tired today.	你今天看起來很累。	tired
+feelings	I am glad you are here.	我很高興你在這裡。	glad
+feelings	Do you need some help?	你需要幫忙嗎？	help
+feelings	It is okay to make mistakes.	犯錯沒有關係。	mistake
+feelings	I feel better after a short break.	短暫休息後，我覺得好多了。	feel,break
+feelings	Thank you for being patient.	謝謝你的耐心。	patient
+feelings	That sounds exciting.	那聽起來很令人期待。	exciting
+feelings	I am sorry I kept you waiting.	對不起，讓你久等了。	sorry,wait
+feelings	I am proud of what I have learned.	我為自己學會的東西感到驕傲。	proud,learn
+problems	I think there is a mistake on the bill.	我覺得帳單上有一處錯誤。	mistake,bill
+problems	This is not what I ordered.	這不是我點的東西。	order
+problems	Could you help me find my bag?	你可以幫我找包包嗎？	help,bag
+problems	I left my wallet on the bus.	我把錢包忘在公車上了。	wallet,bus
+problems	My room key does not work.	我的房間鑰匙不能用。	key,room
+problems	Could I speak to the manager?	我可以找經理談嗎？	manager,speak
+problems	I need to cancel my reservation.	我需要取消預約。	cancel,reservation
+problems	Is there another way to solve this?	有其他方法可以解決這個問題嗎？	solve,way
+problems	Thank you for helping me sort this out.	謝謝你幫我處理好這件事。	helping,sort
+problems	Everything is working now.	現在一切都正常了。	everything,work

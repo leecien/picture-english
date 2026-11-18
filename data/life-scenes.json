@@ -1,0 +1,4897 @@
+{
+ "schemaVersion": 1,
+ "use": "單字練習的生活情境找物，不作為 RPG 地圖貼圖",
+ "artStyle": "generated-photorealistic-everyday-life",
+ "maxVocabularyPerImage": 7,
+ "targetsPerScene": 6,
+ "coordinateSpace": "normalized-0-to-1-top-left",
+ "minimumTouchTargetCssPx": 44,
+ "status": "integrated-draft-hotspots-overlay-checked",
+ "scenes": [
+  {
+   "id": "restaurant",
+   "title": "餐廳吃午餐",
+   "image": "assets/scenes/life/restaurant.webp",
+   "scope": "前景餐桌六個目標",
+   "targets": [
+    {
+     "id": "glass",
+     "word": "glass",
+     "zh": "玻璃杯",
+     "priority": 10,
+     "polygon": [
+      [
+       0.393,
+       0.503
+      ],
+      [
+       0.414,
+       0.486
+      ],
+      [
+       0.444,
+       0.486
+      ],
+      [
+       0.468,
+       0.501
+      ],
+      [
+       0.46,
+       0.662
+      ],
+      [
+       0.445,
+       0.684
+      ],
+      [
+       0.415,
+       0.68
+      ],
+      [
+       0.403,
+       0.664
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "plate",
+     "word": "plate",
+     "zh": "餐盤",
+     "priority": 10,
+     "polygon": [
+      [
+       0.354,
+       0.78
+      ],
+      [
+       0.375,
+       0.73
+      ],
+      [
+       0.421,
+       0.693
+      ],
+      [
+       0.481,
+       0.674
+      ],
+      [
+       0.55,
+       0.683
+      ],
+      [
+       0.612,
+       0.724
+      ],
+      [
+       0.647,
+       0.778
+      ],
+      [
+       0.653,
+       0.832
+      ],
+      [
+       0.631,
+       0.887
+      ],
+      [
+       0.573,
+       0.924
+      ],
+      [
+       0.494,
+       0.936
+      ],
+      [
+       0.422,
+       0.917
+      ],
+      [
+       0.373,
+       0.873
+      ],
+      [
+       0.354,
+       0.829
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "spoon",
+     "word": "spoon",
+     "zh": "湯匙",
+     "priority": 20,
+     "polygon": [
+      [
+       0.572,
+       0.804
+      ],
+      [
+       0.603,
+       0.798
+      ],
+      [
+       0.629,
+       0.81
+      ],
+      [
+       0.64,
+       0.836
+      ],
+      [
+       0.697,
+       0.895
+      ],
+      [
+       0.774,
+       0.96
+      ],
+      [
+       0.769,
+       0.978
+      ],
+      [
+       0.754,
+       0.982
+      ],
+      [
+       0.686,
+       0.919
+      ],
+      [
+       0.63,
+       0.853
+      ],
+      [
+       0.586,
+       0.856
+      ],
+      [
+       0.56,
+       0.842
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "bowl",
+     "word": "bowl",
+     "zh": "碗",
+     "priority": 10,
+     "polygon": [
+      [
+       0.237,
+       0.656
+      ],
+      [
+       0.261,
+       0.626
+      ],
+      [
+       0.311,
+       0.613
+      ],
+      [
+       0.355,
+       0.619
+      ],
+      [
+       0.381,
+       0.642
+      ],
+      [
+       0.38,
+       0.692
+      ],
+      [
+       0.36,
+       0.742
+      ],
+      [
+       0.325,
+       0.775
+      ],
+      [
+       0.295,
+       0.774
+      ],
+      [
+       0.262,
+       0.753
+      ],
+      [
+       0.244,
+       0.713
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "menu",
+     "word": "menu",
+     "zh": "菜單",
+     "priority": 10,
+     "polygon": [
+      [
+       0.684,
+       0.604
+      ],
+      [
+       0.827,
+       0.615
+      ],
+      [
+       0.9,
+       0.688
+      ],
+      [
+       0.977,
+       0.813
+      ],
+      [
+       0.968,
+       0.852
+      ],
+      [
+       0.766,
+       0.842
+      ],
+      [
+       0.744,
+       0.817
+      ],
+      [
+       0.681,
+       0.626
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "phone",
+     "word": "phone",
+     "zh": "手機",
+     "priority": 10,
+     "polygon": [
+      [
+       0.124,
+       0.842
+      ],
+      [
+       0.174,
+       0.784
+      ],
+      [
+       0.205,
+       0.781
+      ],
+      [
+       0.325,
+       0.863
+      ],
+      [
+       0.326,
+       0.895
+      ],
+      [
+       0.297,
+       0.945
+      ],
+      [
+       0.264,
+       0.965
+      ],
+      [
+       0.143,
+       0.886
+      ],
+      [
+       0.122,
+       0.864
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": true,
+      "kk": "[fon]",
+      "audio": "assets/voice/words/phone.mp3",
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": false
+     },
+     "kk": "[fon]",
+     "audio": "assets/voice/words/phone.mp3",
+     "inBank": true
+    }
+   ],
+   "missions": [
+    {
+     "title": "準備喝湯",
+     "prompt": "找到盛湯的碗和喝湯用的餐具。",
+     "targets": [
+      "bowl",
+      "spoon"
+     ]
+    },
+    {
+     "title": "加一杯水",
+     "prompt": "找到喝水的容器，再找菜單。",
+     "targets": [
+      "glass",
+      "menu"
+     ]
+    }
+   ],
+   "width": 1536,
+   "height": 1024,
+   "hitTestOrder": "priority-descending",
+   "status": "art-ready-hotspots-draft",
+   "suggestedModes": [
+    "explore",
+    "listen-find",
+    "spell",
+    "mini-mission"
+   ],
+   "source": "assets/art-source/novice-restaurant-01/restaurant-scene.png"
+  },
+  {
+   "id": "supermarket",
+   "title": "超市買早餐",
+   "image": "assets/scenes/life/supermarket.webp",
+   "scope": "前景結帳檯購物物品；背景購物籃不計入",
+   "targets": [
+    {
+     "id": "apple",
+     "word": "apple",
+     "zh": "蘋果",
+     "priority": 10,
+     "polygon": [
+      [
+       0.172,
+       0.754
+      ],
+      [
+       0.183,
+       0.701
+      ],
+      [
+       0.222,
+       0.663
+      ],
+      [
+       0.267,
+       0.661
+      ],
+      [
+       0.31,
+       0.69
+      ],
+      [
+       0.334,
+       0.744
+      ],
+      [
+       0.333,
+       0.813
+      ],
+      [
+       0.305,
+       0.876
+      ],
+      [
+       0.258,
+       0.9
+      ],
+      [
+       0.214,
+       0.886
+      ],
+      [
+       0.179,
+       0.836
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": true,
+      "kk": "[ˋæpḷ]",
+      "audio": "assets/voice/words/apple.mp3",
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": false
+     },
+     "kk": "[ˋæpḷ]",
+     "audio": "assets/voice/words/apple.mp3",
+     "inBank": true
+    },
+    {
+     "id": "banana",
+     "word": "banana",
+     "zh": "香蕉",
+     "priority": 10,
+     "polygon": [
+      [
+       0.26,
+       0.621
+      ],
+      [
+       0.315,
+       0.583
+      ],
+      [
+       0.366,
+       0.569
+      ],
+      [
+       0.423,
+       0.583
+      ],
+      [
+       0.458,
+       0.617
+      ],
+      [
+       0.485,
+       0.652
+      ],
+      [
+       0.484,
+       0.676
+      ],
+      [
+       0.459,
+       0.686
+      ],
+      [
+       0.412,
+       0.662
+      ],
+      [
+       0.342,
+       0.652
+      ],
+      [
+       0.281,
+       0.677
+      ],
+      [
+       0.262,
+       0.66
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": true,
+      "kk": "[bəˋnænə]",
+      "audio": "assets/voice/words/banana.mp3",
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": false
+     },
+     "kk": "[bəˋnænə]",
+     "audio": "assets/voice/words/banana.mp3",
+     "inBank": true
+    },
+    {
+     "id": "tomato",
+     "word": "tomato",
+     "zh": "番茄",
+     "priority": 10,
+     "polygon": [
+      [
+       0.479,
+       0.748
+      ],
+      [
+       0.494,
+       0.703
+      ],
+      [
+       0.533,
+       0.672
+      ],
+      [
+       0.578,
+       0.671
+      ],
+      [
+       0.611,
+       0.708
+      ],
+      [
+       0.625,
+       0.762
+      ],
+      [
+       0.617,
+       0.815
+      ],
+      [
+       0.58,
+       0.856
+      ],
+      [
+       0.531,
+       0.863
+      ],
+      [
+       0.494,
+       0.827
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "bread",
+     "word": "bread",
+     "zh": "麵包",
+     "priority": 10,
+     "polygon": [
+      [
+       0.109,
+       0.455
+      ],
+      [
+       0.138,
+       0.426
+      ],
+      [
+       0.216,
+       0.41
+      ],
+      [
+       0.271,
+       0.43
+      ],
+      [
+       0.306,
+       0.475
+      ],
+      [
+       0.321,
+       0.548
+      ],
+      [
+       0.306,
+       0.597
+      ],
+      [
+       0.24,
+       0.643
+      ],
+      [
+       0.17,
+       0.651
+      ],
+      [
+       0.108,
+       0.612
+      ],
+      [
+       0.1,
+       0.543
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": true,
+      "kk": "[brɛd]",
+      "audio": "assets/voice/words/bread.mp3",
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": false
+     },
+     "kk": "[brɛd]",
+     "audio": "assets/voice/words/bread.mp3",
+     "inBank": true
+    },
+    {
+     "id": "milk",
+     "word": "milk",
+     "zh": "牛奶",
+     "priority": 10,
+     "polygon": [
+      [
+       0.55,
+       0.162
+      ],
+      [
+       0.618,
+       0.16
+      ],
+      [
+       0.622,
+       0.214
+      ],
+      [
+       0.616,
+       0.246
+      ],
+      [
+       0.64,
+       0.308
+      ],
+      [
+       0.646,
+       0.547
+      ],
+      [
+       0.638,
+       0.611
+      ],
+      [
+       0.614,
+       0.639
+      ],
+      [
+       0.562,
+       0.642
+      ],
+      [
+       0.533,
+       0.622
+      ],
+      [
+       0.523,
+       0.58
+      ],
+      [
+       0.522,
+       0.32
+      ],
+      [
+       0.549,
+       0.238
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": true,
+      "kk": "[mɪlk]",
+      "audio": "assets/voice/words/milk.mp3",
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": false
+     },
+     "kk": "[mɪlk]",
+     "audio": "assets/voice/words/milk.mp3",
+     "inBank": true
+    },
+    {
+     "id": "basket",
+     "word": "basket",
+     "zh": "購物籃",
+     "priority": 10,
+     "polygon": [
+      [
+       0.621,
+       0.249
+      ],
+      [
+       0.659,
+       0.168
+      ],
+      [
+       0.689,
+       0.082
+      ],
+      [
+       0.746,
+       0.064
+      ],
+      [
+       0.863,
+       0.087
+      ],
+      [
+       0.893,
+       0.137
+      ],
+      [
+       0.906,
+       0.218
+      ],
+      [
+       0.99,
+       0.247
+      ],
+      [
+       0.99,
+       0.298
+      ],
+      [
+       0.929,
+       0.526
+      ],
+      [
+       0.896,
+       0.583
+      ],
+      [
+       0.795,
+       0.562
+      ],
+      [
+       0.639,
+       0.502
+      ],
+      [
+       0.642,
+       0.298
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    }
+   ],
+   "missions": [
+    {
+     "title": "早餐採買",
+     "prompt": "找齊早餐需要的麵包、牛奶和香蕉。",
+     "targets": [
+      "bread",
+      "milk",
+      "banana"
+     ]
+    },
+    {
+     "title": "收好水果",
+     "prompt": "找到蘋果，再找到可以裝東西的購物籃。",
+     "targets": [
+      "apple",
+      "basket"
+     ]
+    }
+   ],
+   "width": 1536,
+   "height": 1024,
+   "hitTestOrder": "priority-descending",
+   "status": "art-ready-hotspots-draft",
+   "suggestedModes": [
+    "explore",
+    "listen-find",
+    "spell",
+    "mini-mission"
+   ],
+   "source": "assets/art-source/life-scenes-01/supermarket.png"
+  },
+  {
+   "id": "bedroom",
+   "title": "臥室準備起床",
+   "image": "assets/scenes/life/bedroom.webp",
+   "scope": "完整臥室；床只取未被枕頭及毯子覆蓋的可見範圍",
+   "targets": [
+    {
+     "id": "bed",
+     "word": "bed",
+     "zh": "床",
+     "priority": 0,
+     "polygon": [
+      [
+       0.04,
+       0.617
+      ],
+      [
+       0.263,
+       0.481
+      ],
+      [
+       0.296,
+       0.382
+      ],
+      [
+       0.581,
+       0.386
+      ],
+      [
+       0.581,
+       0.511
+      ],
+      [
+       0.567,
+       0.647
+      ],
+      [
+       0.462,
+       0.888
+      ],
+      [
+       0.445,
+       1.0
+      ],
+      [
+       0.407,
+       1.0
+      ],
+      [
+       0.411,
+       0.93
+      ],
+      [
+       0.1,
+       0.894
+      ],
+      [
+       0.092,
+       0.936
+      ],
+      [
+       0.071,
+       0.93
+      ],
+      [
+       0.071,
+       0.891
+      ],
+      [
+       0.039,
+       0.855
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "pillow",
+     "word": "pillow",
+     "zh": "枕頭",
+     "priority": 10,
+     "polygon": [
+      [
+       0.305,
+       0.396
+      ],
+      [
+       0.453,
+       0.402
+      ],
+      [
+       0.461,
+       0.421
+      ],
+      [
+       0.435,
+       0.515
+      ],
+      [
+       0.29,
+       0.507
+      ],
+      [
+       0.284,
+       0.484
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "blanket",
+     "word": "blanket",
+     "zh": "毯子",
+     "priority": 20,
+     "polygon": [
+      [
+       0.04,
+       0.664
+      ],
+      [
+       0.113,
+       0.615
+      ],
+      [
+       0.272,
+       0.589
+      ],
+      [
+       0.409,
+       0.545
+      ],
+      [
+       0.496,
+       0.578
+      ],
+      [
+       0.533,
+       0.647
+      ],
+      [
+       0.504,
+       0.79
+      ],
+      [
+       0.439,
+       0.979
+      ],
+      [
+       0.429,
+       0.996
+      ],
+      [
+       0.392,
+       0.939
+      ],
+      [
+       0.213,
+       0.866
+      ],
+      [
+       0.04,
+       0.795
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "lamp",
+     "word": "lamp",
+     "zh": "檯燈",
+     "priority": 10,
+     "polygon": [
+      [
+       0.583,
+       0.32
+      ],
+      [
+       0.638,
+       0.321
+      ],
+      [
+       0.652,
+       0.411
+      ],
+      [
+       0.616,
+       0.416
+      ],
+      [
+       0.617,
+       0.505
+      ],
+      [
+       0.63,
+       0.507
+      ],
+      [
+       0.631,
+       0.519
+      ],
+      [
+       0.593,
+       0.518
+      ],
+      [
+       0.592,
+       0.509
+      ],
+      [
+       0.608,
+       0.506
+      ],
+      [
+       0.608,
+       0.415
+      ],
+      [
+       0.572,
+       0.411
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "clock",
+     "word": "clock",
+     "zh": "時鐘",
+     "priority": 10,
+     "polygon": [
+      [
+       0.633,
+       0.474
+      ],
+      [
+       0.643,
+       0.449
+      ],
+      [
+       0.662,
+       0.443
+      ],
+      [
+       0.677,
+       0.455
+      ],
+      [
+       0.684,
+       0.477
+      ],
+      [
+       0.679,
+       0.504
+      ],
+      [
+       0.667,
+       0.519
+      ],
+      [
+       0.646,
+       0.52
+      ],
+      [
+       0.632,
+       0.503
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": true,
+      "kk": "[klɑk]",
+      "audio": "assets/voice/words/clock.mp3",
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": false
+     },
+     "kk": "[klɑk]",
+     "audio": "assets/voice/words/clock.mp3",
+     "inBank": true
+    },
+    {
+     "id": "wardrobe",
+     "word": "wardrobe",
+     "zh": "衣櫃",
+     "priority": 10,
+     "polygon": [
+      [
+       0.703,
+       0.008
+      ],
+      [
+       0.948,
+       0.0
+      ],
+      [
+       0.948,
+       0.783
+      ],
+      [
+       0.703,
+       0.758
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    }
+   ],
+   "missions": [
+    {
+     "title": "整理床鋪",
+     "prompt": "找到枕頭，再找到蓋在床上的毯子。",
+     "targets": [
+      "pillow",
+      "blanket"
+     ]
+    },
+    {
+     "title": "準備起床",
+     "prompt": "看看現在幾點，再找到床邊的燈。",
+     "targets": [
+      "clock",
+      "lamp"
+     ]
+    }
+   ],
+   "width": 1536,
+   "height": 1024,
+   "hitTestOrder": "priority-descending",
+   "status": "art-ready-hotspots-draft",
+   "suggestedModes": [
+    "explore",
+    "listen-find",
+    "spell",
+    "mini-mission"
+   ],
+   "source": "assets/art-source/life-scenes-01/bedroom.png"
+  },
+  {
+   "id": "bathroom",
+   "title": "浴室晨間盥洗",
+   "image": "assets/scenes/life/bathroom.webp",
+   "scope": "整張圖六個盥洗物件；鏡子只反射牆面",
+   "targets": [
+    {
+     "id": "sink",
+     "word": "sink",
+     "zh": "洗手台",
+     "priority": 10,
+     "polygon": [
+      [
+       0.161,
+       0.631
+      ],
+      [
+       0.192,
+       0.6
+      ],
+      [
+       0.261,
+       0.578
+      ],
+      [
+       0.342,
+       0.578
+      ],
+      [
+       0.414,
+       0.601
+      ],
+      [
+       0.443,
+       0.632
+      ],
+      [
+       0.437,
+       0.658
+      ],
+      [
+       0.402,
+       0.684
+      ],
+      [
+       0.33,
+       0.702
+      ],
+      [
+       0.249,
+       0.702
+      ],
+      [
+       0.181,
+       0.683
+      ],
+      [
+       0.159,
+       0.659
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "mirror",
+     "word": "mirror",
+     "zh": "鏡子",
+     "priority": 10,
+     "polygon": [
+      [
+       0.075,
+       0.0
+      ],
+      [
+       0.427,
+       0.036
+      ],
+      [
+       0.427,
+       0.421
+      ],
+      [
+       0.081,
+       0.46
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "towel",
+     "word": "towel",
+     "zh": "毛巾",
+     "priority": 10,
+     "polygon": [
+      [
+       0.831,
+       0.258
+      ],
+      [
+       0.949,
+       0.252
+      ],
+      [
+       0.943,
+       0.571
+      ],
+      [
+       0.831,
+       0.548
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "toothbrush",
+     "word": "toothbrush",
+     "zh": "牙刷",
+     "priority": 10,
+     "polygon": [
+      [
+       0.102,
+       0.574
+      ],
+      [
+       0.208,
+       0.565
+      ],
+      [
+       0.209,
+       0.575
+      ],
+      [
+       0.112,
+       0.59
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "soap",
+     "word": "soap",
+     "zh": "肥皂",
+     "priority": 10,
+     "polygon": [
+      [
+       0.392,
+       0.533
+      ],
+      [
+       0.417,
+       0.524
+      ],
+      [
+       0.442,
+       0.534
+      ],
+      [
+       0.442,
+       0.553
+      ],
+      [
+       0.422,
+       0.564
+      ],
+      [
+       0.393,
+       0.555
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "toilet",
+     "word": "toilet",
+     "zh": "馬桶",
+     "priority": 10,
+     "polygon": [
+      [
+       0.55,
+       0.482
+      ],
+      [
+       0.592,
+       0.464
+      ],
+      [
+       0.663,
+       0.458
+      ],
+      [
+       0.688,
+       0.473
+      ],
+      [
+       0.687,
+       0.672
+      ],
+      [
+       0.73,
+       0.672
+      ],
+      [
+       0.791,
+       0.713
+      ],
+      [
+       0.818,
+       0.762
+      ],
+      [
+       0.812,
+       0.819
+      ],
+      [
+       0.788,
+       0.865
+      ],
+      [
+       0.782,
+       0.978
+      ],
+      [
+       0.726,
+       1.0
+      ],
+      [
+       0.636,
+       0.982
+      ],
+      [
+       0.604,
+       0.949
+      ],
+      [
+       0.605,
+       0.869
+      ],
+      [
+       0.585,
+       0.826
+      ],
+      [
+       0.583,
+       0.711
+      ],
+      [
+       0.55,
+       0.682
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    }
+   ],
+   "missions": [
+    {
+     "title": "刷牙前準備",
+     "prompt": "找到牙刷和洗手台。",
+     "targets": [
+      "toothbrush",
+      "sink"
+     ]
+    },
+    {
+     "title": "洗手擦乾",
+     "prompt": "找到肥皂，再找到擦手的毛巾。",
+     "targets": [
+      "soap",
+      "towel"
+     ]
+    }
+   ],
+   "width": 1536,
+   "height": 1024,
+   "hitTestOrder": "priority-descending",
+   "status": "art-ready-hotspots-draft",
+   "suggestedModes": [
+    "explore",
+    "listen-find",
+    "spell",
+    "mini-mission"
+   ],
+   "source": "assets/art-source/life-scenes-01/bathroom.png"
+  },
+  {
+   "id": "office",
+   "title": "辦公室開始工作",
+   "image": "assets/scenes/life/office.webp",
+   "scope": "前景桌面；keyboard 指外接黑色鍵盤，notebook 指紙本筆記本",
+   "targets": [
+    {
+     "id": "laptop",
+     "word": "laptop",
+     "zh": "筆記型電腦",
+     "priority": 5,
+     "polygon": [
+      [
+       0.147,
+       0.059
+      ],
+      [
+       0.439,
+       0.05
+      ],
+      [
+       0.452,
+       0.304
+      ],
+      [
+       0.54,
+       0.443
+      ],
+      [
+       0.537,
+       0.456
+      ],
+      [
+       0.181,
+       0.528
+      ],
+      [
+       0.161,
+       0.516
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "keyboard",
+     "word": "keyboard",
+     "zh": "鍵盤",
+     "priority": 10,
+     "polygon": [
+      [
+       0.111,
+       0.606
+      ],
+      [
+       0.555,
+       0.482
+      ],
+      [
+       0.637,
+       0.594
+      ],
+      [
+       0.638,
+       0.617
+      ],
+      [
+       0.124,
+       0.783
+      ],
+      [
+       0.112,
+       0.767
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "mouse",
+     "word": "mouse",
+     "zh": "滑鼠",
+     "priority": 10,
+     "polygon": [
+      [
+       0.643,
+       0.478
+      ],
+      [
+       0.656,
+       0.459
+      ],
+      [
+       0.683,
+       0.45
+      ],
+      [
+       0.715,
+       0.461
+      ],
+      [
+       0.741,
+       0.489
+      ],
+      [
+       0.754,
+       0.527
+      ],
+      [
+       0.747,
+       0.546
+      ],
+      [
+       0.721,
+       0.552
+      ],
+      [
+       0.688,
+       0.533
+      ],
+      [
+       0.656,
+       0.506
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "notebook",
+     "word": "notebook",
+     "zh": "筆記本",
+     "priority": 5,
+     "polygon": [
+      [
+       0.423,
+       0.726
+      ],
+      [
+       0.601,
+       0.643
+      ],
+      [
+       0.65,
+       0.635
+      ],
+      [
+       0.71,
+       0.597
+      ],
+      [
+       0.786,
+       0.587
+      ],
+      [
+       0.864,
+       0.635
+      ],
+      [
+       1.0,
+       0.795
+      ],
+      [
+       1.0,
+       1.0
+      ],
+      [
+       0.497,
+       1.0
+      ],
+      [
+       0.462,
+       0.904
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "pen",
+     "word": "pen",
+     "zh": "原子筆",
+     "priority": 20,
+     "polygon": [
+      [
+       0.734,
+       0.659
+      ],
+      [
+       0.76,
+       0.672
+      ],
+      [
+       0.846,
+       0.748
+      ],
+      [
+       0.919,
+       0.806
+      ],
+      [
+       0.936,
+       0.827
+      ],
+      [
+       0.931,
+       0.838
+      ],
+      [
+       0.916,
+       0.833
+      ],
+      [
+       0.834,
+       0.772
+      ],
+      [
+       0.752,
+       0.695
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "mug",
+     "word": "mug",
+     "zh": "馬克杯",
+     "priority": 10,
+     "polygon": [
+      [
+       0.784,
+       0.306
+      ],
+      [
+       0.818,
+       0.296
+      ],
+      [
+       0.856,
+       0.298
+      ],
+      [
+       0.889,
+       0.314
+      ],
+      [
+       0.89,
+       0.34
+      ],
+      [
+       0.914,
+       0.347
+      ],
+      [
+       0.929,
+       0.377
+      ],
+      [
+       0.927,
+       0.414
+      ],
+      [
+       0.911,
+       0.437
+      ],
+      [
+       0.89,
+       0.443
+      ],
+      [
+       0.881,
+       0.458
+      ],
+      [
+       0.858,
+       0.469
+      ],
+      [
+       0.81,
+       0.468
+      ],
+      [
+       0.784,
+       0.446
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    }
+   ],
+   "missions": [
+    {
+     "title": "記下今天的待辦",
+     "prompt": "找到紙本筆記本和原子筆。",
+     "targets": [
+      "notebook",
+      "pen"
+     ]
+    },
+    {
+     "title": "開始打字",
+     "prompt": "找到外接黑色鍵盤，再找到滑鼠。",
+     "targets": [
+      "keyboard",
+      "mouse"
+     ]
+    }
+   ],
+   "width": 1536,
+   "height": 1024,
+   "hitTestOrder": "priority-descending",
+   "status": "art-ready-hotspots-draft",
+   "suggestedModes": [
+    "explore",
+    "listen-find",
+    "spell",
+    "mini-mission"
+   ],
+   "source": "assets/art-source/life-scenes-01/office.png"
+  },
+  {
+   "id": "airport",
+   "title": "機場準備登機",
+   "image": "assets/scenes/life/airport.webp",
+   "scope": "前景行李、桌面證件及單一座位；背景人群座位不計入",
+   "targets": [
+    {
+     "id": "suitcase",
+     "word": "suitcase",
+     "zh": "行李箱",
+     "priority": 5,
+     "polygon": [
+      [
+       0.039,
+       0.327
+      ],
+      [
+       0.064,
+       0.279
+      ],
+      [
+       0.089,
+       0.272
+      ],
+      [
+       0.085,
+       0.06
+      ],
+      [
+       0.095,
+       0.028
+      ],
+      [
+       0.169,
+       0.019
+      ],
+      [
+       0.189,
+       0.04
+      ],
+      [
+       0.189,
+       0.253
+      ],
+      [
+       0.251,
+       0.25
+      ],
+      [
+       0.298,
+       0.28
+      ],
+      [
+       0.314,
+       0.35
+      ],
+      [
+       0.3,
+       0.774
+      ],
+      [
+       0.24,
+       0.826
+      ],
+      [
+       0.175,
+       0.868
+      ],
+      [
+       0.162,
+       0.898
+      ],
+      [
+       0.138,
+       0.899
+      ],
+      [
+       0.119,
+       0.861
+      ],
+      [
+       0.063,
+       0.845
+      ],
+      [
+       0.049,
+       0.805
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": true,
+      "kk": "[ˋsutˏkes]",
+      "audio": "assets/voice/words/suitcase.mp3",
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": false
+     },
+     "kk": "[ˋsutˏkes]",
+     "audio": "assets/voice/words/suitcase.mp3",
+     "inBank": true
+    },
+    {
+     "id": "backpack",
+     "word": "backpack",
+     "zh": "後背包",
+     "priority": 20,
+     "polygon": [
+      [
+       0.209,
+       0.788
+      ],
+      [
+       0.235,
+       0.639
+      ],
+      [
+       0.247,
+       0.532
+      ],
+      [
+       0.284,
+       0.446
+      ],
+      [
+       0.313,
+       0.427
+      ],
+      [
+       0.312,
+       0.403
+      ],
+      [
+       0.341,
+       0.383
+      ],
+      [
+       0.359,
+       0.406
+      ],
+      [
+       0.365,
+       0.438
+      ],
+      [
+       0.415,
+       0.478
+      ],
+      [
+       0.44,
+       0.535
+      ],
+      [
+       0.452,
+       0.652
+      ],
+      [
+       0.463,
+       0.82
+      ],
+      [
+       0.433,
+       0.87
+      ],
+      [
+       0.383,
+       0.894
+      ],
+      [
+       0.322,
+       0.906
+      ],
+      [
+       0.265,
+       0.885
+      ],
+      [
+       0.22,
+       0.871
+      ],
+      [
+       0.198,
+       0.84
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "passport",
+     "word": "passport",
+     "zh": "護照",
+     "priority": 10,
+     "polygon": [
+      [
+       0.559,
+       0.637
+      ],
+      [
+       0.659,
+       0.651
+      ],
+      [
+       0.651,
+       0.78
+      ],
+      [
+       0.637,
+       0.789
+      ],
+      [
+       0.536,
+       0.778
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": true,
+      "kk": "[ˋpæsˏpɔrt]",
+      "audio": "assets/voice/words/passport.mp3",
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": false
+     },
+     "kk": "[ˋpæsˏpɔrt]",
+     "audio": "assets/voice/words/passport.mp3",
+     "inBank": true
+    },
+    {
+     "id": "ticket",
+     "word": "ticket",
+     "zh": "機票",
+     "priority": 10,
+     "polygon": [
+      [
+       0.68,
+       0.69
+      ],
+      [
+       0.829,
+       0.727
+      ],
+      [
+       0.817,
+       0.812
+      ],
+      [
+       0.66,
+       0.773
+      ],
+      [
+       0.655,
+       0.76
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    },
+    {
+     "id": "phone",
+     "word": "phone",
+     "zh": "手機",
+     "priority": 10,
+     "polygon": [
+      [
+       0.775,
+       0.635
+      ],
+      [
+       0.825,
+       0.623
+      ],
+      [
+       0.846,
+       0.631
+      ],
+      [
+       0.916,
+       0.715
+      ],
+      [
+       0.923,
+       0.739
+      ],
+      [
+       0.911,
+       0.752
+      ],
+      [
+       0.858,
+       0.767
+      ],
+      [
+       0.842,
+       0.758
+      ],
+      [
+       0.778,
+       0.671
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": true,
+      "kk": "[fon]",
+      "audio": "assets/voice/words/phone.mp3",
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": false
+     },
+     "kk": "[fon]",
+     "audio": "assets/voice/words/phone.mp3",
+     "inBank": true
+    },
+    {
+     "id": "seat",
+     "word": "seat",
+     "zh": "座位",
+     "priority": 0,
+     "polygon": [
+      [
+       0.598,
+       0.126
+      ],
+      [
+       0.891,
+       0.131
+      ],
+      [
+       0.916,
+       0.149
+      ],
+      [
+       0.902,
+       0.355
+      ],
+      [
+       0.91,
+       0.413
+      ],
+      [
+       0.893,
+       0.459
+      ],
+      [
+       0.871,
+       0.584
+      ],
+      [
+       0.837,
+       0.58
+      ],
+      [
+       0.839,
+       0.55
+      ],
+      [
+       0.568,
+       0.575
+      ],
+      [
+       0.492,
+       0.557
+      ],
+      [
+       0.488,
+       0.529
+      ],
+      [
+       0.466,
+       0.527
+      ],
+      [
+       0.459,
+       0.501
+      ],
+      [
+       0.468,
+       0.369
+      ],
+      [
+       0.514,
+       0.322
+      ],
+      [
+       0.573,
+       0.296
+      ]
+     ],
+     "pronunciation": {
+      "wordBankMatch": false,
+      "kk": null,
+      "audio": null,
+      "fallback": "whole-word-en-US-tts",
+      "needsCuratedEntry": true
+     },
+     "kk": null,
+     "audio": null,
+     "inBank": false
+    }
+   ],
+   "missions": [
+    {
+     "title": "確認登機文件",
+     "prompt": "找到護照和機票。",
+     "targets": [
+      "passport",
+      "ticket"
+     ]
+    },
+    {
+     "title": "確認隨身行李",
+     "prompt": "找到後背包、行李箱和手機。",
+     "targets": [
+      "backpack",
+      "suitcase",
+      "phone"
+     ]
+    }
+   ],
+   "width": 1536,
+   "height": 1024,
+   "hitTestOrder": "priority-descending",
+   "status": "art-ready-hotspots-draft",
+   "suggestedModes": [
+    "explore",
+    "listen-find",
+    "spell",
+    "mini-mission"
+   ],
+   "source": "assets/art-source/life-scenes-01/airport.png"
+  },
+  {
+   "id": "kitchen",
+   "title": "廚房準備煮飯",
+   "image": "assets/scenes/life/kitchen.webp",
+   "width": 1536,
+   "height": 1024,
+   "status": "source-art-ready-hotspots-draft-not-integrated",
+   "targets": [
+    {
+     "id": "refrigerator",
+     "word": "refrigerator",
+     "wordId": "word:refrigerator",
+     "zh": "冰箱",
+     "priority": 10,
+     "polygon": [
+      [
+       0.012,
+       0.045
+      ],
+      [
+       0.259,
+       0.042
+      ],
+      [
+       0.273,
+       0.056
+      ],
+      [
+       0.27,
+       0.953
+      ],
+      [
+       0.254,
+       0.982
+      ],
+      [
+       0.019,
+       0.991
+      ],
+      [
+       0.012,
+       0.963
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "stove",
+     "word": "stove",
+     "wordId": "word:stove",
+     "zh": "瓦斯爐",
+     "priority": 0,
+     "polygon": [
+      [
+       0.362,
+       0.479
+      ],
+      [
+       0.619,
+       0.478
+      ],
+      [
+       0.655,
+       0.55
+      ],
+      [
+       0.649,
+       0.565
+      ],
+      [
+       0.366,
+       0.568
+      ],
+      [
+       0.353,
+       0.545
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "microwave",
+     "word": "microwave",
+     "wordId": "word:microwave",
+     "zh": "微波爐",
+     "priority": 10,
+     "polygon": [
+      [
+       0.72,
+       0.354
+      ],
+      [
+       0.883,
+       0.359
+      ],
+      [
+       0.887,
+       0.486
+      ],
+      [
+       0.868,
+       0.498
+      ],
+      [
+       0.755,
+       0.496
+      ],
+      [
+       0.719,
+       0.478
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "kettle",
+     "word": "kettle",
+     "wordId": "word:kettle",
+     "zh": "熱水壺",
+     "priority": 10,
+     "polygon": [
+      [
+       0.683,
+       0.385
+      ],
+      [
+       0.716,
+       0.389
+      ],
+      [
+       0.744,
+       0.417
+      ],
+      [
+       0.753,
+       0.454
+      ],
+      [
+       0.737,
+       0.498
+      ],
+      [
+       0.734,
+       0.514
+      ],
+      [
+       0.669,
+       0.52
+      ],
+      [
+       0.667,
+       0.494
+      ],
+      [
+       0.678,
+       0.422
+      ],
+      [
+       0.666,
+       0.399
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "pan",
+     "word": "pan",
+     "wordId": "word:pan",
+     "zh": "平底鍋",
+     "priority": 20,
+     "polygon": [
+      [
+       0.303,
+       0.438
+      ],
+      [
+       0.344,
+       0.443
+      ],
+      [
+       0.369,
+       0.456
+      ],
+      [
+       0.391,
+       0.438
+      ],
+      [
+       0.455,
+       0.438
+      ],
+      [
+       0.474,
+       0.448
+      ],
+      [
+       0.469,
+       0.484
+      ],
+      [
+       0.45,
+       0.495
+      ],
+      [
+       0.395,
+       0.489
+      ],
+      [
+       0.372,
+       0.471
+      ],
+      [
+       0.317,
+       0.458
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "pot",
+     "word": "pot",
+     "wordId": "word:pot",
+     "zh": "鍋子",
+     "priority": 20,
+     "polygon": [
+      [
+       0.523,
+       0.399
+      ],
+      [
+       0.599,
+       0.402
+      ],
+      [
+       0.625,
+       0.409
+      ],
+      [
+       0.623,
+       0.42
+      ],
+      [
+       0.605,
+       0.427
+      ],
+      [
+       0.599,
+       0.477
+      ],
+      [
+       0.586,
+       0.486
+      ],
+      [
+       0.537,
+       0.481
+      ],
+      [
+       0.527,
+       0.468
+      ],
+      [
+       0.518,
+       0.426
+      ],
+      [
+       0.503,
+       0.418
+      ],
+      [
+       0.503,
+       0.411
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    }
+   ],
+   "notes": "爐面被鍋具覆蓋，先測鍋具，再測可見爐面；勿把抽油煙機當作爐子。",
+   "source": "content/core-3000/images/kitchen.png",
+   "missions": [
+    {
+     "title": "熱剩菜",
+     "prompt": "從冰箱拿出剩菜，再用微波爐加熱。",
+     "targets": [
+      "refrigerator",
+      "microwave"
+     ]
+    },
+    {
+     "title": "煎蛋配湯",
+     "prompt": "找到煎蛋的平底鍋、煮湯的鍋子，還有瓦斯爐。",
+     "targets": [
+      "pan",
+      "pot",
+      "stove"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
+  },
+  {
+   "id": "laundry",
+   "title": "陽台整理衣物",
+   "image": "assets/scenes/life/laundry.webp",
+   "width": 1536,
+   "height": 1024,
+   "status": "source-art-ready-hotspots-draft-not-integrated",
+   "targets": [
+    {
+     "id": "shirt",
+     "word": "shirt",
+     "wordId": "word:shirt",
+     "zh": "襯衫",
+     "priority": 10,
+     "polygon": [
+      [
+       0.386,
+       0.224
+      ],
+      [
+       0.448,
+       0.197
+      ],
+      [
+       0.465,
+       0.173
+      ],
+      [
+       0.502,
+       0.196
+      ],
+      [
+       0.536,
+       0.174
+      ],
+      [
+       0.563,
+       0.198
+      ],
+      [
+       0.622,
+       0.23
+      ],
+      [
+       0.656,
+       0.685
+      ],
+      [
+       0.639,
+       0.721
+      ],
+      [
+       0.515,
+       0.757
+      ],
+      [
+       0.416,
+       0.735
+      ],
+      [
+       0.343,
+       0.706
+      ],
+      [
+       0.332,
+       0.682
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "hanger",
+     "word": "hanger",
+     "wordId": "word:hanger",
+     "zh": "衣架",
+     "priority": 20,
+     "polygon": [
+      [
+       0.491,
+       0.078
+      ],
+      [
+       0.501,
+       0.068
+      ],
+      [
+       0.512,
+       0.075
+      ],
+      [
+       0.512,
+       0.094
+      ],
+      [
+       0.505,
+       0.111
+      ],
+      [
+       0.504,
+       0.133
+      ],
+      [
+       0.544,
+       0.182
+      ],
+      [
+       0.533,
+       0.2
+      ],
+      [
+       0.51,
+       0.18
+      ],
+      [
+       0.493,
+       0.16
+      ],
+      [
+       0.466,
+       0.19
+      ],
+      [
+       0.465,
+       0.172
+      ],
+      [
+       0.498,
+       0.137
+      ],
+      [
+       0.499,
+       0.11
+      ],
+      [
+       0.507,
+       0.091
+      ],
+      [
+       0.505,
+       0.081
+      ],
+      [
+       0.497,
+       0.08
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "sock",
+     "word": "sock",
+     "wordId": "word:sock",
+     "zh": "襪子",
+     "priority": 10,
+     "polygon": [
+      [
+       0.706,
+       0.138
+      ],
+      [
+       0.759,
+       0.136
+      ],
+      [
+       0.76,
+       0.251
+      ],
+      [
+       0.769,
+       0.334
+      ],
+      [
+       0.757,
+       0.389
+      ],
+      [
+       0.729,
+       0.443
+      ],
+      [
+       0.704,
+       0.456
+      ],
+      [
+       0.681,
+       0.445
+      ],
+      [
+       0.673,
+       0.421
+      ],
+      [
+       0.693,
+       0.347
+      ],
+      [
+       0.702,
+       0.251
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "clothespin",
+     "word": "clothespin",
+     "wordId": "word:clothespin",
+     "zh": "曬衣夾",
+     "priority": 20,
+     "polygon": [
+      [
+       0.725,
+       0.023
+      ],
+      [
+       0.739,
+       0.023
+      ],
+      [
+       0.743,
+       0.033
+      ],
+      [
+       0.753,
+       0.019
+      ],
+      [
+       0.759,
+       0.024
+      ],
+      [
+       0.759,
+       0.054
+      ],
+      [
+       0.745,
+       0.159
+      ],
+      [
+       0.728,
+       0.165
+      ],
+      [
+       0.72,
+       0.154
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "iron",
+     "word": "iron",
+     "wordId": "word:iron",
+     "zh": "熨斗",
+     "priority": 10,
+     "polygon": [
+      [
+       0.102,
+       0.832
+      ],
+      [
+       0.093,
+       0.792
+      ],
+      [
+       0.106,
+       0.68
+      ],
+      [
+       0.143,
+       0.537
+      ],
+      [
+       0.158,
+       0.519
+      ],
+      [
+       0.173,
+       0.535
+      ],
+      [
+       0.206,
+       0.648
+      ],
+      [
+       0.219,
+       0.8
+      ],
+      [
+       0.215,
+       0.836
+      ],
+      [
+       0.195,
+       0.847
+      ],
+      [
+       0.116,
+       0.845
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "detergent",
+     "word": "detergent",
+     "wordId": "word:detergent",
+     "zh": "洗衣精",
+     "priority": 10,
+     "polygon": [
+      [
+       0.829,
+       0.376
+      ],
+      [
+       0.857,
+       0.376
+      ],
+      [
+       0.858,
+       0.406
+      ],
+      [
+       0.869,
+       0.421
+      ],
+      [
+       0.893,
+       0.441
+      ],
+      [
+       0.915,
+       0.489
+      ],
+      [
+       0.914,
+       0.626
+      ],
+      [
+       0.906,
+       0.653
+      ],
+      [
+       0.823,
+       0.657
+      ],
+      [
+       0.801,
+       0.634
+      ],
+      [
+       0.8,
+       0.52
+      ],
+      [
+       0.808,
+       0.454
+      ],
+      [
+       0.825,
+       0.424
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    }
+   ],
+   "notes": "衣架只取露出的掛鉤和木框，避免與襯衫互搶點擊；洗衣機及籃子是背景。",
+   "source": "content/core-3000/images/laundry.png",
+   "missions": [
+    {
+     "title": "晾襯衫",
+     "prompt": "找到襯衫，再找到掛它的衣架。",
+     "targets": [
+      "shirt",
+      "hanger"
+     ]
+    },
+    {
+     "title": "洗好晾襪子",
+     "prompt": "找到洗衣精，再找到襪子和曬衣夾。",
+     "targets": [
+      "detergent",
+      "sock",
+      "clothespin"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
+  },
+  {
+   "id": "living-room",
+   "title": "客廳休息一下",
+   "image": "assets/scenes/life/living-room.webp",
+   "width": 1536,
+   "height": 1024,
+   "status": "source-art-ready-hotspots-draft-not-integrated",
+   "targets": [
+    {
+     "id": "sofa",
+     "word": "sofa",
+     "wordId": "word:sofa",
+     "zh": "沙發",
+     "priority": 0,
+     "polygon": [
+      [
+       0.004,
+       0.366
+      ],
+      [
+       0.07,
+       0.339
+      ],
+      [
+       0.3,
+       0.336
+      ],
+      [
+       0.347,
+       0.326
+      ],
+      [
+       0.404,
+       0.323
+      ],
+      [
+       0.421,
+       0.355
+      ],
+      [
+       0.545,
+       0.421
+      ],
+      [
+       0.554,
+       0.461
+      ],
+      [
+       0.546,
+       0.658
+      ],
+      [
+       0.467,
+       0.704
+      ],
+      [
+       0.055,
+       0.852
+      ],
+      [
+       0.025,
+       0.875
+      ],
+      [
+       0.005,
+       0.804
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "cushion",
+     "word": "cushion",
+     "wordId": "word:cushion",
+     "zh": "靠墊",
+     "priority": 10,
+     "polygon": [
+      [
+       0.052,
+       0.398
+      ],
+      [
+       0.123,
+       0.402
+      ],
+      [
+       0.163,
+       0.374
+      ],
+      [
+       0.184,
+       0.386
+      ],
+      [
+       0.21,
+       0.471
+      ],
+      [
+       0.231,
+       0.556
+      ],
+      [
+       0.199,
+       0.579
+      ],
+      [
+       0.112,
+       0.597
+      ],
+      [
+       0.084,
+       0.55
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "rug",
+     "word": "rug",
+     "wordId": "word:rug",
+     "zh": "小地毯",
+     "priority": 10,
+     "polygon": [
+      [
+       0.49,
+       0.924
+      ],
+      [
+       0.609,
+       0.866
+      ],
+      [
+       0.794,
+       0.839
+      ],
+      [
+       0.91,
+       0.796
+      ],
+      [
+       0.927,
+       0.82
+      ],
+      [
+       0.901,
+       0.92
+      ],
+      [
+       0.672,
+       1.0
+      ],
+      [
+       0.49,
+       1.0
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "television",
+     "word": "television",
+     "wordId": "word:television",
+     "zh": "電視",
+     "priority": 10,
+     "polygon": [
+      [
+       0.743,
+       0.228
+      ],
+      [
+       0.978,
+       0.223
+      ],
+      [
+       0.981,
+       0.455
+      ],
+      [
+       0.969,
+       0.491
+      ],
+      [
+       0.956,
+       0.488
+      ],
+      [
+       0.954,
+       0.47
+      ],
+      [
+       0.77,
+       0.454
+      ],
+      [
+       0.752,
+       0.475
+      ],
+      [
+       0.744,
+       0.473
+      ],
+      [
+       0.747,
+       0.45
+      ],
+      [
+       0.734,
+       0.446
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "remote",
+     "word": "remote",
+     "wordId": "word:remote",
+     "zh": "遙控器",
+     "priority": 10,
+     "polygon": [
+      [
+       0.481,
+       0.681
+      ],
+      [
+       0.541,
+       0.644
+      ],
+      [
+       0.563,
+       0.641
+      ],
+      [
+       0.572,
+       0.651
+      ],
+      [
+       0.571,
+       0.664
+      ],
+      [
+       0.506,
+       0.704
+      ],
+      [
+       0.488,
+       0.704
+      ],
+      [
+       0.481,
+       0.694
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "shelf",
+     "word": "shelf",
+     "wordId": "word:shelf",
+     "zh": "層架",
+     "priority": 10,
+     "polygon": [
+      [
+       0.483,
+       0.104
+      ],
+      [
+       0.667,
+       0.075
+      ],
+      [
+       0.68,
+       0.085
+      ],
+      [
+       0.685,
+       0.575
+      ],
+      [
+       0.669,
+       0.59
+      ],
+      [
+       0.662,
+       0.59
+      ],
+      [
+       0.661,
+       0.553
+      ],
+      [
+       0.505,
+       0.563
+      ],
+      [
+       0.502,
+       0.59
+      ],
+      [
+       0.486,
+       0.588
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    }
+   ],
+   "notes": "rug 對應區域地毯，不能直接用 carpet 泛稱；小地毯點擊範圍先只取前方露出部分。",
+   "source": "content/core-3000/images/living-room.png",
+   "missions": [
+    {
+     "title": "看電視",
+     "prompt": "找到遙控器，再找到電視。",
+     "targets": [
+      "remote",
+      "television"
+     ]
+    },
+    {
+     "title": "舒服坐下",
+     "prompt": "找到沙發，再找到靠墊。",
+     "targets": [
+      "sofa",
+      "cushion"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
+  },
+  {
+   "id": "street",
+   "title": "街道搭車出門",
+   "image": "assets/scenes/life/street.webp",
+   "width": 1536,
+   "height": 1024,
+   "status": "source-art-ready-hotspots-draft-not-integrated",
+   "targets": [
+    {
+     "id": "car",
+     "word": "car",
+     "wordId": "word:car",
+     "zh": "汽車",
+     "priority": 10,
+     "polygon": [
+      [
+       0.05,
+       0.336
+      ],
+      [
+       0.088,
+       0.314
+      ],
+      [
+       0.123,
+       0.286
+      ],
+      [
+       0.18,
+       0.28
+      ],
+      [
+       0.225,
+       0.29
+      ],
+      [
+       0.252,
+       0.314
+      ],
+      [
+       0.263,
+       0.371
+      ],
+      [
+       0.248,
+       0.405
+      ],
+      [
+       0.231,
+       0.411
+      ],
+      [
+       0.217,
+       0.39
+      ],
+      [
+       0.155,
+       0.398
+      ],
+      [
+       0.14,
+       0.421
+      ],
+      [
+       0.123,
+       0.421
+      ],
+      [
+       0.109,
+       0.407
+      ],
+      [
+       0.063,
+       0.408
+      ],
+      [
+       0.049,
+       0.396
+      ]
+     ],
+     "kk": "[kɑr]",
+     "audio": "assets/voice/words/car.mp3",
+     "pronunciationStatus": "legacy-recording",
+     "inBank": true
+    },
+    {
+     "id": "bus",
+     "word": "bus",
+     "wordId": "word:bus",
+     "zh": "公車",
+     "priority": 10,
+     "polygon": [
+      [
+       0.51,
+       0.232
+      ],
+      [
+       0.527,
+       0.219
+      ],
+      [
+       0.58,
+       0.216
+      ],
+      [
+       0.645,
+       0.237
+      ],
+      [
+       0.664,
+       0.255
+      ],
+      [
+       0.666,
+       0.331
+      ],
+      [
+       0.654,
+       0.351
+      ],
+      [
+       0.636,
+       0.352
+      ],
+      [
+       0.628,
+       0.336
+      ],
+      [
+       0.556,
+       0.339
+      ],
+      [
+       0.545,
+       0.358
+      ],
+      [
+       0.528,
+       0.357
+      ],
+      [
+       0.516,
+       0.338
+      ],
+      [
+       0.508,
+       0.31
+      ]
+     ],
+     "kk": "[bʌs]",
+     "audio": "assets/voice/words/bus.mp3",
+     "pronunciationStatus": "legacy-recording",
+     "inBank": true
+    },
+    {
+     "id": "bicycle",
+     "word": "bicycle",
+     "wordId": "word:bicycle",
+     "zh": "腳踏車",
+     "priority": 10,
+     "polygon": [
+      [
+       0.434,
+       0.526
+      ],
+      [
+       0.463,
+       0.509
+      ],
+      [
+       0.481,
+       0.468
+      ],
+      [
+       0.466,
+       0.43
+      ],
+      [
+       0.466,
+       0.419
+      ],
+      [
+       0.516,
+       0.419
+      ],
+      [
+       0.547,
+       0.407
+      ],
+      [
+       0.583,
+       0.425
+      ],
+      [
+       0.581,
+       0.437
+      ],
+      [
+       0.546,
+       0.434
+      ],
+      [
+       0.545,
+       0.505
+      ],
+      [
+       0.598,
+       0.54
+      ],
+      [
+       0.62,
+       0.466
+      ],
+      [
+       0.615,
+       0.452
+      ],
+      [
+       0.653,
+       0.442
+      ],
+      [
+       0.665,
+       0.449
+      ],
+      [
+       0.66,
+       0.464
+      ],
+      [
+       0.646,
+       0.468
+      ],
+      [
+       0.647,
+       0.494
+      ],
+      [
+       0.689,
+       0.499
+      ],
+      [
+       0.718,
+       0.538
+      ],
+      [
+       0.724,
+       0.587
+      ],
+      [
+       0.709,
+       0.655
+      ],
+      [
+       0.683,
+       0.687
+      ],
+      [
+       0.653,
+       0.685
+      ],
+      [
+       0.628,
+       0.666
+      ],
+      [
+       0.598,
+       0.607
+      ],
+      [
+       0.572,
+       0.643
+      ],
+      [
+       0.559,
+       0.718
+      ],
+      [
+       0.519,
+       0.747
+      ],
+      [
+       0.482,
+       0.743
+      ],
+      [
+       0.447,
+       0.707
+      ],
+      [
+       0.428,
+       0.66
+      ],
+      [
+       0.425,
+       0.592
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "crosswalk",
+     "word": "crosswalk",
+     "wordId": "word:crosswalk",
+     "zh": "行人穿越道",
+     "priority": 0,
+     "polygon": [
+      [
+       0.0,
+       0.432
+      ],
+      [
+       0.09,
+       0.427
+      ],
+      [
+       0.205,
+       0.442
+      ],
+      [
+       0.326,
+       0.479
+      ],
+      [
+       0.482,
+       0.529
+      ],
+      [
+       0.458,
+       0.611
+      ],
+      [
+       0.338,
+       0.653
+      ],
+      [
+       0.099,
+       0.626
+      ],
+      [
+       0.0,
+       0.587
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "helmet",
+     "word": "helmet",
+     "wordId": "word:helmet",
+     "zh": "安全帽",
+     "priority": 20,
+     "polygon": [
+      [
+       0.878,
+       0.477
+      ],
+      [
+       0.9,
+       0.45
+      ],
+      [
+       0.931,
+       0.439
+      ],
+      [
+       0.953,
+       0.45
+      ],
+      [
+       0.964,
+       0.481
+      ],
+      [
+       0.958,
+       0.529
+      ],
+      [
+       0.932,
+       0.547
+      ],
+      [
+       0.906,
+       0.538
+      ],
+      [
+       0.897,
+       0.515
+      ],
+      [
+       0.868,
+       0.505
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "scooter",
+     "word": "scooter",
+     "wordId": "word:scooter",
+     "zh": "速克達",
+     "priority": 5,
+     "polygon": [
+      [
+       0.752,
+       0.437
+      ],
+      [
+       0.786,
+       0.429
+      ],
+      [
+       0.814,
+       0.455
+      ],
+      [
+       0.813,
+       0.502
+      ],
+      [
+       0.842,
+       0.516
+      ],
+      [
+       0.86,
+       0.55
+      ],
+      [
+       0.878,
+       0.544
+      ],
+      [
+       0.983,
+       0.507
+      ],
+      [
+       0.999,
+       0.526
+      ],
+      [
+       0.999,
+       0.659
+      ],
+      [
+       0.985,
+       0.745
+      ],
+      [
+       0.95,
+       0.79
+      ],
+      [
+       0.92,
+       0.801
+      ],
+      [
+       0.902,
+       0.837
+      ],
+      [
+       0.881,
+       0.84
+      ],
+      [
+       0.858,
+       0.823
+      ],
+      [
+       0.811,
+       0.799
+      ],
+      [
+       0.776,
+       0.802
+      ],
+      [
+       0.733,
+       0.879
+      ],
+      [
+       0.709,
+       0.904
+      ],
+      [
+       0.684,
+       0.899
+      ],
+      [
+       0.662,
+       0.86
+      ],
+      [
+       0.651,
+       0.814
+      ],
+      [
+       0.663,
+       0.765
+      ],
+      [
+       0.697,
+       0.717
+      ],
+      [
+       0.699,
+       0.667
+      ],
+      [
+       0.721,
+       0.613
+      ],
+      [
+       0.737,
+       0.533
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    }
+   ],
+   "notes": "畫中是 scooter（速克達）；安全帽優先於車身。圖片邊緣的部分車身及輪子不應設為必點位置。",
+   "source": "content/core-3000/images/street.png",
+   "missions": [
+    {
+     "title": "騎車出門",
+     "prompt": "找到速克達，再找到安全帽。",
+     "targets": [
+      "scooter",
+      "helmet"
+     ]
+    },
+    {
+     "title": "過馬路搭公車",
+     "prompt": "找到行人穿越道，再找到公車。",
+     "targets": [
+      "crosswalk",
+      "bus"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
+  },
+  {
+   "id": "park",
+   "title": "公園散步",
+   "image": "assets/scenes/life/park.webp",
+   "width": 1536,
+   "height": 1024,
+   "status": "source-art-ready-hotspots-draft-not-integrated",
+   "targets": [
+    {
+     "id": "tree",
+     "word": "tree",
+     "wordId": "word:tree",
+     "zh": "樹",
+     "priority": 0,
+     "polygon": [
+      [
+       0.044,
+       0.0
+      ],
+      [
+       0.261,
+       0.0
+      ],
+      [
+       0.254,
+       0.081
+      ],
+      [
+       0.191,
+       0.183
+      ],
+      [
+       0.185,
+       0.339
+      ],
+      [
+       0.184,
+       0.487
+      ],
+      [
+       0.225,
+       0.628
+      ],
+      [
+       0.246,
+       0.688
+      ],
+      [
+       0.204,
+       0.718
+      ],
+      [
+       0.14,
+       0.724
+      ],
+      [
+       0.058,
+       0.704
+      ],
+      [
+       0.07,
+       0.665
+      ],
+      [
+       0.099,
+       0.607
+      ],
+      [
+       0.102,
+       0.43
+      ],
+      [
+       0.107,
+       0.231
+      ],
+      [
+       0.05,
+       0.144
+      ]
+     ],
+     "kk": "[tri]",
+     "audio": "assets/voice/words/tree.mp3",
+     "pronunciationStatus": "legacy-recording",
+     "inBank": true
+    },
+    {
+     "id": "flower",
+     "word": "flower",
+     "wordId": "word:flower",
+     "zh": "花",
+     "priority": 10,
+     "polygon": [
+      [
+       0.089,
+       0.764
+      ],
+      [
+       0.118,
+       0.764
+      ],
+      [
+       0.152,
+       0.791
+      ],
+      [
+       0.171,
+       0.79
+      ],
+      [
+       0.191,
+       0.814
+      ],
+      [
+       0.188,
+       0.848
+      ],
+      [
+       0.208,
+       0.881
+      ],
+      [
+       0.19,
+       0.919
+      ],
+      [
+       0.154,
+       0.94
+      ],
+      [
+       0.131,
+       0.917
+      ],
+      [
+       0.126,
+       0.876
+      ],
+      [
+       0.099,
+       0.853
+      ],
+      [
+       0.091,
+       0.805
+      ]
+     ],
+     "kk": "[ˋflaʊɚ]",
+     "audio": "assets/voice/words/flower.mp3",
+     "pronunciationStatus": "legacy-recording",
+     "inBank": true
+    },
+    {
+     "id": "bench",
+     "word": "bench",
+     "wordId": "word:bench",
+     "zh": "長椅",
+     "priority": 10,
+     "polygon": [
+      [
+       0.295,
+       0.551
+      ],
+      [
+       0.442,
+       0.539
+      ],
+      [
+       0.452,
+       0.557
+      ],
+      [
+       0.455,
+       0.583
+      ],
+      [
+       0.486,
+       0.579
+      ],
+      [
+       0.499,
+       0.59
+      ],
+      [
+       0.497,
+       0.618
+      ],
+      [
+       0.503,
+       0.621
+      ],
+      [
+       0.504,
+       0.646
+      ],
+      [
+       0.496,
+       0.657
+      ],
+      [
+       0.499,
+       0.696
+      ],
+      [
+       0.491,
+       0.7
+      ],
+      [
+       0.482,
+       0.656
+      ],
+      [
+       0.463,
+       0.66
+      ],
+      [
+       0.46,
+       0.718
+      ],
+      [
+       0.45,
+       0.719
+      ],
+      [
+       0.448,
+       0.662
+      ],
+      [
+       0.326,
+       0.679
+      ],
+      [
+       0.32,
+       0.735
+      ],
+      [
+       0.312,
+       0.735
+      ],
+      [
+       0.312,
+       0.682
+      ],
+      [
+       0.301,
+       0.669
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "fountain",
+     "word": "fountain",
+     "wordId": "word:fountain",
+     "zh": "噴水池",
+     "priority": 10,
+     "polygon": [
+      [
+       0.637,
+       0.556
+      ],
+      [
+       0.705,
+       0.547
+      ],
+      [
+       0.746,
+       0.484
+      ],
+      [
+       0.764,
+       0.479
+      ],
+      [
+       0.777,
+       0.518
+      ],
+      [
+       0.785,
+       0.44
+      ],
+      [
+       0.797,
+       0.434
+      ],
+      [
+       0.809,
+       0.448
+      ],
+      [
+       0.818,
+       0.513
+      ],
+      [
+       0.84,
+       0.486
+      ],
+      [
+       0.862,
+       0.485
+      ],
+      [
+       0.883,
+       0.52
+      ],
+      [
+       0.89,
+       0.547
+      ],
+      [
+       0.928,
+       0.554
+      ],
+      [
+       0.932,
+       0.6
+      ],
+      [
+       0.899,
+       0.627
+      ],
+      [
+       0.664,
+       0.623
+      ],
+      [
+       0.637,
+       0.601
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "dog",
+     "word": "dog",
+     "wordId": "word:dog",
+     "zh": "狗",
+     "priority": 10,
+     "polygon": [
+      [
+       0.824,
+       0.639
+      ],
+      [
+       0.836,
+       0.619
+      ],
+      [
+       0.85,
+       0.617
+      ],
+      [
+       0.86,
+       0.635
+      ],
+      [
+       0.876,
+       0.63
+      ],
+      [
+       0.883,
+       0.615
+      ],
+      [
+       0.89,
+       0.62
+      ],
+      [
+       0.893,
+       0.637
+      ],
+      [
+       0.882,
+       0.655
+      ],
+      [
+       0.88,
+       0.702
+      ],
+      [
+       0.87,
+       0.709
+      ],
+      [
+       0.867,
+       0.686
+      ],
+      [
+       0.856,
+       0.68
+      ],
+      [
+       0.845,
+       0.71
+      ],
+      [
+       0.833,
+       0.709
+      ],
+      [
+       0.836,
+       0.676
+      ],
+      [
+       0.825,
+       0.662
+      ]
+     ],
+     "kk": "[dɔg]",
+     "audio": "assets/voice/words/dog.mp3",
+     "pronunciationStatus": "legacy-recording",
+     "inBank": true
+    },
+    {
+     "id": "kite",
+     "word": "kite",
+     "wordId": "word:kite",
+     "zh": "風箏",
+     "priority": 10,
+     "polygon": [
+      [
+       0.772,
+       0.123
+      ],
+      [
+       0.794,
+       0.111
+      ],
+      [
+       0.804,
+       0.131
+      ],
+      [
+       0.788,
+       0.149
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    }
+   ],
+   "notes": "tree 只先標前景大樹的樹幹與部分主枝；風箏與花朵需放大確認，小物件不能要求精準點一個像素。",
+   "source": "content/core-3000/images/park.png",
+   "missions": [
+    {
+     "title": "樹下休息",
+     "prompt": "找到長椅，再找到可以遮陽的樹。",
+     "targets": [
+      "bench",
+      "tree"
+     ]
+    },
+    {
+     "title": "逛逛公園",
+     "prompt": "找到噴水池，再找到天上的風箏。",
+     "targets": [
+      "fountain",
+      "kite"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
+  },
+  {
+   "id": "clinic",
+   "title": "診所看診",
+   "image": "assets/scenes/life/clinic.webp",
+   "width": 1536,
+   "height": 1024,
+   "status": "source-art-ready-hotspots-draft-not-integrated",
+   "targets": [
+    {
+     "id": "doctor",
+     "word": "doctor",
+     "wordId": "word:doctor",
+     "zh": "醫師",
+     "priority": 0,
+     "polygon": [
+      [
+       0.164,
+       0.09
+      ],
+      [
+       0.226,
+       0.054
+      ],
+      [
+       0.299,
+       0.067
+      ],
+      [
+       0.333,
+       0.11
+      ],
+      [
+       0.347,
+       0.168
+      ],
+      [
+       0.331,
+       0.247
+      ],
+      [
+       0.356,
+       0.305
+      ],
+      [
+       0.464,
+       0.489
+      ],
+      [
+       0.553,
+       0.524
+      ],
+      [
+       0.622,
+       0.534
+      ],
+      [
+       0.648,
+       0.579
+      ],
+      [
+       0.629,
+       0.61
+      ],
+      [
+       0.56,
+       0.618
+      ],
+      [
+       0.473,
+       0.585
+      ],
+      [
+       0.432,
+       0.629
+      ],
+      [
+       0.414,
+       0.677
+      ],
+      [
+       0.259,
+       0.699
+      ],
+      [
+       0.079,
+       0.684
+      ],
+      [
+       0.07,
+       0.532
+      ],
+      [
+       0.1,
+       0.386
+      ],
+      [
+       0.14,
+       0.301
+      ]
+     ],
+     "kk": "[ˋdɑktɚ]",
+     "audio": "assets/voice/words/doctor.mp3",
+     "pronunciationStatus": "legacy-recording",
+     "inBank": true
+    },
+    {
+     "id": "nurse",
+     "word": "nurse",
+     "wordId": "word:nurse",
+     "zh": "護理師",
+     "priority": 0,
+     "polygon": [
+      [
+       0.685,
+       0.0
+      ],
+      [
+       0.741,
+       0.0
+      ],
+      [
+       0.778,
+       0.049
+      ],
+      [
+       0.788,
+       0.116
+      ],
+      [
+       0.798,
+       0.161
+      ],
+      [
+       0.83,
+       0.185
+      ],
+      [
+       0.84,
+       0.251
+      ],
+      [
+       0.835,
+       0.366
+      ],
+      [
+       0.803,
+       0.527
+      ],
+      [
+       0.784,
+       0.691
+      ],
+      [
+       0.762,
+       0.719
+      ],
+      [
+       0.708,
+       0.715
+      ],
+      [
+       0.657,
+       0.688
+      ],
+      [
+       0.665,
+       0.543
+      ],
+      [
+       0.634,
+       0.521
+      ],
+      [
+       0.613,
+       0.435
+      ],
+      [
+       0.607,
+       0.297
+      ],
+      [
+       0.625,
+       0.209
+      ],
+      [
+       0.67,
+       0.165
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "mask",
+     "word": "mask",
+     "wordId": "word:mask",
+     "zh": "口罩",
+     "priority": 10,
+     "polygon": [
+      [
+       0.042,
+       0.857
+      ],
+      [
+       0.063,
+       0.831
+      ],
+      [
+       0.11,
+       0.816
+      ],
+      [
+       0.214,
+       0.804
+      ],
+      [
+       0.306,
+       0.803
+      ],
+      [
+       0.315,
+       0.816
+      ],
+      [
+       0.345,
+       0.826
+      ],
+      [
+       0.359,
+       0.846
+      ],
+      [
+       0.355,
+       0.876
+      ],
+      [
+       0.329,
+       0.896
+      ],
+      [
+       0.301,
+       0.905
+      ],
+      [
+       0.175,
+       0.924
+      ],
+      [
+       0.105,
+       0.926
+      ],
+      [
+       0.061,
+       0.908
+      ],
+      [
+       0.047,
+       0.886
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "thermometer",
+     "word": "thermometer",
+     "wordId": "word:thermometer",
+     "zh": "體溫計",
+     "priority": 10,
+     "polygon": [
+      [
+       0.389,
+       0.88
+      ],
+      [
+       0.492,
+       0.852
+      ],
+      [
+       0.538,
+       0.843
+      ],
+      [
+       0.554,
+       0.85
+      ],
+      [
+       0.563,
+       0.866
+      ],
+      [
+       0.558,
+       0.879
+      ],
+      [
+       0.542,
+       0.891
+      ],
+      [
+       0.456,
+       0.901
+      ],
+      [
+       0.39,
+       0.894
+      ]
+     ],
+     "kk": "[θɚˋmɑmətɚ]",
+     "audio": "assets/voice/words/thermometer.mp3",
+     "pronunciationStatus": "legacy-recording",
+     "inBank": true
+    },
+    {
+     "id": "bandage",
+     "word": "bandage",
+     "wordId": "word:bandage",
+     "zh": "敷料貼布",
+     "priority": 10,
+     "polygon": [
+      [
+       0.656,
+       0.864
+      ],
+      [
+       0.745,
+       0.854
+      ],
+      [
+       0.757,
+       0.867
+      ],
+      [
+       0.756,
+       0.883
+      ],
+      [
+       0.667,
+       0.895
+      ],
+      [
+       0.654,
+       0.883
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    },
+    {
+     "id": "medicine",
+     "word": "medicine",
+     "wordId": "word:medicine",
+     "zh": "藥品",
+     "priority": 10,
+     "polygon": [
+      [
+       0.604,
+       0.641
+      ],
+      [
+       0.643,
+       0.639
+      ],
+      [
+       0.649,
+       0.654
+      ],
+      [
+       0.648,
+       0.684
+      ],
+      [
+       0.642,
+       0.693
+      ],
+      [
+       0.653,
+       0.712
+      ],
+      [
+       0.655,
+       0.796
+      ],
+      [
+       0.644,
+       0.821
+      ],
+      [
+       0.613,
+       0.825
+      ],
+      [
+       0.596,
+       0.813
+      ],
+      [
+       0.592,
+       0.726
+      ],
+      [
+       0.598,
+       0.702
+      ],
+      [
+       0.601,
+       0.686
+      ],
+      [
+       0.6,
+       0.654
+      ]
+     ],
+     "kk": null,
+     "audio": null,
+     "pronunciationStatus": "whole-word-device-voice-until-curated",
+     "inBank": false
+    }
+   ],
+   "notes": "medicine 是情境中藥瓶代表的藥品；一般無標籤棕色瓶本身不足以推斷藥名或劑量，本練習不教用藥。",
+   "source": "content/core-3000/images/clinic.png",
+   "missions": [
+    {
+     "title": "量體溫",
+     "prompt": "找到護理師，再找到體溫計。",
+     "targets": [
+      "nurse",
+      "thermometer"
+     ]
+    },
+    {
+     "title": "看醫生拿藥",
+     "prompt": "找到醫師，再找到藥品。",
+     "targets": [
+      "doctor",
+      "medicine"
+     ]
+    }
+   ],
+   "missionSource": "Claude 依該圖六詞撰寫，待教材校對"
+  }
+ ],
+ "_說明": "由 assets/art-source/life-scenes-01/scenes.draft.json 產生：圖片轉成 webp，kk／audio 只沿用 data/words.json 已有的資料（沒有的就是 null，不猜）。多邊形沿用草稿，已疊圖目測，仍待實機點擊驗收。 第二批（PR #11）的生活任務由 Claude 依每張圖的六詞補寫（missionSource），待教材校對。"
+}

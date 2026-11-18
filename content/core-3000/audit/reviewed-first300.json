@@ -1,0 +1,6003 @@
+{
+  "schemaVersion": 1,
+  "status": "ai-reviewed-editorial-subset",
+  "count": 299,
+  "note": "299 reviewed common-sense entries from the first 300 source selections; erm excluded. This is AI editorial review, not human review. learningBand is an editorial batch, not CEFR or TOEIC.",
+  "words": [
+    {
+      "id": "word:the",
+      "word": "the",
+      "displayWord": "the",
+      "zh": "這個；那個（指特定事物）",
+      "pos": "article",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "the",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please close the door.",
+        "zh": "請把門關上。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:be",
+      "word": "be",
+      "displayWord": "be",
+      "zh": "是；處於某種狀態",
+      "pos": "verb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "be",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I want to be a teacher.",
+        "zh": "我想成為老師。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:and",
+      "word": "and",
+      "displayWord": "and",
+      "zh": "和；而且",
+      "pos": "conjunction",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "and",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I like tea and coffee.",
+        "zh": "我喜歡茶和咖啡。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:of",
+      "word": "of",
+      "displayWord": "of",
+      "zh": "……的；屬於",
+      "pos": "preposition",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "of",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This is a photo of my family.",
+        "zh": "這是我家人的照片。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:a",
+      "word": "a",
+      "displayWord": "a",
+      "zh": "一個；一種",
+      "pos": "article",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "a",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I need a pen.",
+        "zh": "我需要一支筆。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:in",
+      "word": "in",
+      "displayWord": "in",
+      "zh": "在……裡面",
+      "pos": "preposition",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "in",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The keys are in my bag.",
+        "zh": "鑰匙在我的包包裡。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:to",
+      "word": "to",
+      "displayWord": "to",
+      "zh": "到；向",
+      "pos": "preposition",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "to",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We walk to school.",
+        "zh": "我們走路去學校。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:have",
+      "word": "have",
+      "displayWord": "have",
+      "zh": "有；擁有",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "have",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I have a question.",
+        "zh": "我有一個問題。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:it",
+      "word": "it",
+      "displayWord": "it",
+      "zh": "它；這件事",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "it",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "It is on the table.",
+        "zh": "它在桌上。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:i",
+      "word": "i",
+      "displayWord": "I",
+      "zh": "我",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "i",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I live near the station.",
+        "zh": "我住在車站附近。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:that",
+      "word": "that",
+      "displayWord": "that",
+      "zh": "那個；那件事",
+      "pos": "determiner,pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "that",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "That bag is mine.",
+        "zh": "那個包包是我的。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:for",
+      "word": "for",
+      "displayWord": "for",
+      "zh": "給；為了",
+      "pos": "preposition",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "for",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This gift is for you.",
+        "zh": "這份禮物是給你的。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:you",
+      "word": "you",
+      "displayWord": "you",
+      "zh": "你；你們",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "you",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "You can sit here.",
+        "zh": "你可以坐這裡。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:he",
+      "word": "he",
+      "displayWord": "he",
+      "zh": "他",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "he",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "He works at a hospital.",
+        "zh": "他在醫院工作。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:with",
+      "word": "with",
+      "displayWord": "with",
+      "zh": "和……一起；帶著",
+      "pos": "preposition",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "with",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I live with my sister.",
+        "zh": "我和姊姊住在一起。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:on",
+      "word": "on",
+      "displayWord": "on",
+      "zh": "在……上面",
+      "pos": "preposition",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "on",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The book is on the desk.",
+        "zh": "書在書桌上。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:do",
+      "word": "do",
+      "displayWord": "do",
+      "zh": "做",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "do",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "What do you do after work?",
+        "zh": "你下班後做什麼？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:say",
+      "word": "say",
+      "displayWord": "say",
+      "zh": "說",
+      "pos": "verb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "say",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please say your name.",
+        "zh": "請說出你的名字。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:this",
+      "word": "this",
+      "displayWord": "this",
+      "zh": "這個；這件事",
+      "pos": "determiner,pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "this",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This room is clean.",
+        "zh": "這個房間很乾淨。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:they",
+      "word": "they",
+      "displayWord": "they",
+      "zh": "他們；她們；它們",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "they",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "They are waiting outside.",
+        "zh": "他們正在外面等。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:at",
+      "word": "at",
+      "displayWord": "at",
+      "zh": "在（某地或某時）",
+      "pos": "preposition",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "at",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Meet me at the station.",
+        "zh": "在車站和我見面。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:but",
+      "word": "but",
+      "displayWord": "but",
+      "zh": "但是",
+      "pos": "conjunction",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "but",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The room is small but comfortable.",
+        "zh": "房間很小，但是很舒適。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:we",
+      "word": "we",
+      "displayWord": "we",
+      "zh": "我們",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "we",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We are ready to go.",
+        "zh": "我們準備好出發了。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:his",
+      "word": "his",
+      "displayWord": "his",
+      "zh": "他的",
+      "pos": "determiner,pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "his",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "His phone is on the table.",
+        "zh": "他的手機在桌上。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:from",
+      "word": "from",
+      "displayWord": "from",
+      "zh": "從；來自",
+      "pos": "preposition",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "from",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This train comes from Taipei.",
+        "zh": "這班火車從台北開來。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:not",
+      "word": "not",
+      "displayWord": "not",
+      "zh": "不；不是",
+      "pos": "adverb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "not",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This seat is not free.",
+        "zh": "這個座位不是空的。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:by",
+      "word": "by",
+      "displayWord": "by",
+      "zh": "在……旁邊；藉由",
+      "pos": "preposition",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "by",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We travel by train.",
+        "zh": "我們搭火車旅行。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:she",
+      "word": "she",
+      "displayWord": "she",
+      "zh": "她",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "she",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "She is my new teacher.",
+        "zh": "她是我的新老師。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:or",
+      "word": "or",
+      "displayWord": "or",
+      "zh": "或；或者",
+      "pos": "conjunction",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "or",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Would you like tea or water?",
+        "zh": "你想喝茶還是水？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:as",
+      "word": "as",
+      "displayWord": "as",
+      "zh": "作為；當……時",
+      "pos": "preposition,conjunction",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "as",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "She works as a nurse.",
+        "zh": "她擔任護理師。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:what",
+      "word": "what",
+      "displayWord": "what",
+      "zh": "什麼",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "what",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "What is your name?",
+        "zh": "你叫什麼名字？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:go",
+      "word": "go",
+      "displayWord": "go",
+      "zh": "去；前往",
+      "pos": "verb",
+      "topic": "travel",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "go",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We go to the park on Sundays.",
+        "zh": "我們星期天去公園。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:their",
+      "word": "their",
+      "displayWord": "their",
+      "zh": "他們的；她們的；它們的",
+      "pos": "determiner",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "their",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Their house is near the river.",
+        "zh": "他們的房子在河邊附近。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:can",
+      "word": "can",
+      "displayWord": "can",
+      "zh": "能；可以",
+      "pos": "modal",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "can",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I can help you.",
+        "zh": "我可以幫你。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:who",
+      "word": "who",
+      "displayWord": "who",
+      "zh": "誰",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "who",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Who is at the door?",
+        "zh": "誰在門口？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:get",
+      "word": "get",
+      "displayWord": "get",
+      "zh": "得到；取得",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "get",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Where can I get a ticket?",
+        "zh": "我可以在哪裡買到票？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:if",
+      "word": "if",
+      "displayWord": "if",
+      "zh": "如果",
+      "pos": "conjunction",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "if",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Call me if you need help.",
+        "zh": "如果你需要幫忙，請打給我。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:would",
+      "word": "would",
+      "displayWord": "would",
+      "zh": "會；願意（用於假設或委婉說法）",
+      "pos": "modal",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "would",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Would you like some tea?",
+        "zh": "你想喝點茶嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:her",
+      "word": "her",
+      "displayWord": "her",
+      "zh": "她；她的",
+      "pos": "pronoun,determiner",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "her",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I know her sister.",
+        "zh": "我認識她的姊姊。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:all",
+      "word": "all",
+      "displayWord": "all",
+      "zh": "全部；所有的",
+      "pos": "determiner,pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "all",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "All the shops are closed.",
+        "zh": "所有商店都關門了。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:my",
+      "word": "my",
+      "displayWord": "my",
+      "zh": "我的",
+      "pos": "determiner",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "my",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "My bag is blue.",
+        "zh": "我的包包是藍色的。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:make",
+      "word": "make",
+      "displayWord": "make",
+      "zh": "製作；做出",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "make",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I can make dinner tonight.",
+        "zh": "我今晚可以做晚餐。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:about",
+      "word": "about",
+      "displayWord": "about",
+      "zh": "關於；大約",
+      "pos": "preposition,adverb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "about",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Tell me about your trip.",
+        "zh": "跟我說說你的旅行。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:know",
+      "word": "know",
+      "displayWord": "know",
+      "zh": "知道；認識",
+      "pos": "verb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "know",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I know the answer.",
+        "zh": "我知道答案。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:will",
+      "word": "will",
+      "displayWord": "will",
+      "zh": "將會；願意",
+      "pos": "modal",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "will",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I will call you tomorrow.",
+        "zh": "我明天會打給你。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:up",
+      "word": "up",
+      "displayWord": "up",
+      "zh": "向上；往上",
+      "pos": "adverb",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "up",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please look up.",
+        "zh": "請往上看。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:one",
+      "word": "one",
+      "displayWord": "one",
+      "zh": "一；一個",
+      "pos": "number",
+      "topic": "numbers",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "one",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I need one ticket.",
+        "zh": "我需要一張票。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:time",
+      "word": "time",
+      "displayWord": "time",
+      "zh": "時間；次數",
+      "pos": "noun",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "time",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Do you have time for lunch?",
+        "zh": "你有時間吃午餐嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:there",
+      "word": "there",
+      "displayWord": "there",
+      "zh": "在那裡",
+      "pos": "adverb",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "there",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Your bag is over there.",
+        "zh": "你的包包在那裡。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:year",
+      "word": "year",
+      "displayWord": "year",
+      "zh": "年",
+      "pos": "noun",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "year",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We moved here last year.",
+        "zh": "我們去年搬來這裡。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:so",
+      "word": "so",
+      "displayWord": "so",
+      "zh": "所以；如此",
+      "pos": "conjunction,adverb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "so",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "It is raining, so we will stay home.",
+        "zh": "正在下雨，所以我們會待在家。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:think",
+      "word": "think",
+      "displayWord": "think",
+      "zh": "想；認為",
+      "pos": "verb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "think",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I think this is your bag.",
+        "zh": "我想這是你的包包。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:when",
+      "word": "when",
+      "displayWord": "when",
+      "zh": "何時；當……的時候",
+      "pos": "adverb,conjunction",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "when",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "When does the shop open?",
+        "zh": "這家店幾點開門？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:which",
+      "word": "which",
+      "displayWord": "which",
+      "zh": "哪一個",
+      "pos": "determiner,pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "which",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Which bus goes to the station?",
+        "zh": "哪一班公車會到車站？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:them",
+      "word": "them",
+      "displayWord": "them",
+      "zh": "他們；她們；它們（受詞）",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "them",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I will call them tonight.",
+        "zh": "我今晚會打給他們。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:an",
+      "word": "an",
+      "displayWord": "an",
+      "zh": "一個；一種（用於母音發音前）",
+      "pos": "article",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "an",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "She ate an apple.",
+        "zh": "她吃了一顆蘋果。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:some",
+      "word": "some",
+      "displayWord": "some",
+      "zh": "一些",
+      "pos": "determiner,pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "some",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I need some water.",
+        "zh": "我需要一些水。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:me",
+      "word": "me",
+      "displayWord": "me",
+      "zh": "我（受詞）",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "me",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please help me.",
+        "zh": "請幫幫我。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:people",
+      "word": "people",
+      "displayWord": "people",
+      "zh": "人；人們",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "people",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Many people take this bus.",
+        "zh": "很多人搭這班公車。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:take",
+      "word": "take",
+      "displayWord": "take",
+      "zh": "拿；帶；搭乘",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "take",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Take your bag with you.",
+        "zh": "把你的包包帶著。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:out",
+      "word": "out",
+      "displayWord": "out",
+      "zh": "在外面；出去",
+      "pos": "adverb",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "out",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Let's go out for dinner.",
+        "zh": "我們出去吃晚餐吧。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:into",
+      "word": "into",
+      "displayWord": "into",
+      "zh": "進入……裡面",
+      "pos": "preposition",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "into",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "She walked into the room.",
+        "zh": "她走進房間。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:just",
+      "word": "just",
+      "displayWord": "just",
+      "zh": "剛剛；只是",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "just",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I just got home.",
+        "zh": "我剛剛到家。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:see",
+      "word": "see",
+      "displayWord": "see",
+      "zh": "看見",
+      "pos": "verb",
+      "topic": "senses",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "see",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I can see the station from here.",
+        "zh": "我從這裡看得到車站。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:him",
+      "word": "him",
+      "displayWord": "him",
+      "zh": "他（受詞）",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "him",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please give him the key.",
+        "zh": "請把鑰匙交給他。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:your",
+      "word": "your",
+      "displayWord": "your",
+      "zh": "你的；你們的",
+      "pos": "determiner",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "your",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Is this your phone?",
+        "zh": "這是你的手機嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:come",
+      "word": "come",
+      "displayWord": "come",
+      "zh": "來；過來",
+      "pos": "verb",
+      "topic": "travel",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "come",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please come here.",
+        "zh": "請過來這裡。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:could",
+      "word": "could",
+      "displayWord": "could",
+      "zh": "能；可以（也用於委婉請求）",
+      "pos": "modal",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "could",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Could you open the window?",
+        "zh": "可以請你打開窗戶嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:now",
+      "word": "now",
+      "displayWord": "now",
+      "zh": "現在",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "now",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We can leave now.",
+        "zh": "我們現在可以離開了。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:than",
+      "word": "than",
+      "displayWord": "than",
+      "zh": "比",
+      "pos": "conjunction,preposition",
+      "topic": "comparison",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "than",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This bag is smaller than mine.",
+        "zh": "這個包包比我的小。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:like",
+      "word": "like",
+      "displayWord": "like",
+      "zh": "喜歡",
+      "pos": "verb",
+      "topic": "feelings",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "like",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I like this song.",
+        "zh": "我喜歡這首歌。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:other",
+      "word": "other",
+      "displayWord": "other",
+      "zh": "其他的",
+      "pos": "determiner,adjective",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "other",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Do you have any other questions?",
+        "zh": "你還有其他問題嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:how",
+      "word": "how",
+      "displayWord": "how",
+      "zh": "如何；怎麼",
+      "pos": "adverb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "how",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "How do I get to the station?",
+        "zh": "我要怎麼去車站？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:then",
+      "word": "then",
+      "displayWord": "then",
+      "zh": "然後；當時",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "then",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Wash your hands, then eat.",
+        "zh": "先洗手，然後吃飯。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:its",
+      "word": "its",
+      "displayWord": "its",
+      "zh": "它的",
+      "pos": "determiner",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "its",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The dog is eating its food.",
+        "zh": "那隻狗正在吃牠的食物。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:our",
+      "word": "our",
+      "displayWord": "our",
+      "zh": "我們的",
+      "pos": "determiner",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "our",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Our class starts at nine.",
+        "zh": "我們九點開始上課。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:two",
+      "word": "two",
+      "displayWord": "two",
+      "zh": "二；兩個",
+      "pos": "number",
+      "topic": "numbers",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "two",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I bought two tickets.",
+        "zh": "我買了兩張票。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:more",
+      "word": "more",
+      "displayWord": "more",
+      "zh": "更多；更",
+      "pos": "determiner,adverb",
+      "topic": "comparison",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "more",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We need more chairs.",
+        "zh": "我們需要更多椅子。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:these",
+      "word": "these",
+      "displayWord": "these",
+      "zh": "這些",
+      "pos": "determiner,pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "these",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "These shoes are comfortable.",
+        "zh": "這雙鞋很舒服。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:want",
+      "word": "want",
+      "displayWord": "want",
+      "zh": "想要",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "want",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I want a glass of water.",
+        "zh": "我想要一杯水。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:way",
+      "word": "way",
+      "displayWord": "way",
+      "zh": "方法；路線",
+      "pos": "noun",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "way",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Is this the right way to the station?",
+        "zh": "這是去車站的正確方向嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:look",
+      "word": "look",
+      "displayWord": "look",
+      "zh": "看；看起來",
+      "pos": "verb",
+      "topic": "senses",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "look",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Look at this photo.",
+        "zh": "看看這張照片。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:first",
+      "word": "first",
+      "displayWord": "first",
+      "zh": "第一；首先",
+      "pos": "number,adverb",
+      "topic": "numbers",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "first",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This is my first visit to Taiwan.",
+        "zh": "這是我第一次來台灣。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:also",
+      "word": "also",
+      "displayWord": "also",
+      "zh": "也",
+      "pos": "adverb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "also",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "My sister also likes music.",
+        "zh": "我的姊姊也喜歡音樂。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:new",
+      "word": "new",
+      "displayWord": "new",
+      "zh": "新的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "new",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I need a new phone.",
+        "zh": "我需要一支新手機。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:because",
+      "word": "because",
+      "displayWord": "because",
+      "zh": "因為",
+      "pos": "conjunction",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "because",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I stayed home because I was tired.",
+        "zh": "我因為很累而待在家。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:day",
+      "word": "day",
+      "displayWord": "day",
+      "zh": "一天；白天",
+      "pos": "noun",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "day",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Have a nice day.",
+        "zh": "祝你有美好的一天。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:use",
+      "word": "use",
+      "displayWord": "use",
+      "zh": "使用",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "use",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Can I use your pen?",
+        "zh": "我可以用你的筆嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:no",
+      "word": "no",
+      "displayWord": "no",
+      "zh": "沒有；不",
+      "pos": "determiner,adverb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "no",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "There is no milk in the fridge.",
+        "zh": "冰箱裡沒有牛奶。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:man",
+      "word": "man",
+      "displayWord": "man",
+      "zh": "男人；成年男性",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "man",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "That man is my teacher.",
+        "zh": "那個男人是我的老師。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:find",
+      "word": "find",
+      "displayWord": "find",
+      "zh": "找到；發現",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "find",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I cannot find my keys.",
+        "zh": "我找不到我的鑰匙。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:here",
+      "word": "here",
+      "displayWord": "here",
+      "zh": "在這裡",
+      "pos": "adverb",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "here",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please wait here.",
+        "zh": "請在這裡等。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:thing",
+      "word": "thing",
+      "displayWord": "thing",
+      "zh": "東西；事情",
+      "pos": "noun",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "thing",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "What is that thing on the table?",
+        "zh": "桌上那個東西是什麼？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:give",
+      "word": "give",
+      "displayWord": "give",
+      "zh": "給",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "give",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please give me a minute.",
+        "zh": "請給我一分鐘。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:many",
+      "word": "many",
+      "displayWord": "many",
+      "zh": "許多（用於可數名詞）",
+      "pos": "determiner",
+      "topic": "quantity",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "many",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "There are many books here.",
+        "zh": "這裡有很多書。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:well",
+      "word": "well",
+      "displayWord": "well",
+      "zh": "好地；健康的",
+      "pos": "adverb,adjective",
+      "topic": "health",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "well",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I slept well last night.",
+        "zh": "我昨晚睡得很好。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:only",
+      "word": "only",
+      "displayWord": "only",
+      "zh": "只有；僅僅",
+      "pos": "adverb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "only",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I only need one ticket.",
+        "zh": "我只需要一張票。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:those",
+      "word": "those",
+      "displayWord": "those",
+      "zh": "那些",
+      "pos": "determiner,pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "those",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Those bags are heavy.",
+        "zh": "那些包包很重。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:tell",
+      "word": "tell",
+      "displayWord": "tell",
+      "zh": "告訴；說出",
+      "pos": "verb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "tell",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please tell me your name.",
+        "zh": "請告訴我你的名字。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:very",
+      "word": "very",
+      "displayWord": "very",
+      "zh": "非常",
+      "pos": "adverb",
+      "topic": "degree",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "very",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This room is very quiet.",
+        "zh": "這個房間非常安靜。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:even",
+      "word": "even",
+      "displayWord": "even",
+      "zh": "甚至；連……都",
+      "pos": "adverb",
+      "topic": "degree",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "even",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Even my brother can cook this dish.",
+        "zh": "連我的弟弟都會做這道菜。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:back",
+      "word": "back",
+      "displayWord": "back",
+      "zh": "回去；回來",
+      "pos": "adverb",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "back",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I will be back at six.",
+        "zh": "我六點會回來。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:any",
+      "word": "any",
+      "displayWord": "any",
+      "zh": "任何；一些（常用於問句或否定句）",
+      "pos": "determiner,pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "any",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Do you have any questions?",
+        "zh": "你有任何問題嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:good",
+      "word": "good",
+      "displayWord": "good",
+      "zh": "好的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "good",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This is a good idea.",
+        "zh": "這是個好主意。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:woman",
+      "word": "woman",
+      "displayWord": "woman",
+      "zh": "女人；成年女性",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "woman",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The woman by the door is my aunt.",
+        "zh": "門邊那位女士是我的阿姨。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:through",
+      "word": "through",
+      "displayWord": "through",
+      "zh": "穿過；經由",
+      "pos": "preposition",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "through",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We walked through the park.",
+        "zh": "我們步行穿過公園。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:us",
+      "word": "us",
+      "displayWord": "us",
+      "zh": "我們（受詞）",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "us",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please come with us.",
+        "zh": "請和我們一起來。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:life",
+      "word": "life",
+      "displayWord": "life",
+      "zh": "生活；生命",
+      "pos": "noun",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "life",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Life is busy in the city.",
+        "zh": "城市生活很忙碌。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:child",
+      "word": "child",
+      "displayWord": "child",
+      "zh": "孩子",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "child",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The child is reading a book.",
+        "zh": "那個孩子正在看書。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:work",
+      "word": "work",
+      "displayWord": "work",
+      "zh": "工作",
+      "pos": "verb,noun",
+      "topic": "work",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "work",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I work near the station.",
+        "zh": "我在車站附近工作。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:down",
+      "word": "down",
+      "displayWord": "down",
+      "zh": "向下；往下",
+      "pos": "adverb",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "down",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please walk down the stairs.",
+        "zh": "請走下樓梯。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:may",
+      "word": "may",
+      "displayWord": "may",
+      "zh": "可能；可以",
+      "pos": "modal",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "may",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "It may rain this afternoon.",
+        "zh": "今天下午可能會下雨。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:after",
+      "word": "after",
+      "displayWord": "after",
+      "zh": "在……之後",
+      "pos": "preposition,conjunction",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "after",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We can talk after lunch.",
+        "zh": "我們可以午餐後再聊。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:should",
+      "word": "should",
+      "displayWord": "should",
+      "zh": "應該",
+      "pos": "modal",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "should",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "You should get some rest.",
+        "zh": "你應該休息一下。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:call",
+      "word": "call",
+      "displayWord": "call",
+      "zh": "打電話；呼叫",
+      "pos": "verb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "call",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please call me tonight.",
+        "zh": "請今晚打給我。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:world",
+      "word": "world",
+      "displayWord": "world",
+      "zh": "世界",
+      "pos": "noun",
+      "topic": "places",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "world",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I want to travel around the world.",
+        "zh": "我想環遊世界。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:over",
+      "word": "over",
+      "displayWord": "over",
+      "zh": "在……上方；越過",
+      "pos": "preposition",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "over",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The plane flew over the city.",
+        "zh": "飛機飛過城市上空。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:school",
+      "word": "school",
+      "displayWord": "school",
+      "zh": "學校",
+      "pos": "noun",
+      "topic": "learning",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "school",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The school is near my house.",
+        "zh": "學校在我家附近。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:still",
+      "word": "still",
+      "displayWord": "still",
+      "zh": "仍然；還是",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "still",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "She is still at work.",
+        "zh": "她還在上班。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:try",
+      "word": "try",
+      "displayWord": "try",
+      "zh": "嘗試",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "try",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I want to try this dish.",
+        "zh": "我想試試這道菜。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:last",
+      "word": "last",
+      "displayWord": "last",
+      "zh": "上一個的；最後的",
+      "pos": "adjective",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "last",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I saw her last week.",
+        "zh": "我上星期見過她。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:ask",
+      "word": "ask",
+      "displayWord": "ask",
+      "zh": "問；請求",
+      "pos": "verb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "ask",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Can I ask a question?",
+        "zh": "我可以問個問題嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:need",
+      "word": "need",
+      "displayWord": "need",
+      "zh": "需要",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "need",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I need some help.",
+        "zh": "我需要幫忙。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:too",
+      "word": "too",
+      "displayWord": "too",
+      "zh": "也；太",
+      "pos": "adverb",
+      "topic": "degree",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "too",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This bag is too heavy.",
+        "zh": "這個包包太重了。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:feel",
+      "word": "feel",
+      "displayWord": "feel",
+      "zh": "感覺；覺得",
+      "pos": "verb",
+      "topic": "feelings",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "feel",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I feel better today.",
+        "zh": "我今天覺得好多了。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:three",
+      "word": "three",
+      "displayWord": "three",
+      "zh": "三；三個",
+      "pos": "number",
+      "topic": "numbers",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "three",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The room has three windows.",
+        "zh": "房間有三扇窗戶。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:state",
+      "word": "state",
+      "displayWord": "state",
+      "zh": "狀態；州",
+      "pos": "noun",
+      "topic": "places",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "state",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The car is in a good state.",
+        "zh": "這輛車的狀況很好。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:never",
+      "word": "never",
+      "displayWord": "never",
+      "zh": "從不",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "never",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I never drink coffee at night.",
+        "zh": "我晚上從不喝咖啡。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:become",
+      "word": "become",
+      "displayWord": "become",
+      "zh": "變成；變得",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "become",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The weather will become warmer.",
+        "zh": "天氣會變得比較暖。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:between",
+      "word": "between",
+      "displayWord": "between",
+      "zh": "在……之間",
+      "pos": "preposition",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "between",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The bank is between the school and the park.",
+        "zh": "銀行在學校和公園之間。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:high",
+      "word": "high",
+      "displayWord": "high",
+      "zh": "高的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "high",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The shelf is too high for me.",
+        "zh": "這個架子對我來說太高了。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:something",
+      "word": "something",
+      "displayWord": "something",
+      "zh": "某事；某物",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "something",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I need something to drink.",
+        "zh": "我需要喝點東西。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:really",
+      "word": "really",
+      "displayWord": "really",
+      "zh": "真的；非常",
+      "pos": "adverb",
+      "topic": "degree",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "really",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I really like this book.",
+        "zh": "我真的很喜歡這本書。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:most",
+      "word": "most",
+      "displayWord": "most",
+      "zh": "大多數的；最多的",
+      "pos": "determiner",
+      "topic": "quantity",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "most",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Most shops open at ten.",
+        "zh": "大多數商店十點開門。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:another",
+      "word": "another",
+      "displayWord": "another",
+      "zh": "另一個；再一個",
+      "pos": "determiner,pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "another",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Would you like another cup of tea?",
+        "zh": "你想再喝一杯茶嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:much",
+      "word": "much",
+      "displayWord": "much",
+      "zh": "許多（用於不可數名詞）",
+      "pos": "determiner,adverb",
+      "topic": "quantity",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "much",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I do not have much time.",
+        "zh": "我沒有很多時間。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:family",
+      "word": "family",
+      "displayWord": "family",
+      "zh": "家人；家庭",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "family",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "My family lives in Taipei.",
+        "zh": "我的家人住在台北。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:own",
+      "word": "own",
+      "displayWord": "own",
+      "zh": "自己的",
+      "pos": "adjective",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "own",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I have my own room.",
+        "zh": "我有自己的房間。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:leave",
+      "word": "leave",
+      "displayWord": "leave",
+      "zh": "離開；留下",
+      "pos": "verb",
+      "topic": "travel",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "leave",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We leave at eight tomorrow.",
+        "zh": "我們明天八點出發。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:put",
+      "word": "put",
+      "displayWord": "put",
+      "zh": "放；擺",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "put",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please put the cup on the table.",
+        "zh": "請把杯子放在桌上。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:old",
+      "word": "old",
+      "displayWord": "old",
+      "zh": "舊的；年老的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "old",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This is an old photo of my family.",
+        "zh": "這是我家人的一張舊照片。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:while",
+      "word": "while",
+      "displayWord": "while",
+      "zh": "當……的時候",
+      "pos": "conjunction",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "while",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I listen to music while I cook.",
+        "zh": "我做飯時會聽音樂。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:mean",
+      "word": "mean",
+      "displayWord": "mean",
+      "zh": "意思是",
+      "pos": "verb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "mean",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "What does this word mean?",
+        "zh": "這個字是什麼意思？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:keep",
+      "word": "keep",
+      "displayWord": "keep",
+      "zh": "保留；保持",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "keep",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please keep the door closed.",
+        "zh": "請讓門保持關著。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:student",
+      "word": "student",
+      "displayWord": "student",
+      "zh": "學生",
+      "pos": "noun",
+      "topic": "learning",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "student",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "She is a university student.",
+        "zh": "她是大學生。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:why",
+      "word": "why",
+      "displayWord": "why",
+      "zh": "為什麼",
+      "pos": "adverb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "why",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Why are you late?",
+        "zh": "你為什麼遲到？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:let",
+      "word": "let",
+      "displayWord": "let",
+      "zh": "讓；允許",
+      "pos": "verb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "let",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please let me help you.",
+        "zh": "請讓我幫你。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:great",
+      "word": "great",
+      "displayWord": "great",
+      "zh": "很棒的；極好的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "great",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We had a great time.",
+        "zh": "我們玩得很開心。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:same",
+      "word": "same",
+      "displayWord": "same",
+      "zh": "相同的",
+      "pos": "adjective",
+      "topic": "comparison",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "same",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We take the same bus.",
+        "zh": "我們搭同一班公車。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:big",
+      "word": "big",
+      "displayWord": "big",
+      "zh": "大的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "big",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "They live in a big house.",
+        "zh": "他們住在一棟大房子裡。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:group",
+      "word": "group",
+      "displayWord": "group",
+      "zh": "一群；小組",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "group",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Our group has five people.",
+        "zh": "我們這一組有五個人。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:begin",
+      "word": "begin",
+      "displayWord": "begin",
+      "zh": "開始",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "begin",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The class will begin soon.",
+        "zh": "課程很快就要開始了。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:seem",
+      "word": "seem",
+      "displayWord": "seem",
+      "zh": "似乎；好像",
+      "pos": "verb",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "seem",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "You seem tired today.",
+        "zh": "你今天看起來很累。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:country",
+      "word": "country",
+      "displayWord": "country",
+      "zh": "國家；鄉村",
+      "pos": "noun",
+      "topic": "places",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "country",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Which country are you from?",
+        "zh": "你來自哪個國家？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:help",
+      "word": "help",
+      "displayWord": "help",
+      "zh": "幫忙；幫助",
+      "pos": "verb,noun",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "help",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Can you help me with this bag?",
+        "zh": "你可以幫我拿這個包包嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:talk",
+      "word": "talk",
+      "displayWord": "talk",
+      "zh": "交談；談話",
+      "pos": "verb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "talk",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We need to talk about the plan.",
+        "zh": "我們需要談談這個計畫。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:where",
+      "word": "where",
+      "displayWord": "where",
+      "zh": "在哪裡",
+      "pos": "adverb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "where",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Where is the nearest station?",
+        "zh": "最近的車站在哪裡？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:turn",
+      "word": "turn",
+      "displayWord": "turn",
+      "zh": "轉彎；轉動",
+      "pos": "verb",
+      "topic": "travel",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "turn",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Turn left at the next street.",
+        "zh": "在下一條街左轉。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:problem",
+      "word": "problem",
+      "displayWord": "problem",
+      "zh": "問題；難題",
+      "pos": "noun",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "problem",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "There is a problem with my phone.",
+        "zh": "我的手機有問題。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:every",
+      "word": "every",
+      "displayWord": "every",
+      "zh": "每一個的",
+      "pos": "determiner",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "every",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I walk to work every day.",
+        "zh": "我每天走路上班。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:start",
+      "word": "start",
+      "displayWord": "start",
+      "zh": "開始；啟動",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "start",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The movie will start at seven.",
+        "zh": "電影七點開始。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:hand",
+      "word": "hand",
+      "displayWord": "hand",
+      "zh": "手",
+      "pos": "noun",
+      "topic": "body",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "hand",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please raise your hand.",
+        "zh": "請舉手。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:might",
+      "word": "might",
+      "displayWord": "might",
+      "zh": "可能",
+      "pos": "modal",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "might",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We might be late.",
+        "zh": "我們可能會遲到。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:show",
+      "word": "show",
+      "displayWord": "show",
+      "zh": "展示；給……看",
+      "pos": "verb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "show",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Can you show me the photo?",
+        "zh": "你可以把照片給我看嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:part",
+      "word": "part",
+      "displayWord": "part",
+      "zh": "部分",
+      "pos": "noun",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "part",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This is my favorite part of the story.",
+        "zh": "這是故事中我最喜歡的部分。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:against",
+      "word": "against",
+      "displayWord": "against",
+      "zh": "靠著；反對",
+      "pos": "preposition",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "against",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The bike is against the wall.",
+        "zh": "腳踏車靠在牆邊。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:place",
+      "word": "place",
+      "displayWord": "place",
+      "zh": "地方；地點",
+      "pos": "noun",
+      "topic": "places",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "place",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This is a good place to eat.",
+        "zh": "這是個吃飯的好地方。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:such",
+      "word": "such",
+      "displayWord": "such",
+      "zh": "這樣的；如此的",
+      "pos": "determiner",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "such",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "It is such a nice day.",
+        "zh": "今天天氣真好。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:again",
+      "word": "again",
+      "displayWord": "again",
+      "zh": "再一次；又",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "again",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please say that again.",
+        "zh": "請再說一次。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:few",
+      "word": "few",
+      "displayWord": "few",
+      "zh": "少數的；幾乎沒有的",
+      "pos": "determiner",
+      "topic": "quantity",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "few",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Few shops are open this early.",
+        "zh": "這麼早營業的商店很少。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:case",
+      "word": "case",
+      "displayWord": "case",
+      "zh": "情況；案例",
+      "pos": "noun",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "case",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "In that case, let's take a taxi.",
+        "zh": "那樣的話，我們搭計程車吧。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:week",
+      "word": "week",
+      "displayWord": "week",
+      "zh": "星期；一週",
+      "pos": "noun",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "week",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I have a meeting next week.",
+        "zh": "我下星期有個會議。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:company",
+      "word": "company",
+      "displayWord": "company",
+      "zh": "公司",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "company",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "She works for a small company.",
+        "zh": "她在一家小公司上班。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:system",
+      "word": "system",
+      "displayWord": "system",
+      "zh": "系統；制度",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "system",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The new ticket system is easy to use.",
+        "zh": "新的售票系統很容易使用。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:each",
+      "word": "each",
+      "displayWord": "each",
+      "zh": "每一個",
+      "pos": "determiner,pronoun",
+      "topic": "quantity",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "each",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Each student needs a pen.",
+        "zh": "每個學生都需要一支筆。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:right",
+      "word": "right",
+      "displayWord": "right",
+      "zh": "右邊；正確的",
+      "pos": "noun,adjective",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "right",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The shop is on your right.",
+        "zh": "商店在你的右邊。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:program",
+      "word": "program",
+      "displayWord": "program",
+      "zh": "節目；程式",
+      "pos": "noun",
+      "topic": "technology",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "program",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This program helps me learn English.",
+        "zh": "這個程式幫助我學英文。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:hear",
+      "word": "hear",
+      "displayWord": "hear",
+      "zh": "聽見；聽到",
+      "pos": "verb",
+      "topic": "senses",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "hear",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I can hear the rain.",
+        "zh": "我聽得見雨聲。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:question",
+      "word": "question",
+      "displayWord": "question",
+      "zh": "問題；疑問",
+      "pos": "noun",
+      "topic": "learning",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "question",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I have a question about this word.",
+        "zh": "我對這個字有個問題。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:during",
+      "word": "during",
+      "displayWord": "during",
+      "zh": "在……期間",
+      "pos": "preposition",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "during",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please turn off your phone during class.",
+        "zh": "上課期間請關閉手機。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:play",
+      "word": "play",
+      "displayWord": "play",
+      "zh": "玩；演奏",
+      "pos": "verb",
+      "topic": "leisure",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "play",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We play games after dinner.",
+        "zh": "我們晚餐後玩遊戲。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:government",
+      "word": "government",
+      "displayWord": "government",
+      "zh": "政府",
+      "pos": "noun",
+      "topic": "society",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "government",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The government built a new hospital.",
+        "zh": "政府蓋了一座新醫院。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:run",
+      "word": "run",
+      "displayWord": "run",
+      "zh": "跑步；跑",
+      "pos": "verb",
+      "topic": "movement",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "run",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I run in the park every morning.",
+        "zh": "我每天早上在公園跑步。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:small",
+      "word": "small",
+      "displayWord": "small",
+      "zh": "小的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "small",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I need a small bag.",
+        "zh": "我需要一個小包包。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:off",
+      "word": "off",
+      "displayWord": "off",
+      "zh": "關閉；離開",
+      "pos": "adverb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "off",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please turn off the light.",
+        "zh": "請把燈關掉。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:always",
+      "word": "always",
+      "displayWord": "always",
+      "zh": "總是",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "always",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I always carry a bottle of water.",
+        "zh": "我總是帶著一瓶水。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:move",
+      "word": "move",
+      "displayWord": "move",
+      "zh": "移動；搬家",
+      "pos": "verb",
+      "topic": "movement",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "move",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We plan to move next month.",
+        "zh": "我們計畫下個月搬家。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:night",
+      "word": "night",
+      "displayWord": "night",
+      "zh": "晚上；夜晚",
+      "pos": "noun",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "night",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The streets are quiet at night.",
+        "zh": "街道在晚上很安靜。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:live",
+      "word": "live",
+      "displayWord": "live",
+      "zh": "居住；生活",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "live",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I live near a park.",
+        "zh": "我住在公園附近。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:point",
+      "word": "point",
+      "displayWord": "point",
+      "zh": "重點；點",
+      "pos": "noun",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "point",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I understand your point.",
+        "zh": "我了解你的意思。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:believe",
+      "word": "believe",
+      "displayWord": "believe",
+      "zh": "相信",
+      "pos": "verb",
+      "topic": "feelings",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "believe",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I believe you.",
+        "zh": "我相信你。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:hold",
+      "word": "hold",
+      "displayWord": "hold",
+      "zh": "握住；拿著",
+      "pos": "verb",
+      "topic": "movement",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "hold",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please hold my hand.",
+        "zh": "請握住我的手。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:today",
+      "word": "today",
+      "displayWord": "today",
+      "zh": "今天",
+      "pos": "noun,adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "today",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I am working from home today.",
+        "zh": "我今天在家工作。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:bring",
+      "word": "bring",
+      "displayWord": "bring",
+      "zh": "帶來",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "bring",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please bring your own cup.",
+        "zh": "請自備杯子。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:happen",
+      "word": "happen",
+      "displayWord": "happen",
+      "zh": "發生",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "happen",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "What will happen next?",
+        "zh": "接下來會發生什麼事？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:next",
+      "word": "next",
+      "displayWord": "next",
+      "zh": "下一個的；接下來",
+      "pos": "adjective,adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "next",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The next bus comes at ten.",
+        "zh": "下一班公車十點到。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:without",
+      "word": "without",
+      "displayWord": "without",
+      "zh": "沒有；不帶",
+      "pos": "preposition",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "without",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I drink coffee without sugar.",
+        "zh": "我喝咖啡不加糖。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:before",
+      "word": "before",
+      "displayWord": "before",
+      "zh": "在……之前",
+      "pos": "preposition,conjunction",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "before",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Wash your hands before dinner.",
+        "zh": "晚餐前先洗手。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:large",
+      "word": "large",
+      "displayWord": "large",
+      "zh": "大的；大規模的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "large",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The hotel has a large garden.",
+        "zh": "這家飯店有一座大花園。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:million",
+      "word": "million",
+      "displayWord": "million",
+      "zh": "一百萬",
+      "pos": "number",
+      "topic": "numbers",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "million",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The city has one million people.",
+        "zh": "這座城市有一百萬人。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:must",
+      "word": "must",
+      "displayWord": "must",
+      "zh": "必須；一定",
+      "pos": "modal",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "must",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "You must wear a seat belt.",
+        "zh": "你必須繫安全帶。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:home",
+      "word": "home",
+      "displayWord": "home",
+      "zh": "家；在家",
+      "pos": "noun,adverb",
+      "topic": "home",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "home",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I will be home at six.",
+        "zh": "我六點會到家。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:under",
+      "word": "under",
+      "displayWord": "under",
+      "zh": "在……下面",
+      "pos": "preposition",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "under",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The cat is under the chair.",
+        "zh": "貓在椅子下面。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:water",
+      "word": "water",
+      "displayWord": "water",
+      "zh": "水",
+      "pos": "noun",
+      "topic": "food",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "water",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Can I have some water?",
+        "zh": "可以給我一些水嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:room",
+      "word": "room",
+      "displayWord": "room",
+      "zh": "房間；空間",
+      "pos": "noun",
+      "topic": "home",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "room",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This room has two beds.",
+        "zh": "這個房間有兩張床。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:write",
+      "word": "write",
+      "displayWord": "write",
+      "zh": "寫；書寫",
+      "pos": "verb",
+      "topic": "learning",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "write",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please write your name here.",
+        "zh": "請在這裡寫下你的名字。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:mother",
+      "word": "mother",
+      "displayWord": "mother",
+      "zh": "母親；媽媽",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "mother",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "My mother is a teacher.",
+        "zh": "我媽媽是老師。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:area",
+      "word": "area",
+      "displayWord": "area",
+      "zh": "區域；地區",
+      "pos": "noun",
+      "topic": "places",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "area",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This area is very quiet.",
+        "zh": "這個地區很安靜。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:national",
+      "word": "national",
+      "displayWord": "national",
+      "zh": "全國的；國家的",
+      "pos": "adjective",
+      "topic": "society",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "national",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "It is a national holiday.",
+        "zh": "今天是國定假日。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:money",
+      "word": "money",
+      "displayWord": "money",
+      "zh": "錢；金錢",
+      "pos": "noun",
+      "topic": "shopping",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "money",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I need to save some money.",
+        "zh": "我需要存一些錢。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:story",
+      "word": "story",
+      "displayWord": "story",
+      "zh": "故事",
+      "pos": "noun",
+      "topic": "leisure",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "story",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Tell me a story.",
+        "zh": "講個故事給我聽。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:young",
+      "word": "young",
+      "displayWord": "young",
+      "zh": "年輕的",
+      "pos": "adjective",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "young",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The young woman is my teacher.",
+        "zh": "那位年輕女士是我的老師。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:fact",
+      "word": "fact",
+      "displayWord": "fact",
+      "zh": "事實",
+      "pos": "noun",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "fact",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "That is a fact, not a guess.",
+        "zh": "那是事實，不是猜測。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:month",
+      "word": "month",
+      "displayWord": "month",
+      "zh": "月；月份",
+      "pos": "noun",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "month",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I will visit you next month.",
+        "zh": "我下個月會去看你。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:different",
+      "word": "different",
+      "displayWord": "different",
+      "zh": "不同的",
+      "pos": "adjective",
+      "topic": "comparison",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "different",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We have different ideas.",
+        "zh": "我們有不同的想法。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:lot",
+      "word": "lot",
+      "displayWord": "lot",
+      "zh": "許多（常見於 a lot of）",
+      "pos": "noun",
+      "topic": "quantity",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "lot",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We have a lot of time.",
+        "zh": "我們有很多時間。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:study",
+      "word": "study",
+      "displayWord": "study",
+      "zh": "學習；讀書",
+      "pos": "verb",
+      "topic": "learning",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "study",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I study English every day.",
+        "zh": "我每天學英文。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:book",
+      "word": "book",
+      "displayWord": "book",
+      "zh": "書",
+      "pos": "noun",
+      "topic": "learning",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "book",
+      "kk": "[bʊk]",
+      "audio": "assets/voice/words/book.mp3",
+      "example": {
+        "en": "This book is easy to read.",
+        "zh": "這本書很容易讀。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification",
+      "emoji": "📖",
+      "theme": "things",
+      "level": 1,
+      "image": "",
+      "audioZh": "assets/voice/zh/words/book.mp3"
+    },
+    {
+      "id": "word:eye",
+      "word": "eye",
+      "displayWord": "eye",
+      "zh": "眼睛",
+      "pos": "noun",
+      "topic": "body",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "eye",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "My left eye hurts.",
+        "zh": "我的左眼會痛。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:job",
+      "word": "job",
+      "displayWord": "job",
+      "zh": "工作；職業",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "job",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I am looking for a new job.",
+        "zh": "我正在找新工作。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:word",
+      "word": "word",
+      "displayWord": "word",
+      "zh": "字；單字",
+      "pos": "noun",
+      "topic": "learning",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "word",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "How do you spell this word?",
+        "zh": "這個字要怎麼拼？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:though",
+      "word": "though",
+      "displayWord": "though",
+      "zh": "雖然；儘管",
+      "pos": "conjunction",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "though",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Though it is raining, we can still go.",
+        "zh": "雖然正在下雨，我們還是可以去。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:business",
+      "word": "business",
+      "displayWord": "business",
+      "zh": "生意；商業",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "business",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "My sister runs a small business.",
+        "zh": "我的姊姊經營一家小公司。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:four",
+      "word": "four",
+      "displayWord": "four",
+      "zh": "四；四個",
+      "pos": "number",
+      "topic": "numbers",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "four",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "There are four chairs in the room.",
+        "zh": "房間裡有四張椅子。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:issue",
+      "word": "issue",
+      "displayWord": "issue",
+      "zh": "問題；議題",
+      "pos": "noun",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "issue",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We need to discuss this issue.",
+        "zh": "我們需要討論這個問題。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:side",
+      "word": "side",
+      "displayWord": "side",
+      "zh": "邊；旁邊",
+      "pos": "noun",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "side",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The shop is on the other side of the street.",
+        "zh": "商店在街道另一邊。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:kind",
+      "word": "kind",
+      "displayWord": "kind",
+      "zh": "種類；親切的",
+      "pos": "noun,adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "kind",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "What kind of food do you like?",
+        "zh": "你喜歡哪一種食物？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:head",
+      "word": "head",
+      "displayWord": "head",
+      "zh": "頭；頭部",
+      "pos": "noun",
+      "topic": "body",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "head",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "My head hurts.",
+        "zh": "我的頭會痛。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:far",
+      "word": "far",
+      "displayWord": "far",
+      "zh": "遠；遙遠的",
+      "pos": "adverb,adjective",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "far",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "How far is the station?",
+        "zh": "車站有多遠？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:black",
+      "word": "black",
+      "displayWord": "black",
+      "zh": "黑色的；黑色",
+      "pos": "adjective,noun",
+      "topic": "colors",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "black",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I have a black bag.",
+        "zh": "我有一個黑色包包。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:long",
+      "word": "long",
+      "displayWord": "long",
+      "zh": "長的；長時間的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "long",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "It was a long trip.",
+        "zh": "那是一趟漫長的旅程。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:both",
+      "word": "both",
+      "displayWord": "both",
+      "zh": "兩者都；兩個都",
+      "pos": "determiner,pronoun",
+      "topic": "quantity",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "both",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Both shops are open today.",
+        "zh": "兩家店今天都有營業。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:little",
+      "word": "little",
+      "displayWord": "little",
+      "zh": "少量的；小的",
+      "pos": "determiner,adjective",
+      "topic": "quantity",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "little",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "There is little time left.",
+        "zh": "剩下的時間不多了。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:house",
+      "word": "house",
+      "displayWord": "house",
+      "zh": "房子",
+      "pos": "noun",
+      "topic": "home",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "house",
+      "kk": "[haʊs]",
+      "audio": "assets/voice/words/house.mp3",
+      "example": {
+        "en": "Their house has a small garden.",
+        "zh": "他們的房子有一座小花園。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification",
+      "emoji": "🏠",
+      "theme": "things",
+      "level": 1,
+      "image": "",
+      "audioZh": "assets/voice/zh/words/house.mp3"
+    },
+    {
+      "id": "word:yes",
+      "word": "yes",
+      "displayWord": "yes",
+      "zh": "是；好",
+      "pos": "adverb",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "yes",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Yes, I can help you.",
+        "zh": "好，我可以幫你。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:since",
+      "word": "since",
+      "displayWord": "since",
+      "zh": "自從；自……以來",
+      "pos": "preposition,conjunction",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "since",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I have lived here since May.",
+        "zh": "我從五月起就住在這裡。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:provide",
+      "word": "provide",
+      "displayWord": "provide",
+      "zh": "提供",
+      "pos": "verb",
+      "topic": "work",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "provide",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The hotel will provide breakfast.",
+        "zh": "飯店會提供早餐。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:service",
+      "word": "service",
+      "displayWord": "service",
+      "zh": "服務",
+      "pos": "noun",
+      "topic": "work",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "service",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The service here is very good.",
+        "zh": "這裡的服務很好。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:around",
+      "word": "around",
+      "displayWord": "around",
+      "zh": "在……周圍；大約",
+      "pos": "preposition,adverb",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "around",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We walked around the lake.",
+        "zh": "我們繞著湖散步。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:friend",
+      "word": "friend",
+      "displayWord": "friend",
+      "zh": "朋友",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "friend",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I am meeting a friend for lunch.",
+        "zh": "我要和一位朋友一起吃午餐。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:important",
+      "word": "important",
+      "displayWord": "important",
+      "zh": "重要的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "important",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This is an important question.",
+        "zh": "這是個重要的問題。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:father",
+      "word": "father",
+      "displayWord": "father",
+      "zh": "父親；爸爸",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "father",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "My father likes to cook.",
+        "zh": "我爸爸喜歡做飯。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:sit",
+      "word": "sit",
+      "displayWord": "sit",
+      "zh": "坐",
+      "pos": "verb",
+      "topic": "movement",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "sit",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please sit next to me.",
+        "zh": "請坐在我旁邊。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:away",
+      "word": "away",
+      "displayWord": "away",
+      "zh": "離開；遠離",
+      "pos": "adverb",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "away",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The station is ten minutes away.",
+        "zh": "車站離這裡有十分鐘的路程。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:until",
+      "word": "until",
+      "displayWord": "until",
+      "zh": "直到……為止",
+      "pos": "preposition,conjunction",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "until",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The shop is open until nine.",
+        "zh": "這家店營業到九點。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:power",
+      "word": "power",
+      "displayWord": "power",
+      "zh": "力量；電力",
+      "pos": "noun",
+      "topic": "technology",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "power",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The storm cut off the power.",
+        "zh": "暴風雨造成停電。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:hour",
+      "word": "hour",
+      "displayWord": "hour",
+      "zh": "小時",
+      "pos": "noun",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "hour",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The trip takes one hour.",
+        "zh": "這趟行程需要一小時。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:game",
+      "word": "game",
+      "displayWord": "game",
+      "zh": "遊戲；比賽",
+      "pos": "noun",
+      "topic": "leisure",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "game",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Let's play a game.",
+        "zh": "我們來玩個遊戲吧。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:often",
+      "word": "often",
+      "displayWord": "often",
+      "zh": "經常；常常",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "often",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I often walk to work.",
+        "zh": "我經常走路上班。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:yet",
+      "word": "yet",
+      "displayWord": "yet",
+      "zh": "還；尚未",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "yet",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The bus is not here yet.",
+        "zh": "公車還沒來。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:line",
+      "word": "line",
+      "displayWord": "line",
+      "zh": "隊伍；線",
+      "pos": "noun",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "line",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please wait in line.",
+        "zh": "請排隊等候。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:political",
+      "word": "political",
+      "displayWord": "political",
+      "zh": "政治的",
+      "pos": "adjective",
+      "topic": "society",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "political",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "They discussed a political issue.",
+        "zh": "他們討論了一個政治議題。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:end",
+      "word": "end",
+      "displayWord": "end",
+      "zh": "結束；末端",
+      "pos": "noun,verb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "end",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The meeting will end at five.",
+        "zh": "會議五點結束。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:among",
+      "word": "among",
+      "displayWord": "among",
+      "zh": "在……之中",
+      "pos": "preposition",
+      "topic": "position",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "among",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I found my keys among the books.",
+        "zh": "我在那些書裡找到了鑰匙。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:ever",
+      "word": "ever",
+      "displayWord": "ever",
+      "zh": "曾經（常用於問句）",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "ever",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Have you ever been to Taiwan?",
+        "zh": "你曾經去過台灣嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:stand",
+      "word": "stand",
+      "displayWord": "stand",
+      "zh": "站；站立",
+      "pos": "verb",
+      "topic": "movement",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "stand",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please stand behind the line.",
+        "zh": "請站在線後面。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:bad",
+      "word": "bad",
+      "displayWord": "bad",
+      "zh": "壞的；不好的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "bad",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "That is a bad idea.",
+        "zh": "那不是個好主意。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:lose",
+      "word": "lose",
+      "displayWord": "lose",
+      "zh": "遺失；失去",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "lose",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Try not to lose your ticket.",
+        "zh": "盡量不要弄丟你的票。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:however",
+      "word": "however",
+      "displayWord": "however",
+      "zh": "然而；不過",
+      "pos": "adverb",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "however",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "It is expensive. However, it is very useful.",
+        "zh": "它很貴，不過非常實用。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:member",
+      "word": "member",
+      "displayWord": "member",
+      "zh": "成員；會員",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "member",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I am a member of this club.",
+        "zh": "我是這個社團的成員。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:pay",
+      "word": "pay",
+      "displayWord": "pay",
+      "zh": "付款；支付",
+      "pos": "verb",
+      "topic": "shopping",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "pay",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Can I pay by card?",
+        "zh": "我可以刷卡付款嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:law",
+      "word": "law",
+      "displayWord": "law",
+      "zh": "法律",
+      "pos": "noun",
+      "topic": "society",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "law",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The new law starts next month.",
+        "zh": "新法律下個月開始實施。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:meet",
+      "word": "meet",
+      "displayWord": "meet",
+      "zh": "見面；遇見",
+      "pos": "verb",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "meet",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Let's meet at the station.",
+        "zh": "我們在車站見面吧。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:car",
+      "word": "car",
+      "displayWord": "car",
+      "zh": "汽車",
+      "pos": "noun",
+      "topic": "travel",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "car",
+      "kk": "[kɑr]",
+      "audio": "assets/voice/words/car.mp3",
+      "example": {
+        "en": "My car is outside.",
+        "zh": "我的車在外面。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification",
+      "emoji": "🚗",
+      "theme": "transport",
+      "level": 1,
+      "image": "",
+      "audioZh": "assets/voice/zh/words/car.mp3"
+    },
+    {
+      "id": "word:city",
+      "word": "city",
+      "displayWord": "city",
+      "zh": "城市",
+      "pos": "noun",
+      "topic": "places",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "city",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This city has many parks.",
+        "zh": "這座城市有很多公園。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:almost",
+      "word": "almost",
+      "displayWord": "almost",
+      "zh": "幾乎；差不多",
+      "pos": "adverb",
+      "topic": "degree",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "almost",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "My phone battery is almost empty.",
+        "zh": "我的手機快沒電了。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:include",
+      "word": "include",
+      "displayWord": "include",
+      "zh": "包括；包含",
+      "pos": "verb",
+      "topic": "work",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "include",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Does the price include breakfast?",
+        "zh": "這個價格包含早餐嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:continue",
+      "word": "continue",
+      "displayWord": "continue",
+      "zh": "繼續",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "continue",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We can continue after lunch.",
+        "zh": "我們可以午餐後繼續。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:set",
+      "word": "set",
+      "displayWord": "set",
+      "zh": "設定；設置",
+      "pos": "verb",
+      "topic": "technology",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "set",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please set the alarm for seven.",
+        "zh": "請把鬧鐘設在七點。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:community",
+      "word": "community",
+      "displayWord": "community",
+      "zh": "社區；社群",
+      "pos": "noun",
+      "topic": "society",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "community",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Our community has a small library.",
+        "zh": "我們的社區有一間小圖書館。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:name",
+      "word": "name",
+      "displayWord": "name",
+      "zh": "名字；名稱",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "name",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please write your name here.",
+        "zh": "請在這裡寫下你的名字。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:five",
+      "word": "five",
+      "displayWord": "five",
+      "zh": "五；五個",
+      "pos": "number",
+      "topic": "numbers",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "five",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I need five minutes.",
+        "zh": "我需要五分鐘。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:once",
+      "word": "once",
+      "displayWord": "once",
+      "zh": "一次；曾經",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "once",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I go swimming once a week.",
+        "zh": "我每星期游泳一次。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:white",
+      "word": "white",
+      "displayWord": "white",
+      "zh": "白色的；白色",
+      "pos": "adjective,noun",
+      "topic": "colors",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "white",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "She is wearing a white shirt.",
+        "zh": "她穿著一件白色襯衫。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:least",
+      "word": "least",
+      "displayWord": "least",
+      "zh": "最少（常見於 at least）",
+      "pos": "determiner,adverb",
+      "topic": "quantity",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "least",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We need at least two chairs.",
+        "zh": "我們至少需要兩張椅子。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:president",
+      "word": "president",
+      "displayWord": "president",
+      "zh": "總統；會長",
+      "pos": "noun",
+      "topic": "society",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "president",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "She is the president of our club.",
+        "zh": "她是我們社團的會長。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:learn",
+      "word": "learn",
+      "displayWord": "learn",
+      "zh": "學習；學會",
+      "pos": "verb",
+      "topic": "learning",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "learn",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I want to learn English.",
+        "zh": "我想學英文。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:real",
+      "word": "real",
+      "displayWord": "real",
+      "zh": "真正的；真實的",
+      "pos": "adjective",
+      "topic": "description",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "real",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This is a real problem.",
+        "zh": "這是個實際存在的問題。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:change",
+      "word": "change",
+      "displayWord": "change",
+      "zh": "改變；更換",
+      "pos": "verb",
+      "topic": "daily",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "change",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I need to change my travel plans.",
+        "zh": "我需要更改我的旅行計畫。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:team",
+      "word": "team",
+      "displayWord": "team",
+      "zh": "團隊；隊伍",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "team",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Our team has six members.",
+        "zh": "我們的團隊有六位成員。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:minute",
+      "word": "minute",
+      "displayWord": "minute",
+      "zh": "分鐘",
+      "pos": "noun",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "minute",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please wait a minute.",
+        "zh": "請等一分鐘。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:several",
+      "word": "several",
+      "displayWord": "several",
+      "zh": "幾個；數個",
+      "pos": "determiner",
+      "topic": "quantity",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "several",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I have several questions.",
+        "zh": "我有幾個問題。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:idea",
+      "word": "idea",
+      "displayWord": "idea",
+      "zh": "主意；想法",
+      "pos": "noun",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "idea",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "That is a good idea.",
+        "zh": "那是個好主意。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:kid",
+      "word": "kid",
+      "displayWord": "kid",
+      "zh": "小孩（口語）",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "kid",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The kid is playing in the park.",
+        "zh": "那個小孩正在公園裡玩。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:body",
+      "word": "body",
+      "displayWord": "body",
+      "zh": "身體",
+      "pos": "noun",
+      "topic": "body",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "body",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Exercise is good for your body.",
+        "zh": "運動對你的身體有益。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:information",
+      "word": "information",
+      "displayWord": "information",
+      "zh": "資訊；資料",
+      "pos": "noun",
+      "topic": "communication",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "information",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Where can I get more information?",
+        "zh": "我可以在哪裡取得更多資訊？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:nothing",
+      "word": "nothing",
+      "displayWord": "nothing",
+      "zh": "沒有任何事物",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "nothing",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "There is nothing in this bag.",
+        "zh": "這個包包裡沒有任何東西。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:ago",
+      "word": "ago",
+      "displayWord": "ago",
+      "zh": "……以前",
+      "pos": "adverb",
+      "topic": "time",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "ago",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I moved here two years ago.",
+        "zh": "我兩年前搬來這裡。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:lead",
+      "word": "lead",
+      "displayWord": "lead",
+      "zh": "帶領；引導",
+      "pos": "verb",
+      "topic": "movement",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "lead",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "This path will lead you to the lake.",
+        "zh": "這條小路會帶你到湖邊。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:social",
+      "word": "social",
+      "displayWord": "social",
+      "zh": "社交的；社會的",
+      "pos": "adjective",
+      "topic": "society",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "social",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "The club has many social events.",
+        "zh": "這個社團有很多社交活動。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:understand",
+      "word": "understand",
+      "displayWord": "understand",
+      "zh": "理解；了解",
+      "pos": "verb",
+      "topic": "learning",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "understand",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I understand this sentence.",
+        "zh": "我理解這個句子。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:whether",
+      "word": "whether",
+      "displayWord": "whether",
+      "zh": "是否",
+      "pos": "conjunction",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "whether",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "I do not know whether the shop is open.",
+        "zh": "我不知道這家店是否有營業。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:watch",
+      "word": "watch",
+      "displayWord": "watch",
+      "zh": "看；觀看",
+      "pos": "verb",
+      "topic": "leisure",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "watch",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "We watch a movie every Friday.",
+        "zh": "我們每星期五看一部電影。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:together",
+      "word": "together",
+      "displayWord": "together",
+      "zh": "一起",
+      "pos": "adverb",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "together",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Let's study together.",
+        "zh": "我們一起讀書吧。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:follow",
+      "word": "follow",
+      "displayWord": "follow",
+      "zh": "跟隨；遵循",
+      "pos": "verb",
+      "topic": "movement",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "follow",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please follow me.",
+        "zh": "請跟我來。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:parent",
+      "word": "parent",
+      "displayWord": "parent",
+      "zh": "父親或母親",
+      "pos": "noun",
+      "topic": "people",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "parent",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Each child can bring a parent.",
+        "zh": "每個孩子可以帶一位家長。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:stop",
+      "word": "stop",
+      "displayWord": "stop",
+      "zh": "停止",
+      "pos": "verb",
+      "topic": "movement",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "stop",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Please stop here.",
+        "zh": "請在這裡停下來。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:face",
+      "word": "face",
+      "displayWord": "face",
+      "zh": "臉；臉部",
+      "pos": "noun",
+      "topic": "body",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "face",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Wash your face before bed.",
+        "zh": "睡前洗臉。"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    },
+    {
+      "id": "word:anything",
+      "word": "anything",
+      "displayWord": "anything",
+      "zh": "任何事物",
+      "pos": "pronoun",
+      "topic": "grammar",
+      "learningBand": "core-frequency-1",
+      "reviewStatus": "reviewed",
+      "reviewer": "coordinator-ai",
+      "source": "ECDICT-MIT+editorial-review",
+      "sourceWord": "anything",
+      "kk": null,
+      "audio": "",
+      "example": {
+        "en": "Do you need anything else?",
+        "zh": "你還需要其他東西嗎？"
+      },
+      "reviewScope": "AI review of selected common sense, POS and original example; no new phonetic/audio verification"
+    }
+  ]
+}

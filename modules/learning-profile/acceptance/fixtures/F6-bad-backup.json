@@ -1,0 +1,8 @@
+{
+ "_now": "2026-11-18T12:00:00.000Z",
+ "pm-ability-v1": "{\"v\":2,\"events\":[{\"v\":1,\"id\":\"fx-4071\",\"item\":\"g:pst-01\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:meeting/general\",\"at\":1794877200000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-4071\",\"item\":\"g:pst-01\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:meeting/general\",\"at\":1794877200000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-bad\",\"item\":\"g:pst-03\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1794877320000,\"result\":\"maybe\",\"via\":\"fixture\"}]}",
+ "_expect": {
+  "ok": false,
+  "hand": "重複 id、result 不合法 → 預覽就擋下"
+ }
+}

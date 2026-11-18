@@ -1,0 +1,873 @@
+{
+ "totals": {
+  "attempts": 6,
+  "distinctItems": 6,
+  "independent": 6,
+  "timeouts": 0,
+  "practiceRate": 83,
+  "excluded": {},
+  "invalidEvents": 0,
+  "trimmedTo": 4000,
+  "trimmed": 0
+ },
+ "grammarV1": {
+  "tense:present-simple": {
+   "channels": {
+    "reading": {
+     "status": "none",
+     "items": 0,
+     "contexts": 0,
+     "need": {
+      "items": 5,
+      "contexts": 2,
+      "days": 2
+     }
+    },
+    "listening": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "building": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "speaking": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    }
+   }
+  },
+  "tense:present-continuous": {
+   "channels": {
+    "reading": {
+     "status": "none",
+     "items": 0,
+     "contexts": 0,
+     "need": {
+      "items": 5,
+      "contexts": 2,
+      "days": 2
+     }
+    },
+    "listening": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "building": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "speaking": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    }
+   }
+  },
+  "tense:past-simple": {
+   "channels": {
+    "reading": {
+     "status": "none",
+     "items": 0,
+     "contexts": 0,
+     "need": {
+      "items": 5,
+      "contexts": 2,
+      "days": 2
+     }
+    },
+    "listening": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "building": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "speaking": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    }
+   }
+  },
+  "tense:going-to": {
+   "channels": {
+    "reading": {
+     "status": "none",
+     "items": 0,
+     "contexts": 0,
+     "need": {
+      "items": 5,
+      "contexts": 2,
+      "days": 2
+     }
+    },
+    "listening": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "building": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "speaking": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    }
+   }
+  },
+  "tense:will": {
+   "channels": {
+    "reading": {
+     "status": "scored",
+     "rawPct": 83.3,
+     "displayPct": 83,
+     "band": "熟悉",
+     "items": 6,
+     "contexts": 5,
+     "need": {
+      "items": 0,
+      "contexts": 0,
+      "days": 0
+     }
+    },
+    "listening": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "building": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "speaking": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    }
+   }
+  },
+  "form:negative": {
+   "channels": {
+    "reading": {
+     "status": "insufficient",
+     "items": 2,
+     "contexts": 2,
+     "need": {
+      "items": 3,
+      "contexts": 0,
+      "days": 1
+     }
+    },
+    "listening": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "building": {
+     "status": "none",
+     "items": 0,
+     "contexts": 0,
+     "need": {
+      "items": 5,
+      "contexts": 2,
+      "days": 2
+     }
+    },
+    "speaking": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    }
+   }
+  },
+  "form:yes-no-question": {
+   "channels": {
+    "reading": {
+     "status": "none",
+     "items": 0,
+     "contexts": 0,
+     "need": {
+      "items": 5,
+      "contexts": 2,
+      "days": 2
+     }
+    },
+    "listening": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "building": {
+     "status": "none",
+     "items": 0,
+     "contexts": 0,
+     "need": {
+      "items": 5,
+      "contexts": 2,
+      "days": 2
+     }
+    },
+    "speaking": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    }
+   }
+  },
+  "form:wh-question": {
+   "channels": {
+    "reading": {
+     "status": "none",
+     "items": 0,
+     "contexts": 0,
+     "need": {
+      "items": 5,
+      "contexts": 2,
+      "days": 2
+     }
+    },
+    "listening": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    },
+    "building": {
+     "status": "none",
+     "items": 0,
+     "contexts": 0,
+     "need": {
+      "items": 5,
+      "contexts": 2,
+      "days": 2
+     }
+    },
+    "speaking": {
+     "status": "no-instrument",
+     "items": 0,
+     "contexts": 0,
+     "need": {}
+    }
+   }
+  }
+ },
+ "topics": {
+  "food": {
+   "channels": {
+    "reading": {
+     "status": "insufficient",
+     "needSubtopics": 3
+    },
+    "listening": {
+     "status": "none",
+     "needSubtopics": 3
+    },
+    "building": {
+     "status": "none",
+     "needSubtopics": 3
+    },
+    "speaking": {
+     "status": "none",
+     "needSubtopics": 3
+    }
+   },
+   "subtopics": {
+    "ingredients": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 8
+      },
+      "words": {
+       "done": 0,
+       "total": 17
+      }
+     },
+     "vocabOnly": false
+    },
+    "ordering": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "insufficient",
+      "items": 1,
+      "contexts": 1,
+      "need": {
+       "items": 4,
+       "contexts": 1,
+       "days": 1
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 1,
+       "total": 69
+      },
+      "words": {
+       "done": 0,
+       "total": 5
+      }
+     },
+     "vocabOnly": false
+    },
+    "cooking": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 8
+      },
+      "words": {
+       "done": 0,
+       "total": 6
+      }
+     },
+     "vocabOnly": false
+    },
+    "dietary": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "insufficient",
+      "items": 1,
+      "contexts": 1,
+      "need": {
+       "items": 4,
+       "contexts": 1,
+       "days": 1
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 20
+      },
+      "words": {
+       "done": 0,
+       "total": 0
+      }
+     },
+     "vocabOnly": false
+    }
+   }
+  },
+  "travel": {
+   "channels": {
+    "reading": {
+     "status": "insufficient",
+     "needSubtopics": 3
+    },
+    "listening": {
+     "status": "none",
+     "needSubtopics": 3
+    },
+    "building": {
+     "status": "none",
+     "needSubtopics": 3
+    },
+    "speaking": {
+     "status": "none",
+     "needSubtopics": 3
+    }
+   },
+   "subtopics": {
+    "airport": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "insufficient",
+      "items": 1,
+      "contexts": 1,
+      "need": {
+       "items": 4,
+       "contexts": 1,
+       "days": 1
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 1,
+       "total": 49
+      },
+      "words": {
+       "done": 0,
+       "total": 5
+      }
+     },
+     "vocabOnly": false
+    },
+    "customs": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 12
+      },
+      "words": {
+       "done": 0,
+       "total": 0
+      }
+     },
+     "vocabOnly": false
+    },
+    "lodging": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "insufficient",
+      "items": 1,
+      "contexts": 1,
+      "need": {
+       "items": 4,
+       "contexts": 1,
+       "days": 1
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 1,
+       "total": 27
+      },
+      "words": {
+       "done": 0,
+       "total": 0
+      }
+     },
+     "vocabOnly": false
+    },
+    "directions": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 12
+      },
+      "words": {
+       "done": 0,
+       "total": 1
+      }
+     },
+     "vocabOnly": false
+    },
+    "transport": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 37
+      },
+      "words": {
+       "done": 0,
+       "total": 5
+      }
+     },
+     "vocabOnly": false
+    }
+   }
+  },
+  "work": {
+   "channels": {
+    "reading": {
+     "status": "none",
+     "needSubtopics": 3
+    },
+    "listening": {
+     "status": "none",
+     "needSubtopics": 3
+    },
+    "building": {
+     "status": "none",
+     "needSubtopics": 3
+    },
+    "speaking": {
+     "status": "none",
+     "needSubtopics": 3
+    }
+   },
+   "subtopics": {
+    "negotiation": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 7
+      },
+      "words": {
+       "done": 0,
+       "total": 0
+      }
+     },
+     "vocabOnly": false
+    }
+   }
+  },
+  "meeting": {
+   "channels": {
+    "reading": {
+     "status": "insufficient",
+     "needSubtopics": 3
+    },
+    "listening": {
+     "status": "none",
+     "needSubtopics": 3
+    },
+    "building": {
+     "status": "none",
+     "needSubtopics": 3
+    },
+    "speaking": {
+     "status": "none",
+     "needSubtopics": 3
+    }
+   },
+   "subtopics": {
+    "scheduling": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 15
+      },
+      "words": {
+       "done": 0,
+       "total": 1
+      }
+     },
+     "vocabOnly": false
+    },
+    "opening": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 8
+      },
+      "words": {
+       "done": 0,
+       "total": 0
+      }
+     },
+     "vocabOnly": false
+    },
+    "opinions": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 6
+      },
+      "words": {
+       "done": 0,
+       "total": 0
+      }
+     },
+     "vocabOnly": false
+    },
+    "confirming": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 0,
+       "total": 4
+      },
+      "words": {
+       "done": 0,
+       "total": 0
+      }
+     },
+     "vocabOnly": false
+    },
+    "actions": {
+     "listening": {
+      "status": "none",
+      "items": 0,
+      "contexts": 0,
+      "need": {
+       "items": 5,
+       "contexts": 2,
+       "days": 2
+      }
+     },
+     "reading": {
+      "status": "insufficient",
+      "items": 2,
+      "contexts": 1,
+      "need": {
+       "items": 3,
+       "contexts": 1,
+       "days": 0
+      }
+     },
+     "coverage": {
+      "sentences": {
+       "done": 2,
+       "total": 11
+      },
+      "words": {
+       "done": 0,
+       "total": 0
+      }
+     },
+     "vocabOnly": false
+    }
+   }
+  }
+ },
+ "weak": [],
+ "legacy": null
+}

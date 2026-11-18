@@ -1,0 +1,18 @@
+{
+ "_now": "2026-11-18T12:00:00.000Z",
+ "pm-ability-v1": "{\"v\":2,\"events\":[{\"v\":1,\"id\":\"fx-1\",\"item\":\"g:pst-01\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:meeting/general\",\"at\":1794794400000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-2\",\"item\":\"g:pst-02\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/airport\",\"at\":1794794460000,\"result\":\"wrong\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-3\",\"item\":\"g:pst-03\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1794794520000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-4\",\"item\":\"g:pst-04\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/lodging\",\"at\":1794880980000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-5\",\"item\":\"g:pst-05\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1794881040000,\"result\":\"wrong\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-6\",\"item\":\"g:pst-06\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/airport\",\"at\":1794881100000,\"result\":\"correct\",\"via\":\"fixture\"}]}",
+ "_expect": {
+  "grammar:tense:past-simple": {
+   "status": "scored",
+   "items": 6,
+   "correctItems": 4,
+   "contexts": 4,
+   "days": 2,
+   "rawPct": 66.7,
+   "displayPct": 67,
+   "band": "發展中",
+   "weak": true
+  },
+  "hand": "4÷6=66.7% → 67%；情境 = 題目附的 ctx（g:pst-01…06 共 4 種）；台北日期 2 天；<70 → 弱項"
+ }
+}
