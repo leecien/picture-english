@@ -209,7 +209,7 @@ const RPG = (() => {
       "T.....=........=...m...T",
       "T..,..==========...m...T",
       "T.........=............T",
-      "T..HHH....=.....HHH....T",
+      "T..HHH....=.L...HHH....T",
       "T..HHH....=.....HHH..,.T",
       "T...c.....=......d.....T",
       "T.,....m..........m....T",
@@ -252,6 +252,7 @@ const RPG = (() => {
       { ch: "c", id: "stress", name: "重音老師 Stella", look: look({ skin: "#fff1e4", hair: "#f08b47", cloth: "#e8737f", accent: "#fff3b0", ears: "fox" }) },
       { ch: "d", id: "word", name: "村長 Kai", look: look({ hair: "#8a8a8a", cloth: "#6b8f5a", accent: "#f3d27a", hat: "#4f6d8f" }) },
       { ch: "e", id: "echo", name: "音標圖鑑老師 Echo", look: look({ skin: "#f6dcc4", hair: "#3e5c8a", cloth: "#e9e2c8", accent: "#7fb4e6", hat: "#c9a45c" }) },
+      { ch: "L", id: "lumi", name: "風之小精靈 露米", look: { kind: "sprite", name: "露米", skin: "#fff6f2", hair: "#bdeeff", cloth: "#8fd8e8", accent: "#ffffff", boots: "#7fb4e6", wing: "#c8f4ffb0" }, optional: true },
     ],
     mob: { name: "音節泡泡", shape: "bubble", colors: ["#c9b6ff", "#ffffff"], lv: 1, hp: 24, atk: 3, aggressive: false, kind: "phonics" },
   };
@@ -289,7 +290,7 @@ const RPG = (() => {
   WIND.mob = WIND_MOBS.slime;
   // No field monsters before anything is taught; after the first unit, only taught sounds are asked.
   const spawnIndex = (m, p) => m.layout.flatMap((row, y) => [...row].flatMap((ch, x) => ch === "m" ? [{x,y}] : [])).findIndex((q) => q.x === p.x && q.y === p.y);
-  KK.mobAt = (p) => NV.n01 ? NOVICE_MOBS[Math.max(0, spawnIndex(KK, p)) % (NV.taught.length >= 13 ? 5 : NV.taught.length >= 7 ? 3 : 1)] : taughtUnits().length ? KK.mob : null;
+  KK.mobAt = (p) => NV.n01 ? (chDone("N12") ? [...NOVICE_MOBS, STRESS_MOB] : NOVICE_MOBS)[Math.max(0, spawnIndex(KK, p)) % (chDone("N12") ? 6 : NV.taught.length >= 13 ? 5 : NV.taught.length >= 7 ? 3 : 1)] : taughtUnits().length ? KK.mob : null;
   WIND.mobAt = (p) => Object.values(WIND_MOBS)[Math.max(0, spawnIndex(WIND, p)) % 5];
   /* Novice-village field monster (docs/NOVICE_VILLAGE_V1.md §8): only taught sounds, long time, low damage. */
   const ECHO_MOB = { name: "回音泡泡", shape: "bubble", colors: ["#bfe6ff", "#ffffff"], lv: 1, hp: 24, atk: 2, aggressive: false, kind: "sound" };
@@ -299,6 +300,11 @@ const RPG = (() => {
     { name: "流光音靈", shape: "wisp", colors: ["#d6c8fa", "#9291ce"], lv: 3, hp: 36, atk: 3, aggressive: false, kind: "sound", intents: ["attack", "drain", "attack"] },
     { name: "晶甲音靈", shape: "beetle", colors: ["#a7d9cf", "#618f99"], lv: 3, hp: 52, atk: 3, aggressive: false, kind: "sound", intents: ["attack", "mend", "guard"] },
   ];
+  // after N12 (stress): one more field monster that asks "which syllable is stressed"
+  const STRESS_MOB = { name: "鼓點石靈", shape: "guardian", colors: ["#d8c9a8", "#8a7a5a"], lv: 6, hp: 100, atk: 5, aggressive: false, kind: "stress" };
+  /* 失音魔王: three seals of 10 questions; a seal locks on 6 first-try answers, never on damage. */
+  const SILENCE_BOSS = { name: "失音魔王", shape: "guardian", colors: ["#d9c8ff", "#5b4a8a"], lv: 10, hp: 40, atk: 6, intents: ["attack", "charge", "attack", "attack"] };
+  const BOSS_PHASES = ["聲音封印", "幻影封印", "詞語封印"];
   const GUARDIAN = { name: "風之守衛", shape: "guardian", colors: ["#e3f5ff", "#7fb4e6"], lv: 6, hp: 120, atk: 6, intents: ["attack", "charge", "attack", "guard"], shield: { name: "風之盾", icon: "🌀" } };
   const GULL = { name: "搗蛋海鷗", shape: "bird", colors: ["#ffffff", "#9aa3b5"], lv: 4, hp: 1, atk: 0 };
   const LEVELS = { 1: "初級", 2: "中級", 3: "高級" };
@@ -368,11 +374,40 @@ const RPG = (() => {
   NV.taught = Array.isArray(NV.taught) ? NV.taught : [];
   NV.passed = Array.isArray(NV.passed) ? NV.passed : [];
   NV.rec = obj(NV.rec);
-  NV.ch = obj(NV.ch); // later chapters: { N03: { step, done } }
+  NV.ch = obj(NV.ch); // later chapters: { N03: { step, done, full }, N04: { step, done, full, field }, … N12, seals }
+  NV.boss = obj(NV.boss); // { phase: 0..3, tries }
+  NV.lumi = Array.isArray(NV.lumi) ? NV.lumi : []; // village quest: sound fragments repaired
+  const CH_ORDER = ["N04", "N05", "N06", "N07", "N08", "N09", "N10", "N11"];
+  const TEACHER = { vowel: "母音老師 Ava", consonant: "子音老師 Cody", stress: "重音老師 Stella", word: "村長 Kai" };
+  /* done / field-won for every chapter, keeping the original save fields of N01–N03 */
+  function chDone(id) {
+    if (id === "N01") return !!NV.n01;
+    if (id === "N02") return !!NV.n02;
+    return !!(NV.ch[id] && NV.ch[id].done);
+  }
+  function chField(id) {
+    if (id === "N01") return !!NV.field;
+    if (id === "N02") return !!NV.field2;
+    if (id === "N03") return !!NV.field3;
+    return !!(NV.ch[id] && NV.ch[id].field);
+  }
+  const ALL_CH = ["N01", "N02", "N03", ...CH_ORDER];
+  const pendingField = () => ALL_CH.find((id) => chDone(id) && !chField(id));
+  const sealsDone = () => !!(NV.ch.seals && NV.ch.seals.sound && NV.ch.seals.build && NV.ch.seals.rhythm);
+  const bossReady = () => NV.track === "v1" && chField("N11") && chDone("N12") && sealsDone() && C.claimed;
   if (!NV.track) NV.track = data.kk.done || ["vowel", "consonant", "stress", "word"].some((k) => data.kk[k]) || Object.keys(obj(data.kk.units)).length ? "legacy" : "v1";
-  function nvRec(sym, kind) {
+  function nvRec(sym, kind, ref) {
     const r = (NV.rec[sym] = { ind: 0, retry: 0, wrong: 0, timeout: 0, assist: 0, ...obj(NV.rec[sym]) });
     r[kind]++;
+    // per word / spelling as well (nv.wrec.{sound,stress,spell,build}[key]); ref is the question or { cat, key }
+    const cat = ref && (ref.cat || (sym === "ˋ" ? "stress" : "sound")),
+      key = ref && (ref.key || ref.wordId);
+    if (sym && key) nvWord(cat, key, kind);
+  }
+  function nvWord(cat, key, kind) {
+    NV.wrec = obj(NV.wrec);
+    const c = (NV.wrec[cat] = obj(NV.wrec[cat]));
+    (c[key] = { ind: 0, retry: 0, wrong: 0, timeout: 0, assist: 0, ...obj(c[key]) })[kind]++;
   }
   /* Companion (pm-rpg-v1 .companion): earned in the find-luggage stage, never given at the start.
      bond grows from chats, wins and story; no feeding, no daily chores. */
@@ -529,6 +564,7 @@ const RPG = (() => {
       <button data-m="vocab">📖<b>單字學習</b><small>${typeof Vocab !== "undefined" ? Vocab.count : 80} / 3000 可玩單字</small></button>
       <button data-m="book">🃏<b>卡冊</b><small>收集的單字卡</small></button>
       <button data-m="log">📈<b>學習紀錄</b><small>每天學了什麼</small></button>
+      <button data-m="ability">📊<b>我的英語能力</b><small>文法、主題、四種能力</small></button>
       <button data-m="mic">🎤<b>麥克風檢查</b><small>收不到聲音時用</small></button>
       <button data-m="platform">📱<b>App 與存檔</b><small>安裝、離線與備份</small></button>
       <button data-m="start">🧭<b>回到入口</b><small>卡住時回到地圖起點</small></button>
@@ -546,6 +582,7 @@ const RPG = (() => {
             if (m === "journal") return journal();
             if (m === "bag") return bag();
             if (m === "buddy") return buddy();
+            if (m === "ability") return abilityPanel();
             if (m === "life") {
               closeSheet();
               World.paused = true;
@@ -570,6 +607,78 @@ const RPG = (() => {
             openPanel(m === "practice" ? "p-play" : m === "book" ? "p-book" : "p-log");
           }),
       );
+  }
+  /* ---------- 我的英語能力: answer → event → analysis → weak practice (in place) → analysis again ---------- */
+  async function abilityPanel() {
+    sheet(Ability.panelHTML());
+    if (!Ability.data) await Ability.ready, $("menu").hidden || sheet(Ability.panelHTML());
+    $("menu-body")
+      .querySelectorAll(".ab-row[data-k], .ab-sub[data-k]")
+      .forEach((b) => (b.onclick = () => abilityDetail(b.dataset.k, b.dataset.id)));
+  }
+  function abilityDetail(kind, id) {
+    sheet(Ability.detailHTML(kind, id));
+    $("menu-body").querySelector(".ab-back").onclick = abilityPanel;
+    const go = $("menu-body").querySelector(".ab-practice");
+    if (go) go.onclick = () => practiceWeak(kind, id);
+  }
+  /* A question for a logged item id ("g:…", "s:<line>", "w:<word>") inside a sub-topic's scenes. */
+  function questionFor(id, scenes) {
+    const D = Ability.data;
+    if (id.startsWith("g:")) return D && D.byId[id] ? Ability.grammarQuestion(D.byId[id]) : null;
+    const text = id.slice(2);
+    if (id.startsWith("w:")) return Learn.wordQuestion((w) => w.w === text, "pic", "ability");
+    for (const [cat, scene] of scenes) {
+      const sc = Learn.scene(cat, scene),
+        i = sc ? sc.items.findIndex((x) => x.en === text) : -1;
+      if (i >= 0) return Learn.sceneQuestion(cat, scene, i, { mode: "listen", ctx: `scene:${scene}` });
+    }
+    return SENT.some((x) => x.en === text) ? Learn.sentQuestion((x) => x.en === text, "ability") : null;
+  }
+  /* 練習弱項: grammar → its form-choice items; a sub-topic → its recent errors, its scenes and its grammar items. */
+  async function practiceWeak(kind, id) {
+    await Ability.ready;
+    const p = Ability.profile(),
+      D = Ability.data;
+    let qs = [];
+    if (kind === "grammar") qs = Ability.grammarItems({ target: id }, 5).map((g) => Ability.grammarQuestion(g));
+    else {
+      const [topic, sub] = id.split("/"),
+        scenes = D.contexts.filter((c) => c.topic === topic && c.sub === sub && /^scene:/.test(c.ctx)).map((c) => c.source.split("/"));
+      const errs = [...new Set((p.weak.find((w) => w.kind === "topic" && w.id === id) || { items: [] }).items)];
+      qs = errs.map((x) => questionFor(x, scenes)).filter(Boolean);
+      for (const [cat, scene] of shuffle(scenes.slice())) {
+        if (qs.length >= 3) break;
+        const sc = Learn.scene(cat, scene);
+        if (sc) qs.push(Learn.sceneQuestion(cat, scene, Math.floor(Math.random() * sc.items.length), { mode: "listen", ctx: `scene:${scene}` }));
+      }
+      qs.push(...Ability.grammarItems({ topic, sub }, 5 - qs.length).map((g) => Ability.grammarQuestion(g)));
+    }
+    qs = qs.filter(Boolean).slice(0, 5);
+    if (!qs.length) return status("這一項目前沒有可以練的題目。");
+    closeSheet();
+    await quizRound("能力練習", qs, "練習弱項", "practice");
+    abilityDetail(kind, id); // back where the player was, with the analysis updated
+  }
+  /* A short round of prepared questions in a dialog, in place (the hero does not move). */
+  async function quizRound(who, qs, title, via) {
+    Talk.show({ name: who, look: LUMI });
+    Ability.setVia(via || "practice");
+    let first = 0;
+    try {
+      await Talk.line("", `${title}：${qs.length} 題。作答後會顯示正確句子、中文、發音與簡短說明。`);
+      for (let i = 0; i < qs.length; i++) {
+        $("dlg-name").dataset.step = `${title} ${i + 1}/${qs.length}`;
+        const r = await Talk.quiz(qs[i]);
+        if (r.ok && !r.tries) first++;
+      }
+      delete $("dlg-name").dataset.step;
+      await Talk.line("", `第一次就答對 ${first} / ${qs.length} 題。結果已記進「我的英語能力」。`);
+    } finally {
+      Talk.close();
+      Ability.setVia("");
+    }
+    return first;
   }
   /* Region stories use the same map locks and learning entrypoints as the field. */
   function openAtlas() {
@@ -666,7 +775,12 @@ const RPG = (() => {
       return `<li class="${done ? "done" : ""}"><b>${done ? "✅" : i === W.stage && kkDone() ? "▶️" : "⬜"} ${s.title}</b><small>會學：${s.learn}</small><small>內容：${esc(m.path)}（${m.sc ? m.sc.items.length : 0} 句）· 程度：${m.level}</small><small>${s.toeic}</small></li>`;
     }).join("");
     sheet(`<h3>📜 任務日誌</h3><p class="journal-now">目前目標：${esc(objective().text)}</p>
-      <h4>🐱 音之新手村（新版）· 冒險 Lv.${NV.lv}</h4><ul class="journal"><li class="${NV.n01 ? "done" : ""}"><b>${NV.n01 ? "✅" : NV.step ? "▶️" : "⬜"} N00＋N01 第一個字 cat</b><small>字母、聲音、KK 的不同；/k/ /æ/ /t/；先聽後選；組出 cat</small></li><li class="${NV.field ? "done" : ""}"><b>${NV.field ? "✅" : "⬜"} 回聲原野：回音泡泡</b><small>只考已教的音；答錯不公布答案，之後換別的字再出現</small></li><li class="${NV.n02 ? "done" : ""}"><b>${NV.n02 ? "✅" : NV.n02step ? "▶️" : "⬜"} N02 聲音小路 /m/ /n/ /s/ /f/</b><small>找子音老師 Cody：教學卡、先聽後選、字母組合配對（ph 也念 /f/）、補空格組音</small></li><li class="${NV.field2 ? "done" : ""}"><b>${NV.field2 ? "✅" : "⬜"} 回聲原野：7 個音的戰鬥</b><small>/k/ /æ/ /t/ /m/ /n/ /s/ /f/</small></li><li class="${n03done() ? "done" : ""}"><b>${n03done() ? "✅" : NV.ch.N03 ? "▶️" : "⬜"} N03 子音工具箱 /p/ /b/ /d/ /g/ /h/ /l/</b><small>找子音老師 Cody：無聲／有聲成對（p–b、t–d、k–g）、pp／ll 的寫法、用學過的音組整個字</small></li><li class="${NV.field3 ? "done" : ""}"><b>${NV.field3 ? "✅" : "⬜"} 回聲原野：13 個音的戰鬥</b><small>/k æ t m n s f p b d g h l/</small></li><li><b>⬜ N04–N13、旅伴、三枚印記、失音魔王</b><small>製作中（docs/NOVICE_VILLAGE_V1.md）。目前接著用舊版的四堂課。</small></li></ul>
+      <h4>🐱 音之新手村（新版）· 冒險 Lv.${NV.lv}</h4><ul class="journal"><li class="${NV.n01 ? "done" : ""}"><b>${NV.n01 ? "✅" : NV.step ? "▶️" : "⬜"} N00＋N01 第一個字 cat</b><small>字母、聲音、KK 的不同；/k/ /æ/ /t/；先聽後選；組出 cat</small></li><li class="${NV.field ? "done" : ""}"><b>${NV.field ? "✅" : "⬜"} 回聲原野：回音泡泡</b><small>只考已教的音；答錯不公布答案，之後換別的字再出現</small></li><li class="${NV.n02 ? "done" : ""}"><b>${NV.n02 ? "✅" : NV.n02step ? "▶️" : "⬜"} N02 聲音小路 /m/ /n/ /s/ /f/</b><small>找子音老師 Cody：教學卡、先聽後選、字母組合配對（ph 也念 /f/）、補空格組音</small></li><li class="${NV.field2 ? "done" : ""}"><b>${NV.field2 ? "✅" : "⬜"} 回聲原野：7 個音的戰鬥</b><small>/k/ /æ/ /t/ /m/ /n/ /s/ /f/</small></li><li class="${n03done() ? "done" : ""}"><b>${n03done() ? "✅" : NV.ch.N03 ? "▶️" : "⬜"} N03 子音工具箱 /p/ /b/ /d/ /g/ /h/ /l/</b><small>找子音老師 Cody：無聲／有聲成對（p–b、t–d、k–g）、pp／ll 的寫法、用學過的音組整個字</small></li><li class="${NV.field3 ? "done" : ""}"><b>${NV.field3 ? "✅" : "⬜"} 回聲原野：13 個音的戰鬥</b><small>/k æ t m n s f p b d g h l/</small></li>${CH_ORDER.map((id) => `<li class="${chDone(id) && chField(id) ? "done" : ""}"><b>${chDone(id) ? "✅" : NV.ch[id] ? "▶️" : "⬜"} ${Novice.PLAN[id].title} ${Novice.PLAN[id].groups.flat().map((x) => `/${x}/`).join(" ")}</b><small>${TEACHER[Novice.PLAN[id].teacher]}${chDone(id) ? (chField(id) ? "・原野戰鬥 ✅" : "・原野戰鬥待完成") : ""}</small></li>`).join("")}
+      <li class="${C.claimed ? "done" : ""}"><b>${C.claimed ? "✅" : "⬜"} 夥伴：露米</b><small>N06 原野戰鬥後，修好露米的聲音徽章</small></li>
+      <li class="${chDone("N12") ? "done" : ""}"><b>${chDone("N12") ? "✅" : "⬜"} N12 音節與重音</b><small>重音老師 Stella</small></li>
+      <li class="${sealsDone() ? "done" : ""}"><b>${sealsDone() ? "✅" : "⬜"} N13 三枚印記</b><small>辨音 ${NV.ch.seals && NV.ch.seals.sound ? "✅" : "⬜"}・組音 ${NV.ch.seals && NV.ch.seals.build ? "✅" : "⬜"}・節奏 ${NV.ch.seals && NV.ch.seals.rhythm ? "✅" : "⬜"}</small></li>
+      <li class="${NV.grad ? "done" : ""}"><b>${NV.grad ? "✅" : "⬜"} 失音魔王（三個封印 × 10 題）</b><small>已完成 ${NV.boss.phase || 0}/3 封印</small></li>
+      <li class="${NV.reviews ? "done" : ""}"><b>${NV.grad ? (NV.reviews ? "✅" : "▶️") : "⬜"} 正式複習</b><small>畢業後開放：依首次答錯、重試、超時、夥伴補正排序</small></li></ul>
       <h4>🔤 KK 新手村 ${kkDone() ? "· 已畢業" : ""}</h4>${due.length ? `<p class="fine">需要多練的音：${due.map((x) => `/${esc(x)}/`).join(" ")}（找對應的老師選「練需要加強的音」）</p>` : ""}<ul class="journal">${kkRows}<li class="${data.kk.battle ? "done" : ""}"><b>${data.kk.battle ? "✅" : "⬜"} 教學戰鬥</b><small>答音標題打倒村口的音節泡泡</small></li></ul>
       <h4>🌬️ 風之旅行群島 ${W.done ? "· 故事完成" : ""}</h4><ul class="journal">${windRows}</ul>
       ${typeof WorldRegions !== "undefined" ? `<h4>✨ 共鳴印記</h4><ul class="journal">${WorldRegions.maps.map((m) => { const s = WorldRegions.status(m.id, data.regions); return `<li class="${s.done ? "done" : ""}"><b>${s.seal ? "✨" : "⬜"} ${esc(m.name)} ${s.completedCount}/3</b><small>${s.seal ? esc(s.seal.name) + "已取得" : s.next ? esc(s.next.title) : "尚未開始"}</small></li>`; }).join("")}</ul>` : ""}
@@ -707,8 +821,20 @@ const RPG = (() => {
       if (!NV.field2) return { text: "回聲原野：用學過的 7 個音再打倒一隻回音泡泡", short: "原野戰鬥 2", npc: null, map: "kk", mob: true };
       if (!n03done()) return { text: "找子音老師 Cody：N03 子音工具箱 /p/ /b/ /d/ /g/ /h/ /l/", short: "N03 子音工具箱", npc: "consonant", map: "kk" };
       if (!NV.field3) return { text: "回聲原野：用學過的 13 個音打倒一隻回音泡泡", short: "原野戰鬥 3", npc: null, map: "kk", mob: true };
+      for (const id of CH_ORDER) {
+        const P = Novice.PLAN[id],
+          sounds = P.groups.flat().map((x) => `/${x}/`).join(" ");
+        if (!chDone(id)) return { text: `找${TEACHER[P.teacher]}：${P.title} ${sounds}`, short: P.title, npc: P.teacher, map: "kk" };
+        if (!chField(id)) return { text: `回聲原野：用學過的 ${NV.taught.length} 個音打倒一隻怪物`, short: `原野戰鬥（${P.title.split(" ")[0]}）`, npc: null, map: "kk", mob: true };
+        if (id === "N06" && !C.claimed) return { text: "找風之小精靈露米：幫牠修好聲音徽章，邀請牠一起冒險", short: "夥伴任務", npc: "lumi", map: "kk" };
+      }
+      if (!chDone("N12")) return { text: "找重音老師 Stella：N12 音節與重音", short: "N12 音節與重音", npc: "stress", map: "kk" };
+      if (!sealsDone()) return { text: "找村長 Kai：N13 組音實戰，拿到辨音、組音、節奏三枚印記", short: "N13 三枚印記", npc: "word", map: "kk" };
+      if (!C.claimed) return { text: "找風之小精靈露米：幫牠修好聲音徽章，邀請牠一起冒險", short: "夥伴任務", npc: "lumi", map: "kk" };
+      return { text: `挑戰村口的失音魔王：三個封印各 10 題，每個封印第一次答對 6 題才鎖上（已完成 ${NV.boss.phase || 0}/3）`, short: "失音魔王", npc: null, map: "kk", boss: true };
     }
-    if (at === "kk" || !kkDone()) {
+    if ((at === "kk" || !kkDone()) && !(NV.track === "v1" && kkDone())) {
+      // the old four-lesson path (legacy saves); a v1 graduate skips it
       const next = KK_TASKS.find((t) => !data.kk[t.id]);
       if (next) return { text: `找${KK.npcs.find((n) => n.id === next.npc).name}上「${next.title}」課`, short: `KK：${next.title}`, npc: next.npc, map: "kk" };
       if (!data.kk.battle) return { text: data.kk.bubble ? "答音標題打倒村口的音節泡泡" : "找村長 Kai 報告", short: "KK：教學戰鬥", npc: data.kk.bubble ? null : "word", map: "kk" };
@@ -804,7 +930,7 @@ const RPG = (() => {
       },
       guide: () => {
         const o = objective();
-        return o.map === data.at && o.npc ? World.npc(o.npc) : o.mob && data.at === "kk" ? World.entities.filter((e) => e.kind === "mob" && !e.dead).sort((a, b) => dist(a) - dist(b))[0] : data.kk.bubble && !data.kk.battle && data.at === "kk" ? World.entities.find((e) => e.story === "tutorial") : W.bag === "search" && data.at === "wind" ? World.entities.find((e) => e.story === "thief") : null;
+        return o.map === data.at && o.npc ? World.npc(o.npc) : o.boss && data.at === "kk" ? World.entities.find((e) => e.story === "boss") : o.mob && data.at === "kk" ? World.entities.filter((e) => e.kind === "mob" && !e.dead).sort((a, b) => dist(a) - dist(b))[0] : data.kk.bubble && !data.kk.battle && data.at === "kk" ? World.entities.find((e) => e.story === "tutorial") : W.bag === "search" && data.at === "wind" ? World.entities.find((e) => e.story === "thief") : null;
       },
       onStatus: status,
       onTick: Battle.tick,
@@ -837,6 +963,10 @@ const RPG = (() => {
     if (data.at === "kk" && data.kk.bubble && !data.kk.battle) {
       const p = findChar("@");
       World.spawn({ name: "搗蛋音節泡泡", shape: "bubble", colors: ["#ff9fd0", "#ffffff"], lv: 2, hp: 24, atk: 3, shield: { name: "泡泡膜", icon: "🫧" } }, p.x - 3, p.y + 1, { unique: true, story: "tutorial" });
+    }
+    if (data.at === "kk" && bossReady() && (NV.boss.phase || 0) < 3) {
+      const p = findChar("@");
+      World.spawn({ ...SILENCE_BOSS }, p.x - 2, p.y - 1, { unique: true, story: "boss" });
     }
     if (data.at === "wind" && W.stage === 2 && W.bag === "search") {
       const p = findChar("x");
@@ -1060,6 +1190,15 @@ const RPG = (() => {
     if (e.id === "word" && NV.track === "v1" && !NV.n01) return noviceUnit();
     if (e.id === "consonant" && NV.n01 && !NV.n02 && (NV.track === "v1" || NV.n02step)) return noviceN02();
     if (e.id === "consonant" && NV.n02 && NV.field2 && !n03done() && (NV.track === "v1" || NV.ch.N03)) return noviceN03();
+    if (e.id === "lumi") return lumiQuest(e);
+    if (NV.track === "v1" && !kkDone()) {
+      const o = objective();
+      if (o.npc === e.id && e.id !== "word" && CH_ORDER.some((id) => !chDone(id) && Novice.PLAN[id].teacher === e.id)) return runChapter(CH_ORDER.find((id) => !chDone(id)));
+      if (o.npc === e.id && e.id === "stress") return runN12();
+      if (o.npc === e.id && e.id === "word") return seals();
+      if (NV.n01) return Talk.line("Keep going!", `繼續加油！目前的目標：${esc(o.text)}`);
+    }
+    if (NV.grad && (e.id === "word" || e.id === "vowel" || e.id === "consonant" || e.id === "stress")) return review();
     const task = KK_TASKS.find((t) => t.npc === e.id);
     if (e.id === "word" && data.kk.word) {
       if (KK_TASKS.every((t) => data.kk[t.id])) return chief();
@@ -1169,7 +1308,7 @@ const RPG = (() => {
       $("dlg-name").dataset.step = `${label}：還要 ${need.length} 個音`;
       const r = await Talk.quiz(q);
       asked++;
-      nvRec(target, r.tries ? "retry" : "ind");
+      nvRec(target, r.tries ? "retry" : "ind", q);
       if (!r.tries) {
         NV.passed.push(target);
         need.splice(need.indexOf(target), 1);
@@ -1182,6 +1321,7 @@ const RPG = (() => {
   /* Picture → put the taught sounds into the slots → confirm. Wrong slots stay open; the word is revealed only when right. */
   /* Untaught sounds of the word are placed for you and locked (labelled); only taught sounds are chosen. */
   function nvBuild(w) {
+    Novice.lastBuild = w; // test hook only: never rendered
     const it = Novice.word(w),
       target = Novice.kkSounds(it.kk),
       given = target.map((x) => !NV.taught.includes(x));
@@ -1193,8 +1333,8 @@ const RPG = (() => {
         chips = [...need, ...extra].sort(() => Math.random() - 0.5);
       const paint = (marks) => {
         $("dlg-body").innerHTML = `<p class="dlg-zh">看圖，把這個字的聲音依順序放進格子，再按確認。（不會先播答案）</p><div class="nv-pic" aria-label="圖片題">${pic(it)}</div>
-          <div class="nv-slots">${slots.map((x, i) => (given[i] ? `<button type="button" class="nv-slot given" disabled aria-label="第 ${i + 1} 格：還沒教的音，先幫你放好">/${esc(x)}/<small>還沒教</small></button>` : `<button type="button" class="nv-slot ${marks ? marks[i] : ""}" data-slot="${i}" aria-label="第 ${i + 1} 格">${x ? `/${esc(x)}/` : "＿"}${marks && marks[i] === "bad" ? "<sup>✕</sup>" : marks && marks[i] === "good" ? "<sup>✓</sup>" : ""}</button>`)).join("")}</div>${given.some(Boolean) ? '<p class="fine">灰色格子是還沒教的音，先幫你放好，不算在這題裡。</p>' : ""}
-          <div class="nv-chips">${chips.map((c) => `<button type="button" class="nv-chip" data-chip="${esc(c)}">/${esc(c)}/</button>`).join("")}</div>
+          <div class="nv-slots${slots.length > 5 ? " long" : ""}">${slots.map((x, i) => (given[i] ? `<button type="button" class="nv-slot given" disabled aria-label="第 ${i + 1} 格：還沒教的音，先幫你放好">/${esc(x)}/<small>還沒教</small></button>` : `<button type="button" class="nv-slot ${marks ? marks[i] : ""}" data-slot="${i}" aria-label="第 ${i + 1} 格">${x ? `/${esc(x)}/` : "＿"}${marks && marks[i] === "bad" ? "<sup>✕</sup>" : marks && marks[i] === "good" ? "<sup>✓</sup>" : ""}</button>`)).join("")}</div>${given.some(Boolean) ? '<p class="fine">灰色格子是還沒教的音，先幫你放好，不算在這題裡。</p>' : ""}
+          <div class="nv-chips${chips.length > 5 ? " long" : ""}">${chips.map((c) => `<button type="button" class="nv-chip" data-chip="${esc(c)}">/${esc(c)}/</button>`).join("")}</div>
           <div class="qz-f" role="status">${marks ? "<b class='bad'>✕ 還沒組對</b><small>標 ✕ 的格子清空了，再聽想一想。對的格子留著。</small>" : ""}</div>
           <div class="dlg-row"><button type="button" class="dlg-next" id="nv-ok" ${slots.every(Boolean) ? "" : "disabled"}>確認</button></div>`;
         $("dlg-body").querySelectorAll("[data-chip]").forEach((b) => (b.onclick = () => {
@@ -1225,7 +1365,12 @@ const RPG = (() => {
             <div class="dlg-row"><button type="button" class="dlg-next" id="nv-done">▶ 繼續</button></div>`;
           $("dlg-body").querySelectorAll("[data-say]").forEach((b) => (b.onclick = () => speak(it.w, it.au)));
           bindNv();
-          $("nv-done").onclick = () => res({ ok: true, tries });
+          $("nv-done").onclick = () => {
+            nvWord("build", w, tries ? "retry" : "ind");
+            for (let k = 0; k < tries; k++) nvWord("build", w, "wrong");
+            save();
+            res({ ok: true, tries });
+          };
         };
       };
       paint();
@@ -1288,6 +1433,7 @@ const RPG = (() => {
   const N02_STEPS = ["intro", "mn", "check-mn", "sf", "check-sf", "match", "build", "done"];
   /* Spelling ↔ sound matching: tap a spelling, then its sound. ph and f both go to /f/. First tries are recorded. */
   function nvMatch(pairs) {
+    Novice.lastMatch = pairs; // test hook only: never rendered
     return new Promise((res) => {
       const left = pairs.slice().sort(() => Math.random() - 0.5),
         sounds = [...new Set(pairs.map((p) => p[1]))].sort(() => Math.random() - 0.5),
@@ -1305,7 +1451,7 @@ const RPG = (() => {
           const p = left[pick];
           if (p[1] === b.dataset.s) {
             done.add(pick);
-            nvRec(p[1], missed.has(pick) ? "retry" : "ind");
+            nvRec(p[1], missed.has(pick) ? "retry" : "ind", { cat: "spell", key: `${p[0]}|${p[1]}|${p[2]}` });
             const w = Novice.word(p[2]);
             if (w) speak(w.w, w.au);
             SND.play("correct");
@@ -1360,7 +1506,8 @@ const RPG = (() => {
       step = C.get,
       go = (x) => (C.set(x), save()),
       label = "音之新手村・" + C.title,
-      rest = () => finishSummary(label, "回來找子音老師 Cody 會接著上。");
+      who = TEACHER[C.teacher || "consonant"],
+      rest = () => finishSummary(label, `回來找${who}會接著上。`);
     if (step() === "intro") {
       await Talk.line(C.intro[0], C.intro[1]);
       go(C.groups[0].card);
@@ -1377,10 +1524,11 @@ const RPG = (() => {
         go(check);
       }
       if (step() === check) {
-        await Talk.line("Listen, then choose.", `先聽一個字，選出它開頭或結尾的音。這次的重點是 <b>/${sounds[0]}/ 和 /${sounds[1]}/</b>。不限時；選錯不會公布答案。`);
-        if (!(await nvCheck(sounds, `辨認 /${sounds[0]}/ /${sounds[1]}/`))) return finishSummary(label, "還有音要再認一次。回來找 Cody 會接著練。");
+        const names = sounds.map((x) => `/${x}/`).join(" 和 ");
+        await Talk.line("Listen, then choose.", `先聽一個字，選出它的音。這次的重點是 <b>${names}</b>。不限時；選錯不會公布答案。`);
+        if (!(await nvCheck(sounds, `辨認 ${names}`))) return finishSummary(label, `還有音要再認一次。回來找${who}會接著練。`);
         go(after);
-        if (!(await nvStepDone(`辨認 /${sounds[0]}/ /${sounds[1]}/`))) return rest();
+        if (!(await nvStepDone(`辨認 ${names}`))) return rest();
       }
     }
     if (step() === "match") {
@@ -1394,25 +1542,36 @@ const RPG = (() => {
       const st = C.state(),
         got = new Set(st.full || []),
         // a word only counts when every one of its sounds has been taught (nothing pre-placed)
-        pool = C.full.words.filter((w) => Novice.kkSounds(Novice.word(w).kk).every((x) => NV.taught.includes(x)));
-      for (const w of pool) {
-        if (got.size >= C.full.need) break;
-        if (got.has(w)) continue;
+        pool = (typeof C.full.words === "function" ? C.full.words() : C.full.words).filter((w) => Novice.kkSounds(Novice.word(w).kk).every((x) => NV.taught.includes(x)));
+      // N04+: the counted words must also cover at least two different new sounds of the chapter (not two /ɪ/ words)
+      const cover = C.full.cover || [],
+        needCover = Math.min(2, cover.length),
+        newIn = (w) => Novice.kkSounds(Novice.word(w).kk).filter((x) => cover.includes(x)),
+        covered = () => new Set([...got].flatMap(newIn)),
+        ok = () => got.size >= C.full.need && covered().size >= needCover,
+        tried = new Set();
+      while (!ok()) {
+        const left = pool.filter((w) => !got.has(w) && !tried.has(w)),
+          // while coverage is short, only a word with an uncovered new sound can help
+          w = covered().size < needCover ? left.find((w) => newIn(w).some((x) => !covered().has(x))) : left[0];
+        if (!w) break;
+        tried.add(w);
         const r = await nvBuild(w);
         if (!r.tries) {
           got.add(w);
           C.saveState({ full: [...got] });
         }
       }
-      if (got.size < C.full.need) {
+      if (!ok()) {
         const done = [...got];
-        return finishSummary(label, `完整組音要兩個不同的字各自第一次就組對。${done.length ? `已完成：${done.join("、")}。` : "這次還沒有字一次組對。"}回來找 Cody 再試（已完成的字不會再考）。`);
+        return finishSummary(label, `完整組音要兩個不同的字各自第一次就組對${needCover > 1 ? `，而且要用到至少兩個不同的新音（${cover.map((x) => `/${x}/`).join(" ")}）` : ""}。${done.length ? `已完成：${done.join("、")}${needCover > 1 ? `（用到 ${[...covered()].map((x) => `/${x}/`).join(" ") || "—"}）` : ""}。` : "這次還沒有字一次組對。"}回來找${who}再試（已完成的字不會再考）。`);
       }
       C.finish();
       go("done");
       addXP(15);
-      toast(C.toast[0], C.toast[1], C.toast[2], "levelup");
+      toast(C.toast[0], C.toast[1], `已教 ${NV.taught.length} / 41 個音 · 回聲原野戰鬥`, "levelup");
       await finishSummary(label, C.next);
+      afterTalk = mount; // new monsters may appear
     } else if (step() === "build") {
       await Talk.line("", C.buildLine);
       let independent = 0;
@@ -1439,9 +1598,336 @@ const RPG = (() => {
       await finishSummary(label, C.next);
     }
   }
+  // N04–N11 from Novice.PLAN; each chapter keeps its state in nv.ch[id] = { step, done, full, field }
+  for (const id of CH_ORDER) {
+    const P = Novice.PLAN[id],
+      sounds = P.groups.flat();
+    CHAPTER_RUN[id] = {
+      title: P.title,
+      teacher: P.teacher,
+      intro: ["Let's learn new sounds!", `<b>${P.title}</b>：${P.line}`],
+      groups: P.groups.map((g, i) => ({ sounds: g, card: "c" + i, check: "k" + i })),
+      matchLine: "配對：拼字和聲音不是一對一。先點拼法，再點它發的聲音。",
+      buildLine: `最後：<b>看圖，用學過的音組出整個字</b>。每個音都學過了，沒有先放好的格子。要有<b>兩個不同的字，各自第一次送出就組對</b>，而且兩個字<b>用到至少兩個不同的新音</b>（${sounds.map((x) => `/${x}/`).join(" ")}）才算完成。`,
+      full: { need: 2, cover: sounds, words: () => Novice.fullWords(NV.taught, sounds) },
+      get: () => (NV.ch[id] && NV.ch[id].step) || "intro",
+      set: (x) => (NV.ch[id] = { ...(NV.ch[id] || {}), step: x }),
+      state: () => NV.ch[id] || {},
+      saveState: (x) => ((NV.ch[id] = { ...(NV.ch[id] || {}), ...x }), save()),
+      finish: () => (NV.ch[id] = { ...(NV.ch[id] || {}), done: true }),
+      toast: ["🔤", `${P.title}完成`, `已教 ${NV.taught.length} 個音 · 回聲原野戰鬥`],
+      next: "下一步：到回聲原野，用學過的音打倒一隻怪物。",
+    };
+  }
   const noviceN02 = () => runChapter("N02");
   const noviceN03 = () => runChapter("N03");
   const n03done = () => !!(NV.ch.N03 && NV.ch.N03.done);
+
+  /* ---------- 新手村夥伴：修好聲音徽章（after the N06 field battle） ---------- */
+  const LUMI_FRAGMENTS = ["map", "book", "cake"];
+  async function lumiQuest(e) {
+    if (C.claimed) return Talk.line("Let's go!", "露米：「我們一起出發吧！」");
+    if (data.at === "wind") return lumiInvite(e);
+    if (NV.lumi.length < LUMI_FRAGMENTS.length) {
+      await Talk.line("Can you help me?", "一隻小小的<b>風之小精靈</b>：「我叫<b>露米</b>。我的聲音徽章碎成三片了……每一片是一個字，你能用學過的音把它們組回來嗎？」");
+      for (const w of LUMI_FRAGMENTS) {
+        if (NV.lumi.includes(w)) continue;
+        await Talk.line("", `第 ${NV.lumi.length + 1} 片碎片：看圖，把這個字的聲音組回來（可以重試）。`);
+        await nvBuild(w);
+        NV.lumi.push(w);
+        save();
+      }
+      toast("✨", "聲音徽章修好了", "露米的聲音回來了", "badge");
+      await Talk.line("Thank you! My voice is back!", "露米：「我的聲音回來了！謝謝你！」");
+    }
+    await lumiInvite(e, "village");
+    if (C.claimed && data.at === "kk") afterTalk = mount;
+  }
+
+  /* ---------- N12 音節與重音（重音老師 Stella）: listen first, the KK only after answering ---------- */
+  async function runN12() {
+    const st = (NV.ch.N12 = { ...(NV.ch.N12 || {}) });
+    if (!st.step) {
+      await Talk.line("Where is the stress?", "<b>N12 音節與重音</b>：41 個音都學過了，現在聽一個字有幾個「拍子」（音節），哪一拍最重。");
+      await nvPanel(`<div class="nv-card"><p><b>音節不是字母數</b>：banana 有 6 個字母、3 個音節；apple 有 5 個字母、2 個音節。</p>
+        <p><b>ˋ</b> 寫在<b>主重音</b>音節的前面：banana [bəˋnænə] 重音在第 2 個音節；apple [ˋæpḷ] 在第 1 個。<b>ˏ</b> 是次重音，比較輕：suitcase [ˋsutˏkes]。</p>
+        <p>不重讀的音節常常變成弱母音 /ə/（banana 頭尾的 a）。apple 的 [ḷ] 是「成音節的 l」：沒有母音也算一拍。</p>
+        <div class="teach-demo">${exampleBtn("banana", "")}${exampleBtn("apple", "")}${exampleBtn("tiger", "")}</div></div>`, "▶ 開始練習");
+      st.step = "check";
+      save();
+    }
+    if (st.step === "check") {
+      let first = 0,
+        three = false,
+        asked = 0,
+        last = "";
+      while ((first < 3 || !three) && asked < 12) {
+        const q = Novice.stressQuestion({ avoid: last, syl: asked % 3 === 2 ? 3 : null });
+        last = q.wordId;
+        $("dlg-name").dataset.step = `重音：首次答對 ${first}/3`;
+        const r = await Talk.quiz(q);
+        asked++;
+        nvRec("ˋ", r.tries ? "retry" : "ind", q);
+        if (!r.tries) {
+          first++;
+          if (q.options.length >= 3) three = true;
+        }
+      }
+      delete $("dlg-name").dataset.step;
+      save();
+      if (first < 3 || !three) return finishSummary("音之新手村・N12 音節與重音", "需要 3 題第一次就答對（至少一題是三個音節的字）。回來找 Stella 再練。");
+      st.step = "second";
+      save();
+      if (!(await nvStepDone("主重音"))) return;
+    }
+    if (st.step === "second") {
+      await nvPanel(`<div class="nv-card"><p><b>次重音 ˏ</b>：長一點的字常有兩個比較用力的音節。最響的是<b>主重音 ˋ</b>，另一個比較輕的是<b>次重音 ˏ</b>。</p>
+        <p>suitcase [ˋsutˏkes]：suit 最響，case 第二。pineapple [ˋpaɪnˏæpḷ]：pine 最響，ap 第二。</p>
+        <div class="teach-demo">${exampleBtn("suitcase", "")}${exampleBtn("pineapple", "")}${exampleBtn("rainbow", "")}</div></div>`, "▶ 開始練習");
+      let first = 0,
+        asked = 0,
+        last = "";
+      while (first < 2 && asked < 8) {
+        const q = Novice.secondaryQuestion({ avoid: last });
+        last = q.wordId;
+        $("dlg-name").dataset.step = `次重音：首次答對 ${first}/2`;
+        const r = await Talk.quiz(q);
+        asked++;
+        nvRec("ˋ", r.tries ? "retry" : "ind", q);
+        if (!r.tries) first++;
+      }
+      delete $("dlg-name").dataset.step;
+      save();
+      if (first < 2) return finishSummary("音之新手村・N12 次重音", "次重音要 2 題第一次就答對。回來找 Stella 會從次重音接著練。");
+      st.step = "magic";
+      save();
+      if (!(await nvStepDone("次重音"))) return;
+    }
+    if (st.step === "magic") {
+      await nvPanel(`<div class="nv-card"><p><b>Magic E（字尾不發音的 e）</b>：母音＋子音＋e 的字，e 自己<b>不發音</b>，常常讓前面的母音念成<b>字母本身的名字</b>：cat /æ/ → cake /e/、kit → kite /aɪ/。</p>
+        <p><b>不是每個字都這樣</b>：have [hæv]、give [gɪv] 的 e 也不發音，但母音沒有變長。看到 e 結尾先想到這個規律，再用耳朵確認。</p>
+        <div class="teach-demo">${exampleBtn("cat", "æ")}${exampleBtn("cake", "e")}${exampleBtn("bike", "aɪ")}${exampleBtn("phone", "o")}</div></div>`, "▶ 開始配對");
+      await Talk.line("", "配對：同一個字母，有沒有 Magic E，聲音不一樣。");
+      await nvMatch(Novice.N12_MATCH.magic);
+      // then split and rebuild a Magic E word (all of its sounds taught): one has to be right on the first try
+      let ok = false;
+      for (const w of shuffle(["grape", "cake", "bike", "phone"]).slice(0, 3)) {
+        const r = await nvBuild(w);
+        if (!r.tries) {
+          ok = true;
+          break;
+        }
+      }
+      if (!ok) return finishSummary("音之新手村・Magic E", "Magic E 的字要有一個第一次就組對。回來找 Stella 會從 Magic E 接著練。");
+      st.step = "cg";
+      save();
+      if (!(await nvStepDone("Magic E"))) return;
+    }
+    if (st.step === "cg") {
+      await nvPanel(`<div class="nv-card"><p><b>軟硬 C／G</b>：c 和 g 後面接 <b>e、i、y</b> 時，常常念軟音 c→/s/（city、rice）、g→/dʒ/（page、bridge）；其他時候多半是硬音 c→/k/（cat）、g→/g/（gift）。</p>
+        <p><b>例外</b>：get [gɛt]、give [gɪv]、girl [gɝl] 的 g 後面雖然是 e、i，還是硬音。規律幫你猜，聽才是準的。</p>
+        <p class="fine">city、rice、page 目前沒有正式錄音，用裝置語音念整個字。</p>
+        <div class="teach-demo">${exampleBtn("cat", "k")}${exampleBtn("city", "s")}${exampleBtn("gift", "g")}${exampleBtn("page", "dʒ")}</div></div>`, "▶ 開始配對");
+      await Talk.line("", "配對：先點拼法（括號是例字），再點它在這個字裡的聲音。");
+      await nvMatch(Novice.N12_MATCH.cg);
+      st.done = true;
+      st.step = "done";
+      save();
+      addXP(15);
+      toast("🥁", "N12 音節與重音完成", "下一步：找村長 Kai 拿三枚印記", "levelup");
+      await finishSummary("音之新手村・N12 音節、重音與拼字規律", "主重音、次重音、Magic E、軟硬 C／G 都完成了。下一步：找村長 Kai，完成 N13 組音實戰的三枚印記。");
+      afterTalk = mount;
+    }
+  }
+
+  /* ---------- N13 組音實戰：三枚印記（村長 Kai） ---------- */
+  async function seals() {
+    const S = (NV.ch.seals = { ...(NV.ch.seals || {}) });
+    const v = await Talk.choose("N13 組音實戰：三枚印記都拿到，才能挑戰失音魔王。", [
+      { label: `${S.sound ? "✅" : "🎧"} 辨音印記`, value: "sound", sub: "10 題聽音選音標，第一次答對 8 題", disabled: S.sound },
+      { label: `${S.build ? "✅" : "🧩"} 組音印記`, value: "build", sub: `三個不同的完整字各自一次組對（已完成 ${(S.buildWords || []).length}/3）`, disabled: S.build },
+      { label: `${S.rhythm ? "✅" : "🥁"} 節奏印記`, value: "rhythm", sub: "6 題重音，第一次答對 5 題", disabled: S.rhythm },
+      { label: "稍後再來", value: "bye" },
+    ]);
+    if (v === "sound") {
+      let first = 0,
+        last = "";
+      const all = Novice.ALL41(),
+        vowels = shuffle(all.filter((x) => Novice.VOWELS.includes(x))),
+        cons = shuffle(all.filter((x) => !Novice.VOWELS.includes(x)));
+      for (let i = 0; i < 10; i++) {
+        const q = Novice.soundQuestion(all, { target: (i % 2 ? vowels : cons)[Math.floor(i / 2)], avoid: last, ctx: "seal" }) || Novice.soundQuestion(all, { avoid: last, ctx: "seal" });
+        last = q.wordId;
+        $("dlg-name").dataset.step = `辨音印記 ${i + 1}/10（首次答對 ${first}）`;
+        const r = await Talk.quiz(q);
+        nvRec(q.targetSound, r.tries ? "retry" : "ind", q);
+        if (!r.tries) first++;
+      }
+      delete $("dlg-name").dataset.step;
+      if (first >= 8) (S.sound = true), toast("🎧", "辨音印記", `首次答對 ${first}/10`, "badge");
+      save();
+      await finishSummary("N13・辨音印記", first >= 8 ? `拿到辨音印記（首次答對 ${first}/10）。` : `首次答對 ${first}/10，需要 8。再挑戰一次。`);
+    }
+    if (v === "build") {
+      S.buildWords = S.buildWords || [];
+      const pool = shuffle(Novice.fullWords(Novice.ALL41()).filter((w) => !S.buildWords.includes(w) && Novice.kkSounds(Novice.word(w).kk).length >= 3)).slice(0, 4);
+      for (const w of pool) {
+        if (S.buildWords.length >= 3) break;
+        const r = await nvBuild(w);
+        if (!r.tries) S.buildWords.push(w);
+        save();
+      }
+      if (S.buildWords.length >= 3) (S.build = true), toast("🧩", "組音印記", S.buildWords.join("、"), "badge");
+      save();
+      await finishSummary("N13・組音印記", S.build ? `拿到組音印記：${S.buildWords.join("、")}。` : `已一次組對 ${S.buildWords.length}/3 個字。再來挑戰剩下的。`);
+    }
+    if (v === "rhythm") {
+      let first = 0,
+        last = "";
+      for (let i = 0; i < 6; i++) {
+        const q = Novice.stressQuestion({ avoid: last, ctx: "seal" });
+        last = q.wordId;
+        $("dlg-name").dataset.step = `節奏印記 ${i + 1}/6（首次答對 ${first}）`;
+        const r = await Talk.quiz(q);
+        nvRec("ˋ", r.tries ? "retry" : "ind", q);
+        if (!r.tries) first++;
+      }
+      delete $("dlg-name").dataset.step;
+      if (first >= 5) (S.rhythm = true), toast("🥁", "節奏印記", `首次答對 ${first}/6`, "badge");
+      save();
+      await finishSummary("N13・節奏印記", first >= 5 ? `拿到節奏印記（首次答對 ${first}/6）。` : `首次答對 ${first}/6，需要 5。再挑戰一次。`);
+    }
+    if (sealsDone() && NV.lv < 10) {
+      NV.lv = 10;
+      save();
+      toast("🏅", "三枚印記到齊 · 冒險 Lv.10", C.claimed ? "失音魔王出現在村口" : "還要找露米一起去", "levelup");
+      afterTalk = mount;
+    }
+  }
+
+  /* ---------- 失音魔王：three seals × 10 questions, saved per seal ---------- */
+  const BOSS_PAIRS = [["i", "ɪ"], ["ɛ", "æ"], ["ɑ", "ʌ"], ["u", "ʊ"], ["s", "z"], ["f", "v"], ["θ", "ð"], ["ʃ", "ʒ"], ["tʃ", "dʒ"], ["l", "r"], ["n", "ŋ"], ["p", "b"], ["t", "d"], ["k", "g"], ["ɝ", "ɚ"], ["e", "ɛ"], ["o", "ɔ"], ["aɪ", "ɔɪ"]];
+  function bossFight(mob) {
+    const phase = NV.boss.phase || 0,
+      all = Novice.ALL41();
+    let last = "",
+      i = 0;
+    const vowels = shuffle(all.filter((x) => Novice.VOWELS.includes(x))),
+      cons = shuffle(all.filter((x) => !Novice.VOWELS.includes(x))),
+      pairs = shuffle(BOSS_PAIRS.slice());
+    const make = () => {
+      let q = null;
+      for (let t = 0; t < 8 && !q; t++) {
+        if (phase === 0) q = Novice.soundQuestion(all, { target: (i % 2 ? vowels : cons)[Math.floor(i / 2) % 20], avoid: last, ctx: "boss" });
+        else if (phase === 1) {
+          const [a, b] = pairs[i % pairs.length],
+            [x, y] = Math.random() < 0.5 ? [a, b] : [b, a];
+          q = Novice.soundQuestion(all, { target: x, partnerOnly: y, avoid: last, ctx: "boss" });
+        } else q = Novice.kkQuestion({ avoid: last });
+        if (!q) i++;
+      }
+      q = q || Novice.soundQuestion(all, { avoid: last, ctx: "boss" });
+      last = q.wordId;
+      i++;
+      return q;
+    };
+    Battle.start({ ...mob, look: { ...SILENCE_BOSS, hp: 40 }, maxHp: 40 }, {
+      region: "kk",
+      intro: `失音魔王偷走了村子的聲音！第 ${phase + 1} 個封印：${BOSS_PHASES[phase]}。10 題中第一次答對 6 題就能鎖上封印；HP 打光也要答完 10 題。`,
+      quota: { n: 10, need: 6, label: `第 ${phase + 1}/3 封印・${BOSS_PHASES[phase]}` },
+      make,
+      companion: buddyCtx(),
+      onSettle: (q, kind) => (nvRec(q.targetSound, kind === "right" ? (q.assisted ? "assist" : "ind") : kind, q), save()),
+      onAssist: (q) => (nvRec(q.targetSound, "assist", q), save()),
+      async onEnd(result) {
+        NV.boss.tries = (NV.boss.tries || 0) + 1;
+        if (result === "win") {
+          NV.boss.phase = phase + 1;
+          save();
+          if (NV.boss.phase >= 3) {
+            World.defeat(mob);
+            return graduate();
+          }
+          toast("🔒", `${BOSS_PHASES[phase]}完成`, `下一個封印：${BOSS_PHASES[phase + 1]}（已存檔）`, "badge");
+        } else if (result === "down") World.knockout();
+        else World.calm(3);
+        save();
+        refresh();
+      },
+    });
+  }
+  async function graduate() {
+    NV.grad = true;
+    data.kk.done = true;
+    save();
+    World.refresh();
+    addXP(30);
+    toast("🎓", "新手村畢業：旅人證", "傳送門已啟動 · 正式複習已開放", "levelup");
+    Talk.show(World.npc("word"));
+    try {
+      await Talk.line("You did it!", "三個封印都鎖上了，村子的聲音回來了！這是你的<b>旅人證</b>。村口的傳送門已啟動；想複習時，找任何一位老師都能開「正式複習」。");
+    } finally {
+      Talk.close();
+    }
+    refresh();
+  }
+
+  /* ---------- 正式複習（畢業後）: first wrong / retry / timeout / assisted sounds first, new words each time ---------- */
+  /* Formal review (after graduation only): four kinds, each starting from the player's own misses, retries,
+     timeouts and companion fixes (nv.rec per sound, nv.wrec per word / spelling). Not a memory card game. */
+  const missScore = (r) => 2 * (r.wrong || 0) + (r.retry || 0) + (r.timeout || 0) + 2 * (r.assist || 0);
+  const ranked = (o) => Object.entries(obj(o)).map(([k, r]) => [k, missScore(r)]).filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]).map(([k]) => k);
+  async function review() {
+    const W = obj(NV.wrec),
+      snd = ranked(NV.rec).filter((x) => Novice.ALL41().includes(x)),
+      spell = ranked(W.spell).filter((k) => k.split("|").length === 3),
+      build = ranked(W.build).filter((w) => Novice.word(w)),
+      stress = ranked(W.stress),
+      sym = (xs) => xs.slice(0, 4).map((x) => `/${x}/`).join(" "),
+      sp = (xs) => xs.slice(0, 3).map((k) => { const [l, x] = k.split("|"); return `${l}→/${x}/`; }).join("、");
+    const v = await Talk.choose(`📝 正式複習：從你答錯、重試、超時或夥伴補正過的地方開始。${snd.length ? `目前最需要練的音：${sym(snd)}` : ""}`, [
+      { label: "🔤 音標：聽字選音（10 題）", value: "snd", sub: snd.length ? `最需要練：${sym(snd)}` : "目前沒有需要複習的音", disabled: !snd.length },
+      { label: "🔡 拼字：拼法配聲音", value: "spell", sub: spell.length ? `曾配錯：${sp(spell)}` : "配對都一次就對", disabled: !spell.length },
+      { label: "🧩 組音：看圖組整個字", value: "build", sub: build.length ? `曾重試：${build.slice(0, 4).join("、")}` : "組音都一次就對", disabled: !build.length },
+      { label: "🥁 重音：聽字選重讀音節（6 題）", value: "stress", sub: stress.length || missScore(obj(NV.rec["ˋ"])) ? `曾答錯或重試 ${stress.length || 1} 個字` : "重音都一次就對", disabled: !(stress.length || missScore(obj(NV.rec["ˋ"]))) },
+      { label: "稍後再來", value: "bye" },
+    ]);
+    if (v === "bye" || !v) return;
+    const res = { ind: 0, retry: 0 };
+    let last = "";
+    if (v === "snd" || v === "stress") {
+      const n = v === "snd" ? 10 : 6,
+        targets = snd.slice(0, 5);
+      for (let i = 0; i < n; i++) {
+        const q = v === "snd" ? Novice.soundQuestion(Novice.ALL41(), { target: targets[i % targets.length], avoid: last, ctx: "review" }) : Novice.stressQuestion({ avoid: last, ctx: "review" });
+        if (!q) continue;
+        last = q.wordId;
+        $("dlg-name").dataset.step = `正式複習 ${i + 1}/${n}`;
+        const r = await Talk.quiz(q);
+        res[r.tries ? "retry" : "ind"]++;
+        nvRec(v === "snd" ? q.targetSound : "ˋ", r.tries ? "retry" : "ind", q);
+      }
+    } else if (v === "spell") {
+      // the missed spellings plus others from the same matching sets, so there is still something to choose between
+      const want = spell.slice(0, 4).map((k) => k.split("|")),
+        pairs = want.slice();
+      for (const [l, x] of want) {
+        const set = Object.values(Novice.MATCH).find((m) => m.some((p) => p[0] === l && p[1] === x)) || [];
+        for (const p of set) if (pairs.length < 6 && !pairs.some((q) => q[0] === p[0] && q[1] === p[1])) pairs.push(p);
+      }
+      const r = await nvMatch(pairs);
+      res[r.missed ? "retry" : "ind"]++;
+    } else if (v === "build") {
+      for (const w of build.slice(0, 3)) {
+        const r = await nvBuild(w);
+        res[r.tries ? "retry" : "ind"]++;
+      }
+    }
+    delete $("dlg-name").dataset.step;
+    NV.reviews = (NV.reviews || 0) + 1;
+    save();
+    await finishSummary("音之新手村・正式複習", `獨立答對 ${res.ind} 題、重試後答對 ${res.retry} 題。之後的複習會換別的字和位置。`);
+  }
 
   /* Echo: the sound picture-dictionary. Every one of the 41 sounds can be previewed; only taught ones are practised. */
   function pickFrom(html) {
@@ -1458,10 +1944,17 @@ const RPG = (() => {
         ...(NV.track === "legacy" && !NV.n01 ? [{ label: "🐱 上新版入門課：cat", value: "unit", sub: "字母、聲音、KK＋/k/ /æ/ /t/" }] : []),
         ...(NV.track === "legacy" && NV.n01 && !NV.n02 ? [{ label: "🛤️ 上新版 N02：/m/ /n/ /s/ /f/", value: "n02", sub: "教學卡、配對、組音" }] : []),
         ...(NV.track === "legacy" && NV.n02 && !n03done() ? [{ label: "🧰 上新版 N03：/p/ /b/ /d/ /g/ /h/ /l/", value: "n03", sub: "教學卡、配對、組音" }] : []),
+        ...(() => {
+          const next = NV.track === "legacy" && n03done() && CH_ORDER.find((id) => !chDone(id));
+          return next ? [{ label: `🔤 上新版 ${Novice.PLAN[next].title}`, value: "ch:" + next, sub: Novice.PLAN[next].groups.flat().map((x) => `/${x}/`).join(" ") }] : [];
+        })(),
+        ...(NV.grad ? [{ label: "📝 正式複習", value: "review", sub: "從最需要練的音開始" }] : []),
         { label: "再見", value: "bye" },
       ]);
       if (v === "bye") return;
       if (v === "unit") return noviceUnit();
+      if (v.startsWith("ch:")) return runChapter(v.slice(3));
+      if (v === "review") return review();
       if (v === "n03") {
         NV.ch.N03 = NV.ch.N03 || { step: "intro" };
         return noviceN03();
@@ -1483,7 +1976,7 @@ const RPG = (() => {
               const q = Novice.soundQuestion(NV.taught, { target: i === 1 ? null : sym, avoid: last, ctx: "echo" });
               last = q.wordId;
               const res = await Talk.quiz(q);
-              nvRec(q.targetSound, res.tries ? "retry" : "ind");
+              nvRec(q.targetSound, res.tries ? "retry" : "ind", q);
             }
             save();
             await finishSummary(`Echo・/${sym}/ 練習`, "可以再查其他的音或字。");
@@ -1743,10 +2236,12 @@ const RPG = (() => {
     await Talk.line(m.line, esc(m.zh));
     const pick = await Talk.choose("每項任務 10 題，答對 7 題完成，首次完成獎勵 30 XP。", [
       ...["word", "sent"].map((k, i) => ({ label: `${data.cleared.includes(m.id + ":" + k) ? "✅" : "📜"} ${i ? "句子交流" : "主題單字"}`, value: k })),
+      { label: "📝 時態小任務", value: "grammar", sub: "5 題：看情境選正確的形式" },
       { label: "🧺 補給交換", value: "trade" },
       { label: "稍後再聊", value: "bye" },
     ]);
     if (pick === "trade") return tradeDialog();
+    if (pick === "grammar") return grammarQuest(m);
     if (pick !== "word" && pick !== "sent") return;
     const route = SENT.some((s) => s.route === m.route && s.lv <= maxLv()) ? m.route : "daily";
     const make = pick === "word" ? () => Learn.wordQuestion((w) => w.th === m.id) : () => Learn.sentQuestion((s) => s.route === route);
@@ -1763,6 +2258,20 @@ const RPG = (() => {
     const i = legacyIdx(m.id);
     if (i < 4 && legacyUnlocked(i + 1)) toast(LEGACY[i + 1].icon, "新地圖解鎖", LEGACY[i + 1].name, "badge");
     await Talk.line("Thank you so much!", `答對 ${ok}/10 題，任務完成！`);
+  }
+  /* NPC task (teaching first; battles use what was learned later): five grammar form-choice items, from this
+     map's topic when there are some. The tense name is never shown before answering. */
+  async function grammarQuest(m) {
+    await Ability.ready;
+    const topic = { food: "food", transport: "travel" }[m.id];
+    let items = Ability.grammarItems(topic ? { topic } : {}, 5);
+    if (items.length < 5) items = items.concat(Ability.grammarItems({}, 5 - items.length).filter((g) => !items.includes(g)));
+    if (!items.length) return Talk.line("", "時態題目還在準備中。");
+    await Talk.line("Which one sounds right?", `${esc(m.person || "居民")}：「先看情境和時間線索，再選正確的形式。答完我會告訴你為什麼。」`);
+    const first = await quizRound(m.person || "居民", items.map((g) => Ability.grammarQuestion(g, g.ctx)), "時態小任務", `npc:grammar-${m.id}`);
+    Talk.show(null);
+    await Talk.line("Nice work!", first >= 4 ? "看得很準！之後在戰鬥裡也會遇到這些句型。" : "可以從☰「我的英語能力」看哪些形式要再練。");
+    Talk.close();
   }
   async function tradeDialog() {
     for (;;) {
@@ -1784,15 +2293,23 @@ const RPG = (() => {
   function encounter(mob) {
     if (Battle.active || Talk.open || !$("menu").hidden || !$("panel").hidden) return;
     if (mob.story === "thief") return gullChase(mob);
+    if (mob.story === "boss") return bossFight(mob);
     const m = cur(),
       region = m.region || m.id,
       look = mob.look.hp ? mob.look : { ...mob.look, hp: mob.maxHp };
     let make,
       tutorial = "";
-    if (region === "kk" && look.kind === "sound") {
+    if (region === "kk" && look.kind === "stress") {
       let lastWord = "";
       make = () => {
-        const newest = n03done() ? "N03" : NV.n02 ? "N02" : "";
+        const q = Novice.stressQuestion({ ctx: "battle", avoid: lastWord });
+        lastWord = q.wordId;
+        return q;
+      };
+    } else if (region === "kk" && look.kind === "sound") {
+      let lastWord = "";
+      make = () => {
+        const newest = [...ALL_CH].reverse().find((id) => chDone(id) && id !== "N01") || "";
         const q = Novice.soundQuestion(NV.taught, { ctx: "battle", avoid: lastWord, prefer: newest ? Novice.CHAPTERS.find((c) => c.id === newest).sounds : [] });
         lastWord = q.wordId;
         return q;
@@ -1826,25 +2343,22 @@ const RPG = (() => {
       make,
       tutorial,
       companion: buddyCtx(),
-      onSettle: look.kind === "sound" ? (q, kind) => (nvRec(q.targetSound, kind === "right" ? (q.assisted ? "assist" : "ind") : kind), save()) : null,
+      onSettle: look.kind === "sound" || look.kind === "stress" ? (q, kind) => (nvRec(q.targetSound, kind === "right" ? (q.assisted ? "assist" : "ind") : kind, q), save()) : null,
+      onAssist: (q) => (nvRec(q.targetSound, "assist", q), save()),
       onEnd(result) {
         if (result === "win") {
           World.defeat(mob);
           winBond();
-          if (look.kind === "sound" && !NV.field) {
-            NV.field = true;
+          const pf = look.kind === "sound" && pendingField();
+          if (pf) {
+            // the field battle that follows each chapter (once): adventure level per PR #9 §10
+            if (pf === "N01") NV.field = true;
+            else if (pf === "N02") (NV.field2 = true), (NV.lv = Math.max(NV.lv, 3));
+            else if (pf === "N03") (NV.field3 = true), (NV.lv = Math.max(NV.lv, 4));
+            else (NV.ch[pf] = { ...NV.ch[pf], field: true }), (NV.lv = Math.max(NV.lv, Novice.PLAN[pf].lv));
             save();
-            toast("🫧", "第一場原野戰鬥勝利", "下一步：找子音老師 Cody 上 N02", "badge");
-          } else if (look.kind === "sound" && NV.n02 && !NV.field2) {
-            NV.field2 = true;
-            NV.lv = Math.max(NV.lv, 3);
-            save();
-            toast("🫧", "N02 原野戰鬥勝利", "下一步：找 Cody 上 N03", "badge");
-          } else if (look.kind === "sound" && n03done() && !NV.field3) {
-            NV.field3 = true;
-            NV.lv = Math.max(NV.lv, 4);
-            save();
-            toast("🫧", "N03 原野戰鬥勝利", "13 個音都上戰場了", "badge");
+            toast("🫧", `${pf} 原野戰鬥勝利`, `冒險 Lv.${NV.lv} · ${objective().short}`, "badge");
+            if (pf === "N06" && lumiWaiting() && !World.npc("lumi")) mount(); // Lumi appears in the village now
           }
           if (mob.story === "tutorial") {
             data.kk.battle = true;
@@ -1891,7 +2405,7 @@ const RPG = (() => {
   }
 
   /* ---------- companion: 露米 ---------- */
-  const lumiWaiting = () => data.at === "wind" && W.stage >= 3 && !C.claimed;
+  const lumiWaiting = () => !C.claimed && ((data.at === "wind" && W.stage >= 3) || (data.at === "kk" && NV.track === "v1" && chField("N06")));
   function bondUp(n, why) {
     if (!C.claimed) return;
     const before = bondLv();
@@ -1911,9 +2425,10 @@ const RPG = (() => {
     bondUp(1, "一起打贏");
   }
   /* The invitation after the find-luggage stage (both endings), or later from the carousel. */
-  async function lumiInvite(npc) {
+  async function lumiInvite(npc, place) {
     if (C.claimed) return;
-    if (npc) await Talk.line("Hi again! Can I travel with you?", "露米在轉盤旁邊等你：「我可以跟你一起旅行嗎？」");
+    if (place === "village") await Talk.line("Can I come with you?", "露米：「我可以跟你一起冒險嗎？我會在戰鬥裡幫你——但答案要你自己選喔。」");
+    else if (npc) await Talk.line("Hi again! Can I travel with you?", "露米在轉盤旁邊等你：「我可以跟你一起旅行嗎？」");
     else await Talk.line("Can I travel with you?", "露米飄到你身邊：「你好厲害！我可以跟你一起旅行嗎？」");
     await Talk.panel(
       `<div class="buddy-card"><p class="dlg-zh"><b>🧚 旅伴・露米</b>：會跟著你冒險、陪你用英文聊天。<b>牠不會替你答題</b>，但會在戰鬥中幫忙：</p><ul class="ability">${ABILITIES.map((a) => `<li>${a.icon} <b>${a.name}</b>${a.lv > 1 ? `（默契 Lv.${a.lv}）` : ""}：${a.desc}</li>`).join("")}</ul><p class="fine">一起聊天和冒險會增加默契，解鎖新台詞、外觀和能力。不用餵食，也不用每天登入照顧。</p></div>`,
@@ -1921,12 +2436,12 @@ const RPG = (() => {
     );
     const v = await Talk.choose("要邀請露米同行嗎？", [
       { label: "🧚 一起走吧！", value: "yes", sub: "Let's travel together!" },
-      { label: "等一下再說", value: "later", sub: "之後可以回行李轉盤找牠" },
+      { label: "等一下再說", value: "later", sub: place === "village" ? "之後可以回來找牠" : "之後可以回行李轉盤找牠" },
     ]);
     C.met = true;
     if (v !== "yes") {
       save();
-      return Talk.line("Okay! I'll wait here.", "露米：「好呀，我會在行李轉盤這裡等你。」");
+      return Talk.line("Okay! I'll wait here.", place === "village" ? "露米：「好呀，我會在這裡等你。」" : "露米：「好呀，我會在行李轉盤這裡等你。」");
     }
     C.claimed = true;
     C.active = true;
@@ -2008,6 +2523,7 @@ const RPG = (() => {
           q = { kind: "s", recK: "s", item: { en: it.en, zh: it.zh, q: it.q }, ctx: `companion:${topic}` };
         Learn.track(q);
         Learn.grade(q, pick.ok, "quest");
+        if (typeof Ability !== "undefined") Ability.log(q, { result: pick.ok ? "correct" : "wrong", qtype: "scene:listen", ctx: `companion:${topic}` });
         if (pick.ok) {
           ok++;
           SND.play("correct");

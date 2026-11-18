@@ -42,6 +42,7 @@ const Learn = (() => {
   store();
   const keyOf = (recK, item) => recK + ":" + (item.w || item.en);
   /* Prefer items not shown recently; fall back to the whole pool rather than run dry. */
+  const shownOpts = []; // option lines shown lately (this session), so wrong options rotate too
   function fresh(pool, recK) {
     const seen = new Set(ST.asked),
       f = pool.filter((x) => !seen.has(keyOf(recK, x)));
@@ -266,7 +267,7 @@ const Learn = (() => {
     mode = mode || pick(["pic", "pic", "listen", "zh"]);
     if (mode === "listen")
       return {
-        kind: "w", recK: "w", item: w,
+        kind: "w", recK: "w", item: w, qtype: "word:listen",
         prompt: `<p class="qz-ask">聽英文，選出對的圖</p>`,
         audio: { text: w.w, file: w.au, label: "再聽一次" }, autoplay: true,
         options: shuf(opts).map((x) => ({ html: `<span class="qz-e big">${pic(x)}</span>`, ok: x === w, label: x.w })),
@@ -274,13 +275,13 @@ const Learn = (() => {
       };
     if (mode === "zh")
       return {
-        kind: "w", recK: "w", item: w,
+        kind: "w", recK: "w", item: w, qtype: "word:zh",
         prompt: `<p class="qz-ask">「${esc(w.z)}」的英文是？</p>`,
         options: shuf(opts).map((x) => ({ html: `<b>${esc(x.w)}</b>`, ok: x === w })),
         answer: wordAns(w), after: true,
       };
     return {
-      kind: "w", recK: "w", item: w,
+      kind: "w", recK: "w", item: w, qtype: "word:pic2word",
       prompt: `<div class="qz-big">${pic(w)}</div><p class="qz-ask">這是哪個英文單字？</p>`,
       options: shuf(opts).map((x) => ({ html: `<b>${esc(x.w)}</b>`, ok: x === w })),
       answer: wordAns(w), after: true,
@@ -294,7 +295,7 @@ const Learn = (() => {
     if (it.b && Math.random() < 0.6) {
       const html = esc(it.en).replace(new RegExp("\\b" + it.b + "\\b"), '<span class="qz-gap">＿＿＿</span>');
       return {
-        kind: "s", recK: "s", item: it,
+        kind: "s", recK: "s", item: it, qtype: "sent:blank",
         prompt: `<div class="qz-big small">${pic(it)}</div><p class="qz-sent">${html}</p><p class="qz-hint">${esc(it.zh)}</p>`,
         options: shuf(dedupe([it.b, ...it.o], (x) => x.toLowerCase())).map((o) => ({ html: `<b>${esc(o)}</b>`, ok: o === it.b })),
         answer: { en: it.en, zh: it.zh, file: it.au }, after: true,
@@ -302,9 +303,9 @@ const Learn = (() => {
     }
     const opts = dedupe([it, ...shuf(SENT.filter((x) => x !== it && lvOk(x)))], (x) => x.en).slice(0, 3);
     return {
-      kind: "s", recK: "s", item: it,
+      kind: "s", recK: "s", item: it, qtype: "scene:zh", // Chinese → choose the English line
       prompt: `<p class="qz-ask">「${esc(it.zh)}」英文怎麼說？</p>`,
-      options: shuf(opts).map((x) => ({ html: esc(x.en), ok: x === it, wide: true })),
+      options: shuf(opts).map((x) => ({ html: esc(x.en), ok: x === it, wide: true, zh: x.zh, say: { text: x.en, file: x.au || "" } })),
       answer: { en: it.en, zh: it.zh, file: it.au }, after: true,
     };
   }
@@ -328,23 +329,39 @@ const Learn = (() => {
     const items = sc.items,
       ctx = opt.ctx || `scene:${sceneId}`;
     let it;
+    // field practice (ctx "…:field") or opt.rotate: a line asked recently gives way to the least recently asked
+    // line of the same scene, so fights in a row do not repeat the same sentences (ordered stories keep their idx)
+    const rotate = opt.rotate != null ? opt.rotate : /:field$/.test(ctx);
+    if (idx != null && rotate) {
+      const at = (x) => ST.asked.lastIndexOf(keyOf("s", x));
+      if (at(items[idx % items.length]) >= 0) idx = items.map((x, i) => [i, at(x)]).sort((a, b) => a[1] - b[1])[0][0];
+    }
     if (idx != null) it = items[idx % items.length];
     else {
       const due = dueItems("s", ctx, (r) => items.some((x) => x.en === r.id));
       it = due.length && Math.random() < 0.6 ? items.find((x) => x.en === pick(due).id) : pick(fresh(items, "s"));
     }
     const sameQ = (x) => it.q && x.q && x.q === it.q;
-    const wrong = shuf(items.filter((x) => x.en !== it.en && !sameQ(x))).slice(0, 2);
+    // wrong options: lines not shown as options lately first; a small scene borrows from its category's other scenes
+    const okWrong = (x) => x.en !== it.en && !sameQ(x) && x.zh !== it.zh && !(it.alt || []).some((a) => a.en === x.en);
+    const cat = SCN.find((c) => c.id === catId),
+      near = shuf(items.filter(okWrong)),
+      // borrowing only where the Chinese defines the one answer: a reply to a heard line could fit from another scene
+      far = opt.mode === "listen" && it.q ? [] : shuf(((cat && cat.scenes) || []).filter((o) => o !== sc).flatMap((o) => o.items).filter(okWrong)),
+      notShown = (x) => !shownOpts.includes(x.en);
+    const wrong = dedupe([...near.filter(notShown), ...far.filter(notShown), ...near, ...far], (x) => x.en).slice(0, 2);
+    shownOpts.push(it.en, ...wrong.map((x) => x.en));
+    if (shownOpts.length > 30) shownOpts.splice(0, shownOpts.length - 30);
     const item = { en: it.en, zh: it.zh, q: it.q || "" };
     const listen = opt.mode === "listen" && it.q;
     return {
-      kind: "s", recK: "s", item,
+      kind: "s", recK: "s", item, cat: catId, scene: sceneId, qtype: listen ? "scene:listen" : "scene:zh",
       prompt: listen
         ? `<p class="qz-their">🗣️ ${sayHTML(it.q)}</p><p class="qz-ask">你要怎麼回答？</p><details class="qz-cue"><summary>中文提示</summary>${esc(it.zh)}</details>`
         : (it.q ? `<p class="qz-their">🗣️ ${sayHTML(it.q)}</p>` : "") + `<p class="qz-ask">${it.q ? "你想回答" : "你想說"}：「${esc(it.zh)}」</p>`,
       audio: it.q ? { text: it.q, label: "再聽對方說" } : null,
       autoplay: !!it.q,
-      options: shuf(dedupe([it, ...wrong], (x) => x.en)).map((x) => ({ html: esc(x.en), ok: x.en === it.en, wide: true })),
+      options: shuf(dedupe([it, ...wrong], (x) => x.en)).map((x) => ({ html: esc(x.en), ok: x.en === it.en, wide: true, zh: x.zh })),
       answer: { en: it.en, zh: it.zh },
       after: true,
       ctx,
@@ -353,6 +370,13 @@ const Learn = (() => {
 
   /* ---------- grading ---------- */
   function grade(q, ok, src) {
+    // Supplement words (novice.js, KK pending review) are practised but never written to the card book or XP.
+    if ((q.item && q.item.sup) || q.recK === "g") {
+      tally.n++;
+      if (ok) tally.ok++;
+      tally.items.push({ en: q.item.w, ok, sym: q.sym });
+      return { fresh: false };
+    }
     const key = keyOf(q.recK, q.item),
       now = Date.now(),
       isFresh = !(ST.recent[key] > now - COOLDOWN),
@@ -448,6 +472,17 @@ const Learn = (() => {
       if (kk && !b.querySelector(".qz-kk")) b.insertAdjacentHTML("beforeend", `<small class="qz-kk">${esc(kk)}</small>`);
     });
   }
+  /* After answering, each sentence option gets its own whole-line Chinese (the material's context translation),
+     folded behind 「看中文」. Never before answering: the Chinese would point at the right option. */
+  function revealZh(q, bs) {
+    bs.forEach((b, i) => {
+      const o = q.options[i],
+        box = b.parentElement;
+      if (!o || !o.zh || !box || box.querySelector(".zh-btn")) return;
+      // a span (role=button), so ".qz-o button" still finds only the answer buttons
+      box.insertAdjacentHTML("beforeend", `<span class="qz-zhbox"><span class="zh-btn" role="button" tabindex="0" aria-expanded="false">看中文</span><span class="zh-line" hidden>${esc(o.zh)}</span></span>`);
+    });
+  }
   /* The revealed answer: tap the line to hear it again, tap a word for its KK. */
   const answerHTML = (a) => (a.en ? `<span class="qz-ans">${sayHTML(a.en, a.file || "")}</span>` : "");
   function play(a) {
@@ -467,6 +502,8 @@ const Learn = (() => {
       if (q.autoplay) setTimeout(() => play(q.audio), 250);
       const bs = [...el.querySelectorAll(".qz-o button")];
       let tries = 0;
+      const t0 = Date.now();
+      if (typeof Ability !== "undefined") Ability.begin();
       bs.forEach(
         (b) =>
           (b.onclick = () => {
@@ -504,9 +541,12 @@ const Learn = (() => {
               if (q.options[i].ok) x.classList.add("right");
             });
             revealKK(q, bs);
+            revealZh(q, bs);
             if (!ok) b.classList.add("wrong");
             SND.play(ok ? "correct" : "wrong");
             const g = q.reveal === "right-only" && tries ? { fresh: true } : grade(q, ok, opt.src);
+            // ability log: the first answer decides (a later right answer after a miss is a retry, not independent)
+            if (typeof Ability !== "undefined") Ability.log(q, { result: tries ? "wrong" : ok ? "correct" : "wrong", retries: tries, final: ok ? "correct" : "wrong", ms: Date.now() - t0, ctx: q.ctx || opt.src || "quest" });
             const a = q.answer || {};
             el.querySelector(".qz-f").innerHTML = `<b class="${ok ? "good" : "bad"}">${ok ? (tries ? (q.reveal === "right-only" ? "✓ 這次對了（重試後答對，不算獨立答對）" : "答對了（第二次）") : "✓ 答對了！") : "正確答案"}</b> ${answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${ok && !g.fresh ? "<small>剛剛練過這題，這次不重複計分。</small>" : ""}`;
             if (q.after || !ok || q.kind === "kk") speak(a.en, a.file || "");
@@ -527,7 +567,7 @@ const Learn = (() => {
   return {
     parseKK, stressSpan, SOUNDS, UNITS, wordBy, pairWords, unitQuestion, stressQuestion, wordKK, phonicsQuestion,
     soundDue, soundsDue, wordQuestion, sentQuestion, sceneQuestion, scene, contentId, setScenes,
-    grade, flush, ask, play, dueItems, optionsHTML, answerHTML, sayHTML, revealKK,
+    grade, flush, ask, play, dueItems, optionsHTML, answerHTML, sayHTML, revealKK, revealZh,
     /* A question shown outside Learn.ask (the timed battle) still counts as "recently asked". */
     track(q) {
       last = q;

@@ -1334,6 +1334,7 @@ b.nv-hit {
 .nv-slots,
 .nv-chips {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
   margin: 10px 0;
@@ -1350,6 +1351,17 @@ b.nv-hit {
 }
 .nv-slot {
   border-style: dashed;
+}
+/* long words (6+ sounds) keep every tile on a 360px phone */
+.nv-slots.long,
+.nv-chips.long {
+  gap: 6px;
+}
+.nv-slots.long .nv-slot,
+.nv-chips.long .nv-chip {
+  min-width: 52px;
+  min-height: 52px;
+  font-size: 22px;
 }
 .nv-slot.good {
   background: #ddf4e8;
@@ -1800,6 +1812,296 @@ b.nv-hit {
   color: #5c6450;
 }
 
+/* Battle memory card (after a right answer, a word's first three independent right answers). Stays inside the
+   battle panel; the panel keeps its light paper in dark mode, so the colours are explicit. */
+.bt-card {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 6px 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 2px solid #e2c27a;
+  border-radius: 16px;
+  background: #fffaf0;
+  color: #2f382b;
+  box-shadow: 0 4px 14px #0000001f;
+  animation: bt-card-in 0.25s ease-out;
+}
+.bt-card-pic {
+  font-family: var(--emoji);
+  font-size: 56px;
+  line-height: 1;
+  text-align: center;
+}
+.bt-card-pic img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+.bt-card-txt {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.bt-card-w {
+  font-size: 26px;
+  overflow-wrap: anywhere;
+}
+.bt-card-z {
+  font-size: 16px;
+}
+.bt-card-n {
+  color: #5d6455;
+}
+.bt-card-row {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 8px;
+}
+.bt-card-row .qz-next {
+  flex: 1;
+  margin: 0;
+}
+.bt-card-row .bt-mini {
+  min-height: 44px;
+}
+.bt-card-bar {
+  grid-column: 1 / -1;
+  height: 4px;
+  border-radius: 2px;
+  background: #efe6cf;
+  overflow: hidden;
+}
+.bt-card-bar i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #e2a93b;
+}
+@keyframes bt-card-in {
+  from {
+    transform: translateY(6px) scale(0.98);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bt-card {
+    animation: none;
+  }
+}
+
+/* Fixed phrases inside a sentence ("Good evening"): one unit, a solid underline unlike the dotted single words. */
+.pw.pw-p {
+  text-decoration: underline solid #c27c1a;
+  text-decoration-thickness: 2px;
+}
+/* 「看中文」: the line's own context translation, folded until asked for. Reading is not answering. */
+.zh-btn {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 6px;
+  min-height: 32px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid #c9cfba;
+  background: #fffdf6;
+  color: #2f382b;
+  font-size: 13px;
+  vertical-align: middle;
+}
+.zh-line {
+  display: block;
+  margin-top: 4px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: #f3efe0;
+  color: #2f382b;
+  font-size: 15px;
+}
+.zh-line[hidden] {
+  display: none;
+}
+.qz-opt:has(.qz-zhbox) {
+  flex-wrap: wrap;
+}
+.qz-zhbox {
+  flex-basis: 100%;
+}
+.qz-zhbox .zh-btn {
+  margin: 2px 0 0;
+}
+/* phrase card (shares the word card) */
+.wd-tag {
+  font-size: 12px;
+  color: #8a5a12;
+}
+.wd-phrase {
+  font-size: 24px;
+}
+.wd-note {
+  font-size: 13px;
+  color: #5d6455;
+  text-align: center;
+}
+.wd-singles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 18px;
+}
+.wd-singles[hidden] {
+  display: none;
+}
+.wd-plain {
+  color: #6f6a5a;
+}
+
+/* 我的英語能力 (menu sheet keeps its light paper in dark mode: explicit colours) */
+.ab-list {
+  display: grid;
+  gap: 8px;
+}
+.ab-row {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid #c9cfba;
+  border-radius: 12px;
+  background: #fffdf6;
+  color: #2f382b;
+  font-size: 14px;
+}
+.ab-row b {
+  font-size: 16px;
+}
+.ab-row small,
+.ab-errs small {
+  display: block;
+  color: #5d6455;
+}
+.ab-row.off {
+  background: #f4f1e6;
+}
+.ab-pend {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #ece6d2;
+  color: #5a4a1a;
+  font-size: 12px;
+  font-weight: 700;
+}
+.ab-cov {
+  display: block;
+  margin: -2px 4px 0;
+  color: #5d6455;
+}
+.ab-subs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.ab-sub {
+  min-height: 44px;
+  padding: 4px 10px;
+  border: 1px solid #c9cfba;
+  border-radius: 10px;
+  background: #fff;
+  color: #2f382b;
+  font-size: 14px;
+  text-align: left;
+}
+.ab-sub small {
+  display: block;
+  color: #5d6455;
+  font-size: 12px;
+}
+.ab-errs,
+.ab-why {
+  margin: 4px 0 8px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+.ab-practice,
+.ab-back {
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 1px solid #c9cfba;
+  background: #fffdf6;
+  color: #2f382b;
+}
+.ab-practice {
+  background: #5e7e46;
+  border-color: #5e7e46;
+  color: #fff;
+  font-weight: 700;
+}
+.ab-practice:disabled {
+  opacity: 0.5;
+}
+/* learning profile states: text says the state; colour is only a second cue */
+.ab-row.weak,
+.ab-sub.weak,
+.ab-ch.weak {
+  border-color: #c96a3a;
+  background: #fff3ec;
+}
+.ab-row.ok,
+.ab-sub.ok,
+.ab-ch.ok {
+  border-color: #5e9a6c;
+  background: #f1faf2;
+}
+.ab-row.stale,
+.ab-sub.stale,
+.ab-ch.stale {
+  border-color: #b49a4a;
+  background: #fbf6e6;
+}
+.ab-topic {
+  display: grid;
+  gap: 2px;
+  margin-top: 6px;
+  color: #2f382b;
+}
+.ab-topic small {
+  color: #5d6455;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.ab-ch {
+  display: grid;
+  gap: 2px;
+  margin: 6px 0;
+  padding: 8px 10px;
+  border: 1px solid #c9cfba;
+  border-radius: 12px;
+  background: #fffdf6;
+  color: #2f382b;
+}
+/* grammar form-choice: the situation, then the stem with its gap */
+.gq-sit {
+  margin: 2px 0;
+  color: #5d6455;
+  font-size: 15px;
+}
+.gq-stem {
+  font-size: 20px;
+}
+
 body.vocab-open .audio-session{z-index:10070}
 
 .life-context-line{font-size:23px;line-height:1.6;color:inherit}.life-context-word{font-size:21px}.life-keyword{background:#fff0bb!important;color:#513800!important;padding:2px 4px;border-radius:4px}.life-context-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.life-context-choices button{min-height:48px;color:inherit}.life-context-choices button:disabled{opacity:.65}
+
+/* The life-scene overlay keeps its light paper in dark mode; its plain buttons (「🔊 先聽情境句子」, the word
+   choices) must use light native colours too, or dark mode gives them a grey face under dark text (2.3:1). */
+.life {
+  color-scheme: light;
+}

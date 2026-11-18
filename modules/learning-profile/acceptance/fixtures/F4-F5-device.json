@@ -1,0 +1,5 @@
+{
+ "_now": "2026-11-18T12:00:00.000Z",
+ "pm-ability-v1": "{\"v\":2,\"events\":[{\"v\":1,\"id\":\"fx-4071\",\"item\":\"g:pst-01\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:meeting/general\",\"at\":1794877200000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-4072\",\"item\":\"g:pst-02\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/airport\",\"at\":1794877260000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-4073\",\"item\":\"g:pst-03\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1794877320000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-4074\",\"item\":\"g:gt-01\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/transport\",\"at\":1794888000000,\"result\":\"correct\",\"via\":\"fixture\"}]}",
+ "pm-cards": "{\"apple\":{\"c\":5,\"w\":0,\"last\":1}}"
+}

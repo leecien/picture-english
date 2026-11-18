@@ -1,0 +1,118 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "title": "LEARNING-PROFILE-01 作答事件（每次作答一筆，append-only）— lp-rules-v1.2",
+ "description": "內部遊戲在每題第一次作答定案時寫一筆；重試只更新同一筆的 retries/final，不另寫新筆。存放鍵 pm-ability-v1（新鍵，不改舊 pm-* 語意），可存成事件陣列或 { v, events }，最多保留最新 4000 筆（LearningProfile.trimEvents）；被裁掉的舊證據不再計算。備份時連同此鍵匯出。還原不得靜默合併：先 previewRestore 預覽，再由玩家明確確認「整份還原」（v1 預設，replace）或「僅合併能力紀錄」（merge-ability，只動此鍵、依 id 聯集、同 id 內容衝突保留裝置資料並報出）；寫入前 validateStore 驗證，寫入用 atomicWrite（失敗全部回復）。",
+ "type": "object",
+ "required": [
+  "v",
+  "id",
+  "item",
+  "qtype",
+  "ctx",
+  "at",
+  "result"
+ ],
+ "properties": {
+  "v": {
+   "const": 1
+  },
+  "id": {
+   "type": "string",
+   "description": "事件唯一 id，例如 t-<epoch ms>-<亂數>；重播或重算時用來去重"
+  },
+  "item": {
+   "type": "string",
+   "pattern": "^[swg]:.+",
+   "description": "真正被測的題目 ID：s:<英文句子>、w:<單字>（與 Learn 的紀錄 key 相同）、g:<文法題 id>。生活情境填空記 s:<句子>（決定 3）。"
+  },
+  "qtype": {
+   "type": "string",
+   "description": "題型 ID，必須是 question-types.json 的 key，例如 scene:listen、sent:order、word:pic2word、drive:speak、grammar:form-choice"
+  },
+  "ctx": {
+   "type": "string",
+   "description": "情境，不是入口：與 Learn.grade 的 ctx 相同（scene:<id>、life:<id>）；文法題用題目附的 grammar:<主題>/<次主題>；其他可用 battle、quest:<id>、vocab、drive:<contentId>。"
+  },
+  "at": {
+   "type": "number",
+   "description": "第一次作答的時間（UTC epoch ms）。學習日期由模組換算成 Asia/Taipei 日曆日，事件本身不存當地時間。"
+  },
+  "result": {
+   "enum": [
+    "correct",
+    "wrong",
+    "timeout",
+    "skipped"
+   ],
+   "description": "第一次送出的結果；限時到了沒作答是 timeout，不是 wrong"
+  },
+  "final": {
+   "enum": [
+    "correct",
+    "wrong",
+    "gave-up"
+   ],
+   "description": "重試後的最終結果（沒有重試可省略）"
+  },
+  "retries": {
+   "type": "integer",
+   "minimum": 0,
+   "description": "第一次答錯後又試了幾次"
+  },
+  "hint": {
+   "type": "boolean",
+   "description": "作答前用過任何提示：打開中文提示、點字查義、看 KK、刪去選項、夥伴提示"
+  },
+  "assisted": {
+   "type": "boolean",
+   "description": "輔助作答：只剩一個選項、答案已顯示後照著做"
+  },
+  "revealed": {
+   "type": "boolean",
+   "description": "作答前已看到或聽到目標英文（例如跟讀先播示範）"
+  },
+  "sr": {
+   "type": "object",
+   "description": "只有口說題：語音辨識結果",
+   "properties": {
+    "matched": {
+     "type": "boolean"
+    },
+    "confidence": {
+     "type": "number"
+    },
+    "heard": {
+     "type": "string"
+    }
+   }
+  },
+  "ms": {
+   "type": "number",
+   "description": "作答耗時（毫秒），可省略"
+  },
+  "links": {
+   "type": "object",
+   "description": "同一次作答一起練到的其他題目，只計覆蓋率，不另外計分（決定 3）。",
+   "properties": {
+    "word": {
+     "type": "string",
+     "pattern": "^w:.+"
+    },
+    "sentence": {
+     "type": "string",
+     "pattern": "^s:.+"
+    },
+    "grammar": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "via": {
+   "type": "string",
+   "description": "作答入口：npc:<任務 id>、practice、battle（決定 5）；不影響計分。"
+  }
+ }
+}

@@ -1,0 +1,1591 @@
+{
+ "schemaVersion": 1,
+ "version": "lp-v1-batch02",
+ "task": "LEARNING-PROFILE-01",
+ "reviewer": "external-ai",
+ "status": "ai-edited-not-teacher-reviewed",
+ "note": "文法形式選擇題（grammar:form-choice）。三個選項只差在文法形式，只有一個正確；options[0] 是正解，出題時請打亂順序。作答前不要顯示時態名稱（會洩漏答案）；作答後再顯示 explain。ctx 建議用 grammar:<主題>/<次主題>，讓跨情境門檻可以計算。",
+ "counts": {
+  "items": 60,
+  "byTarget": {
+   "tense:present-simple": 12,
+   "tense:present-continuous": 12,
+   "tense:past-simple": 12,
+   "tense:going-to": 12,
+   "tense:will": 12
+  },
+  "byTopic": {
+   "food": 19,
+   "travel": 22,
+   "meeting": 19
+  },
+  "byForm": {
+   "None": 20,
+   "form:negative": 15,
+   "form:yes-no-question": 15,
+   "form:wh-question": 10
+  }
+ },
+ "items": [
+  {
+   "id": "g:ps-01",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": null,
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "看咖啡店的營業時間",
+   "stem": "This café ___ at seven every morning.",
+   "answer": "opens",
+   "options": [
+    "opens",
+    "open",
+    "is opening"
+   ],
+   "en": "This café opens at seven every morning.",
+   "zh": "這家咖啡店每天早上七點開門。",
+   "explain": "every morning 是每天固定發生的事，用現在簡單式；主詞 this café 是單數，動詞要加 -s。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-02",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": null,
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "transport"
+    }
+   ],
+   "ctx": "grammar:travel/transport",
+   "situation": "問機場巴士的班次",
+   "stem": "The airport bus ___ every twenty minutes.",
+   "answer": "leaves",
+   "options": [
+    "leaves",
+    "leave",
+    "is leaving"
+   ],
+   "en": "The airport bus leaves every twenty minutes.",
+   "zh": "機場巴士每二十分鐘一班。",
+   "explain": "時刻表、固定班次用現在簡單式；主詞單數，動詞加 -s。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-03",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": null,
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "scheduling"
+    }
+   ],
+   "ctx": "grammar:meeting/scheduling",
+   "situation": "介紹團隊的固定會議",
+   "stem": "Our team ___ a meeting every Monday.",
+   "answer": "has",
+   "options": [
+    "has",
+    "have",
+    "is having"
+   ],
+   "en": "Our team has a meeting every Monday.",
+   "zh": "我們團隊每週一開會。",
+   "explain": "every Monday 是固定習慣，用現在簡單式；our team 視為單數，用 has。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-04",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": null,
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "dietary"
+    }
+   ],
+   "ctx": "grammar:food/dietary",
+   "situation": "朋友點餐的習慣",
+   "stem": "Kevin ___ spicy food. He orders it every time.",
+   "answer": "likes",
+   "options": [
+    "likes",
+    "like",
+    "is liking"
+   ],
+   "en": "Kevin likes spicy food. He orders it every time.",
+   "zh": "Kevin 喜歡辣的食物，他每次都點。",
+   "explain": "like 是表示喜好的狀態動詞，通常不用進行式；主詞 Kevin 是單數，要用 likes。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-05",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "dietary"
+    }
+   ],
+   "ctx": "grammar:food/dietary",
+   "situation": "向服務生說明飲食",
+   "stem": "I'm a vegetarian. I ___ meat.",
+   "answer": "don't eat",
+   "options": [
+    "don't eat",
+    "doesn't eat",
+    "didn't eat"
+   ],
+   "en": "I'm a vegetarian. I don't eat meat.",
+   "zh": "我吃素，我不吃肉。",
+   "explain": "說明一般習慣用現在簡單式；主詞 I 用 don't，不是 doesn't。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-06",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "transport"
+    }
+   ],
+   "ctx": "grammar:travel/transport",
+   "situation": "搭快車前確認停靠站",
+   "stem": "This train ___ at small stations. It's an express.",
+   "answer": "doesn't stop",
+   "options": [
+    "doesn't stop",
+    "don't stop",
+    "didn't stop"
+   ],
+   "en": "This train doesn't stop at small stations. It's an express.",
+   "zh": "這班車小站不停，它是快車。",
+   "explain": "說明列車固定的停靠方式用現在簡單式；主詞 this train 是單數，用 doesn't。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-07",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "opinions"
+    }
+   ],
+   "ctx": "grammar:meeting/opinions",
+   "situation": "會議中表達不同意見",
+   "stem": "I'm sorry, but I ___ with that idea.",
+   "answer": "don't agree",
+   "options": [
+    "don't agree",
+    "doesn't agree",
+    "am not agree"
+   ],
+   "en": "I'm sorry, but I don't agree with that idea.",
+   "zh": "抱歉，我不同意那個想法。",
+   "explain": "agree 是一般動詞，否定要用 don't；am not agree 是常見錯誤。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-08",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "dietary"
+    }
+   ],
+   "ctx": "grammar:food/dietary",
+   "situation": "點餐前確認食材",
+   "stem": "___ this soup have meat in it?",
+   "answer": "Does",
+   "options": [
+    "Does",
+    "Is",
+    "Do"
+   ],
+   "en": "Does this soup have meat in it?",
+   "zh": "這個湯裡面有肉嗎？",
+   "explain": "一般動詞 have 的問句用 Does（主詞單數）開頭。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-09",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "lodging"
+    }
+   ],
+   "ctx": "grammar:travel/lodging",
+   "situation": "入住時詢問早餐",
+   "stem": "___ the hotel serve breakfast every day?",
+   "answer": "Does",
+   "options": [
+    "Does",
+    "Do",
+    "Is"
+   ],
+   "en": "Does the hotel serve breakfast every day?",
+   "zh": "飯店每天都有供應早餐嗎？",
+   "explain": "every day 是固定安排；主詞單數，用 Does。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-10",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "scheduling"
+    }
+   ],
+   "ctx": "grammar:meeting/scheduling",
+   "situation": "約開會時間",
+   "stem": "___ three o'clock work for you?",
+   "answer": "Does",
+   "options": [
+    "Does",
+    "Do",
+    "Is"
+   ],
+   "en": "Does three o'clock work for you?",
+   "zh": "三點你方便嗎？",
+   "explain": "work 是一般動詞；three o'clock 視為單數，問句用 Does。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-11",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": "form:wh-question",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "transport"
+    }
+   ],
+   "ctx": "grammar:travel/transport",
+   "situation": "問末班車時間",
+   "stem": "What time ___ the last train leave?",
+   "answer": "does",
+   "options": [
+    "does",
+    "do",
+    "is"
+   ],
+   "en": "What time does the last train leave?",
+   "zh": "末班車幾點開？",
+   "explain": "時刻表用現在簡單式；疑問詞＋does＋單數主詞＋原形動詞。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:ps-12",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-simple",
+   "form": "form:wh-question",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "問朋友常點什麼",
+   "stem": "What ___ you usually order here?",
+   "answer": "do",
+   "options": [
+    "do",
+    "does",
+    "are"
+   ],
+   "en": "What do you usually order here?",
+   "zh": "你在這裡通常點什麼？",
+   "explain": "usually 表示習慣，用現在簡單式；主詞 you 用 do。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-01",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": null,
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "等餐時看到服務生走過來",
+   "stem": "Look! The waiter ___ our food right now.",
+   "answer": "is bringing",
+   "options": [
+    "is bringing",
+    "brings",
+    "brought"
+   ],
+   "en": "Look! The waiter is bringing our food right now.",
+   "zh": "你看！服務生正在把我們的餐送過來。",
+   "explain": "Look! 和 right now 表示正在發生，用 be＋V-ing。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-02",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": null,
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "airport"
+    }
+   ],
+   "ctx": "grammar:travel/airport",
+   "situation": "登機門廣播",
+   "stem": "Please wait. They ___ the plane at the moment.",
+   "answer": "are cleaning",
+   "options": [
+    "are cleaning",
+    "clean",
+    "cleaned"
+   ],
+   "en": "Please wait. They are cleaning the plane at the moment.",
+   "zh": "請稍候，他們正在清潔飛機。",
+   "explain": "at the moment 表示此刻正在進行，用現在進行式。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-03",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": null,
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "opening"
+    }
+   ],
+   "ctx": "grammar:meeting/opening",
+   "situation": "會議開始前稍等一下",
+   "stem": "Wait a moment. Amy ___ the slides right now.",
+   "answer": "is fixing",
+   "options": [
+    "is fixing",
+    "fixes",
+    "fixed"
+   ],
+   "en": "Wait a moment. Amy is fixing the slides right now.",
+   "zh": "稍等一下，Amy 正在修改投影片。",
+   "explain": "right now 表示正在做，用 is＋V-ing。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-04",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": null,
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "cooking"
+    }
+   ],
+   "ctx": "grammar:food/cooking",
+   "situation": "朋友想打開烤箱",
+   "stem": "Don't open the oven! The cake ___ right now.",
+   "answer": "is baking",
+   "options": [
+    "is baking",
+    "bakes",
+    "baked"
+   ],
+   "en": "Don't open the oven! The cake is baking right now.",
+   "zh": "別打開烤箱！蛋糕正在烤。",
+   "explain": "蛋糕此刻在烤，用現在進行式。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-05",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "廚房暫停點餐",
+   "stem": "Sorry, we ___ orders right now. The kitchen is closed.",
+   "answer": "aren't taking",
+   "options": [
+    "aren't taking",
+    "don't take",
+    "didn't take"
+   ],
+   "en": "Sorry, we aren't taking orders right now. The kitchen is closed.",
+   "zh": "抱歉，我們現在暫停點餐，廚房關了。",
+   "explain": "right now 加上暫時的狀況（廚房關了），用現在進行式的否定。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-06",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "airport"
+    }
+   ],
+   "ctx": "grammar:travel/airport",
+   "situation": "登機門前班機延誤",
+   "stem": "Look at the gate. People ___ right now; the flight is delayed.",
+   "answer": "aren't boarding",
+   "options": [
+    "aren't boarding",
+    "don't board",
+    "didn't board"
+   ],
+   "en": "Look at the gate. People aren't boarding right now; the flight is delayed.",
+   "zh": "看登機門，現在沒有人在登機，班機延誤了。",
+   "explain": "right now 表示此刻的狀態，用 aren't＋V-ing。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-07",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "actions"
+    }
+   ],
+   "ctx": "grammar:meeting/actions",
+   "situation": "會議中請別人代為記錄",
+   "stem": "Lin ___ notes right now. Can someone else take them?",
+   "answer": "isn't taking",
+   "options": [
+    "isn't taking",
+    "doesn't take",
+    "didn't take"
+   ],
+   "en": "Lin isn't taking notes right now. Can someone else take them?",
+   "zh": "Lin 現在沒有在做記錄，可以請別人記嗎？",
+   "explain": "right now 指此刻，用 isn't＋V-ing。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-08",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "customs"
+    }
+   ],
+   "ctx": "grammar:travel/customs",
+   "situation": "海關詢問同行者",
+   "stem": "___ you traveling alone?",
+   "answer": "Are",
+   "options": [
+    "Are",
+    "Do",
+    "Did"
+   ],
+   "en": "Are you traveling alone?",
+   "zh": "你是一個人旅行嗎？",
+   "explain": "traveling 是 V-ing，前面要用 be 動詞 Are，不能用 Do／Did。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-09",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "服務生關心等餐的客人",
+   "stem": "___ you still waiting for your food?",
+   "answer": "Are",
+   "options": [
+    "Are",
+    "Do",
+    "Did"
+   ],
+   "en": "Are you still waiting for your food?",
+   "zh": "您還在等餐點嗎？",
+   "explain": "still waiting 是正在進行，用 Are＋主詞＋V-ing。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-10",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "opening"
+    }
+   ],
+   "ctx": "grammar:meeting/opening",
+   "situation": "線上會議確認大家看到同一頁",
+   "stem": "___ everyone looking at the same slide now?",
+   "answer": "Is",
+   "options": [
+    "Is",
+    "Are",
+    "Does"
+   ],
+   "en": "Is everyone looking at the same slide now?",
+   "zh": "大家現在都看著同一張投影片嗎？",
+   "explain": "everyone 文法上是單數，用 Is；looking 是 V-ing，不能配 Does。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-11",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": "form:wh-question",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "customs"
+    }
+   ],
+   "ctx": "grammar:travel/customs",
+   "situation": "海關詢問住宿地點",
+   "stem": "Where ___ you staying in Tokyo?",
+   "answer": "are",
+   "options": [
+    "are",
+    "is",
+    "does"
+   ],
+   "en": "Where are you staying in Tokyo?",
+   "zh": "你在東京住哪裡？",
+   "explain": "staying 是 V-ing，主詞 you 用 are。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pc-12",
+   "qtype": "grammar:form-choice",
+   "target": "tense:present-continuous",
+   "form": "form:wh-question",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "opinions"
+    }
+   ],
+   "ctx": "grammar:meeting/opinions",
+   "situation": "會議中詢問同事的工作",
+   "stem": "What ___ you working on this week?",
+   "answer": "are",
+   "options": [
+    "are",
+    "do",
+    "is"
+   ],
+   "en": "What are you working on this week?",
+   "zh": "你這週在忙什麼？",
+   "explain": "working 是 V-ing，要配 be 動詞；主詞 you 用 are。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-01",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": null,
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "general"
+    }
+   ],
+   "ctx": "grammar:meeting/general",
+   "situation": "簡報報告上一季業績",
+   "stem": "Sales ___ up last quarter.",
+   "answer": "went",
+   "options": [
+    "went",
+    "go",
+    "will go"
+   ],
+   "en": "Sales went up last quarter.",
+   "zh": "上一季業績上升了。",
+   "explain": "last quarter 是過去，用過去式；go 的過去式是不規則的 went。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-02",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": null,
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "airport"
+    }
+   ],
+   "ctx": "grammar:travel/airport",
+   "situation": "跟朋友說昨天的航班",
+   "stem": "My flight ___ two hours late yesterday.",
+   "answer": "arrived",
+   "options": [
+    "arrived",
+    "arrives",
+    "will arrive"
+   ],
+   "en": "My flight arrived two hours late yesterday.",
+   "zh": "我的班機昨天晚了兩小時抵達。",
+   "explain": "yesterday 是過去，用過去式 arrived。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-03",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": null,
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "分享昨晚的晚餐",
+   "stem": "We ___ at a great Thai restaurant last night.",
+   "answer": "ate",
+   "options": [
+    "ate",
+    "eat",
+    "are eating"
+   ],
+   "en": "We ate at a great Thai restaurant last night.",
+   "zh": "我們昨晚在一家很棒的泰式餐廳吃飯。",
+   "explain": "last night 是過去；eat 的過去式是不規則的 ate。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-04",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": null,
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "lodging"
+    }
+   ],
+   "ctx": "grammar:travel/lodging",
+   "situation": "說明已經訂好的房間",
+   "stem": "I ___ a room with a view last week.",
+   "answer": "booked",
+   "options": [
+    "booked",
+    "book",
+    "will book"
+   ],
+   "en": "I booked a room with a view last week.",
+   "zh": "我上週訂了一間有景觀的房間。",
+   "explain": "last week 是過去，用過去式 booked。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-05",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "送錯餐",
+   "stem": "This isn't mine. I ___ this dish.",
+   "answer": "didn't order",
+   "options": [
+    "didn't order",
+    "didn't ordered",
+    "don't order"
+   ],
+   "en": "This isn't mine. I didn't order this dish.",
+   "zh": "這不是我的，我沒有點這道菜。",
+   "explain": "過去式否定是 didn't＋原形動詞；didn't ordered 是常見錯誤。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-06",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "airport"
+    }
+   ],
+   "ctx": "grammar:travel/airport",
+   "situation": "向櫃檯說明行李狀況",
+   "stem": "I ___ my bag at the airport yesterday.",
+   "answer": "didn't find",
+   "options": [
+    "didn't find",
+    "didn't found",
+    "don't find"
+   ],
+   "en": "I didn't find my bag at the airport yesterday.",
+   "zh": "我昨天在機場沒有找到我的行李。",
+   "explain": "yesterday 是過去；didn't 後面用原形 find，不是 found。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-07",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "actions"
+    }
+   ],
+   "ctx": "grammar:meeting/actions",
+   "situation": "向主管道歉沒寄檔案",
+   "stem": "Sorry, I ___ the file last night.",
+   "answer": "didn't send",
+   "options": [
+    "didn't send",
+    "didn't sent",
+    "don't send"
+   ],
+   "en": "Sorry, I didn't send the file last night.",
+   "zh": "抱歉，我昨晚沒有寄出檔案。",
+   "explain": "last night 是過去；didn't 後面接原形 send。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-08",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "lodging"
+    }
+   ],
+   "ctx": "grammar:travel/lodging",
+   "situation": "早上在飯店問候",
+   "stem": "___ you sleep well last night?",
+   "answer": "Did",
+   "options": [
+    "Did",
+    "Do",
+    "Were"
+   ],
+   "en": "Did you sleep well last night?",
+   "zh": "你昨晚睡得好嗎？",
+   "explain": "過去式問句用 Did＋主詞＋原形動詞；sleep 是一般動詞，不配 Were。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-09",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "scheduling"
+    }
+   ],
+   "ctx": "grammar:meeting/scheduling",
+   "situation": "確認對方收到會議邀請",
+   "stem": "___ you get my email yesterday?",
+   "answer": "Did",
+   "options": [
+    "Did",
+    "Do",
+    "Were"
+   ],
+   "en": "Did you get my email yesterday?",
+   "zh": "你昨天有收到我的 email 嗎？",
+   "explain": "yesterday 是過去，用 Did 開頭。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-10",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "隔天問朋友那家餐廳",
+   "stem": "___ the food good last night?",
+   "answer": "Was",
+   "options": [
+    "Was",
+    "Did",
+    "Is"
+   ],
+   "en": "Was the food good last night?",
+   "zh": "昨晚的食物好吃嗎？",
+   "explain": "good 是形容詞，要用 be 動詞；last night 是過去，用 Was。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-11",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": "form:wh-question",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "directions"
+    }
+   ],
+   "ctx": "grammar:travel/directions",
+   "situation": "問朋友昨天怎麼找到飯店",
+   "stem": "How ___ you find the hotel yesterday?",
+   "answer": "did",
+   "options": [
+    "did",
+    "do",
+    "were"
+   ],
+   "en": "How did you find the hotel yesterday?",
+   "zh": "你昨天怎麼找到飯店的？",
+   "explain": "yesterday 是過去；疑問詞＋did＋主詞＋原形動詞。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:pst-12",
+   "qtype": "grammar:form-choice",
+   "target": "tense:past-simple",
+   "form": "form:wh-question",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "scheduling"
+    }
+   ],
+   "ctx": "grammar:meeting/scheduling",
+   "situation": "問昨天會議幾點結束",
+   "stem": "When ___ the meeting end yesterday?",
+   "answer": "did",
+   "options": [
+    "did",
+    "does",
+    "was"
+   ],
+   "en": "When did the meeting end yesterday?",
+   "zh": "昨天的會議幾點結束？",
+   "explain": "end 是一般動詞，過去式問句用 did＋原形 end。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-01",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": null,
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "transport"
+    }
+   ],
+   "ctx": "grammar:travel/transport",
+   "situation": "車票已經買好",
+   "stem": "We bought the tickets. We ___ take the train to Kyoto tomorrow.",
+   "answer": "are going to",
+   "options": [
+    "are going to",
+    "going to",
+    "are go to"
+   ],
+   "en": "We bought the tickets. We are going to take the train to Kyoto tomorrow.",
+   "zh": "我們買好車票了，明天要搭火車去京都。",
+   "explain": "已經有計畫用 be going to；be 動詞不能省略，going 也不能寫成 go。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-02",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": null,
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "cooking"
+    }
+   ],
+   "ctx": "grammar:food/cooking",
+   "situation": "已經買好材料",
+   "stem": "I bought eggs and flour. I ___ bake a cake tonight.",
+   "answer": "am going to",
+   "options": [
+    "am going to",
+    "going to",
+    "am going"
+   ],
+   "en": "I bought eggs and flour. I am going to bake a cake tonight.",
+   "zh": "我買了蛋和麵粉，今晚要烤蛋糕。",
+   "explain": "事先計畫好的事用 am going to＋原形動詞；漏掉 to 或 be 都不對。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-03",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": null,
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "scheduling"
+    }
+   ],
+   "ctx": "grammar:meeting/scheduling",
+   "situation": "主管已安排的公告",
+   "stem": "Our manager ___ announce the new plan on Friday.",
+   "answer": "is going to",
+   "options": [
+    "is going to",
+    "are going to",
+    "going to"
+   ],
+   "en": "Our manager is going to announce the new plan on Friday.",
+   "zh": "我們經理週五要宣布新計畫。",
+   "explain": "已安排好的計畫用 be going to；主詞單數用 is。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-04",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": null,
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "看完菜單已經決定",
+   "stem": "I've decided. I ___ order the salad.",
+   "answer": "am going to",
+   "options": [
+    "am going to",
+    "going to",
+    "am go to"
+   ],
+   "en": "I've decided. I am going to order the salad.",
+   "zh": "我決定好了，我要點沙拉。",
+   "explain": "已經決定的打算用 am going to；不能省略 am，也不能寫成 go to。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-05",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "lodging"
+    }
+   ],
+   "ctx": "grammar:travel/lodging",
+   "situation": "不想再住那家飯店",
+   "stem": "We ___ stay at that hotel again. It was too noisy.",
+   "answer": "aren't going to",
+   "options": [
+    "aren't going to",
+    "don't going to",
+    "aren't go to"
+   ],
+   "en": "We aren't going to stay at that hotel again. It was too noisy.",
+   "zh": "我們不會再住那家飯店了，太吵了。",
+   "explain": "be going to 的否定是在 be 動詞後面加 not，不用 don't。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-06",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "actions"
+    }
+   ],
+   "ctx": "grammar:meeting/actions",
+   "situation": "向主管說明進度",
+   "stem": "I ___ finish the report today. I need one more day.",
+   "answer": "am not going to",
+   "options": [
+    "am not going to",
+    "don't going to",
+    "not going to"
+   ],
+   "en": "I am not going to finish the report today. I need one more day.",
+   "zh": "我今天不會完成報告，還需要一天。",
+   "explain": "否定是 am not going to；don't going to 和漏掉 am 都是錯的。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-07",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "dietary"
+    }
+   ],
+   "ctx": "grammar:food/dietary",
+   "situation": "朋友的飲食計畫",
+   "stem": "She ___ eat any sugar this month.",
+   "answer": "isn't going to",
+   "options": [
+    "isn't going to",
+    "doesn't going to",
+    "not going to"
+   ],
+   "en": "She isn't going to eat any sugar this month.",
+   "zh": "她這個月不打算吃任何糖。",
+   "explain": "主詞 she，否定用 isn't going to。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-08",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "transport"
+    }
+   ],
+   "ctx": "grammar:travel/transport",
+   "situation": "問朋友旅行的交通計畫",
+   "stem": "___ you going to rent a car?",
+   "answer": "Are",
+   "options": [
+    "Are",
+    "Do",
+    "Will"
+   ],
+   "en": "Are you going to rent a car?",
+   "zh": "你打算租車嗎？",
+   "explain": "be going to 的問句把 be 動詞移到前面：Are you going to …?",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-09",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "問同事晚餐會不會來",
+   "stem": "___ Amy going to join us for dinner?",
+   "answer": "Is",
+   "options": [
+    "Is",
+    "Does",
+    "Are"
+   ],
+   "en": "Is Amy going to join us for dinner?",
+   "zh": "Amy 會來跟我們一起吃晚餐嗎？",
+   "explain": "主詞 Amy 單數，用 Is 開頭。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-10",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "scheduling"
+    }
+   ],
+   "ctx": "grammar:meeting/scheduling",
+   "situation": "問會議是否要改時間",
+   "stem": "___ they going to move the meeting?",
+   "answer": "Are",
+   "options": [
+    "Are",
+    "Do",
+    "Is"
+   ],
+   "en": "Are they going to move the meeting?",
+   "zh": "他們打算改會議時間嗎？",
+   "explain": "主詞 they，用 Are 開頭。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-11",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": "form:wh-question",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "lodging"
+    }
+   ],
+   "ctx": "grammar:travel/lodging",
+   "situation": "問朋友在大阪住哪裡",
+   "stem": "Where ___ you going to stay in Osaka?",
+   "answer": "are",
+   "options": [
+    "are",
+    "do",
+    "will"
+   ],
+   "en": "Where are you going to stay in Osaka?",
+   "zh": "你在大阪打算住哪裡？",
+   "explain": "疑問詞＋are＋you＋going to＋原形動詞。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:gt-12",
+   "qtype": "grammar:form-choice",
+   "target": "tense:going-to",
+   "form": "form:wh-question",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "actions"
+    }
+   ],
+   "ctx": "grammar:meeting/actions",
+   "situation": "會後分工",
+   "stem": "Who ___ going to send the notes?",
+   "answer": "is",
+   "options": [
+    "is",
+    "are",
+    "does"
+   ],
+   "en": "Who is going to send the notes?",
+   "zh": "誰要負責寄會議記錄？",
+   "explain": "who 當主詞時視為單數，用 is going to。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-01",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": null,
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "服務生問要點什麼",
+   "stem": "Are you ready to order? — Yes, I ___ have the chicken salad.",
+   "answer": "will",
+   "options": [
+    "will",
+    "am",
+    "was"
+   ],
+   "en": "Are you ready to order? — Yes, I will have the chicken salad.",
+   "zh": "可以點餐了嗎？——好，我要雞肉沙拉。",
+   "explain": "點餐時當下的決定常用 will（口語 I'll）；I am have 是錯的。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-02",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": null,
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "actions"
+    }
+   ],
+   "ctx": "grammar:meeting/actions",
+   "situation": "答應會後寄資料",
+   "stem": "Don't worry. I ___ send you the details by Friday.",
+   "answer": "will",
+   "options": [
+    "will",
+    "did",
+    "was"
+   ],
+   "en": "Don't worry. I will send you the details by Friday.",
+   "zh": "別擔心，我週五前會把細節寄給你。",
+   "explain": "承諾未來要做的事用 will＋原形動詞。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-03",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": null,
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "lodging"
+    }
+   ],
+   "ctx": "grammar:travel/lodging",
+   "situation": "看到朋友的行李很重",
+   "stem": "The bag looks heavy. I ___ carry it for you.",
+   "answer": "will",
+   "options": [
+    "will",
+    "am",
+    "was"
+   ],
+   "en": "The bag looks heavy. I will carry it for you.",
+   "zh": "包包看起來很重，我幫你拿。",
+   "explain": "當下主動提議幫忙用 will。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-04",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": null,
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "airport"
+    }
+   ],
+   "ctx": "grammar:travel/airport",
+   "situation": "班機延誤時的預測",
+   "stem": "Your flight is delayed. You ___ probably miss your connection.",
+   "answer": "will",
+   "options": [
+    "will",
+    "are",
+    "were"
+   ],
+   "en": "Your flight is delayed. You will probably miss your connection.",
+   "zh": "你的班機延誤了，你可能會錯過轉機。",
+   "explain": "對未來的預測用 will；probably 放在 will 後面。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-05",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "actions"
+    }
+   ],
+   "ctx": "grammar:meeting/actions",
+   "situation": "遲到後向主管保證",
+   "stem": "I promise I ___ be late again.",
+   "answer": "won't",
+   "options": [
+    "won't",
+    "don't",
+    "am not"
+   ],
+   "en": "I promise I won't be late again.",
+   "zh": "我保證不會再遲到了。",
+   "explain": "承諾不會做某事用 won't（will not）＋原形 be。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-06",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "dietary"
+    }
+   ],
+   "ctx": "grammar:food/dietary",
+   "situation": "提醒朋友那道菜太辣",
+   "stem": "Don't order this dish. It's too spicy—you ___ be able to eat it.",
+   "answer": "won't",
+   "options": [
+    "won't",
+    "don't",
+    "aren't"
+   ],
+   "en": "Don't order this dish. It's too spicy—you won't be able to eat it.",
+   "zh": "別點這道菜，太辣了，你會吃不下。",
+   "explain": "預測未來不會怎樣用 won't＋原形動詞。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-07",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": "form:negative",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "transport"
+    }
+   ],
+   "ctx": "grammar:travel/transport",
+   "situation": "趕火車",
+   "stem": "Hurry up, or we ___ catch the train.",
+   "answer": "won't",
+   "options": [
+    "won't",
+    "don't",
+    "aren't"
+   ],
+   "en": "Hurry up, or we won't catch the train.",
+   "zh": "快一點，不然我們會趕不上火車。",
+   "explain": "「不然就會……」是對未來的預測，用 won't。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-08",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "airport"
+    }
+   ],
+   "ctx": "grammar:travel/airport",
+   "situation": "班機延誤時問櫃檯",
+   "stem": "___ I miss my connecting flight?",
+   "answer": "Will",
+   "options": [
+    "Will",
+    "Do",
+    "Am"
+   ],
+   "en": "Will I miss my connecting flight?",
+   "zh": "我會錯過轉機嗎？",
+   "explain": "問未來會不會發生用 Will＋主詞＋原形動詞。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-09",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "scheduling"
+    }
+   ],
+   "ctx": "grammar:meeting/scheduling",
+   "situation": "約明天的時間",
+   "stem": "___ you be free after lunch tomorrow?",
+   "answer": "Will",
+   "options": [
+    "Will",
+    "Are",
+    "Do"
+   ],
+   "en": "Will you be free after lunch tomorrow?",
+   "zh": "你明天午餐後有空嗎？",
+   "explain": "後面是原形 be，所以前面要用 Will；Are you be、Do you be 都是錯的。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-10",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": "form:yes-no-question",
+   "topics": [
+    {
+     "topic": "food",
+     "sub": "ordering"
+    }
+   ],
+   "ctx": "grammar:food/ordering",
+   "situation": "請服務生幫忙",
+   "stem": "___ you bring us some water, please?",
+   "answer": "Will",
+   "options": [
+    "Will",
+    "Do",
+    "Are"
+   ],
+   "en": "Will you bring us some water, please?",
+   "zh": "可以請你幫我們拿些水嗎？",
+   "explain": "Will you …? 可以用來禮貌請求；Do you bring、Are you bring 都不對。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-11",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": "form:wh-question",
+   "topics": [
+    {
+     "topic": "travel",
+     "sub": "lodging"
+    }
+   ],
+   "ctx": "grammar:travel/lodging",
+   "situation": "問朋友下個月的住宿天數",
+   "stem": "How long ___ you stay in Taipei next month?",
+   "answer": "will",
+   "options": [
+    "will",
+    "did",
+    "are"
+   ],
+   "en": "How long will you stay in Taipei next month?",
+   "zh": "你下個月會在台北待多久？",
+   "explain": "next month 是未來；疑問詞＋will＋主詞＋原形動詞。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  },
+  {
+   "id": "g:wl-12",
+   "qtype": "grammar:form-choice",
+   "target": "tense:will",
+   "form": "form:wh-question",
+   "topics": [
+    {
+     "topic": "meeting",
+     "sub": "scheduling"
+    }
+   ],
+   "ctx": "grammar:meeting/scheduling",
+   "situation": "問新主管下週何時到任",
+   "stem": "When ___ the new manager start next week?",
+   "answer": "will",
+   "options": [
+    "will",
+    "did",
+    "is"
+   ],
+   "en": "When will the new manager start next week?",
+   "zh": "新主管下週什麼時候開始上班？",
+   "explain": "next week 是未來；When will＋主詞＋原形動詞。",
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai"
+  }
+ ]
+}

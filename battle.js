@@ -245,6 +245,9 @@ const Battle = (() => {
       foeShield: !!mob.look.shield, intent: "", phase: "", q: null, settled: true, paused: false, timer: null,
       boss, chase: ctx.chase || null, dist: ctx.chase ? ctx.chase.start : 0,
       comp: ctx.companion ? { ...ctx.companion, energy: 0, hintLeft: 1, healed: false } : null,
+      // quota (boss seals): the phase ends after n questions and passes on `need` first-try right answers;
+      // HP only shows seal progress, so strong attacks cannot end it early.
+      quota: ctx.quota ? { ...ctx.quota, asked: 0, first: 0 } : null,
     };
     PREF();
     World.paused = true;
@@ -294,7 +297,7 @@ const Battle = (() => {
   }
   function ask() {
     if (!B) return;
-    if (B.chase ? B.dist <= 0 : B.hp <= 0) return victory();
+    if (!B.quota && (B.chase ? B.dist <= 0 : B.hp <= 0)) return victory(); // a seal is decided by its question count
     if (st.hp <= 0) return defeat();
     B.turn++;
     if (B.ctx.phases) {
@@ -304,12 +307,14 @@ const Battle = (() => {
       B.phaseIdx = B.ctx.phases.indexOf(ph);
       $("battle").dataset.phase = String(B.phaseIdx);
     }
+    if (B.quota) B.phase = `${B.quota.label}（第 ${B.quota.asked + 1}/${B.quota.n} 題，首次答對 ${B.quota.first}/${B.quota.need}）`;
     B.intent = nextIntent();
     const q = trim(B.ctx.make(B));
     B.q = q;
     B.settled = false;
     B.used = {};
     Learn.track(q);
+    if (typeof Ability !== "undefined") Ability.begin();
     paintBattle();
     render(q);
   }
@@ -323,7 +328,7 @@ const Battle = (() => {
       ["time", "⏳ +5 秒", 4, practice],
     ];
     $("bt-act").innerHTML = `<div class="bt-q">
-      <div class="bt-top"><span class="bt-turn">第 ${B.turn} 題${B.chase ? " · 追海鷗" : ""}</span><button type="button" id="bt-mode" class="bt-mini">${practice ? "🌱 練習（不限時）" : "⏱ 限時"}</button><button type="button" id="bt-hold" class="bt-mini" aria-label="暫停">⏸</button><button type="button" id="bt-run" class="bt-mini">🏃 逃跑</button></div>
+      <div class="bt-top"><span class="bt-turn">第 ${B.turn} 題${B.chase ? " · 追海鷗" : ""}</span>${B.quota ? "" : `<button type="button" id="bt-mode" class="bt-mini">${practice ? "🌱 練習（不限時）" : "⏱ 限時"}</button>`}<button type="button" id="bt-hold" class="bt-mini" aria-label="暫停">⏸</button><button type="button" id="bt-run" class="bt-mini">🏃 逃跑</button></div>
       ${B.boss ? `<div class="bt-boss-phase"><b>⚔️ ${esc(B.phase)}</b><small>${esc(intentText())}</small></div>` : ""}
       <div class="bt-clock" ${practice ? "hidden" : ""}><i id="bt-clock-bar"></i><span id="bt-clock-n"></span></div>
       <div class="qz-p">${q.prompt}</div>
@@ -332,7 +337,7 @@ const Battle = (() => {
       <div class="qz-f" role="status" id="bt-feedback"></div>
       <div class="bt-help">${help.map(([k, label, mp, off]) => `<button type="button" data-help="${k}" ${st.mp < mp || off ? "disabled" : ""}>${label}<small>MP ${mp}</small></button>`).join("")}<button type="button" data-help="berry" ${count("berry") && st.hp < m.maxHp ? "" : "disabled"}>🍓<small>×${count("berry")}</small></button>${B.comp ? `<button type="button" data-help="hint" class="bt-buddy-hint" ${B.comp.hintLeft ? "" : "disabled"}>🧚 提示<small>每場 ${B.comp.hintLeft} 次</small></button>` : ""}</div>
     </div>`;
-    $("bt-mode").onclick = () => {
+    if ($("bt-mode")) $("bt-mode").onclick = () => {
       st.pref.practice = !st.pref.practice;
       persist();
       $("bt-mode").textContent = st.pref.practice ? "🌱 練習（不限時）" : "⏱ 限時（下一題起）";
@@ -428,12 +433,23 @@ const Battle = (() => {
     paintClock();
     B.timer.iv = setInterval(() => {
       if (!live(tok) || !B.timer) return;
-      if (B.paused || B.anim || B.hearing) return;
+      if (B.paused || B.anim || B.hearing || reading()) return;
       B.timer.left = Math.max(0, B.timer.left - 0.1);
       paintClock();
       if (B.timer.left <= 0) settle("timeout");
     }, 100);
   }
+  // a line's Chinese is open (「看中文」): reading is not answering, the clock waits
+  const reading = () => !!document.querySelector("#bt-act .zh-line:not([hidden])");
+  /* The chosen sentence option, played once as a whole line (right or wrong). Resolves when it has finished. */
+  function sayChoice(q, idx) {
+    const o = q.options[idx],
+      s = o && typeof Pron !== "undefined" && Pron.optionText(o);
+    if (!s || !/\s/.test(s.text)) return null; // single words and pictures: unchanged
+    return Pron.play(s.text, s.file || "");
+  }
+  // after a settled question: the next one waits until the chosen line has finished playing
+  const whenQuiet = (fn) => (B && B.voice ? B.voice.then(fn) : fn());
   function stopClock() {
     if (B && B.timer) {
       clearInterval(B.timer.iv);
@@ -535,6 +551,7 @@ const Battle = (() => {
     const q = B.q,
       tok = B.tok;
     B.settled = true;
+    const spent = B.timer ? (B.timer.total - B.timer.left) * 1000 : 0;
     stopClock();
     const bs = [...$("bt-act").querySelectorAll(".qz-o button")];
     // Listen-first sound questions reveal nothing on a miss (no lit-up answer, no word, no recording of it).
@@ -543,37 +560,163 @@ const Battle = (() => {
       b.disabled = true;
       if (q.options[i].ok && !hide) b.classList.add("right");
     });
-    if (!hide) Learn.revealKK(q, bs);
+    if (!hide) Learn.revealKK(q, bs), Learn.revealZh(q, bs);
     if (kind === "wrong" && bs[idx]) bs[idx].classList.add("wrong");
     const ok = kind === "right";
     SND.play(ok ? "correct" : "wrong");
+    // a sentence option: the chosen line plays in full, right or wrong (one sound at a time, no second answer)
+    const voice = kind !== "timeout" ? sayChoice(q, idx) : null;
+    B.voice = voice ? voice.then(() => {}) : null;
     // Records: answers through Learn; a timeout is metadata, not a language error; hinted-to-one is practice.
     if (B.ctx.onSettle) B.ctx.onSettle(q, kind);
+    if (B.quota) {
+      B.quota.asked++;
+      if (ok && !q.assisted) B.quota.first++;
+    }
+    let graded = null;
     if (kind === "timeout") Learn.timeout(q);
     else if (q.assisted && ok) Learn.assisted(q);
-    else Learn.grade(q, ok, "battle");
+    else graded = Learn.grade(q, ok, "battle");
+    // ability log: one event; timeout apart from a wrong answer; a hint that left one option is assisted
+    if (typeof Ability !== "undefined") Ability.log(q, { result: kind === "timeout" ? "timeout" : ok ? "correct" : "wrong", assisted: !!q.assisted, ms: spent, ctx: q.ctx || "battle", via: "battle" });
     if (ok) heroHits();
     else foeHits(kind === "timeout");
     paintBattle();
     const a = q.answer || {};
     if (ok) {
       $("bt-feedback").innerHTML = `<b class="good">✓ 答對了！</b> ${Learn.answerHTML(a)} <span class="qz-zh">${esc(a.zh || "")}</span>`;
-      setTimeout(() => live(tok) && after(), 900);
+      const n = cardCount(q, graded);
+      // the first three independent right answers of a word show its memory card; the attack has already landed
+      if (n) setTimeout(() => live(tok) && memoryCard(q, n, tok).then((go) => go && live(tok) && whenQuiet(() => live(tok) && after())), 450);
+      else setTimeout(() => live(tok) && whenQuiet(() => live(tok) && after()), 900);
     } else {
       // The explanation is not timed: read it, then continue.
       if (hide)
         $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "✕ 不是這個音"}</b><small>這題記下來了，之後換別的字再出現。答案不在這裡公布。</small>${kind === "timeout" ? "<small>時間到不算辨音答錯。</small>" : ""}`;
       else $("bt-feedback").innerHTML = `<b class="bad">${kind === "timeout" ? "時間到" : "正確答案"}</b> ${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""} <span class="qz-zh">${esc(a.zh || "")}</span>${q.explain ? `<small>${esc(q.explain)}</small>` : ""}${kind === "timeout" ? "<small>時間到不算英文答錯，這題會在之後的複習再出現。</small>" : ""}`;
-      if (a.en && !hide) speak(a.en, a.file || "");
+      if (a.en && !hide && !voice) speak(a.en, a.file || ""); // a chosen sentence is already playing: no overlap
       const go = document.createElement("button");
       go.type = "button";
       go.className = "qz-next";
       go.id = "bt-next";
       go.textContent = "下一題";
-      go.onclick = () => live(tok) && after();
+      go.onclick = () => {
+        if (!live(tok) || go.dataset.wait) return;
+        go.dataset.wait = "1"; // one tap is enough; the next question starts when the chosen line has finished
+        whenQuiet(() => live(tok) && after());
+      };
       $("bt-act").querySelector(".bt-q").insertBefore(go, $("bt-act").querySelector(".bt-help"));
+      if (hide && B.comp && kind === "wrong") {
+        // the companion corrects the wrong pick and lets the player choose again: an assisted answer, never an independent one
+        const fix = document.createElement("button");
+        fix.type = "button";
+        fix.className = "qz-say";
+        fix.id = "bt-buddy-fix";
+        fix.textContent = `🧚 請${B.comp.name}幫忙看看`;
+        fix.onclick = () => {
+          if (!live(tok)) return;
+          fix.remove();
+          go.hidden = true;
+          const picked = q.options[idx] || {},
+            done = (right) => {
+              bs.forEach((b) => (b.disabled = true));
+              bs.forEach((b, i) => q.options[i].ok && b.classList.add("right"));
+              Learn.revealKK(q, bs);
+              $("bt-feedback").innerHTML = `<b>🧚 ${esc(B.comp.name)}：</b>${right ? "對了，就是這個！" : "是這個。"}${Learn.answerHTML(a)}${a.kk ? ` <span class="qz-kk">${esc(a.kk)}</span>` : ""}${q.explain ? `<small>${esc(q.explain)}</small>` : ""}<small>這題記為「夥伴補正」，不算獨立答對，也不會再造成傷害。</small>`;
+              if (a.en) speak(a.en, a.file || "");
+              if (B.ctx.onAssist) B.ctx.onAssist(q);
+              if (typeof Ability !== "undefined") Ability.markAssist(q);
+              go.hidden = false;
+              go.focus({ preventScroll: true });
+            };
+          $("bt-feedback").innerHTML = `<b>🧚 ${esc(B.comp.name)}：</b>你選的 ${esc(picked.label || "")} 不是這個字裡的音。再聽一次，換一個選。<small>這次選對也算「夥伴補正」，不算獨立答對。</small>`;
+          bs.forEach((b, i) => {
+            if (i === idx) return;
+            b.disabled = false;
+            b.onclick = () => live(tok) && done(!!q.options[i].ok);
+          });
+          if (q.audio) playAwait(q.audio);
+        };
+        $("bt-act").querySelector(".bt-q").insertBefore(fix, go);
+      }
       go.focus({ preventScroll: true });
     }
+  }
+  /* Memory card (after a right answer): a word's first 2–4 independent right answers (the number fixed per word), counted by the card book
+     (pm-cards .c, which only grows on a fresh first-try right answer: not on wrong, timeout, assisted, a retry or the
+     same word again within the cool-down). Stays in the battle view for about 3 s or until "繼續戰鬥"; the countdown
+     waits while its sound plays, a word card is open, or the page is hidden (then it waits for the button).
+     Showing, replaying or closing it gives no XP and no attack. */
+  const CARD_MS = 3000;
+  // how many right answers show the card: 2, 3 or 4, picked per word from its spelling (so the same word always
+  // gets the same number, across reloads and devices, with nothing new saved)
+  function cardLimit(w) {
+    let h = 5381;
+    for (const ch of String(w)) h = ((h * 33) ^ ch.codePointAt(0)) >>> 0;
+    return 2 + (h % 3);
+  }
+  function cardCount(q, graded) {
+    if (!graded || !graded.fresh || q.assisted || q.recK !== "w" || !q.item || !q.item.w || q.item.sup) return 0;
+    const c = typeof CARDS !== "undefined" && CARDS[q.item.w];
+    return c && c.c >= 1 && c.c <= cardLimit(q.item.w) ? c.c : 0;
+  }
+  function memoryCard(q, n, tok) {
+    return new Promise((res) => {
+      const it = q.item,
+        host = $("bt-act").querySelector(".bt-q");
+      if (!host) return res(true);
+      const el = document.createElement("div");
+      el.className = "bt-card";
+      el.id = "bt-card";
+      el.setAttribute("role", "group");
+      el.setAttribute("aria-label", `記憶卡：${it.w}`);
+      el.innerHTML = `<div class="bt-card-pic">${pic(it)}</div>
+        <div class="bt-card-txt"><b class="bt-card-w">${esc(it.w)}</b>${it.kk ? `<span class="qz-kk">${esc(it.kk)}</span>` : ""}<span class="bt-card-z">${esc(it.z || "")}</span>
+        <small class="bt-card-n">記憶卡 ${n}/${cardLimit(it.w)}・第 ${n} 次獨立答對</small></div>
+        <div class="bt-card-row"><button type="button" class="bt-mini" id="bt-card-say">🔊 發音</button><button type="button" class="qz-next" id="bt-card-go">繼續戰鬥 ▶</button></div>
+        <i class="bt-card-bar"><i id="bt-card-left"></i></i>`;
+      // at the top of the panel, right under pause / flee, and scrolled into view (the panel scrolls on a phone)
+      const top = host.querySelector(".bt-top");
+      host.insertBefore(el, top ? top.nextSibling : host.firstChild);
+      $("bt-act").scrollTop = 0;
+      B.card = { word: it.w, n, held: false };
+      let left = CARD_MS,
+        last = Date.now(),
+        playing = false,
+        closed = false;
+      const finish = (go) => {
+        if (closed) return;
+        closed = true;
+        clearInterval(iv);
+        if (B && B.tok === tok) B.card = null;
+        el.remove();
+        res(go);
+      };
+      const holdCard = (why) => {
+        if (!B || !B.card || B.card.held) return;
+        B.card.held = true;
+        el.querySelector(".bt-card-n").textContent = why;
+      };
+      const iv = setInterval(() => {
+        if (!live(tok)) return finish(false); // fled, ended or a new battle: never pull the player back
+        const now = Date.now(),
+          dt = now - last;
+        last = now;
+        if (document.hidden) return holdCard("已停住：按「繼續戰鬥」再回到戰鬥");
+        if (B.card.held || playing || B.hearing || B.paused) return;
+        left -= dt;
+        $("bt-card-left").style.width = `${Math.max(0, (100 * left) / CARD_MS)}%`;
+        if (left <= 0) finish(true);
+      }, 100);
+      el.querySelector("#bt-card-say").onclick = () => {
+        if (playing || !live(tok)) return; // no overlapping playback
+        playing = true;
+        playAwait({ text: it.w, file: it.au || "" }).then(() => (playing = false));
+      };
+      el.querySelector("#bt-card-go").onclick = () => finish(true);
+      // tapping the card itself keeps it open (reading it); the button continues
+      el.addEventListener("click", (e) => !e.target.closest("button") && holdCard("看完按「繼續戰鬥」"));
+    });
   }
   function heroHits() {
     const s = stats();
@@ -583,6 +726,12 @@ const Battle = (() => {
       B.dist = Math.max(0, B.dist - 1);
       pop("foe", "拉近！", "crit");
       log(B.dist ? `追上了一點！還差 ${B.dist}。` : "抓到海鷗了！");
+    } else if (B.quota) {
+      // seal progress, not damage
+      B.hp = Math.round(B.maxHp * (1 - Math.min(1, B.quota.first / B.quota.need)));
+      shake("foe");
+      pop("foe", `封印 ${Math.min(B.quota.first, B.quota.need)}/${B.quota.need}`, "crit");
+      log(B.hp > 0 ? `封印前進！首次答對 ${B.quota.first}/${B.quota.need}。` : `封印條已滿，但本階段還要完成 ${B.quota.n - B.quota.asked} 題才能鎖上封印。`);
     } else if (B.foeShield) {
       B.foeShield = false;
       pop("foe", `${(B.look.shield || {}).icon || "🛡️"} 破盾！`, "crit");
@@ -650,6 +799,11 @@ const Battle = (() => {
   }
   function after() {
     if (!B) return;
+    if (B.quota) {
+      if (B.quota.asked >= B.quota.n) return quotaEnd();
+      if (st.hp <= 0) return defeat();
+      return ask();
+    }
     if (B.chase && B.dist >= B.chase.max) return escaped();
     if (B.chase ? B.dist <= 0 : B.hp <= 0) return victory();
     if (st.hp <= 0) return defeat();
@@ -665,6 +819,16 @@ const Battle = (() => {
     stopClock();
     $("bt-act").innerHTML = `<div class="bt-end"><h3>💨 海鷗飛走了</h3><p>牠飛遠了，等一下再去追。練到的英文都已經記錄。</p><button id="bt-claim" class="qz-next">回到原地</button></div>`;
     $("bt-claim").onclick = () => end("escape");
+  }
+  /* End of a quota phase: passes on enough first-try answers; otherwise the same phase is tried again later. */
+  function quotaEnd() {
+    stopClock();
+    const qt = B.quota,
+      pass = qt.first >= qt.need;
+    SND.play(pass ? "roundend" : "wrong");
+    $("bt-act").innerHTML = `<div class="bt-end"><h3>${pass ? "🔒 封印完成" : "🔓 封印沒有完成"}</h3><p>${esc(qt.label)}：${qt.n} 題中首次答對 <b>${qt.first}</b> 題（需要 ${qt.need} 題）。</p><p class="fine">${pass ? "這個階段已存檔，下次從下一個封印開始。" : "這個階段沒有過關，已完成的階段不受影響；回來時換新的題目重挑這一階段。"}</p><button id="bt-claim" class="qz-next">${pass ? "繼續" : "回到原地"}</button></div>`;
+    $("bt-claim").onclick = () => end(pass ? "win" : "fail");
+    $("bt-claim").focus({ preventScroll: true });
   }
   function victory() {
     stopClock();
@@ -737,12 +901,13 @@ const Battle = (() => {
       persist();
     },
     get state() {
-      return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield, combo: B.combo, power: B.power, guard: B.guard, intent: B.intent, dist: B.dist, turn: B.turn, paused: B.paused, settled: B.settled, left: B.timer ? B.timer.left : null, phase: B.phase, energy: B.comp ? B.comp.energy : null, hint: B.comp ? B.comp.hintLeft : null };
+      return B && { card: B.card ? { ...B.card } : null, quota: B.quota ? { ...B.quota } : null, hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield, combo: B.combo, power: B.power, guard: B.guard, intent: B.intent, dist: B.dist, turn: B.turn, paused: B.paused, settled: B.settled, left: B.timer ? B.timer.left : null, phase: B.phase, energy: B.comp ? B.comp.energy : null, hint: B.comp ? B.comp.hintLeft : null };
     },
     get foe() {
       return B && { hp: B.hp, maxHp: B.maxHp, name: B.look.name, shield: B.foeShield };
     },
     settleForTest: (k) => settle(k),
+    cardLimit,
     /* tests only: keep a fight alive long enough to check every rule, or end it quickly */
     setFoeHp(n) {
       if (B) B.hp = B.maxHp = Math.max(1, n);

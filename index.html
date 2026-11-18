@@ -731,11 +731,12 @@ function showTab(pid){document.querySelectorAll('.tabs button').forEach(b=>b.set
   ['p-play','p-book','p-log'].forEach(p=>$(p).hidden=p!==pid);
   if(pid==='p-book')renderBook();if(pid==='p-log')renderLog();if(pid==='p-play')updateHome()}
 
-function start(mode,review){
+function start(mode,review,only){
   if(!RPG.launching)RPG.active=null;
   $('back').textContent=RPG.active&&RPG.active.source==='atlas'?'← 回到冒險':'← 回首頁';
   S.mode=mode;S.review=!!review;S.forceLv=0;S.pl=null;
   if(mode==='place'){S.forceLv=2;S.pl={levels:[],oks:[]};S.plan=Array.from({length:PLACE_LEN},(_,i)=>TYPES.place[[0,1,0,2][i%4]])}
+  else if(only&&TYPES[mode].some(t=>t.id===only))S.plan=Array.from({length:6},()=>TYPES[mode].find(t=>t.id===only)); // one kind only (e.g. weak-skill practice)
   else S.plan=makePlan(TYPES[mode]);S.i=0;S.score=0;S.streak=0;S.hist=[];S.gain=0;S.startTier=tierIdx(P.xp);
   S.rep={newW:new Map(),revW:new Map(),weakW:new Map(),newS:new Map(),revS:new Map(),weakS:new Map()};
   $('g-tier').textContent=TIERS[tierIdx(P.xp)].tag;
@@ -793,6 +794,8 @@ function done(ok,info){
     if(P.w>=30)award('w30');if(P.s>=30)award('s30');if(P.correct>=100)award('c100');
   }
   if(info.rec)record(info.rec);
+  // ability log: sentence ordering is 句子組合, the other practice kinds are 閱讀辨識
+  if(info.rec&&info.rec[0]&&typeof Ability!=='undefined'){const t=S.plan[S.i]||{},r0=info.rec[0],kind=TYPES.word.some(x=>x.id===t.id)&&!TYPES.sent.some(x=>x.id===t.id)?'word':r0.k==='w'?'word':'sent';Ability.log({recK:r0.k,item:r0.it},{result:ok?'correct':'wrong',qtype:kind+':'+t.id,ctx:'practice:'+(S.mode||''),via:'practice'})}
   if(S.i===4&&!S.pl)toast('🎯','過一半了',`這回合前 5 題答對 ${S.score} 題，已累積 ${S.gain} 分`);
   const sh=$('sheet');sh.classList.toggle('no',!ok);
   $('verdict').textContent=ok?(S.streak>=3?`答對了！連對 ${S.streak} 題`:'答對了！'):'再記一下這個';
@@ -1207,6 +1210,8 @@ async function answerItem(it,kind,alive){
     D.seen++;D.segSeen++;if(ok){D.ok++;D.segOk++;P.correct++;P[useS?'s':'w']++;addXP(10);award('first')}
     record([{k:useS?'s':'w',it,ok}]);
     Learn.note(useS?'s':'w',it,ok,'commute');
+    // 獨立口說: only whether the speech-to-text matched the target, never grammar or pronunciation
+    if(typeof Ability!=='undefined')Ability.log({recK:useS?'s':'w',item:it},{result:ok?'correct':'wrong',qtype:'drive:speak',sr:{matched:!!ok},ctx:'drive:commute',via:'drive'});
   }
   return ok?'pass':'done'}
 /* 跟讀練習: demo → you repeat → word-by-word feedback. Correction first, no countdown: a miss replays the demo,
@@ -1280,6 +1285,8 @@ async function readStep(alive){
   if(ok!==null){
     D.seen++;D.segSeen++;if(ok){D.ok++;D.segOk++;P.correct++;P[useS?'s':'w']++;addXP(10);award('first')}
     record([{k:useS?'s':'w',it,ok}]);Learn.note(useS?'s':'w',it,ok,'read');
+    // reading aloud: the English was on screen before speaking (revealed), so it is practice, not independent evidence
+    if(typeof Ability!=='undefined')Ability.log({recK:useS?'s':'w',item:it},{result:ok?'correct':'wrong',qtype:'drive:speak',sr:{matched:!!ok},revealed:true,ctx:'drive:read',via:'drive'});
   }
   D.readQ.shift();D.readDone.push({ok:!!ok});D.cur=null;driveStats();
   await gap(900);return'done'}
@@ -1517,6 +1524,8 @@ $('sheet-say').innerHTML=SPK;$('sheet-say').onclick=()=>sayItem(S.say);
 <script src="world.js"></script>
 <script src="battle.js"></script>
 <script src="learn.js"></script>
+<script src="modules/learning-profile/profile.js"></script>
+<script src="ability.js"></script>
 <script src="novice.js"></script>
 <script src="lifescene.js"></script>
 <script src="atlas.js"></script>

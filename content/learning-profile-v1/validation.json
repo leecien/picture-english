@@ -1,0 +1,30 @@
+{
+ "validator": "validate_data.py (LEARNING-PROFILE-01)",
+ "pass": true,
+ "errors": [],
+ "warnings": [],
+ "warningCount": 0,
+ "counts": {
+  "grammarNodes": 14,
+  "v1": [
+   "tense:present-simple",
+   "tense:present-continuous",
+   "tense:past-simple",
+   "tense:going-to",
+   "tense:will"
+  ],
+  "forms": 3,
+  "support": 9,
+  "topics": {
+   "food": 4,
+   "travel": 5,
+   "work": 1,
+   "meeting": 5
+  },
+  "contexts": 77,
+  "questionTypes": 21,
+  "items": 3615,
+  "sentencesReviewed": 323,
+  "grammarItems": 60
+ }
+}

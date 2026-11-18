@@ -1,0 +1,15 @@
+{
+ "_now": "2026-11-18T12:00:00.000Z",
+ "pm-ability-v1": "{\"v\":2,\"events\":[{\"v\":1,\"id\":\"fx-7\",\"item\":\"g:gt-01\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/transport\",\"at\":1794880800000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-8\",\"item\":\"g:gt-02\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/cooking\",\"at\":1794880860000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-9\",\"item\":\"g:gt-03\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:meeting/scheduling\",\"at\":1794880920000,\"result\":\"correct\",\"via\":\"fixture\"}]}",
+ "_expect": {
+  "grammar:tense:going-to": {
+   "status": "insufficient",
+   "items": 3,
+   "need": {
+    "items": 2
+   },
+   "weak": false
+  },
+  "hand": "3 題 < 5 → 證據不足，還差 2 題；不顯示 %、不列弱項"
+ }
+}

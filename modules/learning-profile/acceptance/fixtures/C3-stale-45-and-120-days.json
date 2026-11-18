@@ -1,0 +1,19 @@
+{
+ "_now": "2026-11-18T12:00:00.000Z",
+ "pm-ability-v1": "{\"v\":2,\"events\":[{\"v\":1,\"id\":\"fx-10\",\"item\":\"g:wl-01\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1790992800000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-11\",\"item\":\"g:wl-02\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:meeting/actions\",\"at\":1790992860000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-12\",\"item\":\"g:wl-03\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/lodging\",\"at\":1790992920000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-13\",\"item\":\"g:wl-04\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/airport\",\"at\":1791079380000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-14\",\"item\":\"g:wl-05\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:meeting/actions\",\"at\":1791079440000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-15\",\"item\":\"g:wl-06\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/dietary\",\"at\":1791079500000,\"result\":\"wrong\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-16\",\"item\":\"g:pc-01\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1784512800000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-17\",\"item\":\"g:pc-02\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/airport\",\"at\":1784512860000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-18\",\"item\":\"g:pc-03\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:meeting/opening\",\"at\":1784512920000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-19\",\"item\":\"g:pc-04\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/cooking\",\"at\":1784599380000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-20\",\"item\":\"g:pc-05\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1784599440000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-21\",\"item\":\"g:pc-06\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/airport\",\"at\":1784599500000,\"result\":\"correct\",\"via\":\"fixture\"}]}",
+ "_expect": {
+  "grammar:tense:will": {
+   "status": "stale",
+   "items": 6,
+   "previousPct": 83,
+   "weak": false
+  },
+  "grammar:tense:present-continuous": {
+   "status": "stale",
+   "items": 0,
+   "previousPct": 100,
+   "weak": false
+  },
+  "hand": "will：最新 45 天前（>30）→ 需要重新確認，45 天仍在 90 天內 → 依據 6 題；上次 5/6=83%。現在進行式：120 天前（>90）→ 依據 0 題，但歷史保留，上次 6/6=100%"
+ }
+}

@@ -135,7 +135,7 @@ for (const u of Learn.UNITS)
 const Novice = require(path.join(root, "novice.js"));
 for (const [w, sp] of Object.entries(Novice.WORDS_SPLIT)) {
   const it = Novice.word(w);
-  assert(it && it.au, "split word in the bank with a recording: " + w);
+  assert(it && (it.au || it.sup), "split word is a recorded bank word or a marked supplement word: " + w);
   assert.equal(sp.map((x) => x[0]).join(""), w, "spelling pieces join to " + w);
   assert.deepEqual(sp.map((x) => x[1]).filter(Boolean), Novice.kkSounds(it.kk), "sounds join to the KK of " + w);
 }
@@ -145,7 +145,42 @@ for (const [w, place, sym] of Novice.POOL) {
   assert.equal(got, sym, `${w}: ${place} sound is /${sym}/`);
 }
 for (const [sym, S] of Object.entries(Novice.SOUNDS)) {
-  assert(S.examples.length >= 2 && S.examples.every((w) => Novice.word(w) && Novice.word(w).au && Novice.kkSounds(Novice.word(w).kk).includes(sym)), "two recorded examples with /" + sym + "/");
+  assert(S.examples.length >= 2 && S.examples.every((w) => Novice.word(w) && (Novice.word(w).au || Novice.word(w).sup) && Novice.kkSounds(Novice.word(w).kk).includes(sym)), "two examples (recorded, or marked supplement) with /" + sym + "/");
+}
+// 41-sound main line: every sound has a card with two real examples, a listen-first question with a valid
+// answer, every chapter N04–N11 has at least two full-build words, supplement words never claim a recording.
+for (const sym of Novice.ALL41()) {
+  assert(Novice.SOUNDS[sym] && Novice.SOUNDS[sym].how && Novice.SOUNDS[sym].examples.length >= 2, "card for /" + sym + "/");
+  for (let n = 0; n < 5; n++) {
+    const q = Novice.soundQuestion(Novice.ALL41(), { target: sym });
+    assert(q, "a question for /" + sym + "/");
+    const ks = Novice.kkSounds(q.item.kk);
+    assert.equal(q.options.filter((o) => o.ok).length, 1);
+    if (q.place === "has") assert(q.options.every((o) => o.ok === ks.includes(o.label.replace(/\//g, ""))), `has: only the answer is in ${q.item.w}`);
+    else {
+      const at = q.place === "first" ? ks[0] : q.place === "last" ? ks[ks.length - 1] : ks.find((x) => Novice.VOWELS.includes(x));
+      assert.equal(at, sym, `${q.item.w}: ${q.place} is /${sym}/`);
+    }
+    assert(!q.prompt.includes(q.item.w) && !q.prompt.includes(q.item.kk), "nothing given away");
+  }
+}
+assert(Novice.SUPPLEMENT.every((w) => w.sup && w.au === "" && /^\[.+\]$/.test(w.kk)), "supplement words: marked, no recording claimed");
+{
+  const taught = [];
+  for (const c of Novice.CHAPTERS) {
+    taught.push(...c.sounds);
+    if (Novice.PLAN[c.id]) assert(Novice.fullWords(taught, c.sounds).length >= 2, c.id + ": two full-build words");
+  }
+}
+for (const [id, pairs] of Object.entries(Novice.MATCH))
+  for (const [, sym, ex] of pairs) assert(Novice.kkSounds(Novice.word(ex).kk).includes(sym), `${id} matching: ${ex} has /${sym}/`);
+for (let n = 0; n < 20; n++) {
+  const q = Novice.stressQuestion();
+  assert.equal(q.options.filter((o) => o.ok).length, 1);
+  assert(!q.prompt.includes(q.item.kk) && !q.prompt.includes(q.item.w), "stress: no KK or word before answering");
+  const k = Novice.kkQuestion();
+  assert.equal(new Set(k.options.map((o) => o.label)).size, 3, "kk: three different options");
+  assert.equal(k.options.filter((o) => o.ok).length, 1);
 }
 const all41 = Novice.CHAPTERS.flatMap((c) => c.sounds);
 assert.equal(all41.length, 41);
@@ -156,4 +191,4 @@ for (let n = 0; n < 50; n++) {
   assert(q.options.filter((o) => o.ok).length === 1 && !q.prompt.includes(q.item.w) && !q.prompt.includes(q.item.kk), "one answer, prompt gives nothing away");
 }
 
-console.log("PASS: KK syllables and stress (hand-checked), unit questions stay in the taught pair with unambiguous words and recorded demos, one right answer and unique options for every generator, scene distractors never another valid reply, beginner story scenes, spoken-answer judge (order, missing / extra / repeated words, contractions, numbers, accepted replies, unsure candidates and low confidence), novice village word splits / question places / examples / 41 sounds");
+console.log("PASS: KK syllables and stress (hand-checked), unit questions stay in the taught pair with unambiguous words and recorded demos, one right answer and unique options for every generator, scene distractors never another valid reply, beginner story scenes, spoken-answer judge (order, missing / extra / repeated words, contractions, numbers, accepted replies, unsure candidates and low confidence), novice village word splits / question places / examples / 41 sounds, 41-sound main line (cards, valid questions for every sound, full builds per chapter, matching, stress / KK questions)");

@@ -1,0 +1,7325 @@
+{
+ "schemaVersion": 1,
+ "task": "B-KK-DATA-01",
+ "baseRef": "fbfb7f958ad5eb3762a43a7777d60c0645f09f47",
+ "reviewer": "external-ai",
+ "status": "ai-edited-not-teacher-reviewed",
+ "note": "AI 教材編輯，非真人教師審核、非真人錄音。KK 為本遊戲傳統美式 KK（/e/、/o/ 記法；字尾 -y 記 /ɪ/），不從 ECDICT 英式音標轉換。",
+ "places": {
+  "first": "開頭",
+  "last": "結尾",
+  "vowel": "母音（只用在只有一個母音的字）"
+ },
+ "counts": {
+  "sounds": 41,
+  "vowels": 17,
+  "consonants": 24
+ },
+ "chapters": [
+  {
+   "id": "N00",
+   "title": "聲音入門：字母、拼字、KK",
+   "sounds": [],
+   "taughtAfter": 0,
+   "matches": [],
+   "builds": [],
+   "positionQuestions": []
+  },
+  {
+   "id": "N01",
+   "title": "第一個字 cat",
+   "sounds": [
+    "k",
+    "æ",
+    "t"
+   ],
+   "taughtAfter": 3,
+   "matches": [
+    {
+     "grapheme": "c",
+     "word": "cat",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "k"
+     ]
+    },
+    {
+     "grapheme": "a",
+     "word": "cat",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "æ"
+     ],
+     "contextDependent": true
+    },
+    {
+     "grapheme": "t",
+     "word": "cat",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "t"
+     ]
+    },
+    {
+     "grapheme": "k",
+     "word": "key",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "k"
+     ]
+    }
+   ],
+   "builds": [
+    "cat",
+    "act"
+   ],
+   "positionQuestions": [
+    {
+     "word": "cat",
+     "place": "first",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "cat",
+     "place": "last",
+     "sound": "t",
+     "audio": "recording"
+    },
+    {
+     "word": "cat",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "recording"
+    },
+    {
+     "word": "key",
+     "place": "first",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "cake",
+     "place": "first",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "cake",
+     "place": "last",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "map",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "recording"
+    },
+    {
+     "word": "hat",
+     "place": "last",
+     "sound": "t",
+     "audio": "recording"
+    },
+    {
+     "word": "hat",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "recording"
+    },
+    {
+     "word": "tree",
+     "place": "first",
+     "sound": "t",
+     "audio": "recording"
+    },
+    {
+     "word": "milk",
+     "place": "last",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "book",
+     "place": "last",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "gift",
+     "place": "last",
+     "sound": "t",
+     "audio": "recording"
+    },
+    {
+     "word": "clock",
+     "place": "first",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "clock",
+     "place": "last",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "car",
+     "place": "first",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "bank",
+     "place": "last",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "bank",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "recording"
+    },
+    {
+     "word": "cucumber",
+     "place": "first",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "bike",
+     "place": "last",
+     "sound": "k",
+     "audio": "recording"
+    },
+    {
+     "word": "tiger",
+     "place": "first",
+     "sound": "t",
+     "audio": "recording"
+    },
+    {
+     "word": "elephant",
+     "place": "last",
+     "sound": "t",
+     "audio": "recording"
+    },
+    {
+     "word": "passport",
+     "place": "last",
+     "sound": "t",
+     "audio": "recording"
+    },
+    {
+     "word": "ambulance",
+     "place": "first",
+     "sound": "æ",
+     "audio": "recording"
+    },
+    {
+     "word": "act",
+     "place": "first",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "act",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "act",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "man",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fast",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fast",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "snack",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "snack",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fact",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fact",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "bag",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "hand",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "lamp",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "black",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "black",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "plan",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "glad",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ten",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sit",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "hot",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "top",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "cup",
+     "place": "first",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "foot",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "cook",
+     "place": "first",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "cook",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "put",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "talk",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "talk",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "walk",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "tall",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "tea",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "eat",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "teacher",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "two",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "lake",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "boat",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "van",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "have",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "music",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "think",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "math",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "that",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "that",
+     "place": "vowel",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "shut",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "television",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "check",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "just",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "king",
+     "place": "first",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "wet",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "quit",
+     "place": "first",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "quit",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "quick",
+     "place": "first",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "quick",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "kite",
+     "place": "first",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "kite",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "night",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "cow",
+     "place": "first",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "town",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "out",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "toy",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "point",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "about",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "turn",
+     "place": "first",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "hurt",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "first",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "shirt",
+     "place": "last",
+     "sound": "t",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "work",
+     "place": "last",
+     "sound": "k",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "after",
+     "place": "first",
+     "sound": "æ",
+     "audio": "device-whole-word"
+    }
+   ]
+  },
+  {
+   "id": "N02",
+   "title": "聲音小路",
+   "sounds": [
+    "m",
+    "n",
+    "s",
+    "f"
+   ],
+   "taughtAfter": 7,
+   "matches": [
+    {
+     "grapheme": "m",
+     "word": "moon",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "m"
+     ]
+    },
+    {
+     "grapheme": "n",
+     "word": "sun",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "n"
+     ],
+     "contextDependent": true
+    },
+    {
+     "grapheme": "s",
+     "word": "bus",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "s"
+     ],
+     "contextDependent": true
+    },
+    {
+     "grapheme": "f",
+     "word": "fish",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "f"
+     ]
+    },
+    {
+     "grapheme": "ph",
+     "word": "phone",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "f"
+     ],
+     "note": "兩個字母一個音"
+    },
+    {
+     "grapheme": "ck",
+     "word": "snack",
+     "chunks": [
+      3
+     ],
+     "soundTokens": [
+      "k"
+     ],
+     "note": "兩個字母一個音"
+    }
+   ],
+   "builds": [
+    "man",
+    "fast",
+    "snack",
+    "fact"
+   ],
+   "positionQuestions": [
+    {
+     "word": "map",
+     "place": "first",
+     "sound": "m",
+     "audio": "recording"
+    },
+    {
+     "word": "moon",
+     "place": "first",
+     "sound": "m",
+     "audio": "recording"
+    },
+    {
+     "word": "moon",
+     "place": "last",
+     "sound": "n",
+     "audio": "recording"
+    },
+    {
+     "word": "milk",
+     "place": "first",
+     "sound": "m",
+     "audio": "recording"
+    },
+    {
+     "word": "sun",
+     "place": "first",
+     "sound": "s",
+     "audio": "recording"
+    },
+    {
+     "word": "sun",
+     "place": "last",
+     "sound": "n",
+     "audio": "recording"
+    },
+    {
+     "word": "rain",
+     "place": "last",
+     "sound": "n",
+     "audio": "recording"
+    },
+    {
+     "word": "bus",
+     "place": "last",
+     "sound": "s",
+     "audio": "recording"
+    },
+    {
+     "word": "star",
+     "place": "first",
+     "sound": "s",
+     "audio": "recording"
+    },
+    {
+     "word": "fish",
+     "place": "first",
+     "sound": "f",
+     "audio": "recording"
+    },
+    {
+     "word": "phone",
+     "place": "first",
+     "sound": "f",
+     "audio": "recording"
+    },
+    {
+     "word": "phone",
+     "place": "last",
+     "sound": "n",
+     "audio": "recording"
+    },
+    {
+     "word": "frog",
+     "place": "first",
+     "sound": "f",
+     "audio": "recording"
+    },
+    {
+     "word": "house",
+     "place": "last",
+     "sound": "s",
+     "audio": "recording"
+    },
+    {
+     "word": "lemon",
+     "place": "last",
+     "sound": "n",
+     "audio": "recording"
+    },
+    {
+     "word": "horse",
+     "place": "last",
+     "sound": "s",
+     "audio": "recording"
+    },
+    {
+     "word": "flower",
+     "place": "first",
+     "sound": "f",
+     "audio": "recording"
+    },
+    {
+     "word": "stethoscope",
+     "place": "first",
+     "sound": "s",
+     "audio": "recording"
+    },
+    {
+     "word": "squirrel",
+     "place": "first",
+     "sound": "s",
+     "audio": "recording"
+    },
+    {
+     "word": "mushroom",
+     "place": "first",
+     "sound": "m",
+     "audio": "recording"
+    },
+    {
+     "word": "mushroom",
+     "place": "last",
+     "sound": "m",
+     "audio": "recording"
+    },
+    {
+     "word": "flamingo",
+     "place": "first",
+     "sound": "f",
+     "audio": "recording"
+    },
+    {
+     "word": "ambulance",
+     "place": "last",
+     "sound": "s",
+     "audio": "recording"
+    },
+    {
+     "word": "man",
+     "place": "first",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "man",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fast",
+     "place": "first",
+     "sound": "f",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "snack",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fact",
+     "place": "first",
+     "sound": "f",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "plan",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "pen",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ten",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sit",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "six",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "six",
+     "place": "last",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "box",
+     "place": "last",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "mom",
+     "place": "first",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "mom",
+     "place": "last",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fun",
+     "place": "first",
+     "sound": "f",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fun",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "run",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "foot",
+     "place": "first",
+     "sound": "f",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "song",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "see",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "food",
+     "place": "first",
+     "sound": "f",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "smooth",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "game",
+     "place": "last",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "soap",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "snow",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "home",
+     "place": "last",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "nose",
+     "place": "first",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "van",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "five",
+     "place": "first",
+     "sound": "f",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "seven",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "seven",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "size",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "music",
+     "place": "first",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "thin",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "math",
+     "place": "first",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "this",
+     "place": "last",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "them",
+     "place": "last",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "then",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "mother",
+     "place": "first",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "father",
+     "place": "first",
+     "sound": "f",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fresh",
+     "place": "first",
+     "sound": "f",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "measure",
+     "place": "first",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "television",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "much",
+     "place": "first",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "gym",
+     "place": "last",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sing",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "yes",
+     "place": "last",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "my",
+     "place": "first",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sky",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "night",
+     "place": "first",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "now",
+     "place": "first",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "town",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "mouth",
+     "place": "first",
+     "sound": "m",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "voice",
+     "place": "last",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "join",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sofa",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "nurse",
+     "place": "first",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "nurse",
+     "place": "last",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "turn",
+     "place": "last",
+     "sound": "n",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "first",
+     "place": "first",
+     "sound": "f",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "summer",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "city",
+     "place": "first",
+     "sound": "s",
+     "audio": "device-whole-word"
+    }
+   ]
+  },
+  {
+   "id": "N03",
+   "title": "子音工具箱",
+   "sounds": [
+    "p",
+    "b",
+    "d",
+    "g",
+    "h",
+    "l"
+   ],
+   "taughtAfter": 13,
+   "matches": [
+    {
+     "grapheme": "p",
+     "word": "map",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "p"
+     ]
+    },
+    {
+     "grapheme": "b",
+     "word": "bus",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "b"
+     ]
+    },
+    {
+     "grapheme": "d",
+     "word": "dog",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "d"
+     ]
+    },
+    {
+     "grapheme": "g",
+     "word": "gift",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "g"
+     ],
+     "contextDependent": true
+    },
+    {
+     "grapheme": "h",
+     "word": "hat",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "h"
+     ]
+    },
+    {
+     "grapheme": "l",
+     "word": "lemon",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "l"
+     ]
+    },
+    {
+     "grapheme": "ll",
+     "word": "ball",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "l"
+     ],
+     "note": "兩個 l 一個音"
+    },
+    {
+     "grapheme": "gg",
+     "word": "egg",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "g"
+     ],
+     "note": "兩個 g 一個音"
+    }
+   ],
+   "builds": [
+    "map",
+    "hat",
+    "bag",
+    "hand",
+    "lamp",
+    "black",
+    "plan",
+    "glad"
+   ],
+   "positionQuestions": [
+    {
+     "word": "map",
+     "place": "last",
+     "sound": "p",
+     "audio": "recording"
+    },
+    {
+     "word": "hat",
+     "place": "first",
+     "sound": "h",
+     "audio": "recording"
+    },
+    {
+     "word": "bus",
+     "place": "first",
+     "sound": "b",
+     "audio": "recording"
+    },
+    {
+     "word": "frog",
+     "place": "last",
+     "sound": "g",
+     "audio": "recording"
+    },
+    {
+     "word": "book",
+     "place": "first",
+     "sound": "b",
+     "audio": "recording"
+    },
+    {
+     "word": "dog",
+     "place": "first",
+     "sound": "d",
+     "audio": "recording"
+    },
+    {
+     "word": "dog",
+     "place": "last",
+     "sound": "g",
+     "audio": "recording"
+    },
+    {
+     "word": "bird",
+     "place": "first",
+     "sound": "b",
+     "audio": "recording"
+    },
+    {
+     "word": "bird",
+     "place": "last",
+     "sound": "d",
+     "audio": "recording"
+    },
+    {
+     "word": "gift",
+     "place": "first",
+     "sound": "g",
+     "audio": "recording"
+    },
+    {
+     "word": "house",
+     "place": "first",
+     "sound": "h",
+     "audio": "recording"
+    },
+    {
+     "word": "lemon",
+     "place": "first",
+     "sound": "l",
+     "audio": "recording"
+    },
+    {
+     "word": "ball",
+     "place": "first",
+     "sound": "b",
+     "audio": "recording"
+    },
+    {
+     "word": "ball",
+     "place": "last",
+     "sound": "l",
+     "audio": "recording"
+    },
+    {
+     "word": "egg",
+     "place": "last",
+     "sound": "g",
+     "audio": "recording"
+    },
+    {
+     "word": "bread",
+     "place": "first",
+     "sound": "b",
+     "audio": "recording"
+    },
+    {
+     "word": "bread",
+     "place": "last",
+     "sound": "d",
+     "audio": "recording"
+    },
+    {
+     "word": "horse",
+     "place": "first",
+     "sound": "h",
+     "audio": "recording"
+    },
+    {
+     "word": "grape",
+     "place": "first",
+     "sound": "g",
+     "audio": "recording"
+    },
+    {
+     "word": "grape",
+     "place": "last",
+     "sound": "p",
+     "audio": "recording"
+    },
+    {
+     "word": "bridge",
+     "place": "first",
+     "sound": "b",
+     "audio": "recording"
+    },
+    {
+     "word": "bank",
+     "place": "first",
+     "sound": "b",
+     "audio": "recording"
+    },
+    {
+     "word": "bike",
+     "place": "first",
+     "sound": "b",
+     "audio": "recording"
+    },
+    {
+     "word": "banana",
+     "place": "first",
+     "sound": "b",
+     "audio": "recording"
+    },
+    {
+     "word": "doctor",
+     "place": "first",
+     "sound": "d",
+     "audio": "recording"
+    },
+    {
+     "word": "ladder",
+     "place": "first",
+     "sound": "l",
+     "audio": "recording"
+    },
+    {
+     "word": "passport",
+     "place": "first",
+     "sound": "p",
+     "audio": "recording"
+    },
+    {
+     "word": "stethoscope",
+     "place": "last",
+     "sound": "p",
+     "audio": "recording"
+    },
+    {
+     "word": "squirrel",
+     "place": "last",
+     "sound": "l",
+     "audio": "recording"
+    },
+    {
+     "word": "headphones",
+     "place": "first",
+     "sound": "h",
+     "audio": "recording"
+    },
+    {
+     "word": "hedgehog",
+     "place": "first",
+     "sound": "h",
+     "audio": "recording"
+    },
+    {
+     "word": "hedgehog",
+     "place": "last",
+     "sound": "g",
+     "audio": "recording"
+    },
+    {
+     "word": "envelope",
+     "place": "last",
+     "sound": "p",
+     "audio": "recording"
+    },
+    {
+     "word": "bag",
+     "place": "first",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "bag",
+     "place": "last",
+     "sound": "g",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "hand",
+     "place": "first",
+     "sound": "h",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "hand",
+     "place": "last",
+     "sound": "d",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "lamp",
+     "place": "first",
+     "sound": "l",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "lamp",
+     "place": "last",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "black",
+     "place": "first",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "plan",
+     "place": "first",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "glad",
+     "place": "first",
+     "sound": "g",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "glad",
+     "place": "last",
+     "sound": "d",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "bed",
+     "place": "first",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "bed",
+     "place": "last",
+     "sound": "d",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "pen",
+     "place": "first",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "red",
+     "place": "last",
+     "sound": "d",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "big",
+     "place": "first",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "big",
+     "place": "last",
+     "sound": "g",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "box",
+     "place": "first",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "hot",
+     "place": "first",
+     "sound": "h",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "top",
+     "place": "last",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "cup",
+     "place": "last",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "love",
+     "place": "first",
+     "sound": "l",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "good",
+     "place": "first",
+     "sound": "g",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "good",
+     "place": "last",
+     "sound": "d",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "put",
+     "place": "first",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "push",
+     "place": "first",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "tall",
+     "place": "last",
+     "sound": "l",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "law",
+     "place": "first",
+     "sound": "l",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "blue",
+     "place": "first",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "food",
+     "place": "last",
+     "sound": "d",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "day",
+     "place": "first",
+     "sound": "d",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "game",
+     "place": "first",
+     "sound": "g",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "lake",
+     "place": "first",
+     "sound": "l",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "play",
+     "place": "first",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "paper",
+     "place": "first",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "page",
+     "place": "first",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "go",
+     "place": "first",
+     "sound": "g",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "boat",
+     "place": "first",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "soap",
+     "place": "last",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "home",
+     "place": "first",
+     "sound": "h",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "both",
+     "place": "first",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "have",
+     "place": "first",
+     "sound": "h",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "give",
+     "place": "first",
+     "sound": "g",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "his",
+     "place": "first",
+     "sound": "h",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "busy",
+     "place": "first",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ship",
+     "place": "last",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "shop",
+     "place": "last",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "lunch",
+     "place": "first",
+     "sound": "l",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "chip",
+     "place": "last",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "job",
+     "place": "last",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "boy",
+     "place": "first",
+     "sound": "b",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "oil",
+     "place": "last",
+     "sound": "l",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "point",
+     "place": "first",
+     "sound": "p",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "girl",
+     "place": "first",
+     "sound": "g",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "girl",
+     "place": "last",
+     "sound": "l",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "hurt",
+     "place": "first",
+     "sound": "h",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "her",
+     "place": "first",
+     "sound": "h",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "happy",
+     "place": "first",
+     "sound": "h",
+     "audio": "device-whole-word"
+    }
+   ]
+  },
+  {
+   "id": "N04",
+   "title": "短母音擴充",
+   "sounds": [
+    "ɛ",
+    "ɪ",
+    "ɑ",
+    "ʌ"
+   ],
+   "taughtAfter": 17,
+   "matches": [
+    {
+     "grapheme": "e",
+     "word": "egg",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "grapheme": "e",
+     "word": "bed",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɛ"
+     ]
+    },
+    {
+     "grapheme": "ea",
+     "word": "bread",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "ɛ"
+     ],
+     "note": "ea 在 bread 念 /ɛ/；在 tea 念 /i/（N06）",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "i",
+     "word": "milk",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "grapheme": "i",
+     "word": "big",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɪ"
+     ]
+    },
+    {
+     "grapheme": "o",
+     "word": "clock",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "ɑ"
+     ],
+     "note": "o 在 clock 念 /ɑ/；在 go 念 /o/（N06）",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "o",
+     "word": "hot",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɑ"
+     ],
+     "contextDependent": true
+    },
+    {
+     "grapheme": "a",
+     "word": "car",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɑ"
+     ],
+     "note": "a 在 car 念 /ɑ/，在 cat 念 /æ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "a",
+     "word": "cat",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "æ"
+     ],
+     "note": "對照：a 在 cat 念 /æ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "u",
+     "word": "sun",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ʌ"
+     ],
+     "contextDependent": true
+    },
+    {
+     "grapheme": "u",
+     "word": "cup",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ʌ"
+     ],
+     "contextDependent": true
+    },
+    {
+     "grapheme": "x",
+     "word": "box",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "k",
+      "s"
+     ],
+     "note": "x 是兩個音 /k s/"
+    }
+   ],
+   "builds": [
+    "egg",
+    "milk",
+    "gift",
+    "clock",
+    "sun",
+    "bus",
+    "bed",
+    "pen",
+    "cup",
+    "box"
+   ],
+   "positionQuestions": [
+    {
+     "word": "milk",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "recording"
+    },
+    {
+     "word": "sun",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "recording"
+    },
+    {
+     "word": "bus",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "recording"
+    },
+    {
+     "word": "star",
+     "place": "vowel",
+     "sound": "ɑ",
+     "audio": "recording"
+    },
+    {
+     "word": "fish",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "recording"
+    },
+    {
+     "word": "frog",
+     "place": "vowel",
+     "sound": "ɑ",
+     "audio": "recording"
+    },
+    {
+     "word": "gift",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "recording"
+    },
+    {
+     "word": "egg",
+     "place": "first",
+     "sound": "ɛ",
+     "audio": "recording"
+    },
+    {
+     "word": "egg",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "recording"
+    },
+    {
+     "word": "bread",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "recording"
+    },
+    {
+     "word": "clock",
+     "place": "vowel",
+     "sound": "ɑ",
+     "audio": "recording"
+    },
+    {
+     "word": "car",
+     "place": "vowel",
+     "sound": "ɑ",
+     "audio": "recording"
+    },
+    {
+     "word": "bridge",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "recording"
+    },
+    {
+     "word": "elephant",
+     "place": "first",
+     "sound": "ɛ",
+     "audio": "recording"
+    },
+    {
+     "word": "envelope",
+     "place": "first",
+     "sound": "ɛ",
+     "audio": "recording"
+    },
+    {
+     "word": "bed",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "pen",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ten",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "red",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sit",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "big",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "six",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "box",
+     "place": "vowel",
+     "sound": "ɑ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "hot",
+     "place": "vowel",
+     "sound": "ɑ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "top",
+     "place": "vowel",
+     "sound": "ɑ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "mom",
+     "place": "vowel",
+     "sound": "ɑ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "cup",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fun",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "run",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "love",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "give",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "very",
+     "place": "last",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "his",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "busy",
+     "place": "last",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "thin",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "think",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "this",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "them",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "then",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ship",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "shop",
+     "place": "vowel",
+     "sound": "ɑ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "shut",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "wish",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fresh",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "lunch",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "much",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "chip",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "check",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "job",
+     "place": "vowel",
+     "sound": "ɑ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "just",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "gym",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "judge",
+     "place": "vowel",
+     "sound": "ʌ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sing",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "king",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ring",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "wing",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "wet",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "quit",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "quick",
+     "place": "vowel",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "yes",
+     "place": "vowel",
+     "sound": "ɛ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "city",
+     "place": "last",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "happy",
+     "place": "last",
+     "sound": "ɪ",
+     "audio": "device-whole-word"
+    }
+   ]
+  },
+  {
+   "id": "N05",
+   "title": "圓唇與口形",
+   "sounds": [
+    "ʊ",
+    "ɔ"
+   ],
+   "taughtAfter": 19,
+   "matches": [
+    {
+     "grapheme": "oo",
+     "word": "book",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ʊ"
+     ],
+     "note": "oo 在 book 念 /ʊ/；在 moon 念 /u/（N06）",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "oo",
+     "word": "foot",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ʊ"
+     ],
+     "contextDependent": true
+    },
+    {
+     "grapheme": "u",
+     "word": "put",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ʊ"
+     ],
+     "note": "u 在 put 念 /ʊ/；在 sun 念 /ʌ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "u",
+     "word": "sun",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ʌ"
+     ],
+     "note": "對照：u 在 sun 念 /ʌ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "a",
+     "word": "ball",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɔ"
+     ],
+     "note": "a 在 ll 前念 /ɔ/（易受口音合流影響）",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "aw",
+     "word": "law",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɔ"
+     ]
+    },
+    {
+     "grapheme": "o",
+     "word": "dog",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɔ"
+     ],
+     "note": "本遊戲 KK 記 /ɔ/；美式常念近 /ɑ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "o",
+     "word": "horse",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɔ"
+     ],
+     "note": "or 前的 /ɔ/ 美式穩定",
+     "contextDependent": true
+    }
+   ],
+   "builds": [
+    "book",
+    "ball",
+    "dog",
+    "foot",
+    "cook",
+    "good",
+    "put",
+    "tall"
+   ],
+   "positionQuestions": [
+    {
+     "word": "book",
+     "place": "vowel",
+     "sound": "ʊ",
+     "audio": "recording"
+    },
+    {
+     "word": "dog",
+     "place": "vowel",
+     "sound": "ɔ",
+     "audio": "recording"
+    },
+    {
+     "word": "ball",
+     "place": "vowel",
+     "sound": "ɔ",
+     "audio": "recording"
+    },
+    {
+     "word": "horse",
+     "place": "vowel",
+     "sound": "ɔ",
+     "audio": "recording"
+    },
+    {
+     "word": "foot",
+     "place": "vowel",
+     "sound": "ʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "cook",
+     "place": "vowel",
+     "sound": "ʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "good",
+     "place": "vowel",
+     "sound": "ʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "put",
+     "place": "vowel",
+     "sound": "ʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "push",
+     "place": "vowel",
+     "sound": "ʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "talk",
+     "place": "vowel",
+     "sound": "ɔ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "walk",
+     "place": "vowel",
+     "sound": "ɔ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "tall",
+     "place": "vowel",
+     "sound": "ɔ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "law",
+     "place": "last",
+     "sound": "ɔ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "law",
+     "place": "vowel",
+     "sound": "ɔ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "song",
+     "place": "vowel",
+     "sound": "ɔ",
+     "audio": "device-whole-word"
+    }
+   ]
+  },
+  {
+   "id": "N06",
+   "title": "常見母音與拼字",
+   "sounds": [
+    "i",
+    "u",
+    "e",
+    "o"
+   ],
+   "taughtAfter": 23,
+   "matches": [
+    {
+     "grapheme": "ee",
+     "word": "tree",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "i"
+     ]
+    },
+    {
+     "grapheme": "ee",
+     "word": "see",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "i"
+     ]
+    },
+    {
+     "grapheme": "ea",
+     "word": "tea",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "i"
+     ],
+     "note": "ea 在 tea 念 /i/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "ea",
+     "word": "bread",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "ɛ"
+     ],
+     "note": "對照：ea 在 bread 念 /ɛ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "ey",
+     "word": "key",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "i"
+     ]
+    },
+    {
+     "grapheme": "oo",
+     "word": "moon",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "u"
+     ],
+     "note": "oo 在 moon 念 /u/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "oo",
+     "word": "book",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ʊ"
+     ],
+     "note": "對照：oo 在 book 念 /ʊ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "ue",
+     "word": "blue",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "u"
+     ]
+    },
+    {
+     "grapheme": "oe",
+     "word": "shoe",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "u"
+     ],
+     "note": "例外拼法"
+    },
+    {
+     "grapheme": "a_e",
+     "word": "cake",
+     "chunks": [
+      1,
+      3
+     ],
+     "soundTokens": [
+      "e"
+     ],
+     "note": "a＋子音＋e，字尾 e 不發音"
+    },
+    {
+     "grapheme": "a_e",
+     "word": "game",
+     "chunks": [
+      1,
+      3
+     ],
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "grapheme": "ai",
+     "word": "rain",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "grapheme": "ay",
+     "word": "day",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "e"
+     ]
+    },
+    {
+     "grapheme": "o",
+     "word": "go",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "o"
+     ],
+     "note": "o 在 go 念 /o/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "o",
+     "word": "clock",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "ɑ"
+     ],
+     "note": "對照：o 在 clock 念 /ɑ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "o_e",
+     "word": "phone",
+     "chunks": [
+      1,
+      3
+     ],
+     "soundTokens": [
+      "o"
+     ],
+     "note": "o＋子音＋e，字尾 e 不發音"
+    },
+    {
+     "grapheme": "o_e",
+     "word": "home",
+     "chunks": [
+      1,
+      3
+     ],
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "grapheme": "oa",
+     "word": "boat",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "o"
+     ]
+    },
+    {
+     "grapheme": "ow",
+     "word": "snow",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "o"
+     ],
+     "note": "ow 在 snow 念 /o/；在 cow 念 /aʊ/（N10）",
+     "contextDependent": true
+    }
+   ],
+   "builds": [
+    "key",
+    "moon",
+    "cake",
+    "phone",
+    "tea",
+    "food",
+    "game",
+    "boat",
+    "home",
+    "go"
+   ],
+   "positionQuestions": [
+    {
+     "word": "key",
+     "place": "last",
+     "sound": "i",
+     "audio": "recording"
+    },
+    {
+     "word": "key",
+     "place": "vowel",
+     "sound": "i",
+     "audio": "recording"
+    },
+    {
+     "word": "cake",
+     "place": "vowel",
+     "sound": "e",
+     "audio": "recording"
+    },
+    {
+     "word": "tree",
+     "place": "last",
+     "sound": "i",
+     "audio": "recording"
+    },
+    {
+     "word": "tree",
+     "place": "vowel",
+     "sound": "i",
+     "audio": "recording"
+    },
+    {
+     "word": "moon",
+     "place": "vowel",
+     "sound": "u",
+     "audio": "recording"
+    },
+    {
+     "word": "rain",
+     "place": "vowel",
+     "sound": "e",
+     "audio": "recording"
+    },
+    {
+     "word": "phone",
+     "place": "vowel",
+     "sound": "o",
+     "audio": "recording"
+    },
+    {
+     "word": "shoe",
+     "place": "last",
+     "sound": "u",
+     "audio": "recording"
+    },
+    {
+     "word": "shoe",
+     "place": "vowel",
+     "sound": "u",
+     "audio": "recording"
+    },
+    {
+     "word": "grape",
+     "place": "vowel",
+     "sound": "e",
+     "audio": "recording"
+    },
+    {
+     "word": "cheese",
+     "place": "vowel",
+     "sound": "i",
+     "audio": "recording"
+    },
+    {
+     "word": "volcano",
+     "place": "last",
+     "sound": "o",
+     "audio": "recording"
+    },
+    {
+     "word": "flamingo",
+     "place": "last",
+     "sound": "o",
+     "audio": "recording"
+    },
+    {
+     "word": "tea",
+     "place": "last",
+     "sound": "i",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "tea",
+     "place": "vowel",
+     "sound": "i",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "eat",
+     "place": "first",
+     "sound": "i",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "eat",
+     "place": "vowel",
+     "sound": "i",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "see",
+     "place": "last",
+     "sound": "i",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "see",
+     "place": "vowel",
+     "sound": "i",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "blue",
+     "place": "last",
+     "sound": "u",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "blue",
+     "place": "vowel",
+     "sound": "u",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "food",
+     "place": "vowel",
+     "sound": "u",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "two",
+     "place": "last",
+     "sound": "u",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "two",
+     "place": "vowel",
+     "sound": "u",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "smooth",
+     "place": "vowel",
+     "sound": "u",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "day",
+     "place": "last",
+     "sound": "e",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "day",
+     "place": "vowel",
+     "sound": "e",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "game",
+     "place": "vowel",
+     "sound": "e",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "lake",
+     "place": "vowel",
+     "sound": "e",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "play",
+     "place": "last",
+     "sound": "e",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "play",
+     "place": "vowel",
+     "sound": "e",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "page",
+     "place": "vowel",
+     "sound": "e",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "go",
+     "place": "last",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "go",
+     "place": "vowel",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "boat",
+     "place": "vowel",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "soap",
+     "place": "vowel",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "snow",
+     "place": "last",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "snow",
+     "place": "vowel",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "home",
+     "place": "vowel",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "nose",
+     "place": "vowel",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "both",
+     "place": "vowel",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "window",
+     "place": "last",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "yellow",
+     "place": "last",
+     "sound": "o",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "three",
+     "place": "last",
+     "sound": "i",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "three",
+     "place": "vowel",
+     "sound": "i",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "you",
+     "place": "last",
+     "sound": "u",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "you",
+     "place": "vowel",
+     "sound": "u",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ago",
+     "place": "last",
+     "sound": "o",
+     "audio": "device-whole-word"
+    }
+   ]
+  },
+  {
+   "id": "N07",
+   "title": "氣流與振動",
+   "sounds": [
+    "v",
+    "z",
+    "θ",
+    "ð"
+   ],
+   "taughtAfter": 27,
+   "matches": [
+    {
+     "grapheme": "v",
+     "word": "van",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "grapheme": "v",
+     "word": "five",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "v"
+     ]
+    },
+    {
+     "grapheme": "s",
+     "word": "his",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "z"
+     ],
+     "note": "s 在 his 念 /z/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "s",
+     "word": "bus",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "s"
+     ],
+     "note": "對照：s 在 bus 念 /s/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "s",
+     "word": "nose",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "z"
+     ],
+     "contextDependent": true
+    },
+    {
+     "grapheme": "z",
+     "word": "size",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "z"
+     ]
+    },
+    {
+     "grapheme": "th",
+     "word": "thin",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "θ"
+     ],
+     "note": "th 在 thin 念無聲 /θ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "th",
+     "word": "math",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "θ"
+     ],
+     "contextDependent": true
+    },
+    {
+     "grapheme": "th",
+     "word": "this",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "ð"
+     ],
+     "note": "th 在 this 念有聲 /ð/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "th",
+     "word": "mother",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "ð"
+     ],
+     "contextDependent": true
+    }
+   ],
+   "builds": [
+    "headphones",
+    "van",
+    "have",
+    "give",
+    "his",
+    "nose",
+    "math",
+    "thin",
+    "this",
+    "that"
+   ],
+   "positionQuestions": [
+    {
+     "word": "cheese",
+     "place": "last",
+     "sound": "z",
+     "audio": "recording"
+    },
+    {
+     "word": "volcano",
+     "place": "first",
+     "sound": "v",
+     "audio": "recording"
+    },
+    {
+     "word": "thermometer",
+     "place": "first",
+     "sound": "θ",
+     "audio": "recording"
+    },
+    {
+     "word": "headphones",
+     "place": "last",
+     "sound": "z",
+     "audio": "recording"
+    },
+    {
+     "word": "love",
+     "place": "last",
+     "sound": "v",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "smooth",
+     "place": "last",
+     "sound": "ð",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "nose",
+     "place": "last",
+     "sound": "z",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "both",
+     "place": "last",
+     "sound": "θ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "van",
+     "place": "first",
+     "sound": "v",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "five",
+     "place": "last",
+     "sound": "v",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "have",
+     "place": "last",
+     "sound": "v",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "give",
+     "place": "last",
+     "sound": "v",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "very",
+     "place": "first",
+     "sound": "v",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "his",
+     "place": "last",
+     "sound": "z",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "size",
+     "place": "last",
+     "sound": "z",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "thin",
+     "place": "first",
+     "sound": "θ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "think",
+     "place": "first",
+     "sound": "θ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "math",
+     "place": "last",
+     "sound": "θ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "three",
+     "place": "first",
+     "sound": "θ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "this",
+     "place": "first",
+     "sound": "ð",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "that",
+     "place": "first",
+     "sound": "ð",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "them",
+     "place": "first",
+     "sound": "ð",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "then",
+     "place": "first",
+     "sound": "ð",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "mouth",
+     "place": "last",
+     "sound": "θ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "voice",
+     "place": "first",
+     "sound": "v",
+     "audio": "device-whole-word"
+    }
+   ]
+  },
+  {
+   "id": "N08",
+   "title": "組合子音",
+   "sounds": [
+    "ʃ",
+    "ʒ",
+    "tʃ",
+    "dʒ"
+   ],
+   "taughtAfter": 31,
+   "matches": [
+    {
+     "grapheme": "sh",
+     "word": "fish",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "ʃ"
+     ]
+    },
+    {
+     "grapheme": "sh",
+     "word": "shoe",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "ʃ"
+     ]
+    },
+    {
+     "grapheme": "s",
+     "word": "sugar",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "ʃ"
+     ],
+     "note": "例外：s 念 /ʃ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "s",
+     "word": "measure",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "ʒ"
+     ],
+     "note": "s 在 -ure 前念 /ʒ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "s",
+     "word": "television",
+     "chunks": [
+      6
+     ],
+     "soundTokens": [
+      "ʒ"
+     ],
+     "note": "s 在 -ion 前念 /ʒ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "ch",
+     "word": "cheese",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "tʃ"
+     ]
+    },
+    {
+     "grapheme": "ch",
+     "word": "lunch",
+     "chunks": [
+      3
+     ],
+     "soundTokens": [
+      "tʃ"
+     ]
+    },
+    {
+     "grapheme": "j",
+     "word": "job",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "dʒ"
+     ]
+    },
+    {
+     "grapheme": "dge",
+     "word": "bridge",
+     "chunks": [
+      3
+     ],
+     "soundTokens": [
+      "dʒ"
+     ],
+     "note": "三個字母一個音"
+    },
+    {
+     "grapheme": "g",
+     "word": "gym",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "dʒ"
+     ],
+     "note": "g 在 y 前念 /dʒ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "g",
+     "word": "gift",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "g"
+     ],
+     "note": "對照：gift 的 g 念 /g/",
+     "contextDependent": true
+    }
+   ],
+   "builds": [
+    "fish",
+    "shoe",
+    "hedgehog",
+    "ship",
+    "shop",
+    "lunch",
+    "much",
+    "job",
+    "just",
+    "chip"
+   ],
+   "positionQuestions": [
+    {
+     "word": "fish",
+     "place": "last",
+     "sound": "ʃ",
+     "audio": "recording"
+    },
+    {
+     "word": "shoe",
+     "place": "first",
+     "sound": "ʃ",
+     "audio": "recording"
+    },
+    {
+     "word": "cheese",
+     "place": "first",
+     "sound": "tʃ",
+     "audio": "recording"
+    },
+    {
+     "word": "chair",
+     "place": "first",
+     "sound": "tʃ",
+     "audio": "recording"
+    },
+    {
+     "word": "bridge",
+     "place": "last",
+     "sound": "dʒ",
+     "audio": "recording"
+    },
+    {
+     "word": "push",
+     "place": "last",
+     "sound": "ʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sugar",
+     "place": "first",
+     "sound": "ʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "page",
+     "place": "last",
+     "sound": "dʒ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ship",
+     "place": "first",
+     "sound": "ʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "shop",
+     "place": "first",
+     "sound": "ʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "shut",
+     "place": "first",
+     "sound": "ʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "wish",
+     "place": "last",
+     "sound": "ʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "fresh",
+     "place": "last",
+     "sound": "ʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "lunch",
+     "place": "last",
+     "sound": "tʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "much",
+     "place": "last",
+     "sound": "tʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "chip",
+     "place": "first",
+     "sound": "tʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "check",
+     "place": "first",
+     "sound": "tʃ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "job",
+     "place": "first",
+     "sound": "dʒ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "just",
+     "place": "first",
+     "sound": "dʒ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "gym",
+     "place": "first",
+     "sound": "dʒ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "judge",
+     "place": "first",
+     "sound": "dʒ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "judge",
+     "place": "last",
+     "sound": "dʒ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "join",
+     "place": "first",
+     "sound": "dʒ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "shirt",
+     "place": "first",
+     "sound": "ʃ",
+     "audio": "device-whole-word"
+    }
+   ]
+  },
+  {
+   "id": "N09",
+   "title": "舌位與滑動",
+   "sounds": [
+    "ŋ",
+    "r",
+    "w",
+    "j"
+   ],
+   "taughtAfter": 35,
+   "matches": [
+    {
+     "grapheme": "ng",
+     "word": "sing",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "ŋ"
+     ],
+     "note": "兩個字母一個音"
+    },
+    {
+     "grapheme": "ng",
+     "word": "king",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "ŋ"
+     ]
+    },
+    {
+     "grapheme": "n",
+     "word": "bank",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "ŋ"
+     ],
+     "note": "n 在 k 前念 /ŋ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "n",
+     "word": "sun",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "n"
+     ],
+     "note": "對照：sun 的 n 念 /n/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "r",
+     "word": "rain",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "grapheme": "r",
+     "word": "red",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "r"
+     ]
+    },
+    {
+     "grapheme": "w",
+     "word": "wet",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "w"
+     ]
+    },
+    {
+     "grapheme": "qu",
+     "word": "quick",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "k",
+      "w"
+     ],
+     "note": "qu 是 /k/＋/w/ 兩個音"
+    },
+    {
+     "grapheme": "qu",
+     "word": "quit",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "k",
+      "w"
+     ]
+    },
+    {
+     "grapheme": "qu",
+     "word": "squirrel",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "k",
+      "w"
+     ],
+     "note": "有錄音的例字"
+    },
+    {
+     "grapheme": "y",
+     "word": "yes",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "j"
+     ],
+     "note": "字首的 y 念 /j/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "u",
+     "word": "music",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "j",
+      "u"
+     ],
+     "note": "u 在 music 念 /j u/ 兩個音",
+     "contextDependent": true
+    }
+   ],
+   "builds": [
+    "bank",
+    "tree",
+    "rain",
+    "frog",
+    "star",
+    "car",
+    "horse",
+    "bread",
+    "grape",
+    "bridge",
+    "sing",
+    "red",
+    "wet",
+    "yes",
+    "quick"
+   ],
+   "positionQuestions": [
+    {
+     "word": "rain",
+     "place": "first",
+     "sound": "r",
+     "audio": "recording"
+    },
+    {
+     "word": "star",
+     "place": "last",
+     "sound": "r",
+     "audio": "recording"
+    },
+    {
+     "word": "car",
+     "place": "last",
+     "sound": "r",
+     "audio": "recording"
+    },
+    {
+     "word": "chair",
+     "place": "last",
+     "sound": "r",
+     "audio": "recording"
+    },
+    {
+     "word": "red",
+     "place": "first",
+     "sound": "r",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "run",
+     "place": "first",
+     "sound": "r",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "walk",
+     "place": "first",
+     "sound": "w",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "song",
+     "place": "last",
+     "sound": "ŋ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "window",
+     "place": "first",
+     "sound": "w",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "yellow",
+     "place": "first",
+     "sound": "j",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "weather",
+     "place": "first",
+     "sound": "w",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "wish",
+     "place": "first",
+     "sound": "w",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sing",
+     "place": "last",
+     "sound": "ŋ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "king",
+     "place": "last",
+     "sound": "ŋ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ring",
+     "place": "first",
+     "sound": "r",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ring",
+     "place": "last",
+     "sound": "ŋ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "wing",
+     "place": "first",
+     "sound": "w",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "wing",
+     "place": "last",
+     "sound": "ŋ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "wet",
+     "place": "first",
+     "sound": "w",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "yes",
+     "place": "first",
+     "sound": "j",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "you",
+     "place": "first",
+     "sound": "j",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "work",
+     "place": "first",
+     "sound": "w",
+     "audio": "device-whole-word"
+    }
+   ]
+  },
+  {
+   "id": "N10",
+   "title": "雙母音",
+   "sounds": [
+    "aɪ",
+    "aʊ",
+    "ɔɪ"
+   ],
+   "taughtAfter": 38,
+   "matches": [
+    {
+     "grapheme": "i_e",
+     "word": "bike",
+     "chunks": [
+      1,
+      3
+     ],
+     "soundTokens": [
+      "aɪ"
+     ],
+     "note": "i＋子音＋e，字尾 e 不發音"
+    },
+    {
+     "grapheme": "i_e",
+     "word": "kite",
+     "chunks": [
+      1,
+      3
+     ],
+     "soundTokens": [
+      "aɪ"
+     ]
+    },
+    {
+     "grapheme": "y",
+     "word": "my",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "aɪ"
+     ],
+     "note": "y 在字尾念 /aɪ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "y",
+     "word": "yes",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "j"
+     ],
+     "note": "對照：yes 的 y 念 /j/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "igh",
+     "word": "night",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "aɪ"
+     ],
+     "note": "gh 不發音"
+    },
+    {
+     "grapheme": "ou",
+     "word": "house",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "aʊ"
+     ]
+    },
+    {
+     "grapheme": "ow",
+     "word": "cow",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "aʊ"
+     ],
+     "note": "ow 在 cow 念 /aʊ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "ow",
+     "word": "snow",
+     "chunks": [
+      2
+     ],
+     "soundTokens": [
+      "o"
+     ],
+     "note": "對照：ow 在 snow 念 /o/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "oy",
+     "word": "boy",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɔɪ"
+     ]
+    },
+    {
+     "grapheme": "oi",
+     "word": "oil",
+     "chunks": [
+      0
+     ],
+     "soundTokens": [
+      "ɔɪ"
+     ]
+    }
+   ],
+   "builds": [
+    "bike",
+    "house",
+    "kite",
+    "five",
+    "cow",
+    "boy",
+    "toy",
+    "night",
+    "my",
+    "oil"
+   ],
+   "positionQuestions": [
+    {
+     "word": "house",
+     "place": "vowel",
+     "sound": "aʊ",
+     "audio": "recording"
+    },
+    {
+     "word": "bike",
+     "place": "vowel",
+     "sound": "aɪ",
+     "audio": "recording"
+    },
+    {
+     "word": "five",
+     "place": "vowel",
+     "sound": "aɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "size",
+     "place": "vowel",
+     "sound": "aɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "kite",
+     "place": "vowel",
+     "sound": "aɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "my",
+     "place": "last",
+     "sound": "aɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "my",
+     "place": "vowel",
+     "sound": "aɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sky",
+     "place": "last",
+     "sound": "aɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sky",
+     "place": "vowel",
+     "sound": "aɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "night",
+     "place": "vowel",
+     "sound": "aɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "cow",
+     "place": "last",
+     "sound": "aʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "cow",
+     "place": "vowel",
+     "sound": "aʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "now",
+     "place": "last",
+     "sound": "aʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "now",
+     "place": "vowel",
+     "sound": "aʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "town",
+     "place": "vowel",
+     "sound": "aʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "mouth",
+     "place": "vowel",
+     "sound": "aʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "out",
+     "place": "first",
+     "sound": "aʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "out",
+     "place": "vowel",
+     "sound": "aʊ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "boy",
+     "place": "last",
+     "sound": "ɔɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "boy",
+     "place": "vowel",
+     "sound": "ɔɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "toy",
+     "place": "last",
+     "sound": "ɔɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "toy",
+     "place": "vowel",
+     "sound": "ɔɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "oil",
+     "place": "first",
+     "sound": "ɔɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "oil",
+     "place": "vowel",
+     "sound": "ɔɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "point",
+     "place": "vowel",
+     "sound": "ɔɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "voice",
+     "place": "vowel",
+     "sound": "ɔɪ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "join",
+     "place": "vowel",
+     "sound": "ɔɪ",
+     "audio": "device-whole-word"
+    }
+   ]
+  },
+  {
+   "id": "N11",
+   "title": "弱母音與捲舌母音",
+   "sounds": [
+    "ə",
+    "ɝ",
+    "ɚ"
+   ],
+   "taughtAfter": 41,
+   "matches": [
+    {
+     "grapheme": "a",
+     "word": "sofa",
+     "chunks": [
+      3
+     ],
+     "soundTokens": [
+      "ə"
+     ],
+     "note": "不重讀的 a 念 /ə/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "o",
+     "word": "lemon",
+     "chunks": [
+      3
+     ],
+     "soundTokens": [
+      "ə"
+     ],
+     "note": "不重讀的 o 念 /ə/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "ir",
+     "word": "bird",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "grapheme": "ur",
+     "word": "nurse",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɝ"
+     ]
+    },
+    {
+     "grapheme": "er",
+     "word": "her",
+     "chunks": [
+      1
+     ],
+     "soundTokens": [
+      "ɝ"
+     ],
+     "note": "重讀的 er 念 /ɝ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "er",
+     "word": "tiger",
+     "chunks": [
+      3
+     ],
+     "soundTokens": [
+      "ɚ"
+     ],
+     "note": "不重讀的 er 念 /ɚ/",
+     "contextDependent": true
+    },
+    {
+     "grapheme": "or",
+     "word": "doctor",
+     "chunks": [
+      4
+     ],
+     "soundTokens": [
+      "ɚ"
+     ]
+    },
+    {
+     "grapheme": "er",
+     "word": "teacher",
+     "chunks": [
+      3
+     ],
+     "soundTokens": [
+      "ɚ"
+     ],
+     "contextDependent": true
+    }
+   ],
+   "builds": [
+    "bird",
+    "lemon",
+    "tiger",
+    "doctor",
+    "ladder",
+    "banana",
+    "flower",
+    "teacher",
+    "nurse",
+    "girl",
+    "sofa"
+   ],
+   "positionQuestions": [
+    {
+     "word": "bird",
+     "place": "vowel",
+     "sound": "ɝ",
+     "audio": "recording"
+    },
+    {
+     "word": "cucumber",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "recording"
+    },
+    {
+     "word": "tiger",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "recording"
+    },
+    {
+     "word": "flower",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "recording"
+    },
+    {
+     "word": "banana",
+     "place": "last",
+     "sound": "ə",
+     "audio": "recording"
+    },
+    {
+     "word": "doctor",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "recording"
+    },
+    {
+     "word": "ladder",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "recording"
+    },
+    {
+     "word": "thermometer",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "recording"
+    },
+    {
+     "word": "sugar",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "teacher",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "paper",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "mother",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "father",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "weather",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "measure",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "sofa",
+     "place": "last",
+     "sound": "ə",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "ago",
+     "place": "first",
+     "sound": "ə",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "about",
+     "place": "first",
+     "sound": "ə",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "nurse",
+     "place": "vowel",
+     "sound": "ɝ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "girl",
+     "place": "vowel",
+     "sound": "ɝ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "turn",
+     "place": "vowel",
+     "sound": "ɝ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "hurt",
+     "place": "vowel",
+     "sound": "ɝ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "her",
+     "place": "last",
+     "sound": "ɝ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "her",
+     "place": "vowel",
+     "sound": "ɝ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "first",
+     "place": "vowel",
+     "sound": "ɝ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "shirt",
+     "place": "vowel",
+     "sound": "ɝ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "work",
+     "place": "vowel",
+     "sound": "ɝ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "summer",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "device-whole-word"
+    },
+    {
+     "word": "after",
+     "place": "last",
+     "sound": "ɚ",
+     "audio": "device-whole-word"
+    }
+   ]
+  }
+ ],
+ "sounds": [
+  {
+   "id": "kk-sound:k",
+   "symbol": "k",
+   "chapter": "N01",
+   "order": 1,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": false,
+   "how": "舌頭後半部抬起，頂住口腔後上方（軟顎），先擋住氣，再一下放開，送出一小股氣。聲帶不振動。",
+   "spellings": [
+    {
+     "grapheme": "c",
+     "words": [
+      "cat",
+      "cake",
+      "car"
+     ],
+     "note": "c 在 a、o、u 和子音前多念 /k/"
+    },
+    {
+     "grapheme": "k",
+     "words": [
+      "key",
+      "book"
+     ]
+    },
+    {
+     "grapheme": "ck",
+     "words": [
+      "clock",
+      "snack",
+      "black"
+     ],
+     "note": "短母音後的 /k/ 常寫 ck"
+    }
+   ],
+   "exceptions": [
+    "c 在 e、i、y 前常念 /s/（city）。",
+    "x 常是兩個音 /k s/（box、six）。",
+    "qu 是 /k w/ 兩個音（quick），不是只有 /k/。"
+   ],
+   "examples": [
+    "cat",
+    "key",
+    "cake"
+   ],
+   "recordedExamples": [
+    "cat",
+    "key",
+    "cake"
+   ],
+   "confusableWith": [
+    "g"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "cat",
+      "file": "assets/voice/words/cat.mp3"
+     },
+     {
+      "word": "key",
+      "file": "assets/voice/words/key.mp3"
+     },
+     {
+      "word": "cake",
+      "file": "assets/voice/words/cake.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:æ",
+   "symbol": "æ",
+   "chapter": "N01",
+   "order": 2,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "嘴巴張大，嘴角往兩邊拉，舌頭放低、稍微往前。比 /ɛ/（egg）開得更大。",
+   "spellings": [
+    {
+     "grapheme": "a",
+     "words": [
+      "cat",
+      "map",
+      "hat",
+      "bank"
+     ],
+     "note": "閉音節（子音結尾）的 a 常念 /æ/"
+    }
+   ],
+   "exceptions": [
+    "a 也可能念 /e/（cake）、/ɑ/（car、father）、/ɔ/（ball）、/ə/（banana），要看單字。"
+   ],
+   "examples": [
+    "cat",
+    "map",
+    "hat"
+   ],
+   "recordedExamples": [
+    "cat",
+    "map",
+    "hat"
+   ],
+   "confusableWith": [
+    "ɛ",
+    "ɑ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "cat",
+      "file": "assets/voice/words/cat.mp3"
+     },
+     {
+      "word": "map",
+      "file": "assets/voice/words/map.mp3"
+     },
+     {
+      "word": "hat",
+      "file": "assets/voice/words/hat.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:t",
+   "symbol": "t",
+   "chapter": "N01",
+   "order": 3,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": false,
+   "how": "舌尖頂住上排牙齒後面的牙齦，先擋住氣，再一下放開。聲帶不振動。",
+   "spellings": [
+    {
+     "grapheme": "t",
+     "words": [
+      "cat",
+      "hat",
+      "tree"
+     ]
+    }
+   ],
+   "exceptions": [
+    "美式口語兩個母音中間的 t 常變成很快的閃音（city、water），KK 仍記 /t/。"
+   ],
+   "examples": [
+    "cat",
+    "hat",
+    "tree"
+   ],
+   "recordedExamples": [
+    "cat",
+    "hat",
+    "tree"
+   ],
+   "confusableWith": [
+    "d"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "cat",
+      "file": "assets/voice/words/cat.mp3"
+     },
+     {
+      "word": "hat",
+      "file": "assets/voice/words/hat.mp3"
+     },
+     {
+      "word": "tree",
+      "file": "assets/voice/words/tree.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:m",
+   "symbol": "m",
+   "chapter": "N02",
+   "order": 4,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "雙唇輕輕閉上，聲音從鼻子出來，喉嚨有振動（摸喉嚨會感覺到）。",
+   "spellings": [
+    {
+     "grapheme": "m",
+     "words": [
+      "moon",
+      "map",
+      "milk"
+     ]
+    },
+    {
+     "grapheme": "mm",
+     "words": [
+      "summer"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "examples": [
+    "moon",
+    "map",
+    "milk"
+   ],
+   "recordedExamples": [
+    "moon",
+    "map",
+    "milk"
+   ],
+   "confusableWith": [
+    "n"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "moon",
+      "file": "assets/voice/words/moon.mp3"
+     },
+     {
+      "word": "map",
+      "file": "assets/voice/words/map.mp3"
+     },
+     {
+      "word": "milk",
+      "file": "assets/voice/words/milk.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:n",
+   "symbol": "n",
+   "chapter": "N02",
+   "order": 5,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "舌尖頂住上排牙齒後面的牙齦，嘴巴微開，聲音從鼻子出來，喉嚨有振動。和 /m/ 的差別：/m/ 閉嘴唇，/n/ 用舌尖。",
+   "spellings": [
+    {
+     "grapheme": "n",
+     "words": [
+      "sun",
+      "moon",
+      "rain"
+     ]
+    }
+   ],
+   "exceptions": [
+    "n 在 k、g 前常念 /ŋ/（bank、think），N09 再教。"
+   ],
+   "examples": [
+    "sun",
+    "moon",
+    "rain"
+   ],
+   "recordedExamples": [
+    "sun",
+    "moon",
+    "rain"
+   ],
+   "confusableWith": [
+    "m",
+    "ŋ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "sun",
+      "file": "assets/voice/words/sun.mp3"
+     },
+     {
+      "word": "moon",
+      "file": "assets/voice/words/moon.mp3"
+     },
+     {
+      "word": "rain",
+      "file": "assets/voice/words/rain.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:s",
+   "symbol": "s",
+   "chapter": "N02",
+   "order": 6,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": false,
+   "how": "舌尖靠近上排牙齦但不碰到，留一條小縫，讓氣流出細細的「嘶」聲。聲帶不振動。",
+   "spellings": [
+    {
+     "grapheme": "s",
+     "words": [
+      "sun",
+      "star",
+      "bus"
+     ]
+    },
+    {
+     "grapheme": "ss",
+     "words": [
+      "passport"
+     ]
+    },
+    {
+     "grapheme": "c",
+     "words": [
+      "city"
+     ],
+     "note": "c 在 e、i、y 前"
+    }
+   ],
+   "exceptions": [
+    "s 也常念 /z/（his、nose、cheese），N07 再教；sugar 的 s 念 /ʃ/。"
+   ],
+   "examples": [
+    "sun",
+    "bus",
+    "star"
+   ],
+   "recordedExamples": [
+    "sun",
+    "bus",
+    "star"
+   ],
+   "confusableWith": [
+    "z",
+    "θ",
+    "ʃ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "sun",
+      "file": "assets/voice/words/sun.mp3"
+     },
+     {
+      "word": "bus",
+      "file": "assets/voice/words/bus.mp3"
+     },
+     {
+      "word": "star",
+      "file": "assets/voice/words/star.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:f",
+   "symbol": "f",
+   "chapter": "N02",
+   "order": 7,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": false,
+   "how": "上排牙齒輕碰下唇，氣從縫中吹出來。聲帶不振動。",
+   "spellings": [
+    {
+     "grapheme": "f",
+     "words": [
+      "fish",
+      "frog",
+      "flower"
+     ]
+    },
+    {
+     "grapheme": "ph",
+     "words": [
+      "phone",
+      "elephant"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "examples": [
+    "fish",
+    "phone",
+    "frog"
+   ],
+   "recordedExamples": [
+    "fish",
+    "phone",
+    "frog"
+   ],
+   "confusableWith": [
+    "v",
+    "θ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "fish",
+      "file": "assets/voice/words/fish.mp3"
+     },
+     {
+      "word": "phone",
+      "file": "assets/voice/words/phone.mp3"
+     },
+     {
+      "word": "frog",
+      "file": "assets/voice/words/frog.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:p",
+   "symbol": "p",
+   "chapter": "N03",
+   "order": 8,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": false,
+   "how": "雙唇閉起來擋住氣，再一下打開，送出一小股氣（手放在嘴前感覺得到）。聲帶不振動。",
+   "spellings": [
+    {
+     "grapheme": "p",
+     "words": [
+      "map",
+      "passport",
+      "pen"
+     ]
+    },
+    {
+     "grapheme": "pp",
+     "words": [
+      "happy"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "examples": [
+    "map",
+    "passport"
+   ],
+   "recordedExamples": [
+    "map",
+    "passport"
+   ],
+   "confusableWith": [
+    "b"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "map",
+      "file": "assets/voice/words/map.mp3"
+     },
+     {
+      "word": "passport",
+      "file": "assets/voice/words/passport.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:b",
+   "symbol": "b",
+   "chapter": "N03",
+   "order": 9,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "和 /p/ 一樣雙唇閉起再打開，但喉嚨要振動，送出的氣比較少。/p/ 是無聲、/b/ 是有聲。",
+   "spellings": [
+    {
+     "grapheme": "b",
+     "words": [
+      "bus",
+      "book",
+      "bird",
+      "ball"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "examples": [
+    "bus",
+    "book",
+    "bird"
+   ],
+   "recordedExamples": [
+    "bus",
+    "book",
+    "bird"
+   ],
+   "confusableWith": [
+    "p",
+    "v"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "bus",
+      "file": "assets/voice/words/bus.mp3"
+     },
+     {
+      "word": "book",
+      "file": "assets/voice/words/book.mp3"
+     },
+     {
+      "word": "bird",
+      "file": "assets/voice/words/bird.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:d",
+   "symbol": "d",
+   "chapter": "N03",
+   "order": 10,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "舌尖頂住上排牙齒後面的牙齦，擋住氣再放開，喉嚨振動。它是 /t/ 的有聲版。",
+   "spellings": [
+    {
+     "grapheme": "d",
+     "words": [
+      "dog",
+      "bird",
+      "bread"
+     ]
+    },
+    {
+     "grapheme": "dd",
+     "words": [
+      "ladder"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "examples": [
+    "dog",
+    "bird",
+    "bread"
+   ],
+   "recordedExamples": [
+    "dog",
+    "bird",
+    "bread"
+   ],
+   "confusableWith": [
+    "t",
+    "ð"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "dog",
+      "file": "assets/voice/words/dog.mp3"
+     },
+     {
+      "word": "bird",
+      "file": "assets/voice/words/bird.mp3"
+     },
+     {
+      "word": "bread",
+      "file": "assets/voice/words/bread.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:g",
+   "symbol": "g",
+   "chapter": "N03",
+   "order": 11,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "舌頭後半部頂住口腔後上方，擋住氣再放開，喉嚨振動。它是 /k/ 的有聲版。",
+   "spellings": [
+    {
+     "grapheme": "g",
+     "words": [
+      "gift",
+      "dog",
+      "frog"
+     ]
+    },
+    {
+     "grapheme": "gg",
+     "words": [
+      "egg"
+     ]
+    }
+   ],
+   "exceptions": [
+    "g 在 e、i、y 前常念 /dʒ/（gym、page），但 gift、give 例外仍念 /g/。"
+   ],
+   "examples": [
+    "gift",
+    "dog",
+    "frog"
+   ],
+   "recordedExamples": [
+    "gift",
+    "dog",
+    "frog"
+   ],
+   "confusableWith": [
+    "k"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "gift",
+      "file": "assets/voice/words/gift.mp3"
+     },
+     {
+      "word": "dog",
+      "file": "assets/voice/words/dog.mp3"
+     },
+     {
+      "word": "frog",
+      "file": "assets/voice/words/frog.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:h",
+   "symbol": "h",
+   "chapter": "N03",
+   "order": 12,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": false,
+   "how": "嘴巴張開，從喉嚨輕輕呼出一口氣，像對著手哈氣；舌頭和嘴唇都不擋氣。",
+   "spellings": [
+    {
+     "grapheme": "h",
+     "words": [
+      "hat",
+      "house",
+      "horse"
+     ]
+    }
+   ],
+   "exceptions": [
+    "sh、ch、th、ph 裡的 h 和前一個字母合成別的音，不念 /h/。"
+   ],
+   "examples": [
+    "hat",
+    "house",
+    "horse"
+   ],
+   "recordedExamples": [
+    "hat",
+    "house",
+    "horse"
+   ],
+   "confusableWith": [
+    "f"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "hat",
+      "file": "assets/voice/words/hat.mp3"
+     },
+     {
+      "word": "house",
+      "file": "assets/voice/words/house.mp3"
+     },
+     {
+      "word": "horse",
+      "file": "assets/voice/words/horse.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:l",
+   "symbol": "l",
+   "chapter": "N03",
+   "order": 13,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "舌尖頂住上排牙齒後面的牙齦，聲音從舌頭兩側流出來，喉嚨振動。",
+   "spellings": [
+    {
+     "grapheme": "l",
+     "words": [
+      "lemon",
+      "milk"
+     ]
+    },
+    {
+     "grapheme": "ll",
+     "words": [
+      "ball",
+      "tall"
+     ]
+    }
+   ],
+   "exceptions": [
+    "walk、talk 的 l 不發音。",
+    "字尾 -le（apple）的 KK 記為成音節 /ḷ/，不在 41 音內，不拿來出組音題。"
+   ],
+   "examples": [
+    "lemon",
+    "ball",
+    "milk"
+   ],
+   "recordedExamples": [
+    "lemon",
+    "ball",
+    "milk"
+   ],
+   "confusableWith": [
+    "n",
+    "r"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "lemon",
+      "file": "assets/voice/words/lemon.mp3"
+     },
+     {
+      "word": "ball",
+      "file": "assets/voice/words/ball.mp3"
+     },
+     {
+      "word": "milk",
+      "file": "assets/voice/words/milk.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "novice.js@fbfb7f9 口形說明（內部 Claude）＋external-ai 拼字／例字複核"
+  },
+  {
+   "id": "kk-sound:ɛ",
+   "symbol": "ɛ",
+   "chapter": "N04",
+   "order": 14,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "嘴巴半開，比 /æ/ 小、比 /ɪ/ 大；舌頭在中間偏前，嘴角輕鬆不用力拉，短而清楚。",
+   "spellings": [
+    {
+     "grapheme": "e",
+     "words": [
+      "egg",
+      "bed",
+      "pen",
+      "red",
+      "ten"
+     ],
+     "note": "閉音節的 e"
+    },
+    {
+     "grapheme": "ea",
+     "words": [
+      "bread",
+      "weather"
+     ],
+     "note": "ea 有時念 /ɛ/，但也常念 /i/（tea、eat）"
+    }
+   ],
+   "exceptions": [
+    "ea 不固定：bread 念 /ɛ/，tea 念 /i/，要看單字。",
+    "chair、very 裡 /ɛ/ 後面接 r，帶 r 音色，不拿來當 /ɛ/ 的辨認題。"
+   ],
+   "examples": [
+    "egg",
+    "bread",
+    "bed",
+    "pen"
+   ],
+   "recordedExamples": [
+    "egg",
+    "bread"
+   ],
+   "confusableWith": [
+    "æ",
+    "ɪ",
+    "e"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "egg",
+      "file": "assets/voice/words/egg.mp3"
+     },
+     {
+      "word": "bread",
+      "file": "assets/voice/words/bread.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:ɪ",
+   "symbol": "ɪ",
+   "chapter": "N04",
+   "order": 15,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "嘴巴微開，舌頭前面抬高但比 /i/ 低、放鬆，嘴角不拉開，聲音短。比注音「ㄧ」更短、更鬆。",
+   "spellings": [
+    {
+     "grapheme": "i",
+     "words": [
+      "milk",
+      "gift",
+      "fish",
+      "sit",
+      "big"
+     ],
+     "note": "閉音節的 i"
+    },
+    {
+     "grapheme": "y",
+     "words": [
+      "gym",
+      "city",
+      "happy"
+     ],
+     "note": "本遊戲 KK 把字尾 -y 記為 /ɪ/"
+    }
+   ],
+   "exceptions": [
+    "busy 的 u 念 /ɪ/，是例外。",
+    "i 也常念 /aɪ/（bike、kite），N10 再教。"
+   ],
+   "examples": [
+    "milk",
+    "gift",
+    "fish",
+    "big"
+   ],
+   "recordedExamples": [
+    "milk",
+    "gift",
+    "fish"
+   ],
+   "confusableWith": [
+    "i",
+    "ɛ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "milk",
+      "file": "assets/voice/words/milk.mp3"
+     },
+     {
+      "word": "gift",
+      "file": "assets/voice/words/gift.mp3"
+     },
+     {
+      "word": "fish",
+      "file": "assets/voice/words/fish.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:ɑ",
+   "symbol": "ɑ",
+   "chapter": "N04",
+   "order": 16,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "嘴巴張大（像看醫生說「啊」），舌頭放低、往後，嘴唇不圓。",
+   "spellings": [
+    {
+     "grapheme": "o",
+     "words": [
+      "clock",
+      "frog",
+      "hot",
+      "box",
+      "mom"
+     ],
+     "note": "美式閉音節的 o 常念 /ɑ/"
+    },
+    {
+     "grapheme": "a",
+     "words": [
+      "car",
+      "star",
+      "father"
+     ],
+     "note": "ar 組合、father"
+    }
+   ],
+   "exceptions": [
+    "o 不固定：clock 念 /ɑ/，dog、song 本遊戲 KK 記 /ɔ/，go、home 念 /o/，love 念 /ʌ/。"
+   ],
+   "examples": [
+    "clock",
+    "frog",
+    "star",
+    "hot"
+   ],
+   "recordedExamples": [
+    "clock",
+    "frog",
+    "star"
+   ],
+   "confusableWith": [
+    "ʌ",
+    "æ",
+    "ɔ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "clock",
+      "file": "assets/voice/words/clock.mp3"
+     },
+     {
+      "word": "frog",
+      "file": "assets/voice/words/frog.mp3"
+     },
+     {
+      "word": "star",
+      "file": "assets/voice/words/star.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）",
+   "accentNote": "美式口音裡 /ɑ/ 和 /ɔ/ 常合流：dog、ball、talk 等字很多美國人也念成 /ɑ/。教 /ɑ/ 時用 clock、hot、box、star 這類穩定的字；出題時不在 /ɔ/ 容易合流的字拿 /ɑ/ 當干擾選項。"
+  },
+  {
+   "id": "kk-sound:ʌ",
+   "symbol": "ʌ",
+   "chapter": "N04",
+   "order": 17,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "嘴巴半開、全身放鬆，舌頭在中間，短短的一聲；接近注音「ㄜ」但嘴巴開大一點、更短。只出現在重讀音節。",
+   "spellings": [
+    {
+     "grapheme": "u",
+     "words": [
+      "sun",
+      "bus",
+      "cup",
+      "fun",
+      "run"
+     ],
+     "note": "閉音節的 u"
+    },
+    {
+     "grapheme": "o",
+     "words": [
+      "love",
+      "mother"
+     ],
+     "note": "例外拼法"
+    }
+   ],
+   "exceptions": [
+    "o 念 /ʌ/ 是常見例外（love、mother）。",
+    "u 也可能念 /ʊ/（put）或 /ju/（music）。"
+   ],
+   "examples": [
+    "sun",
+    "bus",
+    "cup"
+   ],
+   "recordedExamples": [
+    "sun",
+    "bus"
+   ],
+   "confusableWith": [
+    "ɑ",
+    "ə",
+    "ʊ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "sun",
+      "file": "assets/voice/words/sun.mp3"
+     },
+     {
+      "word": "bus",
+      "file": "assets/voice/words/bus.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）",
+   "accentNote": "/ʌ/ 只用在重讀音節；不重讀的同類弱音記作 /ə/（N11）。"
+  },
+  {
+   "id": "kk-sound:ʊ",
+   "symbol": "ʊ",
+   "chapter": "N05",
+   "order": 18,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "嘴唇稍微圓、往前一點但不用力，舌頭後面抬起；聲音短而放鬆。比 /u/ 鬆、短。",
+   "spellings": [
+    {
+     "grapheme": "oo",
+     "words": [
+      "book",
+      "foot",
+      "cook",
+      "good",
+      "mushroom"
+     ],
+     "note": "oo 常念 /ʊ/ 或 /u/，要看單字"
+    },
+    {
+     "grapheme": "u",
+     "words": [
+      "put",
+      "push",
+      "sugar"
+     ]
+    }
+   ],
+   "exceptions": [
+    "oo 不固定：book 念 /ʊ/，moon、food 念 /u/。"
+   ],
+   "examples": [
+    "book",
+    "mushroom",
+    "foot",
+    "good"
+   ],
+   "recordedExamples": [
+    "book",
+    "mushroom"
+   ],
+   "confusableWith": [
+    "u",
+    "ʌ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "book",
+      "file": "assets/voice/words/book.mp3"
+     },
+     {
+      "word": "mushroom",
+      "file": "assets/voice/words/mushroom.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:ɔ",
+   "symbol": "ɔ",
+   "chapter": "N05",
+   "order": 19,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "嘴唇圓、往前撐成橢圓形，下巴往下，舌頭低、偏後；比 /o/ 張得大，聲音不滑動。",
+   "spellings": [
+    {
+     "grapheme": "a",
+     "words": [
+      "ball",
+      "tall",
+      "talk",
+      "walk"
+     ],
+     "note": "a 在 l、ll 前"
+    },
+    {
+     "grapheme": "aw",
+     "words": [
+      "law"
+     ]
+    },
+    {
+     "grapheme": "o",
+     "words": [
+      "dog",
+      "song"
+     ],
+     "note": "易受口音合流影響"
+    },
+    {
+     "grapheme": "o",
+     "words": [
+      "horse",
+      "passport"
+     ],
+     "note": "or 組合裡的 o；r 前的 /ɔ/ 美式穩定，不受合流影響"
+    }
+   ],
+   "exceptions": [
+    "ball、talk、dog、song、law 等字很多美國人念成接近 /ɑ/。"
+   ],
+   "examples": [
+    "ball",
+    "dog",
+    "horse",
+    "talk"
+   ],
+   "recordedExamples": [
+    "ball",
+    "dog",
+    "horse"
+   ],
+   "confusableWith": [
+    "ɑ",
+    "o"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "ball",
+      "file": "assets/voice/words/ball.mp3"
+     },
+     {
+      "word": "dog",
+      "file": "assets/voice/words/dog.mp3"
+     },
+     {
+      "word": "horse",
+      "file": "assets/voice/words/horse.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）",
+   "accentNote": "美式口音差異：不少美國人（cot–caught 合流）把這個字的 /ɔ/ 念成接近 /ɑ/。本遊戲 KK 依傳統記為 /ɔ/；裝置整字朗讀若聽起來像 /ɑ/ 屬口音差異，題目不要把 /ɑ/ 當成干擾選項，也不要判玩家錯。"
+  },
+  {
+   "id": "kk-sound:i",
+   "symbol": "i",
+   "chapter": "N06",
+   "order": 20,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "嘴角往兩邊拉像微笑，舌頭前面抬高、繃緊，聲音拉長；比 /ɪ/ 緊、長。接近注音「ㄧ」拉長。",
+   "spellings": [
+    {
+     "grapheme": "ee",
+     "words": [
+      "tree",
+      "see",
+      "cheese",
+      "three"
+     ]
+    },
+    {
+     "grapheme": "ea",
+     "words": [
+      "tea",
+      "eat",
+      "teacher"
+     ],
+     "note": "ea 也可能念 /ɛ/（bread）"
+    },
+    {
+     "grapheme": "ey",
+     "words": [
+      "key"
+     ]
+    }
+   ],
+   "exceptions": [
+    "ea 不固定：tea 念 /i/、bread 念 /ɛ/。"
+   ],
+   "examples": [
+    "key",
+    "tree",
+    "tea",
+    "see"
+   ],
+   "recordedExamples": [
+    "key",
+    "tree"
+   ],
+   "confusableWith": [
+    "ɪ",
+    "e"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "key",
+      "file": "assets/voice/words/key.mp3"
+     },
+     {
+      "word": "tree",
+      "file": "assets/voice/words/tree.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:u",
+   "symbol": "u",
+   "chapter": "N06",
+   "order": 21,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "嘴唇圓而小、往前嘟，舌頭後面抬高，聲音拉長；比 /ʊ/ 緊、長。接近注音「ㄨ」拉長。",
+   "spellings": [
+    {
+     "grapheme": "oo",
+     "words": [
+      "moon",
+      "food",
+      "smooth"
+     ],
+     "note": "oo 也可能念 /ʊ/（book）"
+    },
+    {
+     "grapheme": "ue",
+     "words": [
+      "blue"
+     ]
+    },
+    {
+     "grapheme": "oe",
+     "words": [
+      "shoe"
+     ],
+     "note": "例外拼法"
+    },
+    {
+     "grapheme": "wo",
+     "words": [
+      "two"
+     ],
+     "note": "例外拼法，w 不發音"
+    },
+    {
+     "grapheme": "ou",
+     "words": [
+      "you"
+     ]
+    }
+   ],
+   "exceptions": [
+    "u 在 music、cucumber 裡念 /j u/ 兩個音（N09 學 /j/ 後再拆）。"
+   ],
+   "examples": [
+    "moon",
+    "shoe",
+    "blue",
+    "food"
+   ],
+   "recordedExamples": [
+    "moon",
+    "shoe"
+   ],
+   "confusableWith": [
+    "ʊ",
+    "o"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "moon",
+      "file": "assets/voice/words/moon.mp3"
+     },
+     {
+      "word": "shoe",
+      "file": "assets/voice/words/shoe.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:e",
+   "symbol": "e",
+   "chapter": "N06",
+   "order": 22,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "本遊戲用傳統 KK 記法 /e/：嘴巴半開、嘴角稍拉，實際美式發音會從 /e/ 滑向 /ɪ/，像注音「ㄟ」。一個音節內完成。",
+   "spellings": [
+    {
+     "grapheme": "a_e",
+     "words": [
+      "cake",
+      "game",
+      "lake",
+      "grape",
+      "page"
+     ],
+     "note": "a＋子音＋不發音的 e"
+    },
+    {
+     "grapheme": "ai",
+     "words": [
+      "rain"
+     ]
+    },
+    {
+     "grapheme": "ay",
+     "words": [
+      "day",
+      "play"
+     ]
+    },
+    {
+     "grapheme": "a",
+     "words": [
+      "paper"
+     ],
+     "note": "開音節的 a"
+    }
+   ],
+   "exceptions": [
+    "a 不固定：cake 念 /e/、cat 念 /æ/、car 念 /ɑ/。"
+   ],
+   "examples": [
+    "cake",
+    "rain",
+    "grape",
+    "day"
+   ],
+   "recordedExamples": [
+    "cake",
+    "rain",
+    "grape"
+   ],
+   "confusableWith": [
+    "ɛ",
+    "i"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "cake",
+      "file": "assets/voice/words/cake.mp3"
+     },
+     {
+      "word": "rain",
+      "file": "assets/voice/words/rain.mp3"
+     },
+     {
+      "word": "grape",
+      "file": "assets/voice/words/grape.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）",
+   "accentNote": "KK 的 /e/ 等於 IPA 的 /eɪ/。裝置朗讀本來就會念出滑動，這是正確發音，不是錯誤。"
+  },
+  {
+   "id": "kk-sound:o",
+   "symbol": "o",
+   "chapter": "N06",
+   "order": 23,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "本遊戲用傳統 KK 記法 /o/：嘴唇圓，實際美式發音會從 /o/ 滑向 /ʊ/，嘴唇越收越圓，像注音「ㄡ」。一個音節內完成。",
+   "spellings": [
+    {
+     "grapheme": "o",
+     "words": [
+      "go",
+      "sofa",
+      "volcano"
+     ],
+     "note": "開音節的 o"
+    },
+    {
+     "grapheme": "o_e",
+     "words": [
+      "phone",
+      "home",
+      "nose"
+     ],
+     "note": "o＋子音＋不發音的 e"
+    },
+    {
+     "grapheme": "oa",
+     "words": [
+      "boat",
+      "soap"
+     ]
+    },
+    {
+     "grapheme": "ow",
+     "words": [
+      "snow",
+      "window",
+      "yellow"
+     ],
+     "note": "ow 也可能念 /aʊ/（cow）"
+    }
+   ],
+   "exceptions": [
+    "ow 不固定：snow 念 /o/、cow 念 /aʊ/。"
+   ],
+   "examples": [
+    "phone",
+    "volcano",
+    "go",
+    "boat"
+   ],
+   "recordedExamples": [
+    "phone",
+    "volcano"
+   ],
+   "confusableWith": [
+    "ɔ",
+    "u"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "phone",
+      "file": "assets/voice/words/phone.mp3"
+     },
+     {
+      "word": "volcano",
+      "file": "assets/voice/words/volcano.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）",
+   "accentNote": "KK 的 /o/ 等於 IPA 的 /oʊ/。裝置朗讀會念出滑動，這是正確發音。"
+  },
+  {
+   "id": "kk-sound:v",
+   "symbol": "v",
+   "chapter": "N07",
+   "order": 24,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "上排牙齒輕碰下唇（和 /f/ 一樣），但喉嚨要振動。/f/ 無聲、/v/ 有聲；不要念成 /b/（雙唇沒有閉起來）。",
+   "spellings": [
+    {
+     "grapheme": "v",
+     "words": [
+      "van",
+      "five",
+      "have",
+      "give",
+      "very",
+      "volcano",
+      "envelope"
+     ]
+    }
+   ],
+   "exceptions": [
+    "英文字很少用 v 結尾，常加不發音的 e（have、give、five）。"
+   ],
+   "examples": [
+    "volcano",
+    "envelope",
+    "van",
+    "five"
+   ],
+   "recordedExamples": [
+    "volcano",
+    "envelope"
+   ],
+   "confusableWith": [
+    "f",
+    "b"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "volcano",
+      "file": "assets/voice/words/volcano.mp3"
+     },
+     {
+      "word": "envelope",
+      "file": "assets/voice/words/envelope.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:z",
+   "symbol": "z",
+   "chapter": "N07",
+   "order": 25,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "舌頭位置和 /s/ 一樣，但喉嚨振動，發出像蜜蜂的持續「ㄗㄗ」嗡嗡聲。不要變成注音「ㄗ」的短促塞擦音。",
+   "spellings": [
+    {
+     "grapheme": "s",
+     "words": [
+      "his",
+      "nose",
+      "cheese",
+      "busy",
+      "music",
+      "headphones"
+     ],
+     "note": "s 在母音之間或字尾常念 /z/"
+    },
+    {
+     "grapheme": "z",
+     "words": [
+      "size"
+     ]
+    }
+   ],
+   "exceptions": [
+    "s 不固定：bus 念 /s/、his 念 /z/。"
+   ],
+   "examples": [
+    "cheese",
+    "headphones",
+    "nose",
+    "his"
+   ],
+   "recordedExamples": [
+    "cheese",
+    "headphones"
+   ],
+   "confusableWith": [
+    "s",
+    "ð",
+    "dʒ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "cheese",
+      "file": "assets/voice/words/cheese.mp3"
+     },
+     {
+      "word": "headphones",
+      "file": "assets/voice/words/headphones.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:θ",
+   "symbol": "θ",
+   "chapter": "N07",
+   "order": 26,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": false,
+   "how": "舌尖輕放在上下排牙齒之間（或輕碰上排牙齒），氣從舌頭和牙齒的縫吹出；聲帶不振動。不要念成 /s/ 或 /f/。",
+   "spellings": [
+    {
+     "grapheme": "th",
+     "words": [
+      "thin",
+      "think",
+      "three",
+      "math",
+      "both",
+      "mouth",
+      "thermometer",
+      "stethoscope"
+     ],
+     "note": "th 也可能念 /ð/"
+    }
+   ],
+   "exceptions": [
+    "th 不固定：thin 念 /θ/、this 念 /ð/。this、that、them、then 這類功能字多念 /ð/。"
+   ],
+   "examples": [
+    "thermometer",
+    "stethoscope",
+    "thin",
+    "math"
+   ],
+   "recordedExamples": [
+    "thermometer",
+    "stethoscope"
+   ],
+   "confusableWith": [
+    "ð",
+    "s",
+    "f"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "thermometer",
+      "file": "assets/voice/words/thermometer.mp3"
+     },
+     {
+      "word": "stethoscope",
+      "file": "assets/voice/words/stethoscope.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:ð",
+   "symbol": "ð",
+   "chapter": "N07",
+   "order": 27,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "舌頭位置和 /θ/ 一樣，但喉嚨振動。不要念成 /d/ 或 /z/。",
+   "spellings": [
+    {
+     "grapheme": "th",
+     "words": [
+      "this",
+      "that",
+      "them",
+      "then",
+      "mother",
+      "father",
+      "weather",
+      "smooth"
+     ],
+     "note": "th 也可能念 /θ/"
+    }
+   ],
+   "exceptions": [
+    "同樣拼 th，thin 是無聲 /θ/，this 是有聲 /ð/，只能從單字判斷。"
+   ],
+   "examples": [
+    "this",
+    "that",
+    "mother"
+   ],
+   "recordedExamples": [],
+   "confusableWith": [
+    "θ",
+    "d",
+    "z"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:ʃ",
+   "symbol": "ʃ",
+   "chapter": "N08",
+   "order": 28,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": false,
+   "how": "嘴唇稍微往前嘟，舌頭靠近牙齦後方，氣流出比 /s/ 低沉的「噓」聲。聲帶不振動。",
+   "spellings": [
+    {
+     "grapheme": "sh",
+     "words": [
+      "fish",
+      "shoe",
+      "ship",
+      "shop",
+      "push",
+      "wish",
+      "fresh"
+     ]
+    },
+    {
+     "grapheme": "s",
+     "words": [
+      "sugar"
+     ],
+     "note": "例外拼法"
+    }
+   ],
+   "exceptions": [
+    "sugar 的 s 念 /ʃ/ 是例外。"
+   ],
+   "examples": [
+    "fish",
+    "shoe",
+    "ship"
+   ],
+   "recordedExamples": [
+    "fish",
+    "shoe"
+   ],
+   "confusableWith": [
+    "s",
+    "tʃ",
+    "ʒ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "fish",
+      "file": "assets/voice/words/fish.mp3"
+     },
+     {
+      "word": "shoe",
+      "file": "assets/voice/words/shoe.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:ʒ",
+   "symbol": "ʒ",
+   "chapter": "N08",
+   "order": 29,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "舌頭和嘴唇位置跟 /ʃ/ 一樣，但喉嚨振動。英文裡多出現在字的中間（measure、television）。",
+   "spellings": [
+    {
+     "grapheme": "s",
+     "words": [
+      "measure",
+      "television",
+      "usually"
+     ],
+     "note": "s 在 -ure、-ion、-ual 前"
+    }
+   ],
+   "exceptions": [
+    "英文字很少以 /ʒ/ 開頭；/ʒ/ 字多為兩音節以上，含尚未學的音，只做聽音和拼字對應，不做完整組音題。"
+   ],
+   "examples": [
+    "measure",
+    "television"
+   ],
+   "recordedExamples": [],
+   "confusableWith": [
+    "ʃ",
+    "dʒ",
+    "z"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:tʃ",
+   "symbol": "tʃ",
+   "chapter": "N08",
+   "order": 30,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": false,
+   "how": "先像 /t/ 擋住氣，再放開成 /ʃ/，兩個動作快速連在一起；像注音「ㄑ」但嘴唇往前嘟。聲帶不振動。",
+   "spellings": [
+    {
+     "grapheme": "ch",
+     "words": [
+      "cheese",
+      "chair",
+      "chip",
+      "check",
+      "lunch",
+      "much",
+      "teacher"
+     ]
+    }
+   ],
+   "exceptions": [
+    "ch 大多念 /tʃ/，少數外來字例外（如 school 的 ch 念 /k/）。"
+   ],
+   "examples": [
+    "cheese",
+    "chair",
+    "lunch"
+   ],
+   "recordedExamples": [
+    "cheese",
+    "chair"
+   ],
+   "confusableWith": [
+    "ʃ",
+    "dʒ",
+    "t"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "cheese",
+      "file": "assets/voice/words/cheese.mp3"
+     },
+     {
+      "word": "chair",
+      "file": "assets/voice/words/chair.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:dʒ",
+   "symbol": "dʒ",
+   "chapter": "N08",
+   "order": 31,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "/tʃ/ 的有聲版：先擋氣再放開成 /ʒ/，喉嚨振動；像注音「ㄐ」但嘴唇往前嘟。",
+   "spellings": [
+    {
+     "grapheme": "j",
+     "words": [
+      "job",
+      "just",
+      "join"
+     ]
+    },
+    {
+     "grapheme": "g",
+     "words": [
+      "gym",
+      "page"
+     ],
+     "note": "g 在 e、i、y 前"
+    },
+    {
+     "grapheme": "dge",
+     "words": [
+      "bridge",
+      "judge",
+      "hedgehog"
+     ],
+     "note": "短母音後"
+    }
+   ],
+   "exceptions": [
+    "g 不固定：gym 念 /dʒ/、gift 念 /g/。"
+   ],
+   "examples": [
+    "bridge",
+    "hedgehog",
+    "job",
+    "just"
+   ],
+   "recordedExamples": [
+    "bridge",
+    "hedgehog"
+   ],
+   "confusableWith": [
+    "tʃ",
+    "ʒ",
+    "g"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "bridge",
+      "file": "assets/voice/words/bridge.mp3"
+     },
+     {
+      "word": "hedgehog",
+      "file": "assets/voice/words/hedgehog.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:ŋ",
+   "symbol": "ŋ",
+   "chapter": "N09",
+   "order": 32,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "舌頭後半部頂住軟顎（和 /k g/ 同位置），聲音從鼻子出來，喉嚨振動；像注音「ㄥ」的結尾。英文不會出現在字首。",
+   "spellings": [
+    {
+     "grapheme": "ng",
+     "words": [
+      "sing",
+      "king",
+      "ring",
+      "wing",
+      "song"
+     ]
+    },
+    {
+     "grapheme": "n",
+     "words": [
+      "bank",
+      "think",
+      "flamingo"
+     ],
+     "note": "n 在 k、g 前"
+    }
+   ],
+   "exceptions": [
+    "n 在 k、g 前常念 /ŋ/（bank）；其他位置的 n 念 /n/。"
+   ],
+   "examples": [
+    "bank",
+    "flamingo",
+    "sing",
+    "king"
+   ],
+   "recordedExamples": [
+    "bank",
+    "flamingo"
+   ],
+   "confusableWith": [
+    "n"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "bank",
+      "file": "assets/voice/words/bank.mp3"
+     },
+     {
+      "word": "flamingo",
+      "file": "assets/voice/words/flamingo.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:r",
+   "symbol": "r",
+   "chapter": "N09",
+   "order": 33,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "舌尖往上捲或舌頭往後縮，不碰到上顎；嘴唇稍圓，喉嚨振動。舌尖碰到牙齦就變成 /l/。",
+   "spellings": [
+    {
+     "grapheme": "r",
+     "words": [
+      "rain",
+      "red",
+      "run",
+      "tree",
+      "frog",
+      "bread"
+     ]
+    }
+   ],
+   "exceptions": [
+    "母音後的 r（car、horse）KK 寫在母音後面；ir、ur、er 合起來是捲舌母音 /ɝ/ 或 /ɚ/（N11），不是另外一個 /r/。"
+   ],
+   "examples": [
+    "rain",
+    "tree",
+    "red"
+   ],
+   "recordedExamples": [
+    "rain",
+    "tree"
+   ],
+   "confusableWith": [
+    "l",
+    "w"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "rain",
+      "file": "assets/voice/words/rain.mp3"
+     },
+     {
+      "word": "tree",
+      "file": "assets/voice/words/tree.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）",
+   "accentNote": "美式發音母音後的 r 都要念出來（car、star）；英式常不念。"
+  },
+  {
+   "id": "kk-sound:w",
+   "symbol": "w",
+   "chapter": "N09",
+   "order": 34,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "嘴唇先嘟成小圓，再快速滑開到後面母音的嘴形，喉嚨振動；像注音「ㄨ」快速滑過。",
+   "spellings": [
+    {
+     "grapheme": "w",
+     "words": [
+      "wet",
+      "window",
+      "walk",
+      "work",
+      "wing"
+     ]
+    },
+    {
+     "grapheme": "qu",
+     "words": [
+      "quit",
+      "quick",
+      "squirrel"
+     ],
+     "note": "qu 是 /k w/ 兩個音"
+    }
+   ],
+   "exceptions": [
+    "two 的 w 不發音。",
+    "qu 要拆成 /k/＋/w/，不是只有 /k/。"
+   ],
+   "examples": [
+    "squirrel",
+    "wet",
+    "window",
+    "quick"
+   ],
+   "recordedExamples": [
+    "squirrel"
+   ],
+   "confusableWith": [
+    "r",
+    "v"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "squirrel",
+      "file": "assets/voice/words/squirrel.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:j",
+   "symbol": "j",
+   "chapter": "N09",
+   "order": 35,
+   "category": "consonant",
+   "kindZh": "子音",
+   "voiced": true,
+   "how": "舌頭前面抬高靠近硬顎（像 /i/ 的位置），再快速滑到後面的母音；像注音「ㄧ」快速滑過。注意：KK 的 /j/ 是 yes 的 y，不是字母 j 的音（字母 j 念 /dʒ/）。",
+   "spellings": [
+    {
+     "grapheme": "y",
+     "words": [
+      "yes",
+      "yellow",
+      "you"
+     ],
+     "note": "字首的 y"
+    },
+    {
+     "grapheme": "u",
+     "words": [
+      "music",
+      "cucumber",
+      "usually",
+      "ambulance"
+     ],
+     "note": "u 可能念 /j u/ 或 /j ə/ 兩個音"
+    }
+   ],
+   "exceptions": [
+    "字母 y 不固定：yes 念 /j/，my 念 /aɪ/，happy 的 y 念 /ɪ/。"
+   ],
+   "examples": [
+    "cucumber",
+    "ambulance",
+    "yes",
+    "yellow"
+   ],
+   "recordedExamples": [
+    "cucumber",
+    "ambulance"
+   ],
+   "confusableWith": [
+    "dʒ",
+    "i"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "cucumber",
+      "file": "assets/voice/words/cucumber.mp3"
+     },
+     {
+      "word": "ambulance",
+      "file": "assets/voice/words/ambulance.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:aɪ",
+   "symbol": "aɪ",
+   "chapter": "N10",
+   "order": 36,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "從嘴巴張大的 /a/ 滑到 /ɪ/，一個音節內完成，像注音「ㄞ」。",
+   "spellings": [
+    {
+     "grapheme": "i_e",
+     "words": [
+      "bike",
+      "kite",
+      "five",
+      "size"
+     ],
+     "note": "i＋子音＋不發音的 e"
+    },
+    {
+     "grapheme": "y",
+     "words": [
+      "my",
+      "sky"
+     ],
+     "note": "字尾的 y"
+    },
+    {
+     "grapheme": "igh",
+     "words": [
+      "night"
+     ]
+    },
+    {
+     "grapheme": "i",
+     "words": [
+      "tiger"
+     ],
+     "note": "開音節的 i"
+    }
+   ],
+   "exceptions": [
+    "i 不固定：bike 念 /aɪ/，milk 念 /ɪ/。"
+   ],
+   "examples": [
+    "bike",
+    "tiger",
+    "kite"
+   ],
+   "recordedExamples": [
+    "bike",
+    "tiger"
+   ],
+   "confusableWith": [
+    "e",
+    "ɔɪ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "bike",
+      "file": "assets/voice/words/bike.mp3"
+     },
+     {
+      "word": "tiger",
+      "file": "assets/voice/words/tiger.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:aʊ",
+   "symbol": "aʊ",
+   "chapter": "N10",
+   "order": 37,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "從 /a/ 滑到 /ʊ/，嘴唇最後變圓，像注音「ㄠ」。",
+   "spellings": [
+    {
+     "grapheme": "ou",
+     "words": [
+      "house",
+      "mouth",
+      "out",
+      "about"
+     ]
+    },
+    {
+     "grapheme": "ow",
+     "words": [
+      "cow",
+      "now",
+      "town",
+      "flower"
+     ],
+     "note": "ow 也可能念 /o/（snow）"
+    }
+   ],
+   "exceptions": [
+    "ow 不固定：cow 念 /aʊ/、snow 念 /o/。"
+   ],
+   "examples": [
+    "house",
+    "flower",
+    "cow"
+   ],
+   "recordedExamples": [
+    "house",
+    "flower"
+   ],
+   "confusableWith": [
+    "o",
+    "aɪ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "house",
+      "file": "assets/voice/words/house.mp3"
+     },
+     {
+      "word": "flower",
+      "file": "assets/voice/words/flower.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:ɔɪ",
+   "symbol": "ɔɪ",
+   "chapter": "N10",
+   "order": 38,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "從圓唇的 /ɔ/ 滑到 /ɪ/，像注音「ㄛ」接「ㄧ」，一個音節內完成。",
+   "spellings": [
+    {
+     "grapheme": "oy",
+     "words": [
+      "boy",
+      "toy"
+     ],
+     "note": "多在字尾"
+    },
+    {
+     "grapheme": "oi",
+     "words": [
+      "oil",
+      "point",
+      "voice",
+      "join"
+     ],
+     "note": "多在字中"
+    }
+   ],
+   "exceptions": [],
+   "examples": [
+    "boy",
+    "toy",
+    "oil"
+   ],
+   "recordedExamples": [],
+   "confusableWith": [
+    "aɪ",
+    "o"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）"
+  },
+  {
+   "id": "kk-sound:ə",
+   "symbol": "ə",
+   "chapter": "N11",
+   "order": 39,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "最放鬆、最短的母音，只出現在不重讀的音節：嘴巴微開、舌頭在中間，像輕輕帶過的「ㄜ」。",
+   "spellings": [
+    {
+     "grapheme": "a",
+     "words": [
+      "banana",
+      "sofa",
+      "ago",
+      "about"
+     ],
+     "note": "不重讀的 a"
+    },
+    {
+     "grapheme": "o",
+     "words": [
+      "lemon"
+     ],
+     "note": "不重讀的 o"
+    },
+    {
+     "grapheme": "e",
+     "words": [
+      "elephant",
+      "television",
+      "seven"
+     ],
+     "note": "不重讀的 e"
+    },
+    {
+     "grapheme": "io",
+     "words": [
+      "television"
+     ],
+     "note": "-sion 裡"
+    }
+   ],
+   "exceptions": [
+    "任何母音字母在不重讀時都可能弱化成 /ə/，所以 /ə/ 沒有固定拼法。"
+   ],
+   "examples": [
+    "banana",
+    "lemon",
+    "sofa"
+   ],
+   "recordedExamples": [
+    "banana",
+    "lemon"
+   ],
+   "confusableWith": [
+    "ʌ",
+    "ɚ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "banana",
+      "file": "assets/voice/words/banana.mp3"
+     },
+     {
+      "word": "lemon",
+      "file": "assets/voice/words/lemon.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）",
+   "accentNote": "/ə/ 只出現在不重讀音節；重讀的類似音是 /ʌ/。"
+  },
+  {
+   "id": "kk-sound:ɝ",
+   "symbol": "ɝ",
+   "chapter": "N11",
+   "order": 40,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "重讀的捲舌母音：舌頭往後縮或捲起、不碰上顎，嘴唇微圓，像注音「ㄦ」拉長。出現在重讀音節（bird、nurse）。",
+   "spellings": [
+    {
+     "grapheme": "ir",
+     "words": [
+      "bird",
+      "girl",
+      "first",
+      "shirt"
+     ]
+    },
+    {
+     "grapheme": "ur",
+     "words": [
+      "nurse",
+      "turn",
+      "hurt"
+     ]
+    },
+    {
+     "grapheme": "er",
+     "words": [
+      "her"
+     ]
+    },
+    {
+     "grapheme": "or",
+     "words": [
+      "work"
+     ],
+     "note": "w 後面"
+    },
+    {
+     "grapheme": "irr",
+     "words": [
+      "squirrel"
+     ],
+     "note": "例外拼法"
+    }
+   ],
+   "exceptions": [
+    "er 不固定：her 重讀念 /ɝ/，teacher 不重讀念 /ɚ/。"
+   ],
+   "examples": [
+    "bird",
+    "squirrel",
+    "nurse",
+    "girl"
+   ],
+   "recordedExamples": [
+    "bird",
+    "squirrel"
+   ],
+   "confusableWith": [
+    "ɚ",
+    "ɑ"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "bird",
+      "file": "assets/voice/words/bird.mp3"
+     },
+     {
+      "word": "squirrel",
+      "file": "assets/voice/words/squirrel.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）",
+   "accentNote": "/ɝ/ 與 /ɚ/ 音色相同，差在重讀與否；在單音節字裡一律是 /ɝ/。"
+  },
+  {
+   "id": "kk-sound:ɚ",
+   "symbol": "ɚ",
+   "chapter": "N11",
+   "order": 41,
+   "category": "vowel",
+   "kindZh": "母音",
+   "voiced": true,
+   "how": "不重讀的捲舌母音：舌頭位置和 /ɝ/ 一樣，但短而輕，出現在不重讀音節（tiger、teacher 的 -er）。",
+   "spellings": [
+    {
+     "grapheme": "er",
+     "words": [
+      "tiger",
+      "teacher",
+      "paper",
+      "summer",
+      "after",
+      "flower"
+     ],
+     "note": "字尾不重讀的 er"
+    },
+    {
+     "grapheme": "or",
+     "words": [
+      "doctor"
+     ]
+    },
+    {
+     "grapheme": "ar",
+     "words": [
+      "sugar"
+     ]
+    },
+    {
+     "grapheme": "ure",
+     "words": [
+      "measure"
+     ]
+    }
+   ],
+   "exceptions": [
+    "字尾 -er、-or、-ar 不重讀時都可能念 /ɚ/。"
+   ],
+   "examples": [
+    "tiger",
+    "doctor",
+    "ladder",
+    "teacher"
+   ],
+   "recordedExamples": [
+    "tiger",
+    "doctor",
+    "ladder"
+   ],
+   "confusableWith": [
+    "ɝ",
+    "ə"
+   ],
+   "demo": {
+    "singleSoundRecording": null,
+    "wholeWord": [
+     {
+      "word": "tiger",
+      "file": "assets/voice/words/tiger.mp3"
+     },
+     {
+      "word": "doctor",
+      "file": "assets/voice/words/doctor.mp3"
+     },
+     {
+      "word": "ladder",
+      "file": "assets/voice/words/ladder.mp3"
+     }
+    ],
+    "note": "沒有單音錄音。示範按鈕只能播放例字的整字錄音（或整字放慢）；沒有錄音的例字只能用裝置整字朗讀。不要讓裝置語音念 KK 符號。"
+   },
+   "reviewStatus": "reviewed",
+   "reviewer": "external-ai",
+   "source": "external-ai 編寫（美式 KK、手動核對）",
+   "accentNote": "/ɚ/ 只出現在不重讀音節；英式會念成 /ə/，本遊戲採美式。"
+  }
+ ]
+}
