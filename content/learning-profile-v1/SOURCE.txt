@@ -1,1 +1,4 @@
-learning-profile-batch-03.zip (returns/external/LEARNING-PROFILE-01/batch-03, 2026-11-17) sha256 8842a09d5272d2bec74dcfd5f4436d0ebd8e05ac506fb38b6e11e1c0ddd72bb8 — replaces batch-02 (596294bc…)
+LEARNING-PROFILE-01 batch-04 (lp-rules-v1.2)
+source: returns/external/LEARNING-PROFILE-01/batch-04/learning-profile-batch-04.zip
+sha256: c256ee608d4cd6350d56f8f511d046ec37c67cb8a5c82e4bc53c13e32f76aba6
+files copied unchanged; item-tags.json (1.1 MB) is kept for the module tests and review only; the game does not load it.

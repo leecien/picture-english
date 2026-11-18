@@ -31,11 +31,46 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
   const text = await ev(() => JSON.stringify(Platform.backup()));
   const preview = await ev((t) => Platform.previewImport(t), text);
   assert(preview.keys.includes("pm-ability-v1"), "the preview lists the ability log");
-  // a different log afterwards, then restore the backup
+  // a newer device log afterwards: 2 events the backup does not have, 1 event changed (same id)
   await ev(() => {
-    localStorage.removeItem("pm-ability-v1");
-    localStorage.setItem("pm-ability-v1", JSON.stringify({ v: 2, events: [] }));
+    const st = JSON.parse(localStorage.getItem("pm-ability-v1"));
+    st.events[1] = { ...st.events[1], result: "wrong" };
+    st.events.push({ ...st.events[0], id: "t-new-1", at: Date.now() }, { ...st.events[0], id: "t-new-2", at: Date.now() + 1 });
+    localStorage.setItem("pm-ability-v1", JSON.stringify(st));
   });
+  const pv = await ev((t) => Platform.previewImport(t), text);
+  assert.deepEqual(pv.ability, { device: 5, backup: 3, result: 3, lost: 2, changed: 1, inBackup: true }, "the preview counts lost and overwritten device events");
+  // the preview the player sees says so before anything is written
+  await ev(() => Platform.open({ onClose() {} }));
+  await page.setInputFiles("#pf-file", { name: "backup.json", mimeType: "application/json", buffer: Buffer.from(text) });
+  await page.waitForFunction(() => /能力紀錄/.test(document.getElementById("pf-preview").textContent));
+  const shown = await ev(() => document.getElementById("pf-preview").textContent);
+  assert.match(shown, /目前裝置 5 筆 → 還原後 3 筆/);
+  assert.match(shown, /2 筆不在備份裡，還原後會消失/);
+  assert.match(shown, /1 筆同一次作答的內容不同，會改成備份的版本/);
+  assert.equal(await ev(() => JSON.parse(localStorage.getItem("pm-ability-v1")).events.length), 5, "previewing writes nothing");
+  await ev(() => Platform.close());
+  // quota: the browser refuses one write in the middle → every key back as it was
+  const snap = () => ev(() => Object.fromEntries(Platform.saveKeys.filter((k) => localStorage.getItem(k) != null).map((k) => [k, localStorage.getItem(k)])));
+  const beforeQuota = await snap();
+  const quotaMsg = await ev((t) => {
+    const orig = Storage.prototype.setItem;
+    let once = true; // the backup's ability log does not fit; after the rollback frees space the old one does
+    Storage.prototype.setItem = function (k, v) {
+      if (k === "pm-ability-v1" && once) (once = false), (() => { throw new DOMException("quota", "QuotaExceededError"); })();
+      return orig.call(this, k, v);
+    };
+    try {
+      Platform.restore(t, { confirmed: true });
+      return "";
+    } catch (e) {
+      return e.message;
+    } finally {
+      Storage.prototype.setItem = orig;
+    }
+  }, text);
+  assert.match(quotaMsg, /已回復原存檔/, "a quota failure is reported");
+  assert.deepEqual(await snap(), beforeQuota, "a quota failure leaves every saved key exactly as before (atomic)");
   const done = await ev((t) => Platform.restore(t, { confirmed: true }), text);
   assert(done.restored >= 2 && done.reloadRequired);
   await page.reload();
@@ -54,9 +89,22 @@ const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
     }
   }, JSON.stringify(bad));
   assert.match(refused, /能力紀錄/, "a malformed ability log is refused");
+  // duplicate event ids: refused by the learning-profile module's validateStore (same rules both sides)
+  const dup = JSON.parse(text), dupSt = JSON.parse(dup.entries["pm-ability-v1"]);
+  dupSt.events.push({ ...dupSt.events[0] });
+  dup.entries["pm-ability-v1"] = JSON.stringify(dupSt);
+  const refusedDup = await ev((t) => {
+    try {
+      Platform.restore(t, { confirmed: true });
+      return "";
+    } catch (e) {
+      return e.message;
+    }
+  }, JSON.stringify(dup));
+  assert.match(refusedDup, /duplicate id/, "duplicate event ids are refused");
   assert.deepEqual(await ev(() => Ability.events.map((e) => e.id)), mine, "nothing was changed by the refused backup");
   assert.deepEqual(errors, []);
-  console.log("PASS: pm-ability-v1 is backed up, previewed, restored (events identical after reload); a malformed ability log is refused before writing");
+  console.log("PASS: pm-ability-v1 is backed up; the 整份還原 preview counts device events lost (2) and overwritten (1) and the player sees it before confirming; a quota failure mid-restore puts every key back (atomic); restored events identical after reload; malformed and duplicate-id logs refused before writing");
   await browser.close();
 })().catch((e) => {
   console.error(e);

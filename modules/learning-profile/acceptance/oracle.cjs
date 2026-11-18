@@ -2,7 +2,10 @@
 /* LEARNING-PROFILE-01 整合驗收用「預期值」工具（外部，獨立於內部實作）。
    Reads a storage export (JSON object of localStorage keys, e.g. from the game's backup or
    `JSON.stringify(Object.fromEntries(Object.entries(localStorage)))`) and prints what the ability panel MUST show,
-   computed with the same content and lp-rules-v1.1. The panel is accepted only if every cell matches.
+   computed with the same content and lp-rules-v1.2. The panel is accepted when every cell agrees on the NUMBERS, STATUS
+   and EVIDENCE (rows[].status / displayPct / rawPct / items / correctItems / contexts / days / excluded); the UI may word
+   them differently. The oracle shares profile.js with the module under test, so it is not the only truth: the
+   hand-computed fixtures in test/hand-fixtures.json are checked independently (test/hand.test.cjs).
    usage: node oracle.cjs <export.json> [--now 2026-11-18T12:00:00Z] [--data <content dir>] [--json out.json] [--check-events] */
 "use strict";
 const fs = require("fs");
@@ -38,21 +41,31 @@ const p = LP.compute({ events, tags, qtypes: qt, contexts: tm.contexts, topicMap
   legacy: { cards: parse(store["pm-cards"], {}), sents: parse(store["pm-sents"], {}) }, now });
 
 const rows = [];
+const nums = (c, reason) => {
+  const b = (c && c.basis) || {};
+  const st = reason === "no-instrument" || reason === "no-sentence-material" ? "no-instrument" : c.status;
+  return { status: st, displayPct: c.displayPct != null ? c.displayPct : null, rawPct: c.rawPct != null ? c.rawPct : null,
+    items: b.items != null ? b.items : null, correctItems: b.correctItems != null ? b.correctItems : null, contexts: b.contexts != null ? b.contexts : null,
+    days: b.days != null ? b.days : null, lastEvidenceDay: b.lastEvidenceDay || null, excluded: b.excluded || {},
+    previousPct: c.previous && c.previous.displayPct != null ? c.previous.displayPct : null, needSubtopics: c.needSubtopics != null ? c.needSubtopics : null,
+    weak: !!c.weak };
+};
 for (const [id, g] of Object.entries(p.grammar)) {
   if (!g.v1 && !g.partial) continue;
-  rows.push(["文法", g.zh, g.channels.reading.channelZh, g.channels.reading.status, LP.describe(g.channels.reading, g.reason)]);
+  rows.push({ group: "文法", id, ability: g.zh, channel: g.channels.reading.channelZh, ...nums(g.channels.reading, g.reason), text: LP.describe(g.channels.reading, g.reason) });
 }
 for (const [tid, t] of Object.entries(p.topics)) {
-  for (const ch of Object.keys(LP.CHANNEL_ZH)) rows.push(["主題", t.zh, LP.CHANNEL_ZH[ch], t.channels[ch].status, LP.describe(t.channels[ch])]);
+  for (const ch of Object.keys(LP.CHANNEL_ZH)) rows.push({ group: "主題", id: tid, ability: t.zh, channel: LP.CHANNEL_ZH[ch], ...nums(t.channels[ch]), text: LP.describe(t.channels[ch]) });
   for (const [sid, s] of Object.entries(t.subtopics))
-    for (const ch of Object.keys(LP.CHANNEL_ZH)) rows.push(["次主題", `${t.zh}・${s.zh}`, LP.CHANNEL_ZH[ch], s.channels[ch].status, LP.describe(s.channels[ch], s.reason)]);
+    for (const ch of Object.keys(LP.CHANNEL_ZH))
+      rows.push({ group: "次主題", id: `${tid}/${sid}`, ability: `${t.zh}・${s.zh}`, channel: LP.CHANNEL_ZH[ch], ...nums(s.channels[ch], s.reason), text: LP.describe(s.channels[ch], s.reason) });
 }
 const out = {
   rulesVersion: p.rulesVersion, computedAt: p.computedAt, events: events.length, totals: p.totals,
-  legacy: p.legacy, weak: p.weak, rows: rows.map(([a, b, c, d, e]) => ({ group: a, ability: b, channel: c, status: d, text: e })), problems,
+  legacy: p.legacy, weak: p.weak.map((w) => ({ kind: w.kind, id: w.id, zh: w.zh, channel: w.channel, rawPct: w.rawPct, displayPct: w.pct, ratio: w.ratio })), rows, problems,
 };
 if (opt("--json")) fs.writeFileSync(opt("--json"), JSON.stringify(out, null, 1) + "\n");
-for (const r of rows) if (r[3] !== "none" || process.env.ALL) console.log(r.join(" | "));
+for (const r of rows) if (r.status !== "none" || process.env.ALL) console.log([r.group, r.ability, r.channel, r.status, r.text].join(" | "));
 console.log(`events ${events.length} · independent ${p.totals.independent} · timeouts ${p.totals.timeouts} · weak ${p.weak.map((w) => `${w.zh}/${w.channel} ${w.rawPct}%`).join("、") || "—"}`);
 if (p.legacy) console.log(`舊紀錄：答對過 ${p.legacy.wordsAnsweredRight} 詞、${p.legacy.sentencesAnsweredRight} 句（尚待評估）`);
 for (const x of problems) console.log("PROBLEM", x);

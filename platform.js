@@ -7,7 +7,7 @@
 })(typeof window !== "undefined" ? window : globalThis, function (root) {
   "use strict";
   const APP = "picture-english";
-  const KEYS = Object.freeze(["pm-progress", "pm-cards", "pm-sents", "pm-days", "pm-log", "pm-sound", "pm-best-word", "pm-best-sent", "pm-best-place", "pm-rpg-v1", "pm-drive-pref", "pm-learn-v1", "pm-life-v1"]);
+  const KEYS = Object.freeze(["pm-progress", "pm-cards", "pm-sents", "pm-days", "pm-log", "pm-sound", "pm-best-word", "pm-best-sent", "pm-best-place", "pm-rpg-v1", "pm-drive-pref", "pm-learn-v1", "pm-life-v1", "pm-ability-v1"]);
   const ALLOWED = new Set(KEYS), MAX_BYTES = 4 * 1024 * 1024, MAX_VALUE_BYTES = 2 * 1024 * 1024;
   const doc = root.document;
   const scriptBase = doc ? new URL(".", (doc.currentScript && doc.currentScript.src) || doc.baseURI).href : null;
@@ -53,6 +53,18 @@
         for (const field of ["badges", "modes"]) if (own(value, field) && (!Array.isArray(value[field]) || value[field].some((x) => typeof x !== "string"))) throw new Error("成就或模式格式錯誤。");
       }
       if (key === "pm-rpg-v1" && own(value, "version") && value.version !== 1) throw new Error("此版本尚不支援這份 RPG 存檔版本。");
+      if (key === "pm-ability-v1") {
+        // 我的英語能力: answer events (LEARNING-PROFILE-01 schema), newest 4000
+        if (value.v !== 2 || !Array.isArray(value.events) || value.events.length > 4000) throw new Error("能力紀錄格式錯誤。");
+        if (value.events.some((e) => !plain(e) || typeof e.item !== "string" || typeof e.qtype !== "string" || typeof e.at !== "number" || !["correct", "wrong", "timeout", "skipped"].includes(e.result))) throw new Error("能力紀錄的作答事件格式錯誤。");
+        if (own(value, "draft") && (!Array.isArray(value.draft) || value.draft.length > 500)) throw new Error("能力紀錄格式錯誤。");
+        // the same rules as the learning-profile module (LEARNING-PROFILE-01 batch-04 validateStore): ids unique, events valid
+        const LP = root.LearningProfile;
+        if (LP && typeof LP.validateStore === "function") {
+          const errs = LP.validateStore(value, abilityTypes());
+          if (errs.length) throw new Error("能力紀錄格式錯誤：" + errs.slice(0, 3).join("；"));
+        }
+      }
     }
   }
   function parseBackup(text) {
@@ -68,10 +80,32 @@
     }
     return data;
   }
+  function abilityTypes() { return root.Ability && root.Ability.data ? root.Ability.data.qtypes : undefined; }
+  function abilityEvents(raw) {
+    try { const v = raw == null ? null : JSON.parse(raw); return Array.isArray(v) ? v : v && Array.isArray(v.events) ? v.events : []; } catch (_) { return []; }
+  }
+  /* 整份還原 and the ability log: how many events the device has, how many the backup brings, how many device events
+     disappear (not in the backup) and how many are overwritten (same id, different content). Nothing is merged. */
+  function abilityPreview(previous, entries) {
+    const key = "pm-ability-v1";
+    if (!own(previous, key) && !own(entries, key)) return null;
+    const dev = abilityEvents(previous[key]), bak = own(entries, key) ? abilityEvents(entries[key]) : [];
+    const byId = new Map(bak.map((e) => [e && e.id, e]));
+    const lost = dev.filter((e) => !byId.has(e && e.id)).length;
+    const changed = dev.filter((e) => byId.has(e && e.id) && JSON.stringify(e) !== JSON.stringify(byId.get(e.id))).length;
+    return { device: dev.length, backup: bak.length, result: bak.length, lost, changed, inBackup: own(entries, key) };
+  }
   function previewImport(text, storage) {
     const data = parseBackup(text), previous = snapshot(storage), names = Object.keys(data.entries);
     if (!names.length) throw new Error("這份備份沒有遊戲進度，不會清除目前存檔。");
-    return { createdAt: data.createdAt, keys: names, add: names.filter((k) => !own(previous, k)), replace: names.filter((k) => own(previous, k)), remove: Object.keys(previous).filter((k) => !own(data.entries, k)) };
+    return { createdAt: data.createdAt, keys: names, add: names.filter((k) => !own(previous, k)), replace: names.filter((k) => own(previous, k)), remove: Object.keys(previous).filter((k) => !own(data.entries, k)), ability: abilityPreview(previous, data.entries) };
+  }
+  function abilityText(a) {
+    if (!a) return "";
+    if (!a.inBackup) return "能力紀錄：備份裡沒有；目前裝置上的 " + a.device + " 筆作答紀錄會全部消失。";
+    return "能力紀錄（整份還原，不合併）：目前裝置 " + a.device + " 筆 → 還原後 " + a.result + " 筆（備份內容）。" +
+      (a.lost ? "裝置上有 " + a.lost + " 筆不在備份裡，還原後會消失。" : "裝置上的紀錄都在備份裡，不會遺失。") +
+      (a.changed ? "另有 " + a.changed + " 筆同一次作答的內容不同，會改成備份的版本。" : "");
   }
   function restore(text, opt = {}) {
     if (opt.confirmed !== true) throw new Error("請先預覽備份，再明確確認還原。");
@@ -189,7 +223,7 @@
         if (file.size > MAX_BYTES) throw new Error("備份超過 4 MB。");
         const text = await file.text(); if (my !== serial) return;
         const preview = previewImport(text); pending = text;
-        q("pf-preview").textContent = "備份日期：" + new Date(preview.createdAt).toLocaleString("zh-TW") + "。共 " + preview.keys.length + " 項：新增 " + preview.add.length + "、取代 " + preview.replace.length + "、移除目前備份中沒有的 " + preview.remove.length + " 項遊戲資料。";
+        q("pf-preview").textContent = "備份日期：" + new Date(preview.createdAt).toLocaleString("zh-TW") + "。共 " + preview.keys.length + " 項：新增 " + preview.add.length + "、取代 " + preview.replace.length + "、移除目前備份中沒有的 " + preview.remove.length + " 項遊戲資料。" + abilityText(preview.ability);
         q("pf-confirm").disabled = false; message("");
       } catch (e) { q("pf-preview").textContent = e.message; }
     };

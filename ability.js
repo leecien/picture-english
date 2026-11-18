@@ -6,7 +6,8 @@
    - One event per answer; a retry on the same question updates that event (retries / final).
    - hint: anything looked at before answering (「看中文」, a word or phrase card, the folded Chinese cue).
    - Scoring is the external module (modules/learning-profile/profile.js, window.LearningProfile) with the v1
-     rules decided on 2026-11-17 (5 items, 2 contexts, 2 days, last 90 days, 30 days → 需要重新確認, weak < 70%).
+     rules (batch-04, lp-rules-v1.2): 5 items, 2 contexts, 2 Taipei learning days, last 90 days, 30 days →
+     需要重新確認, weak < 70% (the module's `weak`), shown percentage rounded to an integer (5/6 → 83%).
    - Decision 2: business negotiation is 職場 → 商務談判, not 會議 (applied when the data is loaded, so one answer
      is never counted twice).
    - No guessed scores: no evidence → 「尚待評估」; some evidence below the thresholds → 「證據不足」. */
@@ -115,12 +116,20 @@ const Ability = (() => {
         ...(how.revealed ? { revealed: true } : {}),
         ...(how.sr ? { sr: how.sr } : {}),
         ...(typeof how.ms === "number" ? { ms: Math.round(how.ms) } : {}),
+        ...(how.links ? { links: how.links } : {}),
         text: textOf(q).slice(0, 140),
       };
     ST.events.push(ev);
     save();
     cache = null;
     return ev;
+  }
+  /* A retry on a question already recorded: the first result stays, retries / final are updated (same event). */
+  function update(ev, patch) {
+    if (!ev || !ST.events.includes(ev)) return;
+    Object.assign(ev, patch);
+    save();
+    cache = null;
   }
   /* The companion corrected an answer already recorded (battle): it was assisted. */
   function markAssist(q) {
@@ -167,7 +176,8 @@ const Ability = (() => {
   /* One label per cell. No evidence: 尚待評估. Some evidence below the thresholds: 證據不足 (what is missing). */
   // one wording for every cell: the external describe() (尚待評估 / 證據不足 / % / 需要重新確認)
   const label = (cell, reason, detail) => LearningProfile.describe(cell, reason, detail ? { detail: true } : undefined);
-  const cls = (cell, reason) => (reason || !cell || cell.status !== "scored" ? (cell && cell.status === "stale" ? "stale" : "pend") : cell.rawPct < LearningProfile.RULES.weakBelow ? "weak" : "ok");
+  // batch-04: a cell is weak only when the module says so (status scored + weak); pct may be 69.7, never re-rounded
+  const cls = (cell, reason) => (reason || !cell || cell.status !== "scored" ? (cell && cell.status === "stale" ? "stale" : "pend") : cell.weak ? "weak" : "ok");
 
   /* ---------- grammar form-choice questions (60 items, external batch-02) ---------- */
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -226,12 +236,12 @@ const Ability = (() => {
       ? `<div class="ab-list">${p.weak.map((w) => `<button type="button" class="ab-row weak" data-k="${w.kind}" data-id="${esc(w.id)}"><b>${esc(w.zh)}・${esc(CHZ[w.channel])}</b><span>${w.pct}%（低於 70%）</span></button>`).join("")}</div>`
       : '<p class="fine">目前沒有弱項。只有達到門檻、而且低於 70% 的項目才算弱項；證據不足不會被當成弱項。</p>';
     return `<h3>📊 我的英語能力</h3>
-      <p class="fine">評估規則 v1（試行）：同一項要有至少 5 個不同題目、2 種情境、2 天的獨立作答才顯示百分比；只看最近 90 天，超過 30 天沒練顯示「需要重新確認」。${ev ? `目前有 ${ev} 筆作答紀錄。` : "還沒有作答紀錄。"}</p>
+      <p class="fine">評估規則 v1（試行）：同一項要有至少 5 個不同題目、2 種情境、2 個學習日期（台北時間）的獨立作答才顯示百分比（四捨五入到整數）；只看最近 90 天，超過 30 天沒練顯示「需要重新確認」。${ev ? `目前有 ${ev} 筆作答紀錄。` : "還沒有作答紀錄。"}</p>
       ${p.legacy && (p.legacy.wordsAnsweredRight || p.legacy.sentencesAnsweredRight) ? `<p class="fine">舊紀錄：答對過 ${p.legacy.wordsAnsweredRight} 個單字、${p.legacy.sentencesAnsweredRight} 句。${esc(p.legacy.note)}</p>` : ""}
       <h4>弱項</h4>${weak}
       <h4>文法辨識掌握度</h4><p class="fine">來自文法形式選擇題（閱讀辨識）。選擇題只代表看得出正確形式，不代表能獨立造句或口說。作答前不顯示時態名稱。</p>
-      <div class="ab-list">${gRows}</div>${later.length ? `<p class="fine">還沒有題目（目前沒有能測這個文法的題目）：${later.map(esc).join("、")}</p>` : ""}
-      <h4>主題熟悉度</h4><p class="fine">四種能力分開計算（閱讀辨識、聽力理解、句子組合、獨立口說），不合成單一答對率。商務談判歸在「職場」。</p>
+      <div class="ab-list">${gRows}</div>${later.length ? `<p class="fine">未提供評估（目前沒有能測這個文法的題目）：${later.map(esc).join("、")}</p>` : ""}
+      <h4>主題熟悉度</h4><p class="fine">四種能力分開計算（閱讀辨識、聽力理解、句子組合、獨立口說），不合成單一答對率。商務談判歸在「職場」；少數談判句也和「會議」有關，會在會議另外列出，但總作答數只算一次。</p>
       <div class="ab-list">${tRows}</div>
       <p class="fine">練習答對率（含提示、重試）：${p.totals.practiceRate == null ? "—" : p.totals.practiceRate + "%"}。這只代表練習狀況，不是掌握度。${esc(p.speakingNote)}</p>`;
   }
@@ -264,7 +274,7 @@ const Ability = (() => {
         ex = Object.entries(b.excluded || {}).map(([k, n]) => `${EXCL[k] || k} ${n}`).join("、");
       return `<div class="ab-ch ${cls(c, reason)}"><b>${esc(c.channelZh || CHZ[ch])}</b><span>${esc(label(c, reason, true))}</span>
         <ul class="ab-why"><li>獨立作答 ${b.independentAttempts || 0} 次：${b.items || 0} 個不同題目（答對 ${b.correctItems || 0}）、${b.contexts || 0} 種情境、${b.days || 0} 天</li>
-        <li>不算獨立證據：${ex || "無"}</li><li>最新證據：${b.lastEvidence ? esc(b.lastEvidence.slice(0, 10)) : "—"}</li>
+        <li>不算獨立證據：${ex || "無"}</li><li>最新證據（台北日期）：${esc(b.lastEvidenceDay || (b.lastEvidence ? b.lastEvidence.slice(0, 10) : "—"))}</li>
         ${c.recentErrors && c.recentErrors.length ? `<li>最近答錯：${c.recentErrors.slice(0, 5).map((x) => esc(textFor(x.item))).join("；")}</li>` : ""}</ul></div>`;
     };
     const shown = Object.entries(chans).filter(([ch, c]) => kind === "grammar" || (c.basis && (c.basis.independentAttempts || c.basis.practiceAttempts)) || ch === "reading" || ch === "listening");
@@ -274,7 +284,7 @@ const Ability = (() => {
   }
 
   return {
-    ready, begin, setVia, log, markAssist, profile, label, panelHTML, detailHTML, grammarQuestion, grammarItems, textFor, sceneItems,
+    ready, begin, setVia, log, update, markAssist, profile, label, panelHTML, detailHTML, grammarQuestion, grammarItems, textFor, sceneItems,
     get data() { return D; },
     get events() { return ST.events.slice(); },
     get peeked() { return peeked; },

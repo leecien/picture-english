@@ -1,7 +1,7 @@
 {
  "$schema": "http://json-schema.org/draft-07/schema#",
- "title": "LEARNING-PROFILE-01 作答事件（每次作答一筆，append-only）— lp-rules-v1.1",
- "description": "內部遊戲在每題第一次作答定案時寫一筆；重試只更新同一筆的 retries/final，不另寫新筆（決定 3）。存放鍵 pm-ability-v1（新鍵，不改舊 pm-* 形狀），最多保留最近 4000 筆（LearningProfile.trimEvents）；備份與還原連同此鍵一起匯出，還原用 LearningProfile.mergeEvents 合併（決定 4）。",
+ "title": "LEARNING-PROFILE-01 作答事件（每次作答一筆，append-only）— lp-rules-v1.2",
+ "description": "內部遊戲在每題第一次作答定案時寫一筆；重試只更新同一筆的 retries/final，不另寫新筆。存放鍵 pm-ability-v1（新鍵，不改舊 pm-* 語意），可存成事件陣列或 { v, events }，最多保留最新 4000 筆（LearningProfile.trimEvents）；被裁掉的舊證據不再計算。備份時連同此鍵匯出。還原不得靜默合併：先 previewRestore 預覽，再由玩家明確確認「整份還原」（v1 預設，replace）或「僅合併能力紀錄」（merge-ability，只動此鍵、依 id 聯集、同 id 內容衝突保留裝置資料並報出）；寫入前 validateStore 驗證，寫入用 atomicWrite（失敗全部回復）。",
  "type": "object",
  "required": [
   "v",
@@ -35,7 +35,7 @@
   },
   "at": {
    "type": "number",
-   "description": "第一次作答的時間（epoch ms）"
+   "description": "第一次作答的時間（UTC epoch ms）。學習日期由模組換算成 Asia/Taipei 日曆日，事件本身不存當地時間。"
   },
   "result": {
    "enum": [

@@ -12,6 +12,7 @@ const { chromium } = require("playwright");
 const URL = process.env.TEST_URL || "http://127.0.0.1:8000";
 let CUR = null;
 (async () => {
+  const timing = [];
   const browser = await chromium.launch({
     headless: true,
     ...(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {}),
@@ -104,15 +105,31 @@ let CUR = null;
   await page.waitForFunction(() => Battle.ready, null, { timeout: 15000 });
   // the other person's line: phrases + 看中文; reading it stops the clock and is not an answer
   assert.equal(await page.locator("#bt-act .qz-their .pw-p").count() >= 2, true, "phrases in the prompt line");
-  const left0 = await ev(() => Battle.state.left);
+  // Timing (revision 10 item 5): the countdown ticks every 0.1 s, so a value read *before* the click can be one tick
+  // older than the value at the moment the Chinese opens (the coordinator's 18 vs 17.9). Measure the two apart:
+  //   pre  = the clock just before clicking (it must really be running: a real countdown, not a stuck one)
+  //   open = the clock in the same instant the translation is visible
+  //   held = the clock 1.5 s later, still open → must equal `open` exactly (frozen, no tick lost or skipped)
+  const runA = await ev(() => Battle.state.left);
+  await page.waitForTimeout(350);
+  const pre = await ev(() => Battle.state.left);
+  assert(pre < runA, `the countdown runs before reading (${runA} → ${pre})`);
   await page.locator("#bt-act .qz-their .zh-btn").click();
+  const open = await page.waitForFunction(() => {
+    const z = document.querySelector("#bt-act .qz-their .zh-line");
+    return z && !z.hidden && z.offsetHeight > 0 ? Battle.state.left : null;
+  });
+  const leftOpen = await open.jsonValue();
   assert.equal(await page.locator("#bt-act .qz-their .zh-line").innerText(), "晚上好，請問需要什麼協助？");
-  await page.waitForTimeout(700);
-  assert.equal(await ev(() => Battle.state.left), left0, "the clock waits while the Chinese is open");
+  await page.waitForTimeout(1500);
+  const held = await ev(() => Battle.state.left);
+  timing.push({ pre, open: leftOpen, held, preToOpen: +(pre - leftOpen).toFixed(1) });
+  assert.equal(held, leftOpen, `the clock is frozen while the Chinese is open (open ${leftOpen}, after 1.5 s ${held})`);
+  assert(pre - leftOpen <= 0.3 + 1e-9, `only ticks between reading the clock and the click (${pre} → ${leftOpen})`);
   assert.equal(await ev(() => Battle.state.settled), false, "reading is not answering");
   await page.locator("#bt-act .qz-their .zh-btn").click();
   await page.waitForTimeout(400);
-  assert((await ev(() => Battle.state.left)) < left0, "the clock runs again when folded");
+  assert((await ev(() => Battle.state.left)) < held, "the clock runs again when folded");
   // a phrase in the prompt: card first, still not an answer
   await page.locator("#bt-act .qz-their .pw-p", { hasText: "evening" }).click();
   assert.match(await page.locator(".wd-card").innerText(), /晚上好/);
@@ -182,6 +199,7 @@ let CUR = null;
   await page.waitForSelector("#battle", { state: "hidden" });
 
   assert.deepEqual(errors, []);
+  console.log("TIMING " + JSON.stringify(timing));
   console.log("PASS: phrases are one unit (Good evening → 晚上好 + the whole greeting played from either word; How can I help you?; check in), 查看個別單字, 看中文 shows the line's own translation and folds; in battle: reading Chinese or a phrase is not an answer and stops the clock, options get 看中文 only after answering, 🔊 only replays, choosing a sentence answers once and plays that whole sentence (right or wrong, nothing on top), double taps do not hit / attack / score twice, the next question waits for the line");
   await browser.close();
 })().catch(async (e) => {

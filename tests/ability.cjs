@@ -61,10 +61,10 @@ let CUR = null;
 
   /* ---------- old save, no events: 尚待評估, legacy listed, no % ---------- */
   let txt = await openAbility();
-  assert.match(txt, /評估規則 v1（試行）[\s\S]*5 個不同題目、2 種情境、2 天[\s\S]*90 天[\s\S]*30 天/);
+  assert.match(txt, /評估規則 v1（試行）[\s\S]*5 個不同題目、2 種情境、2 個學習日期（台北時間）[\s\S]*90 天[\s\S]*30 天/);
   assert.match(txt, /舊紀錄：答對過 2 個單字[\s\S]*尚待評估/);
   for (const t of ["現在簡單式", "過去簡單式"]) assert.match(txt, new RegExp(`${t}\\s*尚待評估`));
-  assert.match(txt, /還沒有題目（目前沒有能測這個文法的題目）：/, "non-v1 tenses: no instrument");
+  assert.match(txt, /未提供評估（目前沒有能測這個文法的題目）：/, "non-v1 tenses: no instrument");
   assert.doesNotMatch(txt, /\d+%（/, "no percentages without evidence");
   assert.match(txt, /選擇題只代表看得出正確形式，不代表能獨立造句或口說/);
   assert.match(txt, /職場/, "negotiation sits under 職場");
@@ -105,7 +105,7 @@ let CUR = null;
   assert.match(txt, /證據不足：還需要/, "some evidence → 證據不足 with what is missing");
   await page.locator("#menu-close").click();
 
-  /* ---------- reaching the thresholds: will, 6 items, 2 contexts, 2 days, 5 right 1 wrong → 80%（熟悉） ---------- */
+  /* ---------- reaching the thresholds: will, 6 items, 2 contexts, 2 days, 5 right 1 wrong → 83%（熟悉） ---------- */
   const answer = (ids, oks) =>
     ev(([ids, oks]) => {
       ids.forEach((id, i) => {
@@ -127,10 +127,12 @@ let CUR = null;
   assert.equal(p.status, "scored");
   assert.equal(p.basis.items, 6);
   assert(p.basis.contexts >= 2 && p.basis.days >= 2);
-  assert.equal(p.pct, 80, "5/6 = 83.3% shown as 80% (rounded down to 5%)");
+  assert.equal(p.pct, 83, "5/6 = 83.3% shown as 83% (batch-04: rounded to an integer)");
+  assert.equal(p.weak, false);
   assert.equal(p.band, "熟悉");
   txt = await openAbility();
-  assert.match(txt, /80%（熟悉）· 6 題、\d 種情境/, "the panel shows the % once the thresholds are met");
+  assert.match(await ev(() => LearningProfile.describe(Ability.profile(Date.now()).grammar["tense:will"].channels.reading, null, { detail: true })), /83\.3%/, "detail: 5/6 = 83.3%");
+  assert.match(txt, /83%（熟悉）· 6 題、\d 種情境/, "the panel shows the % once the thresholds are met");
 
   /* ---------- weak: past simple 2/6 → 30% → listed; 練習弱項 in place → analysis updated ---------- */
   const past = await ev(() => Ability.data.grammarItems.filter((g) => g.target === "tense:past-simple").map((g) => g.id).slice(0, 6));
@@ -141,7 +143,8 @@ let CUR = null;
   await answer(past.slice(3), [true, false, false]);
   const weak = await ev(() => Ability.profile(Date.now()).weak);
   assert(weak.some((w) => w.id === "tense:past-simple" && w.pct < 70), "past simple is weak (< 70%)");
-  assert(!weak.some((w) => w.id === "tense:will"), "80% is not weak");
+  assert.equal(await ev(() => Ability.profile(Date.now()).grammar["tense:past-simple"].channels.reading.weak), true, "the module marks the cell weak");
+  assert(!weak.some((w) => w.id === "tense:will"), "83% is not weak");
   assert(!weak.some((w) => w.id === "tense:going-to"), "insufficient evidence is never weak");
   txt = await openAbility();
   assert.match(txt, /弱項[\s\S]*過去簡單式・閱讀辨識[\s\S]*\d+%（低於 70%）/);
@@ -209,7 +212,7 @@ let CUR = null;
   assert.equal(await ev(() => JSON.parse(localStorage.getItem("pm-cards")).egg.c), 3, "old keys untouched");
 
   assert.deepEqual(errors, []);
-  console.log("PASS: old save → 尚待評估 (legacy listed, non-v1 tenses: no instrument, no %), NPC 時態小任務: situation + stem, no tense name before answering, sentence / Chinese / sound / explanation after, one event per answer (schema), 證據不足 with what is missing, will 6 items · 2 days · 2 contexts · 5/6 → 80%（熟悉）, weak only when scored < 70%, 練習弱項 in place asks that tense and updates the analysis (24-hour repeats listed apart), hint before answering, 31 days → 需要重新確認, negotiation primary under 職場 (meeting only as a secondary tag), reload keeps events, 4000-event cap, card book untouched");
+  console.log("PASS: old save → 尚待評估 (legacy listed, non-v1 tenses: no instrument, no %), NPC 時態小任務: situation + stem, no tense name before answering, sentence / Chinese / sound / explanation after, one event per answer (schema), 證據不足 with what is missing, will 6 items · 2 days · 2 contexts · 5/6 → 83%（熟悉, batch-04 integer rounding; detail 83.3%）, weak only when scored < 70%, 練習弱項 in place asks that tense and updates the analysis (24-hour repeats listed apart), hint before answering, 31 days → 需要重新確認, negotiation primary under 職場 (meeting only as a secondary tag), reload keeps events, 4000-event cap, card book untouched");
   await browser.close();
 })().catch(async (e) => {
   console.error(e);

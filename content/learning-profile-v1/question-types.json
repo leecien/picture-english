@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "version": "lp-v1-batch03",
+ "version": "lp-v1-batch04",
  "task": "LEARNING-PROFILE-01",
  "reviewer": "external-ai",
  "status": "ai-edited-not-teacher-reviewed",
@@ -133,7 +133,7 @@
    "channel": "reading",
    "tests": "grammar-form",
    "grammarEvidence": "target",
-   "zh": "文法形式選擇題（新題型）：干擾選項只差在文法形式。題目內容 batch-02 已交（grammar-items.json），遊戲尚未實作介面"
+   "zh": "文法形式選擇題（新題型）：干擾選項只差在文法形式。題目見 grammar-items.json（60 題，batch-02）；作答前不顯示時態名稱"
   },
   "grammar:form-build": {
    "channel": "building",

@@ -1,0 +1,11 @@
+{
+ "note": "測試用範例（SAMPLE），不是正式教材。正式文法題於 batch-02 交付（grammar-items.json）。",
+ "items": [
+  {"id": "g:sample-pst-01", "target": "tense:past-simple", "form": null, "topics": [{"topic": "meeting", "sub": "general"}], "stem": "Sales ___ up last quarter.", "options": ["went", "go", "will go"], "answer": "went"},
+  {"id": "g:sample-pst-02", "target": "tense:past-simple", "form": null, "topics": [], "stem": "I ___ my wallet yesterday.", "options": ["lost", "lose", "am losing"], "answer": "lost"},
+  {"id": "g:sample-pst-03", "target": "tense:past-simple", "form": "form:negative", "topics": [], "stem": "I ___ order this.", "options": ["didn't", "don't", "won't"], "answer": "didn't"},
+  {"id": "g:sample-pst-04", "target": "tense:past-simple", "form": "form:yes-no-question", "topics": [], "stem": "___ you find us easily?", "options": ["Did", "Do", "Will"], "answer": "Did"},
+  {"id": "g:sample-pst-05", "target": "tense:past-simple", "form": null, "topics": [], "stem": "It ___ delicious last night.", "options": ["was", "is", "will be"], "answer": "was"},
+  {"id": "g:sample-pst-06", "target": "tense:past-simple", "form": "form:wh-question", "topics": [], "stem": "Where ___ you go last weekend?", "options": ["did", "do", "are"], "answer": "did"}
+ ]
+}

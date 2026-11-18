@@ -1,0 +1,21 @@
+{
+ "_now": "2026-11-18T12:00:00.000Z",
+ "pm-ability-v1": "{\"v\":2,\"events\":[{\"v\":1,\"id\":\"fx-55\",\"item\":\"g:wl-01\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1794927600000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-56\",\"item\":\"g:wl-02\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/airport\",\"at\":1794929400000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-57\",\"item\":\"g:wl-03\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1794931140000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-58\",\"item\":\"g:wl-04\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/airport\",\"at\":1794931200000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-59\",\"item\":\"g:wl-05\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1794933000000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-60\",\"item\":\"g:gt-01\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1794846600000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-61\",\"item\":\"g:gt-02\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/airport\",\"at\":1794848400000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-62\",\"item\":\"g:gt-03\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1794880800000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-63\",\"item\":\"g:gt-04\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:travel/airport\",\"at\":1794902400000,\"result\":\"correct\",\"via\":\"fixture\"},{\"v\":1,\"id\":\"fx-64\",\"item\":\"g:gt-05\",\"qtype\":\"grammar:form-choice\",\"ctx\":\"grammar:food/ordering\",\"at\":1794909600000,\"result\":\"correct\",\"via\":\"fixture\"}]}",
+ "_expect": {
+  "grammar:tense:will": {
+   "status": "scored",
+   "items": 5,
+   "days": 2,
+   "displayPct": 100
+  },
+  "grammar:tense:going-to": {
+   "status": "insufficient",
+   "items": 5,
+   "days": 1,
+   "need": {
+    "days": 1
+   }
+  },
+  "hand": "will：台北今天 00:00 前後各有作答（23:00、23:30、23:59 → 昨天；00:00、00:30 → 今天）→ 2 天。going-to：台北昨天 00:30–18:00，UTC 是兩個日期，台北只有 1 天 → 還差 1 個學習日期"
+ }
+}

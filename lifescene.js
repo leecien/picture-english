@@ -327,7 +327,15 @@ const Life = (() => {
       const cur = round = {locked:true, marks:{[t.id]:"found"}, onTap() {}};
       // The image illustrates the story; there is no hotspot answer or penalty.
       paintOutlines(); focus(t);
-      let heard = false, settled = false, missed = false;
+      let heard = false, settled = false, missed = false, ev = null, wrongs = 0;
+      // 我的英語能力: one sentence-level event (item = the sentence, links.word = the key word). The sentence is
+      // heard in full before the choices open, so the target English was heard first: revealed (practice, not
+      // independent evidence, by the external rules).
+      const logLife = (ok) => {
+        if (typeof Ability === "undefined") return;
+        if (!ev) ev = Ability.log({ recK: "s", item: { en: item.en } }, { result: ok ? "correct" : "wrong", qtype: "life:context-blank", ctx: "life:" + scene.id, via: practice ? "practice" : "lesson", revealed: true, links: { word: "w:" + t.word } });
+        else if (ok) Ability.update(ev, { retries: wrongs, final: "correct" });
+      };
       const reveal = () => {
         panel(`<p class="life-hint">${index+1} / ${lessons.length} · ${ESC(item.situation)}</p>
           <p class="life-context-line">${Learn.sayHTML(item.en, "")}</p><p>${ESC(item.zh)}</p>
@@ -349,6 +357,7 @@ const Life = (() => {
       panel(`<p class="life-hint">${index+1} / ${lessons.length} · ${ESC(item.situation)}</p><p class="life-context-line">${ESC(gap)}</p><p>${ESC(item.zh)}</p>
         <button type="button" id="context-hear">🔊 先聽情境句子</button><p id="context-status" role="status">聽完後，選字完成這句話。</p>
         <div class="life-context-choices">${choices.map(x=>`<button type="button" data-context-word="${ESC(x.word)}" disabled>${ESC(x.word)}</button>`).join("")}</div>`);
+      if (typeof Ability !== "undefined") Ability.begin(); // a new question: nothing looked at yet
       $l("context-hear").onclick = async () => {
         const ok = await Pron.play(item.en, "");
         if (round !== cur || el.hidden) return;
@@ -359,12 +368,13 @@ const Life = (() => {
       $l("life-panel").querySelectorAll("[data-context-word]").forEach(b=>b.onclick=()=>{
         if (!heard || settled || round!==cur) return;
         if (b.dataset.contextWord !== t.word) {
+          wrongs++; if (!ev) logLife(false);
           if (!missed) note(t,"wrong");
           missed=true; b.disabled=true;
           $l("context-status").textContent="再試一次：看看中文句意，想想這裡需要哪個字。";
           return;
         }
-        settled=true; note(t,missed?"retry":"ind"); reveal();
+        settled=true; logLife(true); note(t,missed?"retry":"ind"); reveal();
       });
     };
     next();

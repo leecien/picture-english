@@ -1,0 +1,149 @@
+{
+ "about": "LEARNING-PROFILE-01 手算預期值（lp-rules-v1.2，派工 revision 9）。每一題的 expected 都是照 RULES.md 用紙筆算出來的，不是從 profile.js 或 describe() 的輸出複製。test/hand.test.cjs 只比數值、狀態與證據，不比文字。合成題目（g:h…、g:b…、g:x）只存在於本檔的 tags，不是正式教材。",
+ "now": "2026-11-18T12:00:00Z",
+ "nowTaipei": "2026-11-18 20:00",
+ "tags": {
+  "g:h01": {"target": "tense:will"}, "g:h02": {"target": "tense:will"}, "g:h03": {"target": "tense:will"},
+  "g:h04": {"target": "tense:will"}, "g:h05": {"target": "tense:will"}, "g:h06": {"target": "tense:will"},
+  "g:h07": {"target": "tense:will"}, "g:h08": {"target": "tense:will"},
+  "g:x": {"target": "tense:present-simple"}
+ },
+ "cases": [
+  {
+   "id": "H1", "title": "6 題答對 5 題：原始 83.3%，顯示 83%（四捨五入），不是 80%",
+   "events": [
+    ["g:h01", "grammar:food/ordering", "2026-11-16T02:00:00Z", "correct"],
+    ["g:h02", "grammar:travel/airport", "2026-11-16T02:10:00Z", "correct"],
+    ["g:h03", "grammar:food/ordering", "2026-11-16T02:20:00Z", "correct"],
+    ["g:h04", "grammar:travel/airport", "2026-11-17T02:00:00Z", "correct"],
+    ["g:h05", "grammar:food/ordering", "2026-11-17T02:10:00Z", "correct"],
+    ["g:h06", "grammar:travel/airport", "2026-11-17T02:20:00Z", "wrong"]
+   ],
+   "hand": "獨立題數 6；答對 5；5÷6=0.8333 → 83.3%；四捨五入 83；情境 2 種；台北日期 11-16、11-17 共 2 天；≥5/2/2 → 計分；83.3 介於 70–85 → 熟悉；不低於 70 → 不是弱項",
+   "expect": {"grammar:tense:will": {"status": "scored", "items": 6, "correctItems": 5, "contexts": 2, "days": 2, "rawPct": 83.3, "displayPct": 83, "band": "熟悉", "weak": false}}
+  },
+  {
+   "id": "H2", "title": "6 題答對 4 題：66.7% → 顯示 67%，列弱項（原始比例 < 70）",
+   "events": [
+    ["g:h01", "grammar:food/ordering", "2026-11-16T02:00:00Z", "correct"],
+    ["g:h02", "grammar:travel/airport", "2026-11-16T02:10:00Z", "wrong"],
+    ["g:h03", "grammar:food/ordering", "2026-11-16T02:20:00Z", "correct"],
+    ["g:h04", "grammar:travel/airport", "2026-11-17T02:00:00Z", "correct"],
+    ["g:h05", "grammar:food/ordering", "2026-11-17T02:10:00Z", "wrong"],
+    ["g:h06", "grammar:travel/airport", "2026-11-17T02:20:00Z", "correct"]
+   ],
+   "hand": "4÷6=0.6667 → 66.7%；四捨五入 67；67 沒有跨過 70，照常顯示整數；66.7<70 → 弱項；40≤66.7<70 → 發展中",
+   "expect": {"grammar:tense:will": {"status": "scored", "items": 6, "correctItems": 4, "contexts": 2, "days": 2, "rawPct": 66.7, "displayPct": 67, "band": "發展中", "weak": true}}
+  },
+  {
+   "id": "H3", "title": "台北日期：同一個 UTC 日期，跨過台北午夜 → 2 個學習日期",
+   "events": [
+    ["g:h01", "grammar:food/ordering", "2026-11-17T15:00:00Z", "correct"],
+    ["g:h02", "grammar:travel/airport", "2026-11-17T15:30:00Z", "correct"],
+    ["g:h03", "grammar:food/ordering", "2026-11-17T15:59:00Z", "correct"],
+    ["g:h04", "grammar:travel/airport", "2026-11-17T16:00:00Z", "correct"],
+    ["g:h05", "grammar:food/ordering", "2026-11-17T16:30:00Z", "correct"]
+   ],
+   "hand": "UTC 全是 11-17（1 天）；台北 = UTC+8：23:00、23:30、23:59 是 11-17，00:00、00:30 是 11-18 → 2 天；5 題、2 情境 → 計分 100%",
+   "expect": {"grammar:tense:will": {"status": "scored", "items": 5, "correctItems": 5, "contexts": 2, "days": 2, "rawPct": 100, "displayPct": 100, "band": "穩定", "weak": false}}
+  },
+  {
+   "id": "H4", "title": "台北日期：兩個 UTC 日期，在台北是同一天 → 只有 1 個學習日期，證據不足",
+   "events": [
+    ["g:h01", "grammar:food/ordering", "2026-11-16T16:30:00Z", "correct"],
+    ["g:h02", "grammar:travel/airport", "2026-11-16T17:00:00Z", "correct"],
+    ["g:h03", "grammar:food/ordering", "2026-11-17T02:00:00Z", "correct"],
+    ["g:h04", "grammar:travel/airport", "2026-11-17T08:00:00Z", "correct"],
+    ["g:h05", "grammar:food/ordering", "2026-11-17T10:00:00Z", "correct"]
+   ],
+   "hand": "UTC 日期 11-16、11-17（2 天）；台北 00:30、01:00、10:00、16:00、18:00 全是 11-17 → 1 天；還差 1 個學習日期",
+   "expect": {"grammar:tense:will": {"status": "insufficient", "items": 5, "correctItems": 5, "contexts": 2, "days": 1, "need": {"items": 0, "contexts": 0, "days": 1}}}
+  },
+  {
+   "id": "H5", "title": "24 小時重複和學習日期是兩件事：跨過台北午夜的同一題 2 小時後再答，仍是重複",
+   "events": [
+    ["g:h01", "grammar:food/ordering", "2026-11-17T15:00:00Z", "correct"],
+    ["g:h02", "grammar:travel/airport", "2026-11-17T15:10:00Z", "correct"],
+    ["g:h03", "grammar:food/ordering", "2026-11-17T15:20:00Z", "correct"],
+    ["g:h04", "grammar:travel/airport", "2026-11-17T15:30:00Z", "correct"],
+    ["g:h05", "grammar:food/ordering", "2026-11-17T15:40:00Z", "correct"],
+    ["g:h01", "grammar:food/ordering", "2026-11-17T17:00:00Z", "correct"]
+   ],
+   "hand": "第 6 筆是 g:h01 再答，距上一次 2 小時 < 24 小時 → 重複，不是獨立證據；雖然它在台北 11-18 01:00，學習日期只看獨立作答 → 5 筆都在台北 11-17 → 1 天；證據不足、還差 1 天；excluded.repeat=1",
+   "expect": {"grammar:tense:will": {"status": "insufficient", "items": 5, "correctItems": 5, "contexts": 2, "days": 1, "independentAttempts": 5, "excluded": {"repeat": 1}, "need": {"items": 0, "contexts": 0, "days": 1}}}
+  },
+  {
+   "id": "H6", "title": "重試：第一次錯、重試對 → 這題算錯，不挑最佳次數",
+   "events": [
+    ["g:h01", "grammar:food/ordering", "2026-11-16T02:00:00Z", "wrong", {"retries": 1, "final": "correct"}],
+    ["g:h02", "grammar:travel/airport", "2026-11-16T02:10:00Z", "correct"],
+    ["g:h03", "grammar:food/ordering", "2026-11-16T02:20:00Z", "correct"],
+    ["g:h04", "grammar:travel/airport", "2026-11-17T02:00:00Z", "correct"],
+    ["g:h05", "grammar:food/ordering", "2026-11-17T02:10:00Z", "correct"]
+   ],
+   "hand": "5 題，h01 第一次答錯 → 證據是錯；答對 4 → 80.0%；顯示 80；不是弱項；練習答對率（含重試）5/5=100",
+   "expect": {"grammar:tense:will": {"status": "scored", "items": 5, "correctItems": 4, "rawPct": 80, "displayPct": 80, "band": "熟悉", "weak": false, "practiceRate": 100}}
+  },
+  {
+   "id": "H7", "title": "提示、輔助、超時分開記，不算獨立證據",
+   "events": [
+    ["g:h01", "grammar:food/ordering", "2026-11-16T02:00:00Z", "correct"],
+    ["g:h02", "grammar:travel/airport", "2026-11-16T02:10:00Z", "correct"],
+    ["g:h03", "grammar:food/ordering", "2026-11-16T02:20:00Z", "correct"],
+    ["g:h04", "grammar:travel/airport", "2026-11-17T02:00:00Z", "correct"],
+    ["g:h05", "grammar:food/ordering", "2026-11-17T02:10:00Z", "correct"],
+    ["g:h06", "grammar:travel/airport", "2026-11-17T02:20:00Z", "correct", {"hint": true}],
+    ["g:h07", "grammar:food/ordering", "2026-11-17T02:30:00Z", "correct", {"assisted": true}],
+    ["g:h08", "grammar:travel/airport", "2026-11-17T02:40:00Z", "timeout"]
+   ],
+   "hand": "獨立 5 題全對 → 100%；h06 提示、h07 輔助、h08 超時各 1，分開列出，不進分母",
+   "expect": {"grammar:tense:will": {"status": "scored", "items": 5, "correctItems": 5, "rawPct": 100, "displayPct": 100, "independentAttempts": 5, "excluded": {"hint": 1, "assisted": 1, "timeout": 1}}}
+  },
+  {
+   "id": "H8", "title": "四捨五入不跨門檻：11/13=84.6% 顯示 84.6（熟悉，不是 85 穩定）",
+   "gen": {"prefix": "g:b", "count": 13, "target": "tense:will", "correct": 11, "ctx": ["grammar:food/ordering", "grammar:travel/airport"], "days": ["2026-11-16T02:00:00Z", "2026-11-17T02:00:00Z"], "stepMs": 60000},
+   "hand": "11÷13=0.84615 → 84.6%；四捨五入成 85 會跨過 85（穩定）門檻，所以顯示一位小數 84.6；等級熟悉；不是弱項",
+   "expect": {"grammar:tense:will": {"status": "scored", "items": 13, "correctItems": 11, "rawPct": 84.6, "displayPct": 84.6, "band": "熟悉", "weak": false}}
+  },
+  {
+   "id": "H9", "title": "四捨五入不跨門檻：23/33=69.7% 顯示 69.7 並列弱項（不是 70%）",
+   "gen": {"prefix": "g:b", "count": 33, "target": "tense:will", "correct": 23, "ctx": ["grammar:food/ordering", "grammar:travel/airport"], "days": ["2026-11-16T02:00:00Z", "2026-11-17T02:00:00Z"], "stepMs": 60000},
+   "hand": "23÷33=0.69697 → 69.7%；四捨五入 70 會跨過 70 → 顯示 69.7；69.7<70 → 弱項；發展中",
+   "expect": {"grammar:tense:will": {"status": "scored", "items": 33, "correctItems": 23, "rawPct": 69.7, "displayPct": 69.7, "band": "發展中", "weak": true}}
+  },
+  {
+   "id": "H10", "title": "超過 30 天：需要重新確認，保留上次 83%",
+   "events": [
+    ["g:h01", "grammar:food/ordering", "2026-10-03T02:00:00Z", "correct"],
+    ["g:h02", "grammar:travel/airport", "2026-10-03T02:10:00Z", "correct"],
+    ["g:h03", "grammar:food/ordering", "2026-10-03T02:20:00Z", "correct"],
+    ["g:h04", "grammar:travel/airport", "2026-10-04T02:00:00Z", "correct"],
+    ["g:h05", "grammar:food/ordering", "2026-10-04T02:10:00Z", "correct"],
+    ["g:h06", "grammar:travel/airport", "2026-10-04T02:20:00Z", "wrong"]
+   ],
+   "hand": "最新證據 2026-10-04T02:20Z（台北 10-04），距 now 45 天 > 30 → 需要重新確認；45 天仍在 90 天內，依據列 6 題；上次 5/6 → 83；不是弱項",
+   "expect": {"grammar:tense:will": {"status": "stale", "items": 6, "previousPct": 83, "lastEvidenceDay": "2026-10-04", "weak": false}}
+  },
+  {
+   "id": "H11", "title": "保留 4000 筆：較舊證據被裁掉就不存在，不虛構歷史",
+   "events": [
+    ["g:h01", "grammar:food/ordering", "2026-11-15T02:00:00Z", "correct"],
+    ["g:h02", "grammar:travel/airport", "2026-11-15T02:10:00Z", "correct"],
+    ["g:h03", "grammar:food/ordering", "2026-11-15T02:20:00Z", "correct"],
+    ["g:h04", "grammar:travel/airport", "2026-11-16T02:00:00Z", "correct"],
+    ["g:h05", "grammar:food/ordering", "2026-11-16T02:10:00Z", "correct"],
+    ["g:h06", "grammar:travel/airport", "2026-11-16T02:20:00Z", "wrong"]
+   ],
+   "genAfter": {"item": "g:x", "count": 4000, "ctx": "grammar:food/ordering", "start": "2026-11-17T00:00:00Z", "stepMs": 30000},
+   "hand": "共 4006 筆，只保留最新 4000 筆 → will 的 6 筆（最舊）全被裁掉 → will 沒有證據 = 尚待評估（none）；trimmed=6；g:x 4000 筆只算 1 題",
+   "expect": {"grammar:tense:will": {"status": "none", "items": 0}, "totals": {"attempts": 4000, "distinctItems": 1, "trimmed": 6}}
+  },
+  {
+   "id": "H12", "title": "副標籤不灌數：一筆談判句作答，兩個主題各引用一次，總事件 1、總題數 1",
+   "realTags": true,
+   "events": [["s:I think we have a deal.", "scene:negotiate", "2026-11-17T02:00:00Z", "correct", {"qtype": "scene:zh"}]],
+   "hand": "主分類 work/negotiation、副標籤 meeting/confirming；兩個次主題各 1 次獨立作答；totals.attempts=1、distinctItems=1",
+   "expect": {"topic:work/negotiation:reading": {"independentAttempts": 1, "items": 1}, "topic:meeting/confirming:reading": {"independentAttempts": 1, "items": 1}, "totals": {"attempts": 1, "distinctItems": 1}}
+  }
+ ]
+}
